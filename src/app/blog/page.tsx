@@ -8,11 +8,11 @@ export default function BlogPage() {
             <h1 className="text-4xl font-bold mb-8">Dev Tools Comparison Blog</h1>
             <ul>
                 {posts.map((post) => (
-                    <li key={post.slug} className="mb-4">
-                        <Link href={`/blog/${post.slug}`} className="text-xl hover:underline">
+                    <li key={post.slug} className="mb-6">
+                        <Link href={`/blog/${post.slug}`} className="text-2xl font-semibold hover:underline">
                             {post.title}
                         </Link>
-                        <p className="text-gray-400">{post.views} views</p>
+                        <p className="text-gray-400 mt-1">{post.views} views</p>
                     </li>
                 ))}
             </ul>
