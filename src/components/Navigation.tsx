@@ -2,9 +2,11 @@ import Link from 'next/link'
 
 export default function Navigation() {
     return (
-        <nav className="mb-8">
-            <Link href="/public" className="mr-4 hover:underline">Home</Link>
-            <Link href="/blog" className="hover:underline">Blog</Link>
+        <nav className="p-4 flex justify-center items-center">
+            <div className="flex space-x-16">
+                <Link href="/" className="text-lg hover:text-gray-300">Home</Link>
+                <Link href="/blog" className="text-lg hover:text-gray-300">Blog</Link>
+            </div>
         </nav>
     )
 }
