@@ -9,7 +9,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <article className="prose lg:prose-xl dark:prose-invert mx-auto">
             <h1>{post.title}</h1>
             <p>{post.views} views</p>
-            <MDXRemote source={post.content} />
+            <MDXRemote source={''} {...post.content} />
         </article>
     )
 }

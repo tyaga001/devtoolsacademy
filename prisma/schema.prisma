@@ -4,11 +4,10 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma.ts-client-js"
+  provider = "prisma-client-js"
 }
 
 model Post {
-  slug      String   @id
-  title     String?
-  views     Int      @default(0)
+  slug  String @id
+  views Int    @default(0)
 }

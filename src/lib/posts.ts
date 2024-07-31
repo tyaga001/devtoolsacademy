@@ -16,16 +16,14 @@ export async function getAllPosts() {
         const fileContents = fs.readFileSync(fullPath, 'utf8')
         const { data } = matter(fileContents)
 
-        const postMeta = await prisma.post.upsert({
+        const postMeta = await prisma.post.findUnique({
             where: { slug },
-            update: {}, // This doesn't change anything if the record exists
-            create: { slug, views: 0, title: data.title },
         })
 
         return {
             slug,
             title: data.title,
-            views: postMeta.views
+            views: postMeta?.views || 0
         }
     }))
 
@@ -39,17 +37,15 @@ export async function getPostBySlug(slug: string) {
     const { data, content } = matter(fileContents)
     const mdxSource = await serialize(content)
 
-    const postMeta = await prisma.post.upsert({
+    const postMeta = await prisma.post.findUnique({
         where: { slug },
-        update: {}, // This doesn't change anything if the record exists
-        create: { slug, views: 0, title: data.title },
     })
 
     return {
         slug,
         title: data.title,
         content: mdxSource,
-        views: postMeta.views,
+        views: postMeta?.views || 0
     }
 }
 
@@ -57,6 +53,6 @@ export async function incrementViewCount(slug: string) {
     await prisma.post.upsert({
         where: { slug },
         update: { views: { increment: 1 } },
-        create: { slug, views: 1, title: '' }, // Provide an empty string as default title
+        create: { slug, views: 1 },
     })
 }
