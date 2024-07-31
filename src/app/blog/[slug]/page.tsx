@@ -1,5 +1,4 @@
-// @ts-ignore
-import prisma from './prisma'
+import prisma from '@prisma'
 
 export async function getAllPosts() {
     let posts: any;
