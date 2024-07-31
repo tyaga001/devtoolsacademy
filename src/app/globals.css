@@ -19,15 +19,52 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+          to bottom,
+          transparent,
+          rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Add these new styles for prose */
+.prose {
+  @apply text-gray-300;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  @apply text-white mt-8 mb-4;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose ul, .prose ol {
+  @apply mb-4 pl-8;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose a {
+  @apply text-blue-400 hover:underline;
+}
+
+.prose code {
+  @apply bg-gray-800 rounded px-1 py-0.5;
+}
+
+.prose pre {
+  @apply bg-gray-800 rounded p-4 mb-4 overflow-x-auto;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-500 pl-4 italic my-4;
 }

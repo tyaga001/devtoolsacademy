@@ -9,16 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.17.0",
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
     "next": "14.2.5",
     "next-mdx-remote": "^5.0.0",
+    "prisma": "^5.17.0",
     "react": "^18",
     "react-dom": "^18",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
