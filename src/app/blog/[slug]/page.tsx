@@ -1,20 +1,23 @@
-import { getPostBySlug } from '../../../../lib/posts'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+// @ts-ignore
+import prisma from './prisma'
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-    const post = getPostBySlug(params.slug)
+export async function getAllPosts() {
+    let posts: any;
+    posts = await prisma.post.findMany({
+        orderBy: {createdAt: 'desc'},
+        select: {
+            slug: true,
+            title: true,
+            views: true,
+        },
+    });
+    return posts
+}
 
-    if (!post) {
-        return <div className="text-center text-2xl mt-20">Post not found</div>
-    }
-
-    return (
-        <article className="max-w-3xl mx-auto px-4 py-8">
-            <h1 className="text-4xl font-bold mb-4 text-center">{post.title}</h1>
-            <p className="text-gray-500 mb-8 text-center">{post.views} views</p>
-            <div className="prose prose-invert prose-lg max-w-none">
-                <MDXRemote source={post.content} />
-            </div>
-        </article>
-    )
+export async function getPostBySlug(slug: string) {
+    let post: any;
+    post = await prisma.post.findUnique({
+        where: {slug},
+    });
+    return post
 }
