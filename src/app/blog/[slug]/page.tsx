@@ -1,22 +1,16 @@
-import prisma from '@prisma'
+import { getMDXComponent } from 'next-mdx-remote/rsc'
+import { getPostBySlug } from '@/lib/posts'
 
-export async function getAllPosts() {
-    let posts: any;
-    posts = await prisma.post.findMany({
-        orderBy: {createdAt: 'desc'},
-        select: {
-            slug: true,
-            title: true,
-            views: true,
-        },
-    });
-    return posts
-}
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+    console.log("Params:", params); // Add this line
+    const post = await getPostBySlug(params.slug)
+    const Content = getMDXComponent(post.content)
 
-export async function getPostBySlug(slug: string) {
-    let post: any;
-    post = await prisma.post.findUnique({
-        where: {slug},
-    });
-    return post
+    return (
+        <article className="prose lg:prose-xl dark:prose-invert mx-auto">
+            <h1>{post.title}</h1>
+            <p>{post.views} views</p>
+            <Content />
+        </article>
+    )
 }
