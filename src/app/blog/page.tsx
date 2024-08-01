@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { getAllPosts } from '@/lib/posts';
+import Link from 'next/link'
+import { getAllPosts } from '@/lib/posts'
 
 export default async function BlogPage() {
-    const posts = await getAllPosts();
+    const posts = await getAllPosts()
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
@@ -19,5 +19,5 @@ export default async function BlogPage() {
                 ))}
             </ul>
         </div>
-    );
+    )
 }

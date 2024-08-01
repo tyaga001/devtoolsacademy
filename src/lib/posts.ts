@@ -1,62 +1,66 @@
-import { getBlogPosts } from './mdx';
-import { serialize } from 'next-mdx-remote/serialize';
-import { PrismaClient } from '@prisma/client';
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
+const postsDirectory = path.join(process.cwd(), 'posts')
 
 export async function getAllPosts() {
-    const posts = getBlogPosts();
-    return Promise.all(
-        posts.map(async (post) => {
-            const postMeta = await prisma.post.findUnique({
-                where: { slug: post.slug },
-            });
+    const fileNames = fs.readdirSync(postsDirectory)
+    const allPostsData = await Promise.all(fileNames.map(async (fileName) => {
+        const slug = fileName.replace(/\.mdx$/, '')
 
-            if (!postMeta) {
-                await prisma.post.create({
-                    data: { slug: post.slug, views: 0 },
-                });
-            }
+        const fullPath = path.join(postsDirectory, fileName)
+        const fileContents = fs.readFileSync(fullPath, 'utf8')
+        const { data } = matter(fileContents)
 
-            return {
-                slug: post.slug,
-                title: post.metadata.title,
-                publishedAt: post.metadata.publishedAt,
-                summary: post.metadata.summary,
-                views: postMeta?.views || 0,
-            };
+        let postMeta = await prisma.post.findUnique({
+            where: { slug },
         })
-    );
+
+        if (!postMeta) {
+            postMeta = await prisma.post.create({
+                data: { slug, views: 0 },
+            })
+        }
+
+        return {
+            slug,
+            title: data.title,
+            publishedAt: data.publishedAt,
+            summary: data.summary,
+            views: postMeta.views
+        }
+    }))
+
+    return allPostsData.sort((a, b) => (new Date(b.publishedAt) as any) - (new Date(a.publishedAt) as any))
 }
 
 export async function getPostBySlug(slug: string) {
-    const posts = getBlogPosts();
-    const post = posts.find((p) => p.slug === slug);
+    const fullPath = path.join(postsDirectory, `${slug}.mdx`)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
 
-    if (!post) {
-        throw new Error(`Post not found: ${slug}`);
-    }
-
-    const mdxSource = await serialize(post.content);
+    const { data, content } = matter(fileContents)
 
     let postMeta = await prisma.post.findUnique({
         where: { slug },
-    });
+    })
 
     if (!postMeta) {
         postMeta = await prisma.post.create({
             data: { slug, views: 0 },
-        });
+        })
     }
 
     return {
         slug,
-        title: post.metadata.title,
-        content: mdxSource,
-        publishedAt: post.metadata.publishedAt,
-        summary: post.metadata.summary,
+        title: data.title,
+        content: content,
+        publishedAt: data.publishedAt,
+        summary: data.summary,
         views: postMeta.views,
-    };
+    }
 }
 
 export async function incrementViewCount(slug: string) {
@@ -64,5 +68,5 @@ export async function incrementViewCount(slug: string) {
         where: { slug },
         update: { views: { increment: 1 } },
         create: { slug, views: 1 },
-    });
+    })
 }
