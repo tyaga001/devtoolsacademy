@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Analytics } from '@vercel/analytics/react'
 import Navbar from '@/components/Navbar'
 import './globals.css'
+import 'highlight.js/styles/github-dark.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
