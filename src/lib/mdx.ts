@@ -6,7 +6,6 @@ type BlogMetadata = {
     title: string;
     publishedAt: string;
     summary: string;
-    image?: string;
 };
 
 function parseFrontmatter(fileContent: string) {
