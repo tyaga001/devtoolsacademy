@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
+import matter from "gray-matter"
 import { serialize } from 'next-mdx-remote/serialize'
 import { PrismaClient } from '@prisma/client'
 
@@ -29,11 +29,13 @@ export async function getAllPosts() {
         return {
             slug,
             title: data.title,
+            description: data.description,
+            date: data.date,
             views: postMeta.views
         }
     }))
 
-    return allPostsData.sort((a, b) => (a.views > b.views ? -1 : 1))
+    return allPostsData.sort((a, b) => (new Date(b.date) as any) - (new Date(a.date) as any))
 }
 
 export async function getPostBySlug(slug: string) {
@@ -76,7 +78,8 @@ export async function getPostBySlug(slug: string) {
         slug,
         title: data.title,
         content: mdxSource,
-        views: postMeta?.views || 0
+        views: postMeta.views,
+        date: data.date
     }
 }
 

@@ -2,7 +2,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from '@vercel/analytics/react'
-import Navigation from '@/components/Navigation'
+import Navbar from '@/components/Navbar'
 import './globals.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -10,7 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en" suppressHydrationWarning>
         <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            <Navigation />
+            <Navbar />
             <main className="container">{children}</main>
         </ThemeProvider>
         <Analytics />
