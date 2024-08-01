@@ -1,28 +1,20 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
+import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from '@vercel/analytics/react'
+import Navigation from '@/components/Navigation'
 import './globals.css'
-import Navigation from '../components/Navigation'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  title: 'Dev Tools Compare',
-  description: 'Comparing developer tools and technologies',
-}
-
-export default function RootLayout({
-                                     children,
-                                   }: {
-  children: React.ReactNode
-}) {
-  return (
-      <html lang="en">
-      <body className={inter.className}>
-      <Navigation />
-      <main className="max-w-4xl mx-auto px-4 py-8">
-        {children}
-      </main>
-      </body>
-      </html>
-  )
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <html lang="en" suppressHydrationWarning>
+        <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <Navigation />
+            <main className="container">{children}</main>
+        </ThemeProvider>
+        <Analytics />
+        </body>
+        </html>
+    )
 }
