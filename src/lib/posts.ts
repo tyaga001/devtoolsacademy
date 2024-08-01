@@ -54,12 +54,20 @@ export async function getPostBySlug(slug: string) {
     const { data, content } = matter(fileContents)
     const readingTime = calculateReadingTime(content)
 
+    console.log('Slug:', slug)
+    console.log('Full path:', fullPath)
+    console.log('File exists:', fs.existsSync(fullPath))
+    console.log('File contents:', fileContents)
+    console.log('Parsed data:', data)
+    console.log('Parsed content:', content)
+
     try {
         const mdxSource = await serialize(content, {
             mdxOptions: {
                 development: process.env.NODE_ENV === 'development'
             }
         })
+        console.log('MDX Source:', mdxSource)
 
         let postMeta = await prisma.post.findUnique({
             where: { slug },
@@ -70,11 +78,6 @@ export async function getPostBySlug(slug: string) {
                 data: { slug, views: 0 },
             })
         }
-
-        console.log('File contents:', fileContents)
-        console.log('Parsed data:', data)
-        console.log('Parsed content:', content)
-        console.log('MDX Source:', mdxSource)
 
         return {
             slug,
@@ -89,6 +92,7 @@ export async function getPostBySlug(slug: string) {
         console.error('Error processing MDX:', error)
         throw error
     }
+
 }
 
 export async function incrementViewCount(slug: string) {
