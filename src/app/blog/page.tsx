@@ -12,8 +12,8 @@ export default async function BlogPage() {
                     <BlogCard
                         key={post.slug}
                         title={post.title}
-                        description={post.description}
-                        date={post.date}
+                        description={post.description || ''}
+                        date={post.date || ''}
                         slug={post.slug}
                     />
                 ))}

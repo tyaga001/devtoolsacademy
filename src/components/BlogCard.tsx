@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface BlogCardProps {
     title: string
@@ -11,7 +11,7 @@ interface BlogCardProps {
 export function BlogCard({ title, description, date, slug }: BlogCardProps) {
     return (
         <Card className="hover:bg-accent transition-colors">
-            <Link href={`/blog/${slug}`}>
+            <Link href={`/blog/${slug}`} className="block">
                 <CardHeader>
                     <CardTitle>{title}</CardTitle>
                 </CardHeader>
