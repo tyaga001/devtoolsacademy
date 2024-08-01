@@ -2,69 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-          to bottom,
-          transparent,
-          rgb(var(--background-end-rgb))
-  )
-  rgb(var(--background-start-rgb));
+  background-color: #000;
+  color: #fff;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-/* Add these new styles for prose */
 .prose {
-  @apply text-gray-300;
+  color: #fff;
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-  @apply text-white mt-8 mb-4;
-}
-
-.prose p {
-  @apply mb-4;
-}
-
-.prose ul, .prose ol {
-  @apply mb-4 pl-8;
-}
-
-.prose li {
-  @apply mb-2;
+  color: #fff;
 }
 
 .prose a {
-  @apply text-blue-400 hover:underline;
+  color: #3b82f6;
 }
 
-.prose code {
-  @apply bg-gray-800 rounded px-1 py-0.5;
+.prose strong {
+  color: #fff;
 }
 
-.prose pre {
-  @apply bg-gray-800 rounded p-4 mb-4 overflow-x-auto;
+.prose ul > li::before {
+  background-color: #fff;
+}
+
+.prose ol > li::before {
+  color: #fff;
 }
 
 .prose blockquote {
-  @apply border-l-4 border-gray-500 pl-4 italic my-4;
+  color: #d1d5db;
+  border-left-color: #3b82f6;
+}
+
+.prose code {
+  color: #fff;
+  background-color: #1f2937;
+}
+
+.prose pre {
+  background-color: #1f2937;
 }
