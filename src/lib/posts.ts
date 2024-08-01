@@ -3,6 +3,7 @@ import path from 'path'
 import matter from "gray-matter"
 import { serialize } from 'next-mdx-remote/serialize'
 import { PrismaClient } from '@prisma/client'
+import { calculateReadingTime } from './utils'
 
 const prisma = new PrismaClient()
 const postsDirectory = path.join(process.cwd(), 'posts')
@@ -35,7 +36,7 @@ export async function getAllPosts() {
         }
     }))
 
-    return allPostsData.sort((a, b) => (new Date(b.date) as any) - (new Date(a.date) as any))
+    return allPostsData.sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()))
 }
 
 export async function getPostBySlug(slug: string) {
@@ -50,36 +51,43 @@ export async function getPostBySlug(slug: string) {
     }
 
     const fileContents = fs.readFileSync(fullPath, 'utf8')
-
     const { data, content } = matter(fileContents)
-    const mdxSource = await serialize(content, {
-        parseFrontmatter: false,
-        mdxOptions: {
-            development: process.env.NODE_ENV === 'development'
-        }
-    })
+    const readingTime = calculateReadingTime(content)
 
-    let postMeta = await prisma.post.findUnique({
-        where: { slug },
-    })
-
-    if (!postMeta) {
-        postMeta = await prisma.post.create({
-            data: { slug, views: 0 },
+    try {
+        const mdxSource = await serialize(content, {
+            mdxOptions: {
+                development: process.env.NODE_ENV === 'development'
+            }
         })
-    }
 
-    console.log('File contents:', fileContents)
-    console.log('Parsed data:', data)
-    console.log('Parsed content:', content)
-    console.log('MDX Source:', mdxSource)
+        let postMeta = await prisma.post.findUnique({
+            where: { slug },
+        })
 
-    return {
-        slug,
-        title: data.title,
-        content: mdxSource,
-        views: postMeta.views,
-        date: data.date
+        if (!postMeta) {
+            postMeta = await prisma.post.create({
+                data: { slug, views: 0 },
+            })
+        }
+
+        console.log('File contents:', fileContents)
+        console.log('Parsed data:', data)
+        console.log('Parsed content:', content)
+        console.log('MDX Source:', mdxSource)
+
+        return {
+            slug,
+            title: data.title,
+            content: mdxSource,
+            description: data.description,
+            readingTime,
+            views: postMeta.views,
+            date: data.date,
+        }
+    } catch (error) {
+        console.error('Error processing MDX:', error)
+        throw error
     }
 }
 

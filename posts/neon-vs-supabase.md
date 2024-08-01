@@ -1,6 +1,7 @@
 ---
-title: 'Neon vs Supabase: Choosing the Right Database for Your Project'
-views: 0
+title: "Neon vs Supabase: Choosing the Right Database for Your Project"
+description: "A comparison of Neon and Supabase for your database needs"
+date: "2024-03-21"
 ---
 
 # Neon vs Supabase: Choosing the Right Database for Your Project
