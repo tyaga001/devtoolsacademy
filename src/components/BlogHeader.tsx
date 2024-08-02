@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 
+// @ts-ignore
 export default function BlogHeader({ title, date, views }) {
     return (
         <motion.header
