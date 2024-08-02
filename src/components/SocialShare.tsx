@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion'
-import { Twitter, Facebook, LinkedIn } from 'lucide-react'
+'use client'
 
-export default function SocialShare({ url, title }) {
+import { motion } from 'framer-motion'
+import { Twitter, Facebook, Linkedin } from 'lucide-react'
+
+export default function SocialShare({ url, title }: { url: string; title: string }) {
     const shareUrl = encodeURIComponent(`https://yourblog.com${url}`)
     const shareTitle = encodeURIComponent(title)
 
@@ -19,7 +21,7 @@ export default function SocialShare({ url, title }) {
                 <Facebook size={24} />
             </a>
             <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareTitle}`} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-600">
-                <LinkedIn size={24} />
+                <Linkedin size={24} />
             </a>
         </motion.div>
     )
