@@ -1,4 +1,3 @@
-// components/TableOfContents.tsx
 "use client"
 
 import React, { useState, useEffect } from 'react'
@@ -24,7 +23,7 @@ const TableOfContents: React.FC = () => {
                     }
                 })
             },
-            { rootMargin: '0% 0% -80% 0%' }
+            { rootMargin: '-100px 0% -80% 0%' }
         )
 
         headingData.forEach((heading) => {
@@ -39,7 +38,10 @@ const TableOfContents: React.FC = () => {
         e.preventDefault()
         const element = document.getElementById(id)
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
+            const yOffset = -100; // Adjust this value based on your fixed header height
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+            window.scrollTo({ top: y, behavior: 'smooth' })
+            setActiveId(id)
         }
     }
 
