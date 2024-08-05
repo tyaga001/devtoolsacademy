@@ -14,13 +14,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 <span className="text-gray-200">JavaScript</span>
             </nav>
             <h1 className="text-4xl font-bold mb-8 text-white">{post.title}</h1>
-            <div className="flex flex-col md:flex-row gap-12">
-                <div className="md:w-2/3">
+            <div className="flex flex-col lg:flex-row gap-12">
+                <div className="lg:w-2/3">
                     <div className="prose prose-invert max-w-none">
-                        <MDXRemote {...post.content} />
+                        <MDXRemote source={post.content} />
                     </div>
                 </div>
-                <aside className="md:w-1/3">
+                <aside className="lg:w-1/3">
                     <TableOfContents />
                 </aside>
             </div>
