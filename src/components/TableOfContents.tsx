@@ -1,11 +1,9 @@
-'use client'
+"use client"
 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
 
-const TableOfContents: React.FC<{ content: string }> = ({ content }) => {
+const TableOfContents: React.FC = () => {
     const [headings, setHeadings] = useState<Array<{ id: string; text: string; level: number }>>([])
-    const [activeId, setActiveId] = useState('')
 
     useEffect(() => {
         const elements = document.querySelectorAll('h2, h3, h4')
@@ -15,47 +13,25 @@ const TableOfContents: React.FC<{ content: string }> = ({ content }) => {
             level: parseInt(elem.tagName[1]),
         }))
         setHeadings(headingData)
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveId(entry.target.id)
-                    }
-                })
-            },
-            { rootMargin: '-20% 0% -35% 0%' }
-        )
-
-        elements.forEach((elem) => observer.observe(elem))
-
-        return () => observer.disconnect()
-    }, [content])
+    }, [])
 
     return (
         <nav className="sticky top-8">
-            <h2 className="text-xl font-semibold mb-4">TABLE OF CONTENTS</h2>
-            <ul className="space-y-2">
+            <h2 className="text-lg font-semibold mb-4 text-gray-200">TABLE OF CONTENTS</h2>
+            <ul className="space-y-2 text-sm">
                 {headings.map((heading) => (
-                    <motion.li
+                    <li
                         key={heading.id}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3 }}
-                        style={{ marginLeft: `${(heading.level - 2) * 16}px` }}
+                        style={{ paddingLeft: `${(heading.level - 2) * 12}px` }}
                     >
-
-                        href={`#${heading.id}`}
-                        className={`block py-1 px-2 rounded transition-colors ${
-                        activeId === heading.id
-                            ? 'text-blue-400'
-                            : 'text-gray-400 hover:text-white'
-                    }`}
+                        <a
+                            href={`#${heading.id}`}
+                            className="text-gray-400 hover:text-blue-400 transition-colors"
                         >
-                        {heading.text}
-                    </a>
-                    </motion.li>
-                    ))}
+                            {heading.text}
+                        </a>
+                    </li>
+                ))}
             </ul>
         </nav>
     )
