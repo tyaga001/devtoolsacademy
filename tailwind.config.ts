@@ -1,7 +1,10 @@
-const { fontFamily } = require('tailwindcss/defaultTheme')
+import { Config } from 'tailwindcss';
+import defaultTheme from 'tailwindcss/defaultTheme';
+import typography from '@tailwindcss/typography';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config: Config = {
   darkMode: ['class'],
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -47,10 +50,10 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['var(--font-geist-sans)', ...fontFamily.sans],
-        mono: ['var(--font-geist-mono)', ...fontFamily.mono],
+        sans: ['var(--font-geist-sans)', ...defaultTheme.fontFamily.sans],
+        mono: ['var(--font-geist-mono)', ...defaultTheme.fontFamily.mono],
       },
-      typography: (theme) => ({
+      typography: (theme: (path: string) => string) => ({
         DEFAULT: {
           css: {
             color: 'hsl(var(--foreground))',
@@ -90,5 +93,7 @@ module.exports = {
       }),
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],
-}
+  plugins: [typography, tailwindcssAnimate],
+};
+
+export default config;
