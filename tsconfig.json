@@ -7,7 +7,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -16,7 +16,7 @@
       "./node_modules/@types",
       "./types"
     ],
-    "types": ["node", "tailwindcss"],
+    "types": ["node"],
     "plugins": [
       {
         "name": "next"
@@ -25,7 +25,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@prisma": ["prisma"]
-    }
+    },
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
