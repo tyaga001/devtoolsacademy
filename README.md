@@ -2,6 +2,9 @@
 
 A blog dedicated to comparing developer tools, frameworks, and technologies. Here, you'll find in-depth analyses and comparisons to help you make informed decisions about the tools you use in your development workflow.
 
+![image](https://github.com/user-attachments/assets/bd526bff-b9c6-4abf-b316-f3ac2a29dbfe)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
