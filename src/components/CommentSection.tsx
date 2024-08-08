@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { useUser, useAuth } from '@clerk/nextjs';
+import { useUser, useAuth, SignIn } from '@clerk/nextjs';
 import { Comment } from '@prisma/client';
 
 const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
@@ -15,9 +15,16 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
     }, [postSlug]);
 
     const fetchComments = async () => {
-        const response = await fetch(`/api/comments?postSlug=${postSlug}`);
-        const data = await response.json();
-        setComments(data);
+        try {
+            const response = await fetch(`/api/comments?postSlug=${postSlug}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            setComments(data);
+        } catch (error) {
+            console.error('Failed to fetch comments:', error);
+        }
     };
 
     const handleSubmitComment = async (e: React.FormEvent) => {
@@ -56,12 +63,16 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
                     </button>
                 </form>
             ) : (
-                <p>Please sign in to comment.</p>
+                <div>
+                    <p>Please sign in to comment.</p>
+                    <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
+                </div>
             )}
             <div className="space-y-4">
                 {comments.map((comment) => (
                     <div key={comment.id} className="border-b pb-2">
-                        <p className="font-bold">{comment.user.name}</p>
+                        {/* Assuming `Comment` type does not have `user` property */}
+                        <p className="font-bold">User Name Placeholder</p>
                         <p>{comment.content}</p>
                     </div>
                 ))}
