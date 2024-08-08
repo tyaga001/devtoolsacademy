@@ -2,6 +2,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug, incrementViewCount } from '@/lib/posts'
 import TableOfContents from '@/components/TableOfContents'
 import Breadcrumb from '@/components/Breadcrumb'
+import CommentSection from '@/components/CommentSection';
 
 
 const generateId = (children: any) => {
@@ -36,6 +37,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                     <div className="prose prose-invert max-w-none">
                         <MDXRemote source={post.content} components={components} />
                     </div>
+                    <CommentSection postSlug={params.slug} />
                 </div>
                 <aside className="lg:w-1/3">
                     <TableOfContents />
