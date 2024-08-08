@@ -4,10 +4,17 @@ import TableOfContents from '@/components/TableOfContents'
 import Breadcrumb from '@/components/Breadcrumb'
 
 
+const generateId = (children: any) => {
+    if (Array.isArray(children)) {
+        children = children.join('');
+    }
+    return typeof children === 'string' ? children.toLowerCase().replace(/\s+/g, '-') : '';
+};
+
 const components = {
-    h2: (props: any) => <h2 id={props.children.toLowerCase().replace(/\s+/g, '-')} {...props} />,
-    h3: (props: any) => <h3 id={props.children.toLowerCase().replace(/\s+/g, '-')} {...props} />,
-    h4: (props: any) => <h4 id={props.children.toLowerCase().replace(/\s+/g, '-')} {...props} />,
+    h2: (props: any) => <h2 id={generateId(props.children)} {...props} />,
+    h3: (props: any) => <h3 id={generateId(props.children)} {...props} />,
+    h4: (props: any) => <h4 id={generateId(props.children)} {...props} />,
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
