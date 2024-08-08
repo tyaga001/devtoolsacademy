@@ -294,18 +294,6 @@ A cloud-native, multi-tenant Postgres connection pooler designed for managing co
 
 When migrating to a new database platform, the ability to import data efficiently and reliably is crucial. Here, we explore and compare the methods provided by Supabase and Neon for importing data, helping you determine the best approach for your needs.
 
-| Feature                                  | Neon                                                                                                                | Supabase                                                                                                                 |
-|------------------------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| **CSV Import**                           | Use the `\copy` command in psql to import CSV data directly into tables. Ideal for structured, smaller datasets.    | Supabase Dashboard supports CSV import up to 100MB through a user-friendly interface.                                    |
-| **pg_dump and pg_restore**               | Standard method for migrating data from another Postgres database using pg_dump to export and pg_restore to import. | pgloader can be used for large-scale imports from various databases, offering robust configuration options.              |
-| **CLI Tools**                            | `@neondatabase/pg-import` CLI for simpler migrations, though it is experimental and best for smaller databases.     | Supabase API allows programmatic data import, useful for automation and providing control over the import process.       |
-| **Project-to-Project Migration**         | Directly pipe data from one Neon project to another using pg_dump and pg_restore, efficient for small datasets.     | Not explicitly mentioned, but possible via pgloader or the COPY command for complex or larger data migrations.           |
-| **AWS Database Migration Service (DMS)** | Suitable for complex migrations from various database engines like MySQL, Oracle, and SQL Server to Neon.           | Supabase supports migration from Amazon RDS (Postgres, MySQL, MS SQL) using standard tools or dedicated migration tools. |
-| **Heroku Migration**                     | Use Heroku CLI’s `pg:pull` command to migrate data from Heroku Postgres to Neon, convenient for Heroku users.       | Migrate from Heroku Postgres using pg_dump and psql CLI tools or a Heroku to Supabase migration tool.                    |
-| **COPY Command**                         | Use the COPY command for efficient bulk data loading, ideal for large data loads and production environments.       | Similarly, the COPY command in Postgres is highly efficient for bulk data loading in Supabase.                           |
-| **MySQL Migration**                      | Use pgloader to migrate MySQL databases to Neon, transforming data to a Postgres-compatible format.                 | Use pgloader or a migration tool in Google Colab to migrate MySQL databases to Supabase's Postgres database.             |
-
-
 ## Security: Supabase vs. Neon<a id="security-supabase-vs-neon"></a>
 
 When evaluating the security features of database platforms, both Supabase and Neon offer robust measures to ensure data protection, secure access, and compliance with industry standards. Below is a concise comparison of their security features, presented in a tabular format for direct comparison and followed by a discussion of additional aspects.
