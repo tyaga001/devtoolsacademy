@@ -6,14 +6,14 @@ summary: 'An in-depth comparison of Neon Postgres and Supabase to help you choos
 
 ## What is Neon ?<a id="what-is-neon-"></a>
 
-[**Neon**](https://neon.tech) ****is a modern, serverless database platform inspired by Amazon Aurora's architecture, which separates compute and storage resources. Neon's custom-built storage engine maintains a history of PostgreSQL transactions, enabling a serverless experience with automatic scaling to zero during inactivity and dynamic autoscaling based on demand. Features like database branching and a generous free tier enhance development workflows significantly.
+[**Neon**](https://neon.tech) is a modern, serverless database platform inspired by Amazon Aurora's architecture, which separates compute and storage resources. Neon's custom-built storage engine maintains a history of PostgreSQL transactions, enabling a serverless experience with automatic scaling to zero during inactivity and dynamic autoscaling based on demand. Features like database branching and a generous free tier enhance development workflows significantly.
 
 
 ## What is Supabase ?<a id="what-is-supabase-"></a>
 
 [**Supabase**](https://supabase.com) is a robust tool designed to create secure and high-performance PostgreSQL backends with minimal configuration. As an open-source alternative to Firebase, Supabase offers a comprehensive suite of functionalities, including authentication, real-time databases, and storage solutions. This flexibility and control over data and applications make Supabase a powerful choice for developers looking for a reliable and versatile backend solution.
 
-This article provides an in-depth comparison of Neon.tech and Supabase, assisting developers in selecting the right platform for their project needs by examining configuration setup, architecture, data import options, real-time processing capabilities, integration, security, and additional features.
+This article provides an in-depth comparison of Neon and Supabase, assisting developers in selecting the right platform for their project needs by examining configuration setup, architecture, data import options, real-time processing capabilities, integration, security, and additional features.
 
 
 ## Configuring Connections: Supabase vs. Neon<a id="configuring-connections-supabase-vs-neon"></a>
@@ -53,20 +53,24 @@ The SQL Editor supports saving queries and viewing query history, and it provide
 
 #### 2. Passwordless authentication<a id="2-passwordless-authentication"></a>
 
-Neon's passwordless authentication for `psql` simplifies the connection process.The passwordless auth feature connects to the first database created in the branch. Here’s how to connect. Run the command: ****`psql -h pg.neon.tech`
+Neon's passwordless authentication for `psql` simplifies the connection process.The passwordless auth feature connects to the first database created in the branch. Here’s how to connect. Run the command: `psql -h pg.neon.tech`
 
 Authenticate via browser: Follow the link provided in the terminal to authenticate.
 
-|                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------- |
-| NOTICE:  Welcome to Neon! Authenticate by visiting:     https\://console.neon.tech/psql\_session/6d32af5ef8215b62 |
-
+```bash
+NOTICE:  Welcome to Neon!
+Authenticate by visiting:
+    https://console.neon.tech/psql_session/6d32af5ef8215b62
+```
 Return to terminal: After authentication, your **psql** session is connected to Neon.
 
-|                                                                                                        |
-| ------------------------------------------------------------------------------------------------------ |
-| NOTICE:  Connecting to database. psql (15.0 (Ubuntu 15.0-1.pgdg22.04+1)) Type "help" for help. casey=> |
+```bash
+NOTICE:  Connecting to database.
+psql (15.0 (Ubuntu 15.0-1.pgdg22.04+1))
+Type "help" for help.
 
+casey=>
+```
 This method is secure and efficient, eliminating the need to remember or manage passwords.
 
 
@@ -81,7 +85,7 @@ Neon recommends using **verify-full** mode for maximum security. Configure SSL s
 
 #### 4. GUI applications<a id="4-gui-applications"></a>
 
-You can connect to Neon databases from various GUI applications and IDEs like pgAdmin, DataGrip, and DBeaver. 
+You can connect to Neon databases from various GUI applications and IDEs like pgAdmin, DataGrip, and DBeaver.
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXefqWIBPCZJnoVb3jTzT4CoSORO7RPGQVnyiev5Rhj2qThjR6RxyVYkZJ5XUgJngdRdS7y_HteiwhkDNNmpzymlXz8HjCOjWaojGIEfQXGcKoFadoWsj8jegB9sddloTm1TJHhuXscxQsbGe6yzRBYd5hg?key=0jnpRzNFQaBNrbdOAncbMA)
 
@@ -94,12 +98,11 @@ Neon uses **PgBouncer** for connection pooling, supporting up to 10,000 concurre
 
 **Example pooled connection string:**
 
-|                                                                                                           |
-| --------------------------------------------------------------------------------------------------------- |
-| postgres\://alex:AbC123dEf\@ep-cool-darkness-123456-pooler.us-east-2.aws.neon.tech/dbname?sslmode=require |
+```bash
+postgres://alex:AbC123dEf@ep-cool-darkness-123456-pooler.us-east-2.aws.neon.tech/dbname?sslmode=require
+```
 
 Connection pooling helps manage resources efficiently, allowing many connections to share a smaller number of actual Postgres connections.
-
 
 #### 6. Connecting to Neon with psql<a id="6-connecting-to-neon-with-psql"></a>
 
@@ -113,14 +116,13 @@ Connection pooling helps manage resources efficiently, allowing many connections
 
 From your terminal or command prompt, run the **pgcli** client with the connection string. Your command will look something like this:
 
-|                                                                                          |
-| ---------------------------------------------------------------------------------------- |
-| pgcli postgres\://alex:AbC123dEf\@ep-cool-darkness-123456.us-east-2.aws.neon.tech/dbname |
-
+```bash
+pgcli postgres://alex:AbC123dEf@ep-cool-darkness-123456.us-east-2.aws.neon.tech/dbname
+```
 
 #### AI Integration<a id="ai-integration"></a>
 
- You can also integrate your Neon database with AI tools like **AskYourDatabase** for natural language queries and data visualizations. Download the AskYourDatabase app, connect using your Neon connection string, and start querying your data in natural language.
+You can also integrate your Neon database with AI tools like **AskYourDatabase** for natural language queries and data visualizations. Download the AskYourDatabase app, connect using your Neon connection string, and start querying your data in natural language.
 
 
 ### Supabase Connection Methods<a id="supabase-connection-methods"></a>
@@ -157,7 +159,7 @@ Supabase allows direct connections to your Postgres database, typically via IPv6
 
 4\. Serverless environments
 
-Supabase provides several options for connecting to your Postgres database from serverless environments. The `supabase-js` ****client uses the auto-generated REST API, making it ideal for serverless workloads due to its built-in connection pooler that can handle thousands of simultaneous requests.
+Supabase provides several options for connecting to your Postgres database from serverless environments. The `supabase-js` client uses the auto-generated REST API, making it ideal for serverless workloads due to its built-in connection pooler that can handle thousands of simultaneous requests.
 
 5\. Vercel edge functions
 
@@ -167,12 +169,11 @@ Choose one of these Vercel Deploy Templates, which use Vercel deploy integration
 
 - **Kysely:** A simple Next.js template that uses Supabase as the database and Kysely as the query builder.
 
-Ensure the `Use connection pooler `option ****is checked, and `Transaction mode` is selected in your Database Settings. Now copy the URI and save it as the `POSTGRES_URL` environment variable, replacing the password placeholder with your actual database password and adding the suffix `?workaround=supabase-pooler.vercel`**.**
+Ensure the `Use connection pooler `option is checked, and `Transaction mode` is selected in your Database Settings. Now copy the URI and save it as the `POSTGRES_URL` environment variable, replacing the password placeholder with your actual database password and adding the suffix `?workaround=supabase-pooler.vercel`**.**
 
-|                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| POSTGRES\_URL="postgres\://postgres.cfcxynqnhdybqtbhjemm:\[YOUR-PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?workaround=supabase-pooler.vercel" |
-
+```bash
+POSTGRES_URL="postgres://postgres.cfcxynqnhdybqtbhjemm:[YOUR-PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?workaround=supabase-pooler.vercel"
+```
 
 ## Architecture Comparison: Neon vs. Supabase<a id="architecture-comparison-neon-vs-supabase"></a>
 
@@ -211,7 +212,9 @@ Only session-level configuration parameters can be modified, resetting when the 
 
 ### Supabase Architecture<a id="supabase-architecture"></a>
 
-Supabase is built on open-source tools designed to be scalable and easy to use. Supabase is not a 1-to-1 mapping of Firebase. While Supabase aims to offer many of the features that Firebase provides, its approach is different, focusing on open-source technologies and supporting existing tools whenever possible.
+Supabase is built on open-source tools designed to be scalable and easy to use.
+
+Supabase is not a 1-to-1 mapping of Firebase. While Supabase aims to offer many of the features that Firebase provides, its approach is different, focusing on open-source technologies and supporting existing tools whenever possible.
 
 Supabase uses open-source tools that are scalable and simple to use. The platform leverages PostgreSQL rather than a NoSQL store, a deliberate choice to ensure the functionality and scalability required to compete with Firebase and go beyond it.
 
@@ -235,7 +238,7 @@ A JWT-based API for managing users and issuing access tokens, integrating with P
 
 **4. PostgREST (API)**
 
-A standalone web server that turns your PostgreSQL database into a RESTful API. It is used with the ****`pg_graphql` ****extension to provide a GraphQL API.
+A standalone web server that turns your PostgreSQL database into a RESTful API. It is used with the `pg_graphql` extension to provide a GraphQL API.
 
 **5. Realtime (API & Multiplayer)**
 
@@ -291,17 +294,16 @@ A cloud-native, multi-tenant Postgres connection pooler designed for managing co
 
 When migrating to a new database platform, the ability to import data efficiently and reliably is crucial. Here, we explore and compare the methods provided by Supabase and Neon for importing data, helping you determine the best approach for your needs.
 
-|                                          |                                                                                                                         |                                                                                                                          |
-| :--------------------------------------: | :---------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------: |
-|                **Feature**               |                                                         **Neon**                                                        |                                                       **Supabase**                                                       |
-|              **CSV Import**              |    Use the `\copy` command in `psql` to import CSV data directly into tables. Ideal for structured, smaller datasets.   |                   Supabase Dashboard supports CSV import up to 100MB through a user-friendly interface.                  |
-|       **pg\_dump and pg\_restore**       | Standard method for migrating data from another Postgres database using `pg_dump` to export and `pg_restore` to import. |        pgloader can be used for large-scale imports from various databases, offering robust configuration options.       |
-|               **CLI Tools**              |     `@neondatabase/pg-import` CLI for simpler migrations, though it is experimental and best for smaller databases.     |    Supabase API allows programmatic data import, useful for automation and providing control over the import process.    |
-|     **Project-to-Project Migration**     | Directly pipe data from one Neon project to another using `pg_dump` and ****`pg_restore`, efficient for small datasets. |      Not explicitly mentioned, but possible via pgloader or the COPY command for complex or larger data migrations.      |
-| **AWS Database Migration Service (DMS)** |        Suitable for complex migrations from various database engines like MySQL, Oracle, and SQL Server to Neon.        | Supabase supports migration from Amazon RDS (Postgres, MySQL, MS SQL) using standard tools or dedicated migration tools. |
-|           **Heroku Migration**           |      Use Heroku CLI’s `pg:pull` command to migrate data from Heroku Postgres to Neon, convenient for Heroku users.      |        Migrate from Heroku Postgres using **pg\_dump** and psql CLI tools or a Heroku to Supabase migration tool.        |
-|             **COPY Command**             |     Use the `COPY` command for efficient bulk data loading, ideal for large data loads and production environments.     |              Similarly, the COPY command in Postgres is highly efficient for bulk data loading in Supabase.              |
-|            **MySQL Migration**           |           Use pgloader to migrate MySQL databases to Neon, transforming data to a Postgres-compatible format.           |       Use pgloader or a migration tool in Google Colab to migrate MySQL databases to Supabase's Postgres database.       |
+| Feature                                  | Neon                                                                                                                | Supabase                                                                                                                 |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| **CSV Import**                           | Use the `\copy` command in psql to import CSV data directly into tables. Ideal for structured, smaller datasets.    | Supabase Dashboard supports CSV import up to 100MB through a user-friendly interface.                                    |
+| **pg_dump and pg_restore**               | Standard method for migrating data from another Postgres database using pg_dump to export and pg_restore to import. | pgloader can be used for large-scale imports from various databases, offering robust configuration options.              |
+| **CLI Tools**                            | `@neondatabase/pg-import` CLI for simpler migrations, though it is experimental and best for smaller databases.     | Supabase API allows programmatic data import, useful for automation and providing control over the import process.       |
+| **Project-to-Project Migration**         | Directly pipe data from one Neon project to another using pg_dump and pg_restore, efficient for small datasets.     | Not explicitly mentioned, but possible via pgloader or the COPY command for complex or larger data migrations.           |
+| **AWS Database Migration Service (DMS)** | Suitable for complex migrations from various database engines like MySQL, Oracle, and SQL Server to Neon.           | Supabase supports migration from Amazon RDS (Postgres, MySQL, MS SQL) using standard tools or dedicated migration tools. |
+| **Heroku Migration**                     | Use Heroku CLI’s `pg:pull` command to migrate data from Heroku Postgres to Neon, convenient for Heroku users.       | Migrate from Heroku Postgres using pg_dump and psql CLI tools or a Heroku to Supabase migration tool.                    |
+| **COPY Command**                         | Use the COPY command for efficient bulk data loading, ideal for large data loads and production environments.       | Similarly, the COPY command in Postgres is highly efficient for bulk data loading in Supabase.                           |
+| **MySQL Migration**                      | Use pgloader to migrate MySQL databases to Neon, transforming data to a Postgres-compatible format.                 | Use pgloader or a migration tool in Google Colab to migrate MySQL databases to Supabase's Postgres database.             |
 
 
 ## Security: Supabase vs. Neon<a id="security-supabase-vs-neon"></a>
@@ -314,7 +316,7 @@ Supabase uses the Vault feature to manage secrets, providing encrypted storage f
 
 Authentication Supabase provides authentication through JWT, integrated with RLS for user-specific data access. Neon goes a step further by integrating with multiple authentication platforms, including Auth0, Clerk, and Okta, offering advanced features like social login, multi-factor authentication, and secure user data management.
 
- In terms of compliance, Neon has achieved SOC 2 Type 1 and Type 2 compliance, demonstrating adherence to high security and privacy standards. Supabase follows PostgreSQL’s robust security features but does not specifically mention SOC 2 compliance.
+In terms of compliance, Neon has achieved SOC 2 Type 1 and Type 2 compliance, demonstrating adherence to high security and privacy standards. Supabase follows PostgreSQL’s robust security features but does not specifically mention SOC 2 compliance.
 
 |                             |                                        |                                                                    |
 | :-------------------------: | :------------------------------------: | :----------------------------------------------------------------: |
@@ -333,7 +335,7 @@ Authentication Supabase provides authentication through JWT, integrated with RLS
 
 This is a non-exhaustive list of features that Neon and Supabase provide for every project.
 
-**Autoscaling** 
+**Autoscaling**
 
 Neon's Autoscaling feature dynamically adjusts compute resources allocated to a Neon compute endpoint based on the current workload. It offers on-demand scaling, cost-effectiveness, resource and cost control, and eliminates the need for manual intervention. The autoscaling mechanism involves a high-level architecture that includes the autoscaler-agent, a Kubernetes scheduler, and NeonVM for VM management. Autoscaling is implemented by allocating and deallocating vCPU and RAM to each VM.
 
@@ -343,7 +345,7 @@ Neon's Autoscaling feature dynamically adjusts compute resources allocated to a 
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcNPukXs0_fyQm94Xlg3KU4s331RmlxIhAp_V-Pc-NzySSoHE8bVM86K_pGgayhrWOCe2auZRI4lbaefpeyDwC5WZ6Uy5O3hU--zEPcsvpZFqncMSXk-FpVFyI5XnuV17sq_lhs1Dftn-siWtWSijGHu6Xq?key=0jnpRzNFQaBNrbdOAncbMA)
 
-**Branching** 
+**Branching**
 
 Neon supports branching, which allows users to create copy-on-write clones of their data for development, testing, and data recovery. Branches are isolated from the parent branch and can be created from any point in time. This feature supports development workflows, testing environments, and data recovery scenarios, integrating with the Neon Console, CLI, API, GitHub Actions, and Vercel.
 
@@ -351,7 +353,7 @@ Neon supports branching, which allows users to create copy-on-write clones of th
 
 **Logical replication**
 
- Neon's logical replication feature allows streaming data from a Neon database to external destinations for Change Data Capture (CDC) and real-time analytics. It uses a publish and subscribe model to replicate data and supports selective replication of specific tables or rows.
+Neon's logical replication feature allows streaming data from a Neon database to external destinations for Change Data Capture (CDC) and real-time analytics. It uses a publish and subscribe model to replicate data and supports selective replication of specific tables or rows.
 
 **Read replicas**
 
@@ -361,7 +363,7 @@ Read replicas in Neon are independent read-only compute instances designed to pe
 
 Time Travel utilizes Neon's instant branching capability to create a temporary branch and compute endpoint at the selected point in time, which are automatically removed once you finish querying. These ephemeral compute endpoints are not listed on the Branches page or in CLI/API list branches requests. However, you can view the history of operations related to the creation and deletion of these branches and compute endpoints on the Operations page, including start\_compute, create\_branch, delete\_timeline, and suspend\_compute.
 
-**Schema Diff** 
+**Schema Diff**
 
 Neon's Schema Diff tool lets users compare schemas of two branches in a side-by-side view. It supports comparisons between a branch and its parent or another branch's history, integrating with the Neon Console and CLI for various schema comparison needs.
 
@@ -370,41 +372,41 @@ Neon's Schema Diff tool lets users compare schemas of two branches in a side-by-
 
 ### Features of supabase<a id="features-of-supabase"></a>
 
-**Postgres database** 
+**Postgres database**
 
 Supabase provides a full Postgres database for every project, supporting vector databases for storing vector embeddings alongside other data.
 
-**Auto-generated REST API** 
+**Auto-generated REST API**
 
 Supabase generates RESTful APIs automatically from the database using PostgREST, allowing easy API creation without writing code.
 
-**Auto-generated graphQL API** 
+**Auto-generated graphQL API**
 
 Supabase offers fast GraphQL APIs via a custom Postgres GraphQL extension, providing flexible and efficient data querying.
 
-**Database webhooks** 
+**Database webhooks**
 
 Supabase supports sending database changes to external services using webhooks, facilitating real-time updates and integrations.
 
-**Secrets and encryption** 
+**Secrets and encryption**
 
 Supabase offers the Supabase Vault Postgres extension for encrypting sensitive data and storing secrets securely.
 
-**Database backups** 
+**Database backups**
 
 Supabase backs up projects daily with options for Point in Time recovery, ensuring data safety and recovery capabilities.
 
-**Custom domains** 
+**Custom domains**
 
 Supabase allows users to white-label APIs with custom domains, creating a branded experience for users.
 
-**Network restrictions** 
+**Network restrictions**
 
 Supabase can restrict IP ranges that connect to the database, enhancing security by limiting access.
 
 **SSL enforcement**
 
- Supabase enforces SSL connections for Postgres clients, ensuring secure data transmission.
+Supabase enforces SSL connections for Postgres clients, ensuring secure data transmission.
 
 **Branching** Supabase supports database branching for testing and previewing changes, similar to version control systems for code such as Git.
 
@@ -460,9 +462,9 @@ Supabase offers roles like Owner, Administrator, Developer, Read-only, and Billi
 
 ### Schema migrations<a id="schema-migrations"></a>
 
-Neon and Supabase both offer robust solutions for schema migrations, but their approaches differ significantly. Neon provides detailed guides for various frameworks such as Django, Laravel, and Entity Framework, ensuring seamless integration and easy migration processes. 
+Neon and Supabase both offer robust solutions for schema migrations, but their approaches differ significantly. Neon provides detailed guides for various frameworks such as Django, Laravel, and Entity Framework, ensuring seamless integration and easy migration processes.
 
-On the other hand, Supabase primarily utilizes the Supabase CLI for migrations, which is particularly useful for upgrading older projects or Postgres versions. The CLI allows users to perform database dumps and restores, set environment variables, and handle manual configurations such as enabling extensions and managing encryption keys. 
+On the other hand, Supabase primarily utilizes the Supabase CLI for migrations, which is particularly useful for upgrading older projects or Postgres versions. The CLI allows users to perform database dumps and restores, set environment variables, and handle manual configurations such as enabling extensions and managing encryption keys.
 
 
 ### Network restrictions<a id="network-restrictions"></a>
@@ -483,7 +485,7 @@ Supabase also provides branching for safe experimentation with project changes, 
 
 ### Monitoring<a id="monitoring"></a>
 
-Neon and Supabase both offer robust monitoring capabilities for managing and optimizing database performance, though their approaches vary. Neon provides a comprehensive monitoring dashboard that tracks metrics such as CPU, RAM, and connections. Users can also monitor billing, usage, and autoscaling activities through the Neon Console, API, or CLI. 
+Neon and Supabase both offer robust monitoring capabilities for managing and optimizing database performance, though their approaches vary. Neon provides a comprehensive monitoring dashboard that tracks metrics such as CPU, RAM, and connections. Users can also monitor billing, usage, and autoscaling activities through the Neon Console, API, or CLI.
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdcj0FePbKTAcEPJA5m-jdML5hiUc3aQIefKF0tIW4hMf4H7yJHXThhdvzOgb8R0inAza7mAXeqgQZucjHSq7vE5KCIEnGwR78KsPxdnJpzU1ZrlTdOLP7r5euYsvBmZE2EPhS1-rvju1oe5nV6ym6gAzs?key=0jnpRzNFQaBNrbdOAncbMA)
 
@@ -500,9 +502,9 @@ Additionally, backups can be manually created using command below.
 
 Automation can be set up using GitHub Actions for nightly backups to AWS S3.
 
-|                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------- |
-| npx @neondatabase/pg-import --source \<source\_database\_connection\_string> --backup-file-path \<dump\_file\_name> |
+```bash
+npx @neondatabase/pg-import --source <source_database_connection_string> --backup-file-path <dump_file_name>
+```
 
 In contrast, Supabase provides automated daily backups and PITR, with daily backups accessible for 7 days on Pro plans and 30 days on Enterprise plans. For databases over 40GB, physical backups are used, ensuring performance with minimal disruption. PITR, available as an add-on, allows recovery to any point in time with high granularity, suitable for projects requiring stringent Recovery Point Objectives (RPO). Supabase uses pg\_dumpall for daily backups and WAL-G for PITR, ensuring data integrity and efficient disaster recovery
 
@@ -521,3 +523,21 @@ Supabase also has tiered support: Community support is included with the Free pl
 Both Neon and Supabase offer robust solutions for managing Postgres instances, each with its unique strengths. Neon excels with its dynamic autoscaling, autosuspend features, and simplified, transparent pricing structure, making it ideal for startups and mid-sized businesses. 
 
 Supabase, on the other hand, provides comprehensive real-time features, auto-generated APIs, and extensive support for infrastructure management, catering well to larger, enterprise-scale applications. Choosing between the two depends on your specific needs, with Neon favoring simplicity and cost-effectiveness, while Supabase offers extensive features and flexibility.
+
+## Next Steps
+
+I encourage you to take the information provided and start building your own projects with Supabase and Neon. To get you started, here are some example projects that I’ve built:
+
+1. **[Build an Invoice SaaS App with Next.js and Neon Postgres](https://www.freecodecamp.org/news/build-an-invoice-saas-app-with-next-js-and-neon-postgres/)**
+
+Learn how to create a full-fledged SaaS application for managing invoices. This tutorial covers setting up Next.js with Neon Postgres, user authentication using Clerk, and CRUD operations.
+
+2. **[Fullstack Development with Next.js, Clerk, and Neon](https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/)**
+
+Dive into fullstack development with this guide, which integrates Next.js, Clerk for authentication, and Neon for the database. It’s a comprehensive tutorial that covers everything from setup to deployment.
+
+3. **[Notes App with React and Supabase](https://theankurtyagi.com/notes-app-react-supabase/)**
+
+Build a simple yet powerful notes app using React and Supabase. This project is perfect for beginners and demonstrates the basics of CRUD operations and user management with Supabase.
+
+Happy coding, and I can’t wait to see what you build.
