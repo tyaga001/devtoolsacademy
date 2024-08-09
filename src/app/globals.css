@@ -52,3 +52,24 @@ html {
 .prose pre {
   background-color: #1f2937;
 }
+
+@layer base {
+  body {
+    @apply bg-black text-gray-200 font-sans;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply text-gray-200;
+  }
+  .prose h2, .prose h3, .prose h4 {
+    @apply text-white mt-8 mb-4;
+  }
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+  .prose a {
+    @apply text-blue-400 hover:text-blue-300;
+  }
+}

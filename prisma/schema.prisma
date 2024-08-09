@@ -8,8 +8,11 @@ generator client {
 }
 
 model Post {
-  slug  String @id
-  views Int    @default(0)
+  id       Int       @id @default(autoincrement())
+  slug     String    @unique
+  views    Int       @default(0)
+  category String    @default("Uncategorized")
+  Comment  Comment[]
 }
 
 model Comment {
@@ -18,11 +21,12 @@ model Comment {
   postSlug  String
   createdAt DateTime @default(now())
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  post      Post     @relation(fields: [postSlug], references: [slug])
+  user      BlogUser @relation(fields: [userId], references: [id])
 }
 
-model User {
-  id       String    @id @default(cuid())
+model BlogUser {
+  id       String    @id @default(uuid())
   name     String
   email    String    @unique
   comments Comment[]

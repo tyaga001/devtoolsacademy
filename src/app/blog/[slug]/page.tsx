@@ -2,8 +2,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug, incrementViewCount } from '@/lib/posts'
 import TableOfContents from '@/components/TableOfContents'
 import Breadcrumb from '@/components/Breadcrumb'
-import CommentSection from '@/components/CommentSection';
-
+import CommentSection from '@/components/CommentSection'
 
 const generateId = (children: any) => {
     if (Array.isArray(children)) {
@@ -29,17 +28,17 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     ]
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="max-w-5xl mx-auto px-4 py-12 relative">
             <Breadcrumb items={breadcrumbItems} />
             <h1 className="text-4xl font-bold mb-8 text-white">{post.title}</h1>
-            <div className="flex flex-col lg:flex-row gap-12">
-                <div className="lg:w-2/3">
-                    <div className="prose prose-invert max-w-none">
+            <div className="flex flex-col">
+                <div className="w-full">
+                    <div className="prose prose-invert max-w-none font-sans">
                         <MDXRemote source={post.content} components={components} />
                     </div>
                     <CommentSection postSlug={params.slug} />
                 </div>
-                <aside className="lg:w-1/3">
+                <aside className="fixed top-1/4 right-4 w-64">
                     <TableOfContents />
                 </aside>
             </div>

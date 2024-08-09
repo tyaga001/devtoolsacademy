@@ -1,10 +1,12 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
+import { FiList, FiX } from 'react-icons/fi'
 
 const TableOfContents: React.FC = () => {
     const [headings, setHeadings] = useState<Array<{ id: string; text: string; level: number }>>([])
     const [activeId, setActiveId] = useState('')
+    const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
         const elements = document.querySelectorAll('h2, h3, h4')
@@ -45,30 +47,44 @@ const TableOfContents: React.FC = () => {
         }
     }
 
+    const toggleTOC = () => {
+        setIsOpen(!isOpen)
+    }
+
     return (
-        <nav className="sticky top-8">
-            <h2 className="text-lg font-semibold mb-4 text-gray-200">TABLE OF CONTENTS</h2>
-            <ul className="space-y-2 text-sm">
-                {headings.map((heading) => (
-                    <li
-                        key={heading.id}
-                        style={{ paddingLeft: `${(heading.level - 2) * 12}px` }}
-                    >
-                        <a
-                        href={`#${heading.id}`}
-                        onClick={(e) => handleClick(e, heading.id)}
-                        className={`block py-1 transition-colors ${
-                        activeId === heading.id
-                            ? 'text-blue-400'
-                            : 'text-gray-400 hover:text-blue-400'
-                    }`}
-                        >
-                        {heading.text}
-                    </a>
-                    </li>
-                    ))}
-            </ul>
-        </nav>
+        <div className="fixed bottom-4 right-4 z-50">
+            <button
+                onClick={toggleTOC}
+                className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+            >
+                {isOpen ? <FiX size={24} /> : <FiList size={24} />}
+            </button>
+            {isOpen && (
+                <nav className="absolute bottom-16 right-0 bg-gray-800 p-4 rounded-lg shadow-xl max-w-xs max-h-[70vh] overflow-y-auto">
+                    <h2 className="text-lg font-semibold mb-4 text-gray-200">Contents</h2>
+                    <ul className="space-y-2 text-sm">
+                        {headings.map((heading) => (
+                            <li
+                                key={heading.id}
+                                style={{ paddingLeft: `${(heading.level - 2) * 8}px` }}
+                            >
+                                <a
+                                    href={`#${heading.id}`}
+                                    onClick={(e) => handleClick(e, heading.id)}
+                                    className={`block py-1 transition-colors ${
+                                        activeId === heading.id
+                                            ? 'text-blue-400'
+                                            : 'text-gray-400 hover:text-blue-400'
+                                    }`}
+                                >
+                                    {heading.text}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            )}
+        </div>
     )
 }
 
