@@ -24,7 +24,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
         { label: 'Blog', href: '/blog' },
-        { label: 'JavaScript', href: '#' },
+        { label: 'Database', href: '#' },
     ]
 
     return (

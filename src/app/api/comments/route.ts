@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuth } from '@clerk/nextjs/server';
-import prisma from '@/lib/prisma'; // Adjust this import based on your Prisma setup
+import prisma from '@/lib/prisma';
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
