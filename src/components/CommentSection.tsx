@@ -1,13 +1,14 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { useUser, useAuth, SignIn } from '@clerk/nextjs';
-import { Comment } from '@prisma/client';
+import { useUser, SignInButton } from '@clerk/nextjs';
+import { Comment, User } from '@prisma/client';
+
+type CommentWithUser = Comment & { user: User };
 
 const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
     const { isSignedIn, user } = useUser();
-    const { getToken } = useAuth();
-    const [comments, setComments] = useState<Comment[]>([]);
+    const [comments, setComments] = useState<CommentWithUser[]>([]);
     const [newComment, setNewComment] = useState('');
 
     useEffect(() => {
@@ -31,12 +32,10 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
         e.preventDefault();
         if (!newComment.trim()) return;
 
-        const token = await getToken();
         const response = await fetch('/api/comments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ postSlug, content: newComment }),
         });
@@ -48,32 +47,41 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
     };
 
     return (
-        <div className="mt-8">
-            <h2 className="text-2xl font-bold mb-4">Comments</h2>
+        <div className="mt-8 bg-gray-900 p-6 rounded-lg">
+            <h2 className="text-2xl font-bold mb-4 text-white">Comments</h2>
             {isSignedIn ? (
-                <form onSubmit={handleSubmitComment} className="mb-4">
+                <form onSubmit={handleSubmitComment} className="mb-6">
                     <textarea
                         value={newComment}
                         onChange={(e) => setNewComment(e.target.value)}
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded bg-gray-800 text-white"
                         placeholder="Write a comment..."
                     />
-                    <button type="submit" className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
+                    <button type="submit" className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
                         Post Comment
                     </button>
                 </form>
             ) : (
-                <div>
-                    <p>Please sign in to comment.</p>
-                    <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
+                <div className="mb-6">
+                    <p className="text-white mb-2">Please sign in to comment.</p>
+                    <SignInButton mode="modal">
+                        <button className="px-4 py-2 bg-white text-gray-900 rounded hover:bg-gray-200">
+                            Sign in
+                        </button>
+                    </SignInButton>
                 </div>
             )}
             <div className="space-y-4">
                 {comments.map((comment) => (
-                    <div key={comment.id} className="border-b pb-2">
-                        {/* Assuming `Comment` type does not have `user` property */}
-                        <p className="font-bold">User Name Placeholder</p>
-                        <p>{comment.content}</p>
+                    <div key={comment.id} className="border-b border-gray-700 pb-4">
+                        <div className="flex items-center mb-2">
+                            <div className="w-10 h-10 rounded-full bg-blue-500 mr-3"></div>
+                            <div>
+                                <p className="font-bold text-white">{comment.user.name}</p>
+                                <p className="text-gray-400 text-sm">{new Date(comment.createdAt).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                        <p className="text-white">{comment.content}</p>
                     </div>
                 ))}
             </div>

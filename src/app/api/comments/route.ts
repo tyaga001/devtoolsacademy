@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAuth } from '@clerk/nextjs/server';
 import prisma from '@/lib/prisma';
 
 export async function GET(request: NextRequest) {
@@ -20,7 +19,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-    const { userId } = getAuth(request);
+    const { userId } = auth();
     if (!userId) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -31,12 +30,19 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Post slug and content are required' }, { status: 400 });
     }
 
+    const user = await prisma.user.findUnique({ where: { clerkId: userId } });
+
+    if (!user) {
+        return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
     const comment = await prisma.comment.create({
         data: {
             content,
             postSlug,
-            userId,
+            userId: user.id,
         },
+        include: { user: true },
     });
 
     return NextResponse.json(comment, { status: 201 });
