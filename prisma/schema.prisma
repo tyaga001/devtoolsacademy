@@ -10,7 +10,7 @@ generator client {
 model Post {
   slug     String    @id
   views    Int       @default(0)
-  comments Comment[]
+  comments Comment[] // Relation to Comment model
 }
 
 model Comment {
@@ -18,12 +18,16 @@ model Comment {
   content   String
   postSlug  String
   createdAt DateTime @default(now())
-  userId    String
-  post      Post     @relation(fields: [postSlug], references: [slug])
+
+  userId String
+  user   BlogUser @relation(fields: [userId], references: [id])
+
+  post Post @relation(fields: [postSlug], references: [slug])
 }
 
 model BlogUser {
-  id    String @id @default(uuid())
-  name  String
-  email String @unique
+  id       String    @id @default(uuid())
+  name     String
+  email    String    @unique
+  comments Comment[] // Relation to Comment model
 }

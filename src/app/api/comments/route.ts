@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { auth } from '@clerk/nextjs/server';
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -11,7 +12,7 @@ export async function GET(request: NextRequest) {
 
     const comments = await prisma.comment.findMany({
         where: { postSlug: postSlug as string },
-        include: { user: true },
+        include: { user: true }, // Ensure consistency with the relation name
         orderBy: { createdAt: 'desc' },
     });
 
@@ -30,7 +31,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Post slug and content are required' }, { status: 400 });
     }
 
-    const user = await prisma.user.findUnique({ where: { clerkId: userId } });
+    const user = await prisma.blogUser.findUnique({ where: { id: userId } });
 
     if (!user) {
         return NextResponse.json({ error: 'User not found' }, { status: 404 });
@@ -42,7 +43,7 @@ export async function POST(request: NextRequest) {
             postSlug,
             userId: user.id,
         },
-        include: { user: true },
+        include: { user: true }, // Ensure consistency with the relation name
     });
 
     return NextResponse.json(comment, { status: 201 });

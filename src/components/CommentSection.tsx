@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useUser, SignInButton } from '@clerk/nextjs';
-import { Comment, User } from '@prisma/client';
+import { Comment, BlogUser } from '@prisma/client';
 
-type CommentWithUser = Comment & { user: User };
+type CommentWithUser = Comment & { user: BlogUser };
 
 const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
     const { isSignedIn, user } = useUser();
