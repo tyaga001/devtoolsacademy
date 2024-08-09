@@ -63,10 +63,19 @@ export async function getPostBySlug(slug: string) {
     }
 }
 
-export async function incrementViewCount(slug: string) {
-    await prisma.post.upsert({
+export async function getViewCount(slug: string): Promise<number> {
+    const post = await prisma.post.findUnique({
         where: { slug },
-        update: { views: { increment: 1 } },
-        create: { slug, views: 1 },
+        select: { views: true },
     })
+    return post?.views ?? 0
+}
+
+export async function incrementViewCount(slug: string): Promise<number> {
+    const updatedPost = await prisma.post.update({
+        where: { slug },
+        data: { views: { increment: 1 } },
+        select: { views: true },
+    })
+    return updatedPost.views
 }

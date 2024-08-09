@@ -25,7 +25,7 @@ Both Supabase and Neon offer robust and secure methods for connecting to Postgre
 
 Neon excels in providing straightforward configuration options across various frameworks and languages, making it a great choice for developers seeking a simple and secure connection setup, with the added benefit of extensive connection pooling capabilities.
 
-Initial Setup and Onboarding
+**Initial Setup and Onboarding**
 
 1. Sign Up for Neon
 
@@ -33,7 +33,7 @@ Sign up for free[ here](https://console.neon.tech/signup) using your email, Gith
 
 2. Onboarding in the Neon Console
 
-In Neon, a project is the top-level container holding your branches, databases, and roles. Typically, you create a project for each repository in your application, managing database branches like code branches: production, staging, development, new features, previews, and more.
+> In Neon, a project is the top-level container holding your branches, databases, and roles. Typically, you create a project for each repository in your application, managing database branches like code branches: production, staging, development, new features, previews, and more.
 
 Neon creates your default branch, `main`, hosting your database, role, and a compute endpoint for your application connection.
 
@@ -42,7 +42,7 @@ Neon creates your default branch, `main`, hosting your database, role, and a com
 
 1. Neon SQL editor
 
-The Neon SQL editor is a powerful tool within the Neon Console that allows you to run queries on your Neon databases directly. You can use it by navigating to the Neon Console and selecting your project.
+> The Neon SQL editor is a powerful tool within the Neon Console that allows you to run queries on your Neon databases directly. You can use it by navigating to the Neon Console and selecting your project.
 
 Click on the SQL Editor and choose a branch and database. Enter and run your query by clicking "Run".
 
@@ -94,7 +94,7 @@ You need to gather your connection details from the Neon Console and enter them 
 
 #### 5. Connection pooling<a id="5-connection-pooling"></a>
 
-Neon uses **PgBouncer** for connection pooling, supporting up to 10,000 concurrent connections. This is particularly useful for applications with many simultaneous connections, such as serverless functions. Use a pooled connection string by adding `-pooler` to your compute endpoint ID.
+> Neon uses **PgBouncer** for connection pooling, supporting up to 10,000 concurrent connections. This is particularly useful for applications with many simultaneous connections, such as serverless functions. Use a pooled connection string by adding `-pooler` to your compute endpoint ID.
 
 **Example pooled connection string:**
 
@@ -106,13 +106,13 @@ Connection pooling helps manage resources efficiently, allowing many connections
 
 #### 6. Connecting to Neon with psql<a id="6-connecting-to-neon-with-psql"></a>
 
-#### The psql client is the native command-line interface for PostgreSQL. It allows users to interact with their PostgreSQL databases by running queries, executing commands, and performing various database operations. Since Neon runs on PostgreSQL, psql is fully compatible with it. This compatibility ensures that you can leverage all standard PostgreSQL features while using Neon. The easiest way to connect to Neon using psql is with a connection string. You can obtain a connection string from the Connection Details widget on the Neon Dashboard.<a id="the-psql-client-is-the-native-command-line-interface-for-postgresql-it-allows-users-to-interact-with-their-postgresql-databases-by-running-queries-executing-commands-and-performing-various-database-operations-since-neon-runs-on-postgresql-psql-is-fully-compatible-with-it-this-compatibility-ensures-that-you-can-leverage-all-standard-postgresql-features-while-using-neon-the-easiest-way-to-connect-to-neon-using-psql-is-with-a-connection-string-you-can-obtain-a-connection-string-from-the-connection-details-widget-on-the-neon-dashboard"></a>
+> The psql client is the native command-line interface for PostgreSQL. It allows users to interact with their PostgreSQL databases by running queries, executing commands, and performing various database operations. Since Neon runs on PostgreSQL, psql is fully compatible with it. This compatibility ensures that you can leverage all standard PostgreSQL features while using Neon. The easiest way to connect to Neon using psql is with a connection string. You can obtain a connection string from the Connection Details widget on the Neon Dashboard.<a id="the-psql-client-is-the-native-command-line-interface-for-postgresql-it-allows-users-to-interact-with-their-postgresql-databases-by-running-queries-executing-commands-and-performing-various-database-operations-since-neon-runs-on-postgresql-psql-is-fully-compatible-with-it-this-compatibility-ensures-that-you-can-leverage-all-standard-postgresql-features-while-using-neon-the-easiest-way-to-connect-to-neon-using-psql-is-with-a-connection-string-you-can-obtain-a-connection-string-from-the-connection-details-widget-on-the-neon-dashboard"></a>
 
 #### ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdyhA8pNXE4Mdc9Vr3wTSq4Hdu9LRNdaATTHj9WcOStREnRLIob4R8OjwmyuDcoihJVVtVJsAQZzFZiuqeV9LzpCKbKqP9DAdcrVzN-yxbfV-9r-Wg_rb-VktHHEokiR6fdKKSxXC-RIEZXvTBGjPHZ4wIQ?key=0jnpRzNFQaBNrbdOAncbMA)
 
 #### 7. Connecting to Neon with pgcli<a id="7-connecting-to-neon-with-pgcli"></a>
 
-#### pgcli is an enhanced command-line interface for PostgreSQL that offers features like syntax highlighting, autocompletion, multi-line editing, and query history. The easiest way to connect to Neon using the pgcli client is with a connection string, which you can obtain from the Connection Details widget on the Neon Dashboard. Select a branch, a role, and the database you want to connect to. A connection string is constructed for you.<a id="pgcli-is-an-enhanced-command-line-interface-for-postgresql-that-offers-features-like-syntax-highlighting-autocompletion-multi-line-editing-and-query-history-the-easiest-way-to-connect-to-neon-using-the-pgcli-client-is-with-a-connection-string-which-you-can-obtain-from-the-connection-details-widget-on-the-neon-dashboard-select-a-branch-a-role-and-the-database-you-want-to-connect-to-a-connection-string-is-constructed-for-you"></a>
+> pgcli is an enhanced command-line interface for PostgreSQL that offers features like syntax highlighting, autocompletion, multi-line editing, and query history. The easiest way to connect to Neon using the pgcli client is with a connection string, which you can obtain from the Connection Details widget on the Neon Dashboard. Select a branch, a role, and the database you want to connect to. A connection string is constructed for you.<a id="pgcli-is-an-enhanced-command-line-interface-for-postgresql-that-offers-features-like-syntax-highlighting-autocompletion-multi-line-editing-and-query-history-the-easiest-way-to-connect-to-neon-using-the-pgcli-client-is-with-a-connection-string-which-you-can-obtain-from-the-connection-details-widget-on-the-neon-dashboard-select-a-branch-a-role-and-the-database-you-want-to-connect-to-a-connection-string-is-constructed-for-you"></a>
 
 From your terminal or command prompt, run the **pgcli** client with the connection string. Your command will look something like this:
 
@@ -120,7 +120,7 @@ From your terminal or command prompt, run the **pgcli** client with the connecti
 pgcli postgres://alex:AbC123dEf@ep-cool-darkness-123456.us-east-2.aws.neon.tech/dbname
 ```
 
-#### AI Integration<a id="ai-integration"></a>
+### AI Integration<a id="ai-integration"></a>
 
 You can also integrate your Neon database with AI tools like **AskYourDatabase** for natural language queries and data visualizations. Download the AskYourDatabase app, connect using your Neon connection string, and start querying your data in natural language.
 
@@ -135,31 +135,31 @@ Supabase provides several types of API to suit your preference and allows you to
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOtm4ng3ENWd1NBgQ7kHBazxRXRoEoLj1OcvYucZ_D5-YPjcn3JubrbEnueKQGUI0EndFowGUddIs7ShO6hbTdv4FKz3dnbG_pH9Y0wghUlmJFPiDQpTbaQ7SLlzwNpkEr6H1j14iV8VRkIVgqPpAMFlA-?key=0jnpRzNFQaBNrbdOAncbMA)
 
-**REST:** Interact with your database through a REST interface.
+- **REST:** Interact with your database through a REST interface.
 
-**GraphQL:** Interact with your database through a GraphQL interface.
+- **GraphQL:** Interact with your database through a GraphQL interface.
 
-**Realtime:** Listen to database changes over websockets.
+- **Realtime:** Listen to database changes over websockets.
 
 2\. Connection Pooling
 
-A "connection pool" is a system (external to Postgres) that manages Postgres connections. Every Supabase project comes with a connection pooler for managing connections to your database.
+A connection pool is a system (external to Postgres) that manages Postgres connections. Every Supabase project comes with a connection pooler for managing connections to your database.
 
 ****![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd8gmGlK7rew-pNmLc-zX9JJe8rJ0DzgH51RIfwu6rqbDCOOmjbUwItJzv1EJeD_ZfRRXdeh585zyxKiAzpJiPhwlUl5VI4k6lYZWgFKDoKJfLYG2taJcRaflWe7cHz0GSpr2CDavvtCRdjZUaey_TjYr76?key=0jnpRzNFQaBNrbdOAncbMA)****
 
-The connection pooler is available in 2 modes: Transaction and Session.
+The connection pooler is available in 2 modes: **Transaction** and **Session**.
 
-**Transaction mode:** Recommended for serverless environments where connections are assigned for the duration of a transaction.
+- **Transaction mode:** Recommended for serverless environments where connections are assigned for the duration of a transaction.
 
-**Session mode:** Similar to direct connections, with a connection assigned until the client disconnects and full support for prepared statements.
+- **Session mode:** Similar to direct connections, with a connection assigned until the client disconnects and full support for prepared statements.
 
 3\. Direct connections
 
-Supabase allows direct connections to your Postgres database, typically via IPv6. For networks that require IPv4, Supabase offers connection pooling or an IPv4 add-on.
+> Supabase allows direct connections to your Postgres database, typically via IPv6. For networks that require IPv4, Supabase offers connection pooling or an IPv4 add-on.
 
 4\. Serverless environments
 
-Supabase provides several options for connecting to your Postgres database from serverless environments. The `supabase-js` client uses the auto-generated REST API, making it ideal for serverless workloads due to its built-in connection pooler that can handle thousands of simultaneous requests.
+> Supabase provides several options for connecting to your Postgres database from serverless environments. The `supabase-js` client uses the auto-generated REST API, making it ideal for serverless workloads due to its built-in connection pooler that can handle thousands of simultaneous requests.
 
 5\. Vercel edge functions
 
@@ -187,38 +187,38 @@ Neon's architecture is based on the separation of compute and storage, managed b
 
 **1. Neon compute lifecycle**
 
-Neon compute nodes are stateless, with states transitioning between Active and Idle to manage resources efficiently. The Autosuspend feature ensures that computes do not remain active when not in use, conserving energy and resources. Activation of idle computes may introduce initial latency, but the system is designed to handle this efficiently.
+> Neon compute nodes are stateless, with states transitioning between Active and Idle to manage resources efficiently. The Autosuspend feature ensures that computes do not remain active when not in use, conserving energy and resources. Activation of idle computes may introduce initial latency, but the system is designed to handle this efficiently.
 
 **2. Neon storage**
 
-Neon uses a multi-tenant key-value store for Postgres pages, consisting of Safekeepers, Pageservers, and cloud object storage.
+> Neon uses a multi-tenant key-value store for Postgres pages, consisting of Safekeepers, Pageservers, and cloud object storage.
 
 **3. Safekeepers**
 
-Ensure the durability of recent updates by storing the Write-Ahead Log (WAL) until processed by Pageservers and uploaded to cloud storage.
+> Ensure the durability of recent updates by storing the Write-Ahead Log (WAL) until processed by Pageservers and uploaded to cloud storage.
 
 **4. Pageservers**
 
-Serve read requests by processing the incoming WAL stream into a custom storage format, uploading data to cloud storage, and downloading it on demand.
+> Serve read requests by processing the incoming WAL stream into a custom storage format, uploading data to cloud storage, and downloading it on demand.
 
 **5. Cloud object storage**
 
-Neon uses cloud object storage for long-term data storage, with data encrypted at rest.
+> Neon uses cloud object storage for long-term data storage, with data encrypted at rest.
 
 **6. Compute configuration**
 
-Only session-level configuration parameters can be modified, resetting when the session terminates or when the compute suspends due to inactivity.
+> Only session-level configuration parameters can be modified, resetting when the session terminates or when the compute suspends due to inactivity.
 
 
 ### Supabase Architecture<a id="supabase-architecture"></a>
 
-Supabase is built on open-source tools designed to be scalable and easy to use.
+- Supabase is built on open-source tools designed to be scalable and easy to use.
 
-Supabase is not a 1-to-1 mapping of Firebase. While Supabase aims to offer many of the features that Firebase provides, its approach is different, focusing on open-source technologies and supporting existing tools whenever possible.
+- Supabase is not a 1-to-1 mapping of Firebase. While Supabase aims to offer many of the features that Firebase provides, its approach is different, focusing on open-source technologies and supporting existing tools whenever possible.
 
-Supabase uses open-source tools that are scalable and simple to use. The platform leverages PostgreSQL rather than a NoSQL store, a deliberate choice to ensure the functionality and scalability required to compete with Firebase and go beyond it.
+- Supabase uses open-source tools that are scalable and simple to use. The platform leverages PostgreSQL rather than a NoSQL store, a deliberate choice to ensure the functionality and scalability required to compete with Firebase and go beyond it.
 
-Supabase aims to make PostgreSQL easy to use for everyone, regardless of their level of experience. Users can start small and grow into using more advanced features of PostgreSQL at their own pace.
+- Supabase aims to make PostgreSQL easy to use for everyone, regardless of their level of experience. Users can start small and grow into using more advanced features of PostgreSQL at their own pace.
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXckNHkKPIEGkDx6fXnii6FthHhH8NmCNgyU8FzN94AQ-uhJsSr2a25Dh8j4tWcPLIoYe9O8RfRptJajE-5Rj3x2FpOLlPJd0-VPPct2VyxB-3VFcTwo_JvvgYQDrJkA8igUPSNEdteC5_o-qVMjjxW0q9g?key=0jnpRzNFQaBNrbdOAncbMA)
 
@@ -226,44 +226,44 @@ Supabase aims to make PostgreSQL easy to use for everyone, regardless of their l
 
 **1. PostgreSQL (Database)**
 
-PostgreSQL serves as the core of Supabase, providing a robust and feature-rich relational database system. Supabase does not abstract PostgreSQL; users can access and use it with full privileges, similar to using it directly.
+> PostgreSQL serves as the core of Supabase, providing a robust and feature-rich relational database system. Supabase does not abstract PostgreSQL; users can access and use it with full privileges, similar to using it directly.
 
 **2. Studio (Dashboard)**
 
-An open-source dashboard for managing your database and services, providing an intuitive interface for interacting with PostgreSQL and other Supabase components.
+> An open-source dashboard for managing your database and services, providing an intuitive interface for interacting with PostgreSQL and other Supabase components.
 
 **3. GoTrue (Auth)**
 
-A JWT-based API for managing users and issuing access tokens, integrating with PostgreSQL's Row Level Security and API servers.
+> A JWT-based API for managing users and issuing access tokens, integrating with PostgreSQL's Row Level Security and API servers.
 
 **4. PostgREST (API)**
 
-A standalone web server that turns your PostgreSQL database into a RESTful API. It is used with the `pg_graphql` extension to provide a GraphQL API.
+> A standalone web server that turns your PostgreSQL database into a RESTful API. It is used with the `pg_graphql` extension to provide a GraphQL API.
 
 **5. Realtime (API & Multiplayer)**
 
-A scalable websocket engine for managing user presence, broadcasting messages, and streaming database changes.
+> A scalable websocket engine for managing user presence, broadcasting messages, and streaming database changes.
 
 **6. Storage API (Large file storage)**
 
-An S3-compatible object storage service that stores metadata in PostgreSQL.
+> An S3-compatible object storage service that stores metadata in PostgreSQL.
 
 **7. Deno (Edge functions)**
 
-A modern runtime for JavaScript and TypeScript, providing serverless functions with low latency.
+> A modern runtime for JavaScript and TypeScript, providing serverless functions with low latency.
 
 **8. postgres-meta (Database management)**
 
-A RESTful API for managing PostgreSQL, including fetching tables, adding roles, and running queries.
+> A RESTful API for managing PostgreSQL, including fetching tables, adding roles, and running queries.
 
 **9. Supavisor**
 
-A cloud-native, multi-tenant Postgres connection pooler designed for managing connections efficiently.
+> A cloud-native, multi-tenant Postgres connection pooler designed for managing connections efficiently.
 
 
 ## Neon vs. Supabase Integrations<a id="neon-vs-supabase-integrations"></a>
 
-**Neon** and **Supabase** both offer a variety of integrations with different tools, allowing you to use Neon or Supabase with your favorite tools.
+> **Neon** and **Supabase** both offer a variety of integrations with different tools, allowing you to use Neon or Supabase with your favorite tools.
 
 **Neon**
 
@@ -351,57 +351,57 @@ Neon's Schema Diff tool lets users compare schemas of two branches in a side-by-
 
 ### Features of supabase<a id="features-of-supabase"></a>
 
-**Postgres database**
+- **Postgres database**
 
 Supabase provides a full Postgres database for every project, supporting vector databases for storing vector embeddings alongside other data.
 
-**Auto-generated REST API**
+- **Auto-generated REST API**
 
 Supabase generates RESTful APIs automatically from the database using PostgREST, allowing easy API creation without writing code.
 
-**Auto-generated graphQL API**
+- **Auto-generated graphQL API**
 
 Supabase offers fast GraphQL APIs via a custom Postgres GraphQL extension, providing flexible and efficient data querying.
 
-**Database webhooks**
+- **Database webhooks**
 
 Supabase supports sending database changes to external services using webhooks, facilitating real-time updates and integrations.
 
-**Secrets and encryption**
+- **Secrets and encryption**
 
 Supabase offers the Supabase Vault Postgres extension for encrypting sensitive data and storing secrets securely.
 
-**Database backups**
+- **Database backups**
 
 Supabase backs up projects daily with options for Point in Time recovery, ensuring data safety and recovery capabilities.
 
-**Custom domains**
+- **Custom domains**
 
 Supabase allows users to white-label APIs with custom domains, creating a branded experience for users.
 
-**Network restrictions**
+- **Network restrictions**
 
 Supabase can restrict IP ranges that connect to the database, enhancing security by limiting access.
 
-**SSL enforcement**
+- **SSL enforcement**
 
 Supabase enforces SSL connections for Postgres clients, ensuring secure data transmission.
 
-**Branching** Supabase supports database branching for testing and previewing changes, similar to version control systems for code such as Git.
+- **Branching** Supabase supports database branching for testing and previewing changes, similar to version control systems for code such as Git.
 
-**Terraform provider** Supabase can manage infrastructure via Terraform, allowing Infrastructure as Code (IaC) management.
+- **Terraform provider** Supabase can manage infrastructure via Terraform, allowing Infrastructure as Code (IaC) management.
 
-**Read replicas** Supabase supports deploying read-only databases across multiple regions for lower latency and better resource management.
+- **Read replicas** Supabase supports deploying read-only databases across multiple regions for lower latency and better resource management.
 
-**Realtime features** Supabase provides real-time features like receiving database changes through websockets, broadcasting messages between users, and synchronizing shared state across users.
+- **Realtime features** Supabase provides real-time features like receiving database changes through websockets, broadcasting messages between users, and synchronizing shared state across users.
 
-**Authentication features** Supabase supports various authentication methods, including email login, social login, phone login, passwordless login, and row-level security. It also provides Captcha protection and server-side authentication helpers for popular frameworks.
+- **Authentication features** Supabase supports various authentication methods, including email login, social login, phone login, passwordless login, and row-level security. It also provides Captcha protection and server-side authentication helpers for popular frameworks.
 
-**Storage features** Supabase offers file storage, content delivery network (CDN) for caching files, smart CDN for automatic revalidation, image transformations, resumable uploads, and S3 compatibility.
+- **Storage features** Supabase offers file storage, content delivery network (CDN) for caching files, smart CDN for automatic revalidation, image transformations, resumable uploads, and S3 compatibility.
 
-**Edge functions** Supabase supports globally distributed TypeScript functions via Deno, regional invocations, and NPM compatibility for executing custom business logic.
+- **Edge functions** Supabase supports globally distributed TypeScript functions via Deno, regional invocations, and NPM compatibility for executing custom business logic.
 
-**Project management** Supabase provides a CLI for local development and deployment, a management API for programmatic project management, and official client libraries for various languages.
+- **Project management** Supabase provides a CLI for local development and deployment, a management API for programmatic project management, and official client libraries for various languages.
 
 ![Performance Metric 1](/images/img_1.png)
 
@@ -484,18 +484,20 @@ Supabase, on the other hand, provides comprehensive real-time features, auto-gen
 
 ## Next Steps
 
-I encourage you to take the information provided and start building your own projects with Supabase and Neon. To get you started, here are some example projects that I’ve built:
+I encourage you to take the information provided and start building your own projects with Supabase and Neon.
+
+To get you started, here are some example projects that I’ve built:
 
 1. **[Build an Invoice SaaS App with Next.js and Neon Postgres](https://www.freecodecamp.org/news/build-an-invoice-saas-app-with-next-js-and-neon-postgres/)**
 
-Learn how to create a full-fledged SaaS application for managing invoices. This tutorial covers setting up Next.js with Neon Postgres, user authentication using Clerk, and CRUD operations.
+> Learn how to create a full-fledged SaaS application for managing invoices. This tutorial covers setting up Next.js with Neon Postgres, user authentication using Clerk, and CRUD operations.
 
 2. **[Fullstack Development with Next.js, Clerk, and Neon](https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/)**
 
-Dive into fullstack development with this guide, which integrates Next.js, Clerk for authentication, and Neon for the database. It’s a comprehensive tutorial that covers everything from setup to deployment.
+> Dive into fullstack development with this guide, which integrates Next.js, Clerk for authentication, and Neon for the database. It’s a comprehensive tutorial that covers everything from setup to deployment.
 
 3. **[Notes App with React and Supabase](https://theankurtyagi.com/notes-app-react-supabase/)**
 
-Build a simple yet powerful notes app using React and Supabase. This project is perfect for beginners and demonstrates the basics of CRUD operations and user management with Supabase.
+> Build a simple yet powerful notes app using React and Supabase. This project is perfect for beginners and demonstrates the basics of CRUD operations and user management with Supabase.
 
 Happy coding, and I can’t wait to see what you build.
