@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ModeToggle } from './mode-toggle'
+import { ModeToggle } from '@/components/mode-toggle'
 
 export default function Navbar() {
     return (
@@ -12,8 +12,16 @@ export default function Navbar() {
                     <Link href="/blog" className="hover:underline">
                         Blog
                     </Link>
+                    <Link href="/contribute" className="hover:underline">
+                        Contribute
+                    </Link>
                 </div>
-                <ModeToggle />
+                <div className="flex items-center space-x-4">
+                    <a href="https://github.com/tyaga001/devtoolsacademy" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 dark:hover:text-gray-300">
+                        GitHub
+                    </a>
+                    <ModeToggle />
+                </div>
             </div>
         </nav>
     )

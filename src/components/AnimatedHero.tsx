@@ -1,37 +1,24 @@
-'use client'
+/*
+import React from 'react'
 
-import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
-
-const AnimatedHero: React.FC = () => {
+const AnimatedHero = () => {
     return (
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20 px-4">
-            <div className="max-w-4xl mx-auto">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                    We Compare
-                    <br />
-                    <TypeAnimation
-                        sequence={[
-                            'Developer Tools',
-                            1000,
-                            'Frameworks',
-                            1000,
-                            'Databases',
-                            1000,
-                            'Cloud Services',
-                            1000,
-                        ]}
-                        wrapper="span"
-                        speed={50}
-                        repeat={Infinity}
-                    />
-                </h1>
-                <p className="text-xl md:text-2xl mb-8">
-                    Your One-Stop Resource for Unbiased Developer Tools Comparisons
-                </p>
+        <section className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white py-20">
+            <div className="container mx-auto px-4">
+                <div>
+                    <h1 className="text-5xl font-bold mb-4">Discover the Best Developer Tools</h1>
+                    <p className="text-xl mb-8">
+                        Explore cutting-edge technologies and boost your productivity with our curated selection of developer tools.
+                    </p>
+                    <button
+                        className="bg-white text-purple-700 font-semibold py-3 px-6 rounded-full hover:bg-purple-100 transition duration-300"
+                    >
+                        Explore <Now></Now>
+                    </button>
+                </div>
             </div>
-        </div>
-);
-};
+        </section>
+    )
+}
 
-export default AnimatedHero;
+export default AnimatedHero*/

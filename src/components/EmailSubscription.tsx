@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-export function EmailSubscription() {
+export default function EmailSubscription() {
     const [email, setEmail] = useState('')
 
     const handleSubmit = async (e: React.FormEvent) => {

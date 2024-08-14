@@ -10,7 +10,7 @@ generator client {
 model Post {
   slug     String    @id
   views    Int       @default(0)
-  comments Comment[] // Relation to Comment model
+  comments Comment[]
 }
 
 model Comment {

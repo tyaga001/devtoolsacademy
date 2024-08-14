@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
 
     const comments = await prisma.comment.findMany({
         where: { postSlug: postSlug as string },
-        include: { user: true }, // Ensure consistency with the relation name
+        include: { user: true },
         orderBy: { createdAt: 'desc' },
     });
 
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
             postSlug,
             userId: user.id,
         },
-        include: { user: true }, // Ensure consistency with the relation name
+        include: { user: true },
     });
 
     return NextResponse.json(comment, { status: 201 });
