@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function ViewCounter({ slug, initialViews }: { slug: string, initialViews: number }) {
     const [views, setViews] = useState(initialViews)
@@ -15,9 +15,8 @@ export default function ViewCounter({ slug, initialViews }: { slug: string, init
                 console.error('Failed to increment view count:', error)
             }
         }
-
         incrementViews()
     }, [slug])
 
-    return <p className="text-gray-500 text-center mb-8">{views} views</p>
+    return <span className="text-sm font-medium">{views.toLocaleString()} views</span>
 }

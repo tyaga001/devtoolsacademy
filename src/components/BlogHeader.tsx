@@ -1,9 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { formatDate } from '@/lib/utils' // Ensure you have this utility function
 
-// @ts-ignore
-export default function BlogHeader({ title, date, views }) {
+interface BlogHeaderProps {
+    title: string;
+    publishedAt: string;
+    views: number;
+}
+
+export default function BlogHeader({ title, publishedAt, views }: BlogHeaderProps) {
+    const formattedDate = formatDate(new Date(publishedAt))
+
     return (
         <motion.header
             initial={{ opacity: 0, y: -20 }}
@@ -13,7 +21,7 @@ export default function BlogHeader({ title, date, views }) {
         >
             <h1 className="text-4xl font-bold mb-4">{title}</h1>
             <div className="flex justify-center items-center space-x-4 text-gray-400">
-                <time>{date}</time>
+                <time dateTime={publishedAt}>{formattedDate}</time>
                 <span>•</span>
                 <span>{views} views</span>
             </div>

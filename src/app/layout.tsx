@@ -6,7 +6,7 @@ import {ClerkProvider} from '@clerk/nextjs';
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import 'highlight.js/styles/github-dark.css';
-import Script from 'next/script'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (

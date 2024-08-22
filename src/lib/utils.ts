@@ -10,3 +10,11 @@ export function calculateReadingTime(content: string): number {
     const wordCount = content.split(/\s+/).length;
     return Math.ceil(wordCount / wordsPerMinute);
 }
+
+export function formatDate(date: Date): string {
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+}
