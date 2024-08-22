@@ -28,10 +28,13 @@ export default function Home() {
                             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
                                 Honest Reviews to Help You Choose the Right Developer Tools for Your SaaS.
                             </p>
-                            <Button
-                                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
-                                Start Reading
-                            </Button>
+                            <Link href="/blog" passHref>
+                                <Button
+                                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
+                                >
+                                    Start Reading
+                                </Button>
+                            </Link>
                         </div>
                         <div className="flex justify-center space-x-16">
                             <div className="text-center">
