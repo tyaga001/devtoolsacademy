@@ -19,15 +19,15 @@ export default function ContributePage() {
                             rel="noopener noreferrer"
                             className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline"
                         >
-                            Fork our repository on GitHub
+                            Fork the repository on GitHub
                         </a>
                     </li>
-                    <li>Create a new branch for your contribution</li>
-                    <li>Make your changes and commit them</li>
+                    <li>Create a new branch </li>
+                    <li>Make the change and commit </li>
                     <li>Push to your fork and submit a pull request</li>
                 </ol>
                 <p className="mb-4">
-                    For more detailed instructions, please check our{' '}
+                    For more detailed instructions, please check the{' '}
                     <Link
                         href="https://github.com/tyaga001/devtoolsacademy/blob/main/CONTRIBUTING.md"
                         className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline"
@@ -47,7 +47,7 @@ export default function ContributePage() {
                     >
                         open an issue
                     </a>{' '}
-                    on our GitHub repository.
+                    on the GitHub repository.
                 </p>
             </div>
         </div>

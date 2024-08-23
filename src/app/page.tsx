@@ -55,7 +55,7 @@ export default function Home() {
                     <div className="grid md:grid-cols-3 gap-8">
                         <div>
                             <h3 className="text-xl font-bold mb-4">DevTools Academy</h3>
-                            <p>Empowering developers with unbiased tool comparisons and resources.</p>
+                            <p>Empowering devs with unbiased dev tools comparisons.</p>
                         </div>
                         <div>
                             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
@@ -92,7 +92,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="mt-8 text-center text-gray-400">
-                        <p>&copy; 2024 DevTools Academy. All rights reserved.</p>
+                        <p>&copy; 2024 Dev Tools Academy. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

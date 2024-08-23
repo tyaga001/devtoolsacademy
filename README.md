@@ -27,7 +27,7 @@ I welcome contributions from developers of all skill levels. Here's how you can 
 
 Check out our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-## ✍️ Calling All Technical Writers!
+## ✍️ Calling All Technical Writers
 
 Are you a technical writer looking to showcase your skills and build your portfolio? DevToolsAcademy offers a unique opportunity:
 
@@ -60,7 +60,7 @@ Have questions or suggestions? Open an issue or reach out to me at [hello@theank
 
 ## 📄 License
 
-## This project is licensed under the Creative Commons License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Creative Commons License - see the [LICENSE](LICENSE) file for details.
 
 ---
 

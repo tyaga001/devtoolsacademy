@@ -6,7 +6,15 @@ import {ClerkProvider} from '@clerk/nextjs';
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import 'highlight.js/styles/github-dark.css';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Dev Tools Academy',
+    description: 'Learn and master development tools',
+    icons: {
+        icon: '/favicon.png',
+    },
+}
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
