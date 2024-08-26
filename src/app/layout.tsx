@@ -4,6 +4,7 @@ import {ThemeProvider} from '@/components/theme-provider';
 import {Analytics} from '@vercel/analytics/react';
 import {ClerkProvider} from '@clerk/nextjs';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import './globals.css';
 import 'highlight.js/styles/github-dark.css';
 import { Metadata } from 'next';
@@ -11,12 +12,21 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
     title: 'Dev Tools Academy',
     description: 'Learn and master development tools',
-    icons: {
-        icon: '/favicon.png',
-    },
+    icons: [
+        {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '32x32',
+            url: '/favicon.png',
+        },
+    ],
 }
 
-export default function RootLayout({children}: { children: React.ReactNode }) {
+interface RootLayoutProps {
+    children: React.ReactNode
+}
+
+export default function RootLayout({children}: RootLayoutProps ) {
     return (
         <html lang="en" suppressHydrationWarning>
         <head>
@@ -31,6 +41,9 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
             </ThemeProvider>
             <Analytics/>
         </ClerkProvider>
+{/*
+        <Footer />
+*/}
         </body>
         </html>
     );
