@@ -36,6 +36,20 @@ const Hero: React.FC = () => {
                 ))}
             </motion.div>
             <div className="relative z-10 flex flex-col items-center justify-center text-white text-center px-4 max-w-5xl mx-auto">
+                <motion.a
+                    href="https://news.ycombinator.com/item?id=41223327#41246861"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#ff6600] text-white px-4 py-2 rounded-full text-sm font-bold mb-6 hover:bg-[#ff8533] transition-colors duration-300 flex items-center space-x-2"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block mr-1" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z" />
+                    </svg>
+                    <span>Featured on Hacker News</span>
+                </motion.a>
                 <motion.h1
                     className="text-6xl md:text-8xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 leading-tight"
                     initial={{ opacity: 0, y: -50 }}
