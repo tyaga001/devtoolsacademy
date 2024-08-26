@@ -1,4 +1,4 @@
-# DevToolsAcademy
+# Dev Tools Academy
 
 DevToolsAcademy is a community-driven blog dedicated to in-depth analyses and comparisons of developer tools, frameworks, and technologies. my mission is to help developers make informed decisions about the tools they use in their workflow.
 

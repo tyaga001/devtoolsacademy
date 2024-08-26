@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import {Button} from '@/components/ui/button';
 import FeaturedPosts from '@/components/FeaturedPosts';
+import Hero from '@/components/Hero';
+
 
 const featuredPosts = [
     {
@@ -17,36 +19,7 @@ export default function Home() {
     return (
         <div className="min-h-screen bg-black text-white">
             <main>
-                <section className="bg-gradient-to-br from-black-600 via-black to-pink-900 py-20">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <div className="text-center mb-12">
-                            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 animate-fade-in-down">
-                                A special blog made for Developers.
-                            </h1>
-                            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-in-up">
-                                Honest reviews to help you choose the right developer tool for your SaaS.
-                            </p>
-                            <Link href="/blog" passHref>
-                                <Button
-                                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg animate-pulse-shadow"
-                                >
-                                    Start Reading
-                                </Button>
-                            </Link>
-                        </div>
-                        <div className="flex justify-center space-x-16 animate-fade-in">
-                            <div className="text-center">
-                                <p className="text-4xl md:text-5xl font-bold text-white mb-2">50+</p>
-                                <p className="text-sm md:text-base text-gray-400">Tools<br/>Reviewed</p>
-                            </div>
-                            <div className="text-center">
-                                <p className="text-4xl md:text-5xl font-bold text-white mb-2">100K+</p>
-                                <p className="text-sm md:text-base text-gray-400">Developers<br/>Assisted</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+                <Hero/>
                 {featuredPosts.length > 0 && <FeaturedPosts posts={featuredPosts}/>}
             </main>
 
