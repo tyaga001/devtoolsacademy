@@ -25,7 +25,6 @@ export default function Home() {
             <div className="section-divider"></div>
             <Testimonial/>
             <div className="section-divider"></div>
-            <Footer/>
         </div>
     );
 }

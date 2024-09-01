@@ -102,9 +102,6 @@ export function Testimonial() {
                     <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-4">
                         Developers Love My Technical Content
                     </h2>
-                    <p className="text-xl text-purple-200">
-                        Join the community to discuss the latest developer tools and trends.
-                    </p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -119,10 +116,6 @@ export function Testimonial() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                    <a href="https://join.slack.com/t/theankurtyagi/shared_invite/zt-2ovsw8w78-Oy6uKXmoFEE3waexCbCqSw" className="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-full hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                        <MessageSquare className="w-5 h-5 mr-2" />
-                        Join the Slack Community
-                    </a>
                 </motion.div>
             </div>
         </section>
