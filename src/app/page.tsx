@@ -10,7 +10,9 @@ const featuredPosts = [
         image: '/images/default-og-image.png',
         slug: 'neon-vs-supabase',
         url: 'https://www.devtoolsacademy.com/blog/neon-vs-supabase',
-        initialViews: 5044
+        initialViews: 5044,
+        category: "Database",
+        isNew: true
     },
     {
         title: 'Serverless Databases in 2024',
@@ -18,7 +20,8 @@ const featuredPosts = [
         image: '/images/state-of-databases.png',
         slug: 'state-of-databases-2024',
         url: 'https://www.devtoolsacademy.com/blog/state-of-databases-2024',
-        initialViews: 40
+        initialViews: 40,
+        category: "Serverless"
     }
 ];
 

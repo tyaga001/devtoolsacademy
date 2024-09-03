@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -16,54 +16,39 @@ interface BlogCardProps {
     initialViews: number;
 }
 
-const calculateReadTime = (content?: string): string => {
-    if (!content) return "5 min read";
-    const wordsPerMinute = 200;
-    const wordCount = content.split(/\s+/).length;
-    const readTime = Math.ceil(wordCount / wordsPerMinute);
-    return `${readTime} min read`;
-};
-
-const ViewCounter: React.FC<{ slug: string; initialViews: number }> = ({ slug, initialViews }) => {
-    const [views, setViews] = useState(initialViews);
-
-    useEffect(() => {
-        const incrementViews = async () => {
-            try {
-                const response = await fetch(`/api/views/${slug}`, { method: 'POST' });
-                const data = await response.json();
-                setViews(data.views);
-            } catch (error) {
-                console.error('Failed to increment view count:', error);
-            }
-        };
-        incrementViews();
-    }, [slug]);
-
-    return <span className="flex items-center text-gray-500"><Eye size={16} className="mr-1" /> {views.toLocaleString()} views</span>;
-};
-
 const BlogCard: React.FC<BlogCardProps> = ({ title, excerpt, image, url, slug, content, initialViews }) => {
-    const readTime = calculateReadTime(content);
+    const readTime = content ? `${Math.ceil(content.split(/\s+/).length / 200)} min read` : "5 min read";
 
     return (
         <motion.div
-            className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105"
-            whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
-            initial={{ opacity: 0, y: 30 }}
+            className="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:shadow-2xl"
+            whileHover={{ y: -5 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 200 }}
+            transition={{ type: "spring", stiffness: 300 }}
         >
-            <Image src={image} alt={title} width={400} height={200} className="w-full h-48 object-cover" />
-            <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{title}</h3>
-                <p className="text-gray-700 mb-4">{excerpt}</p>
-                <div className="flex justify-between items-center text-sm text-gray-600 mb-4">
-                    <span className="flex items-center"><Clock size={16} className="mr-1" /> {readTime}</span>
-                    <ViewCounter slug={slug} initialViews={initialViews} />
+            <div className="relative h-64">
+                <Image
+                    src={image}
+                    alt={title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
+                <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-2xl font-bold mb-2 text-white">{title}</h3>
+                    <div className="flex justify-between items-center text-sm text-gray-300">
+                        <span className="flex items-center"><Clock size={16} className="mr-1" /> {readTime}</span>
+                        <span className="flex items-center"><Eye size={16} className="mr-1" /> {initialViews.toLocaleString()} views</span>
+                    </div>
                 </div>
+            </div>
+            <div className="p-6">
+                <p className="text-gray-600 mb-4">{excerpt}</p>
                 <Link href={url} className="inline-flex items-center text-purple-600 hover:text-purple-800 font-semibold transition duration-300 group">
-                    Read More <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
+                    Read More
+                    <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
             </div>
         </motion.div>
@@ -71,15 +56,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, excerpt, image, url, slug, c
 };
 
 interface FeaturedPostsProps {
-    posts: {
-        slug: string;
-        title: string;
-        excerpt: string;
-        image: string;
-        url: string;
-        content?: string;
-        initialViews: number;
-    }[];
+    posts: BlogCardProps[];
 }
 
 const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
@@ -88,27 +65,14 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.3
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 200
+                staggerChildren: 0.2
             }
         }
     };
 
     return (
-        <section className="py-16 bg-gray-50 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-100 opacity-50"></div>
-            <div className="container mx-auto px-4 relative z-10">
+        <section className="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
+            <div className="container mx-auto px-4">
                 <motion.h2
                     className="text-4xl font-bold mb-12 text-center text-gray-900"
                     initial={{ opacity: 0, y: -30 }}
@@ -119,8 +83,8 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
                 </motion.h2>
                 <motion.div
                     className={`grid gap-8 ${
-                        posts.length === 1 ? 'md:grid-cols-1 max-w-md mx-auto' :
-                            posts.length === 2 ? 'md:grid-cols-2 max-w-2xl mx-auto' :
+                        posts.length === 1 ? 'md:grid-cols-1 max-w-2xl mx-auto' :
+                            posts.length === 2 ? 'md:grid-cols-2 max-w-4xl mx-auto' :
                                 'md:grid-cols-3'
                     }`}
                     variants={containerVariants}
@@ -128,7 +92,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
                     animate="visible"
                 >
                     {posts.map((post) => (
-                        <motion.div key={post.slug} variants={itemVariants}>
+                        <motion.div key={post.slug} variants={containerVariants}>
                             <BlogCard {...post} />
                         </motion.div>
                     ))}
