@@ -25,6 +25,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
       "@prisma": ["prisma"]
     },
     "target": "ES2017"
@@ -34,7 +36,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "tailwind.config.ts"
+    "tailwind.config.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "posts/**/*.mdx"
   ],
   "exclude": ["node_modules"]
 }

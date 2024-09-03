@@ -1,8 +1,15 @@
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image';
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import dynamic from 'next/dynamic'
+
+const ServerlessDiagram = dynamic(() => import('@/components/ServerlessDiagram'), {
+    ssr: false,
+    loading: () => <p>Loading diagram...</p>
+})
 
 const components = {
-    Image,
+    Image: (props: ImageProps) => <Image {...props} />,
+    ServerlessDiagram,
 }
 
 interface MDXContentProps {

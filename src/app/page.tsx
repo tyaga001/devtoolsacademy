@@ -1,7 +1,6 @@
 import React from 'react';
 import FeaturedPosts from '@/components/FeaturedPosts';
 import Hero from '@/components/Hero';
-import Footer from '@/components/Footer';
 import { Testimonial } from '@/components/Testimonial';
 
 const featuredPosts = [
@@ -12,6 +11,14 @@ const featuredPosts = [
         slug: 'neon-vs-supabase',
         url: 'https://www.devtoolsacademy.com/blog/neon-vs-supabase',
         initialViews: 5044
+    },
+    {
+        title: 'Serverless Databases in 2024',
+        excerpt: 'The Good, the Bad, and the Must-Know for Developers.',
+        image: '/images/state-of-databases.png',
+        slug: 'state-of-databases-2024',
+        url: 'https://www.devtoolsacademy.com/blog/state-of-databases-2024',
+        initialViews: 40
     }
 ];
 
