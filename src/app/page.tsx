@@ -9,19 +9,19 @@ const featuredPosts = [
         excerpt: 'Explore the key differences between Neon and Supabase, two popular database solutions for modern web applications.',
         image: '/images/default-og-image.png',
         slug: 'neon-vs-supabase',
-        url: 'https://www.devtoolsacademy.com/blog/neon-vs-supabase',
+        url: '/blog/neon-vs-supabase',
         initialViews: 5044,
-        category: "Database",
-        isNew: true
+        category: "Database"
     },
     {
         title: 'Serverless Databases in 2024',
         excerpt: 'The Good, the Bad, and the Must-Know for Developers.',
         image: '/images/state-of-databases.png',
         slug: 'state-of-databases-2024',
-        url: 'https://www.devtoolsacademy.com/blog/state-of-databases-2024',
+        url: '/blog/state-of-databases-2024',
         initialViews: 40,
-        category: "Serverless"
+        category: "Serverless",
+        isNew: true
     }
 ];
 
