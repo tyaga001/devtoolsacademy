@@ -10,7 +10,6 @@ const featuredPosts = [
         image: '/images/default-og-image.png',
         slug: 'neon-vs-supabase',
         url: '/blog/neon-vs-supabase',
-        initialViews: 5044,
         category: "Database"
     },
     {
@@ -19,7 +18,6 @@ const featuredPosts = [
         image: '/images/state-of-databases.png',
         slug: 'state-of-databases-2024',
         url: '/blog/state-of-databases-2024',
-        initialViews: 40,
         category: "Serverless",
         isNew: true
     }

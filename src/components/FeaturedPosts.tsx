@@ -13,15 +13,14 @@ interface BlogCardProps {
     url: string;
     slug: string;
     readTime?: string;
-    initialViews: number;
     category: string;
     isNew?: boolean;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({
-                                               title, excerpt, image, url, slug, readTime, initialViews, category, isNew
+                                               title, excerpt, image, url, slug, readTime, category, isNew
                                            }) => {
-    const defaultReadTime = "5 min read";
+    const defaultReadTime = "8 min read";
 
     return (
         <motion.div
@@ -49,7 +48,6 @@ const BlogCard: React.FC<BlogCardProps> = ({
                 <p className="text-gray-600 mb-4">{excerpt}</p>
                 <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
                     <span className="flex items-center"><Clock size={16} className="mr-1" /> {readTime || defaultReadTime}</span>
-                    <span className="flex items-center"><Eye size={16} className="mr-1" /> {initialViews.toLocaleString()} views</span>
                 </div>
                 <div className="flex justify-between items-center">
                     <Link href={url} className="text-purple-600 hover:text-purple-800 font-semibold">
