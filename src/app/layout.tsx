@@ -9,21 +9,18 @@ import Footer from '@/components/Footer';
 import './globals.css';
 import 'highlight.js/styles/github-dark.css';
 import { Metadata } from 'next';
-
-const ModeToggle = dynamic(() => import('@/components/mode-toggle').then(mod => mod.ModeToggle), {
-    ssr: false,
-});
+import Script from 'next/script'
 
 export const metadata: Metadata = {
     title: {
         default: 'Dev Tools Academy',
         template: '%s | Dev Tools Academy',
     },
-    description: 'Learn and master development tools for SaaS projects',
+    description: 'Learn about awesome developer tools',
     metadataBase: new URL('https://devtoolsacademy.com'),
     openGraph: {
         title: 'Dev Tools Academy',
-        description: 'Learn and master development tools for SaaS projects',
+        description: 'Learn about awesome developer tools',
         url: 'https://devtoolsacademy.com',
         siteName: 'Dev Tools Academy',
         locale: 'en_US',
@@ -32,7 +29,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Dev Tools Academy',
-        description: 'Learn and master development tools for SaaS projects',
+        description: 'Learn about awesome developer tools',
     },
     icons: [
         {
@@ -52,22 +49,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
         <head>
-            <script defer src="https://cloud.umami.is/script.js"
-                    data-website-id="bbe84049-cfa8-41eb-bc81-3937ca3ee74c"></script>
+            <Script
+                src="https://cloud.umami.is/script.js"
+                data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+                strategy="afterInteractive"
+            />
         </head>
 
         <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
         <ClerkProvider>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                <div className="flex flex-col min-h-screen">
-                    <Navbar/>
-                    <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="flex flex-col min-h-screen">
+                <Navbar/>
+                <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
                         {children}
                     </main>
-                    <Footer/>
                 </div>
-                <ModeToggle />
-            </ThemeProvider>
         </ClerkProvider>
         <Analytics/>
         </body>

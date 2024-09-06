@@ -35,7 +35,6 @@ export default function Navbar() {
                         <Github className="w-5 h-5" />
                         <span>Star on GitHub</span>
                     </Button>
-                    <ModeToggle />
                 </div>
             </div>
         </nav>

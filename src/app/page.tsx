@@ -1,6 +1,7 @@
 import React from 'react';
 import FeaturedPosts from '@/components/FeaturedPosts';
 import Hero from '@/components/Hero';
+import Footer from '@/components/Footer';
 import { Testimonial } from '@/components/Testimonial';
 
 const featuredPosts = [
@@ -33,6 +34,7 @@ export default function Home() {
             <div className="section-divider"></div>
             <Testimonial/>
             <div className="section-divider"></div>
+            <Footer/>
         </div>
     );
 }
