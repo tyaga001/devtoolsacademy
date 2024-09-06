@@ -306,14 +306,14 @@ Neon's architecture is based on the separation of compute and storage, managed b
 
 When evaluating the security features of database platforms, both Supabase and Neon offer robust measures to ensure data protection, secure access, and compliance with industry standards. Below is a concise comparison of their security features, presented in a tabular format for direct comparison and followed by a discussion of additional aspects.
 
-> Both platforms prioritize secure connections using SSL/TLS encryption. Supabase enhances security with JWT and RLS, while Neon employs the strict `verify-full` SSL mode, ensuring that a trusted CA issues the server’s certificate and that the server’s hostname matches the certificate. Additionally, Neon enforces high-entropy passwords for all PostgreSQL roles to prevent brute-force attacks.
+> Both platforms prioritize secure connections using SSL/TLS encryption. Supabase enhances security with JWT and RLS, and both platforms offer the strict `verify-full` SSL mode, ensuring that a trusted CA issues the server’s certificate and that the server’s hostname matches the certificate. Both platforms require high-entropy passwords for all PostgreSQL roles to prevent brute-force attacks. In addition, Supabase employs fail2ban to prevent Brute Force attacks.
 
-Supabase uses the Vault feature to manage secrets, providing encrypted storage for sensitive information such as environment variables and API keys. On the other hand, Neon encrypts inactive data using the XTS-AES-256 block cipher on NVMe SSD volumes, ensuring that data remains secure and unreadable without the proper encryption key.
+Supabase uses the Vault feature to manage secrets, providing encrypted storage for sensitive information such as environment variables and API keys. Neon encrypts inactive data using the XTS-AES-256 block cipher on NVMe SSD volumes, ensuring that data remains secure and unreadable without the proper encryption key. Supabase offers AES-256 encryption in transit and at rest.
 
-Authentication Supabase provides authentication through JWT, integrated with RLS for user-specific data access. Neon goes a step further by integrating with multiple authentication platforms, including Auth0, Clerk, and Okta, offering advanced features like social login, multi-factor authentication, and secure user data management.
+Authentication Supabase provides authentication through JWT, integrated with RLS for user-specific data access. Both platforms offer integrations with multiple authentication platforms, including Auth0, Clerk, and Okta, offering advanced features like social login, multi-factor authentication, and secure user data management.
 
 - In terms of compliance, Neon has achieved SOC 2 Type 1 and Type 2 compliance, demonstrating adherence to high security and privacy standards.
-- Supabase follows PostgreSQL’s robust security features but does not specifically mention SOC 2 compliance.
+- Supabase is [SOC 2 Type 1 and Type 2 compliant](https://supabase.com/security). Supabase is also HIPAA compliant meaning you can store your Protected Health Information (PHI) on their hosted platform. Customers can enter into a Business Associate Agreement (BAA) to fulfill HIPAA obligations under their [shared responsibility model](https://supabase.com/docs/guides/platform/shared-responsibility-model#managing-healthcare-data).  .
 
 ![Security: Supabase vs. Neon](/images/img.png)
 
@@ -329,7 +329,7 @@ This is a non-exhaustive list of features that Neon and Supabase provide for eve
 
 - **Autosuspend**
 
-> The Autosuspend feature allows Neon compute instances to scale to zero after a period of inactivity, with the default set at 300 seconds (5 minutes). This feature is customizable for paid users and helps reduce compute usage and costs by suspending inactive computes. Autosuspend can be adjusted to avoid or reduce the frequency of cold starts.
+> The Autosuspend feature allows Neon compute instances to scale to zero after a period of inactivity, with the default set at 300 seconds (5 minutes). This feature is customizable for paid users and helps reduce compute usage and costs by suspending inactive computes. Autosuspend can be adjusted to avoid or reduce the frequency of cold starts. Free tier projects on Supabase offer dedicated compute resources and autosuspend after 7-days of inactivity.
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcNPukXs0_fyQm94Xlg3KU4s331RmlxIhAp_V-Pc-NzySSoHE8bVM86K_pGgayhrWOCe2auZRI4lbaefpeyDwC5WZ6Uy5O3hU--zEPcsvpZFqncMSXk-FpVFyI5XnuV17sq_lhs1Dftn-siWtWSijGHu6Xq?key=0jnpRzNFQaBNrbdOAncbMA)
 
@@ -449,14 +449,14 @@ Time Travel utilizes Neon's instant branching capability to create a temporary b
 
 - Neon and Supabase both offer robust solutions for schema migrations, but their approaches differ significantly. Neon provides detailed guides for various frameworks such as Django, Laravel, and Entity Framework, ensuring seamless integration and easy migration processes.
 
-- On the other hand, Supabase primarily utilizes the Supabase CLI for migrations, which is particularly useful for upgrading older projects or Postgres versions. The CLI allows users to perform database dumps and restores, set environment variables, and handle manual configurations such as enabling extensions and managing encryption keys.
+- On the other hand, Supabase primarily utilizes the Supabase CLI for migrations, which is particularly useful for upgrading older projects or Postgres versions. The CLI allows users to perform database dumps and restores, set environment variables, and handle manual configurations such as enabling extensions and managing encryption keys. Since Supabase is just vanilla Postgres, it can also be used with popular migration tools available in frameworks such as Django, Laravel, and Entity. 
 
 
 ### Network restrictions<a id="network-restrictions"></a>
 
 - Neon provides IP allowlists and protected branches, allowing users to restrict access to trusted IP addresses for increased security. Users can manage IP restrictions through the Neon console, ensuring only authorized connections to their databases.
 
-- Supabase allows you to set up configurable IP range restrictions for database connections, which are managed via the dashboard or CLI, enhancing security. These restrictions apply to both IPv4 and IPv6, though they do not cover HTTPS APIs like PostgREST, Storage, and Auth.
+- Supabase allows you to set up configurable IP range restrictions for database connections, which are managed via the dashboard or CLI, enhancing security. These restrictions apply to both IPv4 and IPv6, HTTPS APIs like PostgREST, Storage, and Auth rate limits and IP restrictions are configured separately.
 
 
 ### Branching<a id="branching"></a>
@@ -474,7 +474,7 @@ Supabase also provides branching for safe experimentation with project changes, 
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdcj0FePbKTAcEPJA5m-jdML5hiUc3aQIefKF0tIW4hMf4H7yJHXThhdvzOgb8R0inAza7mAXeqgQZucjHSq7vE5KCIEnGwR78KsPxdnJpzU1ZrlTdOLP7r5euYsvBmZE2EPhS1-rvju1oe5nV6ym6gAzs?key=0jnpRzNFQaBNrbdOAncbMA)
 
-Additionally, Neon supports third-party tools like PgHero and PgAdmin for advanced performance analytics, and the **pg\_stat\_statements** extension helps optimize query performance.
+Both platforms support third-party tools like PgHero and PgAdmin for advanced performance analytics, and the **pg\_stat\_statements** extension helps optimize query performance. In addition, Supabase offers the newer **pg\_stat\_monitor**. 
 
 Supabase, on the other hand, integrates monitoring tools within its CLI, allowing users to inspect their Postgres databases for issues like disk storage bloat, cache hit rates, and query performance.
 
@@ -491,7 +491,7 @@ Automation can be set up using GitHub Actions for nightly backups to AWS S3.
 npx @neondatabase/pg-import --source <source_database_connection_string> --backup-file-path <dump_file_name>
 ```
 
-In contrast, Supabase provides automated daily backups and PITR, with daily backups accessible for 7 days on Pro plans and 30 days on Enterprise plans.
+Supabase also provides automated daily backups and PITR, with daily backups accessible for 7 days on Pro plans and 30 days on Enterprise plans.
 <Callout>
 
 For databases over 40GB, physical backups are used, ensuring performance with minimal disruption. PITR, available as an add-on, allows recovery to any point in time with high granularity, suitable for projects requiring stringent Recovery Point Objectives (RPO). Supabase uses pg\_dumpall for daily backups and WAL-G for PITR, ensuring data integrity and efficient disaster recovery
