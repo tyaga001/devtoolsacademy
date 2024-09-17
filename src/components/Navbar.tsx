@@ -10,6 +10,8 @@ import {
     DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
 import { Github, Menu } from 'lucide-react';
+import { Sponsor } from '@/components/Sponsor';
+
 
 export default function Navbar() {
     return (
@@ -27,6 +29,7 @@ export default function Navbar() {
                     </Link>
                 </div>
                 <div className="flex items-center space-x-4">
+                    <Sponsor />
                     <Button
                         onClick={() => window.open("https://github.com/tyaga001/devtoolsacademy", "_blank", "noopener,noreferrer")}
                         variant="outline"
