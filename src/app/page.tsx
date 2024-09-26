@@ -20,6 +20,14 @@ const featuredPosts = [
         slug: 'state-of-databases-2024',
         url: '/blog/state-of-databases-2024',
         category: "Serverless",
+    },
+    {
+        title: 'MongoDB vs. PostgreSQL- A Technical Comparison',
+        excerpt: 'What’s the Difference Between MongoDB and PostgreSQL?',
+        image: '/images/MongoDB vs. PostgreSQL.png',
+        slug: 'mongoDB-vs-postgreSQL',
+        url: '/blog/mongoDB-vs-postgreSQL',
+        category: "Database",
         isNew: true
     }
 ];
