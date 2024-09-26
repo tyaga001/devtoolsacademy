@@ -1,9 +1,68 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Coffee, CreditCard } from 'lucide-react';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Star, Trophy, Award, Heart } from 'lucide-react';
+
+interface SponsorTier {
+    title: string;
+    icon: React.ReactNode;
+    price: number;
+    benefits: string[];
+    stripeLink: string;
+}
+
+const sponsorTiers: SponsorTier[] = [
+    {
+        title: "VIP Sponsor",
+        icon: <Star className="h-6 w-6 text-yellow-400" />,
+        price: 2000,
+        benefits: [
+            "Big logo on homepage and DevToolsAcademy repo",
+            "Backlink to your website",
+            "Dedicated review blog post on DevToolsAcademy and The Ankur Tyagi",
+            "Featured in BytesizedBets newsletter (5000+ subscribers)"
+        ],
+        stripeLink: "https://buy.stripe.com/dR6fZvbAz9dvcbm28m"
+    },
+    {
+        title: "Hero Sponsor",
+        icon: <Trophy className="h-6 w-6 text-yellow-500" />,
+        price: 1000,
+        benefits: [
+            "Big logo on homepage and DevToolsAcademy repo",
+            "Backlink to your website",
+            "Dedicated review blog post on DevToolsAcademy website"
+        ],
+        stripeLink: "https://buy.stripe.com/8wMdRn7kj4Xf0sE28n"
+    },
+    {
+        title: "Catalyst Sponsor",
+        icon: <Award className="h-6 w-6 text-orange-400" />,
+        price: 500,
+        benefits: [
+            "Small logo on homepage and DevToolsAcademy repo"
+        ],
+        stripeLink: "https://buy.stripe.com/28ofZvbAzblD3EQfZe"
+    },
+    {
+        title: "Backer Sponsor",
+        icon: <Heart className="h-6 w-6 text-red-400" />,
+        price: 99,
+        benefits: [
+            "Small logo in DevToolsAcademy repo",
+            "my heartfelt thanks."
+        ],
+        stripeLink: "https://buy.stripe.com/8wM9B78ongFXa3e9AN"
+    },
+];
 
 export default function SponsorPage() {
+
+    const handleContribute = (stripeLink: string) => {
+        window.open(stripeLink, "_blank", "noopener,noreferrer");
+    };
+
     return (
         <div className="min-h-screen bg-black text-white bg-grid-pattern">
             <div className="container mx-auto px-4 py-16 max-w-4xl">
@@ -11,33 +70,44 @@ export default function SponsorPage() {
                     Sponsor Me.
                 </h1>
                 <p className="text-xl md:text-2xl mb-12 text-gray-300">
-                    I love doing open-source projects and write about developer tools. <span
+                    I love doing open-source projects and write about developer tools <span
                     className="text-red-500">❤️</span>
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    <Button
-                        variant="outline"
-                        className="bg-gray-800 hover:bg-gray-700 text-white border-gray-600 h-16 text-lg justify-between"
-                        onClick={() => window.open("https://buy.stripe.com/8wM9B78ongFXa3e9AN", "_blank", "noopener,noreferrer")}
-                    >
-                        <div className="flex items-center">
-                            <CreditCard className="mr-2 h-6 w-6" />
-                            One-time Payment
-                        </div>
-                        <span className="text-sm opacity-70">Sponsor</span>
-                    </Button>
-                    <Button
-                        variant="outline"
-                        className="bg-gray-800 hover:bg-gray-700 text-white border-gray-600 h-16 text-lg justify-between"
-                        onClick={() => window.open("https://buymeacoffee.com/ankurtyagi", "_blank", "noopener,noreferrer")}
-                    >
-                        <div className="flex items-center">
-                            <Coffee className="mr-2 h-6 w-6" />
-                            Buy me a Beer 🍺
-                        </div>
-                        <span className="text-sm opacity-70">Sponsor</span>
-                    </Button>
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12">
+                    {sponsorTiers.map((tier, index) => (
+                        <Card key={index}
+                              className="bg-gray-800 border-gray-700 text-white overflow-hidden flex flex-col">
+                            <CardHeader className="bg-gray-900 p-4">
+                                <div className="flex justify-between items-center mb-2">
+                                    {tier.icon}
+                                    <span className="text-sm font-semibold text-gray-400">MEMBERSHIP</span>
+                                </div>
+                                <CardTitle className="text-2xl font-bold">{tier.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent className="p-4 flex-grow">
+                                <ul className="list-none space-y-2 text-sm text-gray-300">
+                                    {tier.benefits.map((benefit, idx) => (
+                                        <li key={idx} className="flex items-start">
+                                            <span className="text-green-500 mr-2">✓</span>
+                                            {benefit}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                            <CardFooter className="p-4 bg-gray-900 mt-auto">
+                                <div className="w-full">
+                                    <div className="font-bold text-3xl mb-4 text-center">${tier.price} USD</div>
+                                    <Button
+                                        className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300"
+                                        onClick={() => handleContribute(tier.stripeLink)}
+                                    >
+                                        Contribute
+                                    </Button>
+                                </div>
+                            </CardFooter>
+                        </Card>
+                    ))}
                 </div>
 
                 <div className="max-w-3xl mx-auto mb-16 bg-gray-900 p-8 rounded-lg shadow-lg">
@@ -46,7 +116,8 @@ export default function SponsorPage() {
                     </h3>
                     <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                         <p>
-                            As an independent consultant, your support is crucial in sustaining this project. Here&apos;s how
+                            As an independent consultant, your support is crucial in sustaining this project.
+                            Here&apos;s how
                             your contribution makes a difference:
                         </p>
                         <ul className="list-none space-y-2">
@@ -97,8 +168,7 @@ export default function SponsorPage() {
                             I&apos;m a software engineer based in Sweden who cares deeply about &quot;Writing&quot;.
                         </p>
                         <p>
-                            I&apos;ve stepped away from full-time work to focus entirely on the open-source community. My
-                            mission is to help founders and developers learn, grow, and make better choices when it
+                            My mission is to help founders and developers learn, grow, and make better choices when it
                             comes to developer tools.
                         </p>
                         <p>
@@ -107,6 +177,10 @@ export default function SponsorPage() {
                         </p>
                         <p className="text-xl font-semibold text-white mt-6">
                             Thank you for being part of my journey.
+                        </p>
+                        <p className="text-center text-gray-500 mt-8 p-4 border border-gray-300 rounded-lg bg-gray-100 shadow-lg">
+                            <strong className="text-gray-700">Note:</strong> All blogs will remain live forever on this
+                            website as they are published and read 10000+ times per month by devs.
                         </p>
                     </div>
                 </div>
