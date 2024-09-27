@@ -1,15 +1,16 @@
 # Dev Tools Academy
 
-DevToolsAcademy is a community-driven blog dedicated for in-depth analyses and comparisons of developer tools, frameworks, and technologies. 
+DevToolsAcademy is an open source blog dedicated to awesome developer tools, frameworks, and technologies.
 My mission is to help developers and founders make informed decisions about the developer tools they use in their daily workflow.
 
-## 🌟 Featured on Hacker News and Hashnode 
+## 🌟 Featured on Hacker News and Hashnode
 
-- The very first blog post, ["Neon Postgres vs. Supabase,"](https://www.devtoolsacademy.com/blog/neon-vs-supabase) made it to the second page of Hacker News.
+| Blog Post | Featured On | Description |
+| --- | --- |  |
+| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase) | Hacker News | Made it to the second page of Hacker News. ![Neon vs Supabase](public/images/img_4.png) |
+| [Serverless Databases](https://www.devtoolsacademy.com/blog/state-of-databases-2024) | Hashnode | Featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases) |
+| [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What’s the Difference Between MongoDB and PostgreSQL? |
 
-![Neon vs Supabase](public/images/img_4.png)
-
-- The second blog post, ["Serverless Databases"](https://www.devtoolsacademy.com/blog/state-of-databases-2024) featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases).
 
 ## 🚀 Quick Start
 
@@ -24,13 +25,13 @@ This project is built with [Next.js](https://nextjs.org/). To get started:
 
 I welcome contributions from developers of all skill levels. Here's how you can help:
 
-1. **Submit a Blog Post**: Have experience with dev tools? Write a comparison and submit a pull request.
+1. **Submit a Blog Post**: Have experience with dev tools? Write a post and submit a pull request.
 2. **Improve the Site**: Help me enhance the user experience or add new features.
 3. **Spread the Word**: Share the articles in developer communities and invite others to contribute.
 
 Check out the [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-## ✍️ Calling All Awesome People Who Cares About Writing and Developer Tools
+## ✍️ Calling All Developers Who Cares About Writing and Developer Tools
 
 Are you a person in tech looking to showcase your honest take on any developer tool? DevToolsAcademy offers a unique opportunity:
 

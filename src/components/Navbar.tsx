@@ -24,9 +24,9 @@ export default function Navbar() {
                     <Link href="/blog" className="text-lg font-semibold text-white-900 dark:text-gray-100 hover:underline">
                         Blog
                     </Link>
-                    <Link href="/contribute" className="text-lg font-semibold text-white-900 dark:text-gray-100 hover:underline">
+                   {/* <Link href="/contribute" className="text-lg font-semibold text-white-900 dark:text-gray-100 hover:underline">
                         Contribute
-                    </Link>
+                    </Link>*/}
                 </div>
                 <div className="flex items-center space-x-4">
                     <Sponsor />

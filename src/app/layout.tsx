@@ -1,11 +1,8 @@
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
-import { ThemeProvider } from '@/components/theme-provider';
 import { Analytics } from '@vercel/analytics/react';
 import { ClerkProvider } from '@clerk/nextjs';
-import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import './globals.css';
 import 'highlight.js/styles/github-dark.css';
 import { Metadata } from 'next';
