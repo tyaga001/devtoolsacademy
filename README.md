@@ -1,15 +1,33 @@
 # Dev Tools Academy
 
-DevToolsAcademy is an open source blog dedicated to awesome developer tools, frameworks, and technologies.
-My mission is to help developers and founders make informed decisions about the developer tools they use in their daily workflow.
+<img src="public/images/T.png" alt="Dev Tools Academy Logo" width="100" height="100" />
+
+> DevToolsAcademy is an open-source blog dedicated to awesome developer tools, frameworks, and technologies. Our mission is to help developers and founders make informed decisions about the developer tools they use in their daily workflow.
 
 ## 🌟 Featured on Hacker News and Hashnode
 
+![Neon vs Supabase](public/images/img_4.png)
+
 | Blog Post | Featured On | Description |
-| --- | --- |  |
-| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase) | Hacker News | Made it to the second page of Hacker News. ![Neon vs Supabase](public/images/img_4.png) |
+| --- | --- | --- |
+| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase) | Hacker News | Made it to the second page of Hacker News |
 | [Serverless Databases](https://www.devtoolsacademy.com/blog/state-of-databases-2024) | Hashnode | Featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases) |
-| [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What’s the Difference Between MongoDB and PostgreSQL? |
+| [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL? |
+
+
+## 💡 Contribute
+
+We welcome contributions from the developer community! If you have insights on developer tools or want to share your experiences, please check our [Contribution Guidelines](CONTRIBUTING.md).
+
+## 📬 Stay Connected
+
+- Follow us on [Twitter](https://twitter.com/devtoolsacademy)
+- Join our [Discord community](https://discord.gg/devtoolsacademy)
+- Subscribe to our [Newsletter](https://www.devtoolsacademy.com/newsletter)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
 ## 🚀 Quick Start
