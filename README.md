@@ -82,7 +82,9 @@ Have questions or suggestions? Open an issue or reach out to me at [hello@theank
 ## 📄 License
 
 This project is licensed under the Creative Commons License - see the [LICENSE](LICENSE) file for details.
-
+- You are free to use this code as inspiration.
+- Please do not copy it directly.
+- Crediting the author is appreciated.
 ---
 
 Let's build the go-to resource for developer tool space, together 🚀
