@@ -1,3 +1,4 @@
+import React from 'react';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { Analytics } from '@vercel/analytics/react';
@@ -52,17 +53,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 strategy="afterInteractive"
             />
         </head>
-
         <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
         <ClerkProvider>
             <div className="flex flex-col min-h-screen">
-                <Navbar/>
+                <Navbar />
                 <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                        {children}
-                    </main>
-                </div>
+                    {children}
+                </main>
+            </div>
         </ClerkProvider>
-        <Analytics/>
+        <Analytics />
         </body>
         </html>
     );

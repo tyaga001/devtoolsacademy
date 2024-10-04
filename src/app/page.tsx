@@ -1,8 +1,11 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import FeaturedPosts from '@/components/FeaturedPosts';
 import Hero from '@/components/Hero';
-import Footer from '@/components/Footer';
-import { Testimonial } from '@/components/Testimonial';
+import { ProductHuntBadge } from '@/components/ProductHuntBadge'
+
+const Testimonial = dynamic(() => import('@/components/Testimonial').then(mod => mod.Testimonial), { ssr: false });
+const Footer = dynamic(() => import('@/components/Footer'), { ssr: true });
 
 const featuredPosts = [
     {
@@ -36,13 +39,13 @@ export default function Home() {
     return (
         <div className="min-h-screen bg-black text-white">
             <main>
-                <Hero/>
-                {featuredPosts.length > 0 && <FeaturedPosts posts={featuredPosts}/>}
+                <Hero />
+                {featuredPosts.length > 0 && <FeaturedPosts posts={featuredPosts} />}
             </main>
-            <div className="section-divider"></div>
-            <Testimonial/>
-            <div className="section-divider"></div>
-            <Footer/>
+            <div className="section-divider" />
+            <Testimonial />
+            <div className="section-divider" />
+            <Footer />
         </div>
     );
 }

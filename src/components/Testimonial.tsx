@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { MessageSquare, Quote, Star } from 'lucide-react';
+import { Quote, Star } from 'lucide-react';
 
 interface Testimonial {
     quote: string;
@@ -41,13 +41,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <motion.div
-                className="absolute top-4 right-4 text-purple-300 opacity-20"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-                <Quote size={48} />
-            </motion.div>
+            <Quote size={48} className="absolute top-4 right-4 text-purple-300 opacity-20" />
 
             <p className="text-xl text-white mb-6 relative z-10">
                 &ldquo;{testimonial.quote}&rdquo;
@@ -62,11 +56,6 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
                         height={60}
                         className="rounded-full border-2 border-purple-400"
                     />
-                    <motion.div
-                        className="absolute inset-0 border-2 border-purple-300 rounded-full"
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                    />
                 </div>
                 <div>
                     <p className="text-white font-semibold">{testimonial.name}</p>
@@ -80,7 +69,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 export function Testimonial() {
     return (
         <section className="py-16 bg-black bg-opacity-90 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/stars-background.png')] opacity-50"></div>
+            <div className="absolute inset-0 bg-[url('/stars-background.png')] opacity-50" aria-hidden="true"></div>
             <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl relative z-10">
                 <div className="max-w-3xl mx-auto text-center mb-12">
                     <h2 className="text-5xl font-bold mb-4">
@@ -89,11 +78,11 @@ export function Testimonial() {
                         </span>
                     </h2>
                     <p className="text-xl text-purple-300 mb-6">
-                        Developers across the globe loves DTA
+                        Developers across the globe love DTA
                     </p>
-                    <div className="flex justify-center space-x-2 mb-8">
+                    <div className="flex justify-center space-x-2 mb-8" aria-label="5 out of 5 stars">
                         {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="text-yellow-400 h-8 w-8 fill-current" />
+                            <Star key={i} className="text-yellow-400 h-8 w-8 fill-current" aria-hidden="true" />
                         ))}
                     </div>
                 </div>
