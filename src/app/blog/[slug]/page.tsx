@@ -57,6 +57,8 @@ export default async function BlogPost({params}: { params: { slug: string } }) {
                 publishedAt={post.publishedAt}
                 initialViews={initialViews}
                 content={post.content}
+                description={post.description}
+                featuredImage={post.featuredImage || '/T.png'}
             />
             <div className="flex flex-col lg:flex-row">
                 <div className="w-full lg:w-3/4">
