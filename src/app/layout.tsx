@@ -4,6 +4,7 @@ import { GeistMono } from 'geist/font/mono';
 import { Analytics } from '@vercel/analytics/react';
 import { ClerkProvider } from '@clerk/nextjs';
 import Navbar from '@/components/Navbar';
+import { SocialMetadata } from '@/components/SocialMetadata';
 import './globals.css';
 import 'highlight.js/styles/github-dark.css';
 import { Metadata } from 'next';
@@ -43,10 +44,28 @@ interface RootLayoutProps {
     children: React.ReactNode;
 }
 
+function getTitle(title: Metadata['title']): string {
+    if (typeof title === 'string') {
+        return title;
+    } else if (title && typeof title === 'object' && 'default' in title) {
+        return title.default;
+    }
+    return 'Dev Tools Academy';
+}
+
 export default function RootLayout({ children }: RootLayoutProps) {
+    const title = getTitle(metadata.title);
+
     return (
         <html lang="en" suppressHydrationWarning>
         <head>
+            <SocialMetadata
+                title={title}
+                description={metadata.description ?? 'Learn about awesome developer tools'}
+                url={metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}
+                image={`${metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}/favicon.png`}
+                type="website"
+            />
             <Script
                 src="https://cloud.umami.is/script.js"
                 data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}

@@ -60,6 +60,8 @@ export async function getPostBySlug(slug: string) {
         publishedAt: data.publishedAt,
         summary: data.summary,
         views: postMeta.views,
+        description: data.description || data.summary || '',
+        featuredImage: data.featuredImage || '/T.png',
     }
 }
 
