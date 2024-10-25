@@ -9,29 +9,29 @@ const Footer = dynamic(() => import('@/components/Footer'), { ssr: true });
 
 const featuredPosts = [
     {
-        title: 'Neon vs Supabase: A Comprehensive Comparison',
-        excerpt: 'Explore the key differences between Neon and Supabase, two popular database solutions for modern web applications.',
+        title: 'Neon vs Supabase',
+        excerpt: 'Choose the right Database for your SaaS.',
         image: '/images/default-og-image.png',
         slug: 'neon-vs-supabase',
         url: '/blog/neon-vs-supabase',
         category: "Database"
     },
     {
-        title: 'Serverless Databases in 2024',
-        excerpt: 'The Good, the Bad, and the Must-Know for Developers.',
-        image: '/images/state-of-databases.png',
-        slug: 'state-of-databases-2024',
-        url: '/blog/state-of-databases-2024',
-        category: "Serverless",
+        title: 'Supabase vs Clerk',
+        excerpt: 'Choose the right Auth for your SaaS',
+        image: '/images/supabase-clerk.png',
+        slug: 'supabase-vs-clerk',
+        url: '/blog/supabase-vs-clerk',
+        category: "Database",
+        isNew: true
     },
     {
-        title: 'MongoDB vs. PostgreSQL- A Technical Comparison',
-        excerpt: 'What’s the Difference Between MongoDB and PostgreSQL?',
+        title: 'MongoDB vs. PostgreSQL',
+        excerpt: 'Learn the difference between MongoDB and PostgreSQL?',
         image: '/images/MongoDB vs. PostgreSQL.png',
         slug: 'mongoDB-vs-postgreSQL',
         url: '/blog/mongoDB-vs-postgreSQL',
         category: "Database",
-        isNew: true
     }
 ];
 

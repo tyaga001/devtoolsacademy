@@ -8,12 +8,12 @@
 
 ![Neon vs Supabase](public/images/img_4.png)
 
-| Blog Post | Featured On | Description |
-| --- | --- | --- |
-| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase) | Hacker News | Made it to the second page of Hacker News |
+| Blog Post | Featured On | Description                                                                     |
+| --- | --- |---------------------------------------------------------------------------------|
+| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase) | Hacker News | Made it to the second page of Hacker News                                       |
 | [Serverless Databases](https://www.devtoolsacademy.com/blog/state-of-databases-2024) | Hashnode | Featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases) |
-| [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL? |
-
+| [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL?                           |
+| [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk) | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
 
 ## 💡 Contribute
 
@@ -28,7 +28,6 @@ We welcome contributions from the developer community! If you have insights on d
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 
 ## 🚀 Quick Start
 
@@ -66,7 +65,6 @@ To get started, check our [CONTRIBUTING.md](CONTRIBUTING.md) file and reach out 
 - Include code examples and performance metrics when relevant.
 - Aim for a length of 1500-2000 words.
 - Build something and compare, don't just rely on docs and other blogs.
-
 
 ## 📈 Growth and Goals
 
