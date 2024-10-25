@@ -1,0 +1,1310 @@
+---
+title: 'Supabase vs Clerk - Choose the Right Auth for Your SaaS'
+seoTitle: Supabase vs Clerk Auth
+isPublished: true
+publishedAt: '2024-10-25T00:00:00Z'
+layout: Article
+summary: 'An in-depth comparison of Clerk and Supabase to help you choose the best auth for your SaaS'
+featuredImage: "/images/supabase-clerk.png"
+---
+
+This is the fourth post in a series of **awesome developer tools** I intend to write about. In the last 3 posts I talk about Neon, Supabase, Postgres and MongoDB it’s worth revisiting:
+
+1. [Neon Postgres vs. Supabase: Choosing the Right Database for Your SaaS](https://www.devtoolsacademy.com/blog/neon-vs-supabase)
+2. [MongoDB vs PostgreSQL: A Detailed Comparison](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL)
+3. [State of Databases for Serverless in 2024](https://www.devtoolsacademy.com/blog/state-of-databases-2024)
+
+Thank you everyone for all the support so far—nearly 10k unique visitors.
+
+Today I want to talk about `auth` which is one of the most critical component of any app. Whether we’re building a simple web app or a full-scale app, ensuring that users can securely log in and manage their accounts is essential.
+
+And based on all the feedback—and a good amount of time spent in Developer communities, Twitter and Reddit — I’ve picked out 2 popular options for `authentication`: Supabase and Clerk.
+
+These two are pretty good choices, and it'd be helpful to go deep down and see why they’re getting so much attention.
+
+> In this article, let's take a detailed look at Supabase Auth and Clerk Auth, focusing on their offerings, and how they can be implemented with a `React frontend` and `.NET backend`. By the end, you’ll have a clear understanding of which solution may work best for you.
+
+# Offerings
+## Supabase Authentication
+
+> Supabase is an open-source alternative to Firebase, offering various backend services, including authentication, real-time databases, and storage. Supabase’s authentication system is built on **PostgreSQL** and integrates well with the rest of the Supabase ecosystem.
+
+**Key Features of Supabase Auth**:
+
+- **Email/Password Authentication** - Supabase provides traditional `email/password` auth with verification links.
+
+- **OAuth Providers** - Support for social login through Google, Facebook, GitHub, and other OAuth providers.
+
+- **Magic Links** - Passwordless auth using email-based magic links.
+
+- **Secure Session Management** - Supabase securely handles sessions with access tokens and refresh tokens.
+
+- **Role-Based Access Control (RBAC)** - Users can be assigned roles, and permissions can be managed using policies in the `PostgreSQL` database.
+
+- **Multi-Factor Authentication (MFA)** - With third-party integrations, MFA can be enabled for added security.
+
+## Clerk Authentication
+
+> Clerk is a developer-first authentication platform, designed for apps where user management and complex workflows are required.
+Clerk goes beyond simple user auth, offering features like user profile management, session management, and fine-grained permissions.
+
+**Key Features of Clerk**:
+
+- **Email/Password Authentication** - Similar to Supabase, Clerk supports traditional `email/password` authentication.
+
+- **Social Login** - Supports a wide variety of OAuth providers, including Google, Facebook, Twitter, GitHub, and more.
+
+- **Magic Links and Passwordless Login** - Clerk allows users to log in with magic links, providing a smooth, passwordless experience.
+
+- **Session Management** - Clerk offers built-in session management, with support for multiple active sessions and session revocation.
+
+- **User Profile Management** - Clerk provides APIs for managing detailed user profiles, including avatars, email addresses, and phone numbers.
+
+- **Multi-Factor Authentication (MFA)** - Clerk natively supports MFA for enhanced security.
+
+- **Customizable User Flows** - Clerk gives developers full control over the user onboarding experience, from sign-ups to custom redirect flows.
+
+- **Clerk SDKs** - Clerk has official SDKs for React, Next.js, and other frontend frameworks, as well as backend integration for Node.js, .NET, and others.
+
+Now that we have a brief knowledge of the offerings of both Supabase and Clerk auth systems, let’s go ahead and set them up and build a demo.
+
+# Setup
+
+**Supabase** - You can sign up via **GitHub** or **SSO**.
+
+<Image
+    src="/images/img_21.png"
+    alt="Supabase"
+    width={1200}
+    height={600}
+/>
+
+**Clerk** - You can sign up via **GitHub**, **Google** or an **Existing email/password combination**.
+
+<Image
+    src="/images/img_22.png"
+    alt="Supabase"
+    width={1200}
+    height={600}
+/>
+
+In this article, I've used my GitHub account to sign up to both **Supabase** and **Clerk**. Let’s sign up and continue.
+
+## Supabase
+
+Once you sign up and authorize Supabase to use the **GitHub account**, You will be asked to create an organization.
+
+<Image
+    src="/images/img_23.png"
+    alt="Supabase-Org"
+    width={1200}
+    height={600}
+/>
+
+- **Name of the Org** - can be a valid company/individual name, I have provided the name as “MyXYZCompany”.
+
+- **Type of Org** - Personal for learning purposes
+
+- **Plan** - Free once the org is created, the flow will prompt to create a project inside the org as below:
+
+Once the org is created, the flow will prompt to create a project inside the org.
+
+<Image
+    src="/images/img_24.png"
+    alt="Supabase-Org"
+    width={1200}
+    height={600}
+/>
+
+- **Organization** - The current org will be pre-populated
+
+- **Project Name** - Provide a meaningful project name
+
+- **Database Password** - Either provide a strong password, or click on Generate a password, make sure to copy this password somewhere secure, this is used to access the `PostgreSQL` DB
+
+- **Region** - Select the region closest to you
+
+The project setup will take some time and we will be greeted with a **Dashboard** screen.
+
+<Image
+    src="/images/img_25.png"
+    alt="Supabase-Org"
+    width={1200}
+    height={600}
+/>
+
+You can see the API keys and settings at **Project Settings -> Configuration -> API**
+
+These are important URLs and keys that You are going to use further in the code demos that we create in this article.
+
+<Image
+    src="/images/img_26.png"
+    alt="Supabase-Org"
+    width={1200}
+    height={600}
+/>
+
+Next, let's setup Clerk.
+
+## Clerk
+
+After You sign up to Clerk, You get the below screen to create an app.
+
+- Provide an app name, by default Clerk provides **Email** and **Google** providers.
+
+It means that whenever we integrate Clerk auth in our app, we will be prompted to sign in with either Email or Google. We can configure other ones either now or at later stages.
+
+Let’s use the default options and create the app.
+
+<Image
+    src="/images/img_27.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Clerk app is created and we are greeted with a **Dashboard** page.
+
+<Image
+    src="/images/img_28.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+All the settings, keys, etc are available in the **Configure** screen.
+
+<Image
+    src="/images/img_29.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+And that’s it, Clerk’s sign up is done.
+
+
+# User Creation / OnBoarding
+
+Next, we need to create users in both Supabase and Clerk to start setting up the `Auth` components.
+
+> I have a test email (`thewritingwallah@gmail.com`) that I will be creating as a user in both the platforms.
+
+## Supabase
+
+- Browse to Authentication tab from the left sidebar -> There are 2 options available in the **Add User dropdown**
+
+  - **Send Invitation**
+
+  - **Create new user**
+
+> At the moment for default Email provider scenario for Send Invitation option, Supabase has restricted the authentication emails to org specific email addresses. So if we use the Send Invitation option for our test gmail user, it is going to fail.
+
+<Image
+    src="/images/img_31.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+> more info on this [GitHub Discussion](https://github.com/orgs/supabase/discussions/29370)
+
+so let's `Create` new user and fill in the details.
+
+<Image
+    src="/images/img_32.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+You can see user has been created in the dashboard.
+
+<Image
+    src="/images/img_33.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Next, let’s see creation/onboarding of users in Clerk.
+
+## Clerk
+
+Visit `Users` page and you'll see we can either `Create` a user from the dashboard itself or `Invite` the user.
+
+
+<Image
+    src="/images/img_34.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+> Let’s create a user -> fill in the details -> Check the Ignore password policies checkbox for simplicity purposes.
+
+<Image
+    src="/images/img_35.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+The user gets added to the platform instantly.
+
+<Image
+    src="/images/img_36.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Both Clerk and Supabase seem to fare well in the user addition, simple and quick.
+
+## Front End Integration - React
+
+Next, we are going to integrate both Supabase and Clerk Auth in a React app.
+
+### Supabase
+
+Let’s create a new vite `React` app.
+
+```bash
+npm create vite@latest ./
+```
+Supabase provides an auth library specifically for React - check out the docs [here](https://supabase.com/docs/guides/auth/quickstarts/react).
+
+Let’s install the required supabase libraries in the `React` app
+
+```typescript
+npm install @supabase/supabase-js @supabase/auth-ui-react @supabase/auth-ui-shared
+```
+
+Let’s create some routes - `Home`, `Login`, `Success`, `hook` up the react router and create a basic app.
+
+`App.jsx`
+
+```typescript
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/login";
+import Success from "./components/success";
+import Home from "./components/home";
+
+const App = () => {
+  return (
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/success" element={<Success />} />
+        </Routes>
+      </Router>
+    </>
+  );
+};
+
+export default App;
+```
+> Let’s copy **Supabase Project URL** and **Project API Key** from Supabase project dashboard into the **.env.local** file in the React app, these will help to create the supabase client which will further assist in authenticating the user.
+
+These are available at **Project Settings -> Configuration -> API**
+
+Now, let’s add the authentication stuffs in the Login component:
+
+<Image
+    src="/images/img_37.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Next, add `auth` in the Login component.
+
+```typescript
+import React, { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useNavigate } from "react-router-dom";
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabasePublicKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabasePublicKey);
+
+const Login = () => {
+  const [event, setEvent] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange(async (event) => {
+      console.log(event);
+      if (event === "SIGNED_IN") {
+        setEvent(event);
+        navigate("/success");
+      } else {
+        setEvent(event);
+        navigate("/login");
+      }
+    });
+  }, [event]);
+
+  return (
+    <>
+      <div className="container">
+        <h1 className="center">Login</h1>
+        <Auth
+          supabaseClient={supabase}
+          appearance={{ theme: ThemeSupa }}
+          providers={["github"]}
+          theme="dark"
+        />
+      </div>
+    </>
+  );
+};
+
+export default Login;
+
+```
+
+Let’s see in detail what’s happening in the Login component:
+
+- We have imported **createClient**, **Auth**, **ThemeSupa** from supabase js libraries that we had installed earlier.
+
+- **createClient** expects the **project URL** and **project public key** for it to be initialized.
+
+- Inside the **useEffect** hook, we are trying to ascertain whether the user is logged in or not, and navigate to the respective routes, by the **_supabase.auth.onAuthStateChange()_** method
+
+- Supabase provides us with the pre-built **\<Auth />** component that takes in **supabaseClient**, **appearance**, **providers**, **theme** as props.
+
+- supabaseClient is the object returned by the createClient method
+
+- appearance takes in a supabase Theme
+
+- providers is an array in which we can configure and provide the various OAuth providers e.g (Github, Google, twitter etc).
+
+Let’s run the app
+
+```bash
+cd supabse-react
+npm run dev
+```
+
+and click on login button and you'll see a supabase theme page.
+
+<Image
+    src="/images/img_38.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+The Supbase’s pre-built **_\<Auth />_** provides the look and feel, and we don’t need to configure any styles for it.
+
+Let’s create the **_Success component_** that we are going to navigate to post successful login.
+
+```typescript
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabasePublicKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabasePublicKey);
+
+const Success = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    async function userData() {
+      const { data } = await supabase.auth.getUser();
+      if (data?.user) {
+        setUser(data.user);
+      }
+    }
+    userData();
+  }, []);
+
+  async function logOut() {
+    await supabase.auth.signOut();
+    navigate("/login");
+  }
+
+  return (
+    <>
+      {Object.keys(user).length !== 0 ? (
+        <>
+          <h1>Success</h1>
+          <button onClick={logOut}>LogOut</button>
+        </>
+      ) : (
+        <>
+          <h1>User is not logged in</h1>
+          <button onClick={() => navigate("/")}>Go back to home</button>
+        </>
+      )}
+    </>
+  );
+};
+
+export default Success;
+```
+Let’s discuss the code of:
+
+- In the **useEffect** hook, we are trying to set the authenticated user details so that we can find whether he/she has been authenticated or not.
+
+- If the user details exist, we will display the Success header, along with a logout button, else we will display “**user is not logged in**” message, along with the “**Go back to home**” link. This check will also prevent unauthenticated browsing of the success URL directly from the browser.
+
+- In the logout function, we call the **supabase.auth.signout()** function and it logouts the user.
+
+
+Let’s login with the test user (`thewritingwallah@gmail.com`) that we had created earlier.
+
+
+<Image
+    src="/images/img_39.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+The authentication with Supabase and React is successful and it seems straightforward.
+
+Next, let’s integrate a React app with Clerk auth.
+
+### Clerk
+
+Let’s create a React app to integrate Clerk Auth.
+
+> Clerk provides us with built in components like **\<SignInButton />, \<UserButton /> \<SignedIn />, \<SignedOut />** etc to help in the integration.
+
+We need to extract the **Publishable Key** from the Clerk dashboard and put inside the **.env.local** file to aid in the auth. This key is present at **Configure -> Developers -> API Keys**
+
+<Image
+    src="/images/img_40.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+
+#### Importing Clerk Dependencies
+
+Let’s import the Clerk dependencies in the app. You can find the details about the required dependencies in the documentation [here](https://clerk.com/docs/quickstarts/react#react-quickstart).
+
+```bash
+npm install @clerk/clerk-react
+```
+
+Now, we need to add the reference to the publishable key in the main component and wrap the code inside a **_\<ClerkProvider />_** component. **ClerkProvider** expects the **publishableKey** and **afterSignOutUrl** as props.
+
+```typescript
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { ClerkProvider } from "@clerk/clerk-react";
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key");
+}
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+      <App />
+    </ClerkProvider>
+  </StrictMode>
+);
+```
+Now, let’s hook up the auth in the `App` component.
+
+```typescript
+import "./App.css";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
+
+import Success from "./components/success";
+function App() {
+  return (
+    <>
+      <h1>Clerk Auth</h1>
+      <header>
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+          <Success />
+        </SignedIn>
+      </header>
+    </>
+  );
+}
+
+export default App;
+```
+
+The code is self explanatory:
+
+- We import the pre-built **SignedIn, SignedOut, UserButton, SignInButton** from clerk react library
+
+- We wrap **SignInButtton** inside **SignedOut** component, which says that display the sign in button if the user is not authenticated.
+
+Let’s run the app and click on Sign in.
+
+<Image
+    src="/images/img_41.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Let’s enter the test user that we created on the Clerk dashboard: `thewritingwallah@gmail.com`, and then click on **Continue**.
+Enter the password and click on Continue, The authentication is successful and we are greeted with the below page.
+
+
+<Image
+    src="/images/img_42.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+The **_\<UserButton />_** component appears and when clicked on it displays the basic details of the account.
+
+Clerk authentication with React is super seamless and very easy to set up.
+
+
+## Backend Integration - .NET 8 Web APIs
+
+We have learnt how to integrate our React apps with both Supabase and Clerk. 
+
+But the front end alone does not cut it, we always have a backend system that propels a data driven application, hence we need to evaluate how Supabase and Clerk fit into the backend scenario as well.
+
+In this section, we are going to build sample **.NET 8 Web APIs**, secure them with Supabase and Clerk auth, and call the protected APIs from secure React front ends.
+
+Let’s continue.
+
+### Supabase
+
+Let’s create a new .NET 8 Web API app
+
+```bash
+dotnet new webapi
+```
+We’ll be using the below Nuget package to work with the Supabase JWT tokens.
+
+```bash
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.8
+```
+Let’s open the Program.cs file of the web api solution and add support for JWT auth.
+
+```java
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            var configuration = builder.Configuration;
+
+            // Add services to the container.
+
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = configuration["SupabaseSettings:Issuer"],
+                        ValidAudience = configuration["SupabaseSettings:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["SupabaseSettings:SecretKey"]))
+                    };
+                });
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Cors", p =>
+                {
+                    p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
+
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseCors("Cors");
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
+            app.MapControllers();
+
+            app.Run();
+        }
+    }
+```
+We have:
+
+- Added support for JWT auth scheme using **builder.Services.AddAuthentication()** builder.
+
+- The token validation parameters have all the mandatory parameters:
+
+- **ValidateAudience** as true
+
+- **ValidateIssuer** as true
+
+- **ValidateIssuerSigningKey** as true
+
+- **ValidIssuer**
+
+- **ValidAudience**
+
+- **IssuerSigningKey**
+
+- ValidIssuer = **_“SupabaseProjectURL/auth/v1”_**
+
+- In our case the Supabase project URL is **_“_**[**_https://vcripehfbbgogiwvzbgo.supabase.co_**](https://vcripehfbbgogiwvzbgo.supabase.co)**_”_**
+
+- ValidAudience = **_“authenticated”_**
+
+- IssuerSigningKey = The JWT secret from the Supabase API dashboard
+
+> This is a very sensitive key and should not be revealed/transferred or checked into Source Control.
+
+Put the below settings in the **appsettings.json** file and use the **Configuration** pattern to retrieve them in the Program.cs file.
+
+```plantext
+  "SupabaseSettings": {
+    "Issuer": "https://vcripehfbbgogiwvzbgo.supabase.co/auth/v1",
+    "Audience": "authenticated",
+    "SecretKey": "SECRET JWT KEY FROM SUPABASE DASHBOARD"
+  }
+```
+Now, let's create a ValuesController and a protected GET endpoint “names”.
+
+```java
+[Route("api/[controller]")]
+    [ApiController]
+    public class ValuesController : ControllerBase
+    {
+        public class Employee
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Department { get; set; }
+        }
+
+        [Authorize]
+        [HttpGet("names")]
+        public IActionResult GetEmployee()
+        {
+            var emp = new Employee
+            {
+                Id = 101,
+                Name = "John Doe",
+                Department = "IT"
+            };
+
+            return Ok(emp);
+        }
+    }
+```
+
+We would get a 401 UnAuthorized once we try to access the endpoint without an authenticated user.
+
+<Image
+    src="/images/img_43.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+We would need a token to access the endpoint, let’s integrate this API into the React App and use the authenticated user token to access the endpoint.
+
+Let’s make changes to the React app success component to call the protected API.
+
+```typescript
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import axios from "axios";
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabasePublicKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabasePublicKey);
+
+const Success = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState("");
+  const [token, setToken] = useState("");
+  const [emp, setEmp] = useState({});
+
+  useEffect(() => {
+    async function userData() {
+      const { data } = await supabase.auth.getUser();
+      if (data?.user) {
+        setUser(data.user);
+
+        const item = localStorage.getItem("sb-vcripehfbbgogiwvzbgo-auth-token");
+        const parsedItem = JSON.parse(item);
+        const accessToken = parsedItem["access_token"];
+
+        setToken(accessToken);
+      }
+    }
+    userData();
+  }, []);
+
+  async function logOut() {
+    await supabase.auth.signOut();
+    navigate("/login");
+  }
+
+  async function callAPI() {
+    const API_URL = "https://localhost:7000/api/Values/names";
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await axios.get(API_URL, config);
+    setEmp(response.data);
+  }
+
+  return (
+    <>
+      {Object.keys(user).length !== 0 ? (
+        <>
+          <h1>Success</h1>
+          <button onClick={logOut}>LogOut</button>
+          <button onClick={callAPI}>Call API</button>
+          <div className="empContainer">
+            <p>{emp.id}</p>
+            <p>{emp.name}</p>
+            <p>{emp.department}</p>
+          </div>
+        </>
+      ) : (
+        <>
+          <h1>User is not logged in</h1>
+          <button onClick={() => navigate("/")}>Go back to home</button>
+        </>
+      )}
+    </>
+  );
+};
+
+export default Success;
+
+```
+
+We have a:
+
+- **Call API** button, on the click of which we have a function **callAPI()**. We use **axios** to call the external API, We extract the user token from the local storage and bind it to the **Authorization** header of the API call.
+
+- We bind the Employee details on successful response of the API
+
+Let’s run both React/.NET apps and see them in action.
+
+- Login to the React app
+- Click on the Call API button
+- The control comes over to the protected “names” endpoint on the .NET API side
+
+<Image
+    src="/images/img_44.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+API data successfully appears on the UI.
+
+<Image
+    src="/images/img_45.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+So, we have successfully authenticated with Supabase in both frontend and backend. The logged in user is able to access the protected API.
+
+### Clerk
+
+Let’s see how we can integrate Clerk auth in .NET 8 Web API.
+
+Create a new .NET 8 Web API app
+
+```bash
+dotnet new webapi
+```
+
+Add the JWT Nuget package to work with the Clerk auth
+
+```bash
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.8
+```
+
+In the Program.cs file, add the below code
+
+```java
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+namespace Clerk.Auth
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            var configuration = builder.Configuration;
+
+            // Add services to the container.
+
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+                {
+                    options.Authority = configuration["ClerkSettings:Authority"];
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateAudience = false,
+                        ValidateIssuer = false,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["ClerkSettings:SecretKey"]))
+                    };
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnTokenValidated = context =>
+                        {
+                            var principal = context.Principal;
+                            var azpClaim = principal?.Claims.FirstOrDefault(x=>x.Type=="azp");
+                            if(azpClaim is null || azpClaim.Value != builder.Configuration["ClerkSettings:AZP"])
+                            {
+                                context.Fail("AZP Claim is invalid or missing");
+                            }
+                            return Task.CompletedTask;
+                        },
+                        OnMessageReceived = context =>
+                        {
+                            return Task.CompletedTask;
+                        }
+                    };
+                });
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Cors", p =>
+                {
+                    p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
+
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseCors("Cors");
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.MapControllers();
+
+            app.Run();
+        }
+    }
+}
+```
+
+We have:
+
+- Added support for JWT auth scheme using **builder.Services.AddAuthentication()** builder.
+
+- The token validation parameters have all the mandatory parameters:
+
+- **Authority** as Clerk project URL
+
+- **ValidateAudience** as false
+
+- **ValidateIssuer** as false
+
+- **ValidateIssuerSigningKey** as true
+
+- **IssuerSigningKey**
+
+- In our case, Authority = **_“https\://humble-rhino-42.clerk.accounts.dev”_**
+
+- AZP is Authorized Party = **_“http\://localhost:5173”_**
+
+- SecretKey = The JWT secret from the Clerk API dashboard
+
+
+<Image
+    src="/images/img_46.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+> This key is secret and sensitive, not to be shared/revealed or checked in the source control.
+
+```bash
+"ClerkSettings": {
+    "Authority": "https://humble-rhino-42.clerk.accounts.dev",
+    "AZP": "http://localhost:5173",
+    "SecretKey": "CLERK DASHBOARD SECRET KEY"
+  }
+```
+
+Clerk Auth on .NET side is a bit different as compared to Supabase, it does not validate the audience or issuer, rather it validates and checks for the “**azp**” claim in the incoming token.
+
+“**azp**” refers to **Authorized Party**, in our example we have set **Authorized Party** to “**localhost:5173**” which is the local home page of the Vite React app. Hence in the **OnTokenValidated** event, we are checking the “**azp**” claim in the incoming token.
+
+Now that we have set up the auth on the backend, lets create a protected test endpoint.
+
+```bash
+ [Route("api/[controller]")]
+    [ApiController]
+    public class NamesController : ControllerBase
+    {
+        [Authorize]
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            return Ok("This is the response from the sample protected endpoint");
+        }
+    }
+```
+
+We get a 401 UnAuthorized while trying to browse this endpoint as it is, without a token.
+
+
+<Image
+    src="/images/img_46.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Let’s update our Clerk React app to extract the access token and call the protected API endpoint.
+
+```typescript
+import React, { useState } from "react";
+import axios from "axios";
+import { useAuth } from "@clerk/clerk-react";
+
+
+const Success = () => {
+  const [data, setData] = useState("");
+  const { getToken } = useAuth();
+
+
+  async function callAPI() {
+    const API_URL = "https://localhost:7110/api/Names/test";
+    const token = await getToken();
+    console.log("token", token);
+    let config = {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+    const response = await axios.get(API_URL, config);
+    setData(response.data);
+  }
+  return (
+    <>
+      <h1>Success page</h1>
+      <button onClick={callAPI}>Call API</button>
+      <div>
+        <p>{data}</p>
+      </div>
+    </>
+  );
+};
+
+
+export default Success;
+```
+
+We use:
+
+- The **useAuth** hook from **clerk-react** that helps to grab the access token post successful login.
+
+- We have a **Call API** button which performs an **axios** GET request and appends the token in the **Authorization** header of the request.
+
+- We populate the div with the response of the API call.
+
+Let’s run both the React and .NET apps and observe.
+
+
+<Image
+    src="/images/img_42.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Click on the Call API button, the control goes to the .NET end, and we see the “**azp**” claim in the incoming token that is captured in the **OnTokenValidated** event.
+
+<Image
+    src="/images/img_48.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Upon successful token validation, we see the successful response on the UI. So, we have successfully authenticated with Clerk in both frontend and backend. The logged in user is able to access the protected API.
+
+Both Supabase and Clerk are quite straightforward and seamless in integration at the backend as well.
+
+## OAuth Provider Integration - Github
+
+In this section, we are going to integrate GitHub login in our apps and see how Supabase and Clerk works against each other.
+
+### Supabase
+
+Click on **Authentication -> Providers** in Supabase Dashboard, and we will see an extensive list of various OAuth providers that Supabase supports.
+
+<Image
+    src="/images/img_49.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Let’s click on **GitHub** and fill in the details. We see that the **Callback URL** is pre-populated while **Client ID** and **Client Secret** fields are empty. Where to get these details from?
+
+
+<Image
+    src="/images/img_50.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+We need to create an **OAuth** app on **GitHub** end, and then we will get the Client ID/Secret that we can populate at Supabase’s end.
+
+
+Let’s go to **GitHub -> Login -> Settings -> Developer Settings -> OAuth Apps -> New OAuth App**
+
+
+<Image
+    src="/images/img_51.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+<Image
+    src="/images/img_52.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Register a new OAuth app - 
+
+- **Application Name** - provide a meaningful name
+
+- **Homepage URL** - React app’s local home page url - localhost:5173
+
+- **Application Description** - provide some meaningful description
+
+- **Authorization Callback URL** - the call back URL where in the auth will fall to after successful operation, Supabase provides it, copy and paste it over here
+
+After successful app registration - generate a **client secret**, and copy both the **Client ID/Secret** to Supabase end.
+
+<Image
+    src="/images/img_53.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Let’s go to our Supabase React app and add **Github** as a provider, so that it appears as a login mechanism.
+
+In the Login screen -> **\<Auth />** component, add the **providers** prop and mention “**github**” over there. **Providers** is an array that can include all the OAuth providers that have been setup.
+
+```typescript
+ return (
+    <>
+      <div className="container">
+        <h1 className="center">Login</h1>
+        <Auth
+          supabaseClient={supabase}
+          appearance={{ theme: ThemeSupa }}
+          providers={["github"]}
+          theme="dark"
+        />
+      </div>
+    </>
+  );
+};
+```
+
+
+<Image
+    src="/images/img_54.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+This is the only configuration that is required at the code end, let’s run the app and observe.
+
+We see a Sign in with GitHub link on the React Login page, let’s click on it.
+
+We see the GitHub OAuth Authorize screen, click on the Authorize button.
+
+
+<Image
+    src="/images/img_55.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+We are redirected back to localhost:5173 because it is what we have configured in github, and we see the token in the local storage of the browser, with the provider as github.
+
+### Clerk
+
+Let’s integrate GitHub OAuth provider in Clerk.
+
+Browse to **Clerk Dashboard -> Configure -> SSO Connections -> Add Connection -> Choose Github from the dropdown.**
+
+<Image
+    src="/images/img_57.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+
+<Image
+    src="/images/img_58.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+GitHub will be added as an OAuth provider.
+
+
+<Image
+    src="/images/img_59.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Let's run the React app and click the Signin button, we will see GitHub also as a login provider.
+
+<Image
+    src="/images/img_60.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Click on GitHub link, and it will ask to authorize Clerk with the logged in GitHub user id.
+
+
+<Image
+    src="/images/img_61.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Upon authorizing it, we will be redirected back to the Success page with the UserButton component populated.
+
+
+<Image
+    src="/images/img_62.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+This is the trivial way, the limitation of it is that every time we will be asked to authorize Clerk via github, to encounter this, we can click on **Use Custom Credential** option in **Github** in **SSO Connections** page. 
+
+
+We will have to create a separate **OAuth app on Github**, then enter the **Client ID/Secret** at Clerk’s end, the same way we did for Supabase.
+
+
+<Image
+    src="/images/img_63.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+Let’s create a new OAuth app on GitHub, and copy the Client ID/Secret at Clerk’s end.
+
+Upon click of the GitHub button on the Login Screen, the user will be prompted to the below Authorize screen and the login will be successful.
+
+## Conclusion
+
+We have had an extensive look at both Supabase and Clerk Authentications in this article.
+
+- **Supabase**: More focused on being a full backend service with authentication as part of its suite of tools. Ideal if we're looking for an open-source Firebase alternative with additional features like databases, storage, and server-side functions.
+
+- **Clerk**: Specializes in user authentication and management, offering pre-built components and a front-end-centric approach. It provides a higher level of abstraction for authentication with minimal configuration required, particularly useful for complex user management scenarios.
+
+Let’s summarize the features.
+
+<Image
+    src="/images/img_64.png"
+    alt="Clerk"
+    width={1200}
+    height={600}
+/>
+
+## Wrapping Up
+
+Congratulations. 🎉 You’ve completed the project for this comparison tutorial.
+
+You can find the full code for the app we built in this repository: [Supabase Clerk Auth Demo](https://github.com/tyaga001/supabase-clerk-auth-demo).
+
+Happy coding, and feel free to explore more with Supabase and Clerk.
+
+> Did you enjoy reading this article and have you learned something new? If so, I would love to know if the content was helpful.
+
+See you soon with my next article. Until then, please take care of yourself, and keep learning.
