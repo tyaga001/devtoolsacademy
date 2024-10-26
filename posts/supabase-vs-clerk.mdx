@@ -14,61 +14,65 @@ This is the fourth post in a series of **awesome developer tools** I intend to w
 2. [MongoDB vs PostgreSQL: A Detailed Comparison](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL)
 3. [State of Databases for Serverless in 2024](https://www.devtoolsacademy.com/blog/state-of-databases-2024)
 
-Today I want to talk about `auth` which is one of the most critical component of any app. Whether we’re building a simple web app or a full-scale app, ensuring that users can securely log in and manage their accounts is essential.
+Today I want to talk about `auth` which is one of the most critical component of any app. Whether you’re building a simple web app or a full-scale app, ensuring that users can securely log in and manage their accounts is essential.
 
-And based on all the feedback—and a good amount of time spent in Developer communities, Twitter and Reddit — I’ve picked out 2 popular options for `authentication`: Supabase and Clerk.
+And based on all the feedback—and a good amount of time spent in developer communities, Twitter and Reddit — I’ve picked out 2 popular options for `authentication`: Supabase and Clerk.
 
-These two are pretty good choices, and it'd be helpful to go deep down and see why they’re getting so much attention.
+> In this article, let's take a detailed look at Supabase Auth and Clerk Auth, I'll focus on their offerings, and how you can implement them with a `React frontend` and `.NET backend`.
+By the end, you’ll have a clear understanding of which solution may work best for you.
 
-> In this article, let's take a detailed look at Supabase Auth and Clerk Auth, focusing on their offerings, and how they can be implemented with a `React frontend` and `.NET backend`. By the end, you’ll have a clear understanding of which solution may work best for you.
 
-# Offerings
-## Supabase Authentication
+## What is Clerk
+
+> Clerk is a developer-first authentication platform, designed for apps where user management and complex workflows are required.
+Clerk goes beyond simple user auth, offering features like user profile management, session management, and fine-grained permissions.
+
+## What is Supabase
 
 > Supabase is an open-source alternative to Firebase, offering various backend services, including authentication, real-time databases, and storage. Supabase’s authentication system is built on **PostgreSQL** and integrates well with the rest of the Supabase ecosystem.
+
+# On Features
+## Supabase
 
 **Key Features of Supabase Auth**:
 
 - **Email/Password Authentication** - Supabase provides traditional `email/password` auth with verification links.
 
-- **OAuth Providers** - Support for social login through Google, Facebook, GitHub, and other OAuth providers.
+- **OAuth Providers** - Support for social login through `Google`, `Facebook`, `GitHub`, and other `OAuth` providers.
 
-- **Magic Links** - Passwordless auth using email-based magic links.
+- **Magic Links** - Passwordless auth using `email-based` magic links.
 
-- **Secure Session Management** - Supabase securely handles sessions with access tokens and refresh tokens.
+- **Secure Session Management** - Supabase securely handles `sessions` with access `tokens` and refresh tokens.
 
-- **Role-Based Access Control (RBAC)** - Users can be assigned roles, and permissions can be managed using policies in the `PostgreSQL` database.
+- **Role-Based Access Control (RBAC)** - Users can be assigned `roles`, and `permissions` can be managed using policies in the `PostgreSQL` database.
 
-- **Multi-Factor Authentication (MFA)** - With third-party integrations, MFA can be enabled for added security.
+- **Multi-Factor Authentication (MFA)** - With third-party integrations, `MFA` can be enabled for added security.
 
-## Clerk Authentication
-
-> Clerk is a developer-first authentication platform, designed for apps where user management and complex workflows are required.
-Clerk goes beyond simple user auth, offering features like user profile management, session management, and fine-grained permissions.
+## Clerk
 
 **Key Features of Clerk**:
 
 - **Email/Password Authentication** - Similar to Supabase, Clerk supports traditional `email/password` authentication.
 
-- **Social Login** - Supports a wide variety of OAuth providers, including Google, Facebook, Twitter, GitHub, and more.
+- **Social Login** - Supports a wide variety of `OAuth` providers, including `Google`, `Facebook`, `Twitter`, `GitHub`, and more.
 
-- **Magic Links and Passwordless Login** - Clerk allows users to log in with magic links, providing a smooth, passwordless experience.
+- **Magic Links and Passwordless Login** - Clerk allows users to log in with `magic links`, providing a smooth, `passwordless` experience.
 
-- **Session Management** - Clerk offers built-in session management, with support for multiple active sessions and session revocation.
+- **Session Management** - Clerk offers built-in `session` management, with support for multiple active sessions and session revocation.
 
-- **User Profile Management** - Clerk provides APIs for managing detailed user profiles, including avatars, email addresses, and phone numbers.
+- **User Profile Management** - Clerk provides `APIs` for managing detailed user `profiles`, including `avatars`, `email addresses`, and phone numbers.
 
-- **Multi-Factor Authentication (MFA)** - Clerk natively supports MFA for enhanced security.
+- **Multi-Factor Authentication (MFA)** - Clerk natively supports `MFA` for enhanced security.
 
-- **Customizable User Flows** - Clerk gives developers full control over the user onboarding experience, from sign-ups to custom redirect flows.
+- **Customizable User Flows** - Clerk gives developers full control over the `user onboarding` experience, from sign-ups to custom redirect flows.
 
-- **Clerk SDKs** - Clerk has official SDKs for React, Next.js, and other frontend frameworks, as well as backend integration for Node.js, .NET, and others.
+- **Clerk SDKs** - Clerk has official SDKs for `React`, `Next.js`, and other frontend frameworks, as well as backend integration for `Node.js`, `.NET`, and others.
 
-Now that we have a brief knowledge of the offerings of both Supabase and Clerk auth systems, let’s go ahead and set them up and build a demo.
+Next, let’s set them up in local and see a live demo.
 
-# Setup
+# On Setup
 
-**Supabase** - You can sign up via **GitHub** or **SSO**.
+> **Supabase** - You can sign up via **GitHub** or **SSO**.
 
 <Image
     src="/images/img_21.png"
@@ -77,7 +81,7 @@ Now that we have a brief knowledge of the offerings of both Supabase and Clerk a
     height={600}
 />
 
-**Clerk** - You can sign up via **GitHub**, **Google** or an **Existing email/password combination**.
+> **Clerk** - You can sign up via **GitHub**, **Google** or an **Existing email/password combination**.
 
 <Image
     src="/images/img_22.png"
@@ -86,7 +90,7 @@ Now that we have a brief knowledge of the offerings of both Supabase and Clerk a
     height={600}
 />
 
-In this article, I've used my GitHub account to sign up to both **Supabase** and **Clerk**. Let’s sign up and continue.
+In this article, I've used my GitHub account to sign up to both **Supabase** and **Clerk**.
 
 ## Supabase
 
@@ -103,9 +107,9 @@ Once you sign up and authorize Supabase to use the **GitHub account**, You will 
 
 - **Type of Org** - Personal for learning purposes
 
-- **Plan** - Free once the org is created, the flow will prompt to create a project inside the org as below:
+- **Plan** - Free
 
-Once the org is created, the flow will prompt to create a project inside the org.
+Once you set up the org, you'll get a prompt to add a project - here's what that looks like:
 
 <Image
     src="/images/img_24.png"
@@ -122,7 +126,7 @@ Once the org is created, the flow will prompt to create a project inside the org
 
 - **Region** - Select the region closest to you
 
-The project setup will take some time and we will be greeted with a **Dashboard** screen.
+Just give it a minute to set up, and boom - your Dashboard will pop up.
 
 <Image
     src="/images/img_25.png"
@@ -131,9 +135,9 @@ The project setup will take some time and we will be greeted with a **Dashboard*
     height={600}
 />
 
-You can see the API keys and settings at **Project Settings -> Configuration -> API**
+You can see the `API keys` and settings at **Project Settings -> Configuration -> API**
 
-These are important URLs and keys that You are going to use further in the code demos that we create in this article.
+These are important URLs and keys that you are going to use further in the demo.
 
 <Image
     src="/images/img_26.png"
@@ -146,11 +150,11 @@ Next, let's setup Clerk.
 
 ## Clerk
 
-After You sign up to Clerk, You get the below screen to create an app.
+After you sign up to Clerk, You get the below screen to create an app.
 
-- Provide an app name, by default Clerk provides **Email** and **Google** providers.
+- Provide an `app name, by default Clerk provides **Email** and **Google** providers.
 
-It means that whenever we integrate Clerk auth in our app, we will be prompted to sign in with either Email or Google. We can configure other ones either now or at later stages.
+> When you add Clerk auth to your app, you'll get a simple sign-in screen with `Email` and `Google` as default options. Don't worry - you can always add more sign-in methods later if you want.
 
 Let’s use the default options and create the app.
 
@@ -161,7 +165,7 @@ Let’s use the default options and create the app.
     height={600}
 />
 
-Clerk app is created and we are greeted with a **Dashboard** page.
+> Great - You've created your Clerk app and now you'll see your shiny new **Dashboard**.
 
 <Image
     src="/images/img_28.png"
@@ -170,7 +174,7 @@ Clerk app is created and we are greeted with a **Dashboard** page.
     height={600}
 />
 
-All the settings, keys, etc are available in the **Configure** screen.
+You'll find all your settings, keys, and other important stuff in the **Configure** screen.
 
 <Image
     src="/images/img_29.png"
@@ -179,18 +183,17 @@ All the settings, keys, etc are available in the **Configure** screen.
     height={600}
 />
 
-And that’s it, Clerk’s sign up is done.
-
+And there you have it - you're all set up with Clerk. 🎉
 
 # User Creation / OnBoarding
 
-Next, we need to create users in both Supabase and Clerk to start setting up the `Auth` components.
+Next, we need to create `users` in both Supabase and Clerk to start setting up the `Auth` components.
 
-> I have a test email (`thewritingwallah@gmail.com`) that I will be creating as a user in both the platforms.
+> I'll use my email (`thewritingwallah@gmail.com`) to create accounts on both platforms to show you how it works.
 
 ## Supabase
 
-- Browse to Authentication tab from the left sidebar -> There are 2 options available in the **Add User dropdown**
+- Go to Authentication tab from the left sidebar -> There are 2 options available in the **Add User dropdown**
 
   - **Send Invitation**
 
