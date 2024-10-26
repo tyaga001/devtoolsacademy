@@ -9,7 +9,7 @@ const Footer = dynamic(() => import('@/components/Footer'), { ssr: true });
 
 const featuredPosts = [
     {
-        title: 'Neon vs Supabase',
+        title: 'Neon vs. Supabase',
         excerpt: 'Choose the right Database for your SaaS.',
         image: '/images/default-og-image.png',
         slug: 'neon-vs-supabase',
@@ -17,7 +17,7 @@ const featuredPosts = [
         category: "Database"
     },
     {
-        title: 'Supabase vs Clerk',
+        title: 'Supabase vs. Clerk',
         excerpt: 'Choose the right Auth for your SaaS',
         image: '/images/supabase-clerk.png',
         slug: 'supabase-vs-clerk',
