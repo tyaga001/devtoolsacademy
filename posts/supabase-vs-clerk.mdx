@@ -10,8 +10,8 @@ featuredImage: "/images/supabase-clerk.png"
 
 This is the fourth post in a series of **awesome developer tools** I intend to write about. In the last 3 posts I talk about Neon, Supabase, Postgres and MongoDB it’s worth revisiting:
 
-1. [Neon Postgres vs. Supabase: Choosing the Right Database for Your SaaS](https://www.devtoolsacademy.com/blog/neon-vs-supabase)
-2. [MongoDB vs PostgreSQL: A Detailed Comparison](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL)
+1. [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase)
+2. [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL)
 3. [State of Databases for Serverless in 2024](https://www.devtoolsacademy.com/blog/state-of-databases-2024)
 
 Today I want to talk about `auth` which is one of the most critical component of any app. Whether you’re building a simple web app or a full-scale app, ensuring that users can securely log in and manage their accounts is essential.
@@ -85,7 +85,7 @@ Next, let’s set them up in local and see a live demo.
 
 <Image
     src="/images/img_22.png"
-    alt="Supabase"
+    alt="Clerk-Auth"
     width={1200}
     height={600}
 />
@@ -113,7 +113,7 @@ Once you set up the org, you'll get a prompt to add a project - here's what that
 
 <Image
     src="/images/img_24.png"
-    alt="Supabase-Org"
+    alt="Supabase-Create-Account"
     width={1200}
     height={600}
 />
@@ -130,7 +130,7 @@ Just give it a minute to set up, and boom - your Dashboard will pop up.
 
 <Image
     src="/images/img_25.png"
-    alt="Supabase-Org"
+    alt="Supabase-Dashboard"
     width={1200}
     height={600}
 />
@@ -141,7 +141,7 @@ These are important URLs and keys that you are going to use further in the demo.
 
 <Image
     src="/images/img_26.png"
-    alt="Supabase-Org"
+    alt="Supabase-API-Keys"
     width={1200}
     height={600}
 />
@@ -160,7 +160,7 @@ Let’s use the default options and create the app.
 
 <Image
     src="/images/img_27.png"
-    alt="Clerk"
+    alt="Clerk-Login-Page"
     width={1200}
     height={600}
 />
@@ -169,7 +169,7 @@ Let’s use the default options and create the app.
 
 <Image
     src="/images/img_28.png"
-    alt="Clerk"
+    alt="Clerk-Auth-Dashboard"
     width={1200}
     height={600}
 />
@@ -178,16 +178,16 @@ You'll find all your settings, keys, and other important stuff in the **Configur
 
 <Image
     src="/images/img_29.png"
-    alt="Clerk"
+    alt="Clerk-Auth-Configure-Screen"
     width={1200}
     height={600}
 />
 
 And there you have it - you're all set up with Clerk. 🎉
 
-# User Creation / OnBoarding
+# On User Creation / OnBoarding
 
-Next, we need to create `users` in both Supabase and Clerk to start setting up the `Auth` components.
+Next, let's create `users` in both **Supabase** and **Clerk** to start setting up the `Auth` components.
 
 > I'll use my email (`thewritingwallah@gmail.com`) to create accounts on both platforms to show you how it works.
 
@@ -203,41 +203,42 @@ Next, we need to create `users` in both Supabase and Clerk to start setting up t
 
 <Image
     src="/images/img_31.png"
-    alt="Clerk"
+    alt="Supabase-default-emails-provider"
     width={1200}
     height={600}
 />
 
 > more info on this [GitHub Discussion](https://github.com/orgs/supabase/discussions/29370)
 
-so let's `Create` new user and fill in the details.
+so hit the `Create` new user and fill in the details.
 
 <Image
     src="/images/img_32.png"
-    alt="Clerk"
+    alt="Supabase-create-new-users"
     width={1200}
     height={600}
 />
 
-You can see user has been created in the dashboard.
+You can see user in the dashboard.
 
 <Image
     src="/images/img_33.png"
-    alt="Clerk"
+    alt="Supabase-new-user-dashboard"
     width={1200}
     height={600}
 />
 
-Next, let’s see creation/onboarding of users in Clerk.
+Next, let’s see creation/onboarding of `users` in Clerk.
 
 ## Clerk
 
-Visit `Users` page and you'll see we can either `Create` a user from the dashboard itself or `Invite` the user.
+let’s head over to the `Users` page.
 
+> You’ll see we can either `Create` a user right from the dashboard or `Invite` one.
 
 <Image
     src="/images/img_34.png"
-    alt="Clerk"
+    alt="Clerk-Create-Users"
     width={1200}
     height={600}
 />
@@ -246,7 +247,7 @@ Visit `Users` page and you'll see we can either `Create` a user from the dashboa
 
 <Image
     src="/images/img_35.png"
-    alt="Clerk"
+    alt="Clerk-How-to-create-a-user"
     width={1200}
     height={600}
 />
@@ -255,16 +256,16 @@ The user gets added to the platform instantly.
 
 <Image
     src="/images/img_36.png"
-    alt="Clerk"
+    alt="Clerk-user-dashboard"
     width={1200}
     height={600}
 />
 
-Both Clerk and Supabase seem to fare well in the user addition, simple and quick.
+Both Clerk and Supabase make adding `users` simple and quick.
 
 ## Front End Integration - React
 
-Next, we are going to integrate both Supabase and Clerk Auth in a React app.
+Next, let's integrate both Supabase and Clerk Auth in a `React` app.
 
 ### Supabase
 
@@ -281,7 +282,7 @@ Let’s install the required supabase libraries in the `React` app
 npm install @supabase/supabase-js @supabase/auth-ui-react @supabase/auth-ui-shared
 ```
 
-Let’s create some routes - `Home`, `Login`, `Success`, `hook` up the react router and create a basic app.
+> Let’s create routes - `Home`, `Login`, `Success`, `hook` up the react router and create a basic app.
 
 `App.jsx`
 
@@ -308,15 +309,15 @@ const App = () => {
 
 export default App;
 ```
-> Let’s copy **Supabase Project URL** and **Project API Key** from Supabase project dashboard into the **.env.local** file in the React app, these will help to create the supabase client which will further assist in authenticating the user.
+> Grab the **Supabase Project URL** and **Project API Key** from your Supabase dashboard, and drop them into the **.env.local** file in your React app. This will set up the Supabase client, which we’ll use to handle user authentication.
 
 These are available at **Project Settings -> Configuration -> API**
 
-Now, let’s add the authentication stuffs in the Login component:
+Now, let’s add the authentication in the `Login` component:
 
 <Image
     src="/images/img_37.png"
-    alt="Clerk"
+    alt="Supabase-API-Configuration"
     width={1200}
     height={600}
 />
@@ -370,23 +371,23 @@ export default Login;
 
 ```
 
-Let’s see in detail what’s happening in the Login component:
+Let’s break down what’s happening in the Login component:
 
-- We have imported **createClient**, **Auth**, **ThemeSupa** from supabase js libraries that we had installed earlier.
+- First, we import **createClient**, **Auth**, and **ThemeSupa** from the Supabase libraries we installed earlier.
 
-- **createClient** expects the **project URL** and **project public key** for it to be initialized.
+- **createClient** needs the **project URL** and **project public key** to initialize.
 
-- Inside the **useEffect** hook, we are trying to ascertain whether the user is logged in or not, and navigate to the respective routes, by the **_supabase.auth.onAuthStateChange()_** method
+- In the **useEffect** hook, we check if the user is logged in using **_supabase.auth.onAuthStateChange()_** and navigate to the appropriate routes accordingly.
 
-- Supabase provides us with the pre-built **\<Auth />** component that takes in **supabaseClient**, **appearance**, **providers**, **theme** as props.
+- Supabase offers a built-in **\<Auth />** component, which accepts **supabaseClient**, **appearance**, **providers**, and **theme** as props.
 
-- supabaseClient is the object returned by the createClient method
+- **supabaseClient** is the object we get from calling **createClient**.
 
-- appearance takes in a supabase Theme
+- **appearance** lets us set a Supabase theme for the UI.
 
-- providers is an array in which we can configure and provide the various OAuth providers e.g (Github, Google, twitter etc).
+- **providers** is an array where we can configure OAuth providers like GitHub, Google, Twitter, and more.
 
-Let’s run the app
+Alright, let’s run the app.
 
 ```bash
 cd supabse-react
@@ -397,7 +398,7 @@ and click on login button and you'll see a supabase theme page.
 
 <Image
     src="/images/img_38.png"
-    alt="Clerk"
+    alt="Supabase-React-App-Local"
     width={1200}
     height={600}
 />
@@ -453,7 +454,7 @@ const Success = () => {
 
 export default Success;
 ```
-Let’s discuss the code of:
+Let’s walk through what’s going on in the Success component:
 
 - In the **useEffect** hook, we are trying to set the authenticated user details so that we can find whether he/she has been authenticated or not.
 
@@ -467,25 +468,27 @@ Let’s login with the test user (`thewritingwallah@gmail.com`) that we had crea
 
 <Image
     src="/images/img_39.png"
-    alt="Clerk"
+    alt="Supabase-Local-React-APp"
     width={1200}
     height={600}
 />
-The authentication with Supabase and React is successful and it seems straightforward.
+The Supabase authentication with React works great and is super simple.
 
-Next, let’s integrate a React app with Clerk auth.
+Now, let’s get started with setting up Clerk authentication in our `React` app.
 
 ### Clerk
 
-Let’s create a React app to integrate Clerk Auth.
+Let’s create another `React` app to integrate Clerk Auth.
 
 > Clerk provides us with built in components like **\<SignInButton />, \<UserButton /> \<SignedIn />, \<SignedOut />** etc to help in the integration.
 
-We need to extract the **Publishable Key** from the Clerk dashboard and put inside the **.env.local** file to aid in the auth. This key is present at **Configure -> Developers -> API Keys**
+We need to extract the **Publishable Key** from the Clerk dashboard and add inside the **.env.local** file to aid in the auth.
+
+This key is present at **Configure -> Developers -> API Keys**
 
 <Image
     src="/images/img_40.png"
-    alt="Clerk"
+    alt="Clerk-API-Keys-Dashboard"
     width={1200}
     height={600}
 />
