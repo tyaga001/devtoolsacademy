@@ -1277,6 +1277,94 @@ Create a new `OAuth` app on GitHub, and copy the Client ID/Secret at Clerk’s e
 
 Upon click of the `GitHub` button on the Login Screen, the user will be prompted to the below Authorize screen and the login will be successful.
 
+Let me recap and summarize all the key features I’ve covered.
+
+# Who wins between Supabase vs Clerk
+
+## Overview
+
+### Supabase
+> Open-source Firebase alternative providing backend services, including authentication, real-time database, and storage.
+
+### Clerk
+> A full-featured authentication solution focused on seamless integration and user management, primarily for front-end applications.
+
+## OAuth Support
+
+### Supabase
+> Supports OAuth providers like Google, GitHub, GitLab, Twitter, etc.
+
+### Clerk
+> Native OAuth integrations with popular providers like GitHub, Google, Facebook, and more.
+
+## Multi-Factor Authentication
+
+### Supabase
+> Native support for MFA via authenticator apps (TOTP) and phone verification. Includes enrollment, challenge/verify APIs, and configurable security policies.
+[Learn more here](https://supabase.com/docs/guides/auth/auth-mfa)
+
+### Clerk
+> Built-in multi-factor authentication (MFA) with multiple verification methods.
+
+## Session Management
+
+### Supabase
+> Provides JWT-based session management. Supports server-side token refresh.
+
+### Clerk
+> Manages sessions via Clerk's SDK, with server and client-side control over session duration and renewal.
+
+## Frontend Integration
+
+### Supabase
+> Can be integrated with custom UI via SDKs (JavaScript, React, etc.).
+
+### Clerk
+> Pre-built components for React, Next.js, and other frontend frameworks for a seamless user experience.
+
+## Backend Integration
+
+### Supabase
+> Typically paired with Supabase's PostgreSQL database. JWT tokens can be validated for API requests.
+
+### Clerk
+> Easy API access and integration with Clerk-managed sessions for backend validation and role-based access.
+
+## Pricing
+
+### Supabase
+> Free tier with limits on users and authentication events, paid plans for higher usage.
+
+### Clerk
+> Free tier available with pricing based on active users; advanced features require paid plans.
+
+## Customization
+
+### Supabase
+> Customizable authentication flow, but requires more setup effort for fully custom UI.
+
+### Clerk
+> High-level of customization with pre-built or custom authentication components.
+
+## Ease of Use
+
+### Supabase
+> Requires more setup for a full authentication solution, but more flexible as part of a larger BaaS.
+
+### Clerk
+> Highly user-friendly and developer-friendly with minimal configuration needed for basic authentication.
+
+## Documentation
+
+### Supabase
+> Extensive documentation, but the learning curve can be steeper due to the wide range of features.
+[checkout Supabase docs here](https://supabase.com/docs/guides/auth)
+
+
+### Clerk
+> Clear and well-documented with examples, focused on authentication needs.
+[checkout Clerk docs here](https://clerk.com/docs)
+
 ## Conclusion
 
 I’ve taken an in-depth look at both Supabase and Clerk authentications in this article.
@@ -1287,15 +1375,6 @@ If you spot any mistakes or if you love what you read, I’d really appreciate y
 - **Supabase**: More focused on being a full backend as a service with authentication as part of its suite of tools. Ideal if we're looking for an open-source Firebase alternative with additional features like databases, storage, and server-side functions.
 
 - **Clerk**: Specializes in user auth and management, offering pre-built components and a front-end-centric approach. It provides a higher level of abstraction for authentication with minimal configuration required, particularly useful for complex user management scenarios.
-
-Let me recap and summarize all the key features I’ve covered.
-
-<Image
-    src="/images/img_64.png"
-    alt="Clerk-Vs-Supabase"
-    width={1200}
-    height={600}
-/>
 
 ## Wrapping Up
 
