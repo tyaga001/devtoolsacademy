@@ -18,16 +18,51 @@ model Comment {
   content   String
   postSlug  String
   createdAt DateTime @default(now())
-
-  userId String
-  user   BlogUser @relation(fields: [userId], references: [id])
-
-  post Post @relation(fields: [postSlug], references: [slug])
+  userId    String
+  user      BlogUser @relation(fields: [userId], references: [id])
+  post      Post     @relation(fields: [postSlug], references: [slug])
 }
 
 model BlogUser {
   id       String    @id @default(uuid())
   name     String
   email    String    @unique
-  comments Comment[] // Relation to Comment model
+  comments Comment[]
+}
+
+// Tools models
+model Tool {
+  id          String     @id @default(uuid())
+  name        String     @db.VarChar(100)
+  slug        String     @unique @db.VarChar(100)
+  description String     @db.Text
+  logo        String     @db.VarChar(255)
+  websiteUrl  String     @db.VarChar(255)
+  githubUrl   String?    @db.VarChar(255)
+  stars       Int        @default(0)
+  forks       Int        @default(0)
+  lastCommit  DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  categories  Category[]
+
+  @@index([stars(sort: Desc)])
+  @@index([createdAt(sort: Desc)])
+  @@index([name])
+  @@index([slug])
+  @@index([forks])
+  @@index([lastCommit])
+}
+
+model Category {
+  id          String   @id @default(uuid())
+  name        String   @db.VarChar(50)
+  slug        String   @unique @db.VarChar(50)
+  description String?  @db.Text
+  tools       Tool[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([name])
 }

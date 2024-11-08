@@ -5,21 +5,22 @@ import { Analytics } from '@vercel/analytics/react';
 import { ClerkProvider } from '@clerk/nextjs';
 import Navbar from '@/components/Navbar';
 import { SocialMetadata } from '@/components/SocialMetadata';
+import { Providers } from './providers';
 import './globals.css';
 import 'highlight.js/styles/github-dark.css';
 import { Metadata } from 'next';
-import Script from 'next/script'
+import Script from 'next/script';
 
 export const metadata: Metadata = {
     title: {
         default: 'Dev Tools Academy',
         template: '%s | Dev Tools Academy',
     },
-    description: 'Learn about awesome developer tools',
+    description: 'Discover and compare the best developer tools for your next project',
     metadataBase: new URL('https://devtoolsacademy.com'),
     openGraph: {
         title: 'Dev Tools Academy',
-        description: 'Learn about awesome developer tools',
+        description: 'Discover and compare the best developer tools for your next project',
         url: 'https://devtoolsacademy.com',
         siteName: 'Dev Tools Academy',
         locale: 'en_US',
@@ -28,16 +29,12 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Dev Tools Academy',
-        description: 'Learn about awesome developer tools',
+        description: 'Discover and compare the best developer tools for your next project',
     },
-    icons: [
-        {
-            rel: 'icon',
-            type: 'image/png',
-            sizes: '32x32',
-            url: '/favicon.png',
-        },
-    ],
+    icons: {
+        icon: '/favicon.png',
+        shortcut: '/favicon.png',
+    },
 };
 
 interface RootLayoutProps {
@@ -57,11 +54,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
     const title = getTitle(metadata.title);
 
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" suppressHydrationWarning className="dark">
         <head>
             <SocialMetadata
                 title={title}
-                description={metadata.description ?? 'Learn about awesome developer tools'}
+                description={metadata.description ?? ''}
                 url={metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}
                 image={`${metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}/favicon.png`}
                 type="website"
@@ -72,15 +69,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 strategy="afterInteractive"
             />
         </head>
-        <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
-        <ClerkProvider>
-            <div className="flex flex-col min-h-screen">
-                <Navbar />
-                <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    {children}
-                </main>
-            </div>
-        </ClerkProvider>
+        <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased bg-black text-white`}>
+        <Providers>
+            <ClerkProvider>
+                <div className="flex flex-col min-h-screen">
+                    <Navbar />
+                    <main className="flex-grow">
+                        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                            {children}
+                        </div>
+                    </main>
+                </div>
+            </ClerkProvider>
+        </Providers>
         <Analytics />
         </body>
         </html>
