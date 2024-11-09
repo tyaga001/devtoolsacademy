@@ -1,12 +1,20 @@
-// @/lib/api/tools.ts
 import { prisma } from '@/lib/prisma'
 import { getGitHubRepoData } from '@/lib/github'
 import type { Tool as PrismaTool, Category, Prisma } from '@prisma/client'
 
 export type SortOption = 'stars' | 'newest' | 'oldest' | 'updated' | 'forks'
 
+type CategorySelect = {
+    id: string
+    name: string
+    slug: string
+    createdAt: Date
+    description: string | null
+    updatedAt: Date
+}
+
 export type Tool = PrismaTool & {
-    categories: Category[]
+    categories: CategorySelect[]
 }
 
 interface ToolsParams {
@@ -31,10 +39,8 @@ export async function getTools({
                                    offset = 0
                                }: ToolsParams = {}): Promise<ToolsResponse> {
     try {
-        // Build the where clause with proper Prisma types
         const where: Prisma.ToolWhereInput = {
             AND: [
-                // Category filter
                 category ? {
                     categories: {
                         some: {
@@ -116,6 +122,66 @@ export async function getTools({
     } catch (error) {
         console.error('Error fetching tools:', error)
         throw error
+    }
+}
+
+export async function getToolBySlug(slug: string): Promise<Tool | null> {
+    try {
+        const tool = await prisma.tool.findUnique({
+            where: { slug },
+            include: {
+                categories: {
+                    select: {
+                        id: true,
+                        name: true,
+                        slug: true,
+                        createdAt: true,
+                        description: true,
+                        updatedAt: true,
+                    },
+                },
+            },
+        })
+
+        if (!tool) {
+            return null
+        }
+
+        if (tool.githubUrl) {
+            try {
+                const githubData = await getGitHubRepoData(tool.githubUrl)
+                if (githubData) {
+                    const updatedTool = await prisma.tool.update({
+                        where: { id: tool.id },
+                        data: {
+                            stars: githubData.stars,
+                            forks: githubData.forks,
+                            lastCommit: githubData.lastUpdated,
+                        },
+                        include: {
+                            categories: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                    slug: true,
+                                    createdAt: true,
+                                    description: true,
+                                    updatedAt: true,
+                                },
+                            },
+                        },
+                    })
+                    return updatedTool as Tool
+                }
+            } catch (error) {
+                console.error(`Error fetching GitHub data for ${tool.name}:`, error)
+            }
+        }
+
+        return tool as Tool
+    } catch (error) {
+        console.error('Error fetching tool:', error)
+        return null
     }
 }
 
