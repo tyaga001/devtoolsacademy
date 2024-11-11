@@ -2,16 +2,28 @@ import { FileQuestion } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
+/**
+ * Empty State Component
+ *
+ * Displays a message when no tools match the current search/filters
+ * Features:
+ * - Different messages for search vs filter results
+ * - Clear filters/search action
+ */
+
 interface EmptyStateProps {
   type: 'search' | 'filter';
   query?: string;
 }
 
-export default function EmptyState({ type, query }: EmptyStateProps) {
+export function EmptyState({ type, query }: EmptyStateProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  /**
+   * Clears either search or filters based on the empty state type
+   */
   const clearFilters = () => {
     const params = new URLSearchParams(searchParams);
     if (type === 'search') {
