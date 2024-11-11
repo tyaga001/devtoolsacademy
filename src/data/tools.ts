@@ -1,4 +1,6 @@
-[
+import { Tool } from "@/lib/types"
+
+export const mockTools: Tool[] = [
   {
     "id": "1",
     "name": "Visual Studio Code",
