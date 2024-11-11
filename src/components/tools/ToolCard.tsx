@@ -1,14 +1,14 @@
-'use client';
-
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Star } from "lucide-react";
+import { ExternalLink, Github, Star, ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import type { Tool } from "@/app/tools/data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { CATEGORY_COLORS, DEFAULT_COLOR } from '@/app/tools/data'
+import { CATEGORY_COLORS, DEFAULT_COLOR } from '@/app/tools/data';
+import GitHubStarsTrend from "./GitHubStarsTrend";
+import { useState } from "react";
 
 interface ToolCardProps {
   tool: Tool;
@@ -16,6 +16,8 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ tool, index }: ToolCardProps) {
+  const [showTrend, setShowTrend] = useState(false);
+
   const formattedDate = new Date(tool.lastUpdate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -44,15 +46,23 @@ export function ToolCard({ tool, index }: ToolCardProps) {
                 {tool.name}
               </Link>
             </h3>
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              className="flex items-center gap-1 bg-yellow-100/80 dark:bg-yellow-900/80 rounded-full px-2 py-1"
-            >
-              <Star className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
-              <span className="text-sm font-medium text-yellow-700 dark:text-yellow-300">
-                {Intl.NumberFormat('en-US', { notation: 'compact' }).format(tool.githubStars)}
-              </span>
-            </motion.div>
+            <div className="flex items-center gap-2">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className="flex items-center gap-1 bg-yellow-100/80 dark:bg-yellow-900/80 rounded-full px-2 py-1 cursor-pointer"
+                onClick={() => setShowTrend(!showTrend)}
+              >
+                <Star className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
+                <span className="text-sm font-medium text-yellow-700 dark:text-yellow-300">
+                  {Intl.NumberFormat('en-US', { notation: 'compact' }).format(tool.githubStars)}
+                </span>
+                {showTrend ? (
+                  <ChevronUp className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
+                ) : (
+                  <ChevronDown className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
+                )}
+              </motion.div>
+            </div>
           </div>
           <div className="flex flex-wrap gap-2 mt-2">
             {tool.category.map((cat) => (
@@ -74,6 +84,20 @@ export function ToolCard({ tool, index }: ToolCardProps) {
           <div className="text-sm text-muted-foreground line-clamp-3">
             {tool.description}
           </div>
+
+          {/* GitHub Stars Trend */}
+          {showTrend && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mt-4"
+            >
+              <GitHubStarsTrend tool={tool} compact />
+            </motion.div>
+          )}
+
           <div className="flex flex-wrap gap-2 mt-4">
             {tool.tags.map((tag) => (
               <span
