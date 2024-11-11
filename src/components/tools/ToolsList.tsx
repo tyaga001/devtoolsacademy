@@ -33,8 +33,8 @@ export function ToolsList({ tools, currentPage }: ToolsListProps) {
     <div className="space-y-8">
       {/* Tools Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {paginatedTools.map((tool) => (
-          <ToolCard key={tool.id} tool={tool} />
+        {paginatedTools.map((tool,index) => (
+          <ToolCard key={tool.id} index={index} tool={tool} />
         ))}
       </div>
 

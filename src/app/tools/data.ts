@@ -253,3 +253,44 @@ export const tools: Tool[] = [
     license: "MIT"
   }
 ];
+
+
+export const ANIMATION_SETTINGS = {
+  STAGGER_DELAY: 0.1,
+  CARD_ANIMATION: {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+    transition: { duration: 0.3 },
+  },
+};
+
+export const CATEGORY_COLORS = {
+  'Frontend': 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-700 dark:text-blue-300',
+  'Backend': 'bg-gradient-to-r from-green-500/20 to-teal-500/20 text-green-700 dark:text-green-300',
+  'DevOps': 'bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-orange-700 dark:text-orange-300',
+  'Testing': 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-700 dark:text-purple-300',
+  'API': 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-700 dark:text-cyan-300',
+  'IDE': 'bg-gradient-to-r from-emerald-500/20 to-green-500/20 text-emerald-700 dark:text-emerald-300',
+  'Code Editor': 'bg-gradient-to-r from-violet-500/20 to-purple-500/20 text-violet-700 dark:text-violet-300',
+  'Package Manager': 'bg-gradient-to-r from-amber-500/20 to-yellow-500/20 text-amber-700 dark:text-amber-300',
+  'Version Control': 'bg-gradient-to-r from-rose-500/20 to-pink-500/20 text-rose-700 dark:text-rose-300',
+  'Build Tools': 'bg-gradient-to-r from-lime-500/20 to-green-500/20 text-lime-700 dark:text-lime-300',
+} as const;
+
+export const DEFAULT_COLOR = 'bg-gradient-to-r from-gray-500/20 to-gray-700/20 text-gray-700 dark:text-gray-300';
+
+export const PAGINATION_SETTINGS = {
+  ITEMS_PER_PAGE: 9,
+  MAX_PAGES_TO_SHOW: 5,
+};
+
+export const SEARCH_SETTINGS = {
+  DEBOUNCE_MS: 300,
+  MIN_QUERY_LENGTH: 2,
+};
+
+export const VIEW_SETTINGS = {
+  GRID: 'grid',
+  LIST: 'list',
+} as const;

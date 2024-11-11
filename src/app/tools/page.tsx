@@ -1,14 +1,11 @@
 import { Suspense } from "react";
-import { Search } from "lucide-react";
-import ToolsGrid from "@/components/tools/ToolsGrid";
-import SearchInput from "@/app/tools/SearchInput";
-import ToolsFilters from "@/components/tools/ToolsFilters";
-import { getTools, getToolsMetadata } from './actions'
+import { getTools, getToolsMetadata } from './actions';
 import Pagination from "@/components/tools/Pagination";
 import ActiveFilters from "@/components/tools/ActiveFilters";
 import Loading from "./loading";
+import { ToolsHeader } from "@/components/tools/ToolsHeader";
+import ToolsContainer from "@/components/tools/ToolsContainer";
 
-// Server Component
 export default async function ToolsPage({
   searchParams,
 }: {
@@ -20,96 +17,84 @@ export default async function ToolsPage({
     sort?: string;
   };
 }) {
-  const page = Number(searchParams.page) || 1;
-  const limit = 9; // Items per page
-  const query = searchParams.query || "";
+  // Fetch all data needed for command menu
+  const [
+    { tools: allTools },
+    { categories, licenses }
+  ] = await Promise.all([
+    getTools({
+      query: '',
+      page: 1,
+      limit: 100  // Get all tools for command menu
+    }),
+    getToolsMetadata()
+  ]);
 
-  // Convert potential string parameters to arrays
-  const categories = Array.isArray(searchParams.categories)
+  // Current page filters
+  const page = Number(searchParams.page) || 1;
+  const limit = 9;
+  const query = searchParams.query || "";
+  const selectedCategories = Array.isArray(searchParams.categories)
     ? searchParams.categories
     : searchParams.categories
       ? [searchParams.categories]
       : [];
-
-  const licenses = Array.isArray(searchParams.licenses)
+  const selectedLicenses = Array.isArray(searchParams.licenses)
     ? searchParams.licenses
     : searchParams.licenses
       ? [searchParams.licenses]
       : [];
-
   const sort = searchParams.sort || "relevance";
 
-  // Fetch tools and metadata in parallel
-  const [
-    { tools, total },
-    { categories: availableCategories, licenses: availableLicenses }
-  ] = await Promise.all([
-    getTools({ query, page, limit, categories, licenses, sort }),
-    getToolsMetadata()
-  ]);
-
-  const totalPages = Math.ceil(total / limit);
+  // Get filtered tools for current page
+  const { tools: filteredTools, total } = await getTools({
+    query,
+    page,
+    limit,
+    categories: selectedCategories,
+    licenses: selectedLicenses,
+    sort
+  });
 
   return (
     <div className="bg-background min-h-screen">
       <main className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="space-y-4 mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold tracking-tight">Developer Tools</h1>
-              <p className="text-muted-foreground">
-                Discover and compare developer tools for your next project
-              </p>
-            </div>
-          </div>
+        {/* Header with both search and command */}
+        <ToolsHeader
+          defaultSearchValue={query}
+          availableCategories={categories}
+          availableLicenses={licenses}
+          selectedCategories={selectedCategories}
+          selectedLicenses={selectedLicenses}
+          selectedSort={sort}
+          tools={allTools}
+        />
 
-          {/* Search and Filters */}
-          <div className="flex gap-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-              <Suspense fallback={<div className="h-10 w-full bg-muted animate-pulse rounded-md" />}>
-                <SearchInput defaultValue={query} />
-              </Suspense>
-            </div>
+        {/* Active Filters Display */}
+        {(selectedCategories.length > 0 || selectedLicenses.length > 0) && (
+          <ActiveFilters
+            categories={selectedCategories}
+            licenses={selectedLicenses}
+          />
+        )}
 
-            <Suspense fallback={<div className="h-10 w-[150px] bg-muted animate-pulse rounded-md" />}>
-              <ToolsFilters
-                availableCategories={availableCategories}
-                availableLicenses={availableLicenses}
-                selectedCategories={categories}
-                selectedLicenses={licenses}
-                selectedSort={sort}
-              />
-            </Suspense>
-          </div>
-
-          {/* Active Filters Display */}
-          {(categories.length > 0 || licenses.length > 0) && (
-            <ActiveFilters
-              categories={categories}
-              licenses={licenses}
-            />
-          )}
-        </div>
-
-        {/* Tools Grid with Suspense */}
+        {/* Tools Grid */}
         <Suspense
-          key={`${page}-${query}-${categories.join()}-${licenses.join()}-${sort}`}
+          key={`${page}-${query}-${selectedCategories.join()}-${selectedLicenses.join()}-${sort}`}
           fallback={<Loading />}
         >
-          <ToolsGrid tools={tools} />
+          <ToolsContainer tools={filteredTools} />
         </Suspense>
 
         {/* Pagination */}
-        {totalPages > 1 && (
+        {total > limit && (
           <div className="mt-8 flex justify-center">
             <Pagination
               currentPage={page}
-              totalPages={totalPages}
+              totalPages={Math.ceil(total / limit)}
               query={query}
-              categories={categories}
-              licenses={licenses}
+              categories={selectedCategories}
+              licenses={selectedLicenses}
               sort={sort}
             />
           </div>
