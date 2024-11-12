@@ -1,19 +1,24 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import axios from 'axios'
+import { debounce } from 'lodash'
+
 import { Tool } from '@/lib/types'
 import ToolCard from './ToolCard'
-import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { debounce } from 'lodash'
+import { List, Grid2x2 } from 'lucide-react'
+import { ToolSkeletonLoader } from './ToolSkeletonLoader'
+import { NoToolFound } from './NoToolFound'
 import { ToolsFilter } from './ToolsFilter'
-import { useRouter } from 'next/navigation'
+
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Button } from '../ui/button'
+import { Input } from '@/components/ui/input'
 
 export function ToolsGrid() {
   const [tools, setTools] = useState<Tool[]>([])
+  const [viewType, setViewType] = useState<"grid" | "list">("grid");
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState<'relevance' | 'stars' | 'lastUpdate'>('relevance')
   const [isLoading, setIsLoading] = useState(true)
@@ -48,8 +53,7 @@ export function ToolsGrid() {
 
       if (params.categories.length > 0) {
         filteredTools = filteredTools.filter((tool: Tool) =>
-          //@ts-ignore
-          params.categories.includes(tool.category)
+          params.categories.some(category => tool.category.includes(category))
         )
       }
 
@@ -74,6 +78,10 @@ export function ToolsGrid() {
   const debouncedSearch = debounce((term: string) => {
     setSearchTerm(term)
   }, 300)
+
+  const toggleViewType = () => {
+    setViewType(viewType === "grid" ? "list" : "grid");
+  };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     debouncedSearch(e.target.value)
@@ -101,37 +109,54 @@ export function ToolsGrid() {
           type="search"
           placeholder="Search tools..."
           onChange={handleSearchChange}
-          className="w-full"
+          className="w-full rounded border-gray-500"
         />
         <div className="flex flex-wrap gap-4">
           <Select onValueChange={handleSortChange} value={sortBy}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] rounded border-gray-500">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="relevance">Relevance</SelectItem>
-              <SelectItem value="stars">GitHub Stars</SelectItem>
-              <SelectItem value="lastUpdate">Last Update</SelectItem>
+            <SelectContent className="bg-black rounded p-0 border-gray-500">
+              <SelectItem value="relevance" className="cursor-pointer">
+                Relevance
+              </SelectItem>
+              <SelectItem value="stars" className="cursor-pointer">
+                GitHub Stars
+              </SelectItem>
+              <SelectItem value="lastUpdate" className="cursor-pointer">
+                Last Update
+              </SelectItem>
             </SelectContent>
           </Select>
           <ToolsFilter />
-          <Button onClick={handleClearFilters} variant="outline">Clear Filters</Button>
+          <Button onClick={handleClearFilters} className='border-gray-500 rounded' variant="outline">Clear Filters</Button>
+          <Button onClick={toggleViewType} variant="outline" className="rounded ml-auto hidden md:block border-gray-500" aria-label={`Switch to ${viewType === "grid" ? "list" : "grid"} view`}>
+            {viewType === "grid" ? (
+              <List className="h-4 w-4" />
+            ) : (
+              <Grid2x2 className="h-4 w-4" />
+            )}
+          </Button>
         </div>
       </div>
 
       {isLoading ? (
-        <div className="text-center">Loading...</div>
+        <ToolSkeletonLoader viewType={viewType} />
       ) : (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        <div
+          className={`
+          ${viewType === "grid"
+              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+              : "space-y-5"
+            }
+        `}
+        >
           {tools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />
           ))}
         </div>
       )}
 
-      {tools.length === 0 && !isLoading && (
-        <div className="text-center text-gray-500">No tools found. Try adjusting your search or filters.</div>
-      )}
-    </div>
-  )
+      {tools.length === 0 && !isLoading && <NoToolFound />}
+    </div>)
 }

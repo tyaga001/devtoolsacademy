@@ -10,10 +10,10 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 
 export const categories = [
-  "security",
-  "automation",
-  "design",
-  "coding"
+  "Sales",
+  "Testing",
+  "Version Control",
+  "Collaboration"
 ]
 
 export const tags = [
@@ -39,12 +39,10 @@ export function ToolsFilter() {
     const currentValues = params.getAll(type)
 
     if (currentValues.includes(value)) {
-      // Remove value if already exists
       const newValues = currentValues.filter(v => v !== value)
       params.delete(type)
       newValues.forEach(v => params.append(type, v))
     } else {
-      // Add new value
       params.append(type, value)
     }
 
@@ -57,10 +55,10 @@ export function ToolsFilter() {
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button>Filters</Button>
+      <PopoverTrigger className="w-[100px] border rounded border-gray-500" asChild>
+        <Button >Filters</Button>
       </PopoverTrigger>
-      <PopoverContent className="bg-neutral-800 z-10 w-[450px]">
+      <PopoverContent className="bg-neutral-900 border border-gray-500 z-10 w-[450px]">
         <div className="grid grid-cols-3 gap-4 p-4">
           <div className="space-y-2">
             <p className="font-semibold">Tags</p>
