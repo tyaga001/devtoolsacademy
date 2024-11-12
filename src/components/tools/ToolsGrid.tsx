@@ -1,35 +1,71 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { useSearchParams } from 'next/navigation'
 import axios from 'axios'
 import { Tool } from '@/lib/types'
 import ToolCard from './ToolCard'
 import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { debounce } from 'lodash'
+import { ToolsFilter } from './ToolsFilter'
+import { useRouter } from 'next/navigation'
+import { Button } from '../ui/button'
 
-export const ToolsGrid = () => {
+export function ToolsGrid() {
   const [tools, setTools] = useState<Tool[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState<'relevance' | 'stars' | 'lastUpdate'>('relevance')
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
   const fetchTools = useCallback(async () => {
     setIsLoading(true)
     setError(null)
     try {
+      const params = {
+        search: searchTerm,
+        sortBy,
+        tags: searchParams.getAll('tags'),
+        categories: searchParams.getAll('categories'),
+        licenses: searchParams.getAll('licenses')
+      }
+
       const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tools`, {
-        params: { search: searchTerm, sortBy }
+        params
       })
-      setTools(response.data)
+
+      // Filter tools based on URL parameters if API doesn't support filtering
+      let filteredTools = response.data
+
+      if (params.tags.length > 0) {
+        filteredTools = filteredTools.filter((tool: Tool) =>
+          params.tags.some(tag => tool.tags.includes(tag))
+        )
+      }
+
+      if (params.categories.length > 0) {
+        filteredTools = filteredTools.filter((tool: Tool) =>
+          //@ts-ignore
+          params.categories.includes(tool.category)
+        )
+      }
+
+      if (params.licenses.length > 0) {
+        filteredTools = filteredTools.filter((tool: Tool) =>
+          params.licenses.includes(tool.license)
+        )
+      }
+
+      setTools(filteredTools)
     } catch (err) {
       setError('Failed to fetch tools. Please try again later.')
     } finally {
       setIsLoading(false)
     }
-  }, [searchTerm, sortBy])
+  }, [searchTerm, sortBy, searchParams])
 
   useEffect(() => {
     fetchTools()
@@ -43,13 +79,15 @@ export const ToolsGrid = () => {
     debouncedSearch(e.target.value)
   }
 
-
   const handleSortChange = (value: string) => {
     setSortBy(value as 'relevance' | 'stars' | 'lastUpdate')
   }
 
+
   const handleClearFilters = () => {
     setSortBy('relevance')
+    const params = new URLSearchParams()
+    router.push('?' + params.toString())
   }
 
   if (error) {
@@ -76,6 +114,7 @@ export const ToolsGrid = () => {
               <SelectItem value="lastUpdate">Last Update</SelectItem>
             </SelectContent>
           </Select>
+          <ToolsFilter />
           <Button onClick={handleClearFilters} variant="outline">Clear Filters</Button>
         </div>
       </div>

@@ -3,18 +3,18 @@ import { Tool } from "@/lib/types"
 export const mockTools: Tool[] = [
   {
     "id": "1",
-    "name": "Visual Studio Code",
-    "description": "A free, open-source code editor developed by Microsoft with built-in support for JavaScript, TypeScript, and Node.js.",
+    "name": "View Us",
+    "description": "A product build to help you manage and showcase your testimonials in the best way possible",
     "category": [
-      "Editor",
-      "IDE"
+      "Sales",
+      "Marketing"
     ],
-    "githubStars": 143000,
-    "githubUrl": "https://github.com/microsoft/vscode",
-    "websiteUrl": "https://code.visualstudio.com/",
+    "githubStars": 100000,
+    "githubUrl": "https://github.com/ankur1493/viewus-sec",
+    "websiteUrl": "https://view-us-sec.vercel.app/",
     "tags": [
-      "code editor",
-      "IDE",
+      "Testimonials",
+      "Sales",
       "open-source"
     ],
     "lastUpdate": "2023-11-01",
