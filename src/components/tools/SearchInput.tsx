@@ -36,6 +36,8 @@ export default function SearchInput({ defaultValue = "" }) {
       className="pl-10 w-full"
       defaultValue={defaultValue}
       onChange={(e) => debouncedCallback(e.target.value)}
+      aria-label="Search developer tools"
+      role="searchbox"
     />
   );
 }

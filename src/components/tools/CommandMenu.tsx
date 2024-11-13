@@ -21,6 +21,18 @@ interface CommandMenuProps {
   trigger?: React.ReactNode;
 }
 
+const isValidUrl = (url: string, type: 'github' | 'website'): boolean => {
+  try {
+    const parsed = new URL(url);
+    if (type === 'github') {
+      return parsed.hostname === 'github.com' && parsed.protocol === 'https:';
+    }
+    return parsed.protocol === 'https:';
+  } catch {
+    return false;
+  }
+};
+
 export function CommandMenu({ tools, categories, licenses, trigger }: CommandMenuProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -38,29 +50,46 @@ export function CommandMenu({ tools, categories, licenses, trigger }: CommandMen
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleSelect = (value: string) => {
-    setOpen(false);
+ const handleSelect = (value: string) => {
+  setOpen(false);
 
-    const [action, id] = value.split(":");
-    const params = new URLSearchParams(searchParams);
+  const [action, id] = value.split(":");
+  if (!action || !id) {
+    console.error('Invalid selection value:', value);
+    return;
+  }
 
-    switch (action) {
-      case "tool":
-        router.push(`/tools/${id}`);
-        break;
-      case "category":
+  const params = new URLSearchParams(searchParams);
+
+  switch (action) {
+    case "tool":
+      router.push(`/tools/${id}`);
+      break;
+
+    case "category":
+      if (!params.getAll("categories").includes(id)) {
         params.append("categories", id);
+        params.delete('page'); // Reset pagination when adding filter
         router.push(`?${params.toString()}`);
-        break;
-      case "license":
+      }
+      break;
+
+    case "license":
+      if (!params.getAll("licenses").includes(id)) {
         params.append("licenses", id);
+        params.delete('page'); // Reset pagination when adding filter
         router.push(`?${params.toString()}`);
-        break;
-      case "clear":
-        router.push("");
-        break;
-    }
-  };
+      }
+      break;
+
+    case "clear":
+      router.push("");
+      break;
+
+    default:
+      console.error('Unknown action:', action);
+  }
+};
 
   return (
     <>
@@ -98,6 +127,7 @@ export function CommandMenu({ tools, categories, licenses, trigger }: CommandMen
                   <span>{tool.name}</span>
                 </div>
                 <div className="flex items-center gap-2">
+                {tool.githubUrl && isValidUrl(tool.githubUrl, 'github') && (
                   <Button
                     variant="ghost"
                     size="icon"
@@ -113,6 +143,7 @@ export function CommandMenu({ tools, categories, licenses, trigger }: CommandMen
                       <Github className="h-4 w-4" />
                     </a>
                   </Button>
+                 )}
                   <Button
                     variant="ghost"
                     size="icon"
@@ -128,6 +159,7 @@ export function CommandMenu({ tools, categories, licenses, trigger }: CommandMen
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </Button>
+
                 </div>
               </CommandItem>
             ))}

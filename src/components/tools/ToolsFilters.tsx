@@ -137,9 +137,10 @@ export default function ToolsFilters({
         <SheetTrigger asChild>
           <Button variant="outline" className="flex gap-2">
             <SlidersHorizontal className="h-4 w-4" />
-            Filters
+            <span>Filters</span>
+            {isPending && <span className="sr-only">Updating...</span>}
             {totalActiveFilters > 0 && (
-              <Badge variant="secondary">
+              <Badge variant="secondary" aria-label={`${totalActiveFilters} active filters`}>
                 {totalActiveFilters}
               </Badge>
             )}
@@ -223,6 +224,10 @@ export default function ToolsFilters({
               variant="secondary"
               className="cursor-pointer hover:bg-secondary/80"
               onClick={() => toggleCategory(category)}
+              onKeyDown={(e) => e.key === 'Enter' && toggleCategory(category)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Remove ${category} filter`}
             >
               {category} ×
             </Badge>

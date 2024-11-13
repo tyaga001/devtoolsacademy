@@ -4,6 +4,7 @@ import SearchInput from "@/components/tools/SearchInput";
 import ToolsFilters from "@/components/tools/ToolsFilters";
 import { Button } from "@/components/ui/button";
 import { CommandMenu } from "@/components/tools/CommandMenu";
+import { Tool } from "@/app/tools/data";
 
 interface ToolsHeaderProps {
   defaultSearchValue: string;
@@ -12,7 +13,7 @@ interface ToolsHeaderProps {
   selectedCategories: string[];
   selectedLicenses: string[];
   selectedSort: string;
-  tools: any[]; // For command menu
+  tools: Tool[]; // For command menu
 }
 
 export function ToolsHeader({

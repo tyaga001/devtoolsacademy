@@ -1,7 +1,7 @@
 'use client';
 import { Tool } from "@/app/tools/data";
 import { ToolCard } from "./ToolCard";
-import { ToolCardSkeleton } from "./ToolCardSkelton";
+import { ToolCardSkeleton } from "./ToolCardSkeleton";
 import { useSearchParams } from "next/navigation";
 
 interface ToolsGridProps {

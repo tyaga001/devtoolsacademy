@@ -11,6 +11,8 @@ interface ActiveFiltersProps {
   licenses: string[];
 }
 
+type FilterType = 'categories' | 'licenses';
+
 export default function ActiveFilters({
   categories,
   licenses,
@@ -20,29 +22,15 @@ export default function ActiveFilters({
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
 
-  // Remove a category
-  const removeCategory = (category: string) => {
+  // Generic filter removal function
+  const removeFilter = (type: FilterType, value: string) => {
     startTransition(() => {
       const params = new URLSearchParams(searchParams);
-      const currentCategories = params.getAll('categories');
-      params.delete('categories');
-      currentCategories
-        .filter(c => c !== category)
-        .forEach(c => params.append('categories', c));
-      params.delete('page'); // Reset to first page
-      router.push(`${pathname}?${params.toString()}`);
-    });
-  };
-
-  // Remove a license
-  const removeLicense = (license: string) => {
-    startTransition(() => {
-      const params = new URLSearchParams(searchParams);
-      const currentLicenses = params.getAll('licenses');
-      params.delete('licenses');
-      currentLicenses
-        .filter(l => l !== license)
-        .forEach(l => params.append('licenses', l));
+      const currentValues = params.getAll(type);
+      params.delete(type);
+      currentValues
+        .filter(v => v !== value)
+        .forEach(v => params.append(type, v));
       params.delete('page'); // Reset to first page
       router.push(`${pathname}?${params.toString()}`);
     });
@@ -63,42 +51,34 @@ export default function ActiveFilters({
     return null;
   }
 
+  // Reusable badge component
+  const FilterBadge = ({ type, value }: { type: FilterType; value: string }) => (
+    <Badge
+      key={value}
+      variant="secondary"
+      className="flex items-center gap-1 pr-1"
+    >
+      {value}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="h-4 w-4 p-0 hover:bg-transparent"
+        onClick={() => removeFilter(type, value)}
+      >
+        <X className="h-3 w-3" />
+        <span className="sr-only">Remove {value} filter</span>
+      </Button>
+    </Badge>
+  );
+
   return (
     <div className="flex flex-wrap items-center gap-2">
       {categories.map((category) => (
-        <Badge
-          key={category}
-          variant="secondary"
-          className="flex items-center gap-1 pr-1"
-        >
-          {category}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-4 w-4 p-0 hover:bg-transparent"
-            onClick={() => removeCategory(category)}
-          >
-            <X className="h-3 w-3" />
-          </Button>
-        </Badge>
+        <FilterBadge key={category} type="categories" value={category} />
       ))}
 
       {licenses.map((license) => (
-        <Badge
-          key={license}
-          variant="secondary"
-          className="flex items-center gap-1 pr-1"
-        >
-          {license}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-4 w-4 p-0 hover:bg-transparent"
-            onClick={() => removeLicense(license)}
-          >
-            <X className="h-3 w-3" />
-          </Button>
-        </Badge>
+        <FilterBadge key={license} type="licenses" value={license} />
       ))}
 
       <Button

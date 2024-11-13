@@ -42,7 +42,11 @@ export default function ToolsContainer({ tools }: ToolsContainerProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div
+      className="space-y-6"
+      role="region"
+      aria-label="Tools catalog"
+    >
       {/* View Toggle Control */}
       <div className="flex justify-end">
         <ViewToggle view={view} onChange={setView} />
@@ -51,7 +55,11 @@ export default function ToolsContainer({ tools }: ToolsContainerProps) {
       {/* Conditional Rendering based on View Type */}
       {view === 'grid' ? (
         // Grid View - 3 columns on large screens
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          role="grid"
+          aria-label="Tools grid view"
+        >
           {tools.map((tool, index) => (
             <ToolCard key={tool.id} index={index} tool={tool} />
           ))}

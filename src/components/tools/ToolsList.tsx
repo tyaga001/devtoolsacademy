@@ -46,6 +46,7 @@ export function ToolsList({ tools, currentPage }: ToolsListProps) {
             size="icon"
             asChild
             disabled={currentPage <= 1}
+            aria-label="Previous page"
           >
             <Link href={createPageURL(currentPage - 1)}>
               <ChevronLeft className="h-4 w-4" />
@@ -59,7 +60,11 @@ export function ToolsList({ tools, currentPage }: ToolsListProps) {
               size="icon"
               asChild
             >
-              <Link href={createPageURL(i + 1)}>
+             <Link
+              href={createPageURL(i + 1)}
+              aria-label={`Page ${i + 1}`}
+              aria-current={currentPage === i + 1 ? "page" : undefined}
+              >
                 {i + 1}
               </Link>
             </Button>
@@ -70,6 +75,7 @@ export function ToolsList({ tools, currentPage }: ToolsListProps) {
             size="icon"
             asChild
             disabled={currentPage >= totalPages}
+            aria-label="Next page"
           >
             <Link href={createPageURL(currentPage + 1)}>
               <ChevronRight className="h-4 w-4" />

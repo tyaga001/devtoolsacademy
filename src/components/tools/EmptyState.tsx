@@ -37,7 +37,12 @@ export function EmptyState({ type, query }: EmptyStateProps) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-12 px-4">
+   <div
+     role="status"
+     aria-live="polite"
+     aria-label={type === 'search' ? 'Search results empty state' : 'Filter results empty state'}
+     className="flex flex-col items-center justify-center py-12 px-4"
+    >
       <FileQuestion className="h-16 w-16 text-muted-foreground mb-4" />
       <h3 className="text-lg font-semibold mb-2">
         {type === 'search'

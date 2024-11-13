@@ -23,6 +23,12 @@ export async function getTools({
   licenses = [],
   sort = "relevance"
 }: GetToolsOptions) {
+
+  // Validate pagination parameters
+  if (page < 1) throw new Error("Page must be greater than 0");
+  if (limit < 1) throw new Error("Limit must be greater than 0");
+  if (limit > 100) throw new Error("Limit cannot exceed 100");
+
   // Simulate database delay
   await new Promise((resolve) => setTimeout(resolve, ARTIFICIAL_DELAY_MS));
 

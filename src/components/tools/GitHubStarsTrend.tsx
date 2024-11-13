@@ -16,7 +16,8 @@ const formatDate = (dateString: string) => {
 };
 
 const formatNumber = (num: number) => {
-  return `${Math.round(num / 1000)}k`;
+  if (num < 1000) return num.toString();
+  return `${(num / 1000).toFixed(1)}k`.replace('.0k', 'k');
 };
 
 // Chart colors
@@ -58,8 +59,17 @@ const GitHubStarsTrend = ({
     return data;
   }, [tool.githubStars]);
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
-    if (!active || !payload?.length) return null;
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    value: number;
+    [key: string]: any;
+  }>;
+  label?: string;
+}
+
+  const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
+    if (!active || !payload?.length||!label) return null;
 
     const date = new Date(label);
     const formattedDate = new Intl.DateTimeFormat('en-US', {
@@ -101,6 +111,8 @@ const GitHubStarsTrend = ({
         <div className="w-full" style={{ height: compact ? "200px" : "400px" }}>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
+              aria-label="GitHub stars trend over the past year"
+              role="img"
               data={trendData}
               margin={{
                 top: 10,

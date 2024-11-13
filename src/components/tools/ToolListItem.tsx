@@ -27,6 +27,7 @@ export function ToolListItem({ tool }: ToolListItemProps) {
             <h3 className="text-xl font-bold">
               <Link
                 href={`/tools/${tool.id}`}
+                aria-label={`View details for ${tool.name}`}
                 className="hover:text-primary transition-colors duration-200"
               >
                 {tool.name}
@@ -34,6 +35,8 @@ export function ToolListItem({ tool }: ToolListItemProps) {
             </h3>
             <button
               onClick={() => setShowTrend(!showTrend)}
+              aria-label={`Toggle GitHub stars trend for ${tool.name}`}
+              aria-expanded={showTrend}
               className="flex items-center gap-1 bg-yellow-100/80 dark:bg-yellow-900/80 rounded-full px-2 py-1 cursor-pointer hover:bg-yellow-200/80 dark:hover:bg-yellow-800/80 transition-colors"
             >
               <Star className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
@@ -86,7 +89,7 @@ export function ToolListItem({ tool }: ToolListItemProps) {
         <div className="flex items-center gap-2 md:flex-col">
           <Button
             variant="outline"
-            size="sm"
+            size="default"
             asChild
             className="w-full"
           >
@@ -94,7 +97,8 @@ export function ToolListItem({ tool }: ToolListItemProps) {
               href={tool.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 min-h-[44px]"
+              aria-label={`Open ${tool.name} on GitHub (opens in new tab)`}
             >
               <Github className="w-4 h-4" />
               GitHub

@@ -8,6 +8,8 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface PaginationProps {
   currentPage: number;
@@ -27,15 +29,21 @@ export default function Pagination({
   sort,
 }: PaginationProps) {
   // Build URL params
-  const buildUrl = (page: number) => {
-    const params = new URLSearchParams();
-    params.set("page", page.toString());
-    if (query) params.set("query", query);
-    if (sort) params.set("sort", sort);
-    categories?.forEach(cat => params.append("categories", cat));
-    licenses?.forEach(license => params.append("licenses", license));
-    return `?${params.toString()}`;
-  };
+ const buildUrl = (page: number) => {
+  // Validate page number
+  const validPage = Math.max(1, Math.min(page, totalPages));
+  const params = new URLSearchParams();
+  params.set("page", validPage.toString());
+
+  if (query?.trim()) params.set("query", encodeURIComponent(query.trim()));
+  if (sort) params.set("sort", sort);
+
+  // More efficient handling of arrays
+  if (categories?.length) params.set("categories", categories.join(","));
+  if (licenses?.length) params.set("licenses", licenses.join(","));
+
+  return `?${params.toString()}`;
+};
 
   // Calculate page numbers to show
   const getPageNumbers = () => {
@@ -55,6 +63,28 @@ export default function Pagination({
     return pageNumbers;
   };
 
+  const router = useRouter();
+
+  // Add keyboard navigation
+   useEffect(() => {
+  const handleKeyPress = (e: KeyboardEvent) => {
+    // Skip if input/textarea is focused
+    if (['input', 'textarea'].includes((e.target as HTMLElement).tagName.toLowerCase())) return;
+
+    if (e.key === 'ArrowLeft' && currentPage > 1) {
+      e.preventDefault();
+      router.push(buildUrl(currentPage - 1), { scroll: false });
+    } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+      e.preventDefault();
+      router.push(buildUrl(currentPage + 1), { scroll: false });
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyPress);
+  return () => window.removeEventListener('keydown', handleKeyPress);
+}, [currentPage, totalPages, router, buildUrl]);
+
+
   return (
     <div className="flex items-center gap-2">
       {/* First page */}
@@ -63,6 +93,7 @@ export default function Pagination({
         size="icon"
         asChild
         disabled={currentPage === 1}
+        aria-label="Go to first page"
       >
         <Link href={buildUrl(1)}>
           <ChevronsLeft className="h-4 w-4" />
