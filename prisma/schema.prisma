@@ -31,3 +31,26 @@ model BlogUser {
   email    String    @unique
   comments Comment[] // Relation to Comment model
 }
+
+model Tool {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  categories  String[]
+  stars       Int
+  forks       Int
+  lastUpdated DateTime
+  logo        String
+  tags        String[]
+  githubUrl   String   @unique
+  websiteUrl  String?
+  documentation String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([name])
+  @@index([categories])
+  @@index([tags])
+}
+
