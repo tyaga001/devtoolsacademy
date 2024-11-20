@@ -1,6 +1,5 @@
-import React from 'react'
 import { ToolCardInterface } from '@/lib/types'
-import { Star, GitFork, LinkIcon, BookOpen, Clock } from 'lucide-react'
+import { Star, GitFork, Clock } from 'lucide-react'
 import { Card, CardHeader, CardContent } from '../ui/card'
 import { Badge } from '../ui/badge'
 import Link from 'next/link'
@@ -11,9 +10,9 @@ interface ToolCardProps {
 
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
-    <Card className="w-full h-full max-w-md bg-gradient-to-br from-zinc-800 to-zinc-950 border-zinc-800 hover:border-zinc-700 transition-all">
-      {/*will have to add a slug to tools for unique identifier*/}
-      <Link href={`/tools/${tool.name}`}>
+    <Link href={`/tools/${tool.name}`}>
+      <Card className="w-full h-full max-w-md bg-gradient-to-br from-zinc-800 to-zinc-950 border-zinc-800 hover:border-zinc-700 transition-all">
+        {/*will have to add a slug to tools for unique identifier*/}
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
           {tool.logo ? (
             <img
@@ -62,45 +61,9 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
               </Badge>
             ))}
           </div>
-
-          <div className="flex items-center gap-4 pt-2">
-            {tool.githubUrl && (
-              <a
-                href={tool.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
-              >
-                <GitFork className="w-4 h-4 mr-1.5" />
-                GitHub
-              </a>
-            )}
-            {tool.websiteUrl && (
-              <a
-                href={tool.websiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
-              >
-                <LinkIcon className="w-4 h-4 mr-1.5" />
-                Website
-              </a>
-            )}
-            {tool.documentation && (
-              <a
-                href={tool.documentation}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
-              >
-                <BookOpen className="w-4 h-4 mr-1.5" />
-                Docs
-              </a>
-            )}
-          </div>
         </CardContent>
-      </Link>
-    </Card>
+      </Card>
+    </Link>
   )
 }
 

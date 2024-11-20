@@ -2,7 +2,6 @@ import React from 'react';
 import { Metadata } from 'next';
 import { getToolDetails } from '@/lib/tools';
 import ToolDetailsPage from '@/components/tools/toolDetails/ToolDetailsPage';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 
@@ -22,9 +21,7 @@ export default async function ToolDetailRoute({ params }: { params: { slug: stri
         <h1>We are not able to find this tool, looks like you are searching for wrong url</h1>
 
         <Link href="/tools">
-          <Button variant="secondary">
-            Browse more tools
-          </Button>
+          Browse more tools
         </Link>
       </main>
     )
