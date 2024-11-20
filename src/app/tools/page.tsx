@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'DevToolsAcademy - Browse Tools',
 };
 
-export default function ContributeRoute() {
+export default function ToolsRoute() {
   return (
     <main className="min-h-screen w-full">
       <ToolsPage />

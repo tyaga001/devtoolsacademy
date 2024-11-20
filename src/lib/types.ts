@@ -1,4 +1,5 @@
 export interface ToolCardInterface {
+  id?: string
   name: string
   description: string
   categories: string[]
@@ -8,7 +9,9 @@ export interface ToolCardInterface {
   logo: string
   tags: string[]
   githubUrl: string
-  websiteUrl?: string
-  documentation?: string
+  websiteUrl?: string | null
+  documentation?: string | null
+  createdAt: Date
+  updatedAt: Date
 }
 
