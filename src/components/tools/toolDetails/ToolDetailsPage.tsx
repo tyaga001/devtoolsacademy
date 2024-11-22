@@ -1,4 +1,4 @@
-import { ToolCardInterface } from "@/lib/types";
+import { ToolDetailsInterface } from "@/lib/types";
 import {
   Star,
   GitFork,
@@ -10,9 +10,11 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { Suspense } from "react";
+import SimilarTools from "./SimilarTools";
 
 interface ToolCardProps {
-  tool: ToolCardInterface;
+  tool: ToolDetailsInterface;
 }
 
 const features = [
@@ -172,86 +174,6 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             )}
           </div>
         </div>
-        {/* <div className="w-1/2  border border-white border-opacity-10 p-2 pb-0 rounded">
-          <div className="flex flex-col gap-3">
-
-            <div className="w-full">
-              <h2 className="text-2xl pb-3">Repository Details:</h2>
-              <div className="flex flex-wrap gap-x-4 gap-y-1">
-                {Object.entries(languages).map(([lang, lines]) => (
-                  <div key={lang} className="flex items-center">
-                    <span
-                      className="w-3 h-3 rounded-full mr-1"
-                      style={{
-                        backgroundColor: languageColors[lang] || "#8e8e8e",
-                      }}
-                    />
-                    <span className="text-xs">{lang}</span>
-                    <span className="text-xs text-gray-400 ml-1">
-                      {((lines / totalLines) * 100).toFixed(1)}%
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 grid-flow-row gap-3">
-              <div className="flex items-center bg-gradient-to-br from-[#1C1C1C] to-transparent border border-white border-opacity-10 p-4 rounded">
-                <Star className="w-8 h-8 mr-3 text-gray-500" />
-                <div>
-                  <p className="text-sm text-gray-400">Stars</p>
-                  <p className="text-xl font-semibold">
-                    {tool.stars.toLocaleString()}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center bg-gradient-to-br from-[#1C1C1C] to-transparent border border-white border-opacity-10 p-4 rounded">
-                <GitFork className="w-8 h-8 mr-3 text-gray-500" />
-                <div>
-                  <p className="text-sm text-gray-400">Forks</p>
-                  <p className="text-xl font-semibold">
-                    {tool.forks.toLocaleString()}
-                  </p>
-                </div>
-              </div>
-              <div className="flex col-span-2 items-center bg-gradient-to-br from-[#1C1C1C] to-transparent border border-white border-opacity-10 p-4 rounded">
-                <Clock className="w-8 h-8 mr-3 text-gray-500" />
-                <div>
-                  <p className="text-sm text-gray-400">Last Commited</p>
-                  <p className="text-xl font-semibold">
-                    {tool.lastUpdated.toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-wrap justify-between gap-1 w-full pb-2">
-              <Link href={tool.githubUrl}>
-                <div className="flex items-center text-gray-400 text-sm ">
-                  <Github className="w-4 h-4 mr-2" />
-                  View on GitHub
-                </div>
-              </Link>
-              <Link href={tool.githubUrl}>
-                <div className="flex items-center text-gray-400 text-sm ">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Visit Website
-                </div>
-              </Link>
-              {tool.documentation && (
-                <Link href={tool.githubUrl}>
-                  <div className="flex items-center text-gray-400 text-sm ">
-                    <Book className="w-4 h-4 mr-2" />
-                    Documentation
-                  </div>
-                </Link>
-              )}
-            </div>
-          </div>
-        </div> */}
-
         <div className="max-w-4xl mx-auto lg::px-4 pt-12">
           <div className="mb-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
@@ -300,6 +222,11 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           </section>
         </div>
       </div>
+      <Suspense fallback={
+        <div>loading...</div>
+      }>
+        <SimilarTools slug={tool.name} tags={tool.tags} categories={tool.categories} />
+      </Suspense>
     </div>
   );
 };

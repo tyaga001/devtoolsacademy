@@ -1,12 +1,12 @@
 import { PrismaClient } from '@prisma/client'
-import { ToolCardInterface } from './types'
+import { ToolDetailsInterface } from './types'
 
 const prisma = new PrismaClient()
 
 interface ToolDetailsReturnType {
   status: boolean;
   message: string;
-  toolDetails?: ToolCardInterface | null;
+  toolDetails?: ToolDetailsInterface | null;
 }
 
 export async function getToolDetails(slug: string): Promise<ToolDetailsReturnType> {

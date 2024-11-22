@@ -15,6 +15,7 @@ export async function GET(req: NextRequest) {
     const tools = await prisma.tool.findMany({
       skip,
       take,
+      select: { id: true, name: true, description: true, logo: true, categories: true, stars: true, forks: true, lastUpdated: true },
     });
 
     const totalTools = await prisma.tool.count();
