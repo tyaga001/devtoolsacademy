@@ -1,9 +1,6 @@
 import React from 'react';
 import ToolsPage from '@/components/tools/ToolsPage';
 import { Metadata } from 'next';
-import axios from 'axios';
-import { ToolCardInterface } from '@/lib/types';
-import ToolsPagination from '@/components/tools/ToolsPagination';
 
 export const metadata: Metadata = {
   title: 'Browse Tools DTA',
@@ -14,22 +11,25 @@ export default async function ToolsRoute({ searchParams }: { searchParams?: { pa
 
   const page = searchParams?.page || 1
 
-  const response = await axios.get(`http://localhost:3000/api/tools?page=${page}`)
-  const tools: ToolCardInterface[] = (response.data.tools)
-  const totalPages = response.data.totalPages
-
-  if (response.status !== 200) {
-    return (
-      <div className='w-1/2 flex justify-center items-center min-h-[400px] text-red-500'>
-        Failed to show tools at this moment
-      </div>
-    )
-  }
-
   return (
     <main className="min-h-screen w-full">
-      <ToolsPage tools={tools} />
-      <ToolsPagination currentPage={page} totalPages={totalPages} basePath="/tools" />
+      <div className="text-center pt-8">
+        <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
+          <span className="bg-gradient-to-b from-[#141414] to-white bg-clip-text text-transparent">
+            Browse Devtools for your
+            <span className="block bg-gradient-to-b from-[#141414] to-white bg-clip-text text-transparent">
+              next product
+            </span>
+          </span>
+        </h1>
+        <p className="text-md sm:text-xl text-gray-100 text-opacity-50 mb-8">
+          Discover new devtools from a well researched collection for hassle{" "}
+          <span className="md:block">
+            free development of your next product
+          </span>
+        </p>
+      </div>
+      <ToolsPage page={page} />
     </main>
   );
 }
