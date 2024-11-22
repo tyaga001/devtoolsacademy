@@ -18,19 +18,19 @@ interface BlogPostClientProps {
 }
 
 const BlogPostClient: React.FC<BlogPostClientProps> = ({
-                                                           slug,
-                                                           title,
-                                                           publishedAt,
-                                                           initialViews,
-                                                           content,
-                                                           description,
-                                                           featuredImage
-                                                       }) => {
+    slug,
+    title,
+    publishedAt,
+    initialViews,
+    content,
+    description,
+    featuredImage
+}) => {
     const [showChat, setShowChat] = useState(false);
 
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'});
+        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     };
 
     const baseUrl = 'https://devtoolsacademy.com';
@@ -57,8 +57,8 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
                     </button>
                 </div>
                 <div className="flex items-center bg-gray-800 rounded-full px-3 py-1">
-                    <EyeIcon className="w-5 h-5 mr-2 text-blue-400"/>
-                    <ViewCounter slug={slug} initialViews={initialViews}/>
+                    <EyeIcon className="w-5 h-5 mr-2 text-blue-400" />
+                    <ViewCounter slug={slug} initialViews={initialViews} />
                 </div>
             </div>
             <SocialShare url={`/blog/${slug}`} title={title} />

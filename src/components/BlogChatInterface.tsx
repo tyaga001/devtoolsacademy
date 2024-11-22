@@ -39,13 +39,21 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, onCl
                 body: JSON.stringify({ content: blogContent, query: input }),
             });
 
-            if (!response.ok) throw new Error('Failed to get response');
 
+            if (!response.ok) {
+                // throw new Error("Something went wrong")
+                const data = await response.json();
+                setMessages(prev => [...prev, { role: 'assistant', content: "Error: " + data.error }]);
+                return;
+
+            }
             const data = await response.json();
+            console.log(data);
+
             setMessages(prev => [...prev, { role: 'assistant', content: data.answer }]);
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error in chat:', error);
-            setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' }]);
+            setMessages(prev => [...prev, { role: 'assistant', content: "I have encountered some error. Please try again." }]);
         } finally {
             setIsLoading(false);
         }
@@ -79,9 +87,8 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, onCl
                                 exit={{ opacity: 0, y: -20 }}
                                 className={`flex ${msg.role === 'human' ? 'justify-end' : 'justify-start'}`}
                             >
-                                <div className={`max-w-3/4 p-3 rounded-lg ${
-                                    msg.role === 'human' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-gray-200'
-                                }`}>
+                                <div className={`max-w-3/4 p-3 rounded-lg ${msg.role === 'human' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-gray-200'
+                                    }`}>
                                     {msg.content}
                                 </div>
                             </motion.div>

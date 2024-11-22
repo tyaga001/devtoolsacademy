@@ -30,10 +30,17 @@ export async function POST(request: Request) {
         const answer = response.data.content[0].text;
         return NextResponse.json({ answer });
     } catch (error: any) {
-        console.error('Error in API:', error.response?.data || error.message);
+        console.error(error.response?.data.error.message || error.message);
+
         return NextResponse.json(
-            { error: 'Error processing request. Please try again.' },
-            { status: error.response?.status || 500 }
+            {
+                error: error.response?.data.error.message || error.message,
+
+            },
+            {
+                status: error.response?.status || 500
+            }
+
         );
     }
 }
