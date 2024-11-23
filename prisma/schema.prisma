@@ -54,3 +54,11 @@ model Tool {
   @@index([tags])
 }
 
+model Categories {
+  id          String @id @default(uuid())
+  name        String @unique
+  count       Int
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

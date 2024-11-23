@@ -1,6 +1,7 @@
 import React from 'react';
 import ToolsPage from '@/components/tools/ToolsPage';
 import { Metadata } from 'next';
+import Categories from '@/components/tools/Categories';
 
 export const metadata: Metadata = {
   title: 'Browse Tools DTA',
@@ -33,6 +34,7 @@ export default async function ToolsRoute({ searchParams }: { searchParams?: Sear
         </p>
       </div>
       <ToolsPage page={page} />
+      <Categories />
     </main>
   );
 }
