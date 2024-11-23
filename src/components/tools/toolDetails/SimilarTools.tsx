@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { ToolCardInterface } from '@/lib/types'
 import axios from 'axios'
 import ToolCard from '../ToolCard'
+import { table } from 'console'
 
 interface SimilarToolsProps {
   slug: string;
@@ -36,7 +37,7 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({ slug, tags, categories }) =
     }
 
     fetchSimilarTools()
-  }, [])
+  }, [slug, tags, categories])
 
   if (isLoading) {
     return <div>Loading similar tools...</div>
@@ -52,7 +53,7 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({ slug, tags, categories }) =
               <h3 className='text-xl font-medium text-gray-400'>Based on Tags</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
                 {similarTagTools.map((tool) => (
-                  <ToolCard tool={tool} />
+                  <ToolCard key={tool.id} tool={tool} />
                 ))}
               </div>
             </div>
@@ -64,7 +65,7 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({ slug, tags, categories }) =
               <h3 className='text-xl font-medium text-gray-400'>Based on Categories</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
                 {similarCategoriesTools.map((tool) => (
-                  <ToolCard tool={tool} />
+                  <ToolCard key={tool.id} tool={tool} />
                 ))}
               </div>
             </div>

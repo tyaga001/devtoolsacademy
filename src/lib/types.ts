@@ -8,20 +8,12 @@ export interface ToolCardInterface {
   lastUpdated: Date
   logo: string
 }
-export interface ToolDetailsInterface {
-  id?: string
-  name: string
-  description: string
-  categories: string[]
-  stars: number
-  forks: number
-  lastUpdated: Date
-  logo: string
+
+export interface ToolDetailsInterface extends ToolCardInterface {
   tags: string[]
-  githubUrl: string
-  websiteUrl?: string | null
-  documentation?: string | null
+  githubUrl: URL
+  websiteUrl?: URL
+  documentation?: URL
   createdAt: Date
   updatedAt: Date
 }
-

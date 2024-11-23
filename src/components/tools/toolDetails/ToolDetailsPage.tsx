@@ -122,7 +122,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               <div>
                 <p className="text-sm text-gray-400">Stars</p>
                 <p className="text-xl font-semibold">
-                  {tool.stars.toLocaleString()}
+                  {typeof tool.stars === 'number' ? tool.stars.toLocaleString() : 'N/A'}
                 </p>
               </div>
             </div>
@@ -131,7 +131,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               <div>
                 <p className="text-sm text-gray-400">Forks</p>
                 <p className="text-xl font-semibold">
-                  {tool.forks.toLocaleString()}
+                  {typeof tool.forks === 'number' ? tool.forks.toLocaleString() : 'N/A'}
                 </p>
               </div>
             </div>
@@ -140,11 +140,13 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               <div>
                 <p className="text-sm text-gray-400">Last Commited</p>
                 <p className="text-xl font-semibold">
-                  {tool.lastUpdated.toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
+                  {tool.lastUpdated instanceof Date
+                    ? tool.lastUpdated.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })
+                    : 'N/A'}
                 </p>
               </div>
             </div>

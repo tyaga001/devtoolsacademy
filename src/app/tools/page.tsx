@@ -6,10 +6,13 @@ export const metadata: Metadata = {
   title: 'Browse Tools DTA',
   description: 'DevToolsAcademy - Browse Tools',
 };
+interface SearchParams {
+  page?: string;
+}
 
-export default async function ToolsRoute({ searchParams }: { searchParams?: { page: number } }) {
-
-  const page = searchParams?.page || 1
+export default async function ToolsRoute({ searchParams }: { searchParams?: SearchParams }) {
+  const pageNumber = Number(searchParams?.page) || 1;
+  const page = Math.max(1, Math.floor(pageNumber));
 
   return (
     <main className="min-h-screen w-full">

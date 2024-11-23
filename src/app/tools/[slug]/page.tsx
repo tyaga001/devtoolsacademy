@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { getToolDetails } from '@/lib/tools';
 import ToolDetailsPage from '@/components/tools/toolDetails/ToolDetailsPage';
-import Link from 'next/link';
+import ToolNotFound from '@/components/tools/toolDetails/ToolNotFound';
 
 
 export const metadata: Metadata = {
@@ -14,16 +14,11 @@ export default async function ToolDetailRoute({ params }: { params: { slug: stri
 
   const response = await getToolDetails(params.slug)
   const toolDetails = response.toolDetails
+  console.log({ toolDetails })
 
   if (!toolDetails) {
     return (
-      <main>
-        <h1>We are not able to find this tool, looks like you are searching for wrong url</h1>
-
-        <Link href="/tools">
-          Browse more tools
-        </Link>
-      </main>
+      <ToolNotFound />
     )
   }
 
