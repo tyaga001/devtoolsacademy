@@ -7,6 +7,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
+import { useSearchParams } from "next/navigation";
 
 interface ToolsPaginationProps {
   currentPage: number;
@@ -15,12 +16,17 @@ interface ToolsPaginationProps {
 }
 
 export default function ToolsPagination({ currentPage, totalPages, basePath }: ToolsPaginationProps) {
+  const searchParams = useSearchParams();
   const createPageUrl = (pageNumber: number) => {
-    const url = new URL(basePath, 'http://example.com');
-    url.searchParams.set('page', pageNumber.toString());
-    return `${url.pathname}${url.search}`;
-  };
+    // Create a new URLSearchParams instance with all current parameters
+    const params = new URLSearchParams(searchParams.toString());
 
+    // Update the page parameter
+    params.set('page', pageNumber.toString());
+
+    // Combine the base path with all query parameters
+    return `${basePath}?${params.toString()}`;
+  };
   return (
     <Pagination>
       <PaginationContent>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ToolsPage from '@/components/tools/ToolsPage';
 import { Metadata } from 'next';
 import Categories from '@/components/tools/Categories';
@@ -34,7 +34,11 @@ export default async function ToolsRoute({ searchParams }: { searchParams?: Sear
         </p>
       </div>
       <ToolsPage page={page} />
-      <Categories />
+      <Suspense fallback={
+        <div>loading....</div>
+      }>
+        <Categories />
+      </Suspense>
     </main>
   );
 }
