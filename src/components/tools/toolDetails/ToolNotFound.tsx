@@ -5,13 +5,13 @@ const ToolNotFound = () => {
   return (
     <div className="flex flex-col gap-3 items-center justify-center min-h-[50vh] text-center px-4">
       <div className="flex h-full items-center justify-center gap-3">
-        <div className=" flex p-2 items-center justify-center rounded-full bg-sky-800">
+        <div className="flex p-2 items-center justify-center rounded-full bg-sky-800">
           <FrownIcon size={40} />
         </div>
         <h1 className="text-2xl md:text-4xl font-bold">Tool Not Found</h1>
       </div>
       <p className="text-gray-600">
-        We couldn't find the tool you're looking for. It might have been moved or doesn't exist.
+        We couldn&apos;t find the tool you&apos;re looking for. It might have been moved or doesn&apos;t exist.
       </p>
       <Link
         href="/tools"
@@ -19,7 +19,8 @@ const ToolNotFound = () => {
       >
         Browse Tools
       </Link>
-    </div >
+    </div>
   )
 }
+
 export default ToolNotFound
