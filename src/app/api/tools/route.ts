@@ -5,7 +5,7 @@ export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const reqPage = parseInt(searchParams.get('page') || '1', 10);
   const page = reqPage === 0 ? 1 : reqPage;
-  const perPage = 4;
+  const perPage = 10;
   const search = searchParams.get('search') || '';
   const categories = searchParams.get('categories')?.split(',') || [];
   const tags = searchParams.get('tags')?.split(',') || [];

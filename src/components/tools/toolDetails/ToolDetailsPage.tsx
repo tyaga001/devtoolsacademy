@@ -7,6 +7,8 @@ import {
   Github,
   Book,
   Code,
+  Hash,
+  Tag,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
@@ -70,33 +72,47 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             </div>
           </div>
           <div>
-            <p className=" pb-1">{tool.description}</p>
-            <div className="flex flex-wrap gap-2 pb-2 pt-2 md:pt-0">
-              {tool.tags.map((tag) => (
-                <Badge
-                  key={tag}
-                  variant="secondary"
-                  className="border border-white border-opacity-10"
-                >
-                  #{tag}
-                </Badge>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {tool.categories.map((category) => (
-                <Badge
-                  key={category}
-                  variant="secondary"
-                  className="bg-[#141414] bg-opacity-80 hover:bg-[#141414] hover:bg-opacity-100 text-sm text-gray-300 cursor-pointer"
-                >
-                  {category}
-                </Badge>
-              ))}
+            <p className=" pb-1 text-gray-300">{tool.description}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+              <div>
+                <h3 className="text-md font-semibold mb-2 flex items-center">
+                  <Hash className="w-5 h-5 mr-2" />
+                  Tags
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tool.tags.map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="secondary"
+                      className="text-sm bg-[#342651] text-gray-300 opacity-80 hover:bg-[#342651] hover:opacity-100 cursor-pointer"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-md font-semibold mb-2 flex items-center">
+                  <Tag className="w-5 h-5 mr-2" />
+                  Categories
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tool.categories.map((category) => (
+                    <Badge
+                      key={category}
+                      variant="outline"
+                      className="text-sm border-gray-600 text-gray-300 hover:bg-[#342651] cursor-pointer"
+                    >
+                      {category}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 pt-4">
           <div>
             <h2 className="text-2xl pb-1">Repository Details:</h2>
           </div>
@@ -117,25 +133,29 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             ))}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
-            <div className="flex items-center bg-gradient-to-br from-[#1C1C1C] to-transparent border border-white border-opacity-10 p-4 rounded">
+            <div className="flex items-center bg-gradient-to-br from-[#342651] to-transparent border border-white border-opacity-10 p-4 rounded">
               <Star className="w-8 h-8 mr-3 text-gray-500" />
               <div>
                 <p className="text-sm text-gray-400">Stars</p>
                 <p className="text-xl font-semibold">
-                  {typeof tool.stars === 'number' ? tool.stars.toLocaleString() : 'N/A'}
+                  {typeof tool.stars === "number"
+                    ? tool.stars.toLocaleString()
+                    : "N/A"}
                 </p>
               </div>
             </div>
-            <div className="flex items-center bg-gradient-to-br from-[#1C1C1C] to-transparent border border-white border-opacity-10 p-4 rounded">
+            <div className="flex items-center bg-gradient-to-br from-[#342651] to-transparent border border-white border-opacity-10 p-4 rounded">
               <GitFork className="w-8 h-8 mr-3 text-gray-500" />
               <div>
                 <p className="text-sm text-gray-400">Forks</p>
                 <p className="text-xl font-semibold">
-                  {typeof tool.forks === 'number' ? tool.forks.toLocaleString() : 'N/A'}
+                  {typeof tool.forks === "number"
+                    ? tool.forks.toLocaleString()
+                    : "N/A"}
                 </p>
               </div>
             </div>
-            <div className="flex items-center bg-gradient-to-br from-[#1C1C1C] to-transparent border border-white border-opacity-10 p-4 rounded">
+            <div className="flex items-center bg-gradient-to-br from-[#342651] to-transparent border border-white border-opacity-10 p-4 rounded">
               <Clock className="w-8 h-8 mr-3 text-gray-500" />
               <div>
                 <p className="text-sm text-gray-400">Last Commited</p>
@@ -146,7 +166,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                       day: "numeric",
                       year: "numeric",
                     })
-                    : 'N/A'}
+                    : "N/A"}
                 </p>
               </div>
             </div>
@@ -224,13 +244,18 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           </section>
         </div>
       </div>
-      <Suspense fallback={
-        <div>loading...</div>
-      }>
-        <SimilarTools slug={tool.name} tags={tool.tags} categories={tool.categories} />
+      <Suspense fallback={<div>loading...</div>}>
+        <SimilarTools
+          slug={tool.name}
+          tags={tool.tags}
+          categories={tool.categories}
+        />
       </Suspense>
     </div>
   );
 };
 
 export default ToolDetailsPage;
+
+
+
