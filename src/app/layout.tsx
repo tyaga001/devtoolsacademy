@@ -9,6 +9,8 @@ import './globals.css';
 import 'highlight.js/styles/github-dark.css';
 import { Metadata } from 'next';
 import Script from 'next/script'
+import { Toaster } from '@/components/ui/toaster';
+
 
 export const metadata: Metadata = {
     title: {
@@ -58,31 +60,34 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
     return (
         <html lang="en" suppressHydrationWarning>
-        <head>
-            <SocialMetadata
-                title={title}
-                description={metadata.description ?? 'Learn about awesome developer tools'}
-                url={metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}
-                image={`${metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}/favicon.png`}
-                type="website"
-            />
-            <Script
-                src="https://cloud.umami.is/script.js"
-                data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-                strategy="afterInteractive"
-            />
-        </head>
-        <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
-        <ClerkProvider>
-            <div className="flex flex-col min-h-screen">
-                <Navbar />
-                <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 ">
-                    {children}
-                </main>
-            </div>
-        </ClerkProvider>
-        <Analytics />
-        </body>
+            <head>
+                <SocialMetadata
+                    title={title}
+                    description={metadata.description ?? 'Learn about awesome developer tools'}
+                    url={metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}
+                    image={`${metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}/favicon.png`}
+                    type="website"
+                />
+
+                <Script
+                    src="https://cloud.umami.is/script.js"
+                    data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+                    strategy="afterInteractive"
+                />
+            </head>
+            <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
+                <ClerkProvider>
+                    <div className="flex flex-col min-h-screen">
+                        <Navbar />
+                        <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 ">
+                            {children}
+                        </main>
+                        
+                        <Toaster></Toaster>
+                    </div>
+                </ClerkProvider>
+                <Analytics />
+            </body>
         </html>
     );
 }

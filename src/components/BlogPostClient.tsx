@@ -48,13 +48,10 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
             <h1 className="text-4xl font-bold mb-4 text-white">{title}</h1>
             <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center space-x-4">
-                    <span className="text-gray-400">{formatDate(publishedAt)}</span>
-                    <button
-                        onClick={() => setShowChat(true)}
-                        className="text-blue-400 bg-blue-900 bg-opacity-30 hover:bg-opacity-50 transition-colors duration-200 text-sm px-4 py-2 rounded-full border border-blue-500"
-                    >
-                        Chat with Claude AI
-                    </button>
+                    <span className="text-gray-400">{formatDate(publishedAt)}</span> <p>•</p>
+                    <button onClick={()=>setShowChat(true)} className="inline-flex h-10 animate-shimmer items-center justify-center  border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 rounded-full text-sm ">
+                    Summarize with AI
+        </button>
                 </div>
                 <div className="flex items-center bg-gray-800 rounded-full px-3 py-1">
                     <EyeIcon className="w-5 h-5 mr-2 text-blue-400" />
@@ -65,6 +62,8 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
             {showChat && (
                 <BlogChatInterface
                     blogContent={content}
+                    blogDescription={description}
+                    blogTitle={title}
                     onClose={() => setShowChat(false)}
                 />
             )}
