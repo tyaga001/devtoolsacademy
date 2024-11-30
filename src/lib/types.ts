@@ -5,7 +5,7 @@ export interface ToolCardInterface {
   categories: string[]
   stars: number
   forks: number
-  lastUpdated: Date
+  lastUpdated?: Date
   logo: string
 }
 export interface ToolDetailsInterface {

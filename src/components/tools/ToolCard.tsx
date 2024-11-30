@@ -79,7 +79,9 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
               <span>Last Commit</span>
             </div>
             <div>
-              <span>{new Date(tool.lastUpdated).toLocaleDateString()}</span>
+              {tool.lastUpdated && (
+                <span>{new Date(tool.lastUpdated).toLocaleDateString()}</span>
+              )}
             </div>
           </div>
         </CardFooter>
