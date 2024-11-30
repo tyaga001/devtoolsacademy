@@ -10,7 +10,7 @@ interface ToolCardProps {
 
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
-    <Link href={`/tools/${tool.name}`} className="block">
+    <Link href={`/tools/${encodeURIComponent(tool.name)}`} className="block">
       <Card className="relative w-full h-full  max-w-sm  bg-gradient-to-br from-[#050817]  to-gray-950 border-white border-opacity-10 hover:ring ring-[#1C1C1C] ring-opacity-50 opacity-90 hover:opacity-100 transition-all rounded-xl overflow-hidden">
         <CardHeader className="pb-2">
           <div className="flex items-center gap-3">

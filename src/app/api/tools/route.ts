@@ -4,7 +4,7 @@ import prisma from '@/lib/prisma';
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const reqPage = parseInt(searchParams.get('page') || '1', 10);
-  const page = reqPage === 0 ? 1 : reqPage;
+  const page = isNaN(reqPage) || reqPage < 1 ? 1 : reqPage;
   const perPage = 20;
   const search = searchParams.get('search') || '';
   const categories = searchParams.get('categories')?.split(',') || [];

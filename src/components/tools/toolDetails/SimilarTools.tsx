@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { ToolCardInterface } from "@/lib/types";
 import axios from "axios";
 import ToolCard from "../ToolCard";
@@ -24,6 +24,8 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
     ToolCardInterface[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
+  const memoizedTags = useMemo(() => tags, [tags]);
+  const memoizedCategories = useMemo(() => categories, [categories]);
 
   useEffect(() => {
     const fetchSimilarTools = async () => {
@@ -45,7 +47,7 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
     };
 
     fetchSimilarTools();
-  }, [slug, tags, categories]);
+  }, [slug, memoizedTags, memoizedCategories]);
 
   if (isLoading) {
     return (<div className="flex flex-col gap-4 mt-8">

@@ -31,6 +31,7 @@ const ToolsFilter: React.FC = () => {
       searchParams.get("categories")?.split(",").filter(Boolean) || []
     );
     setSelectedTags(searchParams.get("tags")?.split(",").filter(Boolean) || []);
+    setSelectedSort(searchParams.get("sort") || "");
   }, [searchParams]);
 
   const updateURLWithParams = (params: URLSearchParams) => {
@@ -69,16 +70,14 @@ const ToolsFilter: React.FC = () => {
   const clearFilters = () => {
     setSelectedCategories([]);
     setSelectedTags([]);
+    setSelectedSort("")
 
     const params = new URLSearchParams(window.location.search);
     params.delete("categories");
     params.delete("tags");
+    params.delete("sort")
 
-    window.history.replaceState(
-      {},
-      "",
-      `${window.location.pathname}?${params.toString()}`
-    );
+    updateURLWithParams(params)
   };
 
   return (

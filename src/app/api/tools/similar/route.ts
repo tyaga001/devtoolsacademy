@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { SimilarRouteSchema } from '@/lib/ZodSchema';
 
 export async function POST(req: NextRequest) {
   try {
     const { slug, tags, categories } = await req.json()
+
+    const validatedFields = SimilarRouteSchema.safeParse({ slug, tags, categories })
+
+    if (!validatedFields.success) {
+      return NextResponse.json({ success: false, message: "Invalid review fields", validatedFields }, { status: 400 });
+    }
+
     const [similarCategoriesTools, similarTagTools] = await Promise.all([
       prisma.tool.findMany({
         where: {

@@ -64,7 +64,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               />
             ) : (
               <div className="w-24 h-24 rounded-lg bg-gray-800 flex items-center justify-center text-gray-300 text-4xl font-bold">
-                {tool.name.charAt(0)}
+                {tool.name ? tool.name.charAt(0) : ""}
               </div>
             )}
             <div>
@@ -160,8 +160,8 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               <div>
                 <p className="text-sm text-gray-400">Last Commited</p>
                 <p className="text-xl font-semibold">
-                  {tool.lastUpdated instanceof Date
-                    ? tool.lastUpdated.toLocaleDateString("en-US", {
+                  {tool.lastUpdated
+                    ? new Date(tool.lastUpdated).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
