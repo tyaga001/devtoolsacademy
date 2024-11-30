@@ -1,3 +1,5 @@
+import { useCallback, useMemo } from 'react'
+import { useSearchParams } from 'next/navigation'
 import {
   Pagination,
   PaginationContent,
@@ -6,59 +8,88 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
-import { useSearchParams } from "next/navigation";
+} from '@/components/ui/pagination'
 
 interface ToolsPaginationProps {
-  currentPage: number;
-  totalPages: number;
-  basePath: string;
+  currentPage: number
+  totalPages: number
+  basePath: string
 }
 
 export default function ToolsPagination({ currentPage, totalPages, basePath }: ToolsPaginationProps) {
-  const searchParams = useSearchParams();
-  const createPageUrl = (pageNumber: number) => {
-    // Create a new URLSearchParams instance with all current parameters
-    const params = new URLSearchParams(searchParams.toString());
+  const searchParams = useSearchParams()
 
-    // Update the page parameter
-    params.set('page', pageNumber.toString());
+  const createPageUrl = useCallback((pageNumber: number) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set('page', pageNumber.toString())
+    return `${basePath}?${params.toString()}`
+  }, [searchParams, basePath])
 
-    // Combine the base path with all query parameters
-    return `${basePath}?${params.toString()}`;
-  };
+  const pageRange = useMemo(() => {
+    const range = []
+    const rangeWithDots = []
+    const delta = 2
+
+    for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+      range.push(i)
+    }
+
+    if (currentPage - delta > 2) {
+      rangeWithDots.push(1, '...')
+    } else {
+      rangeWithDots.push(1)
+    }
+
+    rangeWithDots.push(...range)
+
+    if (currentPage + delta < totalPages - 1) {
+      rangeWithDots.push('...', totalPages)
+    } else if (currentPage + delta === totalPages - 1) {
+      rangeWithDots.push(totalPages)
+    }
+
+    return rangeWithDots
+  }, [currentPage, totalPages])
+
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            href={currentPage > 1 ? createPageUrl(currentPage - 1) : '#'}
+            href={currentPage > 1 ? createPageUrl(currentPage - 1) : ''}
             aria-disabled={currentPage === 1}
+            tabIndex={currentPage === 1 ? -1 : 0}
+            className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
           />
         </PaginationItem>
 
-        {[...Array(totalPages)].map((_, i) => {
-          if (i === 0 || i === totalPages - 1 || (i >= currentPage - 2 && i <= currentPage + 2)) {
-            return (
-              <PaginationItem key={i}>
-                <PaginationLink href={createPageUrl(i + 1)} isActive={currentPage === i + 1}>
-                  {i + 1}
-                </PaginationLink>
-              </PaginationItem>
-            );
-          } else if (i === currentPage - 3 || i === currentPage + 3) {
-            return <PaginationEllipsis key={i} />;
-          }
-          return null;
-        })}
+        {pageRange.map((page, index) => (
+          <PaginationItem key={index}>
+            {page === '...' ? (
+              <PaginationEllipsis />
+            ) : (
+              <PaginationLink
+                href={createPageUrl(page as number)}
+                isActive={currentPage === page}
+                aria-current={currentPage === page ? 'page' : undefined}
+              >
+                {page}
+              </PaginationLink>
+            )}
+          </PaginationItem>
+        ))}
 
         <PaginationItem>
           <PaginationNext
-            href={currentPage < totalPages ? createPageUrl(Number(currentPage) + 1) : '#'}
+            href={currentPage < totalPages ? createPageUrl(currentPage + 1) : ''}
             aria-disabled={currentPage === totalPages}
+            tabIndex={currentPage === totalPages ? -1 : 0}
+            className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
           />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  );
+  )
 }
+
+

@@ -2,7 +2,6 @@ import React from 'react'
 import algoliasearch from 'algoliasearch'
 import ToolsFilter from './ToolsFilter'
 import SearchBar from './SearchBar'
-import ToolCard from './ToolCard'
 
 interface AlgoliaSearchProps {
   searchParams: {

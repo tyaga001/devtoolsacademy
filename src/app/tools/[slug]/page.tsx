@@ -14,7 +14,6 @@ export default async function ToolDetailRoute({ params }: { params: { slug: stri
 
   const response = await getToolDetails(params.slug)
   const toolDetails = response.toolDetails
-  console.log({ toolDetails })
 
   if (!toolDetails) {
     return (

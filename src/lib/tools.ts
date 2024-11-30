@@ -1,5 +1,5 @@
-import { Categories, PrismaClient } from '@prisma/client'
-import { ToolDetailsInterface } from './types'
+import { Categories, PrismaClient } from '@prisma/client';
+import { ToolDetailsInterface } from './types';
 
 const prisma = new PrismaClient()
 
@@ -33,7 +33,6 @@ export async function getToolDetails(slug: string): Promise<ToolDetailsReturnTyp
       toolDetails
     }
   } catch (err) {
-    console.log(`tool details fetch error -- ${err}`)
     return {
       status: false,
       message: "failed to get tool details",

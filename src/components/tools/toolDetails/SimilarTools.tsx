@@ -36,7 +36,6 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
         const data = response.data;
         setSimilarTagTools(data.similarTagTools || []);
         setSimilarCategoriesTools(data.similarCategoriesTools || []);
-        console.log(data.similarCategoriesTools);
       } catch (error) {
         console.error("Error fetching similar tools:", error);
       } finally {

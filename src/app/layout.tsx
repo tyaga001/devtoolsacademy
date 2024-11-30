@@ -73,7 +73,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
-        <div className="fixed inset-0 z-[-2] bg-gray-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.2),rgba(255,255,255,0))]"></div>
         <ClerkProvider>
           <div className="flex flex-col min-h-screen">
             <Navbar />

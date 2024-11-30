@@ -16,6 +16,7 @@ export default function SearchBar() {
   const updateSearchQuery = useCallback((query: string) => {
     const params = new URLSearchParams(searchParams)
     const hasFilters = params.has("categories") || params.has("tags") || params.has("sort")
+    console.log({ query })
 
     if (query) {
       if (hasFilters) {
@@ -27,9 +28,6 @@ export default function SearchBar() {
     } else {
       params.delete('query')
     }
-
-    // Always reset to the first page when search changes
-    params.set('page', '1')
 
     router.push(`/tools?${params.toString()}`)
   }, [router, searchParams])

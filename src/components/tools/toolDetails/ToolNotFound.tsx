@@ -11,7 +11,7 @@ const ToolNotFound = () => {
         <h1 className="text-2xl md:text-4xl font-bold">Tool Not Found</h1>
       </div>
       <p className="text-gray-600">
-        We couldn't find the tool you're looking for. It might have been moved or doesn't exist.
+        We could not find the tool you are looking for. It might have been moved or does not exist.
       </p>
       <Link
         href="/tools"

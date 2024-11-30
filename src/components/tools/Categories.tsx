@@ -13,6 +13,7 @@ import {
   Coffee,
   Truck,
 } from "lucide-react";
+import Link from "next/link";
 
 const getRandomColor = () => {
   const colors = [
@@ -79,24 +80,26 @@ const Categories = async () => {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {variousCategories?.map((category) => (
-            <div
-              key={category.name}
-              className="flex items-center space-x-4 p-4 bg-card rounded-lg shadow"
-            >
+            <Link href={`/tools?categories=${category.name}`}>
               <div
-                className={`${getRandomColor()} h-12 w-12 rounded-full flex items-center justify-center text-white`}
+                key={category.name}
+                className="flex items-center space-x-4 p-4 bg-card rounded-lg shadow"
               >
-                {getRandomIcon()}
+                <div
+                  className={`${getRandomColor()} h-12 w-12 rounded-full flex items-center justify-center text-white`}
+                >
+                  {getRandomIcon()}
+                </div>
+                <div>
+                  <h3 className="font-semibold">
+                    {capitalizeFirstLetter(category.name)}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {category.count || 0} Categories
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-semibold">
-                  {capitalizeFirstLetter(category.name)}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {category.count || 0} Categories
-                </p>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
