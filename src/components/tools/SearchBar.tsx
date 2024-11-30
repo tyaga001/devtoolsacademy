@@ -16,7 +16,6 @@ export default function SearchBar() {
   const updateSearchQuery = useCallback((query: string) => {
     const params = new URLSearchParams(searchParams)
     const hasFilters = params.has("categories") || params.has("tags") || params.has("sort")
-    console.log({ query })
 
     if (query) {
       if (hasFilters) {

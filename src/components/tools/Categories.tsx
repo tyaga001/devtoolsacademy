@@ -8,6 +8,7 @@ import {
   BookOpen,
   Camera,
   Music,
+  Frown,
   ShoppingBag,
   Zap,
   Coffee,
@@ -60,12 +61,22 @@ const Categories = async () => {
 
   if (!response.status) {
     return (
-      <div className="text-center p-4 text-muted-foreground">
-        No Categories Found, try again later
+      <div className="flex flex-col gap-3 items-center justify-center min-h-[50vh] text-center px-4">
+        <div className="flex h-full items-center justify-center gap-3">
+          <div className=" flex p-2 items-center justify-center rounded-full bg-sky-800">
+            <Frown size={40} />
+          </div>
+          <h1 className="text-2xl md:text-4xl font-bold">
+            Categories Not Found
+          </h1>
+        </div>
+        <p className="text-gray-600">
+          We couldn&apos;t able to find the categories for you. It might have
+          been moved or doesn&apos;t exist. Please try again later
+        </p>
       </div>
     );
   }
-
   return (
     <div className="w-full px-4 py-8 pt-16 md:px-6 lg:px-48">
       <div className="space-y-6">
@@ -80,10 +91,12 @@ const Categories = async () => {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {variousCategories?.map((category) => (
-            <Link href={`/tools?categories=${category.name}`}>
+            <Link
+              key={category.name}
+              href={`/tools?categories=${category.name}`}
+            >
               <div
-                key={category.name}
-                className="flex items-center space-x-4 p-4 bg-card rounded-lg shadow"
+                className="flex items-center space-x-4 p-4 bg-card shadow hover:bg-gray-900 bg-opacity-20 rounded-xl transition-all duration-300 cursor-pointer"
               >
                 <div
                   className={`${getRandomColor()} h-12 w-12 rounded-full flex items-center justify-center text-white`}

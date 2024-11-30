@@ -1,13 +1,15 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Check, ChevronDown } from 'lucide-react';
+import { Check, ChevronDown, Filter, Folder, SortAsc, Tag } from "lucide-react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "../ui/button";
+import SearchBar from "./SearchBar";
 
 const categories = ["tools", "frontend", "backend", "api"];
 const tags = ["editing", "tool", "links", "api"];
@@ -22,11 +24,14 @@ const ToolsFilter: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>(
     searchParams.get("tags")?.split(",").filter(Boolean) || []
   );
+  const [selectedSort, setSelectedSort] = useState("");
 
   useEffect(() => {
-    setSelectedCategories(searchParams.get("categories")?.split(",").filter(Boolean) || [])
-    setSelectedTags(searchParams.get("tags")?.split(",").filter(Boolean) || [])
-  }, [searchParams])
+    setSelectedCategories(
+      searchParams.get("categories")?.split(",").filter(Boolean) || []
+    );
+    setSelectedTags(searchParams.get("tags")?.split(",").filter(Boolean) || []);
+  }, [searchParams]);
 
   const updateURLWithParams = (params: URLSearchParams) => {
     params.set("page", "1");
@@ -61,73 +66,128 @@ const ToolsFilter: React.FC = () => {
     updateURLWithParams(params);
   };
 
-  return (
-    <div className="w-full flex flex-col gap-6 p-6">
-      <div className="flex gap-4 items-center justify-end">
-        <Popover>
-          <PopoverTrigger className="px-4 py-2 h-12 border border-white/20 rounded-l-full flex items-center gap-2 hover:bg-white/10 transition-colors duration-200">
-            Filters
-            <ChevronDown className="h-4 w-4" />
-          </PopoverTrigger>
-          <PopoverContent className="w-[400px] p-4 bg-gray-900 border border-white/20 rounded shadow-lg">
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <h3 className="font-semibold mb-2">Categories</h3>
-                <div className="flex flex-col gap-2">
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      className="flex items-center justify-between px-3 py-2 rounded hover:bg-white/10 text-left transition-colors duration-200"
-                      onClick={() => updateFilters("categories", category)}
-                    >
-                      <span className="capitalize">{category}</span>
-                      {selectedCategories.includes(category) && (
-                        <Check className="h-4 w-4 text-green-400" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold mb-2">Tags</h3>
-                <div className="flex flex-col gap-2">
-                  {tags.map((tag) => (
-                    <button
-                      key={tag}
-                      className="flex items-center justify-between px-3 py-2 rounded hover:bg-white/10 text-left transition-colors duration-200"
-                      onClick={() => updateFilters("tags", tag)}
-                    >
-                      <span className="capitalize">{tag}</span>
-                      {selectedTags.includes(tag) && (
-                        <Check className="h-4 w-4 text-green-400" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </PopoverContent>
-        </Popover>
+  const clearFilters = () => {
+    setSelectedCategories([]);
+    setSelectedTags([]);
 
-        <Popover>
-          <PopoverTrigger className="px-4 py-2 h-12 border border-white/20 rounded-r-full flex items-center gap-2 hover:bg-white/10 transition-colors duration-200">
-            Sort By
-            <ChevronDown className="h-4 w-4" />
-          </PopoverTrigger>
-          <PopoverContent className="w-48 p-2 bg-gray-900 border border-white/20 rounded shadow-lg">
-            <div className="flex flex-col gap-1">
-              {["recent", "popular", "alphabetical"].map((option) => (
-                <button
-                  key={option}
-                  className="px-3 py-2 text-left hover:bg-white/10 rounded transition-colors duration-200 capitalize"
-                  onClick={() => updateSort(option)}
-                >
-                  Most {option}
-                </button>
-              ))}
-            </div>
-          </PopoverContent>
-        </Popover>
+    const params = new URLSearchParams(window.location.search);
+    params.delete("categories");
+    params.delete("tags");
+
+    window.history.replaceState(
+      {},
+      "",
+      `${window.location.pathname}?${params.toString()}`
+    );
+  };
+
+  return (
+    <div className="w-full flex flex-col gap-6 pt-12">
+      <div className="flex w-full gap-4">
+        <div className="flex-1">
+          <SearchBar />
+        </div>
+        <div className="flex items-center justify-end">
+          <Popover>
+            <PopoverTrigger className="px-4 py-2 h-12 border border-white/20 rounded-l-full flex items-center gap-2 hover:bg-white/10 transition-colors duration-200">
+              <Filter className="h-4 w-4" />
+              Filters
+              <ChevronDown className="h-4 w-4" />
+            </PopoverTrigger>
+            <PopoverContent className="w-[400px] p-4 bg-gray-900 border border-white/20 rounded shadow-lg">
+              <div className="rounded-lg">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-2xl font-bold text-gray-300">Filters</h2>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={clearFilters}
+                    className="text-sm rounded-full text-gray-500 hover:text-gray-400"
+                  >
+                    Clear All
+                  </Button>
+                </div>
+
+                <div className="flex gap-6">
+                  <div className="flex-1">
+                    <h3 className="font-semibold mb-2 flex items-center text-gray-100">
+                      <Folder className="mr-2 h-5 w-5" />
+                      Categories
+                    </h3>
+                    <div className="rounded-[10px]">
+                      <div className="p-2">
+                        {categories.map((category) => (
+                          <div
+                            key={category}
+                            className={`flex items-center justify-between px-3 py-2 rounded w-full text-left transition-colors duration-200 cursor-pointer hover:bg-gray-700`}
+                            onClick={() =>
+                              updateFilters("categories", category)
+                            }
+                          >
+                            <span className="capitalize text-sm">
+                              {category}
+                            </span>
+                            {selectedCategories.includes(category) && (
+                              <Check className="h-4 w-4 text-blue-600" />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex-1">
+                    <h3 className="font-semibold mb-2 flex items-center text-gray-100">
+                      <Tag className="mr-2 h-5 w-5" />
+                      Tags
+                    </h3>
+                    <div className="rounded-[10px]">
+                      <div className="p-2">
+                        {tags.map((tag) => (
+                          <div
+                            key={tag}
+                            className={`flex items-center justify-between px-3 py-2 rounded w-full text-left transition-colors duration-200 cursor-pointer hover:bg-gray-700`}
+                            onClick={() => updateFilters("tags", tag)}
+                          >
+                            <span className="capitalize text-sm">{tag}</span>
+                            {selectedTags.includes(tag) && (
+                              <Check className="h-4 w-4 text-blue-600" />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+
+          <Popover>
+            <PopoverTrigger className="px-4 py-2 h-12 border border-white/20 rounded-r-full flex items-center gap-2 hover:bg-white/10 transition-colors duration-200">
+              <SortAsc className="h-4 w-4" />
+              Sort By
+              <ChevronDown className="h-4 w-4" />
+            </PopoverTrigger>
+            <PopoverContent className="w-48 p-2 bg-gray-900 border border-white/20 rounded shadow-lg">
+              <div className="flex flex-col gap-1">
+                {["recent", "popular", "alphabetical"].map((option) => (
+                  <button
+                    key={option}
+                    className="px-3 py-2 text-left hover:bg-white/10 rounded transition-colors duration-200 capitalize flex items-center justify-between"
+                    onClick={() => {
+                      updateSort(option);
+                      setSelectedSort(option);
+                    }}
+                  >
+                    {option}
+                    {selectedSort === option && <Check className="h-4 w-4" />}
+                  </button>
+                ))}
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
       </div>
 
       {selectedTags.length > 0 && (
@@ -183,5 +243,3 @@ const ToolsFilter: React.FC = () => {
 };
 
 export default ToolsFilter;
-
-

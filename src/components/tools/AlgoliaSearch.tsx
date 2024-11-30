@@ -1,7 +1,6 @@
 import React from 'react'
 import algoliasearch from 'algoliasearch'
 import ToolsFilter from './ToolsFilter'
-import SearchBar from './SearchBar'
 
 interface AlgoliaSearchProps {
   searchParams: {
@@ -44,10 +43,7 @@ const AlgoliaSearch: React.FC<AlgoliaSearchProps> = async () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="flex items-center space-x-4 mb-6">
-        <SearchBar />
-        <ToolsFilter />
-      </div>
+      <ToolsFilter />
     </div>
   )
 }

@@ -1,95 +1,96 @@
-import { useCallback, useMemo } from 'react'
-import { useSearchParams } from 'next/navigation'
+import React from 'react';
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '@/components/ui/pagination'
+} from "@/components/ui/pagination"
+import { useSearchParams } from "next/navigation";
 
 interface ToolsPaginationProps {
-  currentPage: number
-  totalPages: number
-  basePath: string
+  totalPages: number;
+  basePath: string;
 }
 
-export default function ToolsPagination({ currentPage, totalPages, basePath }: ToolsPaginationProps) {
-  const searchParams = useSearchParams()
+export default function ToolsPagination({ totalPages, basePath }: ToolsPaginationProps) {
+  const searchParams = useSearchParams();
+  const currentPage = Number(searchParams.get("page") || 1);
 
-  const createPageUrl = useCallback((pageNumber: number) => {
-    const params = new URLSearchParams(searchParams.toString())
-    params.set('page', pageNumber.toString())
-    return `${basePath}?${params.toString()}`
-  }, [searchParams, basePath])
+  const createPageUrl = (pageNumber: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('page', pageNumber.toString());
+    return `${basePath}?${params.toString()}`;
+  };
+  console.log({ totalPages })
 
-  const pageRange = useMemo(() => {
-    const range = []
-    const rangeWithDots = []
-    const delta = 2
+  const getPageNumbers = () => {
+    const pages = [];
 
-    for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
-      range.push(i)
+    if (totalPages > 0) pages.push(1);
+
+    const startPage = Math.max(2, currentPage - 2);
+    const endPage = Math.min(totalPages, currentPage + 2);
+
+    if (startPage > 2) pages.push(-1); // -1 represents ellipsis
+
+    for (let i = startPage; i <= endPage; i++) {
+      if (i !== 1 && i !== totalPages) {
+        pages.push(i);
+      }
     }
 
-    if (currentPage - delta > 2) {
-      rangeWithDots.push(1, '...')
-    } else {
-      rangeWithDots.push(1)
-    }
+    if (endPage < totalPages - 1) pages.push(-2); // -2 represents another ellipsis
 
-    rangeWithDots.push(...range)
+    if (totalPages > 1) pages.push(totalPages);
 
-    if (currentPage + delta < totalPages - 1) {
-      rangeWithDots.push('...', totalPages)
-    } else if (currentPage + delta === totalPages - 1) {
-      rangeWithDots.push(totalPages)
-    }
-
-    return rangeWithDots
-  }, [currentPage, totalPages])
+    return pages;
+  };
 
   return (
     <Pagination>
       <PaginationContent>
+        {/* Previous Button */}
         <PaginationItem>
           <PaginationPrevious
-            href={currentPage > 1 ? createPageUrl(currentPage - 1) : ''}
-            aria-disabled={currentPage === 1}
-            tabIndex={currentPage === 1 ? -1 : 0}
-            className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
+            href={currentPage > 1 ? createPageUrl(currentPage - 1) : undefined}
+            aria-disabled={currentPage <= 1}
+            className={currentPage <= 1 ? "pointer-events-none opacity-50" : ""}
           />
         </PaginationItem>
 
-        {pageRange.map((page, index) => (
-          <PaginationItem key={index}>
-            {page === '...' ? (
-              <PaginationEllipsis />
-            ) : (
+        {/* Page Numbers */}
+        {getPageNumbers().map((page, index) => {
+          if (page === -1 || page === -2) {
+            return (
+              <PaginationItem key={`ellipsis-${index}`}>
+                <span className="px-2 text-gray-500">...</span>
+              </PaginationItem>
+            );
+          }
+
+          return (
+            <PaginationItem key={page}>
               <PaginationLink
-                href={createPageUrl(page as number)}
-                isActive={currentPage === page}
-                aria-current={currentPage === page ? 'page' : undefined}
+                href={createPageUrl(page)}
+                isActive={page === currentPage}
               >
                 {page}
               </PaginationLink>
-            )}
-          </PaginationItem>
-        ))}
+            </PaginationItem>
+          );
+        })}
 
+        {/* Next Button */}
         <PaginationItem>
           <PaginationNext
-            href={currentPage < totalPages ? createPageUrl(currentPage + 1) : ''}
-            aria-disabled={currentPage === totalPages}
-            tabIndex={currentPage === totalPages ? -1 : 0}
-            className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
+            href={currentPage < totalPages ? createPageUrl(currentPage + 1) : undefined}
+            aria-disabled={currentPage >= totalPages}
+            className={currentPage >= totalPages ? "pointer-events-none opacity-50" : ""}
           />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  )
+  );
 }
-
-

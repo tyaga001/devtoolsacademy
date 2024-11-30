@@ -8,6 +8,7 @@ import ToolCard from "./ToolCard";
 import ToolsPagination from "./ToolsPagination";
 import ToolSkeleton from "./ToolSkeleton";
 import { getTools } from "./AlgoliaSearch";
+import { Search, TriangleAlert } from "lucide-react";
 
 interface ToolPageProps {
   page: number;
@@ -68,8 +69,8 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
 
   if (isLoading) {
     return (
-      <div className="w-full flex flex-col gap-2 px-4 lg:px-48 pb-4 pt-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-8 lg:pt-6">
+      <div className="w-full flex flex-col gap-2 px-4 lg:px-48 pb-4 pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[...Array(10)].map((_, index) => (
             <ToolSkeleton key={index} />
           ))}
@@ -78,38 +79,40 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
     );
   }
 
+  if (error || tools.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[400px] p-8 rounded-lg">
+        <div className="relative flex justify-center items-center">
+          <Search size={50} className="text-gray-600" />
+          <div className="absolute bottom-1">
+            <TriangleAlert size={20} className="text-gray-400" />
+          </div>
+        </div>
+        <h2 className="text-2xl font-semibold text-gray-400 my-4">
+          No tools found
+        </h2>
+        <p className="text-gray-500 text-center mb-6 max-w-xl">
+          We couldn&apos;t find any tools matching your query. It looks like
+          there are no tools available at the moment. Try with some other
+          search.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full flex flex-col gap-2 px-4 lg:px-48 pb-4 pt-12">
-      {error ? (
-        <div className="w-full flex justify-center items-center min-h-[400px] text-red-500">
-          {error}
-        </div>
-      ) : (
-        <div>
-          {tools.length === 0 ? (
-            <div className="w-full flex justify-center items-center min-h-[400px] text-gray-500">
-              No tools found. Try adjusting your search or filter criteria.
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-8 lg:pt-6">
-                {tools.map((tool) => (
-                  <ToolCard key={tool.id} tool={tool} />
-                ))}
-              </div>
-              <ToolsPagination
-                currentPage={page}
-                totalPages={totalPages}
-                basePath="/tools"
-              />
-            </>
-          )}
-        </div>
-      )}
+    <div className="w-full flex flex-col gap-2 px-4 lg:px-48 pb-4 pt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {tools.map((tool) => (
+          <ToolCard key={tool.id} tool={tool} />
+        ))}
+      </div>
+      <ToolsPagination
+        totalPages={totalPages}
+        basePath="/tools"
+      />
     </div>
   );
 };
 
-export default ToolsPage;
-
-
+export default ToolsPage

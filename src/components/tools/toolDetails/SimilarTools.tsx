@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { ToolCardInterface } from "@/lib/types";
 import axios from "axios";
 import ToolCard from "../ToolCard";
+import ToolSkeleton from "../ToolSkeleton";
 
 interface SimilarToolsProps {
   slug: string;
@@ -47,7 +48,14 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
   }, [slug, tags, categories]);
 
   if (isLoading) {
-    return <div>Loading similar tools...</div>;
+    return (<div className="flex flex-col gap-4 mt-8">
+      <div className=" bg-[#342651] bg-opacity-30 animate-pulse w-48 h-6 rounded-xl pt-6"></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+        {[...Array(3)].map((_, index) => (
+          <ToolSkeleton key={index} />
+        ))}
+      </div>
+    </div>);
   }
 
   return (
