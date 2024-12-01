@@ -31,15 +31,24 @@ export async function POST(request: Request) {
         })
     }
     catch (error: any) {
-        const errorMessage = new GoogleGenerativeAIError(error.message);
-        console.error('Error in API:', errorMessage.message);
-        return NextResponse.json(
-            {
-                error: 'Internal Server Error. Please try again after some time.',
-                success: false
+   const isGoogleAIError = error instanceof GoogleGenerativeAIError;
+       
+       console.error('API Error:', {
+            type: isGoogleAIError ? 'GoogleGenerativeAI' : 'Unknown',
+           message: error.message,
+           timestamp: new Date().toISOString()
+        });
 
-            },
-            { status: error.response?.status || 500 }
-        );
+        const clientMessage = isGoogleAIError
+            ? 'The AI service is temporarily unavailable. Please try again later.'
+           : 'Internal Server Error. Please try again after some time.';
+
+         return NextResponse.json(
+             {
+               error: clientMessage,
+                 success: false
+             },
+            { status: isGoogleAIError ? 503 : 500 }
+         );
     }
 }

@@ -4,7 +4,8 @@ import { Send, X, Loader2, User, BotIcon } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { ChatBubbleLeftIcon } from '@heroicons/react/24/outline';
 import { ChatSuggestions } from './ChatSuggestions';
-
+import  DOMPurify  from 'dompurify';
+import parse from "html-react-parser";
 
 interface ChatMessage {
     role: 'human' | 'assistant';
@@ -59,8 +60,9 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
 
             }
             const data = await response.json();
-
+             
             const responseAnswer = parseContent(data.answer);
+          
             setMessages(prev => [...prev, { role: 'assistant', content: responseAnswer }]);
         } catch (error: any) {
             console.error('Error in chat:', error);
@@ -110,12 +112,10 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
                                         exit={{ opacity: 0, y: -20 }}
                                         className={`flex ${msg.role === 'human' ? 'justify-end' : 'justify-start'}`}
                                     >
-                                        <div className={`max-w-full  shadow-lg shadow-black px-5 py-3 rounded-xl ${msg.role === 'human' ? 'bg-white/80 text-black/80' : 'bg-[#09090b] text-gray-200'
+                                        <div className={`max-w-full text-[16px] leading-relaxed tracking-wide shadow-lg shadow-black px-5 py-3 rounded-xl ${msg.role === 'human' ? 'bg-white/80 text-black/80' : 'bg-[#09090b] text-gray-200'
                                             }`}
-                                            dangerouslySetInnerHTML={{
-                                                __html: msg.content,
-                                            }}>
-
+                                           >
+                                           {parse(msg.content)}
                                         </div>
                                     </motion.div>
                                 </div>
@@ -177,7 +177,9 @@ const parseContent = (content: string) => {
         .map((line) => `<p>${line.trim()}</p>`)
         .join('');
 
-    return paragraphWrapped;
+          return DOMPurify.sanitize(paragraphWrapped);
+
+    
 };
 
 
