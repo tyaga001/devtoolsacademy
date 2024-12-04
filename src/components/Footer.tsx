@@ -20,7 +20,7 @@ const recentBlogPosts: BlogPost[] = [
         url: "https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/",
     },
     {
-        title: "A Software Developer’s Guide to Writing",
+        title: "A Software Developer Guide to Writing",
         url: "https://theankurtyagi.com/a-software-developers-guide-to-writing/",
     },
 ];
