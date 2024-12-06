@@ -24,7 +24,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
-   const {toast} = useToast();
+    const { toast } = useToast();
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
@@ -34,13 +34,14 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
     const handleSend = async (customPrompt?: string) => {
         const promptToSend = customPrompt || input;
         if (!promptToSend.trim()) {
-             toast({variant:'destructive',
-                color:'gray',
-                duration:1000,
-                style:{background:'#7f1d1d',color:'white',border:'gray',borderRadius:'5px'},
-                description:"Please enter valid input."
-             })
-             
+            toast({
+                variant: 'destructive',
+                color: 'gray',
+                duration: 1000,
+                style: { background: '#7f1d1d', color: 'white', border: 'gray', borderRadius: '5px' },
+                description: "Please enter valid input."
+            })
+
             return;
         };
 
@@ -120,7 +121,15 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
                                         <div className={`max-w-full text-[16px] leading-relaxed tracking-wide shadow-lg shadow-black px-5 py-4 rounded-xl ${msg.role === 'human' ? 'bg-white/80 text-black/80' : 'bg-[#09090b] text-gray-200'
                                             }`}
                                         >
-                                            {parse(msg.content)}
+                                            {msg.role === 'human' ? (
+                                                <>
+                                                    {msg.content}
+                                                </>
+                                            ) : (
+                                                <>
+                                                    {parse(msg.content)}
+                                                </>
+                                            )}
                                         </div>
                                     </motion.div>
                                 </div>

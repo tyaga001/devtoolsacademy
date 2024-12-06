@@ -13,7 +13,7 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY!);
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
   systemInstruction: "You're an AI assistant, Who only answers questions related to the blog post that have provided to you in the prompt.\n\nTry to Answer using numeric points for readability and Bold the title of the point. \n\n If the user wants help related to the topic mentioned in the blog you can answer that.\n\n If the question is not related to the blog post or the topic that is mentioned on the blog, Throw error response."
-},
+}
 
 );
 
