@@ -9,6 +9,7 @@ import './globals.css';
 import 'highlight.js/styles/github-dark.css';
 import { Metadata } from 'next';
 import Script from 'next/script'
+import { Toaster } from '@/components/ui/toaster';
 
 
 export const metadata: Metadata = {
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                             {children}
                         </main>
                     </div>
+                    <Toaster></Toaster>
                 </ClerkProvider>
                 <Analytics />
             </body>

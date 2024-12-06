@@ -20,7 +20,7 @@ export const ChatSuggestions: React.FC<BlogChatSuggestionProps> = ({ title, desc
                     Make me understand this blog : {title}?
                 </motion.div>
                 <motion.div onClick={() => { handleSend(`What does "${description}" means in this blog? `) }} initial={{ y: 20, opacity: 0 }} whileHover={{ scale: 1.05 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.1 }} exit={{ y: 20, opacity: 0 }} className='px-4 py-5 border border-white/40 rounded-[14px] bg-black/70 text-sm font-[200] text-white/60 w-full hover:bg-black hover:text-white/80 cursor-pointer'>
-                    What does "{description}" means in this blog?
+                    What does &quot;{description}&quot; mean in this blog?
                 </motion.div>
             </div>
         </div>
