@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, X, Loader2, User, BotIcon } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
 import { ChatBubbleLeftIcon } from '@heroicons/react/24/outline';
 import { ChatSuggestions } from './ChatSuggestions';
 import  DOMPurify  from 'dompurify';
@@ -24,7 +23,6 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
-    const { toast } = useToast();
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -35,7 +33,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
     const handleSend = async (customPrompt?: string) => {
         const promptToSend = customPrompt || input;
         if (!promptToSend.trim()) {
-            toast({ description: "Please Enter valid input." })
+            // toast({ description: "Please Enter valid input." })
             return;
         };
 
