@@ -8,7 +8,7 @@ const ServerlessDiagram = dynamic(() => import('@/components/ServerlessDiagram')
 })
 
 const components = {
-    Image: (props: ImageProps) => <Image {...props} />,
+    Image: (props: ImageProps) => <Image   {...props} />,
     ServerlessDiagram,
 }
 

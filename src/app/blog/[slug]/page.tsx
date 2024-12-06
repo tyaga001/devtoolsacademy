@@ -26,7 +26,7 @@ const components = {
     h4: (props: any) => <h4 id={generateId(props.children)} className="text-xl font-semibold mt-3 mb-2" {...props} />,
     p: (props: any) => <p className="my-2" {...props} />,
     a: (props: any) => <Link className="text-blue-500 hover:underline" {...props} />,
-    Image: (props: any) => <Image className="my-4" {...props} />,
+    Image: (props: any) => <Image alt='blog related image' className="my-4" {...props} />,
     blockquote: (props: any) => <blockquote className="border-l-4 border-gray-300 pl-4 my-4 italic" {...props} />,
     ServerlessDiagram: ServerlessDiagram,
     code: CodeBlock,
