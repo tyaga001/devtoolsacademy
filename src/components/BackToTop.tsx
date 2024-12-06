@@ -3,16 +3,18 @@
 import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react"
 
+import { debounce } from 'lodash';
+
 const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
 
-        const handleScroll = () => {
+        const handleScroll = debounce(() => {
             const scrolled = window.scrollY;
             setIsVisible(scrolled > 300);
-        };
+        },150);
 
         window.addEventListener('scroll', handleScroll);
 
@@ -21,6 +23,7 @@ const BackToTop = () => {
         return () => {
             if (typeof window !== "undefined") {
                 window.removeEventListener('scroll', handleScroll);
+                handleScroll.cancel();
             }
         };
     }, []);
