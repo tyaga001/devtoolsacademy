@@ -12,17 +12,21 @@ import Image from 'next/image'
 
 # Twilio and Stream: Communication Solutions for Developers
 
-When it comes to communication use cases, software developers mostly think of WebRTC or WebSockets, but if you want to use some additional features in communication then most of the software folks go for Twilio. Twilio is quite popular in the industry, but today let’s dive deep into the solution as well as Stream by creating an automated customer support bot.
-Stream and Twilio are both products that serve as a solution for devs to integrate communication use cases into apps. Stream is more suitable for real-time messaging and activity feeds, while Twilio is a communications platform that offers different service APIs, such as SMS, voice, video, and chat.
-Stream is mostly used for in-app chat use cases, use cases like social apps or e-commerce, and gaming applications. Twilio is dope when it comes to a multi-modal communication API provider
+When it comes to communication use cases, we developers mostly think of WebRTC or WebSockets, but if you want to use some additional features in communication then most of the software folks go for Twilio. Twilio is quite popular in the industry, but today let’s dive deep into the solution as well as Stream by creating an automated customer support bot.
+
+> Stream and Twilio are both products that serve as a solution for devs to integrate communication use cases into apps. 
+
+- Stream is more suitable for real-time messaging and activity feeds, while Twilio is a communications platform that offers different service APIs, such as SMS, voice, video, and chat.
+- Stream is mostly used for in-app chat use cases, use cases like social apps or e-commerce, and gaming applications. 
+- Twilio is dope when it comes to a multi-modal communication API provider.
 
 ![twilio vs stream confusion](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2Fd6aa49d9-1c58-4640-b7c9-ec759d3cd190%2Fimage.png?table=block&id=144518a2-f962-80c6-94fa-db5f0d78bd62&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=860&userId=&cache=v2)
 
 ## Architecture and Scalability
 
-**Stream architecture  :**  
+**Stream Architecture  :**  
 
-Stream is a wrapper on **distributed event-driven architecture** optimized for high scale and low latency. Its architecture design uses message queues and distributed data stores to manage high-throughput communication, ensuring real-time delivery and synchronization across users.
+> Stream is a wrapper on **distributed event-driven architecture** optimized for high scale and low latency. Its architecture design uses message queues and distributed data stores to manage high-throughput communication, ensuring real-time delivery and synchronization across users.
 
 
 **Tech Stack** :
@@ -34,9 +38,9 @@ Stream is a wrapper on **distributed event-driven architecture** optimized for h
 - **Real time communication :**  WebSockets for low-latency communication
 - **Event Streaming :**  Uses kafka for event propogation **accross system .**
 
-**Twilio architecture  :**  
+**Twilio Architecture  :**  
 
-In its early days, Twilio used monoliths, but as the product scaled, Twilio shifted to multi-tenant cloud infrastructure. Twilio offers APIs for SMS, voice, and chat through its globally distributed infrastructure. Reliability and uptime are the most important things for Twilio for critical communications.
+> In its early days, Twilio used monoliths, but as the product scaled, Twilio shifted to multi-tenant cloud infrastructure. Twilio offers APIs for SMS, voice, and chat through its globally distributed infrastructure. Reliability and uptime are the most important things for Twilio for critical communications.
 
 ![twilio architecture](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2F586aa13e-7b69-4165-be4a-b8ab9739f83c%2Fimage.png?table=block&id=145518a2-f962-80a2-8593-f29d62d065e2&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=1420&userId=&cache=v2)
 
@@ -54,7 +58,7 @@ Stream handles millions of users, ideal for high-frequency use cases like chats 
 Twilio is very good in multi-channel use case like call management
 
 
-**Integrations  and capabilities**
+**Integrations  and Capabilities**
 
 ### **Stream**
 
@@ -68,7 +72,7 @@ Twilio is very good in multi-channel use case like call management
 - **SDKs:** Twilio Conversations SDKs for cross-channel messaging.
 - **Multi-Channel:** SMS, MMS, WhatsApp, and email integration.
 
-## performance and latency
+## Performance and Latency
 
 ### **Stream**
 
@@ -82,10 +86,10 @@ Twilio is very good in multi-channel use case like call management
 - **Reliability:** Ensures 99.95% uptime SLA.
 - **Optimization:** Global routing ensures minimal delays in message and voice delivery.
 
-In the next section, we'll explore how to develop a customer support bot using these two services 👀
+In the next section, let's explore how to develop a customer support bot using these two services 👀
 
 
-## Let’s cook Twillio customer support bot 🧑‍🍳
+## Let’s Build Twillio Customer Support Bot 🧑‍🍳
 
 let’s make sure you have prerequisites
 
@@ -124,7 +128,7 @@ Twilio Sync works out of the box, using default settings per account. Once you h
 
 **Webhook**
 
-notifications for when new messages in chat are sent. Using these webhooks user can control whether a message should be delivered or blocked. All this can be done simply by returning different HTTP status codes. Status code 200 (ok) means continue delivering this message and 403 (Forbidden) means block this message. (it’s kinda generic HTTP system)
+> notifications for when new messages in chat are sent. Using these webhooks user can control whether a message should be delivered or blocked. All this can be done simply by returning different HTTP status codes. Status code 200 (ok) means continue delivering this message and 403 (Forbidden) means block this message. (it’s kinda generic HTTP system)
 Before the user decides whether to block or move forward a message user will need to access the data that Twilio sends to our application. To do that user first need to parse it first by adding (body-parser) to the project using npm:
 
 
@@ -176,7 +180,7 @@ npm install -g localtunnel
 
 now grab the exposed url and setup in the console of the twilio
 
-## Programatically control the messaeges 💻
+## Programatically Control the Messaeges 💻
 
 Now that you are receiving all the necessary information, we can dive deeper into the [control](https://www.twilio.com/docs/api/ip-messaging/webhooks#pre-processing) that these webhooks provide. If we return the status code 403 instead of 200 we can block the respective message. Let’s alter the route to intercept and not deliver messages that start with `/helloworld`:
 
@@ -238,13 +242,9 @@ server.listen(port, function() {
 
 ```
 
-**BOOM 💥**
-
-![complete](https://file.notion.so/f/f/fac3b9e2-153a-47fb-94bf-a917731986a0/bfdd215d-e151-4b85-9748-2803022df126/IncidentGIF.gif?table=block&id=147518a2-f962-80b7-99e9-f4b8e62fec23&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&expirationTimestamp=1732960800000&signature=Voe1SmIpBnOWc-YJJ9Tdk0oatoc36veyBCE2ShPcLuw)
-
 That was all about twillio . let’s see stream
 
-## customer support bot in stream
+## Customer Support Bot in Stream
 
 Here we are going to use react for creating the customer support bot with the help of stream 
 
@@ -295,22 +295,27 @@ LUIS_SUBSCRIPTION_KEY=subscriptionkey
 LUIS_REGION=westus
 ```
 
-## key differences in these services
+## Key Differences
 
-- **Setup  :- 
-Twilio** : Twillio just procide the API for SMS and whatsapp like third party applications . it’s comparitvely easy because it’s consists of block coding (drag and drop) so any guy with no prior experience of coding can build something with twilio . is user want to implement AI chatbot then twilio simplifies integrationsusing webhook and it’s compatible with open ai
+**Setup**
 
-**Stream : it comes with SDK like react , react native , flutter e.t.c . stream is bascially designed for in app chat like functions . it requires real time messeging logic and auth which is mostly managing the ui**
-- **Performance :-
-Twilio : optimize for messaging platforms like SMS and WHATSAPP . it has slightlt high latency when it compare to stream and it’s performance is limited to messaging channels
+> Twilio** : Twillio just procide the API for SMS and whatsapp like third party applications . it’s comparitvely easy because it’s consists of block coding (drag and drop) so any guy with no prior experience of coding can build something with twilio . is user want to implement AI chatbot then twilio simplifies integrationsusing webhook and it’s compatible with open ai
 
-Stream : Stream is optimized for real time coversation with low-latency. and stream is highly efficient for handeling users and messages it reauires to manage websockets for real time updates**
-- **Pricing :-
-Twilio :- Twilio is using strategy of pay when you used their serice i.e. the standar rate of one operation is fixed and that operation is performing n times then the cost will be n x rate**
+> **Stream : it comes with SDK like react , react native , flutter e.t.c . stream is bascially designed for in app chat like functions . it requires real time messeging logic and auth which is mostly managing the ui**
+
+**Performance**
+
+> Twilio : optimize for messaging platforms like SMS and WHATSAPP . it has slightlt high latency when it compare to stream and it’s performance is limited to messaging channels
+
+> Stream : Stream is optimized for real time coversation with low-latency. and stream is highly efficient for handeling users and messages it reauires to manage websockets for real time updates**
+
+**Pricing**
+
+> Twilio :- Twilio is using strategy of pay when you used their serice i.e. the standar rate of one operation is fixed and that operation is performing n times then the cost will be n x rate**
 
 ![twilio pricing](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2Fc61454eb-055b-4316-98b7-9cf6298c41d2%2Fimage.png?table=block&id=148518a2-f962-80fb-b035-de890d6ad357&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=1420&userId=&cache=v2)
 
-**Stream :**  
+> **Stream :**  
 Stream : chages as a standerd SAAS I mean as per the month (subscribtion based)
 
 | Feature | Twilio | Stream |
