@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
 import {AnimatePresence, motion} from 'framer-motion';
 import {Twitter, Github, Linkedin, Slack, ArrowRight, BookOpen, ExternalLink, Globe} from 'lucide-react';
-
+import {FaMedium} from "react-icons/fa6"
 interface BlogPost {
     title: string;
     url: string;
@@ -80,7 +80,7 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({linkVariants}) => (
             {href: "https://twitter.com/theankurtyagi", Icon: Twitter, label: "Twitter"},
             {href: "https://github.com/tyaga001", Icon: Github, label: "GitHub"},
             {href: "https://linkedin.com/in/theankurtyagi", Icon: Linkedin, label: "LinkedIn"},
-            {href: "https://medium.com/@theankurtyagi", Icon: Slack, label: "Medium"},
+            {href: "https://medium.com/@theankurtyagi", Icon:FaMedium, label: "Medium"},
         ].map(({href, Icon, label}) => (
             <motion.a
                 key={label}
