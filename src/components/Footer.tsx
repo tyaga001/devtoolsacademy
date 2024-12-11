@@ -20,19 +20,18 @@ interface BlogPost {
 }
 
 const recentBlogPosts: BlogPost[] = [
-  {
-    title: "Getting Started with Next.js – The Complete Guide for Beginners",
-    url: "https://theankurtyagi.com/next-js/",
-  },
-  {
-    title:
-      "Next.js, Clerk, and Neon Postgres: A Guide to Full-Stack Development",
-    url: "https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/",
-  },
-  {
-    title: "How Technical Writing Can Supercharge Your Startup",
-    url: "https://theankurtyagi.com/how-technical-writing-can-supercharge-your-startup/",
-  },
+    {
+        title: "How to Build a Custom Video Conferencing App with Stream and Next.js",
+        url: "https://www.freecodecamp.org/news/how-i-built-a-custom-video-conferencing-app-with-stream-and-nextjs/",
+    },
+    {
+        title: "Next.js, Clerk, and Neon Postgres - A Guide to Full-Stack Development",
+        url: "https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/",
+    },
+    {
+        title: "A Software Developer Guide to Writing",
+        url: "https://theankurtyagi.com/a-software-developers-guide-to-writing/",
+    },
 ];
 
 const tips = [
