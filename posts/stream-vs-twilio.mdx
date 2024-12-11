@@ -12,12 +12,9 @@ import Image from 'next/image'
 
 # Twilio and Stream: Communication Solutions for Developers
 
-When it comes to communication use cases, software developers often consider WebRTC or WebSockets. However, for additional features in communication, many turn to services like Twilio, which is popular in the industry. Let's dive deep into Twilio and Stream by creating an automated customer support bot.
-
-Stream and Twilio these both products  serve as a solutions for devs to integrate communication usecase  into the  apps . but Stream is more suitable for real-time messaging and activity feeds, Twilio is a  communications platform which offers different services APIs like for SMS, voice, video, and chat.
-
-Stream is mostly used for  in-app chat usecase , use cases like social media apps or e-commerce, and gaming applications.
-Twilio is dope when it comes to  a multi-modal communication API provider
+When it comes to communication use cases, software developers mostly think of WebRTC or WebSockets, but if you want to use some additional features in communication then most of the software folks go for Twilio. Twilio is quite popular in the industry, but today let’s dive deep into the solution as well as Stream by creating an automated customer support bot.
+Stream and Twilio are both products that serve as a solution for devs to integrate communication use cases into apps. Stream is more suitable for real-time messaging and activity feeds, while Twilio is a communications platform that offers different service APIs, such as SMS, voice, video, and chat.
+Stream is mostly used for in-app chat use cases, use cases like social apps or e-commerce, and gaming applications. Twilio is dope when it comes to a multi-modal communication API provider
 
 ![twilio vs stream confusion](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2Fd6aa49d9-1c58-4640-b7c9-ec759d3cd190%2Fimage.png?table=block&id=144518a2-f962-80c6-94fa-db5f0d78bd62&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=860&userId=&cache=v2)
 
@@ -25,7 +22,8 @@ Twilio is dope when it comes to  a multi-modal communication API provider
 
 **Stream architecture  :**  
 
-you can say stream is a wrapper on **distributed event-driven architecture** optimized for high scale and low latency  **.** stream’s architecture design uses message queues and distributed data stores for managing the high-troughput communication , ensuring real-time delivery and synchronisation accross users .
+Stream is a wrapper on **distributed event-driven architecture** optimized for high scale and low latency. Its architecture design uses message queues and distributed data stores to manage high-throughput communication, ensuring real-time delivery and synchronization across users.
+
 
 **Tech Stack** :
 
@@ -38,7 +36,7 @@ you can say stream is a wrapper on **distributed event-driven architecture** opt
 
 **Twilio architecture  :**  
 
-In the starting days of twilio . Twilio was using monoliths but as the product scales twilio shifts on muli-tenant cloud infra . twilio offers API for SMS , voice and chat through their globally distributed infra and reliability and the uptime these are most important things for the twilio for the critical communications.
+In its early days, Twilio used monoliths, but as the product scaled, Twilio shifted to multi-tenant cloud infrastructure. Twilio offers APIs for SMS, voice, and chat through its globally distributed infrastructure. Reliability and uptime are the most important things for Twilio for critical communications.
 
 ![twilio architecture](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2F586aa13e-7b69-4165-be4a-b8ab9739f83c%2Fimage.png?table=block&id=145518a2-f962-80a2-8593-f29d62d065e2&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=1420&userId=&cache=v2)
 
@@ -52,9 +50,9 @@ In the starting days of twilio . Twilio was using monoliths but as the product s
 
 **Scalibility**
 
-Stream handles millions of users , which is ideal for high-frequency use cases like chats and feeds .
+Stream handles millions of users, ideal for high-frequency use cases like chats and feeds.
+Twilio is very good in multi-channel use case like call management
 
-twilio is damn good in multi-channel use case like call management
 
 **Integrations  and capabilities**
 
@@ -89,7 +87,8 @@ In the next section, we'll explore how to develop a customer support bot using t
 
 ## Let’s cook Twillio customer support bot 🧑‍🍳
 
-let’s make sure you have prerequisites 
+let’s make sure you have prerequisites
+
 
 - Node.js and npm you will get here
 - A Twilio account
@@ -119,13 +118,15 @@ When localtunnel is installed globally, just use the `lt` command to start the
 
 **configuring Twilio Sync**
 
-Twilio Sync works out of the box, using default settings per account. Once you have your API keys configured, execute `npm install; npm run start` 
+Twilio Sync works out of the box, using default settings per account. Once you have your API keys set, then after that execut `npm install; npm run start` 
 
 **Twilio Chat**
 
 **Webhook**
 
-Before we decide whether to block or forward a message we will need to access the data that Twilio sends to our application. To do that we first need to parse it first by adding (body-parser) to our project using npm:
+notifications for when new messages in chat are sent. Using these webhooks user can control whether a message should be delivered or blocked. All this can be done simply by returning different HTTP status codes. Status code 200 (ok) means continue delivering this message and 403 (Forbidden) means block this message. (it’s kinda generic HTTP system)
+Before the user decides whether to block or move forward a message user will need to access the data that Twilio sends to our application. To do that user first need to parse it first by adding (body-parser) to the project using npm:
+
 
 ```
 npm install body-parser --save
@@ -322,14 +323,12 @@ Stream : chages as a standerd SAAS I mean as per the month (subscribtion based)
 
 ## Conclsion :
 
-I will say both service are equally good it totally depend on the developer requirment which service to choose for the communication
+Both Twilio and Stream are good, but in their own ways . Stream is an ideal choice for developers who are looking for in-app chat features. Stream's flexibility allows developers to manage the logic of the chatbot, providing developers greater control over the implementation. Stream's  SDKs and APIs make it a go-to solution for building seamless chat experiences directly within the app.
 
-for e.g.
+Twilio, on the other hand, is quite good at integrating third-party integrations like WhatsApp or pre-built NLP/chatbot solutions. But if you’re looking for a customizable, developer-friendly approach to in-app chat, Stream is undoubtedly the better choice.
 
-if you want a third party integration like whatsapp then go for the twilio and if you want in app chat then that tmie go for the stream . if you are ok with manage chatbot logic seperately this is a good case for stream and if your logic is preimpletned and the priority is the set easy NLP / chatbot logic then in this case twilio is quite good
+Thank you for reading! Here’s a helpful resource to get started with Stream:
 
-thanks a lot for sticking to the end . here are few important links
-
-twillio customer bot repo : https://github.com/hrutik7/twillio-customersupport-bot
-
+Stream Chatbot Repository : https://github.com/hrutik7/stream-chatbot
+twilio customer bot repo : https://github.com/hrutik7/twillio-customersupport-bot
 stream bot : https://github.com/hrutik7/stream-chatbot
