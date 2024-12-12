@@ -23,15 +23,15 @@ const featuredPosts = [
         slug: 'supabase-vs-clerk',
         url: '/blog/supabase-vs-clerk',
         category: "Database",
-        isNew: true
     },
     {
-        title: 'MongoDB vs. PostgreSQL',
-        excerpt: 'Learn the difference between MongoDB and PostgreSQL?',
-        image: '/images/MongoDB vs. PostgreSQL.png',
-        slug: 'mongoDB-vs-postgreSQL',
-        url: '/blog/mongoDB-vs-postgreSQL',
-        category: "Database",
+        title: 'Twilio vs Stream',
+        excerpt: 'A Guide to Building Smarter Support Bots',
+        image: '/images/Twilio vs Stream.png',
+        slug: 'stream-vs-twilio',
+        url: '/blog/stream-vs-twilio',
+        category: "SaaS",
+        isNew: true
     }
 ];
 
