@@ -30,10 +30,13 @@ Let’s get started.
 
 > Stream and Twilio are both products that serve as a solution for devs to integrate communication use cases into apps. Stream is more suitable for real-time messaging and activity feeds, while Twilio is a communications platform that offers different service APIs, such as SMS, [voice](https://getstream.io/video/voice-calling/), [video](https://getstream.io/video/video-calling/), and [chat](https://getstream.io/chat/).
 
-Stream is mostly used for in-app chat use cases, use cases like [social apps](https://getstream.io/chat/solutions/social/) or [e-commerce](https://getstream.io/chat/solutions/marketplaces/), and [gaming](https://getstream.io/chat/solutions/gaming/) applications. Twilio is good when it comes to a multi-modal communication API provider.
+- Stream is mostly used for in-app chat use cases, use cases like [social apps](https://getstream.io/chat/solutions/social/) or [e-commerce](https://getstream.io/chat/solutions/marketplaces/), and [gaming](https://getstream.io/chat/solutions/gaming/) applications.
+- Twilio is good when it comes to a multi-modal communication API provider.
 
 
 ![twilio vs stream confusion](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2Fd6aa49d9-1c58-4640-b7c9-ec759d3cd190%2Fimage.png?table=block&id=144518a2-f962-80c6-94fa-db5f0d78bd62&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=860&userId=&cache=v2)
+
+---
 
 ## On Architecture and Scalability
 
@@ -83,6 +86,8 @@ Twilio is very good in multi-channel use cases like call management.
 - **SDKs:** Twilio Conversations SDKs for cross-channel messaging.
 - **Multi-Channel:** SMS, MMS, WhatsApp, and email integration.
 
+---
+
 ## On Performance and Latency
 
 ### **Stream**
@@ -97,8 +102,9 @@ Twilio is very good in multi-channel use cases like call management.
 - **Reliability:** Ensures 99.95% uptime SLA.
 - **Optimization:** Global routing ensures minimal message and voice delivery delays.
 
-In the next section, let's explore how to develop a customer support bot using these two services 👀
+In the next section, let's explore how to build a customer support bot using these two services 👀
 
+---
 
 ## Let’s Build Twilio Customer Support Bot 🧑‍🍳
 
@@ -189,13 +195,19 @@ setup the webhook endpoint with tunnel
 npm install -g localtunnel
 ```
 
-now grab the exposed url and setup in the console of the twilio
+now grab the exposed url and setup in the console of the Twilio
+
+---
 
 ## Programmatically Control the Messages 💻
 
-Now that you are receiving all the necessary information, we can dive deeper into the[control](https://www.twilio.com/docs/api/ip-messaging/webhooks#pre-processing)that these webhooks provide.If we return the status code 403 instead of 200 we can block the respective message.Let’s alter the route to intercept and not deliver messages that start with `/helloworld`:
+Now that you have all the necessary information, let's dive deeper into the [control](https://www.twilio.com/docs/api/ip-messaging/webhooks#pre-processing) these webhooks provide.
 
-but if we want to send our messages
+By returning a status code of 403 instead of 200, we can block the respective message.
+
+Next, we'll modify the route to intercept and prevent the delivery of messages starting with `/helloworld`.
+
+If we want to allow certain messages to go through, we can handle them accordingly.
 
 ```powershell
 require('dotenv').load();
@@ -265,7 +277,7 @@ make sure you have installed `npm`
 
 `npx create-react-app getstream-bot`
 
-Get the stream API key 
+> Get the stream API key
 
 1. Visit [**Stream**](https://getstream.io/chat/) and register to get an API key.
 2. For the purpose of this tutorial, we’ll disable auth and permissions checks (note you should obviously not do this in a production app, but it allows you to focus on your chat experience instead of integrating your auth system). Open your stream dashboard , click your app, select “**Chat**” and disable authentication & permissions:
@@ -274,16 +286,14 @@ Get the stream API key
 
 Enough talking, let’s write the code.
 
-open the Stream dashboard and copy the environment variables
-
-by cloning the repo
+Open the Stream dashboard and copy the environment variables and  cloning the repo.
 
 ```bash
 git clone git@github.com:GetStream/chatbot-tutorial.git
 cd chatbot-tutorial
 ```
 
-⚠️ make sure you are setting up environment variables by creating `.env.developement` file
+⚠️ Ensure you set up the environment variables by creating a `.env.development` file.
 
 ```bash
 # WARNING: Never commit API keys to version control
@@ -297,7 +307,7 @@ cd chat-frontend
 npm; npm start
 ```
 
-the environment file should look like this
+The environment file should be structured as follows:
 
 ```bash
 STREAM_API_KEY=replacewithyourstreamapikey
@@ -306,6 +316,7 @@ LUIS_APP_ID=appid
 LUIS_SUBSCRIPTION_KEY=subscriptionkey
 LUIS_REGION=westus
 ```
+---
 
 ## Key Differences
 
@@ -329,14 +340,51 @@ LUIS_REGION=westus
 
 > **Stream :** Stream operates on a standard SaaS model, charging a subscription fee on a monthly basis.
 
+## Stream Pricing
+
+**Build Plan** (Free)
+- 100 MAU, 25 Concurrent Connections
+- All Chat features included
+- No credit card required
+- 30 days of free support
+
+**Start Plan** ($399/month, billed annually or $499 monthly)
+- 10,000 MAU, 500 Concurrent Connections
+- Advanced Moderation & Filters
+- Unlimited Message Retention
+- Global EDGE Network
+- Offline Support
+- Data Export
+
+**Elevate Plan** ($599/month, billed annually or $675 monthly)
+- 10,000 MAU, 500 Concurrent Connections
+- Multi-Tenancy/Teams
+- Advanced Search
+- HIPAA Compliance
+- Message Translations
+
+**Enterprise Plan** (Custom pricing)
+- Scale to millions of users
+- AI Moderation
+- 99.999% SLA
+- Dedicated Servers
+- 24/7 Support
+- SAML/SSO Integration
+
+Stream offers a comprehensive range of features that can scale with your business needs, providing robust solutions for various messaging use cases.
+
+For more details, visit the [Stream Pricing page](https://getstream.io/chat/pricing/).
+
+---
+
+## Conclusion
+
 <Image
     src="/images/img_66.png"
     alt="Twilio V/S Stream"
     width={1200}
     height={600}
 />
-
-## Conclsion
 
 Both Twilio and Stream are good, but in their own ways.
 
@@ -348,7 +396,7 @@ Thank you for reading.
 
 ## Next Steps  
 
-Explore the repositories and resources below to dive deeper into building custom bots and chat solutions:  
+Explore the source code and other resources below to dive deeper into building custom bots and chat solutions:
 
 - [Stream Chatbot Repository](https://github.com/hrutik7/stream-chatbot)
 - [Twilio Customer Bot Repository](https://github.com/hrutik7/twillio-customersupport-bot)
@@ -356,8 +404,10 @@ Explore the repositories and resources below to dive deeper into building custom
 - [Chat AI Samples by Stream](https://github.com/GetStream/chat-ai-samples)
 - [Twilio Chat vs. Stream Chat](https://getstream.io/blog/twilio-stream/)
 
-These repositories and guides provide a good foundation for integrating advanced chat functionality into your applications. 
+These repositories and guides provide a good foundation for integrating advanced chat functionality into your apps.
 
-Feel free to experiment, customize, and build tailored solutions to meet your specific needs. Happy coding.   
+Feel free to experiment, customize, and build solutions to meet your specific needs.
+
+Happy coding.
 
 
