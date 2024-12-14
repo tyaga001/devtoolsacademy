@@ -35,8 +35,10 @@ model BlogUser {
 model Tool {
   id          String   @id @default(cuid())
   name        String
+  headline    String
   description String
   categories  String[]
+  features    String[]
   stars       Int
   forks       Int
   lastUpdated DateTime

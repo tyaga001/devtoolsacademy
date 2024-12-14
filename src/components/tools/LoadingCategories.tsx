@@ -19,10 +19,10 @@ function LoadingCategories() {
                 key={index}
                 className="flex items-center gap-4 rounded-lg w-full p-4"
               >
-                <div className="bg-[#342651] bg-opacity-30 animate-pulse w-12 h-12 rounded-full"></div>
+                <div className="bg-[#141414] animate-pulse w-12 h-12 rounded-full"></div>
                 <div className="flex flex-col gap-1">
-                  <div className="bg-[#342651] bg-opacity-30 animate-pulse w-20 h-4 rounded-xl"></div>
-                  <div className="bg-[#342651] bg-opacity-30 animate-pulse w-28 h-4 rounded-xl"></div>
+                  <div className="bg-[#141414] animate-pulse w-20 h-4 rounded-xl"></div>
+                  <div className="bg-[#141414] animate-pulse w-28 h-4 rounded-xl"></div>
                 </div>
               </div>
             ))}

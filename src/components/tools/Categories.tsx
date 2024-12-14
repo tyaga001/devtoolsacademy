@@ -48,7 +48,7 @@ const getRandomIcon = () => {
     Truck,
   ];
   const RandomIcon = icons[Math.floor(Math.random() * icons.length)];
-  return <RandomIcon className="h-6 w-6" />;
+  return <RandomIcon className="w-3 h-3 md:h-6 md:w-6" />;
 };
 
 const capitalizeFirstLetter = (string: string) => {
@@ -78,7 +78,7 @@ const Categories = async () => {
     );
   }
   return (
-    <div className="w-full px-4 py-8 pt-16 md:px-6 lg:px-48">
+    <div className="w-full mpx-0 py-8 pt-16 md:px-6 lg:px-48">
       <div className="space-y-6">
         <div className="space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">
@@ -89,25 +89,23 @@ const Categories = async () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-2 md:gap-4 grid-cols-2 lg:grid-cols-4">
           {variousCategories?.map((category) => (
             <Link
               key={category.name}
               href={`/tools?categories=${category.name}`}
             >
-              <div
-                className="flex items-center space-x-4 p-4 bg-card shadow hover:bg-gray-900 bg-opacity-20 rounded-xl transition-all duration-300 cursor-pointer"
-              >
+              <div className="flex items-center space-x-4 p-2 md:p-4 bg-card shadow hover:bg-[#141414] bg-opacity-20 rounded-xl transition-all duration-300 cursor-pointer">
                 <div
-                  className={`${getRandomColor()} h-12 w-12 rounded-full flex items-center justify-center text-white`}
+                  className={`${getRandomColor()} w-8 h-8 md:h-12 md:w-12 rounded-full flex items-center justify-center text-white`}
                 >
                   {getRandomIcon()}
                 </div>
                 <div>
-                  <h3 className="font-semibold">
+                  <h3 className="text-sm md:text-lg font-semibold">
                     {capitalizeFirstLetter(category.name)}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs md:text-sm text-muted-foreground">
                     {category.count || 0} Categories
                   </p>
                 </div>
@@ -121,6 +119,3 @@ const Categories = async () => {
 };
 
 export default Categories;
-
-
-

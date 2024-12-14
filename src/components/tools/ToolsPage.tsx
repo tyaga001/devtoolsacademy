@@ -69,7 +69,7 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
 
   if (isLoading) {
     return (
-      <div className="w-full flex flex-col gap-2 px-4 lg:px-48 pb-4 pt-8">
+      <div className="w-full flex flex-col gap-2 px-0 md:px-4 lg:px-48 pb-4 pt-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[...Array(10)].map((_, index) => (
             <ToolSkeleton key={index} />
@@ -81,7 +81,7 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
 
   if (error || tools.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] p-8 rounded-lg">
+      <div className="flex flex-col items-center justify-center min-h-[400px] max-w-6xl p-8 rounded-lg">
         <div className="relative flex justify-center items-center">
           <Search size={50} className="text-gray-600" />
           <div className="absolute bottom-1">
@@ -101,18 +101,18 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
   }
 
   return (
-    <div className="w-full flex flex-col gap-2 px-4 lg:px-48 pb-4 pt-8">
+    <div className="w-full flex flex-col gap-2 px-0 md:px-4 lg:px-48 pb-4 pt-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {tools.map((tool) => (
           <ToolCard key={tool.id} tool={tool} />
         ))}
       </div>
-      <ToolsPagination
-        totalPages={totalPages}
-        basePath="/tools"
-      />
+      <ToolsPagination totalPages={totalPages} basePath="/tools" />
     </div>
   );
 };
 
-export default ToolsPage
+export default ToolsPage;
+
+
+

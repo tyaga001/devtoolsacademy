@@ -50,18 +50,20 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
   }, [slug, memoizedTags, memoizedCategories]);
 
   if (isLoading) {
-    return (<div className="flex flex-col gap-4 mt-8">
-      <div className=" bg-[#342651] bg-opacity-30 animate-pulse w-48 h-6 rounded-xl pt-6"></div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {[...Array(3)].map((_, index) => (
-          <ToolSkeleton key={index} />
-        ))}
+    return (
+      <div className="flex flex-col gap-4 mt-8">
+        <div className=" bg-[#141414] animate-pulse w-48 h-6 rounded-xl pt-6"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          {[...Array(3)].map((_, index) => (
+            <ToolSkeleton key={index} />
+          ))}
+        </div>
       </div>
-    </div>);
+    );
   }
 
   return (
-    <div className="similar-tools">
+    <div className="similar-tools pt-6">
       <h3 className="text-2xl md:text-3xl font-bold">Similar Tools</h3>
       <div className="flex flex-col gap-4 mt-8">
         {similarTagTools && similarTagTools.length > 0 && (
@@ -75,7 +77,7 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
           </div>
         )}
         {similarCategoriesTools && similarCategoriesTools.length > 0 && (
-          <div>
+          <div className="mt-8 md:mt-0">
             <h3 className="text-xl font-medium text-gray-400">
               Based on Categories
             </h3>

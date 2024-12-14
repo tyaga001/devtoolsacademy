@@ -11,22 +11,14 @@ interface ToolCardProps {
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
     <Link href={`/tools/${encodeURIComponent(tool.name)}`} className="block">
-      <Card className="relative w-full h-full  max-w-sm  bg-gradient-to-br from-[#050817]  to-gray-950 border-white border-opacity-10 hover:ring ring-[#1C1C1C] ring-opacity-50 opacity-90 hover:opacity-100 transition-all rounded-xl overflow-hidden">
+      <Card className="relative w-full h-full  max-w-sm  border-white border-opacity-10 hover:ring ring-[#1C1C1C] ring-opacity-50 opacity-90 hover:opacity-100 transition-all rounded-xl overflow-hidden">
         <CardHeader className="pb-2">
           <div className="flex items-center gap-3">
-            {tool.logo ? (
-              <div className="bg-black p-1 rounded border border-white border-opacity-15">
-                <img
-                  src={tool.logo}
-                  alt={`${tool.name} logo`}
-                  className="w-8 h-8 rounded object-cover"
-                />
-              </div>
-            ) : (
-              <div className="w-8 h-8 rounded-md bg-gray-800 flex items-center justify-center text-gray-300 text-lg font-bold">
-                {tool.name.charAt(0)}
-              </div>
-            )}
+            <img
+              src={`/images/logo/${tool.name}.png`}
+              alt={`${tool.name} logo`}
+              className="w-10 h-10 object-cover border border-white border-opacity-10 rounded"
+            />
             <h2 className="text-xl font-bold text-gray-100">{tool.name}</h2>
           </div>
         </CardHeader>
@@ -35,11 +27,11 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
             {tool.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
-            {tool.categories.slice(0, 3).map((category) => (
+            {tool?.categories && tool.categories.slice(0, 3).map((category) => (
               <Badge
                 key={category}
                 variant="secondary"
-                className="bg-black bg-opacity-40 text-xs text-gray-300 hover:bg-black hover:bg-opacity-70"
+                className="bg-[#141414] bg-opacity-80 text-xs text-gray-300 hover:bg-[#141414] hover:bg-opacity-100"
               >
                 {category}
               </Badge>
@@ -47,7 +39,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
             {tool.categories.length > 3 && (
               <Badge
                 variant="secondary"
-                className="bg-gray-800 text-gray-300 opacity-90 hover:bg-gray-700"
+                className="bg-[#141414] text-gray-300 opacity-90 hover:bg-[#141414]"
               >
                 +{tool.categories.length - 3}
               </Badge>
@@ -91,5 +83,3 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
 };
 
 export default ToolCard;
-
-
