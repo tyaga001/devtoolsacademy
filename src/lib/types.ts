@@ -1,13 +1,23 @@
 export interface ToolCardInterface {
-  id?: string
+  id: string
   name: string
+  headline: string
   description: string
   categories: string[]
+  features: string[]
   stars: number
   forks: number
-  lastUpdated?: Date
+  lastUpdated?: Date | undefined
   logo: string
+  tags: string[]
+  githubUrl?: string | undefined
+  websiteUrl?: string | undefined
+  documentation?: string | undefined
+  createdAt?: Date | undefined
+  updatedAt?: Date | undefined
 }
+
+
 export interface ToolDetailsInterface {
   id?: string
   name: string
@@ -15,6 +25,8 @@ export interface ToolDetailsInterface {
   categories: string[]
   stars: number
   forks: number
+  headline: string
+  features: string[]
   lastUpdated: Date
   logo: string
   tags: string[]

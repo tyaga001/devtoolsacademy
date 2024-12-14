@@ -36,7 +36,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
                 {category}
               </Badge>
             ))}
-            {tool.categories.length > 3 && (
+            {tool.categories && tool.categories.length > 3 && (
               <Badge
                 variant="secondary"
                 className="bg-[#141414] text-gray-300 opacity-90 hover:bg-[#141414]"

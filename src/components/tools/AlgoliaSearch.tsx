@@ -1,6 +1,7 @@
 import React from 'react'
 import algoliasearch from 'algoliasearch'
 import ToolsFilter from './ToolsFilter'
+import { ToolCardInterface } from '@/lib/types'
 
 interface AlgoliaSearchProps {
   searchParams: {
@@ -8,21 +9,8 @@ interface AlgoliaSearchProps {
   }
 }
 
-interface Tool {
-  name: string
-  description: string
-  url: string
-  categories: string[]
-  stars: number
-  forks: number
-  logo: string
-  tags: string[]
-  githubUrl: string
-  websiteUrl: string
-  documentation: string
-}
 
-export const getTools = async (text: string): Promise<Tool[]> => {
+export const getTools = async (text: string): Promise<ToolCardInterface[]> => {
   if (!text) {
     return []
   }
@@ -32,7 +20,7 @@ export const getTools = async (text: string): Promise<Tool[]> => {
   )
 
   const index = client.initIndex('data')
-  const { hits } = await index.search<Tool>(text, {
+  const { hits } = await index.search<ToolCardInterface>(text, {
     hitsPerPage: 20,
   })
 
