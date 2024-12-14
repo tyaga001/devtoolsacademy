@@ -8,13 +8,13 @@ const Hero: React.FC = () => {
     const productHuntBadgeHtml = `<a href="https://www.producthunt.com/posts/dev-tools-academy?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-dev&#0045;tools&#0045;academy" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=493913&theme=light" alt="Dev&#0032;Tools&#0032;Academy - A&#0032;special&#0032;blog&#0032;made&#0032;for&#0032;Developers&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>`;
 
     return (
-        <section className="relative min-h-screen bg-black overflow-hidden py-20 flex items-center justify-center">
+        <section className="relative min-h-screen bg-black overflow-hidden  flex items-center justify-center">
             <div className="absolute inset-0 bg-gradient-to-br from-black-900/20 via-black to-pink-900/20" />
             <div className="absolute inset-0 opacity-50">
                 {[...Array(50)].map((_, i) => (
                     <div
                         key={i}
-                        className="absolute bg-white rounded-full"
+                        className="absolute bg-white rounded-full w-6 h-6"
                         style={{
                             top: `${Math.random() * 100}%`,
                             left: `${Math.random() * 100}%`,

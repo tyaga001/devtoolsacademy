@@ -87,3 +87,16 @@ html {
   background-color: #333;
   margin: 40px 0;
 }
+
+
+.ChatArea::-webkit-scrollbar {
+  width: 6px ;
+  border-radius: 4px;
+  background-color: #6e6b6b;
+}
+
+.ChatArea::-webkit-scrollbar-thumb {
+  
+  background-color: white;
+  border-radius: 4px;
+}

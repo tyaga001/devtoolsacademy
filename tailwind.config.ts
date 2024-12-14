@@ -16,7 +16,11 @@ const config = {
         '2xl': '1400px',
       },
     },
+
     extend: {
+
+
+
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -50,6 +54,14 @@ const config = {
         mono: ['var(--font-geist-mono)', ...fontFamily.mono],
       },
       keyframes: {
+        "shimmer": {
+          from: {
+            "backgroundPosition": "0 0"
+          },
+          to: {
+            "backgroundPosition": "-200% 0"
+          }
+        },
         'fade-in-down': {
           '0%': {
             opacity: '0',
@@ -89,6 +101,7 @@ const config = {
       },
       animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out',
+        shimmer: "shimmer 2s linear infinite",
         'fade-in-up': 'fade-in-up 0.5s ease-out',
         'fade-in': 'fade-in 0.5s ease-out',
         'pulse-shadow': 'pulse-shadow 2s infinite'

@@ -35,7 +35,7 @@ export default function Navbar() {
                             <Button
                                 onClick={() => window.open("https://github.com/tyaga001/devtoolsacademy", "_blank", "noopener,noreferrer")}
                                 variant="outline"
-                                className="flex items-center space-x-2 bg-transparent border border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-gray-900 transition duration-150 ease-in-out"
+                                className="flex items-center  space-x-2 bg-transparent border border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-gray-900 transition duration-150 ease-in-out"
                             >
                                 <Github className="w-5 h-5" />
                                 <span>Star on GitHub</span>
