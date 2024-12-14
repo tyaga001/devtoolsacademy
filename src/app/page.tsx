@@ -33,6 +33,7 @@ const featuredPosts = [
     url: '/blog/mongoDB-vs-postgreSQL',
     category: "Database",
   }
+
 ];
 
 export default function Home() {

@@ -15,20 +15,6 @@
 | [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL?                           |
 | [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk) | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
 
-## 💡 Contribute
-
-We welcome contributions from the developer community! If you have insights on developer tools or want to share your experiences, please check our [Contribution Guidelines](CONTRIBUTING.md).
-
-## 📬 Stay Connected
-
-- Follow us on [Twitter](https://twitter.com/devtoolsacademy)
-- Join our [Discord community](https://discord.gg/devtoolsacademy)
-- Subscribe to our [Newsletter](https://www.devtoolsacademy.com/newsletter)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🚀 Quick Start
 
 This project is built with [Next.js](https://nextjs.org/). To get started:
@@ -65,13 +51,6 @@ To get started, check our [CONTRIBUTING.md](CONTRIBUTING.md) file and reach out 
 - Include code examples and performance metrics when relevant.
 - Aim for a length of 1500-2000 words.
 - Build something and compare, don't just rely on docs and other blogs.
-
-## 📈 Growth and Goals
-
-I'm committed to continuous improvement. my short term goals include:
-- Reach 100,000 monthly visits by the end of the year.
-
-Join me in achieving this milestones.
 
 ## 📬 Contact
 

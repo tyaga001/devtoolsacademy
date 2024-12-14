@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
 import {AnimatePresence, motion} from 'framer-motion';
 import {Twitter, Github, Linkedin, Slack, ArrowRight, BookOpen, ExternalLink, Globe} from 'lucide-react';
-
+import {FaMedium} from "react-icons/fa6"
 interface BlogPost {
     title: string;
     url: string;
@@ -12,16 +12,16 @@ interface BlogPost {
 
 const recentBlogPosts: BlogPost[] = [
     {
-        title: "Getting Started with Next.js – The Complete Guide for Beginners",
-        url: "https://theankurtyagi.com/next-js/",
+        title: "How to Build a Custom Video Conferencing App with Stream and Next.js",
+        url: "https://www.freecodecamp.org/news/how-i-built-a-custom-video-conferencing-app-with-stream-and-nextjs/",
     },
     {
-        title: "Next.js, Clerk, and Neon Postgres: A Guide to Full-Stack Development",
+        title: "Next.js, Clerk, and Neon Postgres - A Guide to Full-Stack Development",
         url: "https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/",
     },
     {
-        title: "How Technical Writing Can Supercharge Your Startup",
-        url: "https://theankurtyagi.com/how-technical-writing-can-supercharge-your-startup/",
+        title: "A Software Developer Guide to Writing",
+        url: "https://theankurtyagi.com/a-software-developers-guide-to-writing/",
     },
 ];
 
@@ -80,7 +80,7 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({linkVariants}) => (
             {href: "https://twitter.com/theankurtyagi", Icon: Twitter, label: "Twitter"},
             {href: "https://github.com/tyaga001", Icon: Github, label: "GitHub"},
             {href: "https://linkedin.com/in/theankurtyagi", Icon: Linkedin, label: "LinkedIn"},
-            {href: "https://medium.com/@theankurtyagi", Icon: Slack, label: "Medium"},
+            {href: "https://medium.com/@theankurtyagi", Icon:FaMedium, label: "Medium"},
         ].map(({href, Icon, label}) => (
             <motion.a
                 key={label}

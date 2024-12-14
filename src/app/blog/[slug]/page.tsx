@@ -11,6 +11,8 @@ import CodeBlock from '@/components/CodeBlock';
 import { Callout } from '@/components/Callout';
 import { Alert, AlertDescription } from '@/components/Alert';
 import { MDXComponents } from 'mdx/types';
+import BackToTop from '@/components/BackToTop';
+
 
 const generateId = (children: any) => {
     if (Array.isArray(children)) {
@@ -73,6 +75,7 @@ export default async function BlogPost({params}: { params: { slug: string } }) {
                     </div>
                 </aside>
             </div>
+                <BackToTop />
         </div>
     )
 }
