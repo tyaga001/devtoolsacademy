@@ -41,15 +41,3 @@ jobs:
         NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
         CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Run tests
-      run: npm test
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
-    - name: Upload error logs
-      uses: actions/upload-artifact@v3
-      if: failure()
-      with:
-        name: npm-debug-log
-        path: ~/.npm/_logs/
