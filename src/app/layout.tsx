@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     template: '%s | Dev Tools Academy',
   },
   description: 'Learn about awesome developer tools',
-  metadataBase: new URL('https://devtoolsacademy.com'),
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}` ),
   openGraph: {
     title: 'Dev Tools Academy',
     description: 'Learn about awesome developer tools',
-    url: 'https://devtoolsacademy.com',
+    url: process.env.NEXT_PUBLIC_BASE_URL ?? 'https://devtoolsacademy.com',
     siteName: 'Dev Tools Academy',
     locale: 'en_US',
     type: 'website',
