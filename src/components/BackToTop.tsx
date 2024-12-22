@@ -28,9 +28,12 @@ const BackToTop = () => {
   const scrollToTop = () => {
     if (typeof window === "undefined") return
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     })
   }
 
@@ -38,6 +41,8 @@ const BackToTop = () => {
     <div className="fixed bottom-20 right-4 z-50">
       <button
         onClick={scrollToTop}
+        aria-label="Scroll to top of page"
+        title="Scroll to top"
         className={`rounded-full bg-blue-500 p-3 text-white shadow-lg transition-opacity hover:bg-blue-600 ${
           isVisible ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
