@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 import {
   Pagination,
   PaginationContent,
@@ -7,46 +7,49 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation"
 
 interface ToolsPaginationProps {
-  totalPages: number;
-  basePath: string;
+  totalPages: number
+  basePath: string
 }
 
-export default function ToolsPagination({ totalPages, basePath }: ToolsPaginationProps) {
-  const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get("page") || 1);
+export default function ToolsPagination({
+  totalPages,
+  basePath,
+}: ToolsPaginationProps) {
+  const searchParams = useSearchParams()
+  const currentPage = Number(searchParams.get("page") || 1)
 
   const createPageUrl = (pageNumber: number) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set('page', pageNumber.toString());
-    return `${basePath}?${params.toString()}`;
-  };
+    const params = new URLSearchParams(searchParams.toString())
+    params.set("page", pageNumber.toString())
+    return `${basePath}?${params.toString()}`
+  }
   console.log({ totalPages })
 
   const getPageNumbers = () => {
-    const pages = [];
+    const pages = []
 
-    if (totalPages > 0) pages.push(1);
+    if (totalPages > 0) pages.push(1)
 
-    const startPage = Math.max(2, currentPage - 2);
-    const endPage = Math.min(totalPages, currentPage + 2);
+    const startPage = Math.max(2, currentPage - 2)
+    const endPage = Math.min(totalPages, currentPage + 2)
 
-    if (startPage > 2) pages.push(-1); // -1 represents ellipsis
+    if (startPage > 2) pages.push(-1) // -1 represents ellipsis
 
     for (let i = startPage; i <= endPage; i++) {
       if (i !== 1 && i !== totalPages) {
-        pages.push(i);
+        pages.push(i)
       }
     }
 
-    if (endPage < totalPages - 1) pages.push(-2); // -2 represents another ellipsis
+    if (endPage < totalPages - 1) pages.push(-2) // -2 represents another ellipsis
 
-    if (totalPages > 1) pages.push(totalPages);
+    if (totalPages > 1) pages.push(totalPages)
 
-    return pages;
-  };
+    return pages
+  }
 
   return (
     <Pagination>
@@ -67,7 +70,7 @@ export default function ToolsPagination({ totalPages, basePath }: ToolsPaginatio
               <PaginationItem key={`ellipsis-${index}`}>
                 <span className="px-2 text-gray-500">...</span>
               </PaginationItem>
-            );
+            )
           }
 
           return (
@@ -79,18 +82,24 @@ export default function ToolsPagination({ totalPages, basePath }: ToolsPaginatio
                 {page}
               </PaginationLink>
             </PaginationItem>
-          );
+          )
         })}
 
         {/* Next Button */}
         <PaginationItem>
           <PaginationNext
-            href={currentPage < totalPages ? createPageUrl(currentPage + 1) : undefined}
+            href={
+              currentPage < totalPages
+                ? createPageUrl(currentPage + 1)
+                : undefined
+            }
             aria-disabled={currentPage >= totalPages}
-            className={currentPage >= totalPages ? "pointer-events-none opacity-50" : ""}
+            className={
+              currentPage >= totalPages ? "pointer-events-none opacity-50" : ""
+            }
           />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  );
+  )
 }

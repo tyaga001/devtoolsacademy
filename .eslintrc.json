@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": [
     "eslint:recommended",
     "plugin:prettier/recommended",
@@ -8,5 +9,23 @@
     "next"
   ],
   "plugins": ["jsx-a11y", "tailwindcss"],
-  "root": true
+  "rules": {
+    "@next/next/no-img-element": "off",
+    "tailwindcss/no-custom-classname": [
+      "warn",
+      {
+        "whitelist": [
+          "mermaid",
+          "skeleton-shimmer",
+          "similar-tools",
+          "text-destructive-foreground",
+          "bg-destructive",
+          "bg-destructive/80",
+          "bg-destructive/90",
+          "hover:bg-destructive/80",
+          "hover:bg-destructive/90"
+        ]
+      }
+    ]
+  }
 }
