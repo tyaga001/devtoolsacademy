@@ -22,6 +22,7 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ posts }) => {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
+            aria-label={`Read more about ${post.title}`}
             className="block rounded-lg bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-lg dark:bg-gray-800"
           >
             <h3 className="mb-2 text-2xl font-semibold">{post.title}</h3>
