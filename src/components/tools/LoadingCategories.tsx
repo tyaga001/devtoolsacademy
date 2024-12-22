@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 function LoadingCategories() {
   return (
@@ -13,16 +13,16 @@ function LoadingCategories() {
           </p>
         </div>
         <div className="flex flex-col gap-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: 12 }).map((_, index) => (
               <div
                 key={index}
-                className="flex items-center gap-4 rounded-lg w-full p-4"
+                className="flex w-full items-center gap-4 rounded-lg p-4"
               >
-                <div className="bg-[#141414] animate-pulse w-12 h-12 rounded-full"></div>
+                <div className="size-12 animate-pulse rounded-full bg-[#141414]"></div>
                 <div className="flex flex-col gap-1">
-                  <div className="bg-[#141414] animate-pulse w-20 h-4 rounded-xl"></div>
-                  <div className="bg-[#141414] animate-pulse w-28 h-4 rounded-xl"></div>
+                  <div className="h-4 w-20 animate-pulse rounded-xl bg-[#141414]"></div>
+                  <div className="h-4 w-28 animate-pulse rounded-xl bg-[#141414]"></div>
                 </div>
               </div>
             ))}
@@ -30,7 +30,7 @@ function LoadingCategories() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default LoadingCategories;
+export default LoadingCategories

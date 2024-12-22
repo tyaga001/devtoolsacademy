@@ -1,42 +1,44 @@
-import { Categories, PrismaClient } from '@prisma/client';
-import { ToolDetailsInterface } from './types';
+import { Categories, PrismaClient } from "@prisma/client"
+import { ToolDetailsInterface } from "./types"
 
 const prisma = new PrismaClient()
 
 interface ToolDetailsReturnType {
-  status: boolean;
-  message: string;
-  toolDetails: ToolDetailsInterface | null;
+  status: boolean
+  message: string
+  toolDetails: ToolDetailsInterface | null
 }
 
 interface GetToolCategoriesReturnType {
-  status: boolean;
-  message: string;
+  status: boolean
+  message: string
   categories: Categories[] | null
 }
 
-export async function getToolDetails(slug: string): Promise<ToolDetailsReturnType> {
+export async function getToolDetails(
+  slug: string
+): Promise<ToolDetailsReturnType> {
   try {
     const toolDetails = await prisma.tool.findFirst({
-      where: { name: slug }
+      where: { name: slug },
     })
     if (!toolDetails) {
       return {
         status: false,
         message: "failed to get tool details",
-        toolDetails: null
+        toolDetails: null,
       }
     }
     return {
       status: true,
       message: "Successfully fetched all details",
-      toolDetails
+      toolDetails,
     }
   } catch (err) {
     return {
       status: false,
       message: "failed to get tool details",
-      toolDetails: null
+      toolDetails: null,
     }
   }
 }
@@ -49,21 +51,21 @@ export async function getToolCategories(): Promise<GetToolCategoriesReturnType> 
       return {
         status: false,
         message: "no categories found",
-        categories: null
+        categories: null,
       }
     }
 
     return {
       status: true,
       message: "Categories found",
-      categories
+      categories,
     }
   } catch (error: any) {
-    console.error('Error in API:', error.response?.data || error.message);
+    console.error("Error in API:", error.response?.data || error.message)
     return {
       status: false,
       message: "no categories found",
-      categories: null
+      categories: null,
     }
   }
 }
