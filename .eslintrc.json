@@ -1,4 +1,12 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:tailwindcss/recommended",
+    "next/core-web-vitals",
+    "next"
+  ],
+  "plugins": ["jsx-a11y", "tailwindcss"],
   "root": true
 }
