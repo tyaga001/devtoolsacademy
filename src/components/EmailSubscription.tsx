@@ -13,7 +13,12 @@ export default function EmailSubscription() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-4">
+      <label htmlFor="email-input" className="sr-only">
+        Email address
+      </label>
       <input
+        id="email-input"
+        aria-label="Email address"
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
