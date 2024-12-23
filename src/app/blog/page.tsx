@@ -1,5 +1,7 @@
 import Link from "next/link"
+
 import { getAllPosts } from "@/lib/posts"
+import { formatDate } from "@/lib/utils"
 
 export default async function BlogPage() {
   const posts = await getAllPosts()
@@ -17,7 +19,7 @@ export default async function BlogPage() {
               {post.title}
             </Link>
             <p className="text-gray-500">
-              {post.publishedAt} • {post.views} views
+              {formatDate(new Date(post.publishedAt))} • {post.views} views
             </p>
             <p>{post.summary}</p>
           </li>
