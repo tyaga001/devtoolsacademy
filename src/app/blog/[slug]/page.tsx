@@ -81,11 +81,14 @@ export async function generateMetadata({
   params: { slug: string }
 }): Promise<Metadata> {
   const post = await getPostBySlug(params.slug)
+  console.log(post, 'fasial')
   if (!post) {
     return {}
   }
-  const { title } = post
-  const ogImage = `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${post.title}`
+  const { title, featuredImage } = post
+  const ogImage = featuredImage
+    ? featuredImage
+    : `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${post.title}`
   return {
     title: `${post.title} | Dev Tools Academy`,
     description: post.description,
