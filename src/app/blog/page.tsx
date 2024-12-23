@@ -8,23 +8,26 @@ export default async function BlogPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-8 text-4xl font-bold">Blog Posts</h1>
-      <ul className="space-y-4">
+      <h1 className="mb-8 text-4xl font-bold tracking-tighter md:mb-20">
+        Blog Posts
+      </h1>
+      <div className="-mx-3 flex flex-col">
         {posts.map((post) => (
-          <li key={post.slug} className="border-b pb-4">
-            <Link
-              href={`/blog/${post.slug}`}
-              className="text-2xl font-semibold hover:underline"
-            >
+          <Link
+            href={`/blog/${post.slug}`}
+            key={post.slug}
+            className="rounded-lg border-b border-gray-800 p-3 transition-colors hover:bg-gray-50/10 focus:bg-gray-50/10"
+          >
+            <p className="mb-1 text-2xl font-semibold tracking-tight text-gray-200">
               {post.title}
-            </Link>
-            <p className="text-gray-500">
+            </p>
+            <p className="mb-2.5 text-gray-500">{post.summary}</p>
+            <p className="text-sm text-gray-500">
               {formatDate(new Date(post.publishedAt))} • {post.views} views
             </p>
-            <p>{post.summary}</p>
-          </li>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
