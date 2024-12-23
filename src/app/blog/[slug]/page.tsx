@@ -81,7 +81,6 @@ export async function generateMetadata({
   params: { slug: string }
 }): Promise<Metadata> {
   const post = await getPostBySlug(params.slug)
-  console.log(post, 'fasial')
   if (!post) {
     return {}
   }
