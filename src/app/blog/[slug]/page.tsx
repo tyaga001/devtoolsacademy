@@ -1,6 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { MDXRemote } from "next-mdx-remote/rsc"
+import { MDXComponents } from "mdx/types"
+
+import { twMerge } from "tailwind-merge"
+
 import { getPostBySlug, getViewCount, getAllPosts } from "@/lib/posts"
 import TableOfContents from "@/components/TableOfContents"
 import Breadcrumb from "@/components/Breadcrumb"
@@ -10,7 +14,6 @@ import ServerlessDiagram from "@/components/ServerlessDiagram"
 import CodeBlock from "@/components/CodeBlock"
 import { Callout } from "@/components/Callout"
 import { Alert, AlertDescription } from "@/components/Alert"
-import { MDXComponents } from "mdx/types"
 import BackToTop from "@/components/BackToTop"
 
 const generateId = (children: any) => {
@@ -110,7 +113,15 @@ export default async function BlogPost({
       />
       <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-3/4">
-          <article className="prose prose-lg max-w-none dark:prose-invert">
+          <article
+            className={twMerge(
+              "prose prose-lg max-w-none",
+              "prose-blockquote:opacity-80 prose-hr:opacity-50",
+              "prose-p:opacity-80 prose-ul:opacity-80 prose-ol:opacity-80",
+              "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85",
+              "prose-h1:tracking-tight prose-h1:mt-24 prose-h1:mb-0 prose-h1:text-3xl prose-h1:leading-snug"
+            )}
+          >
             <MDXRemote
               source={post.content}
               components={components as MDXComponents}
@@ -118,7 +129,7 @@ export default async function BlogPost({
           </article>
           <CommentSection postSlug={params.slug} />
         </div>
-        <aside className="lg:w-1/4 lg:pl-8">
+        <aside className="hidden lg:block lg:w-1/4 lg:pl-8">
           <div className="sticky top-24">
             <TableOfContents />
           </div>
