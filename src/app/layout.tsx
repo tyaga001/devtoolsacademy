@@ -1,14 +1,17 @@
 import React from "react"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import type { Metadata, Viewport } from "next"
+import Script from "next/script"
+import { Inter, JetBrains_Mono } from "next/font/google"
+
 import { Analytics } from "@vercel/analytics/react"
 import { ClerkProvider } from "@clerk/nextjs"
+
 import Navbar from "@/components/Navbar"
 import { SocialMetadata } from "@/components/SocialMetadata"
-import "./globals.css"
+
 import "highlight.js/styles/github-dark.css"
-import { Metadata } from "next"
-import Script from "next/script"
+import "./globals.css"
+import { classNames } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +41,20 @@ export const metadata: Metadata = {
       url: "/favicon.png",
     },
   ],
+}
+
+const sansFont = Inter({
+  variable: "--sans-font",
+  subsets: ["latin"],
+})
+
+const monoFont = JetBrains_Mono({
+  variable: "--mono-font",
+  subsets: ["latin"],
+})
+
+export const viewport: Viewport = {
+  themeColor: "#171717",
 }
 
 interface RootLayoutProps {
@@ -77,7 +94,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
+        className={classNames(
+          sansFont.variable,
+          monoFont.variable,
+          "font-sans antialiased"
+        )}
       >
         <ClerkProvider>
           <div className="flex min-h-screen flex-col">

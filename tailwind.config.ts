@@ -1,5 +1,3 @@
-import { fontFamily } from "tailwindcss/defaultTheme"
-
 const config = {
   darkMode: ["class"],
   content: [
@@ -45,10 +43,6 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
-        mono: ["var(--font-geist-mono)", ...fontFamily.mono],
       },
       keyframes: {
         "fade-in-down": {
@@ -132,6 +126,10 @@ const config = {
           },
         },
       }),
+    },
+    fontFamily: {
+      sans: ["var(--sans-font)"],
+      mono: ["var(--mono-font)"],
     },
   },
   plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],

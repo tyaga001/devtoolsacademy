@@ -18,3 +18,9 @@ export function formatDate(date: Date): string {
     day: "numeric",
   })
 }
+
+export function classNames(
+  ...classes: Array<string | boolean | undefined>
+): string {
+  return classes.filter(Boolean).join(" ")
+}
