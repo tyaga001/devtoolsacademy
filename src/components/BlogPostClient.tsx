@@ -61,7 +61,7 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
             Chat with Claude AI
           </button>
         </div>
-        <div className="flex items-center rounded-full bg-neutral-950 px-3 py-1">
+        <div className="flex items-center rounded-full bg-neutral-800 px-3 py-1 text-neutral-200">
           <EyeIcon className="mr-2 size-5 text-blue-400" />
           <ViewCounter slug={slug} initialViews={initialViews} />
         </div>
