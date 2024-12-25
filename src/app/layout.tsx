@@ -8,10 +8,10 @@ import { ClerkProvider } from "@clerk/nextjs"
 
 import Navbar from "@/components/Navbar"
 import { SocialMetadata } from "@/components/SocialMetadata"
+import { cn } from "@/lib/utils"
 
 import "highlight.js/styles/github-dark.css"
 import "./globals.css"
-import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: {
@@ -54,7 +54,7 @@ const monoFont = JetBrains_Mono({
 })
 
 export const viewport: Viewport = {
-  themeColor: "#171717",
+  themeColor: "#0A0A0A",
 }
 
 interface RootLayoutProps {
@@ -101,12 +101,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <ClerkProvider>
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <main className="container mx-auto grow px-4 py-8 sm:px-6 lg:px-8">
-              {children}
-            </main>
-          </div>
+          <Navbar />
+          {children}
         </ClerkProvider>
         <Analytics />
       </body>

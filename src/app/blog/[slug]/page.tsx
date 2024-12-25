@@ -96,7 +96,7 @@ export default async function BlogPost({
   const postUrl = `${baseUrl}/blog/${params.slug}`
 
   return (
-    <div className="relative mx-auto max-w-5xl px-4 py-12">
+    <div className="relative mx-auto max-w-5xl px-4 py-36">
       <SocialMetadata
         title={post.title}
         description={post.description}

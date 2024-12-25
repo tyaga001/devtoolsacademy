@@ -9,8 +9,8 @@ const Hero: React.FC = () => {
 
   return (
     // <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-neutral-950 py-20">
-    <section className="relative -mt-16 flex min-h-screen items-center justify-center overflow-hidden py-20">
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black to-pink-900/20" /> */}
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black to-pink-900/20" />
       {/* <div className="absolute inset-0 opacity-50">
         {[...Array(50)].map((_, i) => (
           <div
