@@ -25,7 +25,7 @@ const generateId = (children: any) => {
     : ""
 }
 
-const components = {
+const components: MDXComponents = {
   h1: (props: any) => <h1 {...props}>{props.children}</h1>,
   h2: (props: any) => (
     <h2 id={generateId(props.children)} {...props}>
@@ -57,7 +57,7 @@ const components = {
     />
   ),
   ServerlessDiagram: ServerlessDiagram,
-  code: CodeBlock,
+  code: (props: any) => <CodeBlock {...props} />,
   Callout: Callout,
   Alert: Alert,
   AlertDescription: AlertDescription,
@@ -111,10 +111,7 @@ export default async function BlogPost({
               "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85"
             )}
           >
-            <MDXRemote
-              source={post.content}
-              components={components as MDXComponents}
-            />
+            <MDXRemote source={post.content} components={components} />
           </article>
           <CommentSection postSlug={params.slug} />
         </div>
