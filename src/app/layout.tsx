@@ -97,7 +97,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={classNames(
           sansFont.variable,
           monoFont.variable,
-          "font-sans antialiased"
+          "font-sans antialiased bg-neutral-950"
         )}
       >
         <ClerkProvider>

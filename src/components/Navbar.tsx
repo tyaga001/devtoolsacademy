@@ -18,7 +18,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-black text-white">
+    <nav className="text-neutral-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <StylizedSiteName />
@@ -28,7 +28,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="rounded-md px-3 py-2 text-sm font-medium transition duration-150 ease-in-out hover:bg-gray-800"
+                  className="rounded-md px-3 py-2 text-sm font-medium transition duration-150 ease-in-out hover:bg-neutral-950"
                 >
                   {item.name}
                 </Link>
@@ -42,7 +42,7 @@ export default function Navbar() {
                   )
                 }
                 variant="outline"
-                className="flex items-center space-x-2 border border-purple-400 bg-transparent text-purple-400 transition duration-150 ease-in-out hover:bg-purple-400 hover:text-gray-900"
+                className="flex items-center space-x-2 border border-purple-400 bg-transparent text-purple-400 transition duration-150 ease-in-out hover:bg-purple-400 hover:text-neutral-900"
               >
                 <Github className="size-5" />
                 <span>Star on GitHub</span>
@@ -50,7 +50,7 @@ export default function Navbar() {
               <Button
                 asChild
                 variant="outline"
-                className="flex items-center space-x-2 border border-pink-400 bg-transparent text-pink-400 transition duration-150 ease-in-out hover:bg-pink-400 hover:text-gray-900"
+                className="flex items-center space-x-2 border border-pink-400 bg-transparent text-pink-400 transition duration-150 ease-in-out hover:bg-pink-400 hover:text-neutral-900"
               >
                 <Link href="/sponsor">
                   <Heart className="size-5" />
@@ -62,7 +62,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center rounded-md p-2 text-purple-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
+              className="inline-flex items-center justify-center rounded-md p-2 text-purple-400 hover:bg-neutral-950 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -82,7 +82,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="block rounded-md px-3 py-2 text-base font-medium transition duration-150 ease-in-out hover:bg-gray-800"
+                className="block rounded-md px-3 py-2 text-base font-medium transition duration-150 ease-in-out hover:bg-neutral-950"
                 onClick={toggleMenu}
               >
                 {item.name}
@@ -92,7 +92,7 @@ export default function Navbar() {
               href="https://github.com/tyaga001/devtoolsacademy"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-md px-3 py-2 text-base font-medium text-purple-400 transition duration-150 ease-in-out hover:bg-gray-800"
+              className="block rounded-md px-3 py-2 text-base font-medium text-purple-400 transition duration-150 ease-in-out hover:bg-neutral-950"
               onClick={toggleMenu}
             >
               <Github className="mr-2 inline-block size-5" />
@@ -100,7 +100,7 @@ export default function Navbar() {
             </a>
             <Link
               href="/sponsor"
-              className="block rounded-md px-3 py-2 text-base font-medium text-pink-400 transition duration-150 ease-in-out hover:bg-gray-800"
+              className="block rounded-md px-3 py-2 text-base font-medium text-pink-400 transition duration-150 ease-in-out hover:bg-neutral-950"
               onClick={toggleMenu}
             >
               <Heart className="mr-2 inline-block size-5" />

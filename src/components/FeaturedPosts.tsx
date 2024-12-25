@@ -30,7 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
   return (
     <motion.div
-      className="overflow-hidden rounded-xl bg-white shadow-lg"
+      className="overflow-hidden rounded-xl bg-neutral-800 shadow-lg"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 300 }}
@@ -47,9 +47,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
         <span className="mb-2 block text-sm font-medium text-purple-600">
           {category}
         </span>
-        <h3 className="mb-2 text-xl font-bold text-gray-900">{title}</h3>
-        <p className="mb-4 text-gray-600">{excerpt}</p>
-        <div className="mb-4 flex items-center justify-between text-sm text-gray-500">
+        <h3 className="mb-2 text-xl font-bold text-neutral-200">{title}</h3>
+        <p className="mb-4 text-neutral-500">{excerpt}</p>
+        <div className="mb-4 flex items-center justify-between text-sm text-neutral-500">
           <span className="flex items-center">
             <Clock size={16} className="mr-1" /> {readTime || defaultReadTime}
           </span>
@@ -63,13 +63,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
           </Link>
           <div className="flex items-center">
             <button
-              className="mr-2 rounded-full p-1 text-gray-400 hover:bg-gray-100"
+              className="mr-2 rounded-full p-1 text-neutral-400 hover:bg-neutral-100"
               aria-label="Save post"
             >
               <Bookmark size={20} />
             </button>
             <button
-              className="rounded-full p-1 text-gray-400 hover:bg-gray-100"
+              className="rounded-full p-1 text-neutral-400 hover:bg-neutral-100"
               aria-label="Share post"
             >
               <Share2 size={20} />
@@ -87,9 +87,9 @@ interface FeaturedPostsProps {
 
 const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
   return (
-    <section className="bg-gradient-to-br from-purple-50 to-blue-50 py-16">
+    <section className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="mb-12 text-center text-4xl font-bold text-gray-900">
+        <h2 className="mb-12 text-center text-4xl font-bold text-neutral-200">
           Featured Posts
         </h2>
         <div

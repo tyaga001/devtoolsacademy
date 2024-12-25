@@ -72,11 +72,7 @@ function TestimonialCard({ testimonial }: { testimonial: ITestimonial }) {
 
 export function Testimonial() {
   return (
-    <section className="relative overflow-hidden bg-black/90 py-16">
-      <div
-        className="absolute inset-0 bg-[url('/stars-background.png')] opacity-50"
-        aria-hidden="true"
-      ></div>
+    <section className="relative overflow-hidden py-16">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <h2 className="mb-4 text-5xl font-bold">

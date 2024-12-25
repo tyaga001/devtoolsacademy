@@ -32,7 +32,7 @@ export default async function ToolsRoute({
             Browse Devtools for your next product
           </span>
         </h1>
-        <p className="mb-8 max-w-xl text-base text-gray-100 text-opacity-50 sm:text-xl">
+        <p className="mb-8 max-w-xl text-base text-neutral-100 text-opacity-50 sm:text-xl">
           Discover new devtools from a well researched collection for hassle{" "}
           free development of your next product
         </p>

@@ -65,7 +65,7 @@ const components = {
   Image: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
   blockquote: (props: any) => (
     <blockquote
-      className="my-4 border-l-4 border-gray-300 pl-4 italic"
+      className="my-4 border-l-4 border-neutral-300 pl-4 italic"
       {...props}
     />
   ),
@@ -75,13 +75,16 @@ const components = {
   Alert: Alert,
   AlertDescription: AlertDescription,
   table: (props: any) => (
-    <table className="my-4 min-w-full border border-gray-300" {...props} />
+    <table className="my-4 min-w-full border border-neutral-300" {...props} />
   ),
   th: (props: any) => (
-    <th className="border border-gray-300 bg-gray-100 px-4 py-2" {...props} />
+    <th
+      className="border border-neutral-300 bg-neutral-100 px-4 py-2"
+      {...props}
+    />
   ),
   td: (props: any) => (
-    <td className="border border-gray-300 px-4 py-2" {...props} />
+    <td className="border border-neutral-300 px-4 py-2" {...props} />
   ),
 }
 

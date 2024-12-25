@@ -19,7 +19,7 @@ const StylizedSiteName = () => {
         <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-lg font-bold tracking-tight text-transparent transition-colors duration-300 group-hover:from-purple-300 group-hover:to-pink-400">
           Tools
         </span>
-        <span className="ml-0.5 text-sm font-medium tracking-wide text-gray-300 transition-colors duration-300 group-hover:text-pink-300">
+        <span className="ml-0.5 text-sm font-medium tracking-wide text-neutral-300 transition-colors duration-300 group-hover:text-pink-300">
           Academy
         </span>
       </div>

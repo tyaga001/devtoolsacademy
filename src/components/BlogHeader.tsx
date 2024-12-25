@@ -24,7 +24,7 @@ export default function BlogHeader({
       className="text-center"
     >
       <h1 className="mb-4 text-4xl font-bold">{title}</h1>
-      <div className="flex items-center justify-center space-x-4 text-gray-400">
+      <div className="flex items-center justify-center space-x-4 text-neutral-400">
         <time dateTime={publishedAt}>{formattedDate}</time>
         <span>•</span>
         <span>{views} views</span>

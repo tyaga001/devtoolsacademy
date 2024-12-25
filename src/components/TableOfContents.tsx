@@ -49,8 +49,8 @@ const TableOfContents: React.FC = () => {
   }
 
   return (
-    <nav className="max-w-xs overflow-y-auto rounded-lg p-4 shadow-xl">
-      <h2 className="mb-4 text-lg font-semibold text-gray-200">Contents</h2>
+    <nav className="max-w-xs overflow-y-auto px-4">
+      <h2 className="mb-4 text-lg font-semibold text-neutral-200">Contents</h2>
       <ul className="space-y-2 text-sm">
         {headings.map((heading) => (
           <li
@@ -63,7 +63,7 @@ const TableOfContents: React.FC = () => {
               className={`block py-1 transition-colors ${
                 activeId === heading.id
                   ? "text-blue-400"
-                  : "text-gray-400 hover:text-blue-400"
+                  : "text-neutral-400 hover:text-blue-400"
               }`}
             >
               {heading.text}

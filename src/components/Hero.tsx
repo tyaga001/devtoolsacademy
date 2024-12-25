@@ -8,9 +8,10 @@ const Hero: React.FC = () => {
   const productHuntBadgeHtml = `<a href="https://www.producthunt.com/posts/dev-tools-academy?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-dev&#0045;tools&#0045;academy" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=493913&theme=light" alt="Dev&#0032;Tools&#0032;Academy - A&#0032;special&#0032;blog&#0032;made&#0032;for&#0032;Developers&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>`
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black py-20">
-      <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black to-pink-900/20" />
-      <div className="absolute inset-0 opacity-50">
+    // <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-neutral-950 py-20">
+    <section className="relative -mt-16 flex min-h-screen items-center justify-center overflow-hidden py-20">
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black to-pink-900/20" /> */}
+      {/* <div className="absolute inset-0 opacity-50">
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
@@ -23,7 +24,7 @@ const Hero: React.FC = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-center px-4 text-center text-white">
         <div className="mb-6 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
           <a
@@ -50,7 +51,7 @@ const Hero: React.FC = () => {
         >
           A special blog made for Developers.
         </h1>
-        <p className="mb-12 max-w-3xl text-2xl text-gray-300 md:text-3xl">
+        <p className="mb-12 max-w-3xl text-2xl text-neutral-300 md:text-3xl">
           Honest reviews to help you choose the right developer tool for your
           SaaS.
         </p>

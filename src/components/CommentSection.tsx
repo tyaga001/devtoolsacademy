@@ -60,11 +60,11 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
   }
 
   return (
-    <div className="mt-8 rounded-lg bg-gray-900 p-6">
+    <div className="mt-8 rounded-lg bg-neutral-900 p-6">
       <h2 className="mb-4 text-2xl font-bold text-white">
         Developer Chatter Box 💬
       </h2>
-      <p className="mb-4 text-gray-300">
+      <p className="mb-4 text-neutral-300">
         Join the discussion. Share your thoughts on dev tools, give feedback on
         the post 💪
       </p>
@@ -73,7 +73,7 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
           <textarea
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
-            className="w-full rounded border bg-gray-800 p-2 text-white"
+            className="w-full rounded border bg-neutral-950 p-2 text-white"
             placeholder={randomPlaceholder()}
           />
           <button
@@ -89,7 +89,7 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
             Hey there, code whisperer. Sign in to join the conversation.
           </p>
           <SignInButton mode="modal">
-            <button className="rounded bg-white px-4 py-2 text-gray-900 hover:bg-gray-200">
+            <button className="rounded bg-white px-4 py-2 text-neutral-900 hover:bg-neutral-200">
               Authenticate with GitHub (it&apos;s where the cool devs hang) 😎
             </button>
           </SignInButton>
@@ -97,23 +97,23 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
       )}
       <div className="space-y-4">
         {comments.length === 0 ? (
-          <p className="italic text-gray-400">
+          <p className="italic text-neutral-400">
             Be the first to break the silence. Your comment could start a
             revolution (or at least a fun thread).
           </p>
         ) : (
           comments.map((comment) => (
-            <div key={comment.id} className="border-b border-gray-700 pb-4">
+            <div key={comment.id} className="border-b border-neutral-700 pb-4">
               <div className="mb-2 flex items-center">
                 <div className="mr-3 size-10 rounded-full bg-blue-500"></div>
                 <div>
                   <p className="font-bold text-white">
                     {comment.user.name}
-                    <span className="text-sm text-gray-400">
+                    <span className="text-sm text-neutral-400">
                       {" // Code Contributor"}
                     </span>
                   </p>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-neutral-400">
                     {new Date(comment.createdAt).toLocaleDateString()} at{" "}
                     {new Date(comment.createdAt).toLocaleTimeString()}
                   </p>
@@ -121,10 +121,10 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
               </div>
               <p className="text-white">{comment.content}</p>
               <div className="mt-2">
-                <button className="mr-2 text-gray-400 hover:text-blue-500">
+                <button className="mr-2 text-neutral-400 hover:text-blue-500">
                   👍 Like
                 </button>
-                <button className="text-gray-400 hover:text-blue-500">
+                <button className="text-neutral-400 hover:text-blue-500">
                   ↩️ Reply
                 </button>
               </div>
@@ -133,7 +133,7 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
         )}
       </div>
       <div className="mt-6 text-center">
-        <p className="text-gray-400">
+        <p className="text-neutral-400">
           Remember: Be kind, be constructive, and may your code always compile
           on the first try. 🍀
         </p>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function ContributeRoute() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-neutral-950">
       <ContributePage />
     </main>
   )

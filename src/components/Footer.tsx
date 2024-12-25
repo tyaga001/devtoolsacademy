@@ -76,7 +76,7 @@ const BlogPostList: React.FC = () => (
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center text-gray-300 transition-colors duration-300 hover:text-yellow-300"
+            className="group flex items-center text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
           >
             <BookOpen size={16} className="mr-2 shrink-0" />
             <span className="grow">{post.title}</span>
@@ -114,7 +114,7 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({ linkVariants }) => (
       <motion.a
         key={label}
         href={href}
-        className="text-gray-300 transition-colors duration-300 hover:text-yellow-300"
+        className="text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
         variants={linkVariants}
         whileHover="hover"
         aria-label={label}
@@ -126,12 +126,12 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({ linkVariants }) => (
 )
 
 const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
-  <div className="mb-8 border-t border-gray-700 pt-8 text-center text-gray-400">
+  <div className="mb-8 border-t border-neutral-700 pt-8 text-center text-neutral-400">
     <p className="mt-4">
       Progress on the upcoming blog post:{" "}
       <span className="font-bold text-yellow-400">{progress}%</span>
     </p>
-    <div className="mt-2 h-2 w-full rounded-full bg-gray-700">
+    <div className="mt-2 h-2 w-full rounded-full bg-neutral-700">
       <motion.div
         className="h-full rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
         style={{ width: `${progress}%` }}
@@ -150,7 +150,7 @@ const WebsitePromo: React.FC = () => (
     transition={{ type: "spring", stiffness: 300, damping: 10 }}
   >
     <h4 className="mb-2 text-xl font-semibold text-yellow-400">My Website</h4>
-    <p className="mb-3 text-gray-300">
+    <p className="mb-3 text-neutral-300">
       Explore more about my writing, SaaS dev tools and my journey in the
       software engineering.
     </p>
@@ -172,7 +172,6 @@ const WebsitePromo: React.FC = () => (
 
 const Footer: React.FC = () => {
   const [tipIndex, setTipIndex] = useState(0)
-  const [retroMode, setRetroMode] = useState(false)
   const [progress] = useState(50)
 
   useEffect(() => {
@@ -188,10 +187,7 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer
-      className={`${retroMode ? "bg-gradient-to-r from-green-700 to-blue-800 text-yellow-200" : "bg-black text-white"} relative overflow-hidden py-12`}
-    >
-      <div className="bg-grid-pattern absolute inset-0 opacity-10"></div>
+    <footer className="relative overflow-hidden py-12">
       <div className="container relative z-10 mx-auto px-4">
         <div className="mb-8 grid gap-8 md:grid-cols-3">
           <motion.div
@@ -202,7 +198,7 @@ const Footer: React.FC = () => {
             <h3 className="mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-3xl font-bold text-transparent">
               Dev Tools Academy
             </h3>
-            <p className="text-gray-300">
+            <p className="text-neutral-300">
               Choose the Right Dev Tools for Your SaaS.
             </p>
             <AnimatePresence mode="wait">
@@ -234,17 +230,11 @@ const Footer: React.FC = () => {
         <ProgressBar progress={progress} />
 
         <motion.div
-          className="border-t border-gray-700 pt-8 text-center text-gray-400"
+          className="border-t border-neutral-700 pt-8 text-center text-neutral-400"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <button
-            onClick={() => setRetroMode(!retroMode)}
-            className="mb-4 rounded bg-purple-500 px-4 py-2 font-bold text-white transition-colors duration-300 hover:bg-purple-700"
-          >
-            {retroMode ? "Disable" : "Enable"} Retro Mode
-          </button>
           <p>&copy; 2024 Dev Tools Academy. All rights reserved.</p>
         </motion.div>
       </div>

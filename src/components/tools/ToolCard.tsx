@@ -20,11 +20,11 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
               alt={`${tool.name} logo`}
               className="size-10 rounded border border-white/10 object-cover"
             />
-            <h2 className="text-xl font-bold text-gray-100">{tool.name}</h2>
+            <h2 className="text-xl font-bold text-neutral-100">{tool.name}</h2>
           </div>
         </CardHeader>
         <CardContent>
-          <p className="mb-3 line-clamp-2 pt-2 text-xs text-gray-400">
+          <p className="mb-3 line-clamp-2 pt-2 text-xs text-neutral-400">
             {tool.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -33,7 +33,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
                 <Badge
                   key={category}
                   variant="secondary"
-                  className="bg-[#141414] text-xs text-gray-300 hover:bg-[#141414] hover:bg-[#141414]/10"
+                  className="bg-[#141414] text-xs text-neutral-300 hover:bg-[#141414] hover:bg-[#141414]/10"
                 >
                   {category}
                 </Badge>
@@ -41,17 +41,17 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
             {tool.categories && tool.categories.length > 3 && (
               <Badge
                 variant="secondary"
-                className="bg-[#141414] text-gray-300 opacity-90 hover:bg-[#141414]"
+                className="bg-[#141414] text-neutral-300 opacity-90 hover:bg-[#141414]"
               >
                 +{tool.categories.length - 3}
               </Badge>
             )}
           </div>
         </CardContent>
-        <CardFooter className="flex flex-col items-start justify-between gap-2 py-0 pb-8 text-xs text-gray-400">
+        <CardFooter className="flex flex-col items-start justify-between gap-2 py-0 pb-8 text-xs text-neutral-400">
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center">
-              <Star className="mr-1 size-4 text-gray-500" />
+              <Star className="mr-1 size-4 text-neutral-500" />
               <span>Stars</span>
             </div>
             <div>
@@ -60,7 +60,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center">
-              <GitFork className="mr-1 size-4 text-gray-500" />
+              <GitFork className="mr-1 size-4 text-neutral-500" />
               <span>Forks</span>
             </div>
             <div>
@@ -69,7 +69,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center">
-              <Clock className="mr-1 size-4 text-gray-500" />
+              <Clock className="mr-1 size-4 text-neutral-500" />
               <span>Last Commit</span>
             </div>
             <div>

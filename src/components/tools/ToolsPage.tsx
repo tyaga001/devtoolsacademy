@@ -83,15 +83,15 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
     return (
       <div className="flex min-h-[400px] max-w-6xl flex-col items-center justify-center rounded-lg p-8">
         <div className="relative flex items-center justify-center">
-          <Search size={50} className="text-gray-600" />
+          <Search size={50} className="text-neutral-600" />
           <div className="absolute bottom-1">
-            <TriangleAlert size={20} className="text-gray-400" />
+            <TriangleAlert size={20} className="text-neutral-400" />
           </div>
         </div>
-        <h2 className="my-4 text-2xl font-semibold text-gray-400">
+        <h2 className="my-4 text-2xl font-semibold text-neutral-400">
           No tools found
         </h2>
-        <p className="mb-6 max-w-xl text-center text-gray-500">
+        <p className="mb-6 max-w-xl text-center text-neutral-500">
           We couldn&apos;t find any tools matching your query. It looks like
           there are no tools available at the moment. Try with some other
           search.

@@ -14,7 +14,7 @@ export function OptimizedImage({ src, alt, ...props }: OptimizedImageProps) {
   return (
     <div className="relative">
       {!isLoaded && (
-        <div className="absolute inset-0 animate-pulse bg-gray-200" />
+        <div className="absolute inset-0 animate-pulse bg-neutral-200" />
       )}
       <Image
         src={imageSrc}

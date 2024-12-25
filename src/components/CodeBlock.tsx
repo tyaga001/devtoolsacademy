@@ -22,7 +22,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
 
   if (isInline) {
     return (
-      <code className="rounded bg-gray-100 px-1 py-0.5 font-mono text-sm dark:bg-gray-800">
+      <code className="rounded bg-neutral-100 px-1 py-0.5 font-mono text-sm dark:bg-neutral-950">
         {children}
       </code>
     )
@@ -32,7 +32,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     <div className="relative">
       <button
         onClick={copyToClipboard}
-        className="absolute right-2 top-2 rounded bg-gray-700 px-2 py-1 text-sm text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+        className="absolute right-2 top-2 rounded bg-neutral-700 px-2 py-1 text-sm text-white hover:bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2"
       >
         {isCopied ? "Copied!" : "Copy"}
       </button>

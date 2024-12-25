@@ -99,7 +99,7 @@ const ToolsFilter: React.FC = () => {
   }
 
   return (
-    <div className="flex w-full flex-col gap-6 pt-12 md:px-6">
+    <div className="flex w-full flex-col gap-6 pt-12 text-neutral-200 md:px-6">
       <div className="flex w-full flex-col-reverse gap-4 md:flex-row">
         <div className="flex-1">
           <SearchBar />
@@ -116,14 +116,14 @@ const ToolsFilter: React.FC = () => {
             <PopoverContent className="ml-2 w-[300px] rounded border border-white/20 bg-[#141414] p-4 shadow-lg md:ml-0 md:w-[400px]">
               <div className="rounded-lg">
                 <div className="mb-4 flex items-center justify-between">
-                  <h2 className="text-xl font-bold text-gray-300 md:text-2xl">
+                  <h2 className="text-xl font-bold text-neutral-200 md:text-2xl">
                     Filters
                   </h2>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={clearFilters}
-                    className="rounded-full text-xs text-gray-400 hover:text-gray-300 md:text-sm"
+                    className="rounded-full text-xs text-neutral-400 hover:text-neutral-300 md:text-sm"
                   >
                     Clear All
                   </Button>
@@ -131,7 +131,7 @@ const ToolsFilter: React.FC = () => {
 
                 <div className="flex gap-6">
                   <div className="flex-1">
-                    <h3 className="mb-2 flex items-center text-sm font-semibold text-gray-100 md:text-lg">
+                    <h3 className="mb-2 flex items-center text-sm font-semibold text-neutral-200 md:text-lg">
                       <Folder className="mr-2 size-4 md:size-5" />
                       Categories
                     </h3>
@@ -140,7 +140,7 @@ const ToolsFilter: React.FC = () => {
                         {categories.map((category) => (
                           <div
                             key={category}
-                            className={`flex w-full cursor-pointer items-center justify-between rounded px-3 py-2 text-left transition-colors duration-200 hover:bg-gray-100/10`}
+                            className={`flex w-full cursor-pointer items-center justify-between rounded px-3 py-2 text-left text-neutral-300 transition-colors duration-200 hover:bg-neutral-700`}
                             tabIndex={0}
                             role="button"
                             onKeyDown={(e) => {
@@ -164,7 +164,7 @@ const ToolsFilter: React.FC = () => {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="mb-2 flex items-center text-sm font-semibold text-gray-100 md:text-lg">
+                    <h3 className="mb-2 flex items-center text-sm font-semibold text-neutral-200 md:text-lg">
                       <Tag className="mr-2 size-4 md:size-5" />
                       Tags
                     </h3>
@@ -173,7 +173,7 @@ const ToolsFilter: React.FC = () => {
                         {tags.map((tag) => (
                           <div
                             key={tag}
-                            className={`flex w-full cursor-pointer items-center justify-between rounded px-3 py-2 text-left transition-colors duration-200 hover:bg-white/10`}
+                            className={`flex w-full cursor-pointer items-center justify-between rounded px-3 py-2 text-left text-neutral-300 transition-colors duration-200 hover:bg-neutral-700`}
                             tabIndex={0}
                             role="button"
                             onKeyDown={(e) =>
@@ -210,7 +210,7 @@ const ToolsFilter: React.FC = () => {
                 {["recent", "popular", "alphabetical"].map((option) => (
                   <button
                     key={option}
-                    className="flex items-center justify-between rounded px-3 py-2 text-left text-xs capitalize transition-colors duration-200 hover:bg-gray-100/10 md:text-sm"
+                    className="flex items-center justify-between rounded px-3 py-2 text-left text-xs capitalize text-neutral-300 transition-colors duration-200 hover:bg-neutral-100/10 md:text-sm"
                     onClick={() => {
                       updateSort(option)
                       setSelectedSort(option)
