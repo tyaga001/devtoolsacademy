@@ -38,7 +38,7 @@ const BackToTop = () => {
   }
 
   return (
-    <div className="fixed bottom-20 right-4 z-50">
+    <div className="fixed bottom-4 right-4 z-50">
       <button
         onClick={scrollToTop}
         aria-label="Scroll to top of page"
