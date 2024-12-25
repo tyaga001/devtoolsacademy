@@ -62,8 +62,8 @@ const TableOfContents: React.FC = () => {
               onClick={(e) => handleClick(e, heading.id)}
               className={`block py-1 transition-colors ${
                 activeId === heading.id
-                  ? "text-blue-400"
-                  : "text-neutral-400 hover:text-blue-400"
+                  ? "text-blue-500"
+                  : "text-neutral-500 hover:text-neutral-200"
               }`}
             >
               {heading.text}
