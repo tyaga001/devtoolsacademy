@@ -15,7 +15,7 @@ interface ITestimonial {
 const testimonials: ITestimonial[] = [
   {
     quote:
-      "The article is great, and provides an amazing in-depth explanation :clap:\nThe summary on the bottom right is great too!\nDark mode is my favourite colour scheme\nI love the background you use for each image.",
+      "The article is great, and provides an amazing in-depth explanation 👏\nThe summary on the bottom right is great too!\nDark mode is my favourite colour scheme\nI love the background you use for each image.",
     name: "Alberto Cubeddu",
     position: "Co-founder of SkillSociety",
     avatar: "/images/img_6.png",
@@ -37,7 +37,7 @@ const testimonials: ITestimonial[] = [
 function TestimonialCard({ testimonial }: { testimonial: ITestimonial }) {
   return (
     <motion.div
-      className="relative flex flex-col overflow-hidden rounded-3xl bg-gradient-to-br from-purple-900 to-black p-8 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+      className="relative flex flex-col overflow-hidden rounded-xl bg-gradient-to-br from-purple-900 to-black p-8 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
