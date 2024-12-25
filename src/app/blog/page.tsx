@@ -19,15 +19,19 @@ export default async function BlogPage() {
               key={post.slug}
               className="rounded-lg p-3 transition-colors hover:bg-neutral-50/10 focus:bg-neutral-50/10"
             >
-              <p className="mb-1 text-2xl font-semibold tracking-tight text-neutral-200">
+              <p className="mb-1 text-xl md:text-2xl font-semibold tracking-tight text-neutral-200">
                 {post.title}
               </p>
-              <p className="mb-2.5 text-neutral-400">{post.summary}</p>
-              <p className="text-sm text-neutral-400">
+              <p className="mb-2.5 text-sm md:text-base text-neutral-400">
+                {post.summary}
+              </p>
+              <p className="text-xs md:text-sm text-neutral-400">
                 {formatDate(new Date(post.publishedAt))} • {post.views} views
               </p>
             </Link>
-            {index < posts.length - 1 && <hr className="border-neutral-700" />}
+            {index < posts.length - 1 && (
+              <hr className="border-neutral-700 my-2" />
+            )}
           </>
         ))}
       </div>
