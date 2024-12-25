@@ -3,8 +3,6 @@ import Link from "next/link"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { MDXComponents } from "mdx/types"
 
-import { twMerge } from "tailwind-merge"
-
 import { getPostBySlug, getViewCount, getAllPosts } from "@/lib/posts"
 import TableOfContents from "@/components/TableOfContents"
 import Breadcrumb from "@/components/Breadcrumb"
@@ -16,6 +14,7 @@ import { Callout } from "@/components/Callout"
 import { Alert, AlertDescription } from "@/components/Alert"
 import BackToTop from "@/components/BackToTop"
 import ScrollProgressBar from "@/components/ScrollProgressBar"
+import { cn } from "@/lib/utils"
 
 const generateId = (children: any) => {
   if (Array.isArray(children)) {
@@ -66,7 +65,7 @@ const components = {
   Image: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
   blockquote: (props: any) => (
     <blockquote
-      className="my-4 border-l-4 border-neutral-300 pl-4 italic"
+      className="my-4 border-l-4 border-blue-500 text-neutral-300 pl-4 italic"
       {...props}
     />
   ),
@@ -76,16 +75,16 @@ const components = {
   Alert: Alert,
   AlertDescription: AlertDescription,
   table: (props: any) => (
-    <table className="my-4 min-w-full border border-neutral-300" {...props} />
+    <table className="my-4 min-w-full border border-neutral-500" {...props} />
   ),
   th: (props: any) => (
     <th
-      className="border border-neutral-300 bg-neutral-100 px-4 py-2"
+      className="border border-neutral-500 bg-neutral-800 px-4 py-2"
       {...props}
     />
   ),
   td: (props: any) => (
-    <td className="border border-neutral-300 px-4 py-2" {...props} />
+    <td className="border border-neutral-500 px-4 py-2" {...props} />
   ),
 }
 
@@ -118,8 +117,8 @@ export default async function BlogPost({
       <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-3/4">
           <article
-            className={twMerge(
-              "prose prose-lg max-w-none",
+            className={cn(
+              "prose prose-neutral prose-invert prose-lg max-w-none text-white",
               "prose-blockquote:opacity-80 prose-hr:opacity-50",
               "prose-p:opacity-80 prose-ul:opacity-80 prose-ol:opacity-80",
               "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85",

@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.prose {
-  color: #fff;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -16,49 +12,13 @@ html {
   scroll-margin-top: 100px;
 }
 
-.prose a {
-  @apply text-blue-400;
-}
-
-.prose strong {
-  @apply text-neutral-200;
-}
-
-.prose ul > li::before {
-  @apply bg-white;
-}
-
-.prose ol > li::before {
-  @apply text-white;
-}
-
-.prose blockquote {
-  @apply text-neutral-300 border-blue-500;
-}
-
+/* pre - values from code highlight theme  */
 .prose pre {
   @apply bg-[#292828];
 }
 
 .prose pre:has(.code-container) {
   @apply p-0;
-}
-
-@layer components {
-  .prose {
-    @apply text-neutral-200;
-  }
-  .prose h2,
-  .prose h3,
-  .prose h4 {
-    @apply text-white mt-8 mb-4;
-  }
-  .prose p {
-    @apply mb-4 leading-relaxed;
-  }
-  .prose a {
-    @apply text-blue-400 hover:text-blue-300;
-  }
 }
 
 .bg-grid-pattern {
