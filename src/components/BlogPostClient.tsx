@@ -53,21 +53,22 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
         {title}
       </h1>
       <div className="mb-16 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <span className="text-neutral-400 text-sm">
-            {formatDate(publishedAt)}
-          </span>
+        <div className="flex items-center gap-6 text-neutral-400">
+          <span className="text-sm">{formatDate(publishedAt)}</span>
+          <span>|</span>
+          <SocialShare url={`/blog/${slug}`} title={title} />
+        </div>
+        <div className="flex items-center gap-3">
           <button
             onClick={() => setShowChat(true)}
             className="rounded-full border border-blue-500/50 bg-blue-900/30 px-3 py-1 text-sm text-blue-400 transition-colors duration-200"
           >
             Chat with Claude AI
           </button>
-          <SocialShare url={`/blog/${slug}`} title={title} />
-        </div>
-        <div className="flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400 group">
-          <EyeIcon className="mr-2 size-5 group-hover:text-blue-400" />
-          <ViewCounter slug={slug} initialViews={initialViews} />
+          <div className="flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400 group">
+            <EyeIcon className="mr-2 size-5 group-hover:text-blue-400" />
+            <ViewCounter slug={slug} initialViews={initialViews} />
+          </div>
         </div>
       </div>
       {showChat && (
