@@ -8,6 +8,7 @@ import { Menu, X, Heart } from "lucide-react"
 import { FaGithub } from "react-icons/fa6"
 
 import StylizedSiteName from "./StylizedSiteName"
+import { cn } from "@/lib/utils"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,8 +21,37 @@ export default function Navbar() {
     { name: "Tools", path: "/tools" },
   ]
 
+  const [isScrolled, setIsScrolled] = React.useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = (): void => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    if (window.scrollY > 50) {
+      setIsScrolled(true)
+    } else {
+      setIsScrolled(false)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
   return (
-    <nav className="text-neutral-200 fixed top-0 left-0 w-full z-50">
+    <nav
+      className={cn(
+        isScrolled || isMenuOpen ? "bg-neutral-900 shadow-lg" : "",
+        "text-neutral-200 fixed top-0 left-0 w-full z-50"
+      )}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <StylizedSiteName />
@@ -31,7 +61,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-neutral-900 focus:bg-neutral-900 outline-none"
+                  className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-neutral-800 focus:bg-neutral-800 outline-none"
                 >
                   {item.name}
                 </Link>
@@ -65,7 +95,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center rounded-md p-2 text-purple-400 hover:bg-neutral-950 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
+              className="inline-flex items-center justify-center rounded-md p-2 text-purple-400 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
