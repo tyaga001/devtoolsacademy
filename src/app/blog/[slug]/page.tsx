@@ -15,6 +15,7 @@ import CodeBlock from "@/components/CodeBlock"
 import { Callout } from "@/components/Callout"
 import { Alert, AlertDescription } from "@/components/Alert"
 import BackToTop from "@/components/BackToTop"
+import ProgressBar from "@/components/ProgressBar"
 
 const generateId = (children: any) => {
   if (Array.isArray(children)) {
@@ -139,6 +140,7 @@ export default async function BlogPost({
         </aside>
       </div>
       <BackToTop />
+      <ProgressBar />
     </div>
   )
 }
