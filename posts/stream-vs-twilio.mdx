@@ -122,21 +122,26 @@ set up env variables
 cp .env.example .env
 ```
 
-grap the variable from twilio
+grab the variable from twilio
 
 ```bash
-      # WARNING: Never commit these credentials to version control
-      # Store them in a secure environment variable management system
-      TWILIO_ACCOUNT_SID=""
-      TWILIO_API_KEY=""
-      TWILIO_API_SECRET=""
+# WARNING: Never commit these credentials to version control
+# Store them in a secure environment variable management system
+TWILIO_ACCOUNT_SID=""
+TWILIO_API_KEY=""
+TWILIO_API_SECRET=""
 ```
 
 When localtunnel is installed globally, just use the `lt` command to start the tunnel.
 
 **Configuring Twilio Sync**
 
-Twilio Sync works out of the box, using default settings per account. Once you have your API keys set, then after that execute `npm install; npm run start`
+Twilio Sync works out of the box, using default settings per account. Once you have your API keys set, then after that execute
+
+```bash
+npm install
+npm run start
+```
 
 **Twilio Chat** will handle the sending of chat messages from client to client. The product also has
 
