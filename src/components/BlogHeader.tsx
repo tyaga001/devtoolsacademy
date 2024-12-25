@@ -1,9 +1,9 @@
 "use client"
 
 import React, { useState } from "react"
+import { Eye } from "lucide-react"
 
 import BlogChatInterface from "@/components/BlogChatInterface"
-import { EyeIcon } from "@heroicons/react/24/outline"
 import ViewCounter from "@/components/ViewCounter"
 import SocialShare from "@/components/SocialShare"
 
@@ -52,7 +52,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
             Chat with Claude AI
           </button>
           <div className="flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400 group">
-            <EyeIcon className="mr-2 size-5 group-hover:text-blue-400" />
+            <Eye className="mr-2 size-5 group-hover:text-blue-400" />
             <ViewCounter slug={slug} initialViews={initialViews} />
           </div>
         </div>
