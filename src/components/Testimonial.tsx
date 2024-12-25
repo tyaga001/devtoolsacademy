@@ -37,7 +37,7 @@ const testimonials: ITestimonial[] = [
 function TestimonialCard({ testimonial }: { testimonial: ITestimonial }) {
   return (
     <motion.div
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-900 to-black p-8 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+      className="relative flex flex-col overflow-hidden rounded-3xl bg-gradient-to-br from-purple-900 to-black p-8 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -51,7 +51,7 @@ function TestimonialCard({ testimonial }: { testimonial: ITestimonial }) {
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
-      <div className="flex items-center">
+      <div className="mt-auto flex items-center">
         <div className="relative mr-4">
           <Image
             src={testimonial.avatar}
