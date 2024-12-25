@@ -52,7 +52,7 @@ export default function ToolsPagination({
   }
 
   return (
-    <Pagination>
+    <Pagination className="mt-6">
       <PaginationContent>
         {/* Previous Button */}
         <PaginationItem>
