@@ -11,7 +11,7 @@ import { SocialMetadata } from "@/components/SocialMetadata"
 
 import "highlight.js/styles/github-dark.css"
 import "./globals.css"
-import { classNames } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: {
@@ -94,7 +94,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body
-        className={classNames(
+        className={cn(
           sansFont.variable,
           monoFont.variable,
           "font-sans antialiased bg-neutral-950"
