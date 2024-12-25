@@ -7,7 +7,7 @@ import { getPostBySlug, getViewCount, getAllPosts } from "@/lib/posts"
 import TableOfContents from "@/components/TableOfContents"
 import Breadcrumb from "@/components/Breadcrumb"
 import CommentSection from "@/components/CommentSection"
-import BlogPostClient from "@/components/BlogPostClient"
+import BlogHeader from "@/components/BlogHeader"
 import ServerlessDiagram from "@/components/ServerlessDiagram"
 import CodeBlock from "@/components/CodeBlock"
 import { Callout } from "@/components/Callout"
@@ -93,7 +93,7 @@ export default async function BlogPost({
   return (
     <div className="relative mx-auto max-w-5xl px-4 py-12">
       <Breadcrumb items={breadcrumbItems} />
-      <BlogPostClient
+      <BlogHeader
         slug={params.slug}
         title={post.title}
         publishedAt={post.publishedAt}
