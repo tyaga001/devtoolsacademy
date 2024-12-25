@@ -1,12 +1,13 @@
 "use client"
 
+import * as React from "react"
+
 import { ArrowUp } from "lucide-react"
-import { useEffect, useState } from "react"
 
 const BackToTop = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = React.useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (typeof window === "undefined") return
 
     const handleScroll = () => {

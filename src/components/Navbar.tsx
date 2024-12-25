@@ -3,7 +3,10 @@
 import React, { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Github, Menu, X, Heart } from "lucide-react"
+
+import { Menu, X, Heart } from "lucide-react"
+import { FaGithub } from "react-icons/fa6"
+
 import StylizedSiteName from "./StylizedSiteName"
 
 export default function Navbar() {
@@ -22,13 +25,13 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <StylizedSiteName />
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+          <div className="hidden md:flex items-center">
+            <div className="ml-10 flex items-center space-x-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="rounded-md px-3 py-2 text-sm font-medium transition duration-150 ease-in-out hover:bg-neutral-950"
+                  className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-neutral-900 focus:bg-neutral-900 outline-none"
                 >
                   {item.name}
                 </Link>
@@ -42,15 +45,15 @@ export default function Navbar() {
                   )
                 }
                 variant="outline"
-                className="flex items-center space-x-2 border border-purple-400 bg-transparent text-purple-400 transition duration-150 ease-in-out hover:bg-purple-400 hover:text-neutral-900"
+                className="flex items-center space-x-2 border border-purple-400 bg-transparent text-purple-400 transition-colors ease-in-out hover:bg-purple-400 hover:text-neutral-900 focus:bg-purple-400 focus:text-neutral-900"
               >
-                <Github className="size-5" />
+                <FaGithub className="size-5" />
                 <span>Star on GitHub</span>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="flex items-center space-x-2 border border-pink-400 bg-transparent text-pink-400 transition duration-150 ease-in-out hover:bg-pink-400 hover:text-neutral-900"
+                className="flex items-center space-x-2 border border-pink-400 bg-transparent text-pink-400 transition-colors ease-in-out hover:bg-pink-400 hover:text-neutral-900 focus:bg-pink-400 focus:text-neutral-900"
               >
                 <Link href="/sponsor">
                   <Heart className="size-5" />
@@ -95,7 +98,7 @@ export default function Navbar() {
               className="block rounded-md px-3 py-2 text-base font-medium text-purple-400 transition duration-150 ease-in-out hover:bg-neutral-950"
               onClick={toggleMenu}
             >
-              <Github className="mr-2 inline-block size-5" />
+              <FaGithub className="mr-2 inline-block size-5" />
               Star on GitHub
             </a>
             <Link
