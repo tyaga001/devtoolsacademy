@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from "react"
+
 import BlogChatInterface from "@/components/BlogChatInterface"
 import { EyeIcon } from "@heroicons/react/24/outline"
 import ViewCounter from "@/components/ViewCounter"
-import { SocialMetadata } from "@/components/SocialMetadata"
 import SocialShare from "@/components/SocialShare"
 
 interface BlogHeaderProps {
@@ -13,8 +13,6 @@ interface BlogHeaderProps {
   publishedAt: string
   initialViews: number
   content: string
-  description: string
-  featuredImage: string
 }
 
 const BlogHeader: React.FC<BlogHeaderProps> = ({
@@ -23,8 +21,6 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
   publishedAt,
   initialViews,
   content,
-  description,
-  featuredImage,
 }) => {
   const [showChat, setShowChat] = useState(false)
 
@@ -37,18 +33,8 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
     })
   }
 
-  const baseUrl = "https://devtoolsacademy.com"
-  const postUrl = `${baseUrl}/blog/${slug}`
-
   return (
     <>
-      <SocialMetadata
-        title={title}
-        description={description}
-        url={postUrl}
-        image={`${baseUrl}${featuredImage}`}
-        type="article"
-      />
       <h1 className="mb-8 text-5xl font-bold tracking-tight leading-snug text-neutral-100">
         {title}
       </h1>

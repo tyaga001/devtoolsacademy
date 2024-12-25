@@ -15,6 +15,7 @@ import { Alert, AlertDescription } from "@/components/Alert"
 import BackToTop from "@/components/BackToTop"
 import ScrollProgressBar from "@/components/ScrollProgressBar"
 import { cn } from "@/lib/utils"
+import { SocialMetadata } from "@/components/SocialMetadata"
 
 const generateId = (children: any) => {
   if (Array.isArray(children)) {
@@ -76,6 +77,8 @@ const components: MDXComponents = {
   hr: (props: any) => <hr className="opacity-50 my-12" {...props} />,
 }
 
+const baseUrl = "https://devtoolsacademy.com"
+
 export default async function BlogPost({
   params,
 }: {
@@ -90,8 +93,17 @@ export default async function BlogPost({
     { label: post.title, href: `#` },
   ]
 
+  const postUrl = `${baseUrl}/blog/${params.slug}`
+
   return (
     <div className="relative mx-auto max-w-5xl px-4 py-12">
+      <SocialMetadata
+        title={post.title}
+        description={post.description}
+        url={postUrl}
+        image={`${baseUrl}${post.featuredImage || "/T.png"}`}
+        type="article"
+      />
       <Breadcrumb items={breadcrumbItems} />
       <BlogHeader
         slug={params.slug}
@@ -99,8 +111,6 @@ export default async function BlogPost({
         publishedAt={post.publishedAt}
         initialViews={initialViews}
         content={post.content}
-        description={post.description}
-        featuredImage={post.featuredImage || "/T.png"}
       />
       <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-3/4">
