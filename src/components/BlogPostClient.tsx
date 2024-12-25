@@ -52,7 +52,7 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
       />
       <h1 className="mb-4 text-4xl font-bold text-white">{title}</h1>
       <div className="mb-8 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center gap-4">
           <span className="text-neutral-400">{formatDate(publishedAt)}</span>
           <button
             onClick={() => setShowChat(true)}
@@ -60,13 +60,13 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
           >
             Chat with Claude AI
           </button>
+          <SocialShare url={`/blog/${slug}`} title={title} />
         </div>
-        <div className="flex items-center rounded-full bg-neutral-800 px-3 py-1 text-neutral-200">
+        <div className="flex items-center rounded-full bg-neutral-800 px-3 py-1.5 text-neutral-200">
           <EyeIcon className="mr-2 size-5 text-blue-400" />
           <ViewCounter slug={slug} initialViews={initialViews} />
         </div>
       </div>
-      <SocialShare url={`/blog/${slug}`} title={title} />
       {showChat && (
         <BlogChatInterface
           blogContent={content}
