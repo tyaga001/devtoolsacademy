@@ -42,7 +42,6 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
 
   return (
     <>
-      ``
       <SocialMetadata
         title={title}
         description={description}
@@ -50,20 +49,24 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
         image={`${baseUrl}${featuredImage}`}
         type="article"
       />
-      <h1 className="mb-4 text-4xl font-bold text-white">{title}</h1>
-      <div className="mb-8 flex items-center justify-between">
+      <h1 className="mb-8 text-5xl font-bold tracking-tight leading-snug text-neutral-100">
+        {title}
+      </h1>
+      <div className="mb-16 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <span className="text-neutral-400">{formatDate(publishedAt)}</span>
+          <span className="text-neutral-400 text-sm">
+            {formatDate(publishedAt)}
+          </span>
           <button
             onClick={() => setShowChat(true)}
-            className="rounded-full border border-blue-500/50 bg-blue-900/30 px-4 py-2 text-sm text-blue-400 transition-colors duration-200"
+            className="rounded-full border border-blue-500/50 bg-blue-900/30 px-3 py-1 text-sm text-blue-400 transition-colors duration-200"
           >
             Chat with Claude AI
           </button>
           <SocialShare url={`/blog/${slug}`} title={title} />
         </div>
-        <div className="flex items-center rounded-full bg-neutral-800 px-3 py-1.5 text-neutral-200">
-          <EyeIcon className="mr-2 size-5 text-blue-400" />
+        <div className="flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400 group">
+          <EyeIcon className="mr-2 size-5 group-hover:text-blue-400" />
           <ViewCounter slug={slug} initialViews={initialViews} />
         </div>
       </div>

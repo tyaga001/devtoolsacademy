@@ -1,6 +1,6 @@
 "use client"
 
-import { Twitter, Facebook, Linkedin } from "lucide-react"
+import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6"
 
 interface SocialShareProps {
   url: string
@@ -12,14 +12,14 @@ export default function SocialShare({ url, title }: SocialShareProps) {
   const shareTitle = encodeURIComponent(title)
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex gap-3">
       <a
         href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`}
         target="_blank"
         rel="noopener noreferrer"
         className="text-neutral-500 hover:text-blue-400 transition-colors duration-200"
       >
-        <Twitter size={24} />
+        <FaTwitter size={21} />
       </a>
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
@@ -27,7 +27,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
         rel="noopener noreferrer"
         className="text-neutral-500 hover:text-blue-600 transition-colors duration-200"
       >
-        <Facebook size={24} />
+        <FaFacebookF size={20} />
       </a>
       <a
         href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareTitle}`}
@@ -35,7 +35,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
         rel="noopener noreferrer"
         className="text-neutral-500 hover:text-blue-700 transition-colors duration-200 "
       >
-        <Linkedin size={24} />
+        <FaLinkedinIn size={21} />
       </a>
     </div>
   )
