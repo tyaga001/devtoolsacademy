@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react"
 
-const ProgressBar: React.FC = () => {
+const ScrollProgressBar: React.FC = () => {
   const [scrollPercentage, setScrollPercentage] = React.useState(0)
 
   React.useEffect(() => {
@@ -26,4 +26,4 @@ const ProgressBar: React.FC = () => {
   )
 }
 
-export default ProgressBar
+export default ScrollProgressBar
