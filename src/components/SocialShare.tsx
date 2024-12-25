@@ -27,7 +27,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
         rel="noopener noreferrer"
         className="text-neutral-500 hover:text-blue-600 transition-colors duration-200"
       >
-        <FaFacebookF size={20} />
+        <FaFacebookF size={19} />
       </a>
       <a
         href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareTitle}`}
