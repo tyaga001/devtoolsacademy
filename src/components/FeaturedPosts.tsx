@@ -3,7 +3,7 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { motion } from "framer-motion"
+
 import { Clock, Bookmark, Share2 } from "lucide-react"
 
 interface BlogCardProps {
@@ -29,11 +29,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
   const defaultReadTime = "8 min read"
 
   return (
-    <motion.div
-      className="overflow-hidden rounded-xl bg-neutral-800 shadow-lg"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ type: "spring", stiffness: 300 }}
+    <Link
+      href={url}
+      className="flex flex-col overflow-hidden rounded-xl bg-neutral-800 shadow-lg transition-all hover:scale-105"
     >
       <div className="relative h-48">
         <Image src={image} alt={title} layout="fill" objectFit="cover" />
@@ -49,6 +47,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
         </span>
         <h3 className="mb-2 text-xl font-bold text-neutral-200">{title}</h3>
         <p className="mb-4 text-neutral-500">{excerpt}</p>
+      </div>
+      <div className="mt-auto px-6 pb-6">
         <div className="mb-4 flex items-center justify-between text-sm text-neutral-500">
           <span className="flex items-center">
             <Clock size={16} className="mr-1" /> {readTime || defaultReadTime}
@@ -77,7 +77,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
           </div>
         </div>
       </div>
-    </motion.div>
+    </Link>
   )
 }
 
