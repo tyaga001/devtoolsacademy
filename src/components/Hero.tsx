@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
             href="https://news.ycombinator.com/item?id=41223327#41246861"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 rounded-full bg-[#ff7600] px-4 py-2 text-sm font-bold text-white shadow-md transition-colors duration-300 hover:bg-[#ff9933] hover:shadow-lg"
+            className="flex items-center h-12 gap-1.5 rounded-lg bg-[#ff7600] px-3 text-sm font-bold text-white shadow-md transition-colors duration-300 hover:bg-[#ff9933] hover:shadow-lg"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,10 @@ const Hero: React.FC = () => {
             </svg>
             <span>Featured on Hacker News</span>
           </a>
-          <div dangerouslySetInnerHTML={{ __html: productHuntBadgeHtml }} />
+          <div
+            className="scale-90"
+            dangerouslySetInnerHTML={{ __html: productHuntBadgeHtml }}
+          />
         </div>
         <h1
           className="mb-8 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-6xl font-extrabold leading-tight text-transparent md:text-8xl"
@@ -55,7 +58,7 @@ const Hero: React.FC = () => {
           SaaS.
         </p>
         <Link href="/blog" passHref>
-          <Button className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-10 py-4 text-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg">
+          <Button className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-10 py-6 text-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg">
             Start Reading
           </Button>
         </Link>
