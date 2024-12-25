@@ -76,9 +76,9 @@ const BlogPostList: React.FC = () => (
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
+            className="group flex items-start text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
           >
-            <BookOpen size={16} className="mr-2 shrink-0" />
+            <BookOpen size={16} className="mr-2 shrink-0 mt-1" />
             <span className="grow">{post.title}</span>
             <ExternalLink
               size={16}
