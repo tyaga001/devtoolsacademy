@@ -106,7 +106,7 @@ export default async function BlogPost({
         <div className="w-full lg:w-3/4">
           <article
             className={cn(
-              "prose prose-neutral prose-invert prose-lg max-w-none text-neutral-200",
+              "prose prose-neutral prose-invert prose-lg",
               "prose-ul:opacity-80 prose-ol:opacity-80",
               "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85"
             )}
