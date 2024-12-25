@@ -35,16 +35,16 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
 
   return (
     <>
-      <h1 className="mb-8 text-5xl font-bold tracking-tight leading-snug text-neutral-100">
+      <h1 className="mb-8 md:text-5xl text-3xl font-bold tracking-tight leading-snug text-neutral-100">
         {title}
       </h1>
-      <div className="mb-16 flex items-center justify-between">
-        <div className="flex items-center gap-6 text-neutral-400">
+      <div className="mb-10 md:mb-16 flex flex-col md:flex-row md:items-center justify-between">
+        <div className="flex mb-6 md:mb-0 items-center gap-6 text-neutral-400">
           <span className="text-sm">{formatDate(publishedAt)}</span>
           <span>|</span>
           <SocialShare url={`/blog/${slug}`} title={title} />
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-row-reverse md:flex-row items-center justify-between gap-3">
           <button
             onClick={() => setShowChat(true)}
             className="rounded-full border outline-none border-blue-500/50 bg-blue-900/30 hover:bg-blue-900/50 focus:bg-blue-900/50 px-3 py-1 text-sm text-blue-400 transition-colors duration-200"
