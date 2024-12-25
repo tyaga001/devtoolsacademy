@@ -61,7 +61,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowChat(true)}
-            className="rounded-full border border-blue-500/50 bg-blue-900/30 px-3 py-1 text-sm text-blue-400 transition-colors duration-200"
+            className="rounded-full border outline-none border-blue-500/50 bg-blue-900/30 hover:bg-blue-900/50 focus:bg-blue-900/50 px-3 py-1 text-sm text-blue-400 transition-colors duration-200"
           >
             Chat with Claude AI
           </button>

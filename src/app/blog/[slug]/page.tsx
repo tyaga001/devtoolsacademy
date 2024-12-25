@@ -45,14 +45,14 @@ const components: MDXComponents = {
   p: (props: any) => <p className="opacity-80 my-2" {...props} />,
   a: (props: any) => (
     <Link
-      className="text-blue-400 no-underline hover:underline hover:text-blue-500"
+      className="text-blue-500 no-underline outline-none hover:underline focus:underline"
       {...props}
     />
   ),
   Image: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
   blockquote: (props: any) => (
     <blockquote
-      className="opacity-80 border-l-4 border-blue-500 pl-4"
+      className="opacity-80 border-l-4 border-neutral-500 pl-4 not-italic font-normal"
       {...props}
     />
   ),
