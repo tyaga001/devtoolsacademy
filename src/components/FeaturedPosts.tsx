@@ -31,7 +31,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <Link
       href={url}
-      className="flex flex-col overflow-hidden rounded-xl bg-neutral-800 shadow-lg transition-all hover:scale-105"
+      className="flex flex-col overflow-hidden rounded-xl bg-neutral-900 shadow-lg transition-all hover:scale-105"
     >
       <div className="relative h-48">
         <Image src={image} alt={title} layout="fill" objectFit="cover" />
