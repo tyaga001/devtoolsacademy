@@ -72,36 +72,34 @@ function TestimonialCard({ testimonial }: { testimonial: ITestimonial }) {
 
 export function Testimonial() {
   return (
-    <section className="relative overflow-hidden py-16">
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <h2 className="mb-4 text-5xl font-bold">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-              Developers Insights
-            </span>
-          </h2>
-          <p className="mb-6 text-xl text-purple-300">
-            Developers across the globe love DTA
-          </p>
-          <div
-            className="mb-8 flex justify-center space-x-2"
-            aria-label="5 out of 5 stars"
-          >
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className="size-8 fill-current text-yellow-400"
-                aria-hidden="true"
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
+    <section className="py-16 mx-auto max-w-7xl px-4">
+      <div className="mx-auto mb-12 max-w-3xl text-center">
+        <h2 className="mb-4 text-5xl font-bold">
+          <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+            Developers Insights
+          </span>
+        </h2>
+        <p className="mb-6 text-xl text-purple-300">
+          Developers across the globe love DTA
+        </p>
+        <div
+          className="mb-8 flex justify-center space-x-2"
+          aria-label="5 out of 5 stars"
+        >
+          {[...Array(5)].map((_, i) => (
+            <Star
+              key={i}
+              className="size-8 fill-current text-yellow-400"
+              aria-hidden="true"
+            />
           ))}
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {testimonials.map((testimonial, index) => (
+          <TestimonialCard key={index} testimonial={testimonial} />
+        ))}
       </div>
     </section>
   )

@@ -87,26 +87,24 @@ interface FeaturedPostsProps {
 
 const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="mb-12 text-center text-4xl font-bold text-neutral-200">
-          Featured Posts
-        </h2>
-        <div
-          className={`grid gap-8 ${posts.length === 2 ? "mx-auto max-w-4xl md:grid-cols-2" : "md:grid-cols-3"}`}
+    <section className="py-16 mx-auto max-w-7xl px-4">
+      <h2 className="mb-12 text-center text-4xl font-bold text-neutral-200">
+        Featured Posts
+      </h2>
+      <div
+        className={`grid gap-8 ${posts.length === 2 ? "mx-auto max-w-4xl md:grid-cols-2" : "md:grid-cols-3"}`}
+      >
+        {posts.slice(0, 3).map((post) => (
+          <BlogCard key={post.slug} {...post} />
+        ))}
+      </div>
+      <div className="mt-12 text-center">
+        <Link
+          href="/blog"
+          className="inline-block rounded-full bg-purple-600 px-8 py-3 font-semibold text-white transition duration-300 hover:bg-purple-700"
         >
-          {posts.slice(0, 3).map((post) => (
-            <BlogCard key={post.slug} {...post} />
-          ))}
-        </div>
-        <div className="mt-12 text-center">
-          <Link
-            href="/blog"
-            className="inline-block rounded-full bg-purple-600 px-8 py-3 font-semibold text-white transition duration-300 hover:bg-purple-700"
-          >
-            View All Posts
-          </Link>
-        </div>
+          View All Posts
+        </Link>
       </div>
     </section>
   )

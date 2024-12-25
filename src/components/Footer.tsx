@@ -126,8 +126,8 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({ linkVariants }) => (
 )
 
 const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
-  <div className="mb-8 border-t border-neutral-700 pt-8 text-center text-neutral-400">
-    <p className="mt-4">
+  <div className="text-center text-neutral-400">
+    <p className="mb-4">
       Progress on the upcoming blog post:{" "}
       <span className="font-bold text-yellow-400">{progress}%</span>
     </p>
@@ -187,14 +187,10 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="relative overflow-hidden py-12">
-      <div className="container relative z-10 mx-auto px-4">
+    <footer className="py-16">
+      <div className="mx-auto max-w-7xl px-4">
         <div className="mb-8 grid gap-8 md:grid-cols-3">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <h3 className="mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-3xl font-bold text-transparent">
               Dev Tools Academy
             </h3>
@@ -204,39 +200,30 @@ const Footer: React.FC = () => {
             <AnimatePresence mode="wait">
               <QuickTip tipIndex={tipIndex} />
             </AnimatePresence>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <BlogPostList />
-          </motion.div>
+          <BlogPostList />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          <div>
             <h4 className="mb-4 text-xl font-semibold text-yellow-400">
               Connect With Me
             </h4>
             <SocialLinks linkVariants={linkVariants} />
             <WebsitePromo />
-          </motion.div>
+          </div>
         </div>
+      </div>
 
+      <hr className="border-neutral-700 my-8" />
+
+      <div className="mx-auto max-w-7xl px-4">
         <ProgressBar progress={progress} />
+      </div>
 
-        <motion.div
-          className="border-t border-neutral-700 pt-8 text-center text-neutral-400"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <p>&copy; 2024 Dev Tools Academy. All rights reserved.</p>
-        </motion.div>
+      <hr className="border-neutral-700 my-8" />
+
+      <div className="mx-auto max-w-7xl px-4 text-center text-neutral-400 mt-6">
+        <p>&copy; 2024 Dev Tools Academy. All rights reserved.</p>
       </div>
     </footer>
   )
