@@ -16,43 +16,32 @@ html {
   scroll-margin-top: 100px;
 }
 
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-  color: #fff;
-}
-
 .prose a {
-  color: #3b82f6;
+  @apply text-blue-400;
 }
 
 .prose strong {
-  color: #fff;
+  @apply text-neutral-200;
 }
 
 .prose ul > li::before {
-  background-color: #fff;
+  @apply bg-white;
 }
 
 .prose ol > li::before {
-  color: #fff;
+  @apply text-white;
 }
 
 .prose blockquote {
-  color: #d1d5db;
-  border-left-color: #3b82f6;
-}
-
-.prose code {
-  color: #fff;
-  background-color: #1f2937;
+  @apply text-neutral-300 border-blue-500;
 }
 
 .prose pre {
-  background-color: #1f2937;
+  @apply bg-[#292828];
+}
+
+.prose pre:has(.code-container) {
+  @apply p-0;
 }
 
 @layer components {

@@ -22,28 +22,28 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
 
   if (isInline) {
     return (
-      <code className="rounded bg-neutral-100 px-1 py-0.5 font-mono text-sm dark:bg-neutral-950">
+      <code className="rounded px-1 py-0.5 font-mono text-sm text-[#ebdbb2]">
         {children}
       </code>
     )
   }
 
   return (
-    <div className="relative">
+    <div className="code-container relative">
       <button
         onClick={copyToClipboard}
-        className="absolute right-2 top-2 rounded bg-neutral-700 px-2 py-1 text-sm text-white hover:bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2"
+        className="absolute right-2 top-2 rounded bg-neutral-900 px-2 py-1 text-sm text-white hover:bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2"
       >
         {isCopied ? "Copied!" : "Copy"}
       </button>
       <Highlight
-        theme={themes.nightOwl}
+        theme={themes.gruvboxMaterialDark}
         code={children.trim()}
         language={language as Language}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className={`${className} overflow-auto rounded-md p-4`}
+            className={`${className} m-0 overflow-auto rounded-md p-4`}
             style={style}
           >
             {tokens.map((line, i) => (
