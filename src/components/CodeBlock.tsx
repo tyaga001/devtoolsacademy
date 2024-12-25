@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback } from "react"
 import { Highlight, themes, type Language } from "prism-react-renderer"
+import { Check, Copy } from "lucide-react"
 
 interface CodeBlockProps {
   children: string
@@ -32,9 +33,14 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     <div className="code-container relative">
       <button
         onClick={copyToClipboard}
-        className="absolute right-2 top-2 rounded bg-neutral-900 px-2 py-1 text-sm text-white hover:bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2"
+        className="absolute right-2 top-2 rounded bg-neutral-900 px-2 py-1 text-sm text-neutral-100 hover:bg-neutral-950 focus:bg-neutral-950 focus:outline-none"
       >
-        {isCopied ? "Copied!" : "Copy"}
+        Copy
+        {isCopied ? (
+          <Check className="inline-block ml-1" size={12} />
+        ) : (
+          <Copy className="inline-block ml-1" size={12} />
+        )}
       </button>
       <Highlight
         theme={themes.gruvboxMaterialDark}
