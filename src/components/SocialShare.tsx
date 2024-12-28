@@ -17,7 +17,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
         href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-neutral-500 hover:text-blue-400 focus:text-blue-400 transition-colors duration-200 outline-none"
+        className="text-neutral-500 outline-none transition-colors duration-200 hover:text-blue-400 focus:text-blue-400"
       >
         <FaTwitter size={21} />
       </a>
@@ -25,7 +25,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
         href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-neutral-500 hover:text-blue-600 focus:text-blue-600 transition-colors duration-200 outline-none"
+        className="text-neutral-500 outline-none transition-colors duration-200 hover:text-blue-600 focus:text-blue-600"
       >
         <FaFacebookF size={19} />
       </a>
@@ -33,7 +33,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
         href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareTitle}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-neutral-500 hover:text-blue-700 focus:text-blue-700 transition-colors duration-200 outline-none"
+        className="text-neutral-500 outline-none transition-colors duration-200 hover:text-blue-700 focus:text-blue-700"
       >
         <FaLinkedinIn size={21} />
       </a>

@@ -35,23 +35,23 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
 
   return (
     <>
-      <h1 className="mb-8 md:text-5xl text-3xl font-bold tracking-tight leading-snug text-neutral-100">
+      <h1 className="mb-8 text-3xl font-bold leading-snug tracking-tight text-neutral-100 md:text-5xl">
         {title}
       </h1>
-      <div className="mb-10 md:mb-16 flex flex-col md:flex-row md:items-center justify-between">
-        <div className="flex mb-6 md:mb-0 items-center gap-6 text-neutral-400">
+      <div className="mb-10 flex flex-col justify-between md:mb-16 md:flex-row md:items-center">
+        <div className="mb-6 flex items-center gap-6 text-neutral-400 md:mb-0">
           <span className="text-sm">{formatDate(publishedAt)}</span>
           <span>|</span>
           <SocialShare url={`/blog/${slug}`} title={title} />
         </div>
-        <div className="flex flex-row-reverse md:flex-row items-center justify-between gap-3">
+        <div className="flex flex-row-reverse items-center justify-between gap-3 md:flex-row">
           <button
             onClick={() => setShowChat(true)}
-            className="rounded-full border outline-none border-blue-500/50 bg-blue-900/30 hover:bg-blue-900/50 focus:bg-blue-900/50 px-3 py-1 text-sm text-blue-400 transition-colors duration-200"
+            className="rounded-full border border-blue-500/50 bg-blue-900/30 px-3 py-1 text-sm text-blue-400 outline-none transition-colors duration-200 hover:bg-blue-900/50 focus:bg-blue-900/50"
           >
             Chat with Claude AI
           </button>
-          <div className="flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400 group">
+          <div className="group flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400">
             <Eye className="mr-2 size-5 group-hover:text-blue-400" />
             <ViewCounter slug={slug} initialViews={initialViews} />
           </div>

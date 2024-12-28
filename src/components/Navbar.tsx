@@ -55,13 +55,13 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <StylizedSiteName />
-          <div className="hidden md:flex items-center">
+          <div className="hidden items-center md:flex">
             <div className="ml-10 flex items-center space-x-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-neutral-800 focus:bg-neutral-800 outline-none"
+                  className="rounded-md px-3 py-2 text-sm font-medium outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800"
                 >
                   {item.name}
                 </Link>

@@ -26,7 +26,7 @@ export default async function ToolsRoute({
 
   return (
     <>
-      <div className="mx-auto max-w-[800px] flex flex-col items-center pt-36 text-center">
+      <div className="mx-auto flex max-w-[800px] flex-col items-center pt-36 text-center">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
           <span className="bg-gradient-to-b from-[#141414] to-white bg-clip-text text-transparent">
             Browse Devtools for your next product

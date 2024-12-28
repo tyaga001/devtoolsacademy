@@ -25,12 +25,12 @@ const Hero: React.FC = () => {
         ))}
       </div>
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-center px-4 text-center text-white">
-        <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-2">
+        <div className="mb-6 flex flex-col items-center justify-center gap-2 md:flex-row">
           <a
             href="https://news.ycombinator.com/item?id=41223327#41246861"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center h-[40px] md:h-12 gap-1.5 rounded-lg bg-[#ff7600] px-3 text-sm font-bold text-white shadow-md transition-colors duration-300 hover:bg-[#ff9933] hover:shadow-lg"
+            className="flex h-[40px] items-center gap-1.5 rounded-lg bg-[#ff7600] px-3 text-sm font-bold text-white shadow-md transition-colors duration-300 hover:bg-[#ff9933] hover:shadow-lg md:h-12"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

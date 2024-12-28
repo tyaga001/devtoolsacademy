@@ -78,7 +78,7 @@ const BlogPostList: React.FC = () => (
             rel="noopener noreferrer"
             className="group flex items-start text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
           >
-            <BookOpen size={16} className="mr-2 shrink-0 mt-1" />
+            <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
             <span className="grow">{post.title}</span>
             <ExternalLink
               size={16}
@@ -214,15 +214,15 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <hr className="border-neutral-700 my-8" />
+      <hr className="my-8 border-neutral-700" />
 
       <div className="mx-auto max-w-7xl px-4">
         <ProgressBar progress={progress} />
       </div>
 
-      <hr className="border-neutral-700 my-8" />
+      <hr className="my-8 border-neutral-700" />
 
-      <div className="mx-auto max-w-7xl px-4 text-center text-neutral-400 mt-6">
+      <div className="mx-auto mt-6 max-w-7xl px-4 text-center text-neutral-400">
         <p>&copy; 2024 Dev Tools Academy. All rights reserved.</p>
       </div>
     </footer>

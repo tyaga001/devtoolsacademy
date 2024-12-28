@@ -101,7 +101,7 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
   }
 
   return (
-    <div className="flex w-full flex-col gap-2 px-0 py-4 md:px-4 lg:px-48 text-neutral-200">
+    <div className="flex w-full flex-col gap-2 px-0 py-4 text-neutral-200 md:px-4 lg:px-48">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {tools.map((tool) => (
           <ToolCard key={tool.id} tool={tool} />

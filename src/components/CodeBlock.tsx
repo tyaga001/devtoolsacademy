@@ -37,9 +37,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
       >
         Copy
         {isCopied ? (
-          <Check className="inline-block ml-1" size={12} />
+          <Check className="ml-1 inline-block" size={12} />
         ) : (
-          <Copy className="inline-block ml-1" size={12} />
+          <Copy className="ml-1 inline-block" size={12} />
         )}
       </button>
       <Highlight

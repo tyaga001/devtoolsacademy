@@ -43,7 +43,7 @@ const components: MDXComponents = {
       {props.children}
     </h4>
   ),
-  p: (props: any) => <p className="opacity-80 my-2" {...props} />,
+  p: (props: any) => <p className="my-2 opacity-80" {...props} />,
   a: (props: any) => (
     <Link
       className="text-blue-500 no-underline outline-none hover:underline focus:underline"
@@ -53,7 +53,7 @@ const components: MDXComponents = {
   Image: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
   blockquote: (props: any) => (
     <blockquote
-      className="opacity-80 border-l-4 border-neutral-500 pl-4 not-italic font-normal"
+      className="border-l-4 border-neutral-500 pl-4 font-normal not-italic opacity-80"
       {...props}
     />
   ),
@@ -74,7 +74,7 @@ const components: MDXComponents = {
   td: (props: any) => (
     <td className="border border-neutral-500 px-4 py-2" {...props} />
   ),
-  hr: (props: any) => <hr className="opacity-50 my-12" {...props} />,
+  hr: (props: any) => <hr className="my-12 opacity-50" {...props} />,
 }
 
 const baseUrl = "https://devtoolsacademy.com"

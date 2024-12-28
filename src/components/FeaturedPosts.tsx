@@ -87,7 +87,7 @@ interface FeaturedPostsProps {
 
 const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
   return (
-    <section className="py-16 mx-auto max-w-7xl px-4">
+    <section className="mx-auto max-w-7xl px-4 py-16">
       <h2 className="mb-12 text-center text-4xl font-bold text-neutral-200">
         Featured Posts
       </h2>
