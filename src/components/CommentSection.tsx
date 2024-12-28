@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { useUser, SignInButton } from "@clerk/nextjs"
 import { Comment, BlogUser } from "@prisma/client"
+import { FaGithub } from "react-icons/fa6"
 
 type CommentWithUser = Comment & { user: BlogUser }
 
@@ -73,31 +74,34 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
           <textarea
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
-            className="w-full rounded border bg-neutral-950 p-2 text-white"
+            className="w-full rounded border bg-neutral-950 p-2 text-neutral-200"
             placeholder={randomPlaceholder()}
           />
           <button
             type="submit"
-            className="mt-2 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+            className="mt-2 rounded bg-blue-600 px-4 py-2 text-neutral-200 hover:bg-blue-700"
           >
             Deploy Comment 🚀
           </button>
         </form>
       ) : (
-        <div className="mb-6">
-          <p className="mb-2 text-white">
+        <div>
+          <p className="mb-4 text-neutral-200">
             Hey there, code whisperer. Sign in to join the conversation.
           </p>
           <SignInButton mode="modal">
-            <button className="rounded bg-white px-4 py-2 text-neutral-900 hover:bg-neutral-200">
-              Authenticate with GitHub (it&apos;s where the cool devs hang) 😎
+            <button className="flex items-center gap-2 rounded bg-neutral-200 px-4 py-2 text-neutral-900 hover:bg-neutral-100">
+              <FaGithub />
+              <span>
+                Authenticate with GitHub (it&apos;s where the cool devs hang) 😎
+              </span>
             </button>
           </SignInButton>
         </div>
       )}
-      <div className="space-y-4">
+      <div className="mt-4 space-y-4">
         {comments.length === 0 ? (
-          <p className="italic text-neutral-400">
+          <p className="text-sm text-neutral-400">
             Be the first to break the silence. Your comment could start a
             revolution (or at least a fun thread).
           </p>
@@ -107,7 +111,7 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
               <div className="mb-2 flex items-center">
                 <div className="mr-3 size-10 rounded-full bg-blue-500"></div>
                 <div>
-                  <p className="font-bold text-white">
+                  <p className="font-bold text-neutral-200">
                     {comment.user.name}
                     <span className="text-sm text-neutral-400">
                       {" // Code Contributor"}
@@ -119,7 +123,7 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
                   </p>
                 </div>
               </div>
-              <p className="text-white">{comment.content}</p>
+              <p className="text-neutral-200">{comment.content}</p>
               <div className="mt-2">
                 <button className="mr-2 text-neutral-400 hover:text-blue-500">
                   👍 Like
@@ -132,11 +136,9 @@ const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
           ))
         )}
       </div>
-      <div className="mt-6 text-center">
-        <p className="text-neutral-400">
-          Remember: Be kind, be constructive, and may your code always compile
-          on the first try. 🍀
-        </p>
+      <div className="mt-6 text-sm text-neutral-400">
+        Remember: Be kind, be constructive, and may your code always compile on
+        the first try. 🍀
       </div>
     </div>
   )
