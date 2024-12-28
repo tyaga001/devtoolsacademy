@@ -9,7 +9,9 @@ const TableOfContents: React.FC = () => {
   const [activeId, setActiveId] = React.useState("")
 
   React.useEffect(() => {
-    const elements = document.querySelectorAll("h2, h3, h4")
+    const elements = document.querySelectorAll(
+      "article h2, article h3, article h4"
+    )
     const headingData = Array.from(elements).map((elem) => ({
       id: elem.id,
       text: elem.textContent || "",
@@ -35,6 +37,8 @@ const TableOfContents: React.FC = () => {
 
     return () => observer.disconnect()
   }, [])
+
+  console.log(headings)
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
