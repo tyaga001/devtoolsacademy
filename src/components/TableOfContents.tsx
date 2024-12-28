@@ -1,14 +1,14 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React from "react"
 
 const TableOfContents: React.FC = () => {
-  const [headings, setHeadings] = useState<
+  const [headings, setHeadings] = React.useState<
     Array<{ id: string; text: string; level: number }>
   >([])
-  const [activeId, setActiveId] = useState("")
+  const [activeId, setActiveId] = React.useState("")
 
-  useEffect(() => {
+  React.useEffect(() => {
     const elements = document.querySelectorAll("h2, h3, h4")
     const headingData = Array.from(elements).map((elem) => ({
       id: elem.id,
@@ -62,7 +62,7 @@ const TableOfContents: React.FC = () => {
               onClick={(e) => handleClick(e, heading.id)}
               className={`block py-1 transition-colors ${
                 activeId === heading.id
-                  ? "text-blue-500"
+                  ? "text-neutral-200"
                   : "text-neutral-500 hover:text-neutral-200"
               }`}
             >
