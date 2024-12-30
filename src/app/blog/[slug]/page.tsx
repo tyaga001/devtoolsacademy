@@ -75,7 +75,10 @@ const components: MDXComponents = {
 
     if (isInline) {
       return (
-        <code className="bg-[#121212] font-normal text-[#BD976A]" {...props}>
+        <code
+          className="ml-1 rounded bg-[#121212] px-1.5 py-0.5 font-normal text-[#BD976A] before:hidden after:hidden"
+          {...props}
+        >
           {children}
         </code>
       )
