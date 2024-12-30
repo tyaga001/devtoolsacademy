@@ -38,8 +38,6 @@ const TableOfContents: React.FC = () => {
     return () => observer.disconnect()
   }, [])
 
-  console.log(headings)
-
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
     const element = document.getElementById(id)
