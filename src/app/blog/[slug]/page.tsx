@@ -118,7 +118,7 @@ export default async function BlogPost({
             className={cn(
               "prose prose-neutral prose-invert prose-lg",
               "prose-ul:opacity-80 prose-ol:opacity-80",
-              "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85"
+              "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85 prose-img:rounded-md"
             )}
           >
             <MDXRemote source={post.content} components={components} />
