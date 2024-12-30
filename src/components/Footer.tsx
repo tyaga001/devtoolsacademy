@@ -54,7 +54,7 @@ const QuickTip: React.FC<{ tipIndex: number }> = ({ tipIndex }) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -20 }}
     transition={{ duration: 0.5 }}
-    className="mt-4 italic text-blue-300"
+    className="mt-auto text-neutral-500"
   >
     {tips[tipIndex]}
   </motion.p>
@@ -190,7 +190,7 @@ const Footer: React.FC = () => {
     <footer className="py-16">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-8 grid gap-8 md:grid-cols-3">
-          <div>
+          <div className="flex flex-col">
             <h3 className="mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-3xl font-bold text-transparent">
               Dev Tools Academy
             </h3>
