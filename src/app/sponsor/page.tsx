@@ -65,7 +65,7 @@ export default function SponsorPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-[800px] flex-col items-center pt-36">
+    <div className="mx-auto max-w-4xl px-4 py-36">
       <div className="container mx-auto max-w-4xl px-4 py-16">
         <h1 className="mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-6xl font-bold tracking-tight text-transparent md:text-8xl">
           Sponsor Me.
