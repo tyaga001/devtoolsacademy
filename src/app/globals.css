@@ -12,15 +12,6 @@ html {
   scroll-margin-top: 100px;
 }
 
-/* pre - values from code highlight theme  */
-.prose pre {
-  @apply bg-[#292828];
-}
-
-.prose pre:has(.code-container) {
-  @apply p-0;
-}
-
 .prose p:has(> img) {
   @apply flex;
 }

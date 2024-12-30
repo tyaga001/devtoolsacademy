@@ -1,7 +1,9 @@
+import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { MDXComponents } from "mdx/types"
+import { codeToHtml } from "shiki"
 
 import { getPostBySlug, getViewCount, getAllPosts } from "@/lib/posts"
 import TableOfContents from "@/components/TableOfContents"
@@ -9,7 +11,8 @@ import Breadcrumb from "@/components/Breadcrumb"
 import CommentSection from "@/components/CommentSection"
 import BlogHeader from "@/components/BlogHeader"
 import ServerlessDiagram from "@/components/ServerlessDiagram"
-import CodeBlock from "@/components/CodeBlock"
+import CodeCopyButton from "@/components/CodeCopyButton"
+
 import { Callout } from "@/components/Callout"
 import { Alert, AlertDescription } from "@/components/Alert"
 import BackToTop from "@/components/BackToTop"
@@ -58,7 +61,34 @@ const components: MDXComponents = {
     />
   ),
   ServerlessDiagram: ServerlessDiagram,
-  code: (props: any) => <CodeBlock {...props} />,
+  code: async ({
+    children,
+    ...props
+  }: React.ComponentPropsWithoutRef<"code">) => {
+    const { className } = props
+    const isInline = !className?.includes("language-")
+    const language = className?.replace(/language-/, "") || "text"
+
+    const codeHTML = await codeToHtml(children as string, {
+      lang: language,
+      theme: "vitesse-dark",
+    })
+
+    if (isInline) {
+      return (
+        <code className="bg-[#121212] font-normal text-[#BD976A]" {...props}>
+          {children}
+        </code>
+      )
+    } else {
+      return (
+        <div className="relative">
+          <code dangerouslySetInnerHTML={{ __html: codeHTML }} />
+          <CodeCopyButton code={children as string} />
+        </div>
+      )
+    }
+  },
   Callout: Callout,
   Alert: Alert,
   AlertDescription: AlertDescription,
@@ -118,6 +148,7 @@ export default async function BlogPost({
             className={cn(
               "prose prose-neutral prose-invert prose-lg",
               "prose-ul:opacity-80 prose-ol:opacity-80",
+              "prose-pre:py-0 prose-pre:px-3 prose-code:text-sm prose-pre:bg-[#121212]",
               "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85 prose-img:rounded-md"
             )}
           >

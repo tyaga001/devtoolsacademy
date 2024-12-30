@@ -10,7 +10,6 @@ import Navbar from "@/components/Navbar"
 import { SocialMetadata } from "@/components/SocialMetadata"
 import { cn } from "@/lib/utils"
 
-import "highlight.js/styles/github-dark.css"
 import "./globals.css"
 
 export const metadata: Metadata = {
