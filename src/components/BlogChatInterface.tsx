@@ -8,8 +8,8 @@ import parse from "html-react-parser";
 import { useToast } from '@/hooks/use-toast';
 
 interface ChatMessage {
-  role: "human" | "assistant"
-  content: string
+    role: "human" | "assistant"
+    content: string
 }
 
 interface BlogChatInterfaceProps {
@@ -29,7 +29,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-  useEffect(scrollToBottom, [messages])
+    useEffect(scrollToBottom, [messages])
 
     const handleSend = async (customPrompt?: string) => {
         const promptToSend = customPrompt || input;
@@ -70,18 +70,22 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
             const responseAnswer = parseContent(data.answer);
 
             setMessages(prev => [...prev, { role: 'assistant', content: responseAnswer }]);
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error('Error in chat:', error);
-            setMessages(prev => [...prev, { role: 'assistant', content: "I have encountered some error. Please try again." }]);
-        } finally {
+            const errorMessage = error instanceof Error
+                ? `Error: ${error.message}`
+                : "An unexpected error occurred. Please try again.";
+            setMessages(prev => [...prev, {
+                role: 'assistant',
+                content: errorMessage
+            }])
+        }
+        finally {
             setIsLoading(false);
         }
     };
     const handleSummary = async () => {
-
-
         handleSend("Please Summarize this blog for me.")
-
     }
     return (
         <motion.div
@@ -160,6 +164,9 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
                         <input
                             type="text"
                             value={input}
+                            aria-label="Chat input"
+                            role="textbox"
+                            aria-placeholder="Ask about the blog..."
                             onChange={(e) => setInput(e.target.value)}
                             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                             className="flex-grow bg-[#09090b] text-white p-2 placeholder:text-[14px] placeholder:tracking-wide placeholder:text-white/80 rounded focus:outline-none focus:ring-[1px] focus:ring-gray-200/40 border shadow-lg shadow-black border-gray-200/10 placeholder:font-[200]"
