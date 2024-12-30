@@ -62,15 +62,14 @@ const components: MDXComponents = {
   ),
   ServerlessDiagram: ServerlessDiagram,
   code: async ({
+    className,
     children,
     ...props
   }: React.ComponentPropsWithoutRef<"code">) => {
-    const { className } = props
     const isInline = !className?.includes("language-")
-    const language = className?.replace(/language-/, "") || "text"
 
     const codeHTML = await codeToHtml(children as string, {
-      lang: language,
+      lang: className?.replace(/language-/, "") || "text",
       theme: "vitesse-dark",
     })
 
