@@ -65,12 +65,12 @@ export default function SponsorPage() {
   }
 
   return (
-    <div className="bg-grid-pattern min-h-screen bg-neutral-950 text-white">
+    <div className="mx-auto flex max-w-[800px] flex-col items-center pt-36">
       <div className="container mx-auto max-w-4xl px-4 py-16">
-        <h1 className="mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-6xl font-bold text-transparent md:text-8xl">
+        <h1 className="mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-6xl font-bold tracking-tight text-transparent md:text-8xl">
           Sponsor Me.
         </h1>
-        <p className="mb-12 text-xl text-neutral-300 md:text-2xl">
+        <p className="mb-12 text-lg text-neutral-300 md:text-xl">
           I love doing open-source projects and write about developer tools{" "}
           <span className="text-red-500">❤️</span>
         </p>
