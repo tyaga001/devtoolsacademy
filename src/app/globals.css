@@ -15,11 +15,18 @@ html {
   scroll-behavior: smooth;
 }
 
-.prose h2, .prose h3, .prose h4 {
+.prose h2,
+.prose h3,
+.prose h4 {
   scroll-margin-top: 100px;
 }
 
-.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
   color: #fff;
 }
 
@@ -63,7 +70,9 @@ html {
   .prose {
     @apply text-gray-200;
   }
-  .prose h2, .prose h3, .prose h4 {
+  .prose h2,
+  .prose h3,
+  .prose h4 {
     @apply text-white mt-8 mb-4;
   }
   .prose p {
@@ -75,9 +84,12 @@ html {
 }
 
 .bg-grid-pattern {
-  background-image:
-          linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 

@@ -8,8 +8,8 @@ import parse from "html-react-parser";
 import { useToast } from '@/hooks/use-toast';
 
 interface ChatMessage {
-    role: 'human' | 'assistant';
-    content: string;
+  role: "human" | "assistant"
+  content: string
 }
 
 interface BlogChatInterfaceProps {
@@ -29,7 +29,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    useEffect(scrollToBottom, [messages]);
+  useEffect(scrollToBottom, [messages])
 
     const handleSend = async (customPrompt?: string) => {
         const promptToSend = customPrompt || input;

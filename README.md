@@ -8,26 +8,12 @@
 
 ![Neon vs Supabase](public/images/img_4.png)
 
-| Blog Post | Featured On | Description                                                                     |
-| --- | --- |---------------------------------------------------------------------------------|
-| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase) | Hacker News | Made it to the second page of Hacker News                                       |
-| [Serverless Databases](https://www.devtoolsacademy.com/blog/state-of-databases-2024) | Hashnode | Featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases) |
+| Blog Post                                                                            | Featured On      | Description                                                                     |
+| ------------------------------------------------------------------------------------ | ---------------- | ------------------------------------------------------------------------------- |
+| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase)  | Hacker News      | Made it to the second page of Hacker News                                       |
+| [Serverless Databases](https://www.devtoolsacademy.com/blog/state-of-databases-2024) | Hashnode         | Featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases) |
 | [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL?                           |
-| [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk) | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
-
-## 💡 Contribute
-
-We welcome contributions from the developer community! If you have insights on developer tools or want to share your experiences, please check our [Contribution Guidelines](CONTRIBUTING.md).
-
-## 📬 Stay Connected
-
-- Follow us on [Twitter](https://twitter.com/devtoolsacademy)
-- Join our [Discord community](https://discord.gg/devtoolsacademy)
-- Subscribe to our [Newsletter](https://www.devtoolsacademy.com/newsletter)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+| [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)    | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
 
 ## 🚀 Quick Start
 
@@ -66,13 +52,6 @@ To get started, check our [CONTRIBUTING.md](CONTRIBUTING.md) file and reach out 
 - Aim for a length of 1500-2000 words.
 - Build something and compare, don't just rely on docs and other blogs.
 
-## 📈 Growth and Goals
-
-I'm committed to continuous improvement. my short term goals include:
-- Reach 100,000 monthly visits by the end of the year.
-
-Join me in achieving this milestones.
-
 ## 📬 Contact
 
 Have questions or suggestions? Open an issue or reach out to me at [hello@theankurtyagi.com](mailto:hello@theankurtyagi.com).
@@ -80,9 +59,11 @@ Have questions or suggestions? Open an issue or reach out to me at [hello@theank
 ## 📄 License
 
 This project is licensed under the Creative Commons License - see the [LICENSE](LICENSE) file for details.
+
 - You are free to use this code as inspiration.
 - Please do not copy it directly.
 - Crediting the author is appreciated.
+
 ---
 
 Let's build the go-to resource for developer tool space, together 🚀

@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import React, { useState } from 'react';
 import BlogChatInterface from '@/components/BlogChatInterface';
@@ -8,26 +8,30 @@ import { SocialMetadata } from '@/components/SocialMetadata';
 import SocialShare from '@/components/SocialShare';
 
 interface BlogPostClientProps {
-    slug: string;
-    title: string;
-    publishedAt: string;
-    initialViews: number;
-    content: string;
-    description: string;
-    featuredImage: string;
+  slug: string
+  title: string
+  publishedAt: string
+  initialViews: number
+  content: string
+  description: string
+  featuredImage: string
 }
 
 const BlogPostClient: React.FC<BlogPostClientProps> = ({
-    slug,
-    title,
-    publishedAt,
-    initialViews,
-    content,
-    description,
-    featuredImage
+  slug,
+  title,
+  publishedAt,
+  initialViews,
+  content,
+  description,
+  featuredImage,
 }) => {
-    const [showChat, setShowChat] = useState(false);
+  const [showChat, setShowChat] = useState(false)
+   
 
+  
+
+  
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -71,4 +75,4 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
     );
 };
 
-export default BlogPostClient;
+export default BlogPostClient
