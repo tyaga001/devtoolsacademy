@@ -4,6 +4,7 @@ import Link from "next/link"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { MDXComponents } from "mdx/types"
 import { codeToHtml } from "shiki"
+import { v4 as uuidv4 } from "uuid"
 
 import { getPostBySlug, getViewCount, getAllPosts } from "@/lib/posts"
 import TableOfContents from "@/components/TableOfContents"
@@ -20,29 +21,20 @@ import ScrollProgressBar from "@/components/ScrollProgressBar"
 import { cn } from "@/lib/utils"
 import { SocialMetadata } from "@/components/SocialMetadata"
 
-const generateId = (children: any) => {
-  if (Array.isArray(children)) {
-    children = children.join("")
-  }
-  return typeof children === "string"
-    ? children.toLowerCase().replace(/\s+/g, "-")
-    : ""
-}
-
 const components: MDXComponents = {
   h1: (props: any) => <h1 {...props}>{props.children}</h1>,
   h2: (props: any) => (
-    <h2 id={generateId(props.children)} {...props}>
+    <h2 id={uuidv4()} {...props}>
       {props.children}
     </h2>
   ),
   h3: (props: any) => (
-    <h3 id={generateId(props.children)} {...props}>
+    <h3 id={uuidv4()} {...props}>
       {props.children}
     </h3>
   ),
   h4: (props: any) => (
-    <h4 id={generateId(props.children)} {...props}>
+    <h4 id={uuidv4()} {...props}>
       {props.children}
     </h4>
   ),
