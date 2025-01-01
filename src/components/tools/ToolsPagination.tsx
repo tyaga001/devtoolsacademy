@@ -26,7 +26,6 @@ export default function ToolsPagination({
     params.set("page", pageNumber.toString())
     return `${basePath}?${params.toString()}`
   }
-  console.log({ totalPages })
 
   const getPageNumbers = () => {
     const pages = []
