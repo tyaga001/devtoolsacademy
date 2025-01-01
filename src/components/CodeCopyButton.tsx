@@ -11,7 +11,9 @@ const CodeCopyButton: React.FC<Props> = ({ code }) => {
   const [isCopied, setIsCopied] = React.useState(false)
 
   const copyToClipboard = React.useCallback(() => {
-    navigator.clipboard.writeText(code)
+    navigator.clipboard.writeText(code).catch((err) => {
+      console.error("Could not copy to clipboard:", err)
+    })
     setIsCopied(true)
     setTimeout(() => setIsCopied(false), 2000)
   }, [code])
