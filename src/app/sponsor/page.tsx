@@ -65,26 +65,26 @@ export default function SponsorPage() {
   }
 
   return (
-    <div className="bg-grid-pattern min-h-screen bg-black text-white">
+    <div className="mx-auto max-w-4xl px-4 py-36">
       <div className="container mx-auto max-w-4xl px-4 py-16">
-        <h1 className="mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-6xl font-bold text-transparent md:text-8xl">
+        <h1 className="mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-6xl font-bold tracking-tight text-transparent md:text-8xl">
           Sponsor Me.
         </h1>
-        <p className="mb-12 text-xl text-gray-300 md:text-2xl">
+        <p className="mb-12 text-lg text-neutral-300 md:text-xl">
           I love doing open-source projects and write about developer tools{" "}
           <span className="text-red-500">❤️</span>
         </p>
 
-        <div className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-4">
+        <div className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
           {sponsorTiers.map((tier, index) => (
             <Card
               key={index}
-              className="flex flex-col overflow-hidden border-gray-700 bg-gray-800 text-white"
+              className="flex flex-col overflow-hidden border-neutral-700 bg-neutral-950 text-white"
             >
-              <CardHeader className="bg-gray-900 p-4">
+              <CardHeader className="bg-neutral-900 p-4">
                 <div className="mb-2 flex items-center justify-between">
                   {tier.icon}
-                  <span className="text-sm font-semibold text-gray-400">
+                  <span className="text-sm font-semibold text-neutral-400">
                     MEMBERSHIP
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export default function SponsorPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="grow p-4">
-                <ul className="list-none space-y-2 text-sm text-gray-300">
+                <ul className="list-none space-y-2 text-sm text-neutral-300">
                   {tier.benefits.map((benefit, idx) => (
                     <li key={idx} className="flex items-start">
                       <span className="mr-2 text-green-500">✓</span>
@@ -102,7 +102,7 @@ export default function SponsorPage() {
                   ))}
                 </ul>
               </CardContent>
-              <CardFooter className="mt-auto bg-gray-900 p-4">
+              <CardFooter className="mt-auto bg-neutral-900 p-4">
                 <div className="w-full">
                   <div className="mb-4 text-center text-3xl font-bold">
                     ${tier.price} USD
@@ -119,11 +119,11 @@ export default function SponsorPage() {
           ))}
         </div>
 
-        <div className="mx-auto mb-16 max-w-3xl rounded-lg bg-gray-900 p-8 shadow-lg">
+        <div className="mx-auto mb-16 max-w-3xl rounded-lg bg-neutral-900 p-8 shadow-lg">
           <h3 className="mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-center text-2xl font-semibold text-transparent">
             Why Your Support Matters
           </h3>
-          <div className="space-y-4 text-lg leading-relaxed text-gray-300">
+          <div className="space-y-4 text-lg leading-relaxed text-neutral-300">
             <p>
               As an independent consultant, your support is crucial in
               sustaining this project. Here&apos;s how your contribution makes a
@@ -197,7 +197,7 @@ export default function SponsorPage() {
           Who is behind this?
         </h2>
 
-        <div className="mx-auto max-w-3xl rounded-lg bg-gray-900 p-8 text-center shadow-2xl">
+        <div className="mx-auto max-w-3xl rounded-lg bg-neutral-900 p-8 text-center shadow-2xl">
           <h3 className="mb-6 text-4xl font-bold text-white">
             Hey, I&apos;m{" "}
             <a
@@ -207,7 +207,7 @@ export default function SponsorPage() {
               Ankur Tyagi
             </a>
           </h3>
-          <div className="space-y-4 text-lg leading-relaxed text-gray-300">
+          <div className="space-y-4 text-lg leading-relaxed text-neutral-300">
             <p>
               I&apos;m a software engineer based in Sweden who cares deeply
               about &quot;Writing&quot;.
@@ -223,8 +223,8 @@ export default function SponsorPage() {
             <p className="mt-6 text-xl font-semibold text-white">
               Thank you for being part of my journey.
             </p>
-            <p className="mt-8 rounded-lg border border-gray-300 bg-gray-100 p-4 text-center text-gray-500 shadow-lg">
-              <strong className="text-gray-700">Note:</strong> All blogs will
+            <p className="mt-8 rounded-lg border border-neutral-300 bg-neutral-100 p-4 text-center text-neutral-500 shadow-lg">
+              <strong className="text-neutral-700">Note:</strong> All blogs will
               remain live forever on this website as they are published and read
               10000+ times per month by devs.
             </p>

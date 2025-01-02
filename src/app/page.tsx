@@ -39,14 +39,14 @@ const featuredPosts = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-neutral-200">
       <main>
         <Hero />
         {featuredPosts.length > 0 && <FeaturedPosts posts={featuredPosts} />}
       </main>
-      <div className="section-divider" />
+      <hr className="border-neutral-500" />
       <Testimonial />
-      <div className="section-divider" />
+      <hr className="border-neutral-500" />
       <Footer />
     </div>
   )

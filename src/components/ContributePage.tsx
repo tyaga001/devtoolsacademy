@@ -46,7 +46,7 @@ const ContributionStep: React.FC<ContributionStepProps> = ({
       </motion.div>
       <div>
         <h3 className="mb-2 text-xl font-bold text-white">{title}</h3>
-        <p className="text-gray-300">{description}</p>
+        <p className="text-neutral-300">{description}</p>
       </div>
     </motion.div>
   )
@@ -94,7 +94,7 @@ const ContributePage: React.FC = () => {
   ]
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black py-20">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-neutral-950 py-20">
       <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black to-pink-900/20" />
       <motion.div className="absolute inset-0 opacity-50" animate={controls}>
         {[...Array(50)].map((_, i) => (
@@ -122,7 +122,7 @@ const ContributePage: React.FC = () => {
         </motion.h2>
 
         <motion.p
-          className="mb-12 text-center text-2xl text-gray-300 md:text-3xl"
+          className="mb-12 text-center text-2xl text-neutral-300 md:text-3xl"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
@@ -133,7 +133,7 @@ const ContributePage: React.FC = () => {
         {sections.map((section, index) => (
           <Card
             key={index}
-            className="mb-4 border border-purple-500/30 bg-black/50"
+            className="mb-4 border border-purple-500/30 bg-neutral-950/50"
           >
             <CardContent className="p-4">
               <motion.div
@@ -163,7 +163,7 @@ const ContributePage: React.FC = () => {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="mt-4 text-gray-300"
+                  className="mt-4 text-neutral-300"
                 >
                   {section.description}
                 </motion.div>
@@ -173,14 +173,14 @@ const ContributePage: React.FC = () => {
         ))}
 
         <motion.div
-          className="mt-8 rounded-lg border border-purple-500/30 bg-black/50 p-6"
+          className="mt-8 rounded-lg border border-purple-500/30 bg-neutral-950/50 p-6"
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 10 }}
         >
           <h3 className="mb-4 text-2xl font-bold text-white">
             Need More Help?
           </h3>
-          <p className="mb-4 text-gray-300">
+          <p className="mb-4 text-neutral-300">
             For more detailed instructions, please check the{" "}
             <Link
               href="https://github.com/tyaga001/devtoolsacademy/blob/main/CONTRIBUTING.md"
@@ -213,7 +213,7 @@ const ContributePage: React.FC = () => {
           </motion.div>
           {isHovering && (
             <motion.p
-              className="mt-2 text-sm text-gray-400"
+              className="mt-2 text-sm text-neutral-400"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
             >

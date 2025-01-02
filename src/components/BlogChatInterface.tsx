@@ -68,16 +68,19 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 flex size-full items-center justify-center overflow-y-auto bg-gray-600/50 p-4"
+      className="fixed inset-0 flex size-full items-center justify-center overflow-y-auto bg-neutral-600/50 p-4"
     >
       <motion.div
-        className="mx-auto w-full max-w-2xl overflow-hidden rounded-lg bg-gray-800 shadow-xl"
+        className="mx-auto w-full max-w-2xl overflow-hidden rounded-lg bg-neutral-950 shadow-xl"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
-        <div className="flex items-center justify-between bg-gray-700 p-4">
+        <div className="flex items-center justify-between bg-neutral-700 p-4">
           <h2 className="text-xl font-bold text-white">Chat about the Blog</h2>
-          <button onClick={onClose} className="text-gray-300 hover:text-white">
+          <button
+            onClick={onClose}
+            className="text-neutral-300 hover:text-white"
+          >
             <X size={24} />
           </button>
         </div>
@@ -95,7 +98,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
                   className={`max-w-[75%] rounded-lg p-3 ${
                     msg.role === "human"
                       ? "bg-blue-500 text-white"
-                      : "bg-gray-700 text-gray-200"
+                      : "bg-neutral-700 text-neutral-200"
                   }`}
                 >
                   {msg.content}
@@ -109,7 +112,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
               animate={{ opacity: 1 }}
               className="flex justify-start"
             >
-              <div className="flex items-center space-x-2 rounded-lg bg-gray-700 p-3 text-gray-200">
+              <div className="flex items-center space-x-2 rounded-lg bg-neutral-700 p-3 text-neutral-200">
                 <Loader2 className="animate-spin" size={18} />
                 <span>AI is thinking...</span>
               </div>
@@ -117,14 +120,14 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
           )}
           <div ref={messagesEndRef} />
         </div>
-        <div className="bg-gray-700 p-4">
+        <div className="bg-neutral-700 p-4">
           <div className="flex space-x-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
-              className="grow rounded-l bg-gray-600 p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="grow rounded-l bg-neutral-600 p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Ask about the blog..."
             />
             <button

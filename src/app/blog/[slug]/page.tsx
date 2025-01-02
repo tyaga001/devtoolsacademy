@@ -1,86 +1,107 @@
+import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { MDXRemote } from "next-mdx-remote/rsc"
+import { MDXComponents } from "mdx/types"
+import { codeToHtml } from "shiki"
+import { v4 as uuidv4 } from "uuid"
+
 import { getPostBySlug, getViewCount, getAllPosts } from "@/lib/posts"
 import TableOfContents from "@/components/TableOfContents"
 import Breadcrumb from "@/components/Breadcrumb"
 import CommentSection from "@/components/CommentSection"
-import BlogPostClient from "@/components/BlogPostClient"
+import BlogHeader from "@/components/BlogHeader"
 import ServerlessDiagram from "@/components/ServerlessDiagram"
-import CodeBlock from "@/components/CodeBlock"
+import CodeCopyButton from "@/components/CodeCopyButton"
+
 import { Callout } from "@/components/Callout"
 import { Alert, AlertDescription } from "@/components/Alert"
-import { MDXComponents } from "mdx/types"
 import BackToTop from "@/components/BackToTop"
+import ScrollProgressBar from "@/components/ScrollProgressBar"
+import { cn } from "@/lib/utils"
+import { SocialMetadata } from "@/components/SocialMetadata"
 
-const generateId = (children: any) => {
-  if (Array.isArray(children)) {
-    children = children.join("")
-  }
-  return typeof children === "string"
-    ? children.toLowerCase().replace(/\s+/g, "-")
-    : ""
-}
-
-const components = {
-  h1: (props: any) => (
-    <h1 className="mb-4 mt-8 text-4xl font-bold" {...props}>
-      {props.children}
-    </h1>
-  ),
+const components: MDXComponents = {
+  h1: (props: any) => <h1 {...props}>{props.children}</h1>,
   h2: (props: any) => (
-    <h2
-      id={generateId(props.children)}
-      className="mb-3 mt-6 text-3xl font-semibold"
-      {...props}
-    >
+    <h2 id={uuidv4()} {...props}>
       {props.children}
     </h2>
   ),
   h3: (props: any) => (
-    <h3
-      id={generateId(props.children)}
-      className="mb-2 mt-4 text-2xl font-semibold"
-      {...props}
-    >
+    <h3 id={uuidv4()} {...props}>
       {props.children}
     </h3>
   ),
   h4: (props: any) => (
-    <h4
-      id={generateId(props.children)}
-      className="mb-2 mt-3 text-xl font-semibold"
-      {...props}
-    >
+    <h4 id={uuidv4()} {...props}>
       {props.children}
     </h4>
   ),
-  p: (props: any) => <p className="my-2" {...props} />,
+  p: (props: any) => <p className="my-2 opacity-80" {...props} />,
   a: (props: any) => (
-    <Link className="text-blue-500 hover:underline" {...props} />
+    <Link
+      className="text-blue-500 no-underline outline-none hover:underline focus:underline"
+      {...props}
+    />
   ),
   Image: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
   blockquote: (props: any) => (
     <blockquote
-      className="my-4 border-l-4 border-gray-300 pl-4 italic"
+      className="border-l-4 border-neutral-500 pl-4 font-normal not-italic opacity-80"
       {...props}
     />
   ),
   ServerlessDiagram: ServerlessDiagram,
-  code: CodeBlock,
+  code: async ({
+    className,
+    children,
+    ...props
+  }: React.ComponentPropsWithoutRef<"code">) => {
+    const isInline = !className?.includes("language-")
+
+    const codeHTML = await codeToHtml(children as string, {
+      lang: className?.replace(/language-/, "") || "text",
+      theme: "vitesse-dark",
+    })
+
+    if (isInline) {
+      return (
+        <code
+          className="ml-1 rounded bg-[#121212] px-1.5 py-0.5 font-normal text-[#BD976A] before:hidden after:hidden"
+          {...props}
+        >
+          {children}
+        </code>
+      )
+    } else {
+      return (
+        <div className="relative">
+          <code dangerouslySetInnerHTML={{ __html: codeHTML }} />
+          <CodeCopyButton code={children as string} />
+        </div>
+      )
+    }
+  },
   Callout: Callout,
   Alert: Alert,
   AlertDescription: AlertDescription,
   table: (props: any) => (
-    <table className="my-4 min-w-full border border-gray-300" {...props} />
+    <table className="my-4 min-w-full border border-neutral-500" {...props} />
   ),
   th: (props: any) => (
-    <th className="border border-gray-300 bg-gray-100 px-4 py-2" {...props} />
+    <th
+      className="border border-neutral-500 bg-neutral-800 px-4 py-2"
+      {...props}
+    />
   ),
   td: (props: any) => (
-    <td className="border border-gray-300 px-4 py-2" {...props} />
+    <td className="border border-neutral-500 px-4 py-2" {...props} />
   ),
+  hr: (props: any) => <hr className="my-12 opacity-50" {...props} />,
 }
+
+const baseUrl = "https://devtoolsacademy.com"
 
 export default async function BlogPost({
   params,
@@ -96,35 +117,47 @@ export default async function BlogPost({
     { label: post.title, href: `#` },
   ]
 
+  const postUrl = `${baseUrl}/blog/${params.slug}`
+
   return (
-    <div className="relative mx-auto max-w-5xl px-4 py-12">
+    <div className="relative mx-auto max-w-5xl px-4 py-36">
+      <SocialMetadata
+        title={post.title}
+        description={post.description}
+        url={postUrl}
+        image={`${baseUrl}${post.featuredImage || "/T.png"}`}
+        type="article"
+      />
       <Breadcrumb items={breadcrumbItems} />
-      <BlogPostClient
+      <BlogHeader
         slug={params.slug}
         title={post.title}
         publishedAt={post.publishedAt}
         initialViews={initialViews}
         content={post.content}
-        description={post.description}
-        featuredImage={post.featuredImage || "/T.png"}
       />
       <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-3/4">
-          <article className="prose prose-lg max-w-none dark:prose-invert">
-            <MDXRemote
-              source={post.content}
-              components={components as MDXComponents}
-            />
+          <article
+            className={cn(
+              "prose prose-neutral prose-invert prose-lg",
+              "prose-ul:opacity-80 prose-ol:opacity-80",
+              "prose-pre:py-0 prose-pre:px-3 prose-code:text-sm prose-pre:bg-[#121212]",
+              "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85 prose-img:rounded-md"
+            )}
+          >
+            <MDXRemote source={post.content} components={components} />
           </article>
           <CommentSection postSlug={params.slug} />
         </div>
-        <aside className="lg:w-1/4 lg:pl-8">
+        <aside className="hidden lg:block lg:w-1/4 lg:pl-8">
           <div className="sticky top-24">
             <TableOfContents />
           </div>
         </aside>
       </div>
       <BackToTop />
+      <ScrollProgressBar />
     </div>
   )
 }

@@ -1,34 +1,70 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { formatDate } from "@/lib/utils"
+import React, { useState } from "react"
+import { Eye } from "lucide-react"
+
+import BlogChatInterface from "@/components/BlogChatInterface"
+import ViewCounter from "@/components/ViewCounter"
+import SocialShare from "@/components/SocialShare"
 
 interface BlogHeaderProps {
+  slug: string
   title: string
   publishedAt: string
-  views: number
+  initialViews: number
+  content: string
 }
 
-export default function BlogHeader({
+const BlogHeader: React.FC<BlogHeaderProps> = ({
+  slug,
   title,
   publishedAt,
-  views,
-}: BlogHeaderProps) {
-  const formattedDate = formatDate(new Date(publishedAt))
+  initialViews,
+  content,
+}) => {
+  const [showChat, setShowChat] = useState(false)
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  }
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-center"
-    >
-      <h1 className="mb-4 text-4xl font-bold">{title}</h1>
-      <div className="flex items-center justify-center space-x-4 text-gray-400">
-        <time dateTime={publishedAt}>{formattedDate}</time>
-        <span>•</span>
-        <span>{views} views</span>
+    <>
+      <h1 className="mb-8 text-3xl font-bold leading-snug tracking-tight text-neutral-100 md:text-5xl">
+        {title}
+      </h1>
+      <div className="mb-10 flex flex-col justify-between md:mb-16 md:flex-row md:items-center">
+        <div className="mb-6 flex items-center gap-6 text-neutral-400 md:mb-0">
+          <span className="text-sm">{formatDate(publishedAt)}</span>
+          <span>|</span>
+          <SocialShare url={`/blog/${slug}`} title={title} />
+        </div>
+        <div className="flex flex-row-reverse items-center justify-between gap-3 md:flex-row">
+          <button
+            onClick={() => setShowChat(true)}
+            className="rounded-full border border-blue-500/50 bg-blue-900/30 px-3 py-1 text-sm text-blue-400 outline-none transition-colors duration-200 hover:bg-blue-900/50 focus:bg-blue-900/50"
+          >
+            Chat with Claude AI
+          </button>
+          <div className="group flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400">
+            <Eye className="mr-2 size-5 group-hover:text-blue-400" />
+            <ViewCounter slug={slug} initialViews={initialViews} />
+          </div>
+        </div>
       </div>
-    </motion.header>
+      {showChat && (
+        <BlogChatInterface
+          blogContent={content}
+          onClose={() => setShowChat(false)}
+        />
+      )}
+    </>
   )
 }
+
+export default BlogHeader

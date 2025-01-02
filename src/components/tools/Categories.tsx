@@ -70,7 +70,7 @@ const Categories = async () => {
             Categories Not Found
           </h1>
         </div>
-        <p className="text-gray-600">
+        <p className="text-neutral-600">
           We couldn&apos;t able to find the categories for you. It might have
           been moved or doesn&apos;t exist. Please try again later
         </p>
@@ -78,13 +78,13 @@ const Categories = async () => {
     )
   }
   return (
-    <div className="w-full px-0 py-8 pt-16 md:px-6 lg:px-48">
+    <div className="w-full px-0 py-8 pt-16 text-neutral-200 md:px-6 lg:px-48">
       <div className="space-y-6">
         <div className="space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">
             Explore Categories
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-neutral-400">
             Discover tools and resources across various categories
           </p>
         </div>
@@ -95,7 +95,7 @@ const Categories = async () => {
               key={category.name}
               href={`/tools?categories=${category.name}`}
             >
-              <div className="flex cursor-pointer items-center space-x-4 rounded-xl bg-[#141414]/20 p-2 shadow transition-all duration-300 hover:bg-[#141414] md:p-4">
+              <div className="flex cursor-pointer items-center space-x-4 rounded-xl bg-neutral-900 p-2 shadow transition-all duration-300 hover:bg-[#141414] md:p-4">
                 <div
                   className={`${getRandomColor()} flex size-8 items-center justify-center rounded-full text-white md:size-12`}
                 >
