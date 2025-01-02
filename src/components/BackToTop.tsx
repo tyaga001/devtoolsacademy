@@ -1,12 +1,13 @@
 "use client"
 
+import * as React from "react"
+
 import { ArrowUp } from "lucide-react"
-import { useEffect, useState } from "react"
 
 const BackToTop = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = React.useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (typeof window === "undefined") return
 
     const handleScroll = () => {
@@ -38,12 +39,12 @@ const BackToTop = () => {
   }
 
   return (
-    <div className="fixed bottom-20 right-4 z-50">
+    <div className="fixed bottom-4 right-4 z-50">
       <button
         onClick={scrollToTop}
         aria-label="Scroll to top of page"
         title="Scroll to top"
-        className={`rounded-full bg-blue-500 p-3 text-white shadow-lg transition-opacity hover:bg-blue-600 ${
+        className={`rounded-full bg-neutral-800 p-3 text-white shadow-lg transition-opacity hover:bg-neutral-900 ${
           isVisible ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >

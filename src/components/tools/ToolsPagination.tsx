@@ -26,7 +26,6 @@ export default function ToolsPagination({
     params.set("page", pageNumber.toString())
     return `${basePath}?${params.toString()}`
   }
-  console.log({ totalPages })
 
   const getPageNumbers = () => {
     const pages = []
@@ -52,7 +51,7 @@ export default function ToolsPagination({
   }
 
   return (
-    <Pagination>
+    <Pagination className="mt-6">
       <PaginationContent>
         {/* Previous Button */}
         <PaginationItem>
@@ -68,7 +67,7 @@ export default function ToolsPagination({
           if (page === -1 || page === -2) {
             return (
               <PaginationItem key={`ellipsis-${index}`}>
-                <span className="px-2 text-gray-500">...</span>
+                <span className="px-2 text-neutral-500">...</span>
               </PaginationItem>
             )
           }

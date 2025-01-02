@@ -1,5 +1,3 @@
-import { fontFamily } from "tailwindcss/defaultTheme"
-
 const config = {
   darkMode: ["class"],
   content: [
@@ -19,9 +17,6 @@ const config = {
     },
 
     extend: {
-
-
-
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -51,22 +46,22 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
-        mono: ["var(--font-geist-mono)", ...fontFamily.mono],
+        sans: ["var(--sans-font)"],
+        mono: ["var(--mono-font)"],
       },
       keyframes: {
-        "shimmer": {
+        shimmer: {
           from: {
-            "backgroundPosition": "0 0"
+            backgroundPosition: "0 0",
           },
           to: {
-            "backgroundPosition": "-200% 0"
-          }
+            backgroundPosition: "-200% 0",
+          },
         },
-        'fade-in-down': {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(-10px)'
+        "fade-in-down": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
           },
           "100%": {
             opacity: "1",
@@ -101,11 +96,11 @@ const config = {
         },
       },
       animation: {
-        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        "fade-in-down": "fade-in-down 0.5s ease-out",
         shimmer: "shimmer 2s linear infinite",
-        'fade-in-up': 'fade-in-up 0.5s ease-out',
-        'fade-in': 'fade-in 0.5s ease-out',
-        'pulse-shadow': 'pulse-shadow 2s infinite'
+        "fade-in-up": "fade-in-up 0.5s ease-out",
+        "fade-in": "fade-in 0.5s ease-out",
+        "pulse-shadow": "pulse-shadow 2s infinite",
       },
       typography: (theme: any) => ({
         DEFAULT: {

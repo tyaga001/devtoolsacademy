@@ -69,7 +69,9 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
       <div className="mt-8 flex flex-col gap-4">
         {similarTagTools && similarTagTools.length > 0 && (
           <div>
-            <h3 className="text-xl font-medium text-gray-400">Based on Tags</h3>
+            <h3 className="text-xl font-medium text-neutral-400">
+              Based on Tags
+            </h3>
             <div className="grid grid-cols-1 gap-2 pt-4 md:grid-cols-2 lg:grid-cols-3">
               {similarTagTools.map((tool) => (
                 <ToolCard key={tool.id} tool={tool} />
@@ -79,7 +81,7 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
         )}
         {similarCategoriesTools && similarCategoriesTools.length > 0 && (
           <div className="mt-8 md:mt-0">
-            <h3 className="text-xl font-medium text-gray-400">
+            <h3 className="text-xl font-medium text-neutral-400">
               Based on Categories
             </h3>
             <div className="grid grid-cols-1 gap-2 pt-4 md:grid-cols-2 lg:grid-cols-3">

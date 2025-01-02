@@ -9,18 +9,18 @@ export interface BreadcrumbProps {
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb">
-      <ol className="flex items-center space-x-2 text-sm text-gray-500">
+      <ol className="flex items-center space-x-2 text-sm text-neutral-500">
         {items.map((item, index) => (
           <li key={item.href} className="flex items-center">
             {index > 0 && <ChevronRight className="mx-2 size-4" />}
             {index === items.length - 1 ? (
-              <span className="text-gray-900 dark:text-gray-100">
+              <span className="text-neutral-900 dark:text-neutral-100">
                 {item.label}
               </span>
             ) : (
               <Link
                 href={item.href}
-                className="hover:text-gray-700 dark:hover:text-gray-300"
+                className="hover:text-neutral-700 dark:hover:text-neutral-300"
               >
                 {item.label}
               </Link>

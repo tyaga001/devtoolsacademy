@@ -22,7 +22,7 @@ export default async function ToolDetailRoute({
   }
 
   return (
-    <main className="min-h-screen w-full">
+    <main className="min-h-screen w-full px-4 py-36">
       <ToolDetailsPage tool={toolDetails} />
     </main>
   )

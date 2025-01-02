@@ -38,7 +38,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
   const totalLines = Object.values(languages).reduce((a, b) => a + b, 0)
 
   return (
-    <div className="px-1 pb-8 pt-16 text-gray-100 md:pb-20 lg:px-72 lg:pt-8">
+    <div className="px-1 pb-8 pt-16 text-neutral-100 md:pb-20 lg:px-72 lg:pt-8">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex flex-col gap-2">
           <div className="flex items-center gap-4 rounded-lg">
@@ -52,7 +52,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             </div>
           </div>
           <div>
-            <p className=" pb-1 text-gray-300">{tool.headline}</p>
+            <p className=" pb-1 text-neutral-300">{tool.headline}</p>
             <div className="grid grid-cols-1 gap-6 pt-10 md:grid-cols-2">
               <div>
                 <h3 className="mb-2 flex items-center text-lg font-semibold">
@@ -64,7 +64,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                     <Badge
                       key={category}
                       variant="outline"
-                      className="cursor-pointer bg-[#141414] text-sm text-gray-300 opacity-80 hover:bg-[#141414] hover:opacity-100"
+                      className="cursor-pointer bg-[#141414] text-sm text-neutral-300 opacity-80 hover:bg-[#141414] hover:opacity-100"
                     >
                       {category}
                     </Badge>
@@ -81,7 +81,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                     <Badge
                       key={tag}
                       variant="secondary"
-                      className="cursor-pointer border-gray-600 text-sm text-gray-300 hover:bg-[#141414]"
+                      className="cursor-pointer border-neutral-600 text-sm text-neutral-300 hover:bg-[#141414]"
                     >
                       {tag}
                     </Badge>
@@ -92,7 +92,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
         </div>
 
-        <div className=" top-0 flex flex-col gap-3 bg-black py-4 md:sticky">
+        <div className=" top-0 flex flex-col gap-3 bg-neutral-950 py-4 md:sticky">
           <div>
             <h2 className="pb-1 text-2xl">Repository Details:</h2>
           </div>
@@ -106,7 +106,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                   }}
                 />
                 <span className="text-xs">{lang}</span>
-                <span className="ml-1 text-xs text-gray-400">
+                <span className="ml-1 text-xs text-neutral-400">
                   {((lines / totalLines) * 100).toFixed(1)}%
                 </span>
               </div>
@@ -116,7 +116,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             <div className="flex items-center rounded border border-white/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <Star className="mr-3 size-8 text-yellow-500" />
               <div>
-                <p className="text-sm text-gray-400">Stars</p>
+                <p className="text-sm text-neutral-400">Stars</p>
                 <p className="text-xl font-semibold">
                   {typeof tool.stars === "number"
                     ? tool.stars.toLocaleString()
@@ -127,7 +127,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             <div className="flex items-center rounded border border-white/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <GitFork className="mr-3 size-8 text-blue-500" />
               <div>
-                <p className="text-sm text-gray-400">Forks</p>
+                <p className="text-sm text-neutral-400">Forks</p>
                 <p className="text-xl font-semibold">
                   {typeof tool.forks === "number"
                     ? tool.forks.toLocaleString()
@@ -138,7 +138,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             <div className="flex items-center rounded border border-white/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <Clock className="mr-3 size-8 text-green-500" />
               <div>
-                <p className="text-sm text-gray-400">Last Commited</p>
+                <p className="text-sm text-neutral-400">Last Commited</p>
                 <p className="text-xl font-semibold">
                   {tool.lastUpdated
                     ? new Date(tool.lastUpdated).toLocaleDateString("en-US", {
@@ -153,14 +153,14 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
           {/* <div className="flex flex-col md:flex-row gap-2 md:gap-6 mb-8">
             <Link href={tool.githubUrl}>
-              <div className="flex items-center text-gray-400 hover:text-gray-300 text-sm ">
+              <div className="flex items-center text-neutral-400 hover:text-neutral-300 text-sm ">
                 <Github className="w-4 h-4 mr-2" />
                 View on GitHub
               </div>
             </Link>
             {tool.websiteUrl && (
               <Link href={tool.websiteUrl}>
-                <div className="flex items-center text-gray-400 hover:text-gray-300 text-sm ">
+                <div className="flex items-center text-neutral-400 hover:text-neutral-300 text-sm ">
                   <ExternalLink className="w-4 h-4 mr-2" />
                   Visit Website
                 </div>
@@ -168,7 +168,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             )}
             {tool.documentation && (
               <Link href={tool.documentation}>
-                <div className="flex items-center text-gray-400 hover:text-gray-300 text-sm ">
+                <div className="flex items-center text-neutral-400 hover:text-neutral-300 text-sm ">
                   <Book className="w-4 h-4 mr-2" />
                   Documentation
                 </div>
@@ -181,7 +181,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             <h2 className="mb-2 text-2xl font-bold md:text-3xl">
               About {tool.name}
             </h2>
-            <p className="mb-6 text-justify text-sm text-gray-300 md:text-base">
+            <p className="mb-6 text-justify text-sm text-neutral-300 md:text-base">
               {tool.description}
             </p>
             <div className="pt-10">
@@ -201,7 +201,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               {tool.features.map((feature, index) => (
                 <li
                   key={index}
-                  className="flex items-center gap-2 text-gray-300"
+                  className="flex items-center gap-2 text-neutral-300"
                 >
                   <Code className="text-green-400" size={20} />
                   <span>{feature}</span>
@@ -212,7 +212,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           <div className="flex items-center justify-center">
             <div className="mb-8 flex flex-col gap-2 md:flex-row md:gap-6">
               <Link href={tool.githubUrl}>
-                <div className="rounded-[5px] bg-gray-800/50 p-2 text-gray-200 hover:bg-gray-700/50">
+                <div className="rounded-[5px] bg-neutral-950/50 p-2 text-neutral-200 hover:bg-neutral-700/50">
                   <div className="flex items-center  text-sm ">
                     <Github className="mr-2 size-4" />
                     View on GitHub

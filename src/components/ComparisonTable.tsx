@@ -31,8 +31,8 @@ export function ComparisonTable({
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full overflow-hidden rounded-lg bg-white shadow-md dark:bg-gray-800">
-        <thead className="bg-gray-200 dark:bg-gray-700">
+      <table className="min-w-full overflow-hidden rounded-lg bg-white shadow-md dark:bg-neutral-950">
+        <thead className="bg-neutral-200 dark:bg-neutral-700">
           <tr>
             <th className="px-4 py-2">Feature</th>
             <th className="px-4 py-2">{tool1Name}</th>

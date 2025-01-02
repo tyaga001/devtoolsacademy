@@ -92,29 +92,29 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black backdrop-blur-sm bg-opacity-20 overflow-y-auto h-full w-full flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black z-50 backdrop-blur-sm bg-opacity-20 overflow-y-auto h-full w-full flex items-center justify-center p-4"
         >
             <motion.div
-                className="bg-[#18181a] rounded-xl border-[1px] border-white/30 w-full max-w-4xl mx-auto shadow-md shadow-neutral-400/30 overflow-hidden"
+                className="bg-[#18181a] rounded-xl  border-[1px] border-white/30 w-full max-w-4xl mx-auto shadow-md shadow-neutral-400/30 overflow-hidden"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
             >
                 <div className="flex justify-between items-center bg-[#09090b] p-4 border-b-[1px] border-white/20 shadow-lg shadow-black">
-                    <h2 className="text-3xl font-sans font-medium  flex-1 flex justify-center items-center gap-4 text-center  text-[#eaeaea]">Chat about the Blog <ChatBubbleLeftIcon className='w-7 h-7'></ChatBubbleLeftIcon></h2>
+                    <h2 className="text-xl md:text-3xl font-sans font-medium  flex-1 flex justify-center items-center gap-4 text-center  text-[#eaeaea]">Chat about the Blog <ChatBubbleLeftIcon className='w-7 h-7'></ChatBubbleLeftIcon></h2>
                     <button onClick={onClose} className="text-gray-300 hover:text-white">
                         <X size={24} />
                     </button>
                 </div>
-                <div className="ChatArea h-[400px] overflow-y-auto p-6 px-8 space-y-4 ">
+                <div className="ChatArea h-[400px] overflow-y-auto p-4 md:p-6 md:px-8 space-y-4 ">
                     <AnimatePresence>
                         {messages.length == 0 ? <ChatSuggestions title={blogTitle} description={blogDescription} handleSend={handleSend}></ChatSuggestions > : messages.map((msg, index) => (
                             <motion.div key={index}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }} className='flex flex-col  gap-4 '>
-                                <div className='flex gap-4 items-start'>
-                                    <div className='min-w-12 min-h-12 border shadow-lg border-white/40 shadow-black flex items-center justify-center rounded-full bg-black'>
-                                        {msg.role === "human" ? <User></User> : <BotIcon></BotIcon>}
+                                <div className='flex flex-col md:flex-row gap-4 items-start'>
+                                    <div className='min-w-9 min-h-9 md:min-w-12 md:min-h-12 border shadow-lg border-white/40 shadow-black flex items-center justify-center text-white bg-black rounded-full '>
+                                        {msg.role === "human" ? <User className='text-white'></User> : <BotIcon></BotIcon>}
                                     </div>
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
@@ -122,7 +122,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
                                         exit={{ opacity: 0, y: -20 }}
                                         className={`flex ${msg.role === 'human' ? 'justify-end' : 'justify-start'}`}
                                     >
-                                        <div className={`max-w-full text-[16px] leading-relaxed tracking-wide shadow-lg shadow-black px-5 py-4 rounded-xl ${msg.role === 'human' ? 'bg-white/80 text-black/80' : 'bg-[#09090b] text-gray-200'
+                                        <div className={`max-w-full text-[16px] md:leading-relaxed md:tracking-wide shadow-lg shadow-black px-3 md:px-5 py-4 rounded-xl ${msg.role === 'human' ? 'bg-white/80 text-black/80' : 'bg-[#09090b] text-gray-200'
                                             }`}
                                         >
                                             {msg.role === 'human' ? (
@@ -145,9 +145,9 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({ blogContent, blog
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            className="flex justify-start items-start gap-4"
+                            className="flex flex-col md:flex-row justify-start items-start gap-4"
                         >
-                            <div className='min-w-12 min-h-12 border border-white flex items-center justify-center rounded-full bg-black'>
+                            <div className='min-w-9 min-h-9 md:min-w-12 md:min-h-12 border border-white flex items-center justify-center rounded-full text-white bg-black'>
                                 <BotIcon></BotIcon>
                             </div>
                             <div className="bg-[#09090b] shadow-lg shadow-black text-gray-200 p-3 rounded-[13px] flex items-center space-x-2">

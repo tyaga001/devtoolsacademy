@@ -36,7 +36,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, excerpt, image, slug }) => {
         </div>
         <div className="p-6">
           <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-          <p className="mb-4 text-gray-600">{excerpt}</p>
+          <p className="mb-4 text-neutral-600">{excerpt}</p>
           <span
             className="font-semibold text-purple-700 hover:underline"
             tabIndex={0}

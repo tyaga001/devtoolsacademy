@@ -4,11 +4,11 @@ import React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
-const Hero: React.FC = () => {
-  const productHuntBadgeHtml = `<a href="https://www.producthunt.com/posts/dev-tools-academy?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-dev&#0045;tools&#0045;academy" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=493913&theme=light" alt="Dev&#0032;Tools&#0032;Academy - A&#0032;special&#0032;blog&#0032;made&#0032;for&#0032;Developers&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>`
+const productHuntBadgeHtml = `<a href="https://www.producthunt.com/posts/dev-tools-academy?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-dev&#0045;tools&#0045;academy" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=493913&theme=light" alt="Dev&#0032;Tools&#0032;Academy - A&#0032;special&#0032;blog&#0032;made&#0032;for&#0032;Developers&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>`
 
+const Hero: React.FC = () => {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black py-20">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black to-pink-900/20" />
       <div className="absolute inset-0 opacity-50">
         {[...Array(50)].map((_, i) => (
@@ -25,12 +25,12 @@ const Hero: React.FC = () => {
         ))}
       </div>
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-center px-4 text-center text-white">
-        <div className="mb-6 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+        <div className="mb-6 flex flex-col items-center justify-center gap-2 md:flex-row">
           <a
             href="https://news.ycombinator.com/item?id=41223327#41246861"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 rounded-full bg-[#ff7600] px-4 py-2 text-sm font-bold text-white shadow-md transition-colors duration-300 hover:bg-[#ff9933] hover:shadow-lg"
+            className="flex h-[40px] items-center gap-1.5 rounded-lg bg-[#ff7600] px-3 text-sm font-bold text-white shadow-md transition-colors duration-300 hover:bg-[#ff9933] hover:shadow-lg md:h-12"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,20 +42,23 @@ const Hero: React.FC = () => {
             </svg>
             <span>Featured on Hacker News</span>
           </a>
-          <div dangerouslySetInnerHTML={{ __html: productHuntBadgeHtml }} />
+          <div
+            className="scale-75 md:scale-90"
+            dangerouslySetInnerHTML={{ __html: productHuntBadgeHtml }}
+          />
         </div>
         <h1
-          className="mb-8 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-6xl font-extrabold leading-tight text-transparent md:text-8xl"
+          className="mb-8 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-5xl font-extrabold leading-tight text-transparent md:text-8xl"
           style={{ textShadow: "0 0 20px rgba(168, 85, 247, 0.5)" }}
         >
           A special blog made for Developers.
         </h1>
-        <p className="mb-12 max-w-3xl text-2xl text-gray-300 md:text-3xl">
+        <p className="mb-12 max-w-3xl text-xl text-neutral-300 md:text-3xl">
           Honest reviews to help you choose the right developer tool for your
           SaaS.
         </p>
         <Link href="/blog" passHref>
-          <Button className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-10 py-4 text-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg">
+          <Button className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-10 py-6 text-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg">
             Start Reading
           </Button>
         </Link>

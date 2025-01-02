@@ -10,7 +10,7 @@ const ToolNotFound = () => {
         </div>
         <h1 className="text-2xl font-bold md:text-4xl">Tool Not Found</h1>
       </div>
-      <p className="text-gray-600">
+      <p className="text-neutral-600">
         We could not find the tool you are looking for. It might have been moved
         or does not exist.
       </p>
