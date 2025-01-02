@@ -17,7 +17,6 @@ export interface ToolCardInterface {
   updatedAt?: Date | undefined
 }
 
-
 export interface ToolDetailsInterface {
   id?: string
   name: string

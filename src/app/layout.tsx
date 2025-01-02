@@ -1,20 +1,23 @@
-import React from 'react';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
-import { Analytics } from '@vercel/analytics/react';
-import { ClerkProvider } from '@clerk/nextjs';
-import Navbar from '@/components/Navbar';
-import { SocialMetadata } from '@/components/SocialMetadata';
-import './globals.css';
-import 'highlight.js/styles/github-dark.css';
-import { Metadata } from 'next';
-import Script from 'next/script'
+import React from "react"
+import type { Metadata, Viewport } from "next"
+import Script from "next/script"
+import { Inter, JetBrains_Mono } from "next/font/google"
+
+import { Analytics } from "@vercel/analytics/react"
+import { ClerkProvider } from "@clerk/nextjs"
+
+import Navbar from "@/components/Navbar"
+import { SocialMetadata } from "@/components/SocialMetadata"
+import { cn } from "@/lib/utils"
+
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: 'Dev Tools Academy',
-    template: '%s | Dev Tools Academy',
+    default: "Dev Tools Academy",
+    template: "%s | Dev Tools Academy",
   },
+<<<<<<< HEAD
   description: 'Learn about awesome developer tools',
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}` ),
   openGraph: {
@@ -32,46 +35,75 @@ export const metadata: Metadata = {
         alt: 'Dev Tools Academ',
       },
     ],
+=======
+  description: "Learn about awesome developer tools",
+  metadataBase: new URL("https://devtoolsacademy.com"),
+  openGraph: {
+    title: "Dev Tools Academy",
+    description: "Learn about awesome developer tools",
+    url: "https://devtoolsacademy.com",
+    siteName: "Dev Tools Academy",
+    locale: "en_US",
+    type: "website",
+>>>>>>> f24944691ae35bbc483ec81bca00c4d84b9553d1
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Dev Tools Academy',
-    description: 'Learn about awesome developer tools',
+    card: "summary_large_image",
+    title: "Dev Tools Academy",
+    description: "Learn about awesome developer tools",
   },
   icons: [
     {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '32x32',
-      url: '/favicon.png',
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      url: "/favicon.png",
     },
   ],
-};
-
-interface RootLayoutProps {
-  children: React.ReactNode;
 }
 
-function getTitle(title: Metadata['title']): string {
-  if (typeof title === 'string') {
-    return title;
-  } else if (title && typeof title === 'object' && 'default' in title) {
-    return title.default;
+const sansFont = Inter({
+  variable: "--sans-font",
+  subsets: ["latin"],
+})
+
+const monoFont = JetBrains_Mono({
+  variable: "--mono-font",
+  subsets: ["latin"],
+})
+
+export const viewport: Viewport = {
+  themeColor: "#0A0A0A",
+}
+
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
+function getTitle(title: Metadata["title"]): string {
+  if (typeof title === "string") {
+    return title
+  } else if (title && typeof title === "object" && "default" in title) {
+    return title.default
   }
-  return 'Dev Tools Academy';
+  return "Dev Tools Academy"
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const title = getTitle(metadata.title);
+  const title = getTitle(metadata.title)
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <SocialMetadata
           title={title}
-          description={metadata.description ?? 'Learn about awesome developer tools'}
-          url={metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}
-          image={`${metadata.metadataBase?.toString() ?? 'https://devtoolsacademy.com'}/favicon.png`}
+          description={
+            metadata.description ?? "Learn about awesome developer tools"
+          }
+          url={
+            metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"
+          }
+          image={`${metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"}/favicon.png`}
           type="website"
         />
         <Script
@@ -80,17 +112,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
           strategy="afterInteractive"
         />
       </head>
-      <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
+      <body
+        className={cn(
+          sansFont.variable,
+          monoFont.variable,
+          "font-sans antialiased bg-neutral-950"
+        )}
+      >
         <ClerkProvider>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-              {children}
-            </main>
-          </div>
+          <Navbar />
+          {children}
         </ClerkProvider>
         <Analytics />
       </body>
     </html>
-  );
+  )
 }

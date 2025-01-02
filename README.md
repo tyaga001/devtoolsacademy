@@ -8,12 +8,12 @@
 
 ![Neon vs Supabase](public/images/img_4.png)
 
-| Blog Post | Featured On | Description                                                                     |
-| --- | --- |---------------------------------------------------------------------------------|
-| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase) | Hacker News | Made it to the second page of Hacker News                                       |
-| [Serverless Databases](https://www.devtoolsacademy.com/blog/state-of-databases-2024) | Hashnode | Featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases) |
+| Blog Post                                                                            | Featured On      | Description                                                                     |
+| ------------------------------------------------------------------------------------ | ---------------- | ------------------------------------------------------------------------------- |
+| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase)  | Hacker News      | Made it to the second page of Hacker News                                       |
+| [Serverless Databases](https://www.devtoolsacademy.com/blog/state-of-databases-2024) | Hashnode         | Featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases) |
 | [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL?                           |
-| [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk) | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
+| [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)    | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
 
 ## 🚀 Quick Start
 
@@ -59,9 +59,11 @@ Have questions or suggestions? Open an issue or reach out to me at [hello@theank
 ## 📄 License
 
 This project is licensed under the Creative Commons License - see the [LICENSE](LICENSE) file for details.
+
 - You are free to use this code as inspiration.
 - Please do not copy it directly.
 - Crediting the author is appreciated.
+
 ---
 
 Let's build the go-to resource for developer tool space, together 🚀
