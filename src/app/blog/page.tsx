@@ -1,33 +1,35 @@
-import Link from 'next/link'
-import { getAllPosts } from '@/lib/posts'
-import { Metadata } from 'next'
+import Link from "next/link"
+
+import { getAllPosts } from "@/lib/posts"
+import { formatDate } from "@/lib/utils"
+import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: 'Blogs | Dev Tools Academy',
-  description: 'A special blog made for Developers.',
+  title: "Blogs | Dev Tools Academy",
+  description: "A special blog made for Developers.",
   openGraph: {
-    title: 'Blogs | Dev Tools Academy',
-    description: 'A special blog made for Developers.',
+    title: "Blogs | Dev Tools Academy",
+    description: "A special blog made for Developers.",
     url: process.env.NEXT_PUBLIC_BASE_URL,
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=Blogs%20|%20DevToolsAcademy`,
         width: 1200,
         height: 639,
-        alt: 'DevToolsAcademy',
+        alt: "DevToolsAcademy",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Blogs | Dev Tools Academy',
-    description: 'A special blog made for Developers.',
+    card: "summary_large_image",
+    title: "Blogs | Dev Tools Academy",
+    description: "A special blog made for Developers.",
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=Blogs%20|%20DevToolsAcademy`,
         width: 1200,
         height: 639,
-        alt: 'DevToolsAcademy',
+        alt: "DevToolsAcademy",
       },
     ],
   },
@@ -37,24 +39,31 @@ export default async function BlogPage() {
   const posts = await getAllPosts()
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Blog Posts</h1>
-      <ul className="space-y-4">
+    <div className="mx-auto max-w-4xl px-4 py-36">
+      <h1 className="mb-8 text-3xl font-bold tracking-tighter text-neutral-200 md:mb-20 md:text-5xl">
+        Blog Posts
+      </h1>
+      <div className="-mx-3 flex flex-col">
         {posts.map((post) => (
-          <li key={post.slug} className="border-b pb-4">
+          <>
             <Link
               href={`/blog/${post.slug}`}
-              className="text-2xl font-semibold hover:underline"
+              key={post.slug}
+              className="rounded-lg p-4 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
             >
-              {post.title}
+              <p className="mb-1 text-xl font-semibold tracking-tight text-neutral-300 md:text-2xl">
+                {post.title}
+              </p>
+              <p className="mb-2.5 text-sm text-neutral-500 md:text-base">
+                {post.summary}
+              </p>
+              <p className="text-xs text-neutral-500 md:text-sm">
+                {formatDate(new Date(post.publishedAt))} • {post.views} views
+              </p>
             </Link>
-            <p className="text-gray-500">
-              {post.publishedAt} • {post.views} views
-            </p>
-            <p>{post.summary}</p>
-          </li>
+          </>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }

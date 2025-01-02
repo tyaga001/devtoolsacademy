@@ -1,24 +1,28 @@
-'use client';
+"use client"
 
-import React, { useEffect, useRef } from 'react';
-import mermaid from 'mermaid';
+import React, { useEffect, useRef } from "react"
+import mermaid from "mermaid"
 
 mermaid.initialize({
-    startOnLoad: true,
-    theme: 'default',
-    securityLevel: 'loose',
-});
+  startOnLoad: true,
+  theme: "default",
+  securityLevel: "loose",
+})
 
 const SimplifiedMermaidDiagram = ({ chartContent }) => {
-    const ref = useRef(null);
+  const ref = useRef(null)
 
-    useEffect(() => {
-        if (ref.current) {
-            mermaid.contentLoaded();
-        }
-    }, [chartContent]);
+  useEffect(() => {
+    if (ref.current) {
+      mermaid.contentLoaded()
+    }
+  }, [chartContent])
 
-    return <div className="mermaid" ref={ref}>{chartContent}</div>;
-};
+  return (
+    <div className="mermaid" ref={ref}>
+      {chartContent}
+    </div>
+  )
+}
 
-export default SimplifiedMermaidDiagram;
+export default SimplifiedMermaidDiagram

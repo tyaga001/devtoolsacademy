@@ -3,15 +3,8 @@
     "name": "Neon",
     "headline": "The database you love, on a serverless platform designed to help you build reliable and scalable applications faster.",
     "description": "Neon is an open-source database company. Our mission is to take everything that developers love about Postgres — reliability, performance, extensibility — and deliver it as a serverless product that helps teams confidently ship reliable and scalable applications faster than ever before. eon is open-source and we chose the most permissive open-source license, Apache 2.0, and invited the world to participate. You can build and run your own self-hosted instance of Neon. Focus on building applications with time and money-saving features like instant provisioning, autoscaling according to load, and scale to zero. Instantly branch your data and schema to access isolated DB copies for development, CI/CD, and schema migrations with copy-on-write storage.",
-    "categories": [
-      "open-source",
-      "database"
-    ],
-    "tags": [
-      "postgres",
-      "serverless",
-      "api"
-    ],
+    "categories": ["open-source", "database"],
+    "tags": ["postgres", "serverless", "api"],
     "features": [
       "Launch databases in milliseconds with no setup delays",
       "Automatically adjust resources for peak performance",
@@ -47,14 +40,8 @@
       "Seamless data migrations",
       "Server-side Row-Level Security"
     ],
-    "categories": [
-      "open-source",
-      "backend"
-    ],
-    "tags": [
-      "postgreSQL",
-      "cloud-native"
-    ],
+    "categories": ["open-source", "backend"],
+    "tags": ["postgreSQL", "cloud-native"],
     "stars": 4900,
     "forks": "7300",
     "githubUrl": "https://github.com/supabase/supabase",
@@ -77,15 +64,8 @@
       "Flexible service configurations",
       "Simplified infrastructure management"
     ],
-    "categories": [
-      "open-source",
-      "devops"
-    ],
-    "tags": [
-      "postgreSQL",
-      "devops",
-      "redis"
-    ],
+    "categories": ["open-source", "devops"],
+    "tags": ["postgreSQL", "devops", "redis"],
     "stars": 129,
     "forks": 70,
     "githubUrl": "https://github.com/aiven",
@@ -108,14 +88,8 @@
       "Scalable and extensible AI platform",
       "Simplify AI deployment for businesses"
     ],
-    "categories": [
-      "open-source",
-      "ai"
-    ],
-    "tags": [
-      "postgreSQL",
-      "AutoML"
-    ],
+    "categories": ["open-source", "ai"],
+    "tags": ["postgreSQL", "AutoML"],
     "stars": 26900,
     "forks": 4900,
     "githubUrl": "https://github.com/mindsdb/mindsdb",
@@ -138,13 +112,8 @@
       "Designed for IoT and edge environments",
       "Built-in support for SQL and NoSQL"
     ],
-    "categories": [
-      "backend"
-    ],
-    "tags": [
-      "NoSQL",
-      "api"
-    ],
+    "categories": ["backend"],
+    "tags": ["NoSQL", "api"],
     "stars": 10,
     "forks": 661,
     "githubUrl": "https://github.com/HarperDB",
@@ -167,14 +136,8 @@
       "SOC 2 Type 2 and CCPA compliance",
       "Regular security audits for robust protection"
     ],
-    "categories": [
-      "authentication",
-      "tools"
-    ],
-    "tags": [
-      "api",
-      "authentication"
-    ],
+    "categories": ["authentication", "tools"],
+    "tags": ["api", "authentication"],
     "stars": 1200,
     "forks": 279,
     "githubUrl": "https://github.com/clerk",
@@ -196,13 +159,8 @@
       "Remote Config for feature personalization",
       "Cloud Messaging for reliable notifications"
     ],
-    "categories": [
-      "backend",
-      "cloud"
-    ],
-    "tags": [
-      "NoSQL"
-    ],
+    "categories": ["backend", "cloud"],
+    "tags": ["NoSQL"],
     "stars": 8900,
     "forks": 7300,
     "githubUrl": "https://github.com/firebase",
@@ -221,11 +179,7 @@
       "Unified messaging across push, email, and SMS",
       "React to events with Realtime API and permissions"
     ],
-    "tags": [
-      "backend",
-      "cloud",
-      "authentication"
-    ],
+    "tags": ["backend", "cloud", "authentication"],
     "stars": 45900,
     "forks": 4100,
     "githubUrl": "https://github.com/appwrite/appwrite",
@@ -248,13 +202,8 @@
       "Enterprise-grade security and compliance",
       "High availability with 99.97% uptime"
     ],
-    "categories": [
-      "cloud"
-    ],
-    "tags": [
-      "GraphQL",
-      "api"
-    ],
+    "categories": ["cloud"],
+    "tags": ["GraphQL", "api"],
     "stars": 614,
     "forks": 158,
     "githubUrl": "https://github.com/hygraph/hygraph-examples",
@@ -275,14 +224,8 @@
       "GraphQL-native metrics for diagnostics",
       "Export metrics to DataDog or OpenTelemetry"
     ],
-    "categories": [
-      "api",
-      "backend"
-    ],
-    "tags": [
-      "GraphQL",
-      "api"
-    ],
+    "categories": ["api", "backend"],
+    "tags": ["GraphQL", "api"],
     "stars": 19400,
     "forks": 2700,
     "githubUrl": "https://github.com/apollographql/apollo-client",
@@ -303,13 +246,8 @@
       "Daily backups for data safety",
       "Technical support and updates"
     ],
-    "categories": [
-      "api",
-      "tools"
-    ],
-    "tags": [
-      "api"
-    ],
+    "categories": ["api", "tools"],
+    "tags": ["api"],
     "stars": 100,
     "forks": 100,
     "githubUrl": "https://github.com/OneEntry",
@@ -334,15 +272,8 @@
       "Instant updates via Content Lake",
       "Secure and optimized for teams"
     ],
-    "categories": [
-      "cloud",
-      "api",
-      "tools"
-    ],
-    "tags": [
-      "api",
-      "CMS"
-    ],
+    "categories": ["cloud", "api", "tools"],
+    "tags": ["api", "CMS"],
     "stars": 5400,
     "forks": 432,
     "githubUrl": "https://github.com/sanity-io/sanity",
@@ -365,14 +296,8 @@
       "Secure API access with JWT authentication",
       "Built-in emailing with default SMTP server"
     ],
-    "categories": [
-      "open-source",
-      "api"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["open-source", "api"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 64200,
     "forks": 8200,
     "githubUrl": "https://github.com/strapi/strapi/",
@@ -397,14 +322,8 @@
       "Permission controls for secure collaboration",
       "Mobile app for on-the-go data management"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 2000,
     "forks": 407,
     "githubUrl": "https://github.com/Airtable/airtable.js",
@@ -427,14 +346,8 @@
       "No-sales talk required for large-scale use",
       "Enables businesses to control all data"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 50200,
     "forks": 3500,
     "githubUrl": "https://github.com/nocodb/nocodb",
@@ -458,14 +371,8 @@
       "Protect data with role-based access",
       "Track changes with audit logs"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 34900,
     "forks": 3800,
     "githubUrl": "https://github.com/appsmithorg/appsmith",
@@ -490,14 +397,8 @@
       "Funnel analysis to optimize conversions",
       "Invite team members with customizable roles"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 20800,
     "forks": 1100,
     "githubUrl": "https://github.com/plausible/analytics",
@@ -517,14 +418,8 @@
       "Basic site metrics with web analytics",
       "Open-source with self-hosting options"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 22600,
     "forks": 1400,
     "githubUrl": "https://github.com/posthog/posthog",
@@ -545,14 +440,8 @@
       "Independent, customer-focused small team",
       "Developer-friendly API for easy integration"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 7700,
     "forks": 372,
     "githubUrl": "https://github.com/usefathom/fathom",
@@ -577,14 +466,8 @@
       "Built-in security and SOC 2.",
       "Monitor with a comprehensive dashboard"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 3600,
     "forks": 296,
     "githubUrl": "https://github.com/liveblocks/liveblocks",
@@ -609,14 +492,8 @@
       "Scalable solutions for voice and video processing",
       "Secure, customizable, and extensible ecosystem"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 10800,
     "forks": 918,
     "githubUrl": "https://github.com/livekit/livekit",
@@ -638,14 +515,8 @@
       "Recurring booking options",
       "Flexible event types with detailed settings"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 33000,
     "forks": 8200,
     "githubUrl": "https://github.com/calcom/cal.com",
@@ -668,14 +539,8 @@
       "Mobile-optimized for responsive experiences",
       "Create personalized, branded forms easily"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 289,
     "forks": 122,
     "githubUrl": "https://github.com/Typeform",
@@ -696,14 +561,8 @@
       "Open-source and developer-friendly",
       "Seamless feedback collection across platforms"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 9400,
     "forks": 1700,
     "githubUrl": "https://github.com/formbricks/formbricks",
@@ -726,14 +585,8 @@
       "Keep typebots organized by client",
       "Customize forms with powerful code options"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 7700,
     "forks": 2200,
     "githubUrl": "https://github.com/baptisteArno/typebot.io",
@@ -756,14 +609,8 @@
       "Real-time inventory management",
       "Scalable architecture for growth"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 26400,
     "forks": 2700,
     "githubUrl": "https://github.com/medusajs/medusa",
@@ -786,14 +633,8 @@
       "Multiple sales channels integration",
       "Analytics and reporting features"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 18100,
     "forks": 1100,
     "githubUrl": "https://github.com/Shopify",
@@ -815,14 +656,8 @@
       "Transactional and marketing email delivery",
       "Secure account management with authentication"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 1900,
     "forks": 715,
     "githubUrl": "https://github.com/twilio/",
@@ -846,14 +681,8 @@
       "Accelerate development with ready-to-use tools",
       "Deliver high-performance services to millions"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 8900,
     "forks": 636,
     "githubUrl": "https://github.com/GetStream/",
@@ -878,14 +707,8 @@
       "Support automatic schema evolution and out-of-order processing",
       "Process real-time data streams with high efficiency"
     ],
-    "categories": [
-      "ai",
-      "tools"
-    ],
-    "tags": [
-      "GraphQL",
-      "CMS"
-    ],
+    "categories": ["ai", "tools"],
+    "tags": ["GraphQL", "CMS"],
     "stars": 7100,
     "forks": 589,
     "githubUrl": "https://github.com/risingwavelabs/risingwave",

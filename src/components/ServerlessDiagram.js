@@ -1,12 +1,15 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
+import React from "react"
+import dynamic from "next/dynamic"
 
-const SimplifiedMermaidDiagram = dynamic(() => import('./SimplifiedMermaidDiagram'), {
+const SimplifiedMermaidDiagram = dynamic(
+  () => import("./SimplifiedMermaidDiagram"),
+  {
     ssr: false,
-});
+  }
+)
 
 const ServerlessDiagram = () => {
-    const chartContent = `
+  const chartContent = `
 graph TD
     A[Client] -->|HTTP Request| B(API Gateway)
     B -->|Trigger| C{Serverless Functions}
@@ -18,9 +21,9 @@ graph TD
     I[Authentication] -->|Secure| B
     J[CDN] -->|Cache| A
     K[Event Queue] -->|Trigger| C
-  `;
+  `
 
-    return <SimplifiedMermaidDiagram chartContent={chartContent} />;
-};
+  return <SimplifiedMermaidDiagram chartContent={chartContent} />
+}
 
-export default ServerlessDiagram;
+export default ServerlessDiagram

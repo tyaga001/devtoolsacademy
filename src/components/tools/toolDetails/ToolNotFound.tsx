@@ -3,23 +3,24 @@ import Link from "next/link"
 
 const ToolNotFound = () => {
   return (
-    <div className="flex flex-col gap-3 items-center justify-center min-h-[50vh] text-center px-4">
+    <div className="flex min-h-[50vh] flex-col items-center justify-center gap-3 px-4 text-center">
       <div className="flex h-full items-center justify-center gap-3">
-        <div className=" flex p-2 items-center justify-center rounded-full bg-sky-800">
+        <div className=" flex items-center justify-center rounded-full bg-sky-800 p-2">
           <FrownIcon size={40} />
         </div>
-        <h1 className="text-2xl md:text-4xl font-bold">Tool Not Found</h1>
+        <h1 className="text-2xl font-bold md:text-4xl">Tool Not Found</h1>
       </div>
-      <p className="text-gray-600">
-        We could not find the tool you are looking for. It might have been moved or does not exist.
+      <p className="text-neutral-600">
+        We could not find the tool you are looking for. It might have been moved
+        or does not exist.
       </p>
       <Link
         href="/tools"
-        className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+        className="rounded-lg bg-primary px-6 py-2 text-white transition-colors hover:bg-primary/90"
       >
         Browse Tools
       </Link>
-    </div >
+    </div>
   )
 }
 export default ToolNotFound

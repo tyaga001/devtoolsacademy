@@ -4,11 +4,11 @@ seoTitle: Twilio vs Stream
 isPublished: true
 publishedAt: "2024-12-11T00:00:00Z"
 layout: Article
-summary: 'A comparison of Twilio and Stream for building automated customer support solutions'
+summary: "A comparison of Twilio and Stream for building automated customer support solutions"
 featuredImage: "/images/twilio-vs-stream.png"
 ---
-import Image from 'next/image'
 
+import Image from "next/image"
 
 When it comes to communication use cases, developers mostly think of WebRTC or [WebSockets](https://getstream.io/glossary/#websocket), but if you want to use some additional features in communication then most of the software folks go for [Twilio](https://getstream.io/blog/twilio-stream/).
 
@@ -33,7 +33,6 @@ Let’s get started.
 - Stream is mostly used for in-app chat use cases, use cases like [social apps](https://getstream.io/chat/solutions/social/) or [e-commerce](https://getstream.io/chat/solutions/marketplaces/), and [gaming](https://getstream.io/chat/solutions/gaming/) applications.
 - Twilio is good when it comes to a multi-modal communication API provider.
 
-
 ![twilio vs stream confusion](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2Fd6aa49d9-1c58-4640-b7c9-ec759d3cd190%2Fimage.png?table=block&id=144518a2-f962-80c6-94fa-db5f0d78bd62&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=860&userId=&cache=v2)
 
 ---
@@ -44,14 +43,12 @@ Let’s get started.
 
 > Stream is a wrapper on **distributed event-driven architecture** optimized for high scale and low latency. Its architecture design uses message queues and distributed data stores to manage high-throughput communication, ensuring real-time delivery and synchronization across users.
 
-
 **Tech Stack**:
 
 - **Backend:** Go as a programming language (microservices) with the GRPC protocol.
-- **Data Layer: Cassandra for the data storage and**
+- **Data Layer:** Cassandra for the data storage and\*\*
 - **Real time communication:** WebSockets for low-latency communication
 - **Event Streaming:** Uses Kafka for event propagation **across systems.**
-
 
 **Twilio Architecture:**
 
@@ -62,17 +59,15 @@ Let’s get started.
 **Tech Stack**
 
 - **Backend:** javascript (NodeJS) and java microservices.
-- **Data Layer: PostgreSQL as a database and ElasticSearch for analytics,
+- \*\*Data Layer: PostgreSQL as a database and ElasticSearch for analytics,
 - **Global Infra:** For low latency, Twilio utilizes its global infra and highly available services
-
 
 **Scalability**
 
 Stream handles millions of users, ideal for high-frequency use cases like chats and feeds.
 Twilio is very good in multi-channel use cases like call management.
 
-
-**Integrations  and Capabilities**
+**Integrations and Capabilities**
 
 ### **Stream**
 
@@ -120,78 +115,84 @@ Let’s make sure you have prerequisites:
 git clone https://github.com/TwilioDevEd/ipm-quickstart-node.git
 cd ipm-quickstart-node
 ```
-set up env variables 
-  
-  ```bash
-  cp .env.example .env
-  ```
 
-grap the variable from twilio
-  
+set up env variables
+
 ```bash
-      # WARNING: Never commit these credentials to version control
-      # Store them in a secure environment variable management system
-      TWILIO_ACCOUNT_SID=""
-      TWILIO_API_KEY=""
-      TWILIO_API_SECRET=""
+cp .env.example .env
 ```
 
+grab the variable from twilio
+
+```bash
+# WARNING: Never commit these credentials to version control
+# Store them in a secure environment variable management system
+TWILIO_ACCOUNT_SID=""
+TWILIO_API_KEY=""
+TWILIO_API_SECRET=""
+```
 
 When localtunnel is installed globally, just use the `lt` command to start the tunnel.
 
 **Configuring Twilio Sync**
 
-Twilio Sync works out of the box, using default settings per account. Once you have your API keys set, then after that execute `npm install; npm run start`
+Twilio Sync works out of the box, using default settings per account. Once you have your API keys set, then after that execute
+
+```bash
+npm install
+npm run start
+```
 
 **Twilio Chat** will handle the sending of chat messages from client to client. The product also has
 
 > **Webhook** notifications for when new messages in chat are sent. Using these webhooks user can control whether a message should be delivered or blocked. All this can be done simply by returning different HTTP status codes. Status code 200 (ok) means continue delivering this message and 403 (Forbidden) means block this message. (it’s kinda generic HTTP system)
-Before the user decides whether to block or move forward a message user will need to access the data that Twilio sends to our application. To do that user first need to parse it first by adding (body-parser) to the project using npm:
+> Before the user decides whether to block or move forward a message user will need to access the data that Twilio sends to our application. To do that user first need to parse it first by adding (body-parser) to the project using npm:
 
-
-```
+```bash
 npm install body-parser --save
 ```
 
 Once the package is installed, add it to`index.js`:
 
 ```javascript
-require('dotenv').load();
-var http = require('http');
-var path = require('path');
-var AccessToken = require('twilio').AccessToken;
-var IpMessagingGrant = AccessToken.IpMessagingGrant;
-var express = require('express');
-var bodyParser = require('body-parser');
-var randomUsername = require('./randos');
+require("dotenv").load()
+var http = require("http")
+var path = require("path")
+var AccessToken = require("twilio").AccessToken
+var IpMessagingGrant = AccessToken.IpMessagingGrant
+var express = require("express")
+var bodyParser = require("body-parser")
+var randomUsername = require("./randos")
 
 // Create Express webapp
-var app = express();
-app.use(express.static(path.join(__dirname, 'public')));
+var app = express()
+app.use(express.static(path.join(__dirname, "public")))
 
-app.use(bodyParser.json({})) 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.json({}))
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 ```
 
 ```javascript
-app.post('/message', function (req, res, next) {
-  console.dir(req.body, { depth: 1 });
-  res.sendStatus(200);
-});
+app.post("/message", function (req, res, next) {
+  console.dir(req.body, { depth: 1 })
+  res.sendStatus(200)
+})
 
 // Create http server and run it
-var server = http.createServer(app);
-var port = process.env.PORT || 3000;
-server.listen(port, function() {
-    console.log('Express server running on *:' + port);
-});
+var server = http.createServer(app)
+var port = process.env.PORT || 3000
+server.listen(port, function () {
+  console.log("Express server running on *:" + port)
+})
 ```
 
 setup the webhook endpoint with tunnel
 
-```powershell
+```bash
 npm install -g localtunnel
 ```
 
@@ -209,7 +210,7 @@ Next, we'll modify the route to intercept and prevent the delivery of messages s
 
 If we want to allow certain messages to go through, we can handle them accordingly.
 
-```powershell
+```javascript
 require('dotenv').load();
 var http = require('http');
 var path = require('path');
@@ -228,7 +229,7 @@ var botName = 'hello';
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.json({})) 
+app.use(bodyParser.json({}))
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -273,9 +274,11 @@ Let's use React for creating the customer support bot using Stream.
 
 so let’s start 🚀
 
-make sure you have installed `npm` 
+make sure you have installed `npm`
 
-`npx create-react-app getstream-bot`
+```bash
+npx create-react-app getstream-bot
+```
 
 > Get the stream API key
 
@@ -286,7 +289,7 @@ make sure you have installed `npm`
 
 Enough talking, let’s write the code.
 
-Open the Stream dashboard and copy the environment variables and  cloning the repo.
+Open the Stream dashboard and copy the environment variables and cloning the repo.
 
 ```bash
 git clone git@github.com:GetStream/chatbot-tutorial.git
@@ -299,6 +302,7 @@ cd chatbot-tutorial
 # WARNING: Never commit API keys to version control
 # Use environment variables in production
 REACT_APP_STREAM_API_KEY=replacewithyourstreamapikey
+```
 
 now run the project
 
@@ -316,6 +320,7 @@ LUIS_APP_ID=appid
 LUIS_SUBSCRIPTION_KEY=subscriptionkey
 LUIS_REGION=westus
 ```
+
 ---
 
 ## Key Differences
@@ -343,12 +348,14 @@ LUIS_REGION=westus
 ## Stream Pricing
 
 **Build Plan** (Free)
+
 - 100 MAU, 25 Concurrent Connections
 - All Chat features included
 - No credit card required
 - 30 days of free support
 
 **Start Plan** ($399/month, billed annually or $499 monthly)
+
 - 10,000 MAU, 500 Concurrent Connections
 - Advanced Moderation & Filters
 - Unlimited Message Retention
@@ -357,6 +364,7 @@ LUIS_REGION=westus
 - Data Export
 
 **Elevate Plan** ($599/month, billed annually or $675 monthly)
+
 - 10,000 MAU, 500 Concurrent Connections
 - Multi-Tenancy/Teams
 - Advanced Search
@@ -364,6 +372,7 @@ LUIS_REGION=westus
 - Message Translations
 
 **Enterprise Plan** (Custom pricing)
+
 - Scale to millions of users
 - AI Moderation
 - 99.999% SLA
@@ -380,21 +389,21 @@ For more details, visit the [Stream Pricing page](https://getstream.io/chat/pric
 ## Conclusion
 
 <Image
-    src="/images/img_66.png"
-    alt="Twilio V/S Stream"
-    width={1200}
-    height={600}
+  src="/images/img_66.png"
+  alt="Twilio V/S Stream"
+  width={1200}
+  height={600}
 />
 
 Both Twilio and Stream are good, but in their own ways.
 
-> Stream is an ideal choice for developers who are looking for in-app chat features. Stream's flexibility allows developers to manage the logic of the chatbot, providing developers greater control over the implementation. Stream's  SDKs and APIs make it a go-to solution for building seamless chat experiences directly within the app.
+> Stream is an ideal choice for developers who are looking for in-app chat features. Stream's flexibility allows developers to manage the logic of the chatbot, providing developers greater control over the implementation. Stream's SDKs and APIs make it a go-to solution for building seamless chat experiences directly within the app.
 
 > Twilio, on the other hand, is quite good at integrating third-party integrations like WhatsApp or pre-built NLP/chatbot solutions. But if you’re looking for a customizable, developer-friendly approach to in-app chat, Stream is undoubtedly the better choice.
 
 Thank you for reading.
 
-## Next Steps  
+## Next Steps
 
 Explore the source code and other resources below to dive deeper into building custom bots and chat solutions:
 
@@ -409,5 +418,3 @@ These repositories and guides provide a good foundation for integrating advanced
 Feel free to experiment, customize, and build solutions to meet your specific needs.
 
 Happy coding.
-
-
