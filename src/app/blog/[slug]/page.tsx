@@ -132,6 +132,7 @@ export default async function BlogPost({
       <BlogHeader
         slug={params.slug}
         title={post.title}
+        description={post.description}
         publishedAt={post.publishedAt}
         initialViews={initialViews}
         content={post.content}
