@@ -17,35 +17,15 @@ export const metadata: Metadata = {
     default: "Dev Tools Academy",
     template: "%s | Dev Tools Academy",
   },
-<<<<<<< HEAD
-  description: 'Learn about awesome developer tools',
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}` ),
-  openGraph: {
-    title: 'Dev Tools Academy',
-    description: 'Learn about awesome developer tools',
-    url: process.env.NEXT_PUBLIC_BASE_URL ?? 'https://devtoolsacademy.com',
-    siteName: 'Dev Tools Academy',
-    locale: 'en_US',
-    type: 'website',
-    images: [
-      {
-        url:`${process.env.NEXT_PUBLIC_BASE_URL}/og-image.png`,
-        width: 1200,
-        height: 639,
-        alt: 'Dev Tools Academ',
-      },
-    ],
-=======
   description: "Learn about awesome developer tools",
-  metadataBase: new URL("https://devtoolsacademy.com"),
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
   openGraph: {
     title: "Dev Tools Academy",
     description: "Learn about awesome developer tools",
-    url: "https://devtoolsacademy.com",
+    url: process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com",
     siteName: "Dev Tools Academy",
     locale: "en_US",
     type: "website",
->>>>>>> f24944691ae35bbc483ec81bca00c4d84b9553d1
   },
   twitter: {
     card: "summary_large_image",
@@ -103,7 +83,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           url={
             metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"
           }
-          image={`${metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"}/favicon.png`}
+          image={`${
+            metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"
+          }/favicon.png`}
           type="website"
         />
         <Script
