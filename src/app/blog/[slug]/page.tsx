@@ -20,6 +20,7 @@ import BackToTop from "@/components/BackToTop"
 import ScrollProgressBar from "@/components/ScrollProgressBar"
 import { cn } from "@/lib/utils"
 import { SocialMetadata } from "@/components/SocialMetadata"
+import { Metadata } from "next"
 
 const components: MDXComponents = {
   h1: (props: any) => <h1 {...props}>{props.children}</h1>,
@@ -103,6 +104,51 @@ const components: MDXComponents = {
 
 const baseUrl = "https://devtoolsacademy.com"
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug)
+  if (!post) {
+    return {}
+  }
+  const { title, featuredImage } = post
+  const ogImage = featuredImage
+    ? featuredImage
+    : `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=${post.title}`
+  return {
+    title: `${post.title} | Dev Tools Academy`,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/${post.slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "Dev Tools Academy",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+  }
+}
 export default async function BlogPost({
   params,
 }: {
