@@ -18,7 +18,9 @@ export const metadata: Metadata = {
     template: "%s | Dev Tools Academy",
   },
   description: "Learn about awesome developer tools",
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com"
+  ),
   openGraph: {
     title: "Dev Tools Academy",
     description: "Learn about awesome developer tools",
@@ -28,7 +30,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/og-image.png`,
+        url: `${
+          process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com"
+        }/og-image.png`,
         width: 1200,
         height: 639,
         alt: "Dev Tools Academ",

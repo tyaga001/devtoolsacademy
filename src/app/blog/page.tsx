@@ -10,10 +10,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blogs | Dev Tools Academy",
     description: "A special blog made for Developers.",
-    url: process.env.NEXT_PUBLIC_BASE_URL,
+    url: process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=Blogs%20|%20DevToolsAcademy`,
+        url: `${
+          process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com"
+        }/api/og?title=Blogs%20|%20DevToolsAcademy`,
         width: 1200,
         height: 639,
         alt: "DevToolsAcademy",
