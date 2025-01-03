@@ -26,6 +26,14 @@ export const metadata: Metadata = {
     siteName: "Dev Tools Academy",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/og-image.png`,
+        width: 1200,
+        height: 639,
+        alt: "Dev Tools Academ",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
