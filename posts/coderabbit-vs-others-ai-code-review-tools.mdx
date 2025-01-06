@@ -29,7 +29,7 @@ Before we explore the AI code review tools, let's see an overview of each AI too
 
 As developers, we all know how important it is to have multiple sets of eyes review our code to identify potential issues and bugs and address them early. However, the traditional code review process can be time-consuming, inefficient, and prone to human bias.
 
-With 15 years in tech and participating in many code reviews, I observed several pain points I shared in [Why is Doing Code Reviews Hard?](https://www.freecodecamp.org/news/how-to-perform-code-reviews-in-tech-the-painless-way/#heading-why-is-doing-code-reviews-hard)
+> With 15 years in tech and participating in many code reviews, I observed several pain points I shared in [Why is Doing Code Reviews Hard?](https://www.freecodecamp.org/news/how-to-perform-code-reviews-in-tech-the-painless-way/#heading-why-is-doing-code-reviews-hard)
 
 This is where AI-powered code review tools come in. The AI code review tools do not rely on human reviewers but use artificial intelligence to analyze your code and provide detailed feedback.
 
@@ -37,7 +37,14 @@ Let’s see the AI code review tools mentioned earlier one by one.
 
 ### **What is CodeRabbit?**
 
-[CodeRabbit](https://www.coderabbit.ai/) is an AI-powered code review tool that delivers context-aware feedback on pull requests within minutes. It reduces the time and effort needed for manual code reviews by providing a fresh perspective and catching issues that are often missed, enhancing the overall review quality.
+> [CodeRabbit](https://www.coderabbit.ai/) is an AI-powered code review tool that delivers context-aware feedback on pull requests within minutes. It reduces the time and effort needed for manual code reviews by providing a fresh perspective and catching issues that are often missed, enhancing the overall review quality.
+
+<Image
+    src="/images/coderabbit/img_44.png"
+    alt="CodeRabbit"
+    width={1200}
+    height={600}
+/>
 
 Key features of CodeRabbit:
 
@@ -49,11 +56,11 @@ Key features of CodeRabbit:
 * Commitable Suggestions
 * Learnings
 
-> Coderabbit supports multiple programming languages, including JavaScript, [Typescript](https://www.coderabbit.ai/blog/how-to-automate-typescript-code-reviews-with-coderabbit), C\#, Golang, Java, Kotlin, Rust, [Python](https://www.coderabbit.ai/blog/how-to-setup-python-code-reviews-with-coderabbit), and C.
+Coderabbit supports multiple programming languages, including JavaScript, [Typescript](https://www.coderabbit.ai/blog/how-to-automate-typescript-code-reviews-with-coderabbit), C\#, Golang, Java, Kotlin, Rust, [Python](https://www.coderabbit.ai/blog/how-to-setup-python-code-reviews-with-coderabbit), and C.
 
 ### **What is Bito AI Code Review Agent?**
 
-[Bito AI Code Review Agent](https://bito.ai/product/ai-code-review-agent/) is an automated AI assistant that reviews code to spot bugs, issues, code smells, and security vulnerabilities in Pull or Merge Requests. It is the first agent built with Bito’s AI Agent framework and engine.
+> [Bito AI Code Review Agent](https://bito.ai/product/ai-code-review-agent/) is an automated AI assistant that reviews code to spot bugs, issues, code smells, and security vulnerabilities in Pull or Merge Requests. It is the first agent built with Bito’s AI Agent framework and engine.
 
 Key features of Bito AI Code Review Agent:
 
@@ -66,7 +73,14 @@ Programming languages supported by the Bito AI Code Review Agent are JavaScript,
 
 ### **What is CodeAnt AI?**
 
-[CodeAnt AI](https://www.codeant.ai/) is an AI code reviewer that helps you find and fix critical code quality issues and security vulnerabilities in 30+ languages. The code reviewer uses AI \+ AST engines to detect and auto-fix code issues, including anti-patterns, dead & duplicate code, complex functions, security vulnerabilities, and more.
+> [CodeAnt AI](https://www.codeant.ai/) is an AI code reviewer that helps you find and fix critical code quality issues and security vulnerabilities in 30+ languages. The code reviewer uses AI \+ AST engines to detect and auto-fix code issues, including anti-patterns, dead & duplicate code, complex functions, security vulnerabilities, and more.
+
+<Image
+    src="/images/coderabbit/img_3.png"
+    alt="CodeRabbit"
+    width={1200}
+    height={600}
+/>
 
 Key features of CodeAnt AI:
 
@@ -80,7 +94,7 @@ According to CodeAnt AI docs, more than 30 programming languages are supported.
 
 ### **What is Korbit AI?**
 
-[Korbit](https://www.korbit.ai/) is an AI code reviewer for GitHub and Bitbucket that detects code issues and provides interactive fixes. It generates clear PR descriptions and boosts developer productivity by freeing engineers up to focus on their work.
+> [Korbit](https://www.korbit.ai/) is an AI code reviewer for GitHub and Bitbucket that detects code issues and provides interactive fixes. It generates clear PR descriptions and boosts developer productivity by freeing engineers up to focus on their work.
 
 Key features of CodeAnt AI:
 
@@ -104,15 +118,64 @@ Enough talking. Let’s create four repositories in my GitHub to compare.
 
 Add the code below to create a JavaScript file named *codereview.js* in each repository.
 
+Let's examine how different AI code review tools handle common JavaScript patterns.
+
+Here's a sample code snippet that I'll use to compare the analysis capabilities:
+
+```javascript
+// Function to calculate the sum of an array
+function calculateSum(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+  return sum;
+}
+
+// Function to fetch user data from an API
+async function fetchUserData(userId) {
+  const url = "https://jsonplaceholder.typicode.com/users/" + userId;
+  let response = await fetch(url);
+  let data = await response.json();
+  console.log("User Data:", data);
+  return data;
+}
+
+// Function to format a user's full name
+function formatFullName(user) {
+  return user.first_name + " " + user.last_name;
+}
+
+// Test the functions
+console.log("Sum:", calculateSum([1, 2, 3, 4]));
+fetchUserData(1).then((user) => {
+  console.log("Formatted Name:", formatFullName(user));
+});
+```
+
 The code above has common issues with performance, best practices, and maintainability that we will try to fix by making a pull request.
 
 ### **Integrating CodeRabbit with Development Tools**
 
-You can seamlessly integrate CodeRabbit with GitHub, GitLab, and Azure DevOps repositories to get a review for each commit in a pull request (PR) or merge request (MR).
+> You can seamlessly integrate CodeRabbit with GitHub, GitLab, and Azure DevOps repositories to get a review for each commit in a pull request (PR) or merge request (MR).
 
-To integrate CodeRabbit into your workflow, visit [coderabbit.ai](http://coderabbit.ai) and click the Get a free trial button.
+To integrate CodeRabbit into your development workflow, visit [coderabbit.ai](http://coderabbit.ai) and click the Get a free trial button.
+
+<Image
+    src="/images/coderabbit/img_44.png"
+    alt="CodeRabbit"
+    width={1200}
+    height={600}
+/>
 
 Next, sign up with your Git provider. In this case, I will use GitHub as my Git provider.
+
+<Image
+    src="/images/coderabbit/img_44.png"
+    alt="CodeRabbit"
+    width={1200}
+    height={600}
+/>
 
 After that, authorize coderabbitai to access your account and click the Add Repositories button at the top right corner to connect your repository to CodeRabbit.
 
