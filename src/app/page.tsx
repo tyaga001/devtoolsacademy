@@ -19,11 +19,11 @@ const featuredPosts = [
     category: "Database",
   },
   {
-    title: 'Twilio vs Stream',
-    excerpt: 'A Guide to Building Smarter Support Bots',
-    image: '/images/Twilio vs Stream.png',
-    slug: 'stream-vs-twilio',
-    url: '/blog/stream-vs-twilio',
+    title: "Twilio vs Stream",
+    excerpt: "A Guide to Building Smarter Support Bots",
+    image: "/images/Twilio vs Stream.png",
+    slug: "stream-vs-twilio",
+    url: "/blog/stream-vs-twilio",
     category: "SaaS",
   },
   {
