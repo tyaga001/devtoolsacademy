@@ -9,6 +9,8 @@ import { v4 as uuidv4 } from "uuid"
 import { cn } from "@/lib/utils"
 import { getPostBySlug, getViewCount, getAllPosts } from "@/lib/posts"
 
+import { SocialMetadata } from "@/components/SocialMetadata"
+
 import TableOfContents from "@/components/blog/TableOfContents"
 import Breadcrumb from "@/components/blog/Breadcrumb"
 import CommentSection from "@/components/blog/CommentSection"
@@ -19,7 +21,6 @@ import { Callout } from "@/components/blog/Callout"
 import { Alert, AlertDescription } from "@/components/blog/Alert"
 import BackToTop from "@/components/blog/BackToTop"
 import ScrollProgressBar from "@/components/blog/ScrollProgressBar"
-import { SocialMetadata } from "@/components/SocialMetadata"
 
 const components: MDXComponents = {
   h1: (props: any) => <h1 {...props}>{props.children}</h1>,
