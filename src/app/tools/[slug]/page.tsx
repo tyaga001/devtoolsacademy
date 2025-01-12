@@ -12,9 +12,10 @@ export const metadata: Metadata = {
 export default async function ToolDetailRoute({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const response = await getToolDetails(params.slug)
+  const slug = (await params).slug
+  const response = await getToolDetails(slug)
   const toolDetails = response.toolDetails
 
   if (!toolDetails) {
