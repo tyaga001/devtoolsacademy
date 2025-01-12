@@ -115,10 +115,11 @@ const baseUrl = "https://devtoolsacademy.com"
 export default async function BlogPost({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getPostBySlug(params.slug)
-  const initialViews = await getViewCount(params.slug)
+  const slug = (await params).slug
+  const post = await getPostBySlug(slug)
+  const initialViews = await getViewCount(slug)
 
   const breadcrumbItems = [
     { label: "Home", href: "/" },
@@ -126,7 +127,7 @@ export default async function BlogPost({
     { label: post.title, href: `#` },
   ]
 
-  const postUrl = `${baseUrl}/blog/${params.slug}`
+  const postUrl = `${baseUrl}/blog/${slug}`
 
   return (
     <div className="relative mx-auto max-w-5xl px-4 py-36">
@@ -139,7 +140,7 @@ export default async function BlogPost({
       />
       <Breadcrumb items={breadcrumbItems} />
       <BlogHeader
-        slug={params.slug}
+        slug={slug}
         title={post.title}
         publishedAt={post.publishedAt}
         initialViews={initialViews}
@@ -157,7 +158,7 @@ export default async function BlogPost({
           >
             <MDXRemote source={post.content} components={components} />
           </article>
-          <CommentSection postSlug={params.slug} />
+          <CommentSection postSlug={slug} />
         </div>
         <aside className="hidden lg:block lg:w-1/4 lg:pl-8">
           <div className="sticky top-24">
