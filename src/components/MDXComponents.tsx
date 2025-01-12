@@ -5,7 +5,6 @@ import dynamic from "next/dynamic"
 const ServerlessDiagram = dynamic(
   () => import("@/components/ServerlessDiagram"),
   {
-    ssr: false,
     loading: () => <p>Loading diagram...</p>,
   }
 )
