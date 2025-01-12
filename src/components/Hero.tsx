@@ -71,8 +71,20 @@ const Hero: React.FC = () => {
           Current Sponsors:
         </p>
         <div className="flex items-center justify-center gap-4">
-          <Image src={CodeRabbitLogo} alt="CodeRabbit" className="h-5 md:h-7" />
-          <Image src={StreamLogo} alt="Stream" className="h-6 w-auto md:h-8" />
+          <a href={"https://www.coderabbit.ai?rel=devtoolsacademy.com"}>
+            <Image
+              src={CodeRabbitLogo}
+              alt="CodeRabbit"
+              className="h-5 md:h-7"
+            />
+          </a>
+          <a href={"https://getstream.io?rel=devtoolsacademy.com"}>
+            <Image
+              src={StreamLogo}
+              alt="Stream"
+              className="h-6 w-auto md:h-8"
+            />
+          </a>
         </div>
       </div>
     </section>
