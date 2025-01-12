@@ -3,9 +3,9 @@
 import React, { useState } from "react"
 import { Eye } from "lucide-react"
 
-import BlogChatInterface from "@/components/BlogChatInterface"
-import ViewCounter from "@/components/ViewCounter"
-import SocialShare from "@/components/SocialShare"
+import BlogChatInterface from "@/components/blog/BlogChatInterface"
+import ViewCounter from "@/components/blog/ViewCounter"
+import SocialShare from "@/components/blog/SocialShare"
 
 interface BlogHeaderProps {
   slug: string
