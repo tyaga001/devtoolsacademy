@@ -1,10 +1,7 @@
 import React from "react"
-import dynamic from "next/dynamic"
 import { Metadata } from "next"
 
-const ContributePage = dynamic(() => import("@/components/ContributePage"), {
-  ssr: false,
-})
+import ContributePage from "@/components/ContributePage"
 
 export const metadata: Metadata = {
   title: "Contribute to Dev Tools Academy",
