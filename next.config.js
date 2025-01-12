@@ -5,7 +5,6 @@ const nextConfig = {
     mdxRs: true,
   },
   reactStrictMode: true,
-  optimizeFonts: true,
   images: {
     remotePatterns: [
       {
