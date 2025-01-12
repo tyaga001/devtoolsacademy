@@ -14,7 +14,10 @@ export default function ViewCounter({
   useEffect(() => {
     const incrementViews = async () => {
       try {
-        const response = await fetch(`/api/views/${slug}`, { method: "POST" })
+        const response = await fetch(`/api/views/`, {
+          method: "POST",
+          body: JSON.stringify({ slug: slug }),
+        })
         const data = await response.json()
         setViews(data.views)
       } catch (error) {
