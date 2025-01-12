@@ -4,7 +4,7 @@ import Link from "next/link"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { MDXComponents } from "mdx/types"
 import { codeToHtml } from "shiki"
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuid } from "uuid"
 
 import { cn } from "@/lib/utils"
 import { getPostBySlug, getViewCount, getAllPosts } from "@/lib/posts"
@@ -25,17 +25,17 @@ import ScrollProgressBar from "@/components/blog/ScrollProgressBar"
 const components: MDXComponents = {
   h1: (props: any) => <h1 {...props}>{props.children}</h1>,
   h2: (props: any) => (
-    <h2 id={uuidv4()} {...props}>
+    <h2 id={uuid()} {...props}>
       {props.children}
     </h2>
   ),
   h3: (props: any) => (
-    <h3 id={uuidv4()} {...props}>
+    <h3 id={uuid()} {...props}>
       {props.children}
     </h3>
   ),
   h4: (props: any) => (
-    <h4 id={uuidv4()} {...props}>
+    <h4 id={uuid()} {...props}>
       {props.children}
     </h4>
   ),
