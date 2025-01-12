@@ -2,7 +2,12 @@
 
 import React from "react"
 import Link from "next/link"
+
 import { Button } from "@/components/ui/button"
+
+import StreamLogo from "@/assets/stream.png"
+import CodeRabbitLogo from "@/assets/coderabbit.svg"
+import Image from "next/image"
 
 const productHuntBadgeHtml = `<a href="https://www.producthunt.com/posts/dev-tools-academy?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-dev&#0045;tools&#0045;academy" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=493913&theme=light" alt="Dev&#0032;Tools&#0032;Academy - A&#0032;special&#0032;blog&#0032;made&#0032;for&#0032;Developers&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>`
 
@@ -66,16 +71,8 @@ const Hero: React.FC = () => {
           Current Sponsors:
         </p>
         <div className="flex items-center justify-center gap-4">
-          <img
-            src="https://www.coderabbit.ai/images/logo-orange.svg"
-            alt="Stream"
-            className="h-5 md:h-8"
-          />
-          <img
-            src="https://getstream.io/stream-dark.png"
-            alt="Stream"
-            className="h-5 md:h-8"
-          />
+          <Image src={CodeRabbitLogo} alt="CodeRabbit" className="h-5 md:h-7" />
+          <Image src={StreamLogo} alt="Stream" className="h-6 w-auto md:h-8" />
         </div>
       </div>
     </section>
