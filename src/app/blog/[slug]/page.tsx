@@ -39,12 +39,20 @@ const components: MDXComponents = {
     </h4>
   ),
   p: (props: any) => <p className="my-2 opacity-80" {...props} />,
-  a: (props: any) => (
-    <Link
-      className="text-blue-500 no-underline outline-none hover:underline focus:underline"
-      {...props}
-    />
-  ),
+  a: ({ href = "", ...props }: React.ComponentPropsWithoutRef<"a">) => {
+    const transformUrl = (url: string): string => {
+      const separator = url.includes("?") ? "&" : "?"
+      return `${url}${separator}ref=devtoolsacademy.com`
+    }
+
+    return (
+      <Link
+        className="text-blue-500 no-underline outline-none hover:underline focus:underline"
+        href={href.startsWith("http") ? transformUrl(href) : href}
+        {...props}
+      />
+    )
+  },
   Image: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
   blockquote: (props: any) => (
     <blockquote
