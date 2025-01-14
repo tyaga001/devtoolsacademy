@@ -6,20 +6,20 @@ import BlogChatInterface from "@/components/blog/BlogChatInterface"
 import ViewCounter from "@/components/blog/ViewCounter"
 import SocialShare from "@/components/blog/SocialShare"
 import Breadcrumb from "@/components/blog/Breadcrumb"
-// import { getViewCount } from "@/lib/posts"
 
 interface BlogHeaderProps {
   slug: string
   title: string
   publishedAt: string
+  initialViews?: number
 }
 
 const BlogHeader: React.FC<BlogHeaderProps> = ({
   slug,
   title,
   publishedAt,
+  initialViews = 0,
 }) => {
-  const [initialViews, setInitialView] = useState(0)
   const [content, setContent] = useState("")
   const [showChat, setShowChat] = useState(false)
 
@@ -28,15 +28,6 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
     if (ele !== null) {
       setContent(ele.innerHTML)
     }
-
-    // TODO: fetch blog view count from umami api
-    // getViewCount(slug)
-    //   .then((views) => {
-    //     setInitialView(views)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
   }, [])
 
   const formatDate = (dateString: string) => {
