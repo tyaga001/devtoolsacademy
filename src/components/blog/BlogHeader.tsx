@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 
 import BlogChatInterface from "@/components/blog/BlogChatInterface"
-import ViewCounter from "@/components/blog/ViewCounter"
+// import ViewCounter from "@/components/blog/ViewCounter"
 import SocialShare from "@/components/blog/SocialShare"
 import Breadcrumb from "@/components/blog/Breadcrumb"
 
@@ -48,10 +48,8 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
           { label: title, href: slug },
         ]}
       />
-      <h1 className="mb-8 text-3xl font-bold leading-snug tracking-tight text-neutral-100 md:text-5xl">
-        {title}
-      </h1>
-      <div className="mb-10 flex flex-col justify-between md:mb-16 md:flex-row md:items-center">
+      <h1 className="mb-8 text-3xl md:text-5xl">{title}</h1>
+      <div className="mb-12 flex flex-col justify-between md:mb-16 md:flex-row md:items-center">
         <div className="mb-6 flex items-center gap-6 text-neutral-400 md:mb-0">
           <span className="text-sm">{formatDate(publishedAt)}</span>
           <span>|</span>
@@ -64,7 +62,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
           >
             Chat with Claude AI
           </button>
-          <ViewCounter slug={slug} initialViews={initialViews} />
+          {/* <ViewCounter slug={slug} initialViews={initialViews} /> */}
         </div>
       </div>
       {showChat && (

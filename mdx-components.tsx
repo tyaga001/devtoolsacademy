@@ -32,7 +32,7 @@ const BlogWrapper: React.FC<Props> = async ({ children }) => {
               "prose-ul:opacity-80 prose-ol:opacity-80",
               "prose-pre:py-0 prose-pre:px-3 prose-code:text-sm prose-pre:bg-[#121212]",
               "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85 prose-img:rounded-md",
-              "prose-h1:font-bold"
+              "prose-h1:font-bold prose-h1:tracking-tighter"
             )}
           >
             {children}
