@@ -114,7 +114,7 @@ const components: MDXComponents = {
       />
     )
   },
-  Image: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
+  img: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
   blockquote: (props: any) => (
     <blockquote
       className="border-l-4 border-neutral-500 pl-4 font-normal not-italic opacity-80"
