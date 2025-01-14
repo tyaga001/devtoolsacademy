@@ -21,7 +21,7 @@ interface Props {
   children: React.ReactNode
 }
 
-const BlogWrapper: React.FC<Props> = async ({ children }) => {
+const BlogWrapper: React.FC<Props> = ({ children }) => {
   return (
     <main className="relative mx-auto max-w-5xl px-4 py-36">
       <div className="flex flex-col lg:flex-row">
