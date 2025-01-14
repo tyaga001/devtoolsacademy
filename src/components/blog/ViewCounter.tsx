@@ -28,9 +28,6 @@ export default function ViewCounter({
   }, [slug])
 
   return (
-    <span className="text-sm font-medium">
-      2 views
-      {/* {views.toLocaleString()} views */}
-    </span>
+    <span className="text-sm font-medium">{views.toLocaleString()} views</span>
   )
 }
