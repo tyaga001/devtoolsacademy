@@ -53,23 +53,21 @@ export default async function BlogPage() {
       </h1>
       <div className="-mx-3 flex flex-col">
         {allBlogs.map((post) => (
-          <>
-            <Link
-              href={`/blog/${post.slug}`}
-              key={post.slug}
-              className="rounded-lg p-4 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
-            >
-              <p className="mb-1 text-xl font-semibold tracking-tight text-neutral-300 md:text-2xl">
-                {post.title}
-              </p>
-              <p className="mb-2.5 text-sm text-neutral-500 md:text-base">
-                {post.description}
-              </p>
-              <p className="text-xs text-neutral-500 md:text-sm">
-                {formatDate(new Date(post.publishedAt))}
-              </p>
-            </Link>
-          </>
+          <Link
+            href={`/blog/${post.slug}`}
+            key={post.slug}
+            className="rounded-lg p-4 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
+          >
+            <p className="mb-1 text-xl font-semibold tracking-tight text-neutral-300 md:text-2xl">
+              {post.title}
+            </p>
+            <p className="mb-2.5 text-sm text-neutral-500 md:text-base">
+              {post.description}
+            </p>
+            <p className="text-xs text-neutral-500 md:text-sm">
+              {formatDate(new Date(post.publishedAt))}
+            </p>
+          </Link>
         ))}
       </div>
     </div>
