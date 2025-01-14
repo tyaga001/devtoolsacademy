@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import * as React from "react"
+import { Eye } from "lucide-react"
 
 export default function ViewCounter({
   slug,
@@ -9,9 +10,9 @@ export default function ViewCounter({
   slug: string
   initialViews: number
 }) {
-  const [views, setViews] = useState(initialViews)
+  const [views, setViews] = React.useState(initialViews)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const incrementViews = async () => {
       try {
         const response = await fetch(`/api/views/`, {
@@ -28,6 +29,11 @@ export default function ViewCounter({
   }, [slug])
 
   return (
-    <span className="text-sm font-medium">{views.toLocaleString()} views</span>
+    <div className="group flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400">
+      <Eye className="mr-2 size-5 group-hover:text-blue-400" />
+      <span className="text-sm font-medium">
+        {views.toLocaleString()} views
+      </span>
+    </div>
   )
 }
