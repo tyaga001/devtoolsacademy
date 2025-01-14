@@ -1,5 +1,5 @@
 import * as React from "react"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 
 type BreadcrumbItem = {
   label: string

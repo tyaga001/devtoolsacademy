@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 import Image from "next/image"
 import type { MDXComponents } from "mdx/types"
 import { codeToHtml } from "shiki"

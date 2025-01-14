@@ -1,7 +1,9 @@
-import React from "react"
 import type { Metadata, Viewport } from "next"
+import { ViewTransitions } from "next-view-transitions"
 import Script from "next/script"
 import { Inter, JetBrains_Mono } from "next/font/google"
+
+import * as React from "react"
 
 import { Analytics } from "@vercel/analytics/react"
 import { ClerkProvider } from "@clerk/nextjs"
@@ -73,36 +75,38 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const title = getTitle(metadata.title)
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <SocialMetadata
-          title={title}
-          description={
-            metadata.description ?? "Learn about awesome developer tools"
-          }
-          path={"/"}
-          image={`${metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"}/favicon.png`}
-          type="website"
-        />
-        <Script
-          src="https://cloud.umami.is/script.js"
-          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-          strategy="afterInteractive"
-        />
-      </head>
-      <body
-        className={cn(
-          sansFont.variable,
-          monoFont.variable,
-          "font-sans antialiased bg-neutral-950"
-        )}
-      >
-        <ClerkProvider>
-          <Navbar />
-          {children}
-        </ClerkProvider>
-        <Analytics />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <head>
+          <SocialMetadata
+            title={title}
+            description={
+              metadata.description ?? "Learn about awesome developer tools"
+            }
+            path={"/"}
+            image={`${metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"}/favicon.png`}
+            type="website"
+          />
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            strategy="afterInteractive"
+          />
+        </head>
+        <body
+          className={cn(
+            sansFont.variable,
+            monoFont.variable,
+            "font-sans antialiased bg-neutral-950"
+          )}
+        >
+          <ClerkProvider>
+            <Navbar />
+            {children}
+          </ClerkProvider>
+          <Analytics />
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }
