@@ -80,9 +80,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           description={
             metadata.description ?? "Learn about awesome developer tools"
           }
-          url={
-            metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"
-          }
+          path={"/"}
           image={`${metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"}/favicon.png`}
           type="website"
         />

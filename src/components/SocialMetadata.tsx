@@ -3,15 +3,17 @@ import Head from "next/head"
 interface SocialMetadataProps {
   title: string
   description: string
-  url: string
+  path: string
   image: string
   type?: "website" | "article"
 }
 
+const baseUrl = "https://devtoolsacademy.com"
+
 export function SocialMetadata({
   title,
   description,
-  url,
+  path,
   image,
   type = "website",
 }: SocialMetadataProps) {
@@ -19,8 +21,8 @@ export function SocialMetadata({
     <Head>
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={url} />
-      <meta property="og:image" content={image} />
+      <meta property="og:url" content={baseUrl + path} />
+      <meta property="og:image" content={baseUrl + image} />
       <meta property="og:type" content={type} />
 
       <meta name="twitter:card" content="summary_large_image" />

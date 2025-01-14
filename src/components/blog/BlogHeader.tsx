@@ -6,23 +6,39 @@ import { Eye } from "lucide-react"
 import BlogChatInterface from "@/components/blog/BlogChatInterface"
 import ViewCounter from "@/components/blog/ViewCounter"
 import SocialShare from "@/components/blog/SocialShare"
+import Breadcrumb from "@/components/blog/Breadcrumb"
+// import { getViewCount } from "@/lib/posts"
 
 interface BlogHeaderProps {
   slug: string
   title: string
   publishedAt: string
-  initialViews: number
-  content: string
 }
 
 const BlogHeader: React.FC<BlogHeaderProps> = ({
   slug,
   title,
   publishedAt,
-  initialViews,
-  content,
 }) => {
+  const [initialViews, setInitialView] = useState(0)
+  const [content, setContent] = useState("")
   const [showChat, setShowChat] = useState(false)
+
+  React.useEffect(() => {
+    const ele = document.querySelector("article")
+    if (ele !== null) {
+      setContent(ele.innerHTML)
+    }
+
+    // TODO: fetch blog view count from umami api
+    // getViewCount(slug)
+    //   .then((views) => {
+    //     setInitialView(views)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
+  }, [])
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
@@ -35,6 +51,13 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
 
   return (
     <>
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: title, href: slug },
+        ]}
+      />
       <h1 className="mb-8 text-3xl font-bold leading-snug tracking-tight text-neutral-100 md:text-5xl">
         {title}
       </h1>
