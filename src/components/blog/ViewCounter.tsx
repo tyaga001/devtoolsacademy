@@ -17,6 +17,9 @@ export default function ViewCounter({
       try {
         const response = await fetch(`/api/views/`, {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({ slug: slug }),
         })
         const data = await response.json()
