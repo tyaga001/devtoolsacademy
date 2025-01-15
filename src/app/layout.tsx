@@ -11,6 +11,8 @@ import { SocialMetadata } from "@/components/SocialMetadata"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
+import { Toaster } from '@/components/ui/toaster';
+
 
 export const metadata: Metadata = {
   title: {
@@ -100,8 +102,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <ClerkProvider>
-          <Navbar />
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 ">
+              {children}
+            </main>
+          </div>
+          <Toaster></Toaster>
         </ClerkProvider>
         <Analytics />
       </body>

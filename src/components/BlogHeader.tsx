@@ -10,6 +10,7 @@ import SocialShare from "@/components/SocialShare"
 interface BlogHeaderProps {
   slug: string
   title: string
+  description: string
   publishedAt: string
   initialViews: number
   content: string
@@ -18,6 +19,7 @@ interface BlogHeaderProps {
 const BlogHeader: React.FC<BlogHeaderProps> = ({
   slug,
   title,
+  description,
   publishedAt,
   initialViews,
   content,
@@ -45,11 +47,8 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
           <SocialShare url={`/blog/${slug}`} title={title} />
         </div>
         <div className="flex flex-row-reverse items-center justify-between gap-3 md:flex-row">
-          <button
-            onClick={() => setShowChat(true)}
-            className="rounded-full border border-blue-500/50 bg-blue-900/30 px-3 py-1 text-sm text-blue-400 outline-none transition-colors duration-200 hover:bg-blue-900/50 focus:bg-blue-900/50"
-          >
-            Chat with Claude AI
+          <button onClick={() => setShowChat(true)} className="inline-flex h-10 animate-shimmer items-center justify-center  border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 rounded-full text-sm ">
+            Summarize with AI
           </button>
           <div className="group flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400">
             <Eye className="mr-2 size-5 group-hover:text-blue-400" />
@@ -59,6 +58,8 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
       </div>
       {showChat && (
         <BlogChatInterface
+          blogDescription={description}
+          blogTitle={title}
           blogContent={content}
           onClose={() => setShowChat(false)}
         />
