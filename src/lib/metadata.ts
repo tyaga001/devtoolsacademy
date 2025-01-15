@@ -36,6 +36,8 @@ export const generateMetadata = ({
     title: metaTitle,
     description: metaDescription,
 
+    metadataBase: new URL(baseUrl),
+
     applicationName: config.appName,
     creator: config.creator,
     authors: [{ name: config.authorName, url: config.authorUrl }],
