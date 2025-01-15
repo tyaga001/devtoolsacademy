@@ -1,13 +1,14 @@
 import React from "react"
-import { Metadata } from "next"
 
 import ContributePage from "@/components/ContributePage"
+import { generateMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
+export const metadata = generateMetadata({
+  path: "/contribute",
   title: "Contribute to Dev Tools Academy",
   description:
-    "Learn how to contribute to Dev Tools Academy and help improve this open-source project.",
-}
+    "Learn how to contribute to Dev Tools Academy and help improve this open-source project",
+})
 
 export default function ContributeRoute() {
   return (

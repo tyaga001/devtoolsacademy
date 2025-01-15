@@ -1,6 +1,13 @@
 import { Link } from "next-view-transitions"
 
 import { formatDate } from "@/lib/utils"
+import { generateMetadata } from "@/lib/metadata"
+
+export const metadata = generateMetadata({
+  path: "/blog",
+  title: "Blog | DevTools Academy",
+  description: "Learn about awesome developer tools with our blogs",
+})
 
 export const allBlogs = [
   {

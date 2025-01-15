@@ -1,6 +1,7 @@
 "use client"
-
 import * as React from "react"
+import { Star, Trophy, Award, Heart } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -9,7 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Star, Trophy, Award, Heart } from "lucide-react"
+
+import { generateMetadata } from "@/lib/metadata"
 
 interface SponsorTier {
   title: string
@@ -18,6 +20,12 @@ interface SponsorTier {
   benefits: string[]
   stripeLink: string
 }
+
+export const metadata = generateMetadata({
+  path: "/sponsor",
+  title: "Sponsor | DevTools Academy",
+  description: "Support the development of DevTools Academy",
+})
 
 const sponsorTiers: SponsorTier[] = [
   {

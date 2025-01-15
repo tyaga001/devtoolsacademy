@@ -1,16 +1,15 @@
 import Image from "next/image"
+import { generateMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
-import { SocialMetadata } from "@/components/SocialMetadata"
 
-<SocialMetadata
-  url={"/blog/supabase-vs-clerk"}
-  title={"Supabase vs Clerk"}
-  description={
-    "An in-depth comparison of Clerk and Supabase to help you choose the best auth for your SaaS"
-  }
-  image={"/images/supabase-clerk.png"}
-  type="article"
-/>
+export const metadata = generateMetadata({
+  path: "/blog/supabase-vs-clerk",
+  title: "Supabase vs Clerk",
+  description:
+    "An in-depth comparison of Clerk and Supabase to help you choose the best auth for your SaaS",
+  image: "/images/supabase-clerk.png",
+})
+
 <BlogHeader
   slug={"supabase-vs-clerk"}
   title={"Supabase vs Clerk - Choose the Right Auth for Your SaaS"}

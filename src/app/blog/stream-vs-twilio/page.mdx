@@ -1,16 +1,15 @@
 import Image from "next/image"
+import { generateMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
-import { SocialMetadata } from "@/components/SocialMetadata"
 
-<SocialMetadata
-  url={"/blog/stream-vs-twilio"}
-  title={"Twilio vs Stream"}
-  description={
-    "A comparison of Twilio and Stream for building automated customer support solutions"
-  }
-  image={"/images/twilio-vs-stream.png"}
-  type="article"
-/>
+export const metadata = generateMetadata({
+  path: "/blog/stream-vs-twilio",
+  title: "Twilio vs Stream",
+  description:
+    "A comparison of Twilio and Stream for building automated customer support solutions",
+  image: "/images/twilio-vs-stream.png",
+})
+
 <BlogHeader
   slug={"stream-vs-twilio"}
   title={"Twilio vs Stream - A Guide to Building Smarter Support Bots"}

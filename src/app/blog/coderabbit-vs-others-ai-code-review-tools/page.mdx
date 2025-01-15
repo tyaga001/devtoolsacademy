@@ -1,14 +1,14 @@
 import Image from "next/image"
+import { generateMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
-import { SocialMetadata } from "@/components/SocialMetadata"
 
-<SocialMetadata
-  url={"/blog/coderabbit-vs-others-ai-code-review-tools"}
-  title={"Comparing AI Code Review Tools"}
-  description={"CodeRabbit vs Other AI code review tools"}
-  image={`/images/coderabbit-vs-others.png`}
-  type="article"
-/>
+export const metadata = generateMetadata({
+  path: "/blog/coderabbit-vs-others-ai-code-review-tools",
+  title: "Comparing AI Code Review Tools | DevTools Academy",
+  description: "CodeRabbit vs Other AI code review tools",
+  image: "/images/coderabbit-vs-others.png",
+})
+
 <BlogHeader
   slug={"coderabbit-vs-others-ai-code-review-tools"}
   title={"CodeRabbit vs Others: Which is the Right AI Code Review Tool"}

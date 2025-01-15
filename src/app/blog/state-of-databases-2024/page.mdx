@@ -1,18 +1,18 @@
 import Image from "next/image"
+import { generateMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
-import { SocialMetadata } from "@/components/SocialMetadata"
 
 import { ServerlessDiagram } from "@/components/ServerlessDiagram"
 import { Alert, AlertDescription } from "@/components/blog/Alert"
 import { Callout } from "@/components/blog/Callout"
 
-<SocialMetadata
-  url={"/blog/state-of-databases-2024"}
-  title={"Databases in 2024"}
-  description={"My thoughts on the state of Databases for Serverless"}
-  image={"/images/state-of-databases.png"}
-  type="article"
-/>
+export const metadata = generateMetadata({
+  path: "/blog/state-of-databases-2024",
+  title: "Databases in 2024 | DevTools Academy",
+  description: "My thoughts on the state of Databases for Serverless",
+  image: "/images/state-of-databases.png",
+})
+
 <BlogHeader
   slug={"state-of-databases-2024"}
   title={"State of Databases for Serverless in 2024"}

@@ -1,9 +1,17 @@
 import React from "react"
 
+import { generateMetadata } from "@/lib/metadata"
+
 import Hero from "@/components/Hero"
 import FeaturedPosts from "@/components/FeaturedPosts"
 import Testimonial from "@/components/Testimonial"
 import Footer from "@/components/Footer"
+
+export const metadata = generateMetadata({
+  path: "/",
+  title: "DevTools Academy",
+  description: "Learn about awesome developer tools",
+})
 
 const featuredPosts = [
   {

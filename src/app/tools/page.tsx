@@ -1,15 +1,18 @@
 import React, { Suspense } from "react"
-import { Metadata } from "next"
+
+import { generateMetadata } from "@/lib/metadata"
+
 import ToolsPage from "@/components/tools/ToolsPage"
 import Categories from "@/components/tools/Categories"
 import ToolSkeleton from "@/components/tools/ToolSkeleton"
 import AlgoliaSearch from "@/components/tools/AlgoliaSearch"
 import LoadingCategories from "@/components/tools/LoadingCategories"
 
-export const metadata: Metadata = {
-  title: "Browse Tools DTA",
-  description: "DevToolsAcademy - Browse Tools",
-}
+export const metadata = generateMetadata({
+  path: "/tools",
+  title: "Browse Tools | DevTools Academy",
+  description: "Browser and compare tools, curated by DevTools Academy",
+})
 
 interface SearchParams {
   page?: string
