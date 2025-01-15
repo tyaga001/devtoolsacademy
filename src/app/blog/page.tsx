@@ -2,6 +2,40 @@ import Link from "next/link"
 
 import { getAllPosts } from "@/lib/posts"
 import { formatDate } from "@/lib/utils"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Blogs | Dev Tools Academy",
+  description: "A special blog made for Developers.",
+  openGraph: {
+    title: "Blogs | Dev Tools Academy",
+    description: "A special blog made for Developers.",
+    url: process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com",
+    images: [
+      {
+        url: `${
+          process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com"
+        }/api/og?title=Blogs%20|%20DevToolsAcademy`,
+        width: 1200,
+        height: 639,
+        alt: "DevToolsAcademy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blogs | Dev Tools Academy",
+    description: "A special blog made for Developers.",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?title=Blogs%20|%20DevToolsAcademy`,
+        width: 1200,
+        height: 639,
+        alt: "DevToolsAcademy",
+      },
+    ],
+  },
+}
 
 export default async function BlogPage() {
   const posts = await getAllPosts()
