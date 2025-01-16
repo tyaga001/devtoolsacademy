@@ -9,13 +9,11 @@ export default function ViewCounter() {
 
   React.useEffect(() => {
     if (window) {
-      const slug = window.location.pathname
-        .replace("blog", "")
-        .replaceAll("/", "")
-
       const fetchViews = async () => {
         try {
-          const response = await fetch(`/api/views/?slug=${slug}`)
+          const response = await fetch(
+            `/api/views/?slug=${window.location.pathname}`
+          )
           const data = await response.json()
           setViews(data.views)
         } catch (error) {
