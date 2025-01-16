@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState, useEffect, useCallback } from "react"
-import { useParams } from "next/navigation"
 import { useUser, SignInButton } from "@clerk/nextjs"
 import { Comment, BlogUser } from "@prisma/client"
 import { FaGithub } from "react-icons/fa6"
@@ -9,7 +8,7 @@ import { FaGithub } from "react-icons/fa6"
 type CommentWithUser = Comment & { user: BlogUser }
 
 const CommentSection: React.FC = () => {
-  const { slug: postSlug } = useParams<{ slug: string }>()
+  const [slug, setSlug] = React.useState("")
 
   const { isSignedIn } = useUser()
   const [comments, setComments] = useState<CommentWithUser[]>([])
@@ -28,18 +27,29 @@ const CommentSection: React.FC = () => {
       Math.floor(Math.random() * humorousPlaceholders.length)
     ]
 
-  const fetchComments = useCallback(async () => {
-    try {
-      const response = await fetch(`/api/comments?postSlug=${postSlug}`)
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`)
-      }
-      const data = await response.json()
-      setComments(data)
-    } catch (error) {
-      console.error("Failed to fetch comments:", error)
+  React.useEffect(() => {
+    if (window) {
+      const postSlug = window.location.pathname
+        .replace("blog", "")
+        .replaceAll("/", "")
+      setSlug(postSlug)
     }
-  }, [postSlug])
+  }, [])
+
+  const fetchComments = useCallback(async () => {
+    if (slug.length > 0) {
+      try {
+        const response = await fetch(`/api/comments?postSlug=${slug}`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`)
+        }
+        const data = await response.json()
+        setComments(data)
+      } catch (error) {
+        console.error("Failed to fetch comments:", error)
+      }
+    }
+  }, [slug])
 
   useEffect(() => {
     fetchComments()
@@ -54,7 +64,7 @@ const CommentSection: React.FC = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ postSlug, content: newComment }),
+      body: JSON.stringify({ slug, content: newComment }),
     })
 
     if (response.ok) {

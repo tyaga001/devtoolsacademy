@@ -1,10 +1,9 @@
 "use client"
 
 import React, { useState } from "react"
-import { useParams } from "next/navigation"
 
 import BlogChatInterface from "@/components/blog/BlogChatInterface"
-// import ViewCounter from "@/components/blog/ViewCounter"
+import ViewCounter from "@/components/blog/ViewCounter"
 import SocialShare from "@/components/blog/SocialShare"
 import Breadcrumb from "@/components/blog/Breadcrumb"
 
@@ -14,8 +13,6 @@ interface BlogHeaderProps {
 }
 
 const BlogHeader: React.FC<BlogHeaderProps> = ({ title, publishedAt }) => {
-  const { slug } = useParams<{ slug: string }>()
-
   const [content, setContent] = useState("")
   const [showChat, setShowChat] = useState(false)
 
@@ -49,7 +46,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({ title, publishedAt }) => {
         <div className="mb-6 flex items-center gap-6 text-neutral-400 md:mb-0">
           <span className="text-sm">{formatDate(publishedAt)}</span>
           <span>|</span>
-          <SocialShare url={`/blog/${slug}`} title={title} />
+          <SocialShare title={title} />
         </div>
         <div className="flex flex-row-reverse items-center justify-between gap-3 md:flex-row">
           <button
@@ -58,7 +55,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({ title, publishedAt }) => {
           >
             Chat with Claude AI
           </button>
-          {/* <ViewCounter slug={slug} initialViews={initialViews} /> */}
+          <ViewCounter />
         </div>
       </div>
       {showChat && (
