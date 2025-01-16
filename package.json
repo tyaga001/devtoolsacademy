@@ -24,6 +24,7 @@
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.2",
     "@types/mdx": "^2.0.13",
+    "@umami/api-client": "^0.76.0",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "algoliasearch": "^5.19.0",
