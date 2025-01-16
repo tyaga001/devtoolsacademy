@@ -62,7 +62,7 @@ const sponsorTiers: SponsorTier[] = [
 
 interface Props {}
 
-const SponsorPage: React.FC<Props> = () => {
+const SponsorContent: React.FC<Props> = () => {
   const handleContribute = (stripeLink: string) => {
     window.open(stripeLink, "_blank", "noopener,noreferrer")
   }
@@ -238,4 +238,4 @@ const SponsorPage: React.FC<Props> = () => {
   )
 }
 
-export default SponsorPage
+export default SponsorContent

@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { generateMetadata } from "@/lib/metadata"
+import SponsorContent from "@/components/SponsorContent"
 
 export const metadata = generateMetadata({
   path: "/sponsor",
@@ -9,5 +10,5 @@ export const metadata = generateMetadata({
 })
 
 export default function SponsorPage() {
-  return <SponsorPage />
+  return <SponsorContent />
 }
