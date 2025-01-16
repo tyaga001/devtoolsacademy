@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
+import { useParams } from "next/navigation"
 
 import BlogChatInterface from "@/components/blog/BlogChatInterface"
 // import ViewCounter from "@/components/blog/ViewCounter"
@@ -8,18 +9,13 @@ import SocialShare from "@/components/blog/SocialShare"
 import Breadcrumb from "@/components/blog/Breadcrumb"
 
 interface BlogHeaderProps {
-  slug: string
   title: string
   publishedAt: string
-  initialViews?: number
 }
 
-const BlogHeader: React.FC<BlogHeaderProps> = ({
-  slug,
-  title,
-  publishedAt,
-  initialViews = 0,
-}) => {
+const BlogHeader: React.FC<BlogHeaderProps> = ({ title, publishedAt }) => {
+  const { slug } = useParams<{ slug: string }>()
+
   const [content, setContent] = useState("")
   const [showChat, setShowChat] = useState(false)
 
@@ -45,7 +41,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
         items={[
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blog" },
-          { label: title, href: slug },
+          { label: title, href: "#" },
         ]}
       />
       <h1 className="mb-8 text-3xl md:text-5xl">{title}</h1>
