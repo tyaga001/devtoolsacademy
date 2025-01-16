@@ -3,12 +3,11 @@
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6"
 
 interface SocialShareProps {
-  url: string
   title: string
 }
 
-export default function SocialShare({ url, title }: SocialShareProps) {
-  const shareUrl = encodeURIComponent(`https://devtoolsacademy.com${url}`)
+export default function SocialShare({ title }: SocialShareProps) {
+  const shareUrl = encodeURIComponent(window.location.href)
   const shareTitle = encodeURIComponent(title)
 
   return (
