@@ -1,41 +1,34 @@
 import { NextRequest, NextResponse } from "next/server"
-import prisma from "@/lib/prisma"
 
-// export async function GET(request: NextRequest) {
-//   const { slug } = request.nextUrl.searchParams
+import { getClient } from "@umami/api-client"
 
-//   try {
-//     const post = await prisma.post.findUnique({
-//       where: { slug },
-//       select: { views: true },
-//     })
+export async function GET(request: NextRequest) {
+  const { url } = request.nextUrl.searchParams
 
-//     if (!post) {
-//       return NextResponse.json({ error: "Post not found" }, { status: 404 })
-//     }
-
-//     return NextResponse.json({ views: post.views })
-//   } catch (error) {
-//     return NextResponse.json(
-//       { error: "Failed to retrieve view count" },
-//       { status: 500 }
-//     )
-//   }
-// }
-
-export async function POST(request: NextRequest) {
-  const { slug } = await request.json()
+  console.log(url)
 
   try {
-    const updatedPost = await prisma.post.update({
-      where: { slug },
-      data: { views: { increment: 1 } },
-    })
+    const client = getClient()
+    const { ok, data, status, error } = await client.getWebsitePageviews(
+      "bbe84049-cfa8-41eb-bc81-3937ca3ee74c",
+      {
+        startAt: Date.now(),
+        endAt: Date.now().valueOf(),
+        unit: "hour",
+        timezone: "America/Los_Angeles",
+        url: url,
+      }
+    )
+    console.log(data)
 
-    return NextResponse.json({ views: updatedPost.views })
+    if (!data) {
+      return NextResponse.json({ error: "Post not found" }, { status: 404 })
+    }
+
+    return NextResponse.json(data)
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to update view count" },
+      { error: "Failed to retrieve view count" },
       { status: 500 }
     )
   }
