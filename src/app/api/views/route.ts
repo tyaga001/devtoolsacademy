@@ -5,8 +5,6 @@ import { getClient } from "@umami/api-client"
 export async function GET(request: NextRequest) {
   const url = request.nextUrl.searchParams.get("url")
 
-  console.log(url)
-
   if (!url) {
     return NextResponse.json(
       { error: "Please send url params" },
@@ -26,7 +24,6 @@ export async function GET(request: NextRequest) {
         url: url,
       }
     )
-    console.log(data)
 
     if (!data) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 })
