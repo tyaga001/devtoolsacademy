@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 import { Button } from "@/components/ui/button"
 
 import { Menu, X, Heart } from "lucide-react"

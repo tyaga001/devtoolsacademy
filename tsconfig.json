@@ -35,8 +35,7 @@
     ".next/types/**/*.ts",
     "tailwind.config.ts",
     "src/**/*.ts",
-    "src/**/*.tsx",
-    "posts/**/*.mdx"
+    "src/**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }

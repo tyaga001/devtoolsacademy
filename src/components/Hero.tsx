@@ -1,8 +1,13 @@
 "use client"
 
 import React from "react"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
+
 import { Button } from "@/components/ui/button"
+
+import StreamLogo from "@/assets/stream.png"
+import CodeRabbitLogo from "@/assets/coderabbit.svg"
+import Image from "next/image"
 
 const productHuntBadgeHtml = `<a href="https://www.producthunt.com/posts/dev-tools-academy?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-dev&#0045;tools&#0045;academy" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=493913&theme=light" alt="Dev&#0032;Tools&#0032;Academy - A&#0032;special&#0032;blog&#0032;made&#0032;for&#0032;Developers&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>`
 
@@ -25,12 +30,12 @@ const Hero: React.FC = () => {
         ))}
       </div>
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-center px-4 text-center text-white">
-        <div className="mb-6 flex flex-col items-center justify-center gap-2 md:flex-row">
+        <div className="mb-5 flex items-center justify-center gap-2 md:gap-0">
           <a
             href="https://news.ycombinator.com/item?id=41223327#41246861"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-[40px] items-center gap-1.5 rounded-lg bg-[#ff7600] px-3 text-sm font-bold text-white shadow-md transition-colors duration-300 hover:bg-[#ff9933] hover:shadow-lg md:h-12"
+            className="flex h-[40px] items-center gap-1.5 rounded-lg bg-[#ff7600] px-3 text-xs font-bold text-white transition-colors duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,25 +48,44 @@ const Hero: React.FC = () => {
             <span>Featured on Hacker News</span>
           </a>
           <div
-            className="scale-75 md:scale-90"
+            className="sm:scale-75"
             dangerouslySetInnerHTML={{ __html: productHuntBadgeHtml }}
           />
         </div>
-        <h1
-          className="mb-8 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-5xl font-extrabold leading-tight text-transparent md:text-8xl"
-          style={{ textShadow: "0 0 20px rgba(168, 85, 247, 0.5)" }}
-        >
+        <h1 className="mb-3 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent md:mb-8 md:text-8xl md:leading-[1.1]">
           A special blog made for Developers.
         </h1>
-        <p className="mb-12 max-w-3xl text-xl text-neutral-300 md:text-3xl">
-          Honest reviews to help you choose the right developer tool for your
+        <p className="mb-8 max-w-3xl text-base text-neutral-300 md:mb-12 md:text-xl">
+          Honest reviews to help you choose the right developer tools for your
           SaaS.
         </p>
         <Link href="/blog" passHref>
-          <Button className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-10 py-6 text-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg">
+          <Button className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 text-sm font-bold text-neutral-100 transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg md:px-10 md:py-6 md:text-xl">
             Start Reading
           </Button>
         </Link>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <p className="mb-4 text-center text-sm font-medium text-neutral-100 md:mb-6 md:text-base">
+          Current Sponsors:
+        </p>
+        <div className="flex items-center justify-center gap-4">
+          <a href={"https://www.coderabbit.ai?rel=devtoolsacademy.com"}>
+            <Image
+              src={CodeRabbitLogo}
+              alt="CodeRabbit"
+              className="h-5 md:h-7"
+            />
+          </a>
+          <a href={"https://getstream.io?rel=devtoolsacademy.com"}>
+            <Image
+              src={StreamLogo}
+              alt="Stream"
+              className="h-6 w-auto md:h-8"
+            />
+          </a>
+        </div>
       </div>
     </section>
   )
