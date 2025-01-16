@@ -1,13 +1,16 @@
 "use client"
 
 import React, { useState, useEffect, useCallback } from "react"
+import { useParams } from "next/navigation"
 import { useUser, SignInButton } from "@clerk/nextjs"
 import { Comment, BlogUser } from "@prisma/client"
 import { FaGithub } from "react-icons/fa6"
 
 type CommentWithUser = Comment & { user: BlogUser }
 
-const CommentSection: React.FC<{ postSlug: string }> = ({ postSlug }) => {
+const CommentSection: React.FC = () => {
+  const { slug: postSlug } = useParams<{ slug: string }>()
+
   const { isSignedIn } = useUser()
   const [comments, setComments] = useState<CommentWithUser[]>([])
   const [newComment, setNewComment] = useState("")

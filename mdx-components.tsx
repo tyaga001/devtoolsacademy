@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid"
 
 import { cn } from "@/lib/utils"
 
-// import CommentSection from "@/components/blog/CommentSection"
+import CommentSection from "@/components/blog/CommentSection"
 import TableOfContents from "@/components/blog/TableOfContents"
 import ServerlessDiagram from "@/components/blog/ServerlessDiagram"
 import CodeCopyButton from "@/components/blog/CodeCopyButton"
@@ -37,7 +37,7 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
           >
             {children}
           </article>
-          {/* <CommentSection postSlug={slug} /> */}
+          <CommentSection />
         </div>
         <aside className="hidden lg:block lg:w-1/4 lg:pl-8">
           <div className="sticky top-24">
