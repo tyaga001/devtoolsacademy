@@ -5,7 +5,6 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 import { ViewTransitions } from "next-view-transitions"
 
 import { Analytics } from "@vercel/analytics/react"
-import { ClerkProvider } from "@clerk/nextjs"
 
 import Navbar from "@/components/Navbar"
 import { cn } from "@/lib/utils"
@@ -48,10 +47,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
             "font-sans antialiased bg-neutral-950"
           )}
         >
-          <ClerkProvider>
-            <Navbar />
-            {children}
-          </ClerkProvider>
+          <Navbar />
+          {children}
           <Analytics />
         </body>
       </html>
