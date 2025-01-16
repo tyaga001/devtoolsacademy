@@ -3,9 +3,16 @@ import { NextRequest, NextResponse } from "next/server"
 import { getClient } from "@umami/api-client"
 
 export async function GET(request: NextRequest) {
-  const { url } = request.nextUrl.searchParams
+  const url = request.nextUrl.searchParams.get("url")
 
   console.log(url)
+
+  if (!url) {
+    return NextResponse.json(
+      { error: "Please send url params" },
+      { status: 400 }
+    )
+  }
 
   try {
     const client = getClient()
