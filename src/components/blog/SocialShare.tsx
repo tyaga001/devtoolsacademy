@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6"
 
 interface SocialShareProps {
@@ -7,8 +8,15 @@ interface SocialShareProps {
 }
 
 export default function SocialShare({ title }: SocialShareProps) {
-  const shareUrl = encodeURIComponent(window.location.href)
-  const shareTitle = encodeURIComponent(title)
+  const [shareUrl, setShareUrl] = React.useState("")
+  const [shareTitle, setShareTitle] = React.useState("")
+
+  React.useEffect(() => {
+    if (window && title) {
+      setShareUrl(encodeURIComponent(window.location.href))
+      setShareTitle(encodeURIComponent(title))
+    }
+  }, [title])
 
   return (
     <div className="flex gap-3">
