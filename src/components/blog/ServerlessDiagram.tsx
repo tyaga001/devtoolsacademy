@@ -1,13 +1,10 @@
-import React from "react"
-import dynamic from "next/dynamic"
+import * as React from "react"
 
-const SimplifiedMermaidDiagram = dynamic(
-  () => import("../SimplifiedMermaidDiagram")
-)
+import SimplifiedMermaidDiagram from "./SimplifiedMermaidDiagram"
 
-const ServerlessDiagram = () => {
+const ServerlessDiagram: React.FC = () => {
   const chartContent = `
-graph TD
+    graph TD
     A[Client] -->|HTTP Request| B(API Gateway)
     B -->|Trigger| C{Serverless Functions}
     C -->|Read/Write| D[(Serverless Database)]
