@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils"
 
 import CommentSection from "@/components/blog/CommentSection"
 import TableOfContents from "@/components/blog/TableOfContents"
-import ServerlessDiagram from "@/components/blog/ServerlessDiagram"
 import CodeCopyButton from "@/components/blog/CodeCopyButton"
 import { Callout } from "@/components/blog/Callout"
 import { Alert, AlertDescription } from "@/components/blog/Alert"
@@ -117,14 +116,21 @@ const components: MDXComponents = {
       />
     )
   },
-  img: (props: any) => <Image className="my-4" alt={props.alt} {...props} />,
+  img: (props: any) => (
+    <Image
+      className="my-4"
+      alt={props.alt}
+      width={1200}
+      height={600}
+      {...props}
+    />
+  ),
   blockquote: (props: any) => (
     <blockquote
       className="border-l-4 border-neutral-500 pl-4 font-normal not-italic opacity-80"
       {...props}
     />
   ),
-  ServerlessDiagram: ServerlessDiagram,
   Callout: Callout,
   Alert: Alert,
   AlertDescription: AlertDescription,
