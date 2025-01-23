@@ -5,6 +5,7 @@ import Image from "next/image"
 import type { MDXComponents } from "mdx/types"
 import { codeToHtml } from "shiki"
 import { v4 as uuidv4 } from "uuid"
+import { ClerkProvider } from "@clerk/nextjs"
 
 import { cn } from "@/lib/utils"
 
@@ -37,7 +38,9 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
           >
             {children}
           </article>
-          <CommentSection />
+          <ClerkProvider>
+            <CommentSection />
+          </ClerkProvider>
         </div>
         <aside className="hidden lg:block lg:w-1/4 lg:pl-8">
           <div className="sticky top-24">
