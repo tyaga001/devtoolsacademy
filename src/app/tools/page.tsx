@@ -24,7 +24,8 @@ export default async function ToolsRoute({
 }: {
   searchParams: SearchParams
 }) {
-  const pageNumber = Number(searchParams?.page) || 1
+  const searchParamsSync = await searchParams
+  const pageNumber = Number(searchParamsSync?.page) || 1
   const page = Math.max(1, Math.floor(pageNumber))
 
   return (
