@@ -32,7 +32,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ViewTransitions>
-      <html lang="en">
+      <html lang="en" className={cn(sansFont.variable, monoFont.variable)}>
         <head>
           <Script
             src="https://cloud.umami.is/script.js"
@@ -40,13 +40,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             strategy="afterInteractive"
           />
         </head>
-        <body
-          className={cn(
-            sansFont.variable,
-            monoFont.variable,
-            "font-sans antialiased bg-neutral-950"
-          )}
-        >
+        <body className="bg-neutral-950 font-sans antialiased">
           <Navbar />
           {children}
           <Analytics />
