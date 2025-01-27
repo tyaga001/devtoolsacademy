@@ -81,7 +81,7 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
 
   if (error || tools.length === 0) {
     return (
-      <div className="flex min-h-[400px] max-w-6xl flex-col items-center justify-center rounded-lg p-8 mx-auto">
+      <div className="mx-auto flex min-h-[400px] max-w-6xl flex-col items-center justify-center rounded-lg p-8">
         <div className="relative flex items-center justify-center">
           <Search size={50} className="text-neutral-600" />
           <div className="absolute bottom-1">
