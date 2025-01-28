@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { Link } from "next-view-transitions"
-import { motion, useAnimation } from "framer-motion"
+import { motion, useAnimation } from "motion/react"
 import {
   Github,
   GitBranch,
