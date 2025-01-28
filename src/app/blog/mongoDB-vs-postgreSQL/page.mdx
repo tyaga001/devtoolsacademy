@@ -1,11 +1,11 @@
 import Image from "next/image"
-import { generateMetadata } from "@/lib/metadata"
+import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
 
 import { Alert, AlertDescription } from "@/components/blog/Alert"
 import { Callout } from "@/components/blog/Callout"
 
-export const metadata = generateMetadata({
+export const metadata = getMetadata({
   path: "/blog/mongoDB-vs-postgreSQL",
   title:
     "What’s the Difference Between MongoDB and PostgreSQL? | DevTools Academy",

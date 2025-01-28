@@ -1,12 +1,12 @@
 import React from "react"
 
 import { getToolDetails } from "@/lib/tools"
-import { generateMetadata } from "@/lib/metadata"
+import { getMetadata } from "@/lib/metadata"
 
 import ToolDetailsPage from "@/components/tools/toolDetails/ToolDetailsPage"
 import ToolNotFound from "@/components/tools/toolDetails/ToolNotFound"
 
-export const metadata = generateMetadata({
+export const metadata = getMetadata({
   path: "/tools",
   title: "Tools Details | DevTools Academy",
   description: "DevToolsAcademy Tool details",

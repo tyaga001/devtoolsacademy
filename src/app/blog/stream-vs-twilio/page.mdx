@@ -1,8 +1,8 @@
 import Image from "next/image"
-import { generateMetadata } from "@/lib/metadata"
+import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
 
-export const metadata = generateMetadata({
+export const metadata = getMetadata({
   path: "/blog/stream-vs-twilio",
   title: "Twilio vs Stream",
   description:

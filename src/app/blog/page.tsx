@@ -1,9 +1,9 @@
 import { Link } from "next-view-transitions"
 
 import { formatDate } from "@/lib/utils"
-import { generateMetadata } from "@/lib/metadata"
+import { getMetadata } from "@/lib/metadata"
 
-export const metadata = generateMetadata({
+export const metadata = getMetadata({
   path: "/blog",
   title: "Blog | DevTools Academy",
   description: "Learn about awesome developer tools with our blogs",

@@ -1,8 +1,8 @@
 import Image from "next/image"
-import { generateMetadata } from "@/lib/metadata"
+import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
 
-export const metadata = generateMetadata({
+export const metadata = getMetadata({
   path: "/blog/coderabbit-vs-others-ai-code-review-tools",
   title: "Comparing AI Code Review Tools | DevTools Academy",
   description: "CodeRabbit vs Other AI code review tools",

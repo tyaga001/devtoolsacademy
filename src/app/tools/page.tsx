@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 
-import { generateMetadata } from "@/lib/metadata"
+import { getMetadata } from "@/lib/metadata"
 
 import ToolsPage from "@/components/tools/ToolsPage"
 import Categories from "@/components/tools/Categories"
@@ -8,7 +8,7 @@ import ToolSkeleton from "@/components/tools/ToolSkeleton"
 import AlgoliaSearch from "@/components/tools/AlgoliaSearch"
 import LoadingCategories from "@/components/tools/LoadingCategories"
 
-export const metadata = generateMetadata({
+export const metadata = getMetadata({
   path: "/tools",
   title: "Browse Tools | DevTools Academy",
   description: "Browser and compare tools, curated by DevTools Academy",

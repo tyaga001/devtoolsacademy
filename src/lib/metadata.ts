@@ -22,7 +22,7 @@ interface MetadataArgs {
   image?: string
 }
 
-export const generateMetadata = ({
+export const getMetadata = ({
   path,
   title,
   description,

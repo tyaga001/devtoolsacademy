@@ -1,9 +1,9 @@
 import React from "react"
 
 import ContributePage from "@/components/ContributePage"
-import { generateMetadata } from "@/lib/metadata"
+import { getMetadata } from "@/lib/metadata"
 
-export const metadata = generateMetadata({
+export const metadata = getMetadata({
   path: "/contribute",
   title: "Contribute to Dev Tools Academy",
   description:
