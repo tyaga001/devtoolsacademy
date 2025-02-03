@@ -12,7 +12,7 @@
     "format": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.10.3",
+    "@clerk/nextjs": "^6.10.6",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@neondatabase/serverless": "^0.10.4",
@@ -34,7 +34,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.474.0",
     "mermaid": "^11.4.1",
-    "motion": "^12.0.6",
+    "motion": "^12.0.11",
     "next": "^15.1.6",
     "next-view-transitions": "^0.3.4",
     "react": "^19.0.0",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^22.12.0",
+    "@types/node": "^22.13.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "autoprefixer": "^10.4.20",
@@ -63,7 +63,7 @@
     "postcss": "^8.5.1",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "shiki": "^2.1.0",
+    "shiki": "^2.2.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
   }
