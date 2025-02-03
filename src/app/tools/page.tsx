@@ -42,7 +42,7 @@ export default async function ToolsRoute({
         </p>
       </div>
       <div className="mb-8 flex w-full flex-col items-center space-y-4">
-        <AlgoliaSearch searchParams={searchParams} />
+        <AlgoliaSearch searchParams={searchParamsSync} />
       </div>
       <Suspense fallback={<ToolSkeleton />}>
         <ToolsPage page={page} />
