@@ -21,7 +21,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
           ) : (
             <Link
               href={item.href}
-              className="outline-none hover:text-neutral-200 focus:text-neutral-200 no-underline"
+              className="no-underline outline-none hover:text-neutral-200 focus:text-neutral-200"
             >
               {item.label}
             </Link>
