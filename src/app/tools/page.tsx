@@ -22,7 +22,7 @@ interface SearchParams {
 export default async function ToolsRoute({
   searchParams,
 }: {
-  searchParams: SearchParams
+  searchParams: Promise<SearchParams>
 }) {
   const searchParamsSync = await searchParams
   const pageNumber = Number(searchParamsSync?.page) || 1
