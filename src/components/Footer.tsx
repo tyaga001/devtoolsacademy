@@ -223,7 +223,7 @@ const Footer: React.FC = () => {
       <hr className="my-8 border-neutral-700" />
 
       <div className="mx-auto mt-6 max-w-7xl px-4 text-center text-neutral-400">
-        <p>&copy; 2024 Dev Tools Academy. All rights reserved.</p>
+        <p>&copy; 2025 Dev Tools Academy. All rights reserved.</p>
       </div>
     </footer>
   )
