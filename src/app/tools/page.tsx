@@ -1,15 +1,18 @@
 import React, { Suspense } from "react"
-import { Metadata } from "next"
+
+import { getMetadata } from "@/lib/metadata"
+
 import ToolsPage from "@/components/tools/ToolsPage"
 import Categories from "@/components/tools/Categories"
 import ToolSkeleton from "@/components/tools/ToolSkeleton"
 import AlgoliaSearch from "@/components/tools/AlgoliaSearch"
 import LoadingCategories from "@/components/tools/LoadingCategories"
 
-export const metadata: Metadata = {
-  title: "Browse Tools DTA",
-  description: "DevToolsAcademy - Browse Tools",
-}
+export const metadata = getMetadata({
+  path: "/tools",
+  title: "Browse Tools | DevTools Academy",
+  description: "Browser and compare tools, curated by DevTools Academy",
+})
 
 interface SearchParams {
   page?: string
@@ -19,9 +22,10 @@ interface SearchParams {
 export default async function ToolsRoute({
   searchParams,
 }: {
-  searchParams: SearchParams
+  searchParams: Promise<SearchParams>
 }) {
-  const pageNumber = Number(searchParams?.page) || 1
+  const searchParamsSync = await searchParams
+  const pageNumber = Number(searchParamsSync?.page) || 1
   const page = Math.max(1, Math.floor(pageNumber))
 
   return (
@@ -38,7 +42,7 @@ export default async function ToolsRoute({
         </p>
       </div>
       <div className="mb-8 flex w-full flex-col items-center space-y-4">
-        <AlgoliaSearch searchParams={searchParams} />
+        <AlgoliaSearch searchParams={searchParamsSync} />
       </div>
       <Suspense fallback={<ToolSkeleton />}>
         <ToolsPage page={page} />

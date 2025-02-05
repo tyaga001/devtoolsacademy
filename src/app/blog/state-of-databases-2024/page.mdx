@@ -1,16 +1,22 @@
----
-title: 'State of Databases for Serverless in 2024'
-seoTitle: 'Databases in 2024'
-isPublished: true
-publishedAt: "2024-09-03T00:00:00Z"
-layout: Article
-summary: 'My thoughts on the state of Databases for Serverless'
-featuredImage: "/images/state-of-databases.png"
----
+import Image from "next/image"
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
 
-import { ServerlessDiagram } from '@/components/ServerlessDiagram'
-import { Alert, AlertDescription } from '@/components/Alert'
-import { Callout } from '@/components/Callout'
+import ServerlessDiagram from "@/components/blog/ServerlessDiagram"
+import { Alert, AlertDescription } from "@/components/blog/Alert"
+import { Callout } from "@/components/blog/Callout"
+
+export const metadata = getMetadata({
+  path: "/blog/state-of-databases-2024",
+  title: "Databases in 2024 | DevTools Academy",
+  description: "My thoughts on the state of Databases for Serverless",
+  image: "/images/state-of-databases.png",
+})
+
+<BlogHeader
+  title={"State of Databases for Serverless in 2024"}
+  publishedAt={"2024-09-03T00:00:00Z"}
+/>
 
 As we're into the last quarter of 2024, we have seen an explosion of new dev tools, companies, and programming models transforming how developers approach data storage and retrieval. Many of these databases offer high availability, geographic scaling, and seamless integrations with other cloud services, but they come with challenges.
 
@@ -39,9 +45,9 @@ Before we get started, let's talk about the term "serverless" which should never
 <Callout>
 
 I find the term "serverless" misleading to many people in tech.
-    Essentially, all the code in the world has to run on a machine, so there is nothing really "server-less" about it.
-    Cloud means running software on other people's computers in a data center. Serverless is a subset of the cloud.
-    It's a way of building and deploying cloud apps.
+Essentially, all the code in the world has to run on a machine, so there is nothing really "server-less" about it.
+Cloud means running software on other people's computers in a data center. Serverless is a subset of the cloud.
+It's a way of building and deploying cloud apps.
 
 Serverless implies a very high level of abstraction when interacting with cloud infrastructure. Traditionally, app developers have consumed cloud infrastructure on the level of individual boxes running operating systems.
 
@@ -59,18 +65,19 @@ Serverless is a term that refers specifically to servers and says that you don't
 
 So maybe the term serverless became a thing because configuring your server is a huge hassle and a headache and not a great idea for many beginners.
 
-
 <Callout>
 So, today, the term serverless makes a lot less sense because the configuration level is nearly the same.
 For a time, such easy-to-configure servers almost felt like there weren't any servers at all. Hence, "serverless".
 
 And yeah, the naming can be confusing, so it's mostly "I don't want to think about managing any server," so the point of serverless isn't that there isn't a server anywhere.
+
 </Callout>
 
 As a user, you and I do not need to worry about a server which means no provisioning, scaling, upgrading, or updating the server.
+
 > Serverless just means not hosting your own infrastructure + boxes. Amazon Lambda is a good example where you run arbitrary scripts on their infrastructure on demand without having always-available servers.
-So, being serverless means you don't have to think about servers. Of course there are servers hard at work handling your application's requests, but that's their problem, not yours. They do all the work behind the scenes of allocating, configuring, and maintaining the servers.
-Instead of paying for servers, you and I pay for the requests that your application makes to the database and the storage that your data consumes.
+> So, being serverless means you don't have to think about servers. Of course there are servers hard at work handling your application's requests, but that's their problem, not yours. They do all the work behind the scenes of allocating, configuring, and maintaining the servers.
+> Instead of paying for servers, you and I pay for the requests that your application makes to the database and the storage that your data consumes.
 
 so "Serverless" means:
 
@@ -80,13 +87,7 @@ so "Serverless" means:
 4. Never paying for idle infrastructure.
 5. Never losing business because you can't scale.
 
-<Image
-    src="/images/img_14.png"
-    alt="Serverless"
-    width={1200}
-    height={600}
-/>
-
+<Image src="/images/img_14.png" alt="Serverless" width={1200} height={600} />
 
 ## A New Programming Model
 
@@ -101,7 +102,7 @@ so "Serverless" means:
 - **Type Safety**: TypeScript's popularity has driven demand for databases and libraries that support type-safe interactions, ensuring better developer experience and reducing runtime errors.
 
 > **Example**: Consider solutions like Supabase and Neon.
-Supabase offers a Postgres-based solution with an HTTP API, making it serverless-friendly. Neon, on the other hand, uses a WebSocket-based approach to manage Postgres connections efficiently in serverless and edge environments.
+> Supabase offers a Postgres-based solution with an HTTP API, making it serverless-friendly. Neon, on the other hand, uses a WebSocket-based approach to manage Postgres connections efficiently in serverless and edge environments.
 
 For type-safe development in serverless environments, several tools and databases stand out. Here are some examples:
 
@@ -114,7 +115,6 @@ For type-safe development in serverless environments, several tools and database
 4. **[Turso](https://turso.tech/)**: Built on SQLite, Turso is an edge-hosted, distributed database that integrates well with TypeScript. It allows developers to define APIs in TypeScript, providing a type-safe interface handy for serverless and edge computing applications.
 
 5. **[Xata](https://xata.io/)**: Xata is a serverless database that integrates relational and search functionalities. It offers type-safe APIs and has built-in AI features, making it a powerful tool for modern applications requiring strong type safety and advanced data handling capabilities.
-
 
 ## Trends in 2024
 
@@ -139,17 +139,17 @@ Let's look at some of the established database solutions with code examples.
 **Example: Retrieving Documents from Firestore**
 
 ```typescript
-import { getFirestore, doc, getDoc, DocumentData } from "firebase/firestore";
+import { getFirestore, doc, getDoc, DocumentData } from "firebase/firestore"
 
-const db = getFirestore();
-const docRef = doc(db, "users", "userId123");
-const docSnap = await getDoc(docRef);
+const db = getFirestore()
+const docRef = doc(db, "users", "userId123")
+const docSnap = await getDoc(docRef)
 
 if (docSnap.exists()) {
-  const data: DocumentData = docSnap.data();
-  console.log("Document data:", data);
+  const data: DocumentData = docSnap.data()
+  console.log("Document data:", data)
 } else {
-  console.log("No such document!");
+  console.log("No such document!")
 }
 ```
 
@@ -164,24 +164,24 @@ Firestore's real-time capabilities and ease of use make it a strong contender fo
 **Example: Querying MongoDB Atlas Serverless**
 
 ```typescript
-import { MongoClient } from 'mongodb';
+import { MongoClient } from "mongodb"
 
-const uri = process.env.MONGODB_URI as string;
-const client = new MongoClient(uri);
+const uri = process.env.MONGODB_URI as string
+const client = new MongoClient(uri)
 
 async function run() {
   try {
-    await client.connect();
-    const database = client.db('mydb');
-    const collection = database.collection('users');
-    const user = await collection.findOne({ name: 'Alice' });
-    console.log(user);
+    await client.connect()
+    const database = client.db("mydb")
+    const collection = database.collection("users")
+    const user = await collection.findOne({ name: "Alice" })
+    console.log(user)
   } finally {
-    await client.close();
+    await client.close()
   }
 }
 
-run().catch(console.dir);
+run().catch(console.dir)
 ```
 
 [Explore MongoDB Atlas Serverless](https://www.mongodb.com/cloud/atlas/serverless)
@@ -195,14 +195,14 @@ MongoDB Atlas's serverless model allows for flexible scaling while maintaining t
 **Example: Querying PlanetScale with Kysely**
 
 ```typescript
-import { Kysely, sql } from 'kysely';
-import { PlanetScaleDialect } from 'kysely-planetscale';
+import { Kysely, sql } from "kysely"
+import { PlanetScaleDialect } from "kysely-planetscale"
 
 interface Database {
   users: {
-    id: number;
-    name: string;
-    email: string;
+    id: number
+    name: string
+    email: string
   }
 }
 
@@ -212,14 +212,14 @@ const db = new Kysely<Database>({
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
   }),
-});
+})
 
 async function getUsers() {
-  const users = await db.selectFrom('users').selectAll().execute();
-  console.log(users);
+  const users = await db.selectFrom("users").selectAll().execute()
+  console.log(users)
 }
 
-getUsers();
+getUsers()
 ```
 
 PlanetScale's serverless capabilities and powerful features like branching make it a top choice for modern web applications.
@@ -231,28 +231,28 @@ PlanetScale's serverless capabilities and powerful features like branching make 
 **Example: Connecting to Aurora Serverless with Node.js**
 
 ```typescript
-import { Client } from 'pg';
+import { Client } from "pg"
 
 const client = new Client({
   host: process.env.AURORA_HOST,
   user: process.env.AURORA_USER,
   password: process.env.AURORA_PASSWORD,
   database: process.env.AURORA_DB,
-});
+})
 
 async function queryDatabase() {
   try {
-    await client.connect();
-    const res = await client.query('SELECT NOW()');
-    console.log(res.rows[0]);
+    await client.connect()
+    const res = await client.query("SELECT NOW()")
+    console.log(res.rows[0])
   } catch (err) {
-    console.error(err);
+    console.error(err)
   } finally {
-    await client.end();
+    await client.end()
   }
 }
 
-queryDatabase();
+queryDatabase()
 ```
 
 Aurora Serverless is ideal for applications that need to scale in and out automatically without manual intervention, offering the performance and reliability of traditional RDBMS systems.
@@ -268,18 +268,20 @@ In addition to the established players, several rising stars are pushing the bou
 **Example: Using Neon's Serverless Driver**
 
 ```typescript
-import { Client } from '@neondatabase/serverless';
+import { Client } from "@neondatabase/serverless"
 
-const client = new Client(process.env.DATABASE_URL);
+const client = new Client(process.env.DATABASE_URL)
 
 async function getTime() {
-  await client.connect();
-  const { rows: [{ now }] } = await client.query('SELECT NOW();');
-  await client.end();
-  return now;
+  await client.connect()
+  const {
+    rows: [{ now }],
+  } = await client.query("SELECT NOW();")
+  await client.end()
+  return now
 }
 
-getTime().then(console.log);
+getTime().then(console.log)
 ```
 
 [Discover Neon Serverless PostgreSQL](https://neon.tech/)
@@ -296,6 +298,7 @@ For more details on how Neon's serverless driver works and its impact on the dev
     Shared-nothing systems are hard to build with supporting all the features of the base system.
 
     Neon is 100% compatible with Postgres b/c they didn't (or almost didn't) change the Postgres engine.
+
 </Callout>
 
 ### Supabase: The Open-Source Firebase Alternative
@@ -305,38 +308,39 @@ For more details on how Neon's serverless driver works and its impact on the dev
 **Example: Querying Supabase with TypeScript**
 
 ```typescript
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js"
 
-const supabaseUrl = 'https://xyzcompany.supabase.co';
-const supabaseKey = process.env.SUPABASE_KEY as string;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = "https://xyzcompany.supabase.co"
+const supabaseKey = process.env.SUPABASE_KEY as string
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 interface Country {
-  id: number;
-  name: string;
-  code: string;
+  id: number
+  name: string
+  code: string
 }
 
 async function getCountries() {
   const { data: countries, error } = await supabase
-    .from<Country>('countries')
-    .select('*');
+    .from<Country>("countries")
+    .select("*")
 
   if (error) {
-    console.error('Error fetching countries:', error);
-    return;
+    console.error("Error fetching countries:", error)
+    return
   }
 
-  console.log(countries);
+  console.log(countries)
 }
 
-getCountries();
+getCountries()
 ```
 
 [Explore Supabase](https://supabase.com/)
 
 <Callout>
-    Supabase's open-source nature and rich feature set make it an attractive option for developers looking for more control and transparency.
+  Supabase's open-source nature and rich feature set make it an attractive
+  option for developers looking for more control and transparency.
 </Callout>
 
 > I've written a detailed comparison of [Supabase vs Neon](https://www.devtoolsacademy.com/blog/neon-vs-supabase).
@@ -354,9 +358,10 @@ In addition to the above, several other solutions deserve mention for their uniq
 ## Who should go serverless, and who should avoid going serverless?
 
 <Alert>
-    <AlertDescription>
-        Choosing to go serverless depends on your project's specific needs and scale. let's discuss.
-    </AlertDescription>
+  <AlertDescription>
+    Choosing to go serverless depends on your project's specific needs and
+    scale. let's discuss.
+  </AlertDescription>
 </Alert>
 
 ### Who Should go serverless:
@@ -364,8 +369,8 @@ In addition to the above, several other solutions deserve mention for their uniq
 Many people might say, "We can optimize it later" for a scale-up of orders of magnitude, but this is nearly always wrong.
 
 > Reddit is a perfect example of running into scaling issues recently but is locked into architecture with few escape hatches built in; when a bridge fails, it'll just fail.
-When software runs into a scaling limit, it'll degrade and fall on its arse constantly and be terrible as long as it takes for the software team to completely rework its entire architecture, often having to learn entirely new technologies.
-I don't know the relevant details about Reddit, but the assumption is that the early Reddit people could have quickly built something more scalable, yet there are tech reasons why the later people, with far more resources, can't.
+> When software runs into a scaling limit, it'll degrade and fall on its arse constantly and be terrible as long as it takes for the software team to completely rework its entire architecture, often having to learn entirely new technologies.
+> I don't know the relevant details about Reddit, but the assumption is that the early Reddit people could have quickly built something more scalable, yet there are tech reasons why the later people, with far more resources, can't.
 
 [Reddit: Lessons Learned from Mistakes Made Scaling to 1 Billion Users](https://highscalability.com/reddit-lessons-learned-from-mistakes-made-scaling-to-1-billi/)
 
@@ -384,14 +389,13 @@ For instance, you can't beat Facebook at its own game if you start a social netw
 
 </Callout>
 
-
 ### Who Shouldn't go serverless:
 
 <Image
-    src="/images/img_12.png"
-    alt="Serverless bills"
-    width={1200}
-    height={600}
+  src="/images/img_12.png"
+  alt="Serverless bills"
+  width={1200}
+  height={600}
 />
 
 <Callout>
@@ -407,31 +411,34 @@ No need to be obsessed with "scaling." focus on growing your business.
 > Tradeoffs are tradeoffs. For example - "by running a k8s cluster when you don't need one, a cost you pay is the overhead." but 👇
 
 <Image
-    src="/images/img_15.png"
-    alt="Serverless in one simple graphic"
-    width={1200}
-    height={600}
+  src="/images/img_15.png"
+  alt="Serverless in one simple graphic"
+  width={1200}
+  height={600}
 />
 
 but make sure your know all the rules of the game otherwise...you'll see the huge bills once your app goes viral.
 
 <Image
-    src="/images/img_8.png"
-    alt="Serverless Architecture Diagram"
-    width={800}
-    height={600}
+  src="/images/img_8.png"
+  alt="Serverless Architecture Diagram"
+  width={800}
+  height={600}
 />
-Nowadays, there's a ton of idling compute capacity running on the client side that could be used to spin up a personal cloud environment with all core services if one has the proper knowledge.
-For anyone that has a core to spare and a few GBs of memory, which should be easy for most modern midrange hardware, I would recommend they save that $5 paying for a third party VPS, go deploy an open source hypervisor such as KVM, and run the virtual server on your hardware.
+Nowadays, there's a ton of idling compute capacity running on the client side
+that could be used to spin up a personal cloud environment with all core
+services if one has the proper knowledge. For anyone that has a core to spare
+and a few GBs of memory, which should be easy for most modern midrange hardware,
+I would recommend they save that $5 paying for a third party VPS, go deploy an
+open source hypervisor such as KVM, and run the virtual server on your hardware.
 
 Comparison of free tiers: [https://paul.totterman.name/posts/free-clouds/](https://paul.totterman.name/posts/free-clouds/)
 
-
 <Image
-    src="/images/img_16.png"
-    alt="Serverless Architecture Diagram"
-    width={800}
-    height={600}
+  src="/images/img_16.png"
+  alt="Serverless Architecture Diagram"
+  width={800}
+  height={600}
 />
 
 ## Final Thoughts
@@ -443,24 +450,32 @@ It looks like there will be a lot of new developments in the next few years to h
 This blog is? Powered by Neon and Vercel, and my wallet's pretty happy too. Only splurged on the domain name 🚀💸
 
 <Image
-    src="/images/img_10.png"
-    alt="Serverless in one simple graphic"
-    width={1200}
-    height={600}
+  src="/images/img_10.png"
+  alt="Serverless in one simple graphic"
+  width={1200}
+  height={600}
 />
 
 <Callout>
-    Some people would say just use "$5/month VPS." But on that $5/month VPS there's management overhead - you need to have at least basic Linux knowledge, and ideally more than that to know not to do stupid things like chmod 777 and database exposed on the public internet. You also need to do your updates, etc.
-    I have realized recently that, even when someone has a good product, you have to be very strategic within Devtools and enterprise space. Doing it well is an art.
-    With the rise of serverless, it's super easy for an average developer or a new developer to build a backend. It's also super easy to deploy a front-end with Vercel, Netlify, or GitHub Pages but I believe there's no easy solution for the database part yet.
-    In the future, it should be the norm to include a database in an application with just a single env variable without worrying about anything else.
+  Some people would say just use "$5/month VPS." But on that $5/month VPS
+  there's management overhead - you need to have at least basic Linux knowledge,
+  and ideally more than that to know not to do stupid things like chmod 777 and
+  database exposed on the public internet. You also need to do your updates,
+  etc. I have realized recently that, even when someone has a good product, you
+  have to be very strategic within Devtools and enterprise space. Doing it well
+  is an art. With the rise of serverless, it's super easy for an average
+  developer or a new developer to build a backend. It's also super easy to
+  deploy a front-end with Vercel, Netlify, or GitHub Pages but I believe there's
+  no easy solution for the database part yet. In the future, it should be the
+  norm to include a database in an application with just a single env variable
+  without worrying about anything else.
 </Callout>
 
 And last, maybe I'm in my own bubble in "database/backend", but there have been many new startups in this space, which is fun to see 👊
 
 > It's also interesting to see more database services support HTTP APIs and as a person living in the EU, an unpopular saying is that the current situation in the EU makes these SaaS offerings almost irrelevant.
 
->Companies and governments are very reluctant to pick any cloud services, and It's a NIGHTMARE to sell SaaS to European Govs if it's hosted with a US company (except, of course, you are one of said US companies. Then you can sell whatever you want. Yes, it's bizarre).
+> Companies and governments are very reluctant to pick any cloud services, and It's a NIGHTMARE to sell SaaS to European Govs if it's hosted with a US company (except, of course, you are one of said US companies. Then you can sell whatever you want. Yes, it's bizarre).
 
 I'm not against or in favour of cloud services, but I wish more people understood their costs upfront and picked based on merits.
 Some teams benefit greatly from cloud services, but usually if they're not cost sensitive.
@@ -469,7 +484,8 @@ In my last job, we had everything on AWS because we'd never scaled to somewhere 
 The moment the bill starts to bite, people ought to at least price out alternatives and consider hybrid setups.
 
 <Callout>
-    I'm open for feedback and learning. feel free to add comments and let's discuss.
+  I'm open for feedback and learning. feel free to add comments and let's
+  discuss.
 </Callout>
 
 ## Interesting Videos, Reads, Tweets on Serverless
@@ -488,32 +504,37 @@ The moment the bill starts to bite, people ought to at least price out alternati
 
 Check out this video by Fireship for more insights:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qQk94CjRvIs?si=x1tVsR-QV5e2dUan" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/qQk94CjRvIs?si=x1tVsR-QV5e2dUan"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
 
 And here are some interesting takes from industry experts:
 
 <blockquote class="twitter-tweet">
-    <a href="https://x.com/kelseyhightower/status/1654098279116992513"></a>
+  <a href="https://x.com/kelseyhightower/status/1654098279116992513"></a>
 </blockquote>
 
 <blockquote class="twitter-tweet">
-    <a href="https://x.com/GergelyOrosz/status/1630500376033067008"></a>
+  <a href="https://x.com/GergelyOrosz/status/1630500376033067008"></a>
 </blockquote>
 
-<Image
-    src="/images/img_11.png"
-    alt="Serverless"
-    width={1200}
-    height={600}
-/>
+<Image src="/images/img_11.png" alt="Serverless" width={1200} height={600} />
 
 For more serverless stories, check out [Serverless Horrors](https://serverlesshorrors.com/).
 
 ## Related Topics and Further Reading
 
 🔐 **Authentication**
+
 - [Supabase vs Clerk](/blog/supabase-vs-clerk)
 
 📊 **Databases**
+
 - [MongoDB vs PostgreSQL](/blog/mongoDB-vs-postgreSQL)
 - [Neon Postgres vs Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase)

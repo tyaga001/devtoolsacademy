@@ -1,5 +1,5 @@
 import * as React from "react"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 
 type BreadcrumbItem = {
   label: string
@@ -21,7 +21,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
           ) : (
             <Link
               href={item.href}
-              className="outline-none hover:text-neutral-200 focus:text-neutral-200"
+              className="no-underline outline-none hover:text-neutral-200 focus:text-neutral-200"
             >
               {item.label}
             </Link>

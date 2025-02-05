@@ -1,12 +1,18 @@
----
-title: 'CodeRabbit vs Others: Which is the Right AI Code Review Tool'
-seoTitle: 'Comparing AI Code Review Tools'
-isPublished: true
-publishedAt: "2024-12-26T00:00:00Z"
-layout: Article
-summary: 'CodeRabbit vs Other AI code review tools'
-featuredImage: "/images/code-review.png"
----
+import Image from "next/image"
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+
+export const metadata = getMetadata({
+  path: "/blog/coderabbit-vs-others-ai-code-review-tools",
+  title: "Comparing AI Code Review Tools | DevTools Academy",
+  description: "CodeRabbit vs Other AI code review tools",
+  image: "/images/coderabbit-vs-others.png",
+})
+
+<BlogHeader
+  title={"CodeRabbit vs Others: Which is the Right AI Code Review Tool"}
+  publishedAt={"2024-12-26T00:00:00Z"}
+/>
 
 ## **What is Code Review**
 
@@ -16,12 +22,12 @@ In this article, I’ll compare AI code review tools such as [CodeRabbit](https:
 
 The article will compare the AI code review tools based on factors such as:
 
-* Integration with development tools
-* Code quality analysis
-* Actionable code suggestions
-* Chat functionality
-* Security and privacy
-* Pricing model
+- Integration with development tools
+- Code quality analysis
+- Actionable code suggestions
+- Chat functionality
+- Security and privacy
+- Pricing model
 
 Before we explore the AI code review tools, let's see an overview of each AI tool.
 
@@ -40,21 +46,21 @@ Let’s see the AI code review tools mentioned earlier one by one.
 > [CodeRabbit](https://www.coderabbit.ai/) is an AI-powered code review tool that delivers context-aware feedback on pull requests within minutes. It reduces the time and effort needed for manual code reviews by providing a fresh perspective and catching issues that are often missed, enhancing the overall review quality.
 
 <Image
-    src="/images/coderabbit/img_44.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_44.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 **Key features of CodeRabbit**:
 
-* Pull Request Summary
-* Code Review feedback
-* Chat with CodeRabbit
-* Issue Validation
-* Sequence Diagrams
-* Commitable Suggestions
-* Learnings
+- Pull Request Summary
+- Code Review feedback
+- Chat with CodeRabbit
+- Issue Validation
+- Sequence Diagrams
+- Commitable Suggestions
+- Learnings
 
 > CodeRabbit supports multiple programming languages, including JavaScript, [Typescript](https://www.coderabbit.ai/blog/how-to-automate-typescript-code-reviews-with-coderabbit), C\#, Golang, Java, Kotlin, Rust, [Python](https://www.coderabbit.ai/blog/how-to-setup-python-code-reviews-with-coderabbit), and C.
 
@@ -64,10 +70,10 @@ Let’s see the AI code review tools mentioned earlier one by one.
 
 **Key features of Bito AI Code Review Agent**:
 
-* Pull Request (PR) Summary
-* Static Code Analysis
-* Open Source Security Vulnerabilities
-* Real-time code reviews in VS Code and JetBrains
+- Pull Request (PR) Summary
+- Static Code Analysis
+- Open Source Security Vulnerabilities
+- Real-time code reviews in VS Code and JetBrains
 
 Programming languages supported by the Bito AI Code Review Agent are JavaScript, TypeScript, Python, PHP, C, C++, C\#, Go, Java, Ruby, Scala, Swift, and Objective-C.
 
@@ -76,19 +82,19 @@ Programming languages supported by the Bito AI Code Review Agent are JavaScript,
 > [CodeAnt AI](https://www.codeant.ai/) is an AI code reviewer that helps you find and fix critical code quality issues and security vulnerabilities in 30+ languages. The code reviewer uses AI \+ AST engines to detect and auto-fix code issues, including anti-patterns, dead & duplicate code, complex functions, security vulnerabilities, and more.
 
 <Image
-    src="/images/coderabbit/img_3.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_3.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 **Key features of CodeAnt AI**:
 
-* Pull Request Summary
-* Static Code Analysis
-* Finding & Fixing Potential Bugs
-* Code Complexity Analysis
-* SOC2 Audit Reports
+- Pull Request Summary
+- Static Code Analysis
+- Finding & Fixing Potential Bugs
+- Code Complexity Analysis
+- SOC2 Audit Reports
 
 According to CodeAnt AI docs, more than 30 programming languages are supported.
 
@@ -97,18 +103,18 @@ According to CodeAnt AI docs, more than 30 programming languages are supported.
 > [Korbit](https://www.korbit.ai/) is an AI code reviewer for GitHub and Bitbucket that detects code issues and provides interactive fixes. It generates clear PR descriptions and boosts developer productivity by freeing engineers up to focus on their work.
 
 <Image
-    src="/images/coderabbit/img_5.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_5.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 **Key features of Korbit AI**:
 
-* Pull Request description
-* Generating reports and docs
-* Finding & Fixing Potential Bugs
-* Code suggestions
+- Pull Request description
+- Generating reports and docs
+- Finding & Fixing Potential Bugs
+- Code suggestions
 
 Korbit AI supports the programming languages Javascript, Typescript, Python, Java, Groovy, PHP, C\#, C, CPP, Go, Swift, Kotlin, Ruby, Dart, Rust, Scala, Shell, Vue, Fortran, Perl, and Pascal.
 
@@ -132,32 +138,32 @@ Here's a sample `code` snippet that I'll use to compare the analysis capabilitie
 ```javascript
 // Function to calculate the sum of an array
 function calculateSum(array) {
-  let sum = 0;
+  let sum = 0
   for (let i = 0; i < array.length; i++) {
-    sum += array[i];
+    sum += array[i]
   }
-  return sum;
+  return sum
 }
 
 // Function to fetch user data from an API
 async function fetchUserData(userId) {
-  const url = "https://jsonplaceholder.typicode.com/users/" + userId;
-  let response = await fetch(url);
-  let data = await response.json();
-  console.log("User Data:", data);
-  return data;
+  const url = "https://jsonplaceholder.typicode.com/users/" + userId
+  let response = await fetch(url)
+  let data = await response.json()
+  console.log("User Data:", data)
+  return data
 }
 
 // Function to format a user's full name
 function formatFullName(user) {
-  return user.first_name + " " + user.last_name;
+  return user.first_name + " " + user.last_name
 }
 
 // Test the functions
-console.log("Sum:", calculateSum([1, 2, 3, 4]));
+console.log("Sum:", calculateSum([1, 2, 3, 4]))
 fetchUserData(1).then((user) => {
-  console.log("Formatted Name:", formatFullName(user));
-});
+  console.log("Formatted Name:", formatFullName(user))
+})
 ```
 
 The code above has common issues with performance, best practices, and maintainability that we will try to fix by making a pull request.
@@ -169,39 +175,42 @@ The code above has common issues with performance, best practices, and maintaina
 To integrate `CodeRabbit into your development workflow, visit [coderabbit.ai](http://coderabbit.ai) and click the Get a free trial button.
 
 <Image
-    src="/images/coderabbit/img_44.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_44.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Next, sign up with your Git provider. In this case, I will use GitHub as my Git provider.
 
 <Image
-    src="/images/coderabbit/img_44.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_44.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 #### Setting up CodeRabbit
 
 1. Authorize Access
-  - Visit [CodeRabbit Dashboard](https://coderabbit.ai)
-  - Sign in with GitHub
-  - Click "Authorize"
+
+- Visit [CodeRabbit Dashboard](https://coderabbit.ai)
+- Sign in with GitHub
+- Click "Authorize"
 
 2. Add Your Repository
-  - Click `Add Repositories` in top right
-  - Select target repository
-  - Choose access level:
-     - Single repository
-     - All repositories
-     - Selected repositories
+
+- Click `Add Repositories` in top right
+- Select target repository
+- Choose access level:
+  - Single repository
+  - All repositories
+  - Selected repositories
 
 3. Complete Installation
-  - Click `Install & Authorize`
-  - CodeRabbit starts reviewing new PRs automatically
+
+- Click `Install & Authorize`
+- CodeRabbit starts reviewing new PRs automatically
 
 > **Quick Tip**: You can modify repository access anytime later.
 
@@ -215,7 +224,7 @@ You can add configuration as per the below options, in order of precedence:
 2. Configure using CodeRabbit `UI` for each repository
 3. Configure using CodeRabbit `UI` for the organization
 
-> For example, to configure CodeRabbit using a YAML file, create a file named *.coderabbit.yaml* in the root of your repository. Then, add your configuration options to the file, as shown below. Finally, commit and push the file to your repository.
+> For example, to configure CodeRabbit using a YAML file, create a file named _.coderabbit.yaml_ in the root of your repository. Then, add your configuration options to the file, as shown below. Finally, commit and push the file to your repository.
 
 #### CodeRabbit Configuration Example
 
@@ -257,28 +266,28 @@ Then, add your email to create a new account and click the Continue button. Then
 Once your account creation is complete, you will be redirected to your Bito AI dashboard. To get access to the Bito AI Code Review, click the Start 14-day free trial button.
 
 <Image
-    src="/images/coderabbit/img.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 After your 10X Developer Plan has been activated, open the Explore Agents tab on the left sidebar.
 
 <Image
-    src="/images/coderabbit/img_1.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_1.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 Click the Create New Instance button on Code Review Agent in the Explore Agents tab.
 
 <Image
-    src="/images/coderabbit/img_2.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_2.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 After that, configure the code review agent with your Git provider.
@@ -295,10 +304,10 @@ Next, Let’s connect the code review agent to a repo using `GitHub Webhooks.
 - Then add a `Webhook`.
 
 <Image
-    src="/images/coderabbit/img_7.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_7.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 > Next, let's copy the `Payload URL` and `secret token` provided in the code review agent instance setup instructions.
@@ -306,23 +315,23 @@ Next, Let’s connect the code review agent to a repo using `GitHub Webhooks.
 Add them in their respective fields and add webhook.
 
 <Image
-    src="/images/coderabbit/img_8.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_8.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 Don’t forget to select which events you want to trigger the webhook.
 
 In this case, I selected the following options:
 
-* **Issue comments** – To enable Code Review on-demand by issuing a command in the PR comment.
-* **Pull requests** – To auto-trigger Code Review when a pull request is created.
-* **Pull request review comments** – You can share feedback on the review quality using emoji reactions and comments.
+- **Issue comments** – To enable Code Review on-demand by issuing a command in the PR comment.
+- **Pull requests** – To auto-trigger Code Review when a pull request is created.
+- **Pull request review comments** – You can share feedback on the review quality using emoji reactions and comments.
 
 > Note - Once the webhook is set up, trigger the 'Code Review Agent' as follows:
 
-1. **Issue Comments Event**: Type /***review*** in a pull request comment to prompt the agent for a review. Feedback will appear in a few minutes, depending on PR size.
+1. **Issue Comments Event**: Type /**_review_** in a pull request comment to prompt the agent for a review. Feedback will appear in a few minutes, depending on PR size.
 2. **Pull Request Events**: The agent automatically reviews new pull requests upon creation and posts feedback as a comment.
 
 ### **Integrating CodeAnt AI with Development Tools**
@@ -332,19 +341,19 @@ CodeAnt AI integrates with GitHub, GitLab, BitBucket, and Azure DevOps.
 > To integrate CodeAnt AI into your workflow, visit [codeant.ai](http://codeant.ai) and click the Login button.
 
 <Image
-    src="/images/coderabbit/img_3.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_3.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 Then, sign-up with your Git provider. In this case, I will sign up for GitHub.
 
 <Image
-    src="/images/coderabbit/img_4.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_4.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 Next, authorize `CodeAnt AI` to access your GitHub account.
@@ -354,19 +363,19 @@ To connect your repo to `CodeAnt AI`, click the Add Repository on your dashboard
 Next, select the repository you want to install `CodeAnt AI into and click the Install button.
 
 <Image
-    src="/images/coderabbit/img_9.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_9.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 > Next, Visit your CodeAnt AI dashboard to see that your repository was added.
 
 <Image
-    src="/images/coderabbit/img_10.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_10.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 ### **Integrating Korbit AI with Development Tools**
@@ -376,28 +385,28 @@ Korbit AI integrates with only GitHub, GitLab and BitBucket.
 > To integrate Korbit AI into your workflow, visit [korbit.ai](http://korbit.ai) and click the Sign in button.
 
 <Image
-    src="/images/coderabbit/img_5.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_5.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 Next, sign up with your Git Provider. In this case, I'll use GitHub as my Git provider.
 
 <Image
-    src="/images/coderabbit/img_6.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_6.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 Next, authorize Korbit AI to access your GitHub account.
 
 <Image
-    src="/images/coderabbit/img_11.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_11.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 Select the repository you want to install `Korbit AI into and click the Install button.
@@ -406,77 +415,77 @@ Select the repository you want to install `Korbit AI into and click the Install 
 
 > In this section, I’ll show how CodeRabbit, Bito AI Code Review Agent, CodeAnt AI, and Korbit AI evaluate code changes to identify issues or bugs and provide solutions.
 
-To begin, create a new branch called *test\_code\_review* in each repository you created earlier.
+To begin, create a new branch called _test_code_review_ in each repository you created earlier.
 
 Next, switch to the `new branch` and update the code in the `codereview.js` file using the code below and push the code changes to each repo.
 
 ```javascript
 // Base API URL (parameterized for better maintainability)
-const API_BASE_URL = "https://jsonplaceholder.typicode.com";
+const API_BASE_URL = "https://jsonplaceholder.typicode.com"
 
 // Function to calculate the sum of an array (using reduce for better readability)
 function calculateSum(array) {
-if (!Array.isArray(array)) {
-throw new TypeError("Input must be an array of numbers.");
-}
-return array.reduce((sum, num) => sum + num, 0);
+  if (!Array.isArray(array)) {
+    throw new TypeError("Input must be an array of numbers.")
+  }
+  return array.reduce((sum, num) => sum + num, 0)
 }
 
 // Function to fetch user data from an API with error handling
 async function fetchUserData(userId) {
-try {
-const url = `${API_BASE_URL}/users/${userId}`;
-const response = await fetch(url);
-if (!response.ok) {
-throw new Error(`API call failed with status ${response.status}`);
-}
-const data = await response.json();
-console.log("User Data:", data);
-return data;
-} catch (error) {
-console.error("Error fetching user data:", error.message);
-return null;
-}
+  try {
+    const url = `${API_BASE_URL}/users/${userId}`
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`API call failed with status ${response.status}`)
+    }
+    const data = await response.json()
+    console.log("User Data:", data)
+    return data
+  } catch (error) {
+    console.error("Error fetching user data:", error.message)
+    return null
+  }
 }
 
 // Function to format a user's full name safely
 function formatFullName(user) {
-if (
-!user ||
-typeof user.firstName !== "string" ||
-typeof user.lastName !== "string"
-) {
-console.warn("Invalid user object. Returning 'Unknown User'.");
-return "Unknown User";
-}
-return `${user.firstName} ${user.lastName}`;
+  if (
+    !user ||
+    typeof user.firstName !== "string" ||
+    typeof user.lastName !== "string"
+  ) {
+    console.warn("Invalid user object. Returning 'Unknown User'.")
+    return "Unknown User"
+  }
+  return `${user.firstName} ${user.lastName}`
 }
 
 // Function to process multiple users and calculate their total ID sum
 async function processUsers(userIds) {
-const results = [];
-for (const userId of userIds) {
-const user = await fetchUserData(userId);
-if (user) {
-const fullName = formatFullName(user);
-console.log("Processed User:", fullName);
-results.push({ id: user.id, fullName });
-}
-}
-const totalIdSum = calculateSum(results.map((user) => user.id));
-console.log("Total User ID Sum:", totalIdSum);
-return results;
+  const results = []
+  for (const userId of userIds) {
+    const user = await fetchUserData(userId)
+    if (user) {
+      const fullName = formatFullName(user)
+      console.log("Processed User:", fullName)
+      results.push({ id: user.id, fullName })
+    }
+  }
+  const totalIdSum = calculateSum(results.map((user) => user.id))
+  console.log("Total User ID Sum:", totalIdSum)
+  return results
 }
 
 // Test the functions
-(async () => {
-try {
-const users = await processUsers([1, 2, 3]);
-console.log("Processed Users:", users);
-} catch (error) {
-console.error("Unexpected error during processing:", error.message);
-}
-})();
+;(async () => {
+  try {
+    const users = await processUsers([1, 2, 3])
+    console.log("Processed Users:", users)
+  } catch (error) {
+    console.error("Unexpected error during processing:", error.message)
+  }
+})()
 ```
 
 The code above fixes issues on `performance`, `best practices`, and `maintainability` in the previous code.
@@ -496,82 +505,82 @@ However, the code still has some issues. So, let us test each AI code review too
 After pushing the code changes to the CodeRabbit repo, click the Compare & Pull Request button if you are using GitHub as your Git provider.
 
 <Image
-    src="/images/coderabbit/img_12.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_12.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Next, let's create the pull request.
 
 <Image
-    src="/images/coderabbit/img_13.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_13.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Once you have created the pull request, wait for the **CodeRabbit** to process code changes.
 
 <Image
-    src="/images/coderabbit/img_14.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_14.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 After the CodeRabbit bot processes new code changes, CodeRabbit automatically generates a comprehensive `pull request summary`.
 
 <Image
-    src="/images/coderabbit/img_15.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_15.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Next, CodeRabbit provides a detailed `walkthrough` that breaks down the code changes introduced and organizes them by file or directory.
 
 <Image
-    src="/images/coderabbit/img_16.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_16.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Next, **CodeRabbit** identifies the first issue with the `API\_BASE\_URL` variable and suggests externalizing the variable for better configurability.
 
 <Image
-    src="/images/coderabbit/img_17.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_17.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Then, CodeRabbit identifies a `performance issue` and suggests `fetching user data concurrently` using `Promise.all` to improve `performance` when dealing with multiple users.
 
 <Image
-    src="/images/coderabbit/img_18.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_18.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Next, CodeRabbit identifies a bug in the `formatFullName` function and suggests fixing property access to match the `API` response structure.
 
 <Image
-    src="/images/coderabbit/img_19.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_19.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Finally, CodeRabbit identifies a `security issue` and suggests avoiding `logging` entire user data to prevent potential exposure of `sensitive data`.
 
 <Image
-    src="/images/coderabbit/img_20.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_20.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Click [here](https://github.com/tyaga001/coderabbit-review-tool/pull/1) to view the complete `Pull Request` code review using **CodeRabbit**.
@@ -581,49 +590,49 @@ Click [here](https://github.com/tyaga001/coderabbit-review-tool/pull/1) to view 
 After pushing the code changes to the BitoAI repository, click the Compare & Pull Request button if you are using GitHub as your Git provider.
 
 <Image
-    src="/images/coderabbit/img_21.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_21.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 Then, create the pull request by clicking the Create Pull Request Button.
 
 <Image
-    src="/images/coderabbit/img_22.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_22.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 Once you have created the pull request, you can initiate a code review by `typing/reviewing` it in the comment box and submitting it.
 
 <Image
-    src="/images/coderabbit/img_27.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_27.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 After Bito AI processes new code changes, it automatically generates a simple `summary of the pull request`, which is not as comprehensive as the CodeRabbit summary.
 
 <Image
-    src="/images/coderabbit/img_29.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_29.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 - Bito AI does not provide a detailed walkthrough that breaks down the code changes compared to CodeRabbit.
 - Bito AI provides a changelist that displays key changes in a pull request.
 
-After that, the Bito AI Code Review Agent identifies the first issue in the *calculateSum* function and suggests adding array element type validation.
+After that, the Bito AI Code Review Agent identifies the first issue in the _calculateSum_ function and suggests adding array element type validation.
 
 <Image
-    src="/images/coderabbit/img_30.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_30.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 - Bito AI agent identifies an issue with error logging and suggests providing more detailed error information to help with debugging.
@@ -631,30 +640,30 @@ After that, the Bito AI Code Review Agent identifies the first issue in the *cal
 
 Also, the code review agent suggests using named function over the `IIFE pattern`.
 
-To perform an in-depth analysis of your code to identify vulnerabilities, type /***review security*** in the comment box on the pull request and submit it to initiate a code security review.
+To perform an in-depth analysis of your code to identify vulnerabilities, type /**_review security_** in the comment box on the pull request and submit it to initiate a code security review.
 
 After that, Bito AI provides a code security review that suggests implementing URL validation to prevent potential Server-Side Request Forgery (SSRF) attacks.
 
 <Image
-    src="/images/coderabbit/img_31.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_31.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 > Unlike CodeRabbit, the code review agent does not recommend avoiding logging entire user data to prevent potential exposure to sensitive data.
 
 > Unlike CodeRabbit, Bito AI code review agent suggests validating 'userId' before making API calls to avoid potential injection attacks.
 
-To evaluate the code's performance by pinpointing slow or resource-intensive areas and identifying potential bottlenecks, type ***"/review performance"*** in the comment box on the pull request and submit it to initiate a code performance review.
+To evaluate the code's performance by pinpointing slow or resource-intensive areas and identifying potential bottlenecks, type **_"/review performance"_** in the comment box on the pull request and submit it to initiate a code performance review.
 
-After that, Bito AI provides a code performance review that suggests caching the API responses from '***API\_BASE\_URL***' to reduce network calls.
+After that, Bito AI provides a code performance review that suggests caching the API responses from '**_API_BASE_URL_**' to reduce network calls.
 
 <Image
-    src="/images/coderabbit/img_32.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_32.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 Also, similar to CodeRabbit, the Bito AI code review agent suggests using `'Promise.all()' for parallel execution of user data fetching instead of sequential processing in the 'for...of' loop to improve performance.
@@ -662,10 +671,10 @@ Also, similar to CodeRabbit, the Bito AI code review agent suggests using `'Prom
 > Note: Make sure you select the three options below only because I accidentally selected multiple extra checkboxes, which made it hard to understand the issue. Even though the config and webhook were correct, the bot didn’t trigger any code reviews. It also took longer to start the review than the other three tools.
 
 <Image
-    src="/images/coderabbit/img_28.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_28.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 You can click [here](https://github.com/tyaga001/bitoai-review-tool/pull/1) to view the complete Pull Request code review using Bito AI Code Review Agent.
@@ -675,10 +684,10 @@ You can click [here](https://github.com/tyaga001/bitoai-review-tool/pull/1) to v
 After pushing the code changes to the CodeAntAI repository, click the Compare & Pull Request button if you are using GitHub as your Git provider.
 
 <Image
-    src="/images/coderabbit/img_22.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_22.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 Next, create the pull request by clicking the Create Pull Request Button.
@@ -686,28 +695,28 @@ Next, create the pull request by clicking the Create Pull Request Button.
 Next, CodeAnt AI bot processes the new code changes and automatically generates a comprehensive description of the pull request and changes walkthrough.
 
 <Image
-    src="/images/coderabbit/img_23.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_23.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 Also, CodeAnt AI provides a list of things to consider to improve the quality of your code.
 
 <Image
-    src="/images/coderabbit/img_24.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_24.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 After that, CodeAnt AI suggests adding a check to ensure that `userId` is a valid number before making the `API` call to prevent unnecessary network requests.
 
 <Image
-    src="/images/coderabbit/img_25.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_25.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 Then, similar to CodeRabbit and Bito AI Review Agent, CodeAnt AI suggests optimizing the `processUsers` function by using `Promise.all` to fetch user data concurrently, improving performance when making multiple user requests.
@@ -723,10 +732,10 @@ Click [here](https://github.com/tyaga001/codeantai-review-tool/pull/1) to view t
 After pushing the code changes to the KorbitAI repository, click the Compare & Pull Request button if you are using GitHub as your Git provider.
 
 <Image
-    src="/images/coderabbit/img_26.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_26.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 After that, create the pull request by clicking the Create Pull Request Button.
@@ -734,10 +743,10 @@ After that, create the pull request by clicking the Create Pull Request Button.
 After that, the Korbit AI bot processes the new code changes and automatically generates a pull request description, but there is no change walkthrough.
 
 <Image
-    src="/images/coderabbit/img_33.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_33.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 - Korbit AI suggests adding more context to error logs in the `fetchUserData` function.
@@ -763,10 +772,10 @@ CodeRabbit provides [actionable suggestions](https://docs.coderabbit.ai/platform
 For example, CodeRabbit provides a `code snippet` you can add to your code to fix.
 
 <Image
-    src="/images/coderabbit/img_20.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_20.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 > Note: You can read a more in-depth review of CodeRabbit and how it can help you in [this article](https://www.freecodecamp.org/news/how-to-perform-code-reviews-in-tech-the-painless-way/) \- [How to Perform Code Reviews in Tech – The Painless Way](https://www.freecodecamp.org/news/how-to-perform-code-reviews-in-tech-the-painless-way/)
@@ -777,12 +786,11 @@ Similar to CodeRabbit, Bito AI Code Review Agent provides actionable suggestions
 
 > For example, Bito AI Code Review Agent provides a code snippet that you can add to your code to validate array element types.
 
-
 <Image
-    src="/images/coderabbit/img_31.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_31.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 ### **Actionable Code Suggestions in CodeAnt AI**
@@ -791,26 +799,24 @@ Similar to CodeRabbit, CodeAnt AI provides `actionable suggestions`. It includes
 
 > For example, CodeAnt AI provides a code snippet you can add to your code.
 
-
 <Image
-    src="/images/coderabbit/img_25.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_25.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 ### **Actionable Code Suggestions in Korbit AI**
 
 Unlike CodeRabbit, Bito AI Code Review Agent, and CodeAnt AI, Korbit AI does not provide actionable suggestions.
 
-> For example, Korbit AI here does not provide a code snippet you can add to your code to optimize the *processUsers* function with *Promise.all()* to improve performance.
-
+> For example, Korbit AI here does not provide a code snippet you can add to your code to optimize the _processUsers_ function with _Promise.all()_ to improve performance.
 
 <Image
-    src="/images/coderabbit/img_35.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_35.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 ## **On Comparing Chat Functionality**
@@ -822,26 +828,26 @@ Unlike CodeRabbit, Bito AI Code Review Agent, and CodeAnt AI, Korbit AI does not
 CodeRabbit provides `chat` functionality. There are three ways to chat with the CodeRabbit bot.
 
 <Image
-    src="/images/coderabbit/img_36.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_36.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 For example, let’s ask **CodeRabbit** to give me a detailed explanation of the suggested change.
 
 <Image
-    src="/images/coderabbit/img_37.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_37.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 Next, CodeRabbit bot will reply with an in-depth explanation of the suggested changes.
 
 ### **Chat Functionality in Bito AI Code Review Agent**
 
-> Bito AI Code Review Agent supports a chat-like interaction model. You can initiate reviews by typing commands such as /review,  in comments in PRs.
+> Bito AI Code Review Agent supports a chat-like interaction model. You can initiate reviews by typing commands such as /review, in comments in PRs.
 
 However, unlike CodeRabbit, Bito AI Code Review Agent does not provide a `command` to request detailed explanations about the suggested change.
 
@@ -852,10 +858,10 @@ Like CodeRabbit, you can chat with the CodeAnt AI bot and ask for detailed expla
 > For example, I have asked CodeAnt AI to give me a detailed explanation of the change suggested below.
 
 <Image
-    src="/images/coderabbit/img_38.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_38.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 And, CodeAnt AI bot will reply with an in-depth explanation of the suggested changes.
@@ -868,12 +874,11 @@ Like CodeRabbit and CodeAnt AI, the Korbit AI bot allows you to chat with it and
 
 However, Korbit AI does not reply with a detailed explanation of the suggested changes compared to **CodeRabbit** and **CodeAnt AI**.
 
-
 <Image
-    src="/images/coderabbit/img_39.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_39.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 ## **On Comparing Security and Privacy**
@@ -939,10 +944,10 @@ Every developer who submits a pull request is assigned a separate seat. Seats ca
 CodeRabbit offers **four pricing models \- the Free plan, the lite plan, the pro plan, and the Enterprise plan**.
 
 <Image
-    src="/images/coderabbit/img_40.png"
-    alt="CodeRabbit"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_40.png"
+  alt="CodeRabbit"
+  width={1200}
+  height={600}
 />
 
 > With CodeRabbit, all plans include a 14-day free trial, and no credit card is required.
@@ -954,10 +959,10 @@ Most importantly, [CodeRabbit Pro](https://www.coderabbit.ai/pricing) is free fo
 > Bito AI offers three pricing models: Free Plan, 10X Developer Plan, and Team Plan, as shown below.
 
 <Image
-    src="/images/coderabbit/img_41.png"
-    alt="Bito AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_41.png"
+  alt="Bito AI"
+  width={1200}
+  height={600}
 />
 
 Similar to CodeRabbit, all plans in Bito AI include a free trial, and no credit card is required.
@@ -967,10 +972,10 @@ Similar to CodeRabbit, all plans in Bito AI include a free trial, and no credit 
 > On pricing, CodeAnt AI charges $10 for AI code review, but it offers a seven-day trial, as shown below.
 
 <Image
-    src="/images/coderabbit/img_42.png"
-    alt="CodeAnt AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_42.png"
+  alt="CodeAnt AI"
+  width={1200}
+  height={600}
 />
 
 Similar to CodeRabbit and Bito AI, all plans in CodeAnt AI include a free trial and no credit card is required.
@@ -979,12 +984,11 @@ Similar to CodeRabbit and Bito AI, all plans in CodeAnt AI include a free trial 
 
 > On pricing, Korbit AI offers two pricing models: Korbit Starter Free and Korbit Pro.
 
-
 <Image
-    src="/images/coderabbit/img_43.png"
-    alt="Korbit AI"
-    width={1200}
-    height={600}
+  src="/images/coderabbit/img_43.png"
+  alt="Korbit AI"
+  width={1200}
+  height={600}
 />
 
 Like CodeRabbit, Bito AI, and CodeAnt AI, all Korbit AI plans include a free trial of the pro plan. No credit card is required.
@@ -999,51 +1003,50 @@ Like CodeRabbit, Bito AI, and CodeAnt AI, all Korbit AI plans include a free tri
 
 **Integration Capabilities**:
 
-* CodeAnt AI offers more integrations, supporting GitHub, GitLab, BitBucket, and Azure DevOps.
-* Bito AI and CodeRabbit support GitHub, GitLab, and Azure DevOps.
-* Korbit AI has the most limited integration, supporting only GitHub and BitBucket.
+- CodeAnt AI offers more integrations, supporting GitHub, GitLab, BitBucket, and Azure DevOps.
+- Bito AI and CodeRabbit support GitHub, GitLab, and Azure DevOps.
+- Korbit AI has the most limited integration, supporting only GitHub and BitBucket.
 
 **Code Quality Analysis**:
 
-* CodeRabbit provides the most comprehensive and detailed code analysis.
-* Bito AI offers in-depth reviews with security and performance-specific insights.
-* CodeAnt AI provides good-quality suggestions.
-* Korbit AI offers the least detailed analysis.
+- CodeRabbit provides the most comprehensive and detailed code analysis.
+- Bito AI offers in-depth reviews with security and performance-specific insights.
+- CodeAnt AI provides good-quality suggestions.
+- Korbit AI offers the least detailed analysis.
 
 **Actionable Code Suggestions**:
 
-* CodeRabbit and CodeAnt AI provide direct "Committable Suggestion" features.
-* Bito AI offers actionable suggestions without direct commit options.
-* Korbit AI lacks actionable code suggestions.
+- CodeRabbit and CodeAnt AI provide direct "Committable Suggestion" features.
+- Bito AI offers actionable suggestions without direct commit options.
+- Korbit AI lacks actionable code suggestions.
 
 **Chat Functionality**:
 
-* CodeRabbit and CodeAnt AI offer chat capabilities with detailed explanations.
-* Bito AI has limited chat interaction.
-* Korbit AI's chat functionality is the least developed.
+- CodeRabbit and CodeAnt AI offer chat capabilities with detailed explanations.
+- Bito AI has limited chat interaction.
+- Korbit AI's chat functionality is the least developed.
 
 **Security and Privacy**:
 
-* CodeRabbit and Bito AI have strong data protection policies.
-* Korbit AI provides basic data protection.
-* CodeAnt AI has the least transparent privacy information (which, as a developer, I disliked)
+- CodeRabbit and Bito AI have strong data protection policies.
+- Korbit AI provides basic data protection.
+- CodeAnt AI has the least transparent privacy information (which, as a developer, I disliked)
 
 **Pricing**:
 
-* All tools offer free trials and similar pricing structures.
-* CodeRabbit, Bito AI, and Korbit AI have multi-tier plans.
-* CodeAnt AI has a simpler pricing model.
+- All tools offer free trials and similar pricing structures.
+- CodeRabbit, Bito AI, and Korbit AI have multi-tier plans.
+- CodeAnt AI has a simpler pricing model.
 
 **Recommendation**:
 
-* For comprehensive, painless code review: CodeRabbit is unmatched.
-* For security-focused reviews: Bito AI is a good choice but has limited functionality.
-* For broad platform support: CodeAnt AI is good choice but a significant concern on DPA.
+- For comprehensive, painless code review: CodeRabbit is unmatched.
+- For security-focused reviews: Bito AI is a good choice but has limited functionality.
+- For broad platform support: CodeAnt AI is good choice but a significant concern on DPA.
 
 However, the best tool depends on your team's needs, integration requirements, and budget constraints.
 
 So, try them all and see which best suits your project and SaaS.
-
 
 ## Other Posts
 
@@ -1052,4 +1055,3 @@ This article is part of our **Developer Tools Series**. Check out the related po
 - [Twilio vs Stream](https://www.devtoolsacademy.com/blog/stream-vs-twilio)
 - [Supabase vs Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)
 - [MongoDB vs PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL)
-

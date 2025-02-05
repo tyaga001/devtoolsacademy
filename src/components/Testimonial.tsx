@@ -2,7 +2,7 @@
 
 import React from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import { Quote, Star } from "lucide-react"
 
 interface ITestimonial {
@@ -70,7 +70,7 @@ function TestimonialCard({ testimonial }: { testimonial: ITestimonial }) {
   )
 }
 
-export function Testimonial() {
+function Testimonial() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16">
       <div className="mx-auto mb-12 max-w-3xl text-center">
@@ -104,3 +104,5 @@ export function Testimonial() {
     </section>
   )
 }
+
+export default Testimonial

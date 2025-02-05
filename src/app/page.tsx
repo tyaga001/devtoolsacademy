@@ -1,13 +1,17 @@
 import React from "react"
-import dynamic from "next/dynamic"
-import FeaturedPosts from "@/components/FeaturedPosts"
-import Hero from "@/components/Hero"
 
-const Testimonial = dynamic(
-  () => import("@/components/Testimonial").then((mod) => mod.Testimonial),
-  { ssr: false }
-)
-const Footer = dynamic(() => import("@/components/Footer"), { ssr: true })
+import { getMetadata } from "@/lib/metadata"
+
+import Hero from "@/components/Hero"
+import FeaturedPosts from "@/components/FeaturedPosts"
+import Testimonial from "@/components/Testimonial"
+import Footer from "@/components/Footer"
+
+export const metadata = getMetadata({
+  path: "/",
+  title: "DevTools Academy",
+  description: "Learn about awesome developer tools",
+})
 
 const featuredPosts = [
   {

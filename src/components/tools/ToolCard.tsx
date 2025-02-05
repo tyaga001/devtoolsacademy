@@ -3,7 +3,7 @@ import { ToolCardInterface } from "@/lib/types"
 import { Star, GitFork, Clock } from "lucide-react"
 import { Card, CardHeader, CardContent, CardFooter } from "../ui/card"
 import { Badge } from "../ui/badge"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 
 interface ToolCardProps {
   tool: ToolCardInterface
