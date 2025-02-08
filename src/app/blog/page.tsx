@@ -9,32 +9,7 @@ export const metadata = getMetadata({
   path: "/blog",
   title: "Blog | DevTools Academy",
   description: "Learn about awesome developer tools with our blogs",
-  openGraph: {
-    title: "Blogs | Dev Tools Academy",
-    description: "A special blog made for Developers.",
-    url: baseUrl,
-    images: [
-      {
-        url: `${baseUrl}api/og?title=Blogs%20|%20DevToolsAcademy`,
-        width: 1200,
-        height: 639,
-        alt: "DevToolsAcademy",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blogs | Dev Tools Academy",
-    description: "A special blog made for Developers.",
-    images: [
-      {
-        url: `${baseUrl}api/og?title=Blogs%20|%20DevToolsAcademy`,
-        width: 1200,
-        height: 639,
-        alt: "DevToolsAcademy",
-      },
-    ],
-  },
+  image: `${baseUrl}api/og?title=Blogs%20|%20DevToolsAcademy`,
 })
 
 export default async function BlogPage() {
