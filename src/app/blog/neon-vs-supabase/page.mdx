@@ -1,0 +1,550 @@
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+
+export const metadata = getMetadata({
+  path: "/blog/neon-vs-supabase",
+  title: "Neon Postgres vs Supabase | DevTools Academy",
+  description:
+    "An in-depth comparison of Neon and Supabase to help you choose the best database for your SaaS",
+  image: "/images/default-og-image.png",
+})
+
+<BlogHeader
+  title={"Neon Postgres vs Supabase: Choose the Right Database for Your SaaS"}
+  publishedAt={"2024-08-08T00:00:00Z"}
+/>
+
+## What is Neon ?<a id="what-is-neon-"></a>
+
+> [**Neon**](https://neon.tech) is a modern, serverless database platform inspired by Amazon Aurora's architecture, which separates compute and storage resources.
+
+Neon's custom-built storage engine maintains a history of PostgreSQL transactions, enabling a serverless experience with automatic scaling to zero during inactivity and dynamic autoscaling based on demand. Features like database branching and a generous free tier enhance development workflows significantly.
+
+## What is Supabase ?<a id="what-is-supabase-"></a>
+
+> [**Supabase**](https://supabase.com) is a robust tool designed to create secure and high-performance PostgreSQL backends with minimal configuration. As an open-source alternative to Firebase, Supabase offers a comprehensive suite of functionalities, including authentication, real-time databases, and storage solutions.
+
+This flexibility and control over data and applications make Supabase a powerful choice for developers looking for a reliable and versatile backend solution.
+
+This article provides an in-depth comparison of Neon and Supabase, assisting developers in selecting the right platform for their project needs by examining configuration setup, architecture, data import options, real-time processing capabilities, integration, security, and additional features.
+
+## Configuring Connections: Supabase vs. Neon<a id="configuring-connections-supabase-vs-neon"></a>
+
+Both Supabase and Neon offer robust and secure methods for connecting to Postgres databases, each with its own unique features and configuration options. Below, we discuss the methods provided by each platform for connecting to your database, followed by a comparison to help you choose the best option for your needs.
+
+### Neon Connection Methods<a id="neon-connection-methods"></a>
+
+Neon excels in providing straightforward configuration options across various frameworks and languages, making it a great choice for developers seeking a simple and secure connection setup, with the added benefit of extensive connection pooling capabilities.
+
+**Initial Setup and Onboarding**
+
+1. Sign Up for Neon
+
+Sign up for free[ here](https://console.neon.tech/signup) using your email, Github, Google, or other partner account.
+
+2. Onboarding in the Neon Console
+
+> In Neon, a project is the top-level container holding your branches, databases, and roles. Typically, you create a project for each repository in your application, managing database branches like code branches: production, staging, development, new features, previews, and more.
+
+Neon creates your default branch, `main`, hosting your database, role, and a compute endpoint for your application connection.
+
+#### Neon connection options<a id="neon-connection-options"></a>
+
+1. Neon SQL editor
+
+> The Neon SQL editor is a powerful tool within the Neon Console that allows you to run queries on your Neon databases directly. You can use it by navigating to the Neon Console and selecting your project.
+
+Click on the SQL Editor and choose a branch and database. Enter and run your query by clicking "Run".
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdHjlsWqdmFDNnhENXr4QGpV9Odm-huHacHx08asd_kohe8XLIdmhZfoewckeayRc7OE_b_96qYrbbTH8tGyxDJKTUEmgsch9QqWour4F2tmaKWTLl7nJGBwf3u8ZseWh_6W2LkuttlcOwNB4-P6zJrmWxn?key=0jnpRzNFQaBNrbdOAncbMA)
+
+The SQL Editor supports saving queries and viewing query history, and it provides Explain and Analyze features for query optimization. You can also toggle Time Travel to query historical data points within your retention window. Data export options to CSV, JSON, and XLSX are also available.
+
+#### 2. Passwordless authentication<a id="2-passwordless-authentication"></a>
+
+Neon's passwordless authentication for `psql` simplifies the connection process.The passwordless auth feature connects to the first database created in the branch. Here’s how to connect. Run the command: `psql -h pg.neon.tech`
+
+Authenticate via browser: Follow the link provided in the terminal to authenticate.
+
+```bash
+NOTICE:  Welcome to Neon!
+Authenticate by visiting:
+    https://console.neon.tech/psql_session/6d32af5ef8215b62
+```
+
+Return to terminal: After authentication, your **psql** session is connected to Neon.
+
+```bash
+NOTICE:  Connecting to database.
+psql (15.0 (Ubuntu 15.0-1.pgdg22.04+1))
+Type "help" for help.
+
+casey=>
+```
+
+This method is secure and efficient, eliminating the need to remember or manage passwords.
+
+#### 3. Secure connections<a id="3-secure-connections"></a>
+
+Neon requires SSL/TLS encryption for all connections to ensure data security. The `sslmode` parameter in the connection string allows various levels of security: 
+
+\***\*![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXflUDcgA-jBxuqN4vQDlQfIFkcP_4sEeMpINOG07nsH-yV0LKZsx9hgS2YarO9S_JnwDdwUPYpyQ6msH0uiZ1lJk-WdHe8vH6H-AkPhHEKA-h2D2hOiqSc20T0bhs34WnsSSQPuzSqLVj7rWITVTE9Quyrw?key=0jnpRzNFQaBNrbdOAncbMA)\*\***
+
+Neon recommends using **verify-full** mode for maximum security. Configure SSL settings according to your client library (e.g., psycopg2 for Python) and ensure your root certificates are correctly set up.
+
+#### 4. GUI applications<a id="4-gui-applications"></a>
+
+You can connect to Neon databases from various GUI applications and IDEs like pgAdmin, DataGrip, and DBeaver.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXefqWIBPCZJnoVb3jTzT4CoSORO7RPGQVnyiev5Rhj2qThjR6RxyVYkZJ5XUgJngdRdS7y_HteiwhkDNNmpzymlXz8HjCOjWaojGIEfQXGcKoFadoWsj8jegB9sddloTm1TJHhuXscxQsbGe6yzRBYd5hg?key=0jnpRzNFQaBNrbdOAncbMA)
+
+You need to gather your connection details from the Neon Console and enter them into the appropriate fields in your application. Neon supports both pooled and direct connections.
+
+#### 5. Connection pooling<a id="5-connection-pooling"></a>
+
+> Neon uses **PgBouncer** for connection pooling, supporting up to 10,000 concurrent connections. This is particularly useful for applications with many simultaneous connections, such as serverless functions. Use a pooled connection string by adding `-pooler` to your compute endpoint ID.
+
+**Example pooled connection string:**
+
+```bash
+postgres://alex:AbC123dEf@ep-cool-darkness-123456-pooler.us-east-2.aws.neon.tech/dbname?sslmode=require
+```
+
+Connection pooling helps manage resources efficiently, allowing many connections to share a smaller number of actual Postgres connections.
+
+#### 6. Connecting to Neon with psql<a id="6-connecting-to-neon-with-psql"></a>
+
+> The psql client is the native command-line interface for PostgreSQL. It allows users to interact with their PostgreSQL databases by running queries, executing commands, and performing various database operations. Since Neon runs on PostgreSQL, psql is fully compatible with it. This compatibility ensures that you can leverage all standard PostgreSQL features while using Neon. The easiest way to connect to Neon using psql is with a connection string. You can obtain a connection string from the Connection Details widget on the Neon Dashboard.<a id="the-psql-client-is-the-native-command-line-interface-for-postgresql-it-allows-users-to-interact-with-their-postgresql-databases-by-running-queries-executing-commands-and-performing-various-database-operations-since-neon-runs-on-postgresql-psql-is-fully-compatible-with-it-this-compatibility-ensures-that-you-can-leverage-all-standard-postgresql-features-while-using-neon-the-easiest-way-to-connect-to-neon-using-psql-is-with-a-connection-string-you-can-obtain-a-connection-string-from-the-connection-details-widget-on-the-neon-dashboard"></a>
+
+#### ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdyhA8pNXE4Mdc9Vr3wTSq4Hdu9LRNdaATTHj9WcOStREnRLIob4R8OjwmyuDcoihJVVtVJsAQZzFZiuqeV9LzpCKbKqP9DAdcrVzN-yxbfV-9r-Wg_rb-VktHHEokiR6fdKKSxXC-RIEZXvTBGjPHZ4wIQ?key=0jnpRzNFQaBNrbdOAncbMA)
+
+#### 7. Connecting to Neon with pgcli<a id="7-connecting-to-neon-with-pgcli"></a>
+
+> pgcli is an enhanced command-line interface for PostgreSQL that offers features like syntax highlighting, autocompletion, multi-line editing, and query history. The easiest way to connect to Neon using the pgcli client is with a connection string, which you can obtain from the Connection Details widget on the Neon Dashboard. Select a branch, a role, and the database you want to connect to. A connection string is constructed for you.<a id="pgcli-is-an-enhanced-command-line-interface-for-postgresql-that-offers-features-like-syntax-highlighting-autocompletion-multi-line-editing-and-query-history-the-easiest-way-to-connect-to-neon-using-the-pgcli-client-is-with-a-connection-string-which-you-can-obtain-from-the-connection-details-widget-on-the-neon-dashboard-select-a-branch-a-role-and-the-database-you-want-to-connect-to-a-connection-string-is-constructed-for-you"></a>
+
+From your terminal or command prompt, run the **pgcli** client with the connection string. Your command will look something like this:
+
+```bash
+pgcli postgres://alex:AbC123dEf@ep-cool-darkness-123456.us-east-2.aws.neon.tech/dbname
+```
+
+### AI Integration<a id="ai-integration"></a>
+
+You can also integrate your Neon database with AI tools like **AskYourDatabase** for natural language queries and data visualizations. Download the AskYourDatabase app, connect using your Neon connection string, and start querying your data in natural language.
+
+### Supabase Connection Methods<a id="supabase-connection-methods"></a>
+
+Supabase offers multiple options for programmatically connecting to your Postgres database, catering to various use cases and environments:
+
+1\. APIs
+
+Supabase provides several types of API to suit your preference and allows you to programmatically connect to your Postgres database.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOtm4ng3ENWd1NBgQ7kHBazxRXRoEoLj1OcvYucZ_D5-YPjcn3JubrbEnueKQGUI0EndFowGUddIs7ShO6hbTdv4FKz3dnbG_pH9Y0wghUlmJFPiDQpTbaQ7SLlzwNpkEr6H1j14iV8VRkIVgqPpAMFlA-?key=0jnpRzNFQaBNrbdOAncbMA)
+
+- **REST:** Interact with your database through a REST interface.
+
+- **GraphQL:** Interact with your database through a GraphQL interface.
+
+- **Realtime:** Listen to database changes over websockets.
+
+2\. Connection Pooling
+
+A connection pool is a system (external to Postgres) that manages Postgres connections. Every Supabase project comes with a connection pooler for managing connections to your database.
+
+\***\*![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd8gmGlK7rew-pNmLc-zX9JJe8rJ0DzgH51RIfwu6rqbDCOOmjbUwItJzv1EJeD_ZfRRXdeh585zyxKiAzpJiPhwlUl5VI4k6lYZWgFKDoKJfLYG2taJcRaflWe7cHz0GSpr2CDavvtCRdjZUaey_TjYr76?key=0jnpRzNFQaBNrbdOAncbMA)\*\***
+
+The connection pooler is available in 2 modes: **Transaction** and **Session**.
+
+- **Transaction mode:** Recommended for serverless environments where connections are assigned for the duration of a transaction.
+
+- **Session mode:** Similar to direct connections, with a connection assigned until the client disconnects and full support for prepared statements.
+
+3\. Direct connections
+
+> Supabase allows direct connections to your Postgres database, typically via IPv6. For networks that require IPv4, Supabase offers connection pooling or an IPv4 add-on.
+
+4\. Serverless environments
+
+> Supabase provides several options for connecting to your Postgres database from serverless environments. The `supabase-js` client uses the auto-generated REST API, making it ideal for serverless workloads due to its built-in connection pooler that can handle thousands of simultaneous requests.
+
+5\. Vercel edge functions
+
+Choose one of these Vercel Deploy Templates, which use Vercel deploy integration to automatically configure your connection strings as environment variables on your Vercel project!
+
+- **Supabase-js:** A Next.js App Router template configured with cookie-based auth using Supabase, TypeScript, and Tailwind CSS.
+
+- **Kysely:** A simple Next.js template that uses Supabase as the database and Kysely as the query builder.
+
+Ensure the `Use connection pooler `option is checked, and `Transaction mode` is selected in your Database Settings. Now copy the URI and save it as the `POSTGRES_URL` environment variable, replacing the password placeholder with your actual database password and adding the suffix `?workaround=supabase-pooler.vercel`**.**
+
+```bash
+POSTGRES_URL="postgres://postgres.cfcxynqnhdybqtbhjemm:[YOUR-PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?workaround=supabase-pooler.vercel"
+```
+
+## Architecture Comparison: Neon vs. Supabase<a id="architecture-comparison-neon-vs-supabase"></a>
+
+### Neon Architecture<a id="neon-architecture"></a>
+
+Neon's architecture is based on the separation of compute and storage, managed by the Neon Control Plane. This control plane orchestrates cloud resources across both storage and compute. Neon runs Postgres as a stateless compute, while storage is a multi-tenant key-value store for Postgres pages, custom-built for the cloud.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcZleav34itKB6Ja5zEF_73EEx59HdStYz1abL0Ncnq9blyc50G6MeEEr_hCLjhhJRU_Ezb2VshmfZz4E2iQwFVSNr6axCO58MQV48Cqb4TmfeE73jZAYJS2q87oGyEuZ2MXk25qTMI7nd3H2mppDBvt9TJ?key=0jnpRzNFQaBNrbdOAncbMA)
+
+**Primary Components of Neon**
+
+**1. Neon compute lifecycle**
+
+> Neon compute nodes are stateless, with states transitioning between Active and Idle to manage resources efficiently. The Autosuspend feature ensures that computes do not remain active when not in use, conserving energy and resources. Activation of idle computes may introduce initial latency, but the system is designed to handle this efficiently.
+
+**2. Neon storage**
+
+> Neon uses a multi-tenant key-value store for Postgres pages, consisting of Safekeepers, Pageservers, and cloud object storage.
+
+**3. Safekeepers**
+
+> Ensure the durability of recent updates by storing the Write-Ahead Log (WAL) until processed by Pageservers and uploaded to cloud storage.
+
+**4. Pageservers**
+
+> Serve read requests by processing the incoming WAL stream into a custom storage format, uploading data to cloud storage, and downloading it on demand.
+
+**5. Cloud object storage**
+
+> Neon uses cloud object storage for long-term data storage, with data encrypted at rest.
+
+**6. Compute configuration**
+
+> Only session-level configuration parameters can be modified, resetting when the session terminates or when the compute suspends due to inactivity.
+
+### Supabase Architecture<a id="supabase-architecture"></a>
+
+- Supabase is built on open-source tools designed to be scalable and easy to use.
+
+- Supabase is not a 1-to-1 mapping of Firebase. While Supabase aims to offer many of the features that Firebase provides, its approach is different, focusing on open-source technologies and supporting existing tools whenever possible.
+
+- Supabase uses open-source tools that are scalable and simple to use. The platform leverages PostgreSQL rather than a NoSQL store, a deliberate choice to ensure the functionality and scalability required to compete with Firebase and go beyond it.
+
+- Supabase aims to make PostgreSQL easy to use for everyone, regardless of their level of experience. Users can start small and grow into using more advanced features of PostgreSQL at their own pace.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXckNHkKPIEGkDx6fXnii6FthHhH8NmCNgyU8FzN94AQ-uhJsSr2a25Dh8j4tWcPLIoYe9O8RfRptJajE-5Rj3x2FpOLlPJd0-VPPct2VyxB-3VFcTwo_JvvgYQDrJkA8igUPSNEdteC5_o-qVMjjxW0q9g?key=0jnpRzNFQaBNrbdOAncbMA)
+
+**Primary components of Supabase**
+
+**1. PostgreSQL (Database)**
+
+> PostgreSQL serves as the core of Supabase, providing a robust and feature-rich relational database system. Supabase does not abstract PostgreSQL; users can access and use it with full privileges, similar to using it directly.
+
+**2. Studio (Dashboard)**
+
+> An open-source dashboard for managing your database and services, providing an intuitive interface for interacting with PostgreSQL and other Supabase components.
+
+**3. GoTrue (Auth)**
+
+> A JWT-based API for managing users and issuing access tokens, integrating with PostgreSQL's Row Level Security and API servers.
+
+**4. PostgREST (API)**
+
+> A standalone web server that turns your PostgreSQL database into a RESTful API. It is used with the `pg_graphql` extension to provide a GraphQL API.
+
+**5. Realtime (API & Multiplayer)**
+
+> A scalable websocket engine for managing user presence, broadcasting messages, and streaming database changes.
+
+**6. Storage API (Large file storage)**
+
+> An S3-compatible object storage service that stores metadata in PostgreSQL.
+
+**7. Deno (Edge functions)**
+
+> A modern runtime for JavaScript and TypeScript, providing serverless functions with low latency.
+
+**8. postgres-meta (Database management)**
+
+> A RESTful API for managing PostgreSQL, including fetching tables, adding roles, and running queries.
+
+**9. Supavisor**
+
+> A cloud-native, multi-tenant Postgres connection pooler designed for managing connections efficiently.
+
+## Neon vs. Supabase Integrations<a id="neon-vs-supabase-integrations"></a>
+
+> **Neon** and **Supabase** both offer a variety of integrations with different tools, allowing you to use Neon or Supabase with your favorite tools.
+
+**Neon**
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfEWyNik08__yV3BPsB-Yx3KhTeKY8tSWgjjWs2fcADvKs13fwYT2Cggy9XvYvGYMMVinkNfldnzwN0ze9fF_cqYkAOMq7CYnrvb3uYFKhXXKHT7gn4HAea2mzmH_ajPZn1mAF79-pZKMN7rvohXraCiYyD?key=0jnpRzNFQaBNrbdOAncbMA)
+
+- **Deployment**: Integrates with platforms like Vercel, Heroku, and AWS Lambda.
+
+- **Schema Migration**: Supports ORMs such as Prisma, Django, and Laravel.
+
+- **Authentication**: Integrates with Auth0, Clerk, and Okta.
+
+- **Replication**: Works with tools like Airbyte, Kafka, and Fivetran.
+
+**Supabase**
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfa41K8JSI5U5kbRnKSk9_8jfHqS91I0i1bbKFdTlez-f47FtK17O9mwtDIN4UhKORUnoCm__seAzCEFsW8T5dB5x_jY2c8KVgOXbrIPtWFzWBkps8zkhe4NmxgaN-mXgmn_-80Pk0ka5PIxuYLCsVZeDE3?key=0jnpRzNFQaBNrbdOAncbMA)
+
+- **API**: Provides auto-generated RESTful and GraphQL APIs.
+
+- **Authentication**: Integrates with Auth0, NextAuth, and Clerk.
+
+- **Low-Code Tools**: Compatible with Retool, Appsmith, and Forest Admin.
+
+- **Messaging**: Works with services like OneSignal for push notifications.
+
+## Importing Data: Neon vs. Supabase<a id="importing-data-neon-vs-supabase"></a>
+
+> When migrating to a new database platform, the ability to import data efficiently and reliably is crucial. Here, we explore and compare the methods provided by Supabase and Neon for importing data, helping you determine the best approach for your needs.
+
+![Importing Data: Neon vs. Supabase](/images/data-supabase-vs-neon.png)
+
+## Security: Supabase vs. Neon<a id="security-supabase-vs-neon"></a>
+
+When evaluating the security features of database platforms, both Supabase and Neon offer robust measures to ensure data protection, secure access, and compliance with industry standards. Below is a concise comparison of their security features, presented in a tabular format for direct comparison and followed by a discussion of additional aspects.
+
+> Both platforms prioritize secure connections using SSL/TLS encryption. Supabase enhances security with JWT and RLS, and both platforms offer the strict `verify-full` SSL mode, ensuring that a trusted CA issues the server’s certificate and that the server’s hostname matches the certificate. Both platforms require high-entropy passwords for all PostgreSQL roles to prevent brute-force attacks. In addition, Supabase employs fail2ban to prevent Brute Force attacks.
+
+Supabase uses the Vault feature to manage secrets, providing encrypted storage for sensitive information such as environment variables and API keys. Neon encrypts inactive data using the XTS-AES-256 block cipher on NVMe SSD volumes, ensuring that data remains secure and unreadable without the proper encryption key. Supabase offers AES-256 encryption in transit and at rest.
+
+Authentication Supabase provides authentication through JWT, integrated with RLS for user-specific data access. Both platforms offer integrations with multiple authentication platforms, including Auth0, Clerk, and Okta, offering advanced features like social login, multi-factor authentication, and secure user data management.
+
+- In terms of compliance, Neon has achieved SOC 2 Type 1 and Type 2 compliance, demonstrating adherence to high security and privacy standards.
+- Supabase is [SOC 2 Type 1 and Type 2 compliant](https://supabase.com/security). Supabase is also HIPAA compliant meaning you can store your Protected Health Information (PHI) on their hosted platform. Customers can enter into a Business Associate Agreement (BAA) to fulfill HIPAA obligations under their [shared responsibility model](https://supabase.com/docs/guides/platform/shared-responsibility-model#managing-healthcare-data). .
+
+![Security: Supabase vs. Neon](/images/img.png)
+
+## Features of Neon vs. Supabase<a id="features-of-neon-vs-supabase"></a>
+
+This is a non-exhaustive list of features that Neon and Supabase provide for every project.
+
+- **Autoscaling**
+
+> Neon's Autoscaling feature dynamically adjusts compute resources allocated to a Neon compute endpoint based on the current workload. It offers on-demand scaling, cost-effectiveness, resource and cost control, and eliminates the need for manual intervention. The autoscaling mechanism involves a high-level architecture that includes the autoscaler-agent, a Kubernetes scheduler, and NeonVM for VM management. Autoscaling is implemented by allocating and deallocating vCPU and RAM to each VM.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXe18XCNp-3wOLk0l4r6i4-CjjR4qzvFygU_z8GWP6s2CZwcPm7t2vimexJKASgi6AI_0PN5dekpMTpHeP3sxvyku-25hU70ijkvYGSx0pmHusw6JK_1G2lsTh0Z3q1GAfu05NethU2qFEw2D2rMHSqXY8XB?key=0jnpRzNFQaBNrbdOAncbMA)
+
+- **Autosuspend**
+
+> The Autosuspend feature allows Neon compute instances to scale to zero after a period of inactivity, with the default set at 300 seconds (5 minutes). This feature is customizable for paid users and helps reduce compute usage and costs by suspending inactive computes. Autosuspend can be adjusted to avoid or reduce the frequency of cold starts. Free tier projects on Supabase offer dedicated compute resources and autosuspend after 7-days of inactivity.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcNPukXs0_fyQm94Xlg3KU4s331RmlxIhAp_V-Pc-NzySSoHE8bVM86K_pGgayhrWOCe2auZRI4lbaefpeyDwC5WZ6Uy5O3hU--zEPcsvpZFqncMSXk-FpVFyI5XnuV17sq_lhs1Dftn-siWtWSijGHu6Xq?key=0jnpRzNFQaBNrbdOAncbMA)
+
+- **Branching**
+
+> Neon supports branching, which allows users to create copy-on-write clones of their data for development, testing, and data recovery. Branches are isolated from the parent branch and can be created from any point in time. This feature supports development workflows, testing environments, and data recovery scenarios, integrating with the Neon Console, CLI, API, GitHub Actions, and Vercel.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdwizWbzbS5HOsZtgEf21a9bnSb7N9XQVIBvxSpY0y3GdpWneGyPyJZ3fdXLxXicaSS4YuqRA-NaePK_VgBM93rMLHMOzYdsFugg97JoAQOYN_w52mipMcpnOOqoJNiX65nO3HRW4maKRFEZG2fwCfW1V06?key=0jnpRzNFQaBNrbdOAncbMA)
+
+- **Logical replication**
+
+> Neon's logical replication feature allows streaming data from a Neon database to external destinations for Change Data Capture (CDC) and real-time analytics. It uses a publish and subscribe model to replicate data and supports selective replication of specific tables or rows.
+
+- **Read replicas**
+
+> Read replicas in Neon are independent read-only compute instances designed to perform read operations on the same data as read-write computes. These replicas do not replicate data across instances but direct read requests to a single source. Neon read replicas are asynchronous and support autoscaling and autosuspend features. The following diagram shows how read-write and read-only compute instances send read requests to the same Neon Pageserver.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcwts-BxfRdQXMgwcx9l2doAANbCzCI3O9b3-hVUq1iMl8Jtf1cWJpnQV3pilteAAZ6iCROwXcUi0oc1uhGUiBCZLu5UrZxqgD7df3cqJQFFmDdPUoIkohhDYePudQVV7YaK1Ifv8AAa49445IvhQ-l7i8?key=0jnpRzNFQaBNrbdOAncbMA)
+
+Time Travel utilizes Neon's instant branching capability to create a temporary branch and compute endpoint at the selected point in time, which are automatically removed once you finish querying. These ephemeral compute endpoints are not listed on the Branches page or in CLI/API list branches requests. However, you can view the history of operations related to the creation and deletion of these branches and compute endpoints on the Operations page, including start_compute, create_branch, delete_timeline, and suspend_compute.
+
+- **Schema Diff**
+
+> Neon's Schema Diff tool lets users compare schemas of two branches in a side-by-side view. It supports comparisons between a branch and its parent or another branch's history, integrating with the Neon Console and CLI for various schema comparison needs.
+
+- **IP Allow and Protected Branches**
+
+> The IP Allow feature restricts database access to trusted IP addresses, enhancing data security. Users can configure an allowlist and apply IP restrictions to specific branches by designating them as protected. This feature is available with the Neon Scale plan.
+
+### Features of supabase<a id="features-of-supabase"></a>
+
+- **Postgres database**
+
+> Supabase provides a full Postgres database for every project, supporting vector databases for storing vector embeddings alongside other data.
+
+- **Auto-generated REST API**
+
+> Supabase generates RESTful APIs automatically from the database using PostgREST, allowing easy API creation without writing code.
+
+- **Auto-generated graphQL API**
+
+> Supabase offers fast GraphQL APIs via a custom Postgres GraphQL extension, providing flexible and efficient data querying.
+
+- **Database webhooks**
+
+> Supabase supports sending database changes to external services using webhooks, facilitating real-time updates and integrations.
+
+- **Secrets and encryption**
+
+> Supabase offers the Supabase Vault Postgres extension for encrypting sensitive data and storing secrets securely.
+
+- **Database backups**
+
+> Supabase backs up projects daily with options for Point in Time recovery, ensuring data safety and recovery capabilities.
+
+- **Custom domains**
+
+> Supabase allows users to white-label APIs with custom domains, creating a branded experience for users.
+
+- **Network restrictions**
+
+> Supabase can restrict IP ranges that connect to the database, enhancing security by limiting access.
+
+- **SSL enforcement**
+
+> Supabase enforces SSL connections for Postgres clients, ensuring secure data transmission.
+
+- **Branching**
+
+> Supabase supports database branching for testing and previewing changes, similar to version control systems for code such as Git.
+
+- **Terraform provider**
+
+> Supabase can manage infrastructure via Terraform, allowing Infrastructure as Code (IaC) management.
+
+- **Read replicas**
+
+> Supabase supports deploying read-only databases across multiple regions for lower latency and better resource management.
+
+- **Realtime features**
+
+> Supabase provides real-time features like receiving database changes through websockets, broadcasting messages between users, and synchronizing shared state across users.
+
+- **Authentication features**
+
+> Supabase supports various authentication methods, including email login, social login, phone login, passwordless login, and row-level security. It also provides Captcha protection and server-side authentication helpers for popular frameworks.
+
+- **Storage features**
+
+> Supabase offers file storage, content delivery network (CDN) for caching files, smart CDN for automatic revalidation, image transformations, resumable uploads, and S3 compatibility.
+
+- **Edge functions**
+
+> Supabase supports globally distributed TypeScript functions via Deno, regional invocations, and NPM compatibility for executing custom business logic.
+
+- **Project management**
+
+> Supabase provides a CLI for local development and deployment, a management API for programmatic project management, and official client libraries for various languages.
+
+![Performance Metric 1](/images/img_1.png)
+
+![Performance Metric 2](/images/img_2.png)
+
+![Performance Metric 3](/images/img_3.png)
+
+## Platform Management Features: Neon vs. Supabase.<a id="platform-management-features-neon-vs-supabase"></a>
+
+### Access control<a id="access-control"></a>
+
+- Neon provides access control via email signup, organization management, user roles, permissions, and passwordless authentication. Users can invite members and guests, set permissions, manage projects, and use the Neon API for comprehensive access control.
+
+- Supabase offers roles like Owner, Administrator, Developer, Read-only, and Billing to manage permissions within organizations. Owners can manage roles, invite others, and transfer ownership of organizations. Members have access to all projects within an organization, requiring separate organizations for restricted access to specific projects.
+
+### Schema migrations<a id="schema-migrations"></a>
+
+- Neon and Supabase both offer robust solutions for schema migrations, but their approaches differ significantly. Neon provides detailed guides for various frameworks such as Django, Laravel, and Entity Framework, ensuring seamless integration and easy migration processes.
+
+- On the other hand, Supabase primarily utilizes the Supabase CLI for migrations, which is particularly useful for upgrading older projects or Postgres versions. The CLI allows users to perform database dumps and restores, set environment variables, and handle manual configurations such as enabling extensions and managing encryption keys. Since Supabase is just vanilla Postgres, it can also be used with popular migration tools available in frameworks such as Django, Laravel, and Entity.
+
+### Network restrictions<a id="network-restrictions"></a>
+
+- Neon provides IP allowlists and protected branches, allowing users to restrict access to trusted IP addresses for increased security. Users can manage IP restrictions through the Neon console, ensuring only authorized connections to their databases.
+
+- Supabase allows you to set up configurable IP range restrictions for database connections, which are managed via the dashboard or CLI, enhancing security. These restrictions apply to both IPv4 and IPv6, HTTPS APIs like PostgREST, Storage, and Auth rate limits and IP restrictions are configured separately.
+
+### Branching<a id="branching"></a>
+
+As mentioned earlier, Neon offers branching for development, testing, and data recovery. It allows the creation and management of branches through various tools like the Neon Console, CLI, API, GitHub Actions, and Vercel. This feature enables safe experimentation and streamlined workflows, ensuring project stability.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcz_QKgktpkF_TgZPd0d0RG4upVladDzpgxmBdZVqP1B_CxzlSlN5VgUlnbtDTzlhSwdltx5KDL7pPSXsUq-TmfRtbSm5RDSRIYWZHYIVfEOmniQtOqwORonHJy3kK4fbly7eovz-9T0URaXY_ob4WAOxsk?key=0jnpRzNFQaBNrbdOAncbMA)
+
+Supabase also provides branching for safe experimentation with project changes, similar to Git branches. Each branch has its own instance and API credentials. Branches are created via GitHub integration, allowing testing of configurations, schemas, and features without affecting production.
+
+### Monitoring<a id="monitoring"></a>
+
+> Neon and Supabase both offer robust monitoring capabilities for managing and optimizing database performance, though their approaches vary. Neon provides a comprehensive monitoring dashboard that tracks metrics such as CPU, RAM, and connections. Users can also monitor billing, usage, and autoscaling activities through the Neon Console, API, or CLI.
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdcj0FePbKTAcEPJA5m-jdML5hiUc3aQIefKF0tIW4hMf4H7yJHXThhdvzOgb8R0inAza7mAXeqgQZucjHSq7vE5KCIEnGwR78KsPxdnJpzU1ZrlTdOLP7r5euYsvBmZE2EPhS1-rvju1oe5nV6ym6gAzs?key=0jnpRzNFQaBNrbdOAncbMA)
+
+Both platforms support third-party tools like PgHero and PgAdmin for advanced performance analytics, and the **pg_stat_statements** extension helps optimize query performance. In addition, Supabase offers the newer **pg_stat_monitor**.
+
+Supabase, on the other hand, integrates monitoring tools within its CLI, allowing users to inspect their Postgres databases for issues like disk storage bloat, cache hit rates, and query performance.
+
+### Backups<a id="backups"></a>
+
+Neon and Supabase offer distinct approaches to database backups, catering to different needs. Neon supports point-in-time restore (PITR) with configurable retention periods: 24 hours for Free Tier, 7 days for Launch, and 30 days for Scale plans. Users can create database branches for near-instant restores. 
+
+Additionally, backups can be manually created using command below.
+
+Automation can be set up using GitHub Actions for nightly backups to AWS S3.
+
+```bash
+npx @neondatabase/pg-import --source <source_database_connection_string> --backup-file-path <dump_file_name>
+```
+
+Supabase also provides automated daily backups and PITR, with daily backups accessible for 7 days on Pro plans and 30 days on Enterprise plans.
+
+<Callout>
+
+For databases over 40GB, physical backups are used, ensuring performance with minimal disruption. PITR, available as an add-on, allows recovery to any point in time with high granularity, suitable for projects requiring stringent Recovery Point Objectives (RPO). Supabase uses pg_dumpall for daily backups and WAL-G for PITR, ensuring data integrity and efficient disaster recovery
+
+</Callout>
+
+### Support<a id="support"></a>
+
+<Callout>
+Neon offers four support levels: Community, Standard, Priority, and Enterprise.
+
+    Community support is accessible through the Neon Discord Server, included with the Free Tier. Standard support, available with the Launch plan, adds support tickets with a two-business-day response time. Priority support, part of the Scale plan, includes prioritized tickets and video chats. Enterprise support, aligned with the Enterprise plan, includes a dedicated Customer Success Team and SLAs.
+
+</Callout>
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXesOTHFDBMJXwxBjCLojby5feSE_UVOvBJ9WkPtdvPXI8bBuMie0ZDD_xQODBl39N6GXZ8KpVTJUr8-kZic4NC9UGsJLC6woS4NjZWvwya34o0EEJX99zgaYA3Usr-8F8FoiAp-NK5vXW8Lz9YShn1OzQp9?key=0jnpRzNFQaBNrbdOAncbMA)
+
+<Callout>
+Supabase also has tiered support: Community support is included with the Free plan, while email support is available in the Pro plan.
+
+    The Team plan offers priority email support, SLAs, and daily backups for 14 days. The Enterprise plan provides premium support, a designated support manager, a private Slack channel, and custom SLAs. 
+
+</Callout>
+
+## Conclusion<a id="conclusion"></a>
+
+Both Neon and Supabase offer good solutions for managing Postgres instances, each with its unique strengths.
+
+> Neon excels with its dynamic autoscaling, autosuspend features, and simplified, transparent pricing structure, making it ideal for startups and mid-sized businesses.
+
+> Supabase provides comprehensive real-time features, auto-generated APIs, and extensive support for infrastructure management, catering well to larger, enterprise-scale applications.
+
+so finally choosing between the two depends on your specific needs, with Neon favoring simplicity and cost-effectiveness, while Supabase offers extensive features and flexibility.
+
+## Next Steps
+
+I encourage you to take the information provided and start building your own projects with Supabase and Neon.
+
+To get you started, here are some example projects that I’ve built:
+
+1. **[Build an Invoice SaaS App with Next.js and Neon Postgres](https://www.freecodecamp.org/news/build-an-invoice-saas-app-with-next-js-and-neon-postgres/)**
+
+> Learn how to create a full-fledged SaaS application for managing invoices. This tutorial covers setting up Next.js with Neon Postgres, user authentication using Clerk, and CRUD operations.
+
+2. **[Fullstack Development with Next.js, Clerk, and Neon](https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/)**
+
+> Dive into fullstack development with this guide, which integrates Next.js, Clerk for authentication, and Neon for the database. It’s a comprehensive tutorial that covers everything from setup to deployment.
+
+3. **[Notes App with React and Supabase](https://theankurtyagi.com/notes-app-react-supabase/)**
+
+> Build a simple yet powerful notes app using React and Supabase. This project is perfect for beginners and demonstrates the basics of CRUD operations and user management with Supabase.
+
+Happy coding, and I can’t wait to see what you build.
+
+Feel free to suggest edits or raise a PR.
+
+## Related Posts
+
+This article is part of our **Developer Tools Series**. Check out the related posts:
+
+- [Supabase vs Clerk - Authentication Comparison](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)
+- [MongoDB vs PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL)
+- [State of Databases for Serverless in 2024](https://www.devtoolsacademy.com/blog/state-of-databases-2024)

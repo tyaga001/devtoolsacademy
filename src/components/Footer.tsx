@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion } from "motion/react"
 import {
   Twitter,
   Github,
@@ -191,7 +191,7 @@ const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-8 grid gap-8 md:grid-cols-3">
           <div className="flex flex-col">
-            <h3 className="mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-3xl font-bold text-transparent">
+            <h3 className="mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent">
               Dev Tools Academy
             </h3>
             <p className="text-neutral-300">
@@ -223,7 +223,7 @@ const Footer: React.FC = () => {
       <hr className="my-8 border-neutral-700" />
 
       <div className="mx-auto mt-6 max-w-7xl px-4 text-center text-neutral-400">
-        <p>&copy; 2024 Dev Tools Academy. All rights reserved.</p>
+        <p>&copy; 2025 Dev Tools Academy. All rights reserved.</p>
       </div>
     </footer>
   )

@@ -1,10 +1,9 @@
+import { baseUrl } from "@/lib/metadata"
 import { ImageResponse } from "next/og"
 import { NextRequest } from "next/server"
-
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl
   const postTitle = searchParams.get("title")
-
   return new (ImageResponse as any)(
     (
       <div
@@ -15,16 +14,16 @@ export async function GET(req: NextRequest) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage: `url("${process.env.NEXT_PUBLIC_BASE_URL}/og-bg.png")`,
+          backgroundImage: `url("${baseUrl}og-bg.png")`,
         }}
       >
-        <h1 tw="absolute inset-0 flex justify-center items-center mb-96 flex-row">
+        <h1 tw="absolute inset-0 flex justify-center items-center mb-57 flex-row">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             tw="h-10 w-10"
             alt="Alt"
             // @ts-ignore
-            src={`${process.env.NEXT_PUBLIC_BASE_URL}/favicon.png`}
+            src={`${baseUrl}favicon.png`}
           />
           <span
             tw="ml-3"
@@ -41,7 +40,6 @@ export async function GET(req: NextRequest) {
             DevToolsAcademy
           </span>
         </h1>
-
         {postTitle && (
           <div
             style={{
@@ -63,7 +61,7 @@ export async function GET(req: NextRequest) {
                 WebkitBackgroundClip: "text",
                 textAlign: "center",
                 fontSize: 100,
-                letterSpacing: "-5px",
+                letterSpacing: "-10px",
                 color: "transparent",
                 WebkitTextFillColor: "transparent",
               }}
@@ -72,7 +70,6 @@ export async function GET(req: NextRequest) {
             </p>
           </div>
         )}
-
         <h1 tw="absolute inset-0 flex justify-center items-center mt-57 flex-col">
           <span
             style={{
@@ -82,9 +79,8 @@ export async function GET(req: NextRequest) {
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               color: "transparent",
-              fontSize: 50,
+              fontSize: 25,
               letterSpacing: "-1.5px",
-              marginTop: 150,
             }}
           >
             A special blog made for Developers.

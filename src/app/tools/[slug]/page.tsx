@@ -1,20 +1,24 @@
 import React from "react"
-import { Metadata } from "next"
+
 import { getToolDetails } from "@/lib/tools"
+import { getMetadata } from "@/lib/metadata"
+
 import ToolDetailsPage from "@/components/tools/toolDetails/ToolDetailsPage"
 import ToolNotFound from "@/components/tools/toolDetails/ToolNotFound"
 
-export const metadata: Metadata = {
-  title: "Dev Tools Academy",
+export const metadata = getMetadata({
+  path: "/tools",
+  title: "Tools Details | DevTools Academy",
   description: "DevToolsAcademy Tool details",
-}
+})
 
 export default async function ToolDetailRoute({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const response = await getToolDetails(params.slug)
+  const slug = (await params).slug
+  const response = await getToolDetails(slug)
   const toolDetails = response.toolDetails
 
   if (!toolDetails) {

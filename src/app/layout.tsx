@@ -1,58 +1,15 @@
-import React from "react"
-import type { Metadata, Viewport } from "next"
+import * as React from "react"
+import type { Viewport } from "next"
 import Script from "next/script"
 import { Inter, JetBrains_Mono } from "next/font/google"
+import { ViewTransitions } from "next-view-transitions"
 
 import { Analytics } from "@vercel/analytics/react"
-import { ClerkProvider } from "@clerk/nextjs"
 
 import Navbar from "@/components/Navbar"
-import { SocialMetadata } from "@/components/SocialMetadata"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
-
-export const metadata: Metadata = {
-  title: {
-    default: "Dev Tools Academy",
-    template: "%s | Dev Tools Academy",
-  },
-  description: "Learn about awesome developer tools",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com"
-  ),
-  openGraph: {
-    title: "Dev Tools Academy",
-    description: "Learn about awesome developer tools",
-    url: process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com",
-    siteName: "Dev Tools Academy",
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: `${
-          process.env.NEXT_PUBLIC_BASE_URL ?? "https://devtoolsacademy.com"
-        }/og-image.png`,
-        width: 1200,
-        height: 639,
-        alt: "Dev Tools Academ",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dev Tools Academy",
-    description: "Learn about awesome developer tools",
-  },
-  icons: [
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "32x32",
-      url: "/favicon.png",
-    },
-  ],
-}
 
 const sansFont = Inter({
   variable: "--sans-font",
@@ -72,53 +29,23 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-function getTitle(title: Metadata["title"]): string {
-  if (typeof title === "string") {
-    return title
-  } else if (title && typeof title === "object" && "default" in title) {
-    return title.default
-  }
-  return "Dev Tools Academy"
-}
-
 export default function RootLayout({ children }: RootLayoutProps) {
-  const title = getTitle(metadata.title)
-
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <SocialMetadata
-          title={title}
-          description={
-            metadata.description ?? "Learn about awesome developer tools"
-          }
-          url={
-            metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"
-          }
-          image={`${
-            metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"
-          }/favicon.png`}
-          type="website"
-        />
-        <Script
-          src="https://cloud.umami.is/script.js"
-          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-          strategy="afterInteractive"
-        />
-      </head>
-      <body
-        className={cn(
-          sansFont.variable,
-          monoFont.variable,
-          "font-sans antialiased bg-neutral-950"
-        )}
-      >
-        <ClerkProvider>
+    <ViewTransitions>
+      <html lang="en" className={cn(sansFont.variable, monoFont.variable)}>
+        <head>
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            strategy="afterInteractive"
+          />
+        </head>
+        <body className="bg-neutral-950 font-sans antialiased">
           <Navbar />
           {children}
-        </ClerkProvider>
-        <Analytics />
-      </body>
-    </html>
+          <Analytics />
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }

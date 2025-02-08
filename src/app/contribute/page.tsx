@@ -1,16 +1,15 @@
 import React from "react"
-import dynamic from "next/dynamic"
-import { Metadata } from "next"
 
-const ContributePage = dynamic(() => import("@/components/ContributePage"), {
-  ssr: false,
-})
+import ContributePage from "@/components/ContributePage"
+import { baseUrl, getMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
+export const metadata = getMetadata({
+  path: "/contribute",
   title: "Contribute to Dev Tools Academy",
   description:
-    "Learn how to contribute to Dev Tools Academy and help improve this open-source project.",
-}
+    "Learn how to contribute to Dev Tools Academy and help improve this open-source project",
+  image: `${baseUrl}api/og?title=Contribute%20|%20DevToolsAcademy`,
+})
 
 export default function ContributeRoute() {
   return (

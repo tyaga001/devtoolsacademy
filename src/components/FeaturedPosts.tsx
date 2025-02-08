@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 import Image from "next/image"
 
 import { Clock, Bookmark, Share2 } from "lucide-react"
@@ -55,12 +55,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <Link
-            href={url}
-            className="font-semibold text-purple-600 hover:text-purple-800"
-          >
+          <p className="font-semibold text-purple-600 hover:text-purple-800">
             Read More →
-          </Link>
+          </p>
           <div className="flex items-center">
             <button
               className="mr-2 rounded-full p-1 text-neutral-400 hover:bg-neutral-100"
