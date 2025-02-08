@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 
-import { getMetadata } from "@/lib/metadata"
+import { baseUrl, getMetadata } from "@/lib/metadata"
 
 import ToolsPage from "@/components/tools/ToolsPage"
 import Categories from "@/components/tools/Categories"
@@ -12,6 +12,7 @@ export const metadata = getMetadata({
   path: "/tools",
   title: "Browse Tools | DevTools Academy",
   description: "Browser and compare tools, curated by DevTools Academy",
+  image: `${baseUrl}api/og?title=Tools%20|%20DevToolsAcademy`,
 })
 
 interface SearchParams {
