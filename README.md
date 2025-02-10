@@ -20,9 +20,74 @@
 This project is built with [Next.js](https://nextjs.org/). To get started:
 
 1. Clone the repository
-2. Install dependencies: `npm install`
-3. Run the development server: `npm run dev`
+
+```bash
+git clone https://github.com/tyaga001/devtoolsacademy.git
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
+
+```bash
+npm run dev
+```
+
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Available npm scripts
+
+**Install Dependencies**
+
+```bash
+npm install
+```
+
+**Setup Pre-commit**
+
+```bash
+npm run prepare
+```
+
+**Start Development Server**
+
+```bash
+npm run dev
+```
+
+**Lint all the files**
+
+```bash
+npm run lint
+```
+
+**Format all files with Prettier**
+
+```bash
+npm run format
+```
+
+**Check TypeScript issues**
+
+```bash
+npm run type-check
+```
+
+**Build for Production**
+
+```bash
+npm run build
+```
+
+**Start Production Server**
+
+```bash
+npm start
+```
 
 ## 🤝 How to Contribute
 
