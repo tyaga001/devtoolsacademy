@@ -17,8 +17,13 @@
 
 ## Sponsors
 
-- [Coderabbit](https://www.coderabbit.ai/?rel=devtoolsacademy.com)
-- [Stream](https://getstream.io/?rel=devtoolsacademy.com)
+<div style="display:flex; gap: 20px; justify-content: center;">
+
+<img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/refs/heads/main/src/assets/coderabbit.svg" alt="CodeRabbit" style="height:35px" />
+
+<img src="https://github.com/tyaga001/devtoolsacademy/blob/7c9462e4dcbf46cabb4b4f6c6667a01beb48ff28/src/assets/stream.png?raw=true" alt="CodeRabbit" style="height:50px" />
+
+</div>
 
 ## Available npm scripts
 
