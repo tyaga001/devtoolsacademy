@@ -30,7 +30,7 @@ export const getMetadata = ({
 }: MetadataArgs): Metadata => {
   const metaTitle = title
   const metaDescription = description
-  const metaImage = image ?? `${config.baseUrl}cover.png`
+  const metaImage = image ?? `${baseUrl}api/og?title=DevTools Academy`
 
   const metadata: Metadata = {
     title: metaTitle,
