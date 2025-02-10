@@ -15,30 +15,6 @@
 | [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL?                           |
 | [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)    | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
 
-## 🚀 Quick Start
-
-This project is built with [Next.js](https://nextjs.org/). To get started:
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/tyaga001/devtoolsacademy.git
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Run the development server:
-
-```bash
-npm run dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
 ## Available npm scripts
 
 **Install Dependencies**
@@ -47,7 +23,7 @@ npm run dev
 npm install
 ```
 
-**Setup Pre-commit**
+**Setup Pre-commit(recommended for development)**
 
 ```bash
 npm run prepare
