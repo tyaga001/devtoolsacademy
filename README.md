@@ -15,6 +15,11 @@
 | [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL?                           |
 | [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)    | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
 
+## Sponsors
+
+- [Coderabbit](https://www.coderabbit.ai/?rel=devtoolsacademy.com)
+- [Stream](https://getstream.io/?rel=devtoolsacademy.com)
+
 ## Available npm scripts
 
 **Install Dependencies**
