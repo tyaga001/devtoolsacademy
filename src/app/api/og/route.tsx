@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
                 WebkitBackgroundClip: "text",
                 textAlign: "center",
                 fontSize: 100,
-                letterSpacing: "-10px",
+                letterSpacing: "-5px",
                 color: "transparent",
                 WebkitTextFillColor: "transparent",
               }}
