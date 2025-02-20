@@ -1,5 +1,13 @@
 export const allBlogs = [
   {
+    author: "Jitendra Nirnejak",
+    slug: "enhancing-web-experiences-with-the-view-transitions-api",
+    title: "Enhancing Web Experiences with the View Transitions API",
+    description:
+      "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
+    publishedAt: "2025-02-21T00:00:00Z",
+  },
+  {
     author: "Ankur Tyagi",
     slug: "coderabbit-vs-others-ai-code-review-tools",
     title: "CodeRabbit vs Others: Which is the Right AI Code Review Tool",
