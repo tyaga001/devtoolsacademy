@@ -112,6 +112,7 @@ const components: MDXComponents = {
       <Link
         className="text-blue-500 no-underline outline-none hover:underline focus:underline"
         href={href.startsWith("http") ? transformUrl(href) : href}
+        target={href.startsWith("http") ? "_blank" : ""}
         {...props}
       />
     )
