@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write --ignore-path .gitignore .",
     "migrate": "npx prisma migrate dev --schema=./prisma/schema.prisma",
-    "db-create": "npx prisma db push --schema=./prisma/schema.prisma",
-    "format": "prettier --write --ignore-path .gitignore ."
+    "db-create": "npx prisma db push --schema=./prisma/schema.prisma"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.12.0",
