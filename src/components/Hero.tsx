@@ -8,7 +8,7 @@ import { Link } from "next-view-transitions"
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative grid place-content-center py-48">
+    <section className="relative grid place-content-center py-36 md:py-48">
       <div className="grid-background absolute inset-0 -z-10 size-full opacity-5" />
       <div className="flex  flex-col px-4 text-center text-neutral-200 md:px-0">
         <h1 className="mb-3 max-w-5xl text-3xl font-bold tracking-tight text-neutral-200 md:mb-8 md:text-6xl md:leading-[1.1]">
@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
         <div>
           <Link
             href="/blog"
-            className="rounded-md bg-neutral-200 px-6 py-3 text-lg font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-300 focus:bg-neutral-300"
+            className="rounded-md bg-neutral-200 px-4 py-2 text-base font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-300 focus:bg-neutral-300 md:px-6 md:py-3 md:text-lg"
           >
             Start Reading
           </Link>
