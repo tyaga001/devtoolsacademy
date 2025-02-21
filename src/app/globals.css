@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+* {
+  @apply antialiased;
+  text-rendering: geometricPrecision;
+}
+
+::-moz-selection {
+  @apply bg-neutral-500 text-white;
+  -webkit-text-fill-color: white;
+}
+
+::selection {
+  @apply bg-neutral-500 text-white;
+  -webkit-text-fill-color: white;
 }
 
 .prose h2,
