@@ -1,7 +1,7 @@
 import * as React from "react"
 import type { Viewport } from "next"
 import Script from "next/script"
-import { Inter, JetBrains_Mono } from "next/font/google"
+import { JetBrains_Mono, Mona_Sans } from "next/font/google"
 import { ViewTransitions } from "next-view-transitions"
 
 import { Analytics } from "@vercel/analytics/react"
@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 
 import "./globals.css"
 
-const sansFont = Inter({
+const sansFont = Mona_Sans({
   variable: "--sans-font",
   subsets: ["latin"],
 })
