@@ -14,7 +14,7 @@ export const metadata = getMetadata({
 export default async function BlogPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-36">
-      <h1 className="mb-8 text-3xl font-bold tracking-tighter text-neutral-200 md:mb-20 md:text-5xl">
+      <h1 className="mb-8 text-3xl font-bold tracking-tight text-neutral-200 md:mb-20 md:text-5xl">
         Blog Posts
       </h1>
       <div className="-mx-3 flex flex-col">

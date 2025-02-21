@@ -74,7 +74,7 @@ function Testimonial() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16">
       <div className="mx-auto mb-12 max-w-3xl text-center">
-        <h2 className="mb-4 text-5xl font-bold">
+        <h2 className="mb-4 text-5xl font-bold tracking-tight">
           <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
             Developers Insights
           </span>

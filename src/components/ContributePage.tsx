@@ -112,11 +112,10 @@ const ContributePage: React.FC = () => {
       </motion.div>
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <motion.h2
-          className="mb-12 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-center text-6xl font-extrabold leading-tight text-transparent md:text-7xl"
+          className="mb-12 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-center text-6xl font-bold leading-tight tracking-tight text-transparent md:text-7xl"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          style={{ textShadow: "0 0 20px rgba(168, 85, 247, 0.5)" }}
         >
           Join the Community
         </motion.h2>
