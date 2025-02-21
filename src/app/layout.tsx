@@ -40,7 +40,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             strategy="afterInteractive"
           />
         </head>
-        <body className="bg-neutral-950 font-sans antialiased">
+        <body className="bg-neutral-950 font-sans text-neutral-200">
           <Navbar />
           {children}
           <Analytics />
