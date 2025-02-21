@@ -4,7 +4,7 @@ import React from "react"
 import { Link } from "next-view-transitions"
 import Image from "next/image"
 
-import { Clock, Bookmark, Share2 } from "lucide-react"
+import { Clock } from "lucide-react"
 
 interface BlogCardProps {
   title: string
@@ -49,29 +49,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
         <p className="mb-4 text-neutral-500">{excerpt}</p>
       </div>
       <div className="mt-auto px-6 pb-6">
-        <div className="mb-4 flex items-center justify-between text-sm text-neutral-500">
-          <span className="flex items-center">
+        <div className="flex items-center justify-between">
+          <span className="flex items-center text-sm text-neutral-500">
             <Clock size={16} className="mr-1" /> {readTime || defaultReadTime}
           </span>
-        </div>
-        <div className="flex items-center justify-between">
           <p className="font-semibold text-purple-600 hover:text-purple-800">
             Read More →
           </p>
-          <div className="flex items-center">
-            <button
-              className="mr-2 rounded-full p-1 text-neutral-400 hover:bg-neutral-100"
-              aria-label="Save post"
-            >
-              <Bookmark size={20} />
-            </button>
-            <button
-              className="rounded-full p-1 text-neutral-400 hover:bg-neutral-100"
-              aria-label="Share post"
-            >
-              <Share2 size={20} />
-            </button>
-          </div>
         </div>
       </div>
     </Link>
