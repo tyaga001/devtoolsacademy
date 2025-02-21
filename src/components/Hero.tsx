@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
       <div className="flex  flex-col px-4 text-center text-neutral-200 md:px-0">
         <h1 className="mb-3 max-w-5xl text-3xl font-bold tracking-tight text-neutral-200 md:mb-8 md:text-6xl md:leading-[1.1]">
           <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
-            Your Guide to Developer Tools: Explore, Compare, and Build.
+            Your Guide to Developer Tools: Explore, Compare, and Learn.
           </span>
         </h1>
         <p className="mx-auto mb-8 max-w-3xl text-base text-neutral-500 md:mb-12 md:text-lg">
