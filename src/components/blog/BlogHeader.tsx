@@ -9,10 +9,15 @@ import Breadcrumb from "@/components/blog/Breadcrumb"
 
 interface BlogHeaderProps {
   title: string
+  author: string
   publishedAt: string
 }
 
-const BlogHeader: React.FC<BlogHeaderProps> = ({ title, publishedAt }) => {
+const BlogHeader: React.FC<BlogHeaderProps> = ({
+  title,
+  author,
+  publishedAt,
+}) => {
   const [content, setContent] = useState("")
   const [showChat, setShowChat] = useState(false)
 
@@ -43,7 +48,9 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({ title, publishedAt }) => {
       />
       <h1 className="mb-8 text-3xl md:text-5xl">{title}</h1>
       <div className="mb-12 flex flex-col justify-between md:mb-16 md:flex-row md:items-center">
-        <div className="mb-6 flex items-center gap-6 text-neutral-400 md:mb-0">
+        <div className="mb-6 flex items-center gap-4 text-neutral-400 md:mb-0">
+          <span className="text-sm">{author}</span>
+          <span>|</span>
           <span className="text-sm">{formatDate(publishedAt)}</span>
           <span>|</span>
           <SocialShare title={title} />
