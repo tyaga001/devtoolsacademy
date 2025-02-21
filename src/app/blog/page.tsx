@@ -30,8 +30,10 @@ export default async function BlogPage() {
             <p className="mb-2.5 text-sm text-neutral-500 md:text-base">
               {post.description}
             </p>
-            <p className="text-xs text-neutral-500 md:text-sm">
-              {formatDate(new Date(post.publishedAt))}
+            <p className="flex items-center gap-2 text-xs text-neutral-500 md:text-sm">
+              <span>{post.author}</span>
+              <span>·</span>
+              <span>{formatDate(new Date(post.publishedAt))}</span>
             </p>
           </Link>
         ))}
