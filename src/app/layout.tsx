@@ -5,6 +5,7 @@ import { JetBrains_Mono, Mona_Sans } from "next/font/google"
 import { ViewTransitions } from "next-view-transitions"
 
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import Navbar from "@/components/Navbar"
 import { cn } from "@/lib/utils"
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Navbar />
           {children}
           <Analytics />
+          <SpeedInsights />
         </body>
       </html>
     </ViewTransitions>
