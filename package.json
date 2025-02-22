@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "autoprefixer": "^10.4.20",
@@ -58,7 +58,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-tailwindcss": "^3.18.0",
     "postcss": "^8.5.3",
-    "prettier": "^3.5.1",
+    "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "shiki": "^3.0.0",
     "tailwindcss": "^3.4.17",
