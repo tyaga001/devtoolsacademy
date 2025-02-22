@@ -97,18 +97,18 @@ export default function Navbar() {
                   )
                 }
                 variant="outline"
-                className="flex items-center space-x-2 border border-purple-400 bg-transparent text-purple-400 transition-colors ease-in-out hover:bg-purple-400 hover:text-neutral-900 focus:bg-purple-400 focus:text-neutral-900"
+                className="flex items-center gap-2 border border-purple-400 bg-transparent text-purple-400 transition-colors ease-in-out hover:bg-purple-400 hover:text-neutral-900 focus:bg-purple-400 focus:text-neutral-900"
               >
-                <FaGithub className="size-5" />
+                <FaGithub size={18} />
                 <span>Star on GitHub</span>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="flex items-center space-x-2 border border-pink-400 bg-transparent text-pink-400 transition-colors ease-in-out hover:bg-pink-400 hover:text-neutral-900 focus:bg-pink-400 focus:text-neutral-900"
+                className="flex items-center gap-2 border border-pink-400 bg-transparent text-pink-400 transition-colors ease-in-out hover:bg-pink-400 hover:text-neutral-900 focus:bg-pink-400 focus:text-neutral-900"
               >
                 <Link href="/sponsor">
-                  <Heart className="size-5" />
+                  <Heart size={18} />
                   <span>Sponsor</span>
                 </Link>
               </Button>
