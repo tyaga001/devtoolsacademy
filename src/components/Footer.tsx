@@ -62,21 +62,17 @@ const QuickTip: React.FC<{ tipIndex: number }> = ({ tipIndex }) => (
 
 const BlogPostList: React.FC = () => (
   <div>
-    <h4 className="mb-4 text-xl font-semibold text-yellow-400">
+    <h4 className="mb-4 text-xl font-semibold tracking-tight">
       Other Blog Posts
     </h4>
     <ul className="space-y-3">
       {recentBlogPosts.map((post) => (
-        <motion.li
-          key={post.url}
-          whileHover={{ x: 5 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
+        <li key={post.url}>
           <a
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-start text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
+            className="group flex items-start text-neutral-500"
           >
             <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
             <span className="grow">{post.title}</span>
@@ -85,7 +81,7 @@ const BlogPostList: React.FC = () => (
               className="ml-2 shrink-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
           </a>
-        </motion.li>
+        </li>
       ))}
     </ul>
   </div>
@@ -114,7 +110,7 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({ linkVariants }) => (
       <motion.a
         key={label}
         href={href}
-        className="text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
+        className="text-neutral-500 transition-colors hover:text-neutral-200"
         variants={linkVariants}
         whileHover="hover"
         aria-label={label}
@@ -144,11 +140,7 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
 )
 
 const WebsitePromo: React.FC = () => (
-  <motion.div
-    className="mt-4 rounded-lg bg-gradient-to-r from-purple-900 to-indigo-900 p-4"
-    whileHover={{ scale: 1.05 }}
-    transition={{ type: "spring", stiffness: 300, damping: 10 }}
-  >
+  <motion.div className="mt-12 rounded-lg bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
     <h4 className="mb-2 text-xl font-semibold text-yellow-400">My Website</h4>
     <p className="mb-3 text-neutral-300">
       Explore more about my writing, SaaS dev tools and my journey in the
@@ -191,10 +183,10 @@ const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-8 grid gap-8 md:grid-cols-3">
           <div className="flex flex-col">
-            <h3 className="mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent">
+            <h3 className="mb-4 text-3xl font-bold tracking-tight">
               Dev Tools Academy
             </h3>
-            <p className="text-neutral-300">
+            <p className="text-neutral-500">
               Choose the Right Dev Tools for Your SaaS.
             </p>
             <AnimatePresence mode="wait">
@@ -205,7 +197,7 @@ const Footer: React.FC = () => {
           <BlogPostList />
 
           <div>
-            <h4 className="mb-4 text-xl font-semibold text-yellow-400">
+            <h4 className="mb-4 text-xl font-semibold tracking-tight">
               Connect With Me
             </h4>
             <SocialLinks linkVariants={linkVariants} />
