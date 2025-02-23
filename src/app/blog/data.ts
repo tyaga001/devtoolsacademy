@@ -5,7 +5,7 @@ export const allBlogs = [
     title: "Enhancing Web Experiences with the View Transitions API",
     description:
       "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
-    publishedAt: "2025-02-21T00:00:00Z",
+    publishedAt: "2025-02-24T00:00:00Z",
   },
   {
     author: "Ankur Tyagi",
