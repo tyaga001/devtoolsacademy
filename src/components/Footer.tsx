@@ -72,7 +72,7 @@ const BlogPostList: React.FC = () => (
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-start text-neutral-500"
+            className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-400 focus:text-neutral-400"
           >
             <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
             <span className="grow">{post.title}</span>
@@ -140,7 +140,7 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
 )
 
 const WebsitePromo: React.FC = () => (
-  <motion.div className="mt-12 rounded-lg bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+  <motion.div className="mt-24 rounded-lg bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
     <h4 className="mb-2 text-xl font-semibold text-yellow-400">My Website</h4>
     <p className="mb-3 text-neutral-300">
       Explore more about my writing, SaaS dev tools and my journey in the
@@ -179,15 +179,15 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="py-16">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="mb-8 grid gap-8 md:grid-cols-3">
+    <footer className="">
+      <div className="mx-auto max-w-7xl px-4 pt-16">
+        <div className="grid gap-8 md:grid-cols-3">
           <div className="flex flex-col">
             <h3 className="mb-4 text-3xl font-bold tracking-tight">
               Dev Tools Academy
             </h3>
-            <p className="text-neutral-500">
-              Choose the Right Dev Tools for Your SaaS.
+            <p className="text-sm text-neutral-500">
+              &copy; 2025 Dev Tools Academy. All rights reserved.
             </p>
             <AnimatePresence mode="wait">
               <QuickTip tipIndex={tipIndex} />
@@ -206,16 +206,10 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <hr className="my-8 border-neutral-700" />
+      <hr className="my-8 border-dashed border-neutral-700" />
 
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-7xl px-4 pb-8">
         <ProgressBar progress={progress} />
-      </div>
-
-      <hr className="my-8 border-neutral-700" />
-
-      <div className="mx-auto mt-6 max-w-7xl px-4 text-center text-neutral-400">
-        <p>&copy; 2025 Dev Tools Academy. All rights reserved.</p>
       </div>
     </footer>
   )
