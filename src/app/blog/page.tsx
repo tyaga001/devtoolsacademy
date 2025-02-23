@@ -13,16 +13,17 @@ export const metadata = getMetadata({
 
 export default async function BlogPage() {
   return (
-    <section className="mt-[80px]">
+    <main className="mt-[80px]">
       <hr className="border-dashed border-[#f6f6f6] opacity-10" />
-      <div className="py-16 text-center">
+      <section className="py-16 text-center">
         <h1 className="text-2xl font-bold tracking-tight md:text-5xl">
           <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
             Blog Posts
           </span>
         </h1>
-      </div>
-      <div className="mx-auto mb-20 flex max-w-7xl flex-col">
+      </section>
+
+      <section className="mx-auto mb-20 flex max-w-7xl flex-col">
         <hr className="border-dashed border-[#f6f6f6] opacity-10" />
         {allBlogs.map((post) => (
           <Link
@@ -48,7 +49,7 @@ export default async function BlogPage() {
             </div>
           </Link>
         ))}
-      </div>
-    </section>
+      </section>
+    </main>
   )
 }
