@@ -2,8 +2,8 @@
 
 import React from "react"
 import Image from "next/image"
-import { motion } from "motion/react"
 import { Quote, Star } from "lucide-react"
+
 import { cn } from "@/lib/utils"
 
 interface ITestimonial {
