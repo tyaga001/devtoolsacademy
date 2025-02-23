@@ -46,11 +46,13 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        isScrolled || isMenuOpen ? "bg-neutral-900 shadow-lg" : "",
+        isScrolled || isMenuOpen
+          ? "bg-neutral-950 shadow-lg border-b border-dashed border-[#f6f6f6]/10"
+          : "",
         "text-neutral-200 fixed top-0 left-0 w-full z-50"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <Link href="/">
             <svg
