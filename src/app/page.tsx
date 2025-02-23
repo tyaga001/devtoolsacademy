@@ -17,6 +17,7 @@ const featuredPosts = [
   {
     title: "Neon Postgres vs Supabase: Choose the Right Database for Your SaaS",
     excerpt: "Choose the right Database for your SaaS.",
+    author: "Ankur Tyagi",
     image: "/images/default-og-image.png",
     slug: "neon-vs-supabase",
     url: "/blog/neon-vs-supabase",
@@ -25,6 +26,7 @@ const featuredPosts = [
   {
     title: "Twilio vs Stream - A Guide to Building Smarter Support Bots",
     excerpt: "A Guide to Building Smarter Support Bots",
+    author: "Ankur Tyagi",
     image: "/images/Twilio vs Stream.png",
     slug: "stream-vs-twilio",
     url: "/blog/stream-vs-twilio",
@@ -33,6 +35,7 @@ const featuredPosts = [
   {
     title: "CodeRabbit vs Others: Which is the Right AI Code Review Tool",
     excerpt: "Choose the right AI code review tool",
+    author: "Ankur Tyagi",
     image: "/images/coderabbit-vs-others.png",
     slug: "coderabbit-vs-others-ai-code-review-tools",
     url: "/blog/coderabbit-vs-others-ai-code-review-tools",

@@ -4,11 +4,12 @@ import React from "react"
 import { Link } from "next-view-transitions"
 import Image from "next/image"
 
-import { Clock } from "lucide-react"
+import { CircleUserRound, Clock } from "lucide-react"
 
 interface BlogCardProps {
   title: string
   excerpt: string
+  author: string
   image: string
   url: string
   slug: string
@@ -20,6 +21,7 @@ interface BlogCardProps {
 const BlogCard: React.FC<BlogCardProps> = ({
   title,
   excerpt,
+  author,
   image,
   url,
   readTime,
@@ -31,31 +33,33 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <Link
       href={url}
-      className="flex flex-col overflow-hidden rounded-xl bg-neutral-900 shadow-lg transition-all hover:scale-105"
+      className="flex rounded-3xl bg-neutral-800 p-2.5 transition-transform hover:scale-105"
     >
-      <div className="relative h-48">
-        <Image src={image} alt={title} layout="fill" objectFit="cover" />
-        {isNew && (
-          <span className="absolute right-2 top-2 rounded-full bg-yellow-400 px-2 py-1 text-xs font-bold text-black">
-            NEW
+      <div className="flex flex-col overflow-hidden rounded-2xl bg-neutral-950 shadow-lg">
+        <div className="relative h-48">
+          <Image src={image} alt={title} layout="fill" objectFit="cover" />
+          {isNew && (
+            <span className="absolute right-2 top-2 rounded-full bg-yellow-400 px-2 py-1 text-xs font-bold text-black">
+              NEW
+            </span>
+          )}
+        </div>
+        <div className="p-6">
+          <span className="mb-2 block text-sm font-medium text-purple-600">
+            {category}
           </span>
-        )}
-      </div>
-      <div className="p-6">
-        <span className="mb-2 block text-sm font-medium text-purple-600">
-          {category}
-        </span>
-        <h3 className="mb-2 text-xl font-bold text-neutral-200">{title}</h3>
-        <p className="mb-4 text-neutral-500">{excerpt}</p>
-      </div>
-      <div className="mt-auto px-6 pb-6">
-        <div className="flex items-center justify-between">
-          <span className="flex items-center text-sm text-neutral-500">
-            <Clock size={16} className="mr-1" /> {readTime || defaultReadTime}
-          </span>
-          <p className="font-semibold text-purple-600 hover:text-purple-800">
-            Read More →
-          </p>
+          <h3 className="mb-2 text-xl font-bold text-neutral-200">{title}</h3>
+          <p className="mb-4 text-neutral-500">{excerpt}</p>
+        </div>
+        <div className="mt-auto px-6 pb-6">
+          <div className="flex items-center justify-between text-sm leading-none text-neutral-500">
+            <p className="flex items-center gap-1">
+              <CircleUserRound size={14} /> {author}
+            </p>
+            <p className="flex items-center gap-1">
+              <Clock size={14} /> {readTime || defaultReadTime}
+            </p>
+          </div>
         </div>
       </div>
     </Link>
