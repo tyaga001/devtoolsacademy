@@ -46,6 +46,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           {children}
           <Analytics />
           <SpeedInsights />
+
+          <div className="fixed left-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed opacity-10" />
+          <div className="fixed right-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed opacity-10" />
         </body>
       </html>
     </ViewTransitions>
