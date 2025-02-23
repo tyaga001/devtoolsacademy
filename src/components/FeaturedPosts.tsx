@@ -79,16 +79,14 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
   return (
     <section>
       <div className="mx-auto max-w-7xl py-16 text-center">
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <h2 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
-            <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
-              Featured Posts
-            </span>
-          </h2>
-          <p className="text-base text-neutral-500 md:text-lg">
-            Recent Blogs about latest devtools
-          </p>
-        </div>
+        <h2 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
+          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
+            Featured Posts
+          </span>
+        </h2>
+        <p className="text-base text-neutral-500 md:text-lg">
+          Our most trending blog posts.
+        </p>
       </div>
 
       <div className="mx-auto max-w-7xl">
