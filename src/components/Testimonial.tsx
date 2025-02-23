@@ -80,14 +80,14 @@ function TestimonialCard({
 
 function Testimonial() {
   return (
-    <section className="">
+    <section>
       <div className="mx-auto max-w-7xl py-16 text-center">
-        <h2 className="mb-4 text-5xl font-bold tracking-tight">
+        <h2 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
           <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
             Developers Insights
           </span>
         </h2>
-        <p className="mb-10 text-lg text-neutral-500">
+        <p className="mb-10 text-base text-neutral-500 md:text-lg">
           Developers across the globe love DTA
         </p>
         <div
@@ -109,7 +109,7 @@ function Testimonial() {
       </div>
 
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={index}
