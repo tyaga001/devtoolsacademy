@@ -74,7 +74,7 @@ const CommentSection: React.FC = () => {
   }
 
   return (
-    <div className="mt-8 rounded-lg bg-neutral-900 p-6">
+    <div className="p-6">
       <h2 className="mb-4 text-2xl font-bold text-white">
         Developer Chatter Box 💬
       </h2>
