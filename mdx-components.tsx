@@ -23,8 +23,9 @@ interface Props {
 
 const BlogWrapper: React.FC<Props> = ({ children }) => {
   return (
-    <main className="relative mx-auto max-w-5xl px-4 py-36">
-      <div className="flex flex-col lg:flex-row">
+    <main className="mt-[80px]">
+      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-8 p-8 lg:flex-row ">
         <div className="w-full lg:w-3/4">
           <article
             className={cn(
@@ -41,7 +42,7 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
             <CommentSection />
           </ClerkProvider>
         </div>
-        <aside className="hidden lg:block lg:w-1/4 lg:pl-8">
+        <aside className="hidden lg:block lg:w-1/4">
           <div className="sticky top-24">
             <TableOfContents />
           </div>
@@ -147,7 +148,9 @@ const components: MDXComponents = {
   td: (props: any) => (
     <td className="border border-neutral-500 px-4 py-2" {...props} />
   ),
-  hr: (props: any) => <hr className="my-12 opacity-50" {...props} />,
+  hr: (props: any) => (
+    <hr className="my-12 border-dashed opacity-50" {...props} />
+  ),
 }
 
 export function useMDXComponents(
