@@ -179,8 +179,8 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="">
-      <div className="mx-auto max-w-7xl px-4 pt-16">
+    <footer>
+      <div className="mx-auto max-w-7xl p-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="flex flex-col">
             <h3 className="mb-4 text-3xl font-bold tracking-tight">
@@ -206,9 +206,9 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <hr className="my-8 border-dashed border-neutral-700" />
+      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
 
-      <div className="mx-auto max-w-7xl px-4 pb-8">
+      <div className="mx-auto max-w-7xl p-8">
         <ProgressBar progress={progress} />
       </div>
     </footer>
