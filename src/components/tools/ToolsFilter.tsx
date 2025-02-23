@@ -253,20 +253,18 @@ const ToolsFilter: React.FC = () => {
         </div>
       )}
       {selectedCategories.length > 0 && (
-        <div className="flex flex-col gap-1">
-          <div>
-            <p className="m-0 p-0">Categories Selected:</p>
-          </div>
-          <div className="flex flex-wrap gap-2">
+        <div className="flex items-center gap-1">
+          <p className="leading-none">Categories Selected:</p>
+          <div className="flex flex-wrap items-center gap-2">
             {selectedCategories.map((item) => (
               <span
                 key={item}
-                className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm transition-colors duration-200 hover:bg-white/20"
+                className="flex items-start gap-2 rounded-full bg-neutral-800 px-3 py-1.5 text-sm leading-none transition-colors hover:bg-neutral-900"
               >
-                {item}
+                <span className="text-sm capitalize">{item}</span>
                 <button
                   onClick={() => updateFilters("categories", item)}
-                  className="transition-colors duration-200 hover:text-red-400"
+                  className="text-sm transition-colors hover:text-red-400"
                   aria-label={`Remove ${item} filter`}
                 >
                   x

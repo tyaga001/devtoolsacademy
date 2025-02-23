@@ -69,13 +69,15 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
 
   if (isLoading) {
     return (
-      <div className="flex w-full flex-col gap-2 px-0 pb-4 pt-8 md:px-4 lg:px-48">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {[...Array(10)].map((_, index) => (
-            <ToolSkeleton key={index} />
-          ))}
+      <section className="mx-auto mb-20 flex max-w-7xl flex-col">
+        <div className="flex w-full flex-col gap-2 px-0 py-4 text-neutral-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            {[...Array(10)].map((_, index) => (
+              <ToolSkeleton key={index} />
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     )
   }
 
@@ -101,14 +103,16 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
   }
 
   return (
-    <div className="flex w-full flex-col gap-2 px-0 py-4 text-neutral-200 md:px-4 lg:px-48">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {tools.map((tool) => (
-          <ToolCard key={tool.id} tool={tool} />
-        ))}
+    <section className="mx-auto mb-20 flex max-w-7xl flex-col">
+      <div className="flex w-full flex-col gap-2 px-0 py-4 text-neutral-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          {tools.map((tool) => (
+            <ToolCard key={tool.id} tool={tool} />
+          ))}
+        </div>
+        <ToolsPagination totalPages={totalPages} basePath="/tools" />
       </div>
-      <ToolsPagination totalPages={totalPages} basePath="/tools" />
-    </div>
+    </section>
   )
 }
 

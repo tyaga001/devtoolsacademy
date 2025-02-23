@@ -29,8 +29,10 @@ export default async function ToolsRoute({
   const page = Math.max(1, Math.floor(pageNumber))
 
   return (
-    <>
-      <div className="mx-auto flex max-w-[800px] flex-col items-center pt-36 text-center">
+    <section className="mt-[80px]">
+      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+
+      <div className="mx-auto flex max-w-[800px] flex-col items-center py-20 text-center md:py-24">
         <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
           <span className="bg-gradient-to-b from-[#141414] to-white bg-clip-text text-transparent">
             Browse Devtools for your next product
@@ -41,6 +43,9 @@ export default async function ToolsRoute({
           free development of your next product
         </p>
       </div>
+
+      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+
       <div className="mb-8 flex w-full flex-col items-center space-y-4">
         <AlgoliaSearch searchParams={searchParamsSync} />
       </div>
@@ -50,6 +55,6 @@ export default async function ToolsRoute({
       <Suspense fallback={<LoadingCategories />}>
         <Categories />
       </Suspense>
-    </>
+    </section>
   )
 }

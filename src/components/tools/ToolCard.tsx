@@ -12,7 +12,7 @@ interface ToolCardProps {
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
     <Link href={`/tools/${encodeURIComponent(tool.name)}`} className="block">
-      <Card className="relative size-full max-w-sm overflow-hidden  rounded-xl border-white/10 opacity-90 ring-[#1C1C1C]/50 transition-all hover:opacity-100 hover:ring">
+      <Card className="relative size-full max-w-sm overflow-hidden rounded-none border-white/10 opacity-90 ring-[#1C1C1C]/50 transition-all hover:opacity-100 hover:ring">
         <CardHeader className="pb-2">
           <div className="flex items-center gap-3">
             <img
