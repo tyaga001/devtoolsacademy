@@ -1,24 +1,27 @@
 import * as React from "react"
 import type { Viewport } from "next"
 import Script from "next/script"
-import { Inter, JetBrains_Mono } from "next/font/google"
+import { DM_Mono, Mona_Sans } from "next/font/google"
 import { ViewTransitions } from "next-view-transitions"
 
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
 
-const sansFont = Inter({
+const sansFont = Mona_Sans({
   variable: "--sans-font",
   subsets: ["latin"],
 })
 
-const monoFont = JetBrains_Mono({
+const monoFont = DM_Mono({
   variable: "--mono-font",
   subsets: ["latin"],
+  weight: "500",
 })
 
 export const viewport: Viewport = {
@@ -40,10 +43,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
             strategy="afterInteractive"
           />
         </head>
-        <body className="bg-neutral-950 font-sans antialiased">
+        <body className="bg-neutral-950 font-sans text-neutral-200">
           <Navbar />
           {children}
+          <Footer />
+
+          <div className="fixed left-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
+          <div className="fixed right-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
+
           <Analytics />
+          <SpeedInsights />
         </body>
       </html>
     </ViewTransitions>

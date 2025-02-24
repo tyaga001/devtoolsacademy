@@ -38,33 +38,33 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
   const totalLines = Object.values(languages).reduce((a, b) => a + b, 0)
 
   return (
-    <div className="px-1 pb-8 pt-16 text-neutral-100 md:pb-20 lg:px-72 lg:pt-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-8 flex flex-col gap-2">
-          <div className="flex items-center gap-4 rounded-lg">
+    <div className="mb-20">
+      <div className="mx-auto mb-20 flex max-w-7xl flex-col">
+        <section className="mb-8 flex flex-col gap-2 p-8">
+          <div className="mb-4 flex items-center gap-4 rounded-lg">
             <img
               src={`/images/logo/${tool.name}.png`}
               alt={`${tool.name} logo`}
-              className="size-10 rounded border border-white/10 object-cover"
+              className="size-10 rounded border border-neutral-100/15 object-cover"
             />
             <div>
-              <h1 className="text-4xl font-bold">{tool.name}</h1>
+              <h1 className="text-4xl font-bold tracking-tight">{tool.name}</h1>
             </div>
           </div>
           <div>
-            <p className=" pb-1 text-neutral-300">{tool.headline}</p>
+            <p className=" pb-1 text-neutral-500">{tool.headline}</p>
             <div className="grid grid-cols-1 gap-6 pt-10 md:grid-cols-2">
               <div>
-                <h3 className="mb-2 flex items-center text-lg font-semibold">
-                  <Tag className="mr-2 size-5" />
+                <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+                  <Tag className="size-4" />
                   Categories
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {tool.categories.map((category) => (
                     <Badge
                       key={category}
-                      variant="outline"
-                      className="cursor-pointer bg-[#141414] text-sm text-neutral-300 opacity-80 hover:bg-[#141414] hover:opacity-100"
+                      variant="secondary"
+                      className="cursor-pointer bg-neutral-800 text-sm text-neutral-200 hover:bg-neutral-900"
                     >
                       {category}
                     </Badge>
@@ -72,8 +72,8 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 </div>
               </div>
               <div>
-                <h3 className="mb-2 flex items-center text-lg font-semibold">
-                  <Hash className="mr-2 size-5" />
+                <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+                  <Hash className="size-4" />
                   Tags
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -81,7 +81,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                     <Badge
                       key={tag}
                       variant="secondary"
-                      className="cursor-pointer border-neutral-600 text-sm text-neutral-300 hover:bg-[#141414]"
+                      className="cursor-pointer bg-neutral-800 text-sm text-neutral-200 hover:bg-neutral-900"
                     >
                       {tag}
                     </Badge>
@@ -90,13 +90,15 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className=" top-0 flex flex-col gap-3 bg-neutral-950 py-4 md:sticky">
-          <div>
-            <h2 className="pb-1 text-2xl">Repository Details:</h2>
-          </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-1">
+        <hr className="border-dashed border-neutral-100/15" />
+
+        <section className="mb-8 flex flex-col gap-2 p-8">
+          <h2 className="mb-1 pb-1 text-2xl font-semibold tracking-tight">
+            Repository Details:
+          </h2>
+          <div className="mb-8 flex flex-wrap gap-x-4 gap-y-1">
             {Object.entries(languages).map(([lang, lines]) => (
               <div key={lang} className="flex items-center">
                 <span
@@ -112,8 +114,9 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               </div>
             ))}
           </div>
+
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3 ">
-            <div className="flex items-center rounded border border-white/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
+            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <Star className="mr-3 size-8 text-yellow-500" />
               <div>
                 <p className="text-sm text-neutral-400">Stars</p>
@@ -124,7 +127,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center rounded border border-white/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
+            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <GitFork className="mr-3 size-8 text-blue-500" />
               <div>
                 <p className="text-sm text-neutral-400">Forks</p>
@@ -135,7 +138,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center rounded border border-white/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
+            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <Clock className="mr-3 size-8 text-green-500" />
               <div>
                 <p className="text-sm text-neutral-400">Last Commited</p>
@@ -175,13 +178,16 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               </Link>
             )}
           </div> */}
-        </div>
+        </section>
+
+        <hr className="border-dashed border-neutral-100/15" />
+
         <div className="mx-auto max-w-4xl  py-6">
           <div className="mt-12  rounded-xl">
-            <h2 className="mb-2 text-2xl font-bold md:text-3xl">
+            <h2 className="mb-2 text-2xl font-semibold tracking-tighter md:text-3xl">
               About {tool.name}
             </h2>
-            <p className="mb-6 text-justify text-sm text-neutral-300 md:text-base">
+            <p className="mb-6 text-justify text-sm font-medium text-neutral-400 md:text-base">
               {tool.description}
             </p>
             <div className="pt-10">
@@ -193,8 +199,8 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             </div>
           </div>
 
-          <section className="mb-20 mt-24 md:mt-0">
-            <h2 className="mb-6 text-2xl font-bold md:text-3xl">
+          <section className="mb-20 mt-24">
+            <h2 className="mb-6 text-2xl font-semibold tracking-tight md:text-3xl">
               Key Features
             </h2>
             <ul className=" grid-cols-1 gap-4 md:grid md:grid-cols-2">
@@ -231,7 +237,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               )}
               {tool.documentation && (
                 <Link href={tool.documentation}>
-                  <div className="rounded-[5px] bg-purple-800/50 p-2 text-purple-200 hover:bg-purple-700/50">
+                  <div className="rounded-[5px] bg-neutral-800/50 p-2 text-neutral-200 hover:bg-neutral-700/50">
                     <div className="flex items-center  text-sm ">
                       <Book className="mr-2 size-4" />
                       Documentation
@@ -243,13 +249,19 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
         </div>
       </div>
-      <Suspense fallback={<div>loading...</div>}>
-        <SimilarTools
-          slug={tool.name}
-          tags={tool.tags}
-          categories={tool.categories}
-        />
-      </Suspense>
+
+      <hr className="border-dashed border-neutral-100/15" />
+
+      <section className="mx-auto max-w-7xl p-8">
+        <Suspense fallback={<div>loading...</div>}>
+          <SimilarTools
+            slug={tool.name}
+            tags={tool.tags}
+            categories={tool.categories}
+          />
+        </Suspense>
+      </section>
+      <hr className="border-dashed border-neutral-100/15" />
     </div>
   )
 }

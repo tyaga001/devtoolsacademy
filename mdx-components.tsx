@@ -4,7 +4,7 @@ import { Link } from "next-view-transitions"
 import Image from "next/image"
 import type { MDXComponents } from "mdx/types"
 import { codeToHtml } from "shiki"
-import { v4 as uuidv4 } from "uuid"
+import { nanoid } from "nanoid"
 import { ClerkProvider } from "@clerk/nextjs"
 
 import { cn } from "@/lib/utils"
@@ -23,30 +23,38 @@ interface Props {
 
 const BlogWrapper: React.FC<Props> = ({ children }) => {
   return (
-    <main className="relative mx-auto max-w-5xl px-4 py-36">
-      <div className="flex flex-col lg:flex-row">
-        <div className="w-full lg:w-3/4">
+    <main className="mt-[80px]">
+      <hr className="border-dashed border-neutral-100/15" />
+      <div className="relative mx-auto flex max-w-7xl flex-col lg:flex-row">
+        <div className="w-full border-dashed border-neutral-100/15 lg:w-8/12 lg:border-r">
           <article
             className={cn(
+              "p-8 ",
               "prose prose-neutral prose-invert prose-lg",
               "prose-ul:opacity-80 prose-ol:opacity-80",
               "prose-pre:py-0 prose-pre:px-3 prose-code:text-sm prose-pre:bg-[#121212]",
-              "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85 prose-img:rounded-md",
+              "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85",
               "prose-h1:font-bold prose-h1:tracking-tighter"
             )}
           >
             {children}
           </article>
+
+          <hr className="border-dashed border-neutral-100/15" />
+
           <ClerkProvider>
             <CommentSection />
           </ClerkProvider>
         </div>
-        <aside className="hidden lg:block lg:w-1/4 lg:pl-8">
-          <div className="sticky top-24">
+
+        <aside className="hidden lg:block lg:w-4/12">
+          <div className="sticky top-32 px-12">
             <TableOfContents />
           </div>
         </aside>
       </div>
+
+      {/* <hr className="border-dashed border-neutral-100/15" /> */}
 
       <BackToTop />
       <ScrollProgressBar />
@@ -57,17 +65,17 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
 const components: MDXComponents = {
   h1: (props: any) => <h1 {...props}>{props.children}</h1>,
   h2: (props: any) => (
-    <h2 id={uuidv4()} {...props}>
+    <h2 id={nanoid()} {...props}>
       {props.children}
     </h2>
   ),
   h3: (props: any) => (
-    <h3 id={uuidv4()} {...props}>
+    <h3 id={nanoid()} {...props}>
       {props.children}
     </h3>
   ),
   h4: (props: any) => (
-    <h4 id={uuidv4()} {...props}>
+    <h4 id={nanoid()} {...props}>
       {props.children}
     </h4>
   ),
@@ -112,6 +120,7 @@ const components: MDXComponents = {
       <Link
         className="text-blue-500 no-underline outline-none hover:underline focus:underline"
         href={href.startsWith("http") ? transformUrl(href) : href}
+        target={href.startsWith("http") ? "_blank" : ""}
         {...props}
       />
     )
@@ -146,7 +155,9 @@ const components: MDXComponents = {
   td: (props: any) => (
     <td className="border border-neutral-500 px-4 py-2" {...props} />
   ),
-  hr: (props: any) => <hr className="my-12 opacity-50" {...props} />,
+  hr: (props: any) => (
+    <hr className="my-12 border-dashed opacity-50" {...props} />
+  ),
 }
 
 export function useMDXComponents(

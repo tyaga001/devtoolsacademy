@@ -44,7 +44,7 @@ const BackToTop = () => {
         onClick={scrollToTop}
         aria-label="Scroll to top of page"
         title="Scroll to top"
-        className={`rounded-full bg-neutral-800 p-3 text-white shadow-lg transition-opacity hover:bg-neutral-900 ${
+        className={`rounded-full bg-neutral-800 p-3 text-neutral-200 shadow-lg transition-opacity hover:bg-neutral-900 ${
           isVisible ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
