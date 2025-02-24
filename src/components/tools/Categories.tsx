@@ -8,7 +8,6 @@ import {
   BookOpen,
   Camera,
   Music,
-  Frown,
   ShoppingBag,
   Zap,
   Coffee,

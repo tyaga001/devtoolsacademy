@@ -125,24 +125,6 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({ linkVariants }) => (
   </div>
 )
 
-const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
-  <div className="text-center text-neutral-400">
-    <p className="mb-4">
-      Progress on the upcoming blog post:{" "}
-      <span className="font-bold text-yellow-400">{progress}%</span>
-    </p>
-    <div className="mt-2 h-2 w-full bg-neutral-700">
-      <motion.div
-        className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
-        style={{ width: `${progress}%` }}
-        initial={{ width: 0 }}
-        animate={{ width: `${progress}%` }}
-        transition={{ duration: 1 }}
-      />
-    </div>
-  </div>
-)
-
 const WebsitePromo: React.FC = () => (
   <motion.div className="mt-16 border border-dashed border-neutral-100/15 p-4">
     <p className="mb-5 text-neutral-500">
@@ -180,7 +162,6 @@ const WebsitePromo: React.FC = () => (
 
 const Footer: React.FC = () => {
   const [tipIndex, setTipIndex] = useState(0)
-  const [progress] = useState(50)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -225,9 +206,6 @@ const Footer: React.FC = () => {
       <hr className="border-dashed border-neutral-100/15" />
 
       <CurrentSponsors />
-      {/* <div className="mx-auto max-w-7xl p-8">
-        <ProgressBar progress={progress} />
-      </div> */}
     </footer>
   )
 }

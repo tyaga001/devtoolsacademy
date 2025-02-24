@@ -19,7 +19,7 @@ const CurrentSponsors: React.FC<Props> = () => {
             <Image src={CodeRabbitLogo} alt="CodeRabbit Logo" height={35} />
             <Link
               href={"/sponsor/"}
-              className="flex flex-cols items-center gap-3 border border-dashed border-neutral-100/15 px-6 py-3 bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800 outline-none"
+              className="flex items-center gap-3 border border-dashed border-neutral-100/15 px-6 py-3 bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800 outline-none"
             >
               <Heart size={18} />
               <span>Become a Sponsor</span>
