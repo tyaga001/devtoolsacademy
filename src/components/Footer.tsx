@@ -12,6 +12,9 @@ import {
   Globe,
 } from "lucide-react"
 import { FaMedium } from "react-icons/fa6"
+
+import CurrentSponsors from "./CurrentSponsors"
+
 interface BlogPost {
   title: string
   url: string
@@ -140,9 +143,9 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
 )
 
 const WebsitePromo: React.FC = () => (
-  <motion.div className="mt-24 border border-dashed border-neutral-100/15 bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-    <h4 className="mb-2 text-xl font-semibold text-yellow-400">My Website</h4>
-    <p className="mb-3 text-neutral-300">
+  <motion.div className="mt-16 border border-dashed border-neutral-100/15 p-4">
+    <h4 className="mb-2 text-xl font-semibold text-neutral-200">My Website</h4>
+    <p className="mb-3 text-neutral-500">
       Explore more about my writing, SaaS dev tools and my journey in the
       software engineering.
     </p>
@@ -150,7 +153,7 @@ const WebsitePromo: React.FC = () => (
       href="https://theankurtyagi.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex items-center border border-dashed border-neutral-100/15 bg-purple-600 px-4 py-2 text-neutral-200 transition-colors duration-300 hover:bg-purple-700"
+      className="group inline-flex items-center border border-dashed border-neutral-100/15 text-neutral-900 bg-neutral-200 px-4 py-2 transition-colors outline-none hover:bg-neutral-300 focus:bg-neutral-300"
     >
       <Globe size={16} className="mr-2" />
       <span>Visit theankurtyagi.com</span>
@@ -180,27 +183,27 @@ const Footer: React.FC = () => {
 
   return (
     <footer>
+      <hr className="border-dashed border-neutral-100/15" />
+
       <div className="mx-auto max-w-7xl p-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="flex flex-col">
             <h3 className="mb-4 text-3xl font-bold tracking-tight">
               Dev Tools Academy
             </h3>
-            <p className="text-sm text-neutral-500">
+            <p className="mb-4 text-sm text-neutral-500">
               &copy; 2025 Dev Tools Academy. All rights reserved.
             </p>
+            <SocialLinks linkVariants={linkVariants} />
             <AnimatePresence mode="wait">
               <QuickTip tipIndex={tipIndex} />
             </AnimatePresence>
           </div>
 
-          <BlogPostList />
+          <div></div>
 
           <div>
-            <h4 className="mb-4 text-xl font-semibold tracking-tight">
-              Connect With Me
-            </h4>
-            <SocialLinks linkVariants={linkVariants} />
+            <BlogPostList />
             <WebsitePromo />
           </div>
         </div>
@@ -208,9 +211,10 @@ const Footer: React.FC = () => {
 
       <hr className="border-dashed border-neutral-100/15" />
 
-      <div className="mx-auto max-w-7xl p-8">
+      <CurrentSponsors />
+      {/* <div className="mx-auto max-w-7xl p-8">
         <ProgressBar progress={progress} />
-      </div>
+      </div> */}
     </footer>
   )
 }

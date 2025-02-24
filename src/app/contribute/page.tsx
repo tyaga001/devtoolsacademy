@@ -1,11 +1,10 @@
 import React from "react"
-
-import { getMetadata } from "@/lib/metadata"
-
+import { Link } from "next-view-transitions"
 import { GitBranch, GitCommit, GitPullRequest, HelpCircle } from "lucide-react"
 import { FaGithub } from "react-icons/fa6"
+
+import { getMetadata } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
-import { Link } from "next-view-transitions"
 
 export const metadata = getMetadata({
   path: "/contribute",

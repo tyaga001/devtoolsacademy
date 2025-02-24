@@ -47,9 +47,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body className="bg-neutral-950 font-sans text-neutral-200">
           <Navbar />
           {children}
-          <hr className="border-dashed border-neutral-100/15" />
-          <CurrentSponsors />
-          <hr className="border-dashed border-neutral-100/15" />
           <Footer />
 
           <div className="fixed left-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
