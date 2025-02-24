@@ -26,10 +26,10 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
     <main className="my-[80px]">
       <hr className="border-dashed border-neutral-100/15" />
       <div className="relative mx-auto flex max-w-7xl flex-col lg:flex-row">
-        <div className="w-full border-dashed border-neutral-100/15 lg:w-3/4 lg:border-r">
+        <div className="w-full border-dashed border-neutral-100/15 lg:w-8/12 lg:border-r">
           <article
             className={cn(
-              "p-8",
+              "p-8 ",
               "prose prose-neutral prose-invert prose-lg",
               "prose-ul:opacity-80 prose-ol:opacity-80",
               "prose-pre:py-0 prose-pre:px-3 prose-code:text-sm prose-pre:bg-[#121212]",
@@ -47,8 +47,8 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
           </ClerkProvider>
         </div>
 
-        <aside className="hidden lg:block lg:w-1/4">
-          <div className="sticky top-28">
+        <aside className="hidden lg:block lg:w-4/12">
+          <div className="sticky top-32 px-12">
             <TableOfContents />
           </div>
         </aside>
