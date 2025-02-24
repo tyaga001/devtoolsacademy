@@ -107,7 +107,6 @@ const SponsorshipTiers: React.FC<Props> = () => {
           </div>
         ))}
       </div>
-      <hr className="border-dashed border-neutral-100/15" />
     </section>
   )
 }
