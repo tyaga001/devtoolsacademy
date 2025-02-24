@@ -118,7 +118,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 text-neutral-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
+              className="inline-flex items-center justify-center p-2 text-neutral-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -138,7 +138,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="block px-3 py-2 text-base font-medium transition duration-150 ease-in-out hover:bg-neutral-950"
+                className="block px-3 py-2 text-base font-medium"
                 onClick={toggleMenu}
               >
                 {item.name}
@@ -148,7 +148,7 @@ export default function Navbar() {
               href="https://github.com/tyaga001/devtoolsacademy"
               target="_blank"
               rel="noopener noreferrer"
-              className="block px-3 py-2 text-base font-medium text-neutral-300 transition duration-150 ease-in-out hover:bg-neutral-950"
+              className="block px-3 py-2 text-base font-medium text-neutral-300"
               onClick={toggleMenu}
             >
               <FaGithub className="mr-2 inline-block size-5" />
@@ -156,7 +156,7 @@ export default function Navbar() {
             </a>
             <Link
               href="/sponsor"
-              className="block px-3 py-2 text-base font-medium text-purple-400 transition duration-150 ease-in-out hover:bg-neutral-950"
+              className="block px-3 py-2 text-base font-medium text-rose-500"
               onClick={toggleMenu}
             >
               <Heart className="mr-2 inline-block size-5" />

@@ -237,7 +237,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               )}
               {tool.documentation && (
                 <Link href={tool.documentation}>
-                  <div className="rounded-[5px] bg-purple-800/50 p-2 text-purple-200 hover:bg-purple-700/50">
+                  <div className="rounded-[5px] bg-neutral-800/50 p-2 text-neutral-200 hover:bg-neutral-700/50">
                     <div className="flex items-center  text-sm ">
                       <Book className="mr-2 size-4" />
                       Documentation

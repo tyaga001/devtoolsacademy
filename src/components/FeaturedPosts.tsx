@@ -51,7 +51,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
         )}
       </div>
       <div className="p-6">
-        <span className="mb-2 block text-sm font-medium text-purple-600">
+        <span className="mb-2 block text-sm font-medium text-neutral-500">
           {category}
         </span>
         <h3 className="mb-2 text-xl font-bold text-neutral-200">{title}</h3>
