@@ -34,7 +34,7 @@
     "lucide-react": "^0.475.0",
     "mermaid": "^11.4.1",
     "motion": "^12.4.7",
-    "nanoid": "^5.1.0",
+    "nanoid": "^5.1.2",
     "next": "^15.1.7",
     "next-view-transitions": "^0.3.4",
     "react": "^19.0.0",
