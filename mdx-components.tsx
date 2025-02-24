@@ -23,7 +23,7 @@ interface Props {
 
 const BlogWrapper: React.FC<Props> = ({ children }) => {
   return (
-    <main className="my-[80px]">
+    <main className="mt-[80px]">
       <hr className="border-dashed border-neutral-100/15" />
       <div className="relative mx-auto flex max-w-7xl flex-col lg:flex-row">
         <div className="w-full border-dashed border-neutral-100/15 lg:w-8/12 lg:border-r">
@@ -54,7 +54,7 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
         </aside>
       </div>
 
-      <hr className="border-dashed border-neutral-100/15" />
+      {/* <hr className="border-dashed border-neutral-100/15" /> */}
 
       <BackToTop />
       <ScrollProgressBar />

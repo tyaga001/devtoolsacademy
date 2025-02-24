@@ -15,7 +15,7 @@ export const metadata = getMetadata({
 
 export default function ContributeRoute() {
   return (
-    <main className="mb-16 mt-[80px]">
+    <main className="mt-[80px]">
       <hr className="border-dashed border-neutral-100/15" />
       <section className="py-16 text-center">
         <h1 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
@@ -51,7 +51,8 @@ export default function ContributeRoute() {
         </section>
       </section>
       <section className="mx-auto max-w-7xl">
-        <div className="border-y border-dashed border-neutral-100/15 p-6">
+        <hr className="border-dashed border-neutral-100/15" />
+        <div className="p-6">
           <h3 className="mb-4 text-2xl font-bold text-neutral-200">
             Need More Help?
           </h3>

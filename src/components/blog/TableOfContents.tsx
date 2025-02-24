@@ -51,7 +51,7 @@ const TableOfContents: React.FC = () => {
   }
 
   return (
-    <nav className="max-w-xs overflow-y-auto px-4">
+    <nav className="max-w-xs overflow-y-auto px-4 pb-8">
       <h2 className="mb-4 text-lg font-semibold tracking-tight text-neutral-300">
         Contents
       </h2>

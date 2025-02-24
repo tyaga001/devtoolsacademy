@@ -11,7 +11,7 @@ export const metadata = getMetadata({
 
 export default function SponsorPage() {
   return (
-    <main className="mb-16 mt-[80px]">
+    <main className="mt-[80px]">
       <hr className="border-dashed border-neutral-100/15" />
       <section className="py-16 text-center">
         <h1 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
@@ -148,7 +148,6 @@ export default function SponsorPage() {
           </div>
         </div>
       </section>
-      <hr className="border-dashed border-neutral-100/15" />
     </main>
   )
 }
