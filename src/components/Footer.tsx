@@ -10,6 +10,7 @@ import {
   BookOpen,
   ExternalLink,
   Globe,
+  Mail,
 } from "lucide-react"
 import { FaMedium } from "react-icons/fa6"
 
@@ -144,8 +145,7 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
 
 const WebsitePromo: React.FC = () => (
   <motion.div className="mt-16 border border-dashed border-neutral-100/15 p-4">
-    <h4 className="mb-2 text-xl font-semibold text-neutral-200">My Website</h4>
-    <p className="mb-3 text-neutral-500">
+    <p className="mb-5 text-neutral-500">
       Explore more about my writing, SaaS dev tools and my journey in the
       software engineering.
     </p>
@@ -153,10 +153,23 @@ const WebsitePromo: React.FC = () => (
       href="https://theankurtyagi.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex items-center border border-dashed border-neutral-100/15 text-neutral-900 bg-neutral-200 px-4 py-2 transition-colors outline-none hover:bg-neutral-300 focus:bg-neutral-300"
+      className="group inline-flex mb-2 items-center border border-dashed outline-none border-neutral-100/15 px-4 py-2 transition-colors bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800"
     >
       <Globe size={16} className="mr-2" />
       <span>Visit theankurtyagi.com</span>
+      <ArrowRight
+        size={16}
+        className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
+      />
+    </a>
+    <a
+      href="https://bytesizedbets.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group inline-flex items-center border border-dashed outline-none border-neutral-100/15 px-4 py-2 transition-colors bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800"
+    >
+      <Mail size={16} className="mr-2" />
+      <span>Subscribe to my Newsletter</span>
       <ArrowRight
         size={16}
         className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
