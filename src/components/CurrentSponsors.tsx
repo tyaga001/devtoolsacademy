@@ -15,8 +15,18 @@ const CurrentSponsors: React.FC<Props> = () => {
       <div className="mx-auto max-w-7xl">
         <div className="grid flex-1 place-content-center p-8">
           <div className="flex items-center gap-10">
-            <Image src={StreamLogo} alt="Stream Logo" height={40} />
-            <Image src={CodeRabbitLogo} alt="CodeRabbit Logo" height={35} />
+            <a
+              href="https://getstream.io/?ref=devtoolsacademy.com"
+              target="_blank"
+            >
+              <Image src={StreamLogo} alt="Stream Logo" height={40} />
+            </a>
+            <a
+              href="https://coderabbit.ai/?ref=devtoolsacademy.com"
+              target="_blank"
+            >
+              <Image src={CodeRabbitLogo} alt="CodeRabbit Logo" height={35} />
+            </a>
             <Link
               href={"/sponsor/"}
               className="flex items-center gap-3 border border-dashed border-neutral-100/15 px-6 py-3 bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800 outline-none"
