@@ -74,7 +74,7 @@ const Categories = async () => {
   }
   return (
     <section className="mb-20">
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
       <div className="mx-auto flex max-w-7xl items-start">
         <div className="p-8">
           <h2 className="mb-2 text-3xl font-semibold tracking-tight">
@@ -110,7 +110,7 @@ const Categories = async () => {
           ))}
         </div>
       </div>
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
     </section>
   )
 }

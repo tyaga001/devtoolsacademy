@@ -70,13 +70,13 @@ const SponsorContent: React.FC<Props> = () => {
 
   return (
     <section className="mx-auto max-w-7xl">
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
       <div className="grid grid-cols-1 lg:grid-cols-4">
         {sponsorTiers.map((tier, index) => (
           <div
             className={cn(
               "flex flex-col p-8",
-              index > 0 ? "border-l border-dashed border-neutral-100/10" : ""
+              index > 0 ? "border-l border-dashed border-neutral-100/15" : ""
             )}
             key={index}
           >
@@ -105,7 +105,7 @@ const SponsorContent: React.FC<Props> = () => {
               ${tier.price} USD
             </div>
             <Button
-              className="w-full bg-neutral-200 text-neutral-800 transition-colors hover:bg-neutral-400"
+              className="w-full border border-dashed border-neutral-200 text-neutral-200 outline-none transition-colors hover:bg-neutral-300 hover:text-neutral-900 focus:bg-neutral-300 focus:text-neutral-900"
               onClick={() => handleContribute(tier.stripeLink)}
             >
               Contribute
@@ -113,9 +113,11 @@ const SponsorContent: React.FC<Props> = () => {
           </div>
         ))}
       </div>
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
     </section>
   )
 }
+
+// "flex items-center gap-2 border border-dashed border-neutral-200 bg-transparent text-neutral-200 transition-colors ease-in-out hover:bg-neutral-300 hover:text-neutral-900 focus:bg-neutral-300 focus:text-neutral-900"
 
 export default SponsorContent

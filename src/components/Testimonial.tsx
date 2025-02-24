@@ -46,8 +46,8 @@ function TestimonialCard({
     <div
       className={cn(
         "relative flex flex-col p-12",
-        "border-b md:border-b-0 border-dashed border-neutral-100/10",
-        index > 0 ? "md:border-l border-dashed border-neutral-100/10" : ""
+        "border-b md:border-b-0 border-dashed border-neutral-100/15",
+        index > 0 ? "md:border-l border-dashed border-neutral-100/15" : ""
       )}
     >
       <Quote
@@ -105,7 +105,7 @@ function Testimonial() {
       </div>
 
       <div className="mx-auto max-w-7xl">
-        <hr className="border-dashed border-neutral-100/10" />
+        <hr className="border-dashed border-neutral-100/15" />
       </div>
 
       <div className="mx-auto max-w-7xl">

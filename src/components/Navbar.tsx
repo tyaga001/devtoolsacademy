@@ -47,7 +47,7 @@ export default function Navbar() {
     <nav
       className={cn(
         isScrolled || isMenuOpen
-          ? "bg-neutral-950 shadow-lg border-b border-dashed border-neutral-100/10"
+          ? "bg-neutral-950 shadow-lg border-b border-dashed border-neutral-100/15"
           : "",
         "text-neutral-200 fixed top-0 left-0 w-full z-50"
       )}
@@ -83,7 +83,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="border border-dashed border-transparent px-3 py-2 text-sm font-medium outline-none transition-colors hover:border-neutral-100/10 hover:bg-neutral-800 focus:bg-neutral-800"
+                  className="border border-dashed border-transparent px-3 py-2 text-sm font-medium outline-none transition-colors hover:border-neutral-100/15 hover:bg-neutral-800 focus:bg-neutral-800"
                 >
                   {item.name}
                 </Link>
@@ -97,7 +97,7 @@ export default function Navbar() {
                   )
                 }
                 variant="outline"
-                className="flex items-center gap-2 border border-dashed border-purple-400 bg-transparent text-purple-400 transition-colors ease-in-out hover:bg-purple-400 hover:text-neutral-900 focus:bg-purple-400 focus:text-neutral-900"
+                className="flex items-center gap-2 border border-dashed border-neutral-200 bg-transparent text-neutral-200 transition-colors ease-in-out hover:bg-neutral-300 hover:text-neutral-900 focus:bg-neutral-300 focus:text-neutral-900"
               >
                 <FaGithub size={18} />
                 <span>Star on GitHub</span>
@@ -147,7 +147,7 @@ export default function Navbar() {
               href="https://github.com/tyaga001/devtoolsacademy"
               target="_blank"
               rel="noopener noreferrer"
-              className="block px-3 py-2 text-base font-medium text-purple-400 transition duration-150 ease-in-out hover:bg-neutral-950"
+              className="block px-3 py-2 text-base font-medium text-neutral-300 transition duration-150 ease-in-out hover:bg-neutral-950"
               onClick={toggleMenu}
             >
               <FaGithub className="mr-2 inline-block size-5" />

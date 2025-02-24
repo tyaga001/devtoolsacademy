@@ -12,7 +12,7 @@ export const metadata = getMetadata({
 export default function SponsorPage() {
   return (
     <main className="mb-16 mt-[80px]">
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
       <section className="py-16 text-center">
         <h1 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
           <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
@@ -27,7 +27,7 @@ export default function SponsorPage() {
       <SponsorContent />
 
       <section className="mx-auto grid max-w-7xl grid-cols-2">
-        <div className="border-r border-dashed border-neutral-100/10 px-6 py-12">
+        <div className="border-r border-dashed border-neutral-100/15 px-6 py-12">
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
               Why Your Support Matters
@@ -103,10 +103,10 @@ export default function SponsorPage() {
           </p>
         </div>
       </section>
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
 
       <section className="mx-auto grid max-w-7xl grid-cols-2">
-        <div className="border-r border-dashed border-neutral-100/10 px-6 py-12">
+        <div className="border-r border-dashed border-neutral-100/15 px-6 py-12">
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
               Who is behind this?
@@ -148,7 +148,7 @@ export default function SponsorPage() {
           </div>
         </div>
       </section>
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
     </main>
   )
 }

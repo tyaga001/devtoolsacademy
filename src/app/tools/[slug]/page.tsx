@@ -27,7 +27,7 @@ export default async function ToolDetailRoute({
 
   return (
     <main className="mt-[80px] min-h-screen">
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
       <ToolDetailsPage tool={toolDetails} />
     </main>
   )

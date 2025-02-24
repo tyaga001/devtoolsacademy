@@ -106,7 +106,7 @@ const ToolsFilter: React.FC = () => {
         </div>
         <div className="flex items-center justify-end">
           <Popover>
-            <PopoverTrigger className="flex h-12 w-full items-center justify-around gap-2 rounded-l-full border border-white/20 px-2 py-1 transition-colors duration-200 hover:bg-white/10 md:w-fit md:px-4 md:py-2">
+            <PopoverTrigger className="flex h-12 w-full items-center justify-around gap-2 rounded-l-full border border-white/20 px-2 py-1 transition-colors duration-200 hover:bg-neutral-100/10 md:w-fit md:px-4 md:py-2">
               <div className="flex items-center gap-2">
                 <Filter className="size-4" />
                 Filters
@@ -198,7 +198,7 @@ const ToolsFilter: React.FC = () => {
           </Popover>
 
           <Popover>
-            <PopoverTrigger className="flex h-12 w-full items-center justify-around gap-2 rounded-r-full border border-white/20 px-2 py-1 transition-colors duration-200 hover:bg-white/10 md:w-fit md:px-4 md:py-2">
+            <PopoverTrigger className="flex h-12 w-full items-center justify-around gap-2 rounded-r-full border border-white/20 px-2 py-1 transition-colors duration-200 hover:bg-neutral-100/10 md:w-fit md:px-4 md:py-2">
               <div className="flex items-center gap-2">
                 <SortAsc className="size-4" />
                 Sort By
@@ -237,7 +237,7 @@ const ToolsFilter: React.FC = () => {
             {selectedTags.map((item) => (
               <span
                 key={item}
-                className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm transition-colors duration-200 hover:bg-white/20"
+                className="flex items-center gap-2 rounded-full bg-neutral-100/10 px-3 py-1 text-sm transition-colors duration-200 hover:bg-white/20"
               >
                 {item}
                 <button

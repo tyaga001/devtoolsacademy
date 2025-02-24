@@ -72,7 +72,7 @@ const BlogPostList: React.FC = () => (
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-400 focus:text-neutral-400"
+            className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-200 focus:text-neutral-200"
           >
             <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
             <span className="grow">{post.title}</span>
@@ -140,7 +140,7 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
 )
 
 const WebsitePromo: React.FC = () => (
-  <motion.div className="mt-24 border border-dashed border-neutral-100/10 bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+  <motion.div className="mt-24 border border-dashed border-neutral-100/15 bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
     <h4 className="mb-2 text-xl font-semibold text-yellow-400">My Website</h4>
     <p className="mb-3 text-neutral-300">
       Explore more about my writing, SaaS dev tools and my journey in the
@@ -150,7 +150,7 @@ const WebsitePromo: React.FC = () => (
       href="https://theankurtyagi.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex items-center border border-dashed border-neutral-100/10 bg-purple-600 px-4 py-2 text-neutral-200 transition-colors duration-300 hover:bg-purple-700"
+      className="group inline-flex items-center border border-dashed border-neutral-100/15 bg-purple-600 px-4 py-2 text-neutral-200 transition-colors duration-300 hover:bg-purple-700"
     >
       <Globe size={16} className="mr-2" />
       <span>Visit theankurtyagi.com</span>
@@ -206,7 +206,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <hr className="border-dashed border-neutral-100/10" />
+      <hr className="border-dashed border-neutral-100/15" />
 
       <div className="mx-auto max-w-7xl p-8">
         <ProgressBar progress={progress} />
