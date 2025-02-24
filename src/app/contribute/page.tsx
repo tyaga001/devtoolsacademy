@@ -43,7 +43,7 @@ export default function ContributeRoute() {
             {sections.map((section, index) => (
               <div key={index} className="flex items-center gap-2">
                 <div>{section.icon}</div>
-                <p className="text-xl font-semibold tracking-tight">
+                <p className="text-lg font-semibold tracking-tight md:text-xl">
                   {section.title}
                 </p>
               </div>
@@ -60,7 +60,7 @@ export default function ContributeRoute() {
             For more detailed instructions, please check the{" "}
             <Link
               href="https://github.com/tyaga001/devtoolsacademy/blob/main/CONTRIBUTING.md"
-              className="text-neutral-400 underline hover:text-purple-300"
+              className="text-neutral-200 underline outline-none transition-colors hover:text-neutral-400 focus:text-neutral-400"
               target="_blank"
               rel="noopener noreferrer"
             >

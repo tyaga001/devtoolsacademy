@@ -17,6 +17,7 @@ export default function Navbar() {
     { name: "Home", path: "/" },
     { name: "Blog", path: "/blog" },
     { name: "Tools", path: "/tools" },
+    { name: "Contribute", path: "/contribute" },
   ]
 
   const [isScrolled, setIsScrolled] = React.useState(false)
@@ -83,7 +84,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="border border-dashed border-transparent px-3 py-2 text-sm font-medium outline-none transition-colors hover:border-neutral-100/15 hover:bg-neutral-800 focus:bg-neutral-800"
+                  className="border border-dashed border-transparent px-3 py-2 text-sm font-medium outline-none transition-colors hover:border-neutral-100/15 hover:bg-neutral-800 focus:border-neutral-100/15 focus:bg-neutral-800"
                 >
                   {item.name}
                 </Link>
