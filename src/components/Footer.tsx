@@ -206,7 +206,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <hr className="border-dashed border-neutral-100 opacity-10" />
+      <hr className="border-dashed border-neutral-100/10" />
 
       <div className="mx-auto max-w-7xl p-8">
         <ProgressBar progress={progress} />

@@ -90,7 +90,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
       </div>
 
       <div className="mx-auto max-w-7xl">
-        <hr className="border-dashed border-neutral-100 opacity-10" />
+        <hr className="border-dashed border-neutral-100/10" />
       </div>
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-3">
@@ -100,7 +100,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
         </div>
       </div>
       <div className="mx-auto max-w-7xl">
-        <hr className="border-dashed border-neutral-100 opacity-10" />
+        <hr className="border-dashed border-neutral-100/10" />
       </div>
 
       <div className="mx-auto max-w-7xl py-16 text-center">

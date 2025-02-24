@@ -70,7 +70,7 @@ const SponsorContent: React.FC<Props> = () => {
 
   return (
     <section className="mx-auto max-w-7xl">
-      <hr className="border-dashed border-neutral-100 opacity-10" />
+      <hr className="border-dashed border-neutral-100/10" />
       <div className="grid grid-cols-1 lg:grid-cols-4">
         {sponsorTiers.map((tier, index) => (
           <div
@@ -113,7 +113,7 @@ const SponsorContent: React.FC<Props> = () => {
           </div>
         ))}
       </div>
-      <hr className="border-dashed border-neutral-100 opacity-10" />
+      <hr className="border-dashed border-neutral-100/10" />
     </section>
   )
 }

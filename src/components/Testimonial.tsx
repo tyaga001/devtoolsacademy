@@ -105,7 +105,7 @@ function Testimonial() {
       </div>
 
       <div className="mx-auto max-w-7xl">
-        <hr className="border-dashed border-neutral-100 opacity-10" />
+        <hr className="border-dashed border-neutral-100/10" />
       </div>
 
       <div className="mx-auto max-w-7xl">
