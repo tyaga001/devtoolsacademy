@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
     <section className="mt-[80px]">
       <hr className="border-dashed border-neutral-100/15" />
 
-      <div className="relative mx-auto grid max-w-7xl place-content-center py-36 md:py-48">
+      <div className="relative mx-auto grid max-w-7xl place-content-center py-36 md:py-56">
         <div className="grid-background absolute inset-0 -z-10 size-full opacity-5" />
         <div className="flex flex-col px-4 text-center text-neutral-200 md:px-0">
           <h1 className="mb-3 max-w-5xl text-3xl font-bold tracking-tight text-neutral-200 md:mb-8 md:text-6xl md:leading-[1.1]">

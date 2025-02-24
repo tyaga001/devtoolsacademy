@@ -105,7 +105,7 @@ export default function Navbar() {
               <Button
                 asChild
                 variant="outline"
-                className="flex items-center gap-2 border border-dashed border-pink-400 bg-transparent text-pink-400 transition-colors ease-in-out hover:bg-pink-400 hover:text-neutral-900 focus:bg-pink-400 focus:text-neutral-900"
+                className="flex items-center gap-2 border border-dashed border-purple-400 bg-transparent text-purple-400 transition-colors ease-in-out hover:bg-purple-400 hover:text-neutral-900 focus:bg-purple-400 focus:text-neutral-900"
               >
                 <Link href="/sponsor">
                   <Heart size={18} />
@@ -117,7 +117,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 text-purple-400 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
+              className="inline-flex items-center justify-center p-2 text-neutral-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -155,7 +155,7 @@ export default function Navbar() {
             </a>
             <Link
               href="/sponsor"
-              className="block px-3 py-2 text-base font-medium text-pink-400 transition duration-150 ease-in-out hover:bg-neutral-950"
+              className="block px-3 py-2 text-base font-medium text-purple-400 transition duration-150 ease-in-out hover:bg-neutral-950"
               onClick={toggleMenu}
             >
               <Heart className="mr-2 inline-block size-5" />

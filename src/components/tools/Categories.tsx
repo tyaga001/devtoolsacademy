@@ -75,8 +75,8 @@ const Categories = async () => {
   return (
     <section className="mb-20">
       <hr className="border-dashed border-neutral-100/15" />
-      <div className="mx-auto flex max-w-7xl items-start">
-        <div className="border-l border-neutral-100/15 p-8">
+      <div className="mx-auto flex max-w-7xl flex-col items-stretch md:flex-row">
+        <div className="border-dashed border-neutral-100/15 p-8 md:border-r">
           <h2 className="mb-2 text-3xl font-semibold tracking-tight">
             Explore Categories
           </h2>
@@ -85,7 +85,7 @@ const Categories = async () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full grid-cols-2 border-t border-dashed border-neutral-100/15 px-4 md:border-none md:px-0 lg:grid-cols-4">
           {variousCategories?.map((category) => (
             <Link
               key={category.name}

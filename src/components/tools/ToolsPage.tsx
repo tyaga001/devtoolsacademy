@@ -69,7 +69,7 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
 
   if (isLoading) {
     return (
-      <section className="mx-auto mb-20 flex max-w-7xl flex-col">
+      <section className="mx-auto mb-20 flex max-w-7xl flex-col px-4 md:px-0">
         <div className="flex w-full flex-col gap-2 px-0 py-4 text-neutral-200">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {[...Array(10)].map((_, index) => (
@@ -103,7 +103,7 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
   }
 
   return (
-    <section className="mx-auto mb-20 flex max-w-7xl flex-col">
+    <section className="mx-auto mb-20 flex max-w-7xl flex-col px-4 md:px-0">
       <div className="flex w-full flex-col gap-2 px-0 py-4 text-neutral-200">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {tools.map((tool) => (

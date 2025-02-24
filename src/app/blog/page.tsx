@@ -32,14 +32,14 @@ export default async function BlogPage() {
             className={cn(
               "p-4 transition-colors hover:bg-neutral-900 focus:bg-neutral-900",
               "border-b border-dashed border-neutral-100/15",
-              "flex"
+              "flex flex-col md:flex-row"
             )}
           >
-            <div className="flex w-2/12 flex-col text-xs text-neutral-500 md:text-sm">
-              <p className="mb-3">{formatDate(new Date(post.publishedAt))}</p>
+            <div className="mb-2 flex gap-1 text-xs text-neutral-500 md:mb-0 md:w-2/12 md:flex-col md:text-sm">
+              <p className="">{formatDate(new Date(post.publishedAt))}</p>
               <p>by {post.author}</p>
             </div>
-            <div className="w-10/12">
+            <div className="md:w-10/12">
               <p className="mb-3 text-xl font-semibold tracking-tight text-neutral-300 md:text-2xl">
                 {post.title}
               </p>
