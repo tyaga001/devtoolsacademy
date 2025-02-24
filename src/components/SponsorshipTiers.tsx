@@ -3,15 +3,8 @@ import * as React from "react"
 
 import { Star, Trophy, Award, Heart } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 interface SponsorTier {
   title: string
@@ -63,7 +56,7 @@ const sponsorTiers: SponsorTier[] = [
 
 interface Props {}
 
-const SponsorContent: React.FC<Props> = () => {
+const SponsorshipTiers: React.FC<Props> = () => {
   const handleContribute = (stripeLink: string) => {
     window.open(stripeLink, "_blank", "noopener,noreferrer")
   }
@@ -119,6 +112,4 @@ const SponsorContent: React.FC<Props> = () => {
   )
 }
 
-// "flex items-center gap-2 border border-dashed border-neutral-200 bg-transparent text-neutral-200 transition-colors ease-in-out hover:bg-neutral-300 hover:text-neutral-900 focus:bg-neutral-300 focus:text-neutral-900"
-
-export default SponsorContent
+export default SponsorshipTiers

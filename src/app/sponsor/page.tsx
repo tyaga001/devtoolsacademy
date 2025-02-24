@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { getMetadata } from "@/lib/metadata"
-import SponsorContent from "@/components/SponsorContent"
+import SponsorshipTiers from "@/components/SponsorshipTiers"
 
 export const metadata = getMetadata({
   path: "/sponsor",
@@ -24,7 +24,7 @@ export default function SponsorPage() {
         </p>
       </section>
 
-      <SponsorContent />
+      <SponsorshipTiers />
 
       <section className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-2">
         <div className="border-r border-dashed border-neutral-100/15 px-6 pt-12 md:py-12">
