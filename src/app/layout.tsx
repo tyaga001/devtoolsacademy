@@ -1,7 +1,7 @@
 import * as React from "react"
 import type { Viewport } from "next"
 import Script from "next/script"
-import { JetBrains_Mono, Mona_Sans } from "next/font/google"
+import { DM_Mono, Mona_Sans } from "next/font/google"
 import { ViewTransitions } from "next-view-transitions"
 
 import { Analytics } from "@vercel/analytics/react"
@@ -17,9 +17,10 @@ const sansFont = Mona_Sans({
   subsets: ["latin"],
 })
 
-const monoFont = JetBrains_Mono({
+const monoFont = DM_Mono({
   variable: "--mono-font",
   subsets: ["latin"],
+  weight: "500",
 })
 
 export const viewport: Viewport = {

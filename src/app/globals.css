@@ -38,3 +38,13 @@
     linear-gradient(to right, #f5f5f5 1px, transparent 1px),
     linear-gradient(to bottom, #f5f5f5 1px, transparent 1px);
 }
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s steps(2) infinite;
+}
