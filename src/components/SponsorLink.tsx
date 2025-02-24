@@ -4,7 +4,7 @@ import { Link } from "next-view-transitions"
 import { Button } from "@/components/ui/button"
 import { Heart } from "lucide-react"
 
-export function Sponsor() {
+export function SponsorLink() {
   return (
     <Link href="/sponsor">
       <Button variant="outline" className="flex items-center space-x-2">
