@@ -19,7 +19,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, excerpt, image, slug }) => {
   return (
     <Link href={`/blog/${slug}`} passHref>
       <div
-        className={`cursor-pointer overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 ${isClicked ? "scale-[98%] opacity-80" : "hover:shadow-lg"}`}
+        className={`cursor-pointer overflow-hidden bg-white shadow-md transition-all duration-300 ${isClicked ? "scale-[98%] opacity-80" : "hover:shadow-lg"}`}
         tabIndex={0}
         role="button"
         onKeyDown={(e) => e.key === "Enter" && handleCardClick()}

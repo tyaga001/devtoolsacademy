@@ -51,7 +51,7 @@ export default function AnimatedContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 * index, duration: 0.5 }}
-            className="rounded-lg bg-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl dark:bg-neutral-950"
+            className="bg-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl dark:bg-neutral-950"
           >
             <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
             <p className="text-neutral-600 dark:text-neutral-300">

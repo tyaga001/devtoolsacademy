@@ -106,7 +106,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
       <div className="mx-auto max-w-7xl py-16 text-center">
         <Link
           href="/blog"
-          className="bg-neutral-200 px-4 py-2 text-base font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-300 focus:bg-neutral-300 md:px-6 md:py-3 md:text-lg"
+          className="bg-neutral-200 px-4 py-2 text-base font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400 md:px-6 md:py-3 md:text-lg"
         >
           View All Posts
         </Link>

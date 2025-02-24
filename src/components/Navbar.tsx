@@ -85,7 +85,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="px-3 py-2 text-sm font-medium outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800"
+                  className="border border-dashed border-transparent px-3 py-2 text-sm font-medium outline-none transition-colors hover:border-neutral-100/10 hover:bg-neutral-800 focus:bg-neutral-800"
                 >
                   {item.name}
                 </Link>
@@ -99,7 +99,7 @@ export default function Navbar() {
                   )
                 }
                 variant="outline"
-                className="flex items-center gap-2 border border-purple-400 bg-transparent text-purple-400 transition-colors ease-in-out hover:bg-purple-400 hover:text-neutral-900 focus:bg-purple-400 focus:text-neutral-900"
+                className="flex items-center gap-2 border border-dashed border-purple-400 bg-transparent text-purple-400 transition-colors ease-in-out hover:bg-purple-400 hover:text-neutral-900 focus:bg-purple-400 focus:text-neutral-900"
               >
                 <FaGithub size={18} />
                 <span>Star on GitHub</span>
@@ -107,7 +107,7 @@ export default function Navbar() {
               <Button
                 asChild
                 variant="outline"
-                className="flex items-center gap-2 border border-pink-400 bg-transparent text-pink-400 transition-colors ease-in-out hover:bg-pink-400 hover:text-neutral-900 focus:bg-pink-400 focus:text-neutral-900"
+                className="flex items-center gap-2 border border-dashed border-pink-400 bg-transparent text-pink-400 transition-colors ease-in-out hover:bg-pink-400 hover:text-neutral-900 focus:bg-pink-400 focus:text-neutral-900"
               >
                 <Link href="/sponsor">
                   <Heart size={18} />
