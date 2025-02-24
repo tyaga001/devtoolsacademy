@@ -71,11 +71,11 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
       className="fixed inset-0 z-50 flex size-full items-center justify-center overflow-y-auto bg-neutral-600/50 backdrop-blur-md"
     >
       <motion.div
-        className="mx-auto w-full max-w-2xl overflow-hidden border border-dashed border-neutral-100/10 bg-neutral-900 shadow-xl"
+        className="mx-auto w-full max-w-2xl overflow-hidden border border-dashed border-neutral-100/15 bg-neutral-900 shadow-xl"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
-        <div className="flex items-center justify-between border-b border-dashed border-neutral-100/10 p-5">
+        <div className="flex items-center justify-between border-b border-dashed border-neutral-100/15 p-5">
           <h2 className="my-0 text-xl font-bold leading-none text-neutral-200">
             Chat about the Blog
           </h2>
@@ -121,7 +121,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
           <div ref={messagesEndRef} />
         </div>
         <div className="p-4">
-          <div className="flex border border-dashed border-neutral-100/10">
+          <div className="flex border border-dashed border-neutral-100/15">
             <input
               type="text"
               value={input}

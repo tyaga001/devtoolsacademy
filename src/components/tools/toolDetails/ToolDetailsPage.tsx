@@ -45,7 +45,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             <img
               src={`/images/logo/${tool.name}.png`}
               alt={`${tool.name} logo`}
-              className="size-10 rounded border border-neutral-100/10 object-cover"
+              className="size-10 rounded border border-neutral-100/15 object-cover"
             />
             <div>
               <h1 className="text-4xl font-bold tracking-tight">{tool.name}</h1>
@@ -116,7 +116,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3 ">
-            <div className="flex items-center rounded border border-neutral-100/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
+            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <Star className="mr-3 size-8 text-yellow-500" />
               <div>
                 <p className="text-sm text-neutral-400">Stars</p>
@@ -127,7 +127,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center rounded border border-neutral-100/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
+            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <GitFork className="mr-3 size-8 text-blue-500" />
               <div>
                 <p className="text-sm text-neutral-400">Forks</p>
@@ -138,7 +138,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center rounded border border-neutral-100/10 bg-gradient-to-br from-[#141414] to-transparent p-4">
+            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
               <Clock className="mr-3 size-8 text-green-500" />
               <div>
                 <p className="text-sm text-neutral-400">Last Commited</p>

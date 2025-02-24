@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 export default function ToolSkeleton() {
   return (
     <Card
-      className={`relative size-full max-w-sm overflow-hidden rounded-none border-neutral-100/10`}
+      className={`relative size-full max-w-sm overflow-hidden rounded-none border-neutral-100/15`}
     >
       <div className={`skeleton-shimmer absolute inset-0`}></div>
       <div className="grow">
