@@ -76,12 +76,12 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
         animate={{ y: 0, opacity: 1 }}
       >
         <div className="flex items-center justify-between p-5">
-          <h2 className="my-0 text-xl font-bold leading-none text-white">
+          <h2 className="my-0 text-xl font-bold leading-none text-neutral-200">
             Chat about the Blog
           </h2>
           <button
             onClick={onClose}
-            className="text-neutral-300 hover:text-white"
+            className="text-neutral-300 hover:text-neutral-200"
           >
             <X size={24} />
           </button>
@@ -97,10 +97,8 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
                 className={`flex ${msg.role === "human" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[75%] rounded-lg px-3 py-1.5 ${
-                    msg.role === "human"
-                      ? "bg-blue-500 text-white"
-                      : "bg-neutral-700 text-neutral-200"
+                  className={`max-w-[75%] rounded-lg px-3 py-1.5 text-neutral-200 ${
+                    msg.role === "human" ? "bg-blue-500" : "bg-neutral-700"
                   }`}
                 >
                   {msg.content}

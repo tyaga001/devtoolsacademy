@@ -90,7 +90,7 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
             <TriangleAlert size={20} className="text-neutral-400" />
           </div>
         </div>
-        <h2 className="my-4 text-2xl font-semibold text-neutral-400">
+        <h2 className="my-4 text-2xl font-semibold tracking-tight text-neutral-400">
           No tools found
         </h2>
         <p className="mb-6 max-w-xl text-center text-neutral-500">

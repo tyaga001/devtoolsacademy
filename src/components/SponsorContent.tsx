@@ -105,7 +105,7 @@ const SponsorContent: React.FC<Props> = () => {
               ${tier.price} USD
             </div>
             <Button
-              className="w-full bg-purple-600 text-white transition-colors duration-300 hover:bg-purple-700"
+              className="w-full bg-purple-600 text-neutral-200 transition-colors duration-300 hover:bg-purple-700"
               onClick={() => handleContribute(tier.stripeLink)}
             >
               Contribute

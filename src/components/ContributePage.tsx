@@ -45,7 +45,7 @@ const ContributionStep: React.FC<ContributionStepProps> = ({
         {icon}
       </motion.div>
       <div>
-        <h3 className="mb-2 text-xl font-bold text-white">{title}</h3>
+        <h3 className="mb-2 text-xl font-bold text-neutral-200">{title}</h3>
         <p className="text-neutral-300">{description}</p>
       </div>
     </motion.div>
@@ -67,7 +67,7 @@ const ContributePage: React.FC = () => {
   const sections = [
     {
       title: "Fork the Repository",
-      icon: <Github className="text-white" size={24} />,
+      icon: <Github className="text-neutral-200" size={24} />,
       description: (
         <a
           href="https://github.com/tyaga001/devtoolsacademy"
@@ -81,15 +81,15 @@ const ContributePage: React.FC = () => {
     },
     {
       title: "Create a New Branch",
-      icon: <GitBranch className="text-white" size={24} />,
+      icon: <GitBranch className="text-neutral-200" size={24} />,
     },
     {
       title: "Make Changes and Commit",
-      icon: <GitCommit className="text-white" size={24} />,
+      icon: <GitCommit className="text-neutral-200" size={24} />,
     },
     {
       title: "Submit a Pull Request",
-      icon: <GitPullRequest className="text-white" size={24} />,
+      icon: <GitPullRequest className="text-neutral-200" size={24} />,
     },
   ]
 
@@ -153,7 +153,7 @@ const ContributePage: React.FC = () => {
                   animate={{ rotate: expandedSection === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ChevronDown size={24} className="text-white" />
+                  <ChevronDown size={24} className="text-neutral-200" />
                 </motion.div>
               </motion.div>
               {expandedSection === index && (
@@ -176,7 +176,7 @@ const ContributePage: React.FC = () => {
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 10 }}
         >
-          <h3 className="mb-4 text-2xl font-bold text-white">
+          <h3 className="mb-4 text-2xl font-bold text-neutral-200">
             Need More Help?
           </h3>
           <p className="mb-4 text-neutral-300">
@@ -198,7 +198,7 @@ const ContributePage: React.FC = () => {
           >
             <Button
               asChild
-              className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-10 py-4 text-xl font-bold text-white transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg"
+              className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-10 py-4 text-xl font-bold text-neutral-200 transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg"
             >
               <a
                 href="https://github.com/tyaga001/devtoolsacademy/issues"

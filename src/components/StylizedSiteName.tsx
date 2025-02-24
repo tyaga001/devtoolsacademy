@@ -13,7 +13,7 @@ const StylizedSiteName = () => {
         className="rounded-full"
       />
       <div className="flex items-baseline">
-        <span className="text-2xl font-extrabold tracking-tighter text-white transition-colors duration-300 group-hover:text-purple-400">
+        <span className="text-2xl font-extrabold tracking-tighter text-neutral-200 transition-colors duration-300 group-hover:text-purple-400">
           Dev
         </span>
         <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-lg font-bold tracking-tight text-transparent transition-colors duration-300 group-hover:from-purple-300 group-hover:to-pink-400">

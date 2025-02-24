@@ -150,7 +150,7 @@ const WebsitePromo: React.FC = () => (
       href="https://theankurtyagi.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex items-center border border-dashed border-neutral-100/10 bg-purple-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-purple-700"
+      className="group inline-flex items-center border border-dashed border-neutral-100/10 bg-purple-600 px-4 py-2 text-neutral-200 transition-colors duration-300 hover:bg-purple-700"
     >
       <Globe size={16} className="mr-2" />
       <span>Visit theankurtyagi.com</span>

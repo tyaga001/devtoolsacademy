@@ -62,7 +62,7 @@ const Categories = async () => {
   if (!response.status) {
     return (
       <div className="flex min-h-[50vh] flex-col items-center justify-center gap-3 px-4 text-center text-neutral-400">
-        <h2 className="text-2xl font-bold tracking-tight md:text-4xl">
+        <h2 className="text-2xl font-semibold tracking-tight">
           Categories Not Found
         </h2>
         <p className="text-neutral-600">
@@ -77,7 +77,7 @@ const Categories = async () => {
       <hr className="border-dashed border-neutral-100 opacity-10" />
       <div className="mx-auto flex max-w-7xl items-start">
         <div className="p-8">
-          <h2 className="mb-2 text-3xl font-bold tracking-tight">
+          <h2 className="mb-2 text-3xl font-semibold tracking-tight">
             Explore Categories
           </h2>
           <p className="text-sm text-neutral-500">
@@ -93,7 +93,7 @@ const Categories = async () => {
             >
               <div className="flex cursor-pointer items-center space-x-4 p-2 shadow transition-colors hover:bg-neutral-900 md:p-4">
                 <div
-                  className={`${getRandomColor()} flex size-6 items-center justify-center rounded-full text-white md:size-12`}
+                  className={`${getRandomColor()} flex size-6 items-center justify-center rounded-full text-neutral-200 md:size-12`}
                 >
                   {getRandomIcon()}
                 </div>
