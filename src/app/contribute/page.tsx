@@ -52,7 +52,7 @@ export default function ContributeRoute() {
         </section>
       </section>
       <section className="mx-auto max-w-7xl">
-        <div className="border border-dashed border-neutral-100/10 p-6">
+        <div className="border-y border-dashed border-neutral-100/15 p-6">
           <h3 className="mb-4 text-2xl font-bold text-neutral-200">
             Need More Help?
           </h3>

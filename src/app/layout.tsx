@@ -11,6 +11,8 @@ import Navbar from "@/components/Navbar"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
+import Footer from "@/components/Footer"
+import CurrentSponsors from "@/components/CurrentSponsors"
 
 const sansFont = Mona_Sans({
   variable: "--sans-font",
@@ -45,11 +47,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body className="bg-neutral-950 font-sans text-neutral-200">
           <Navbar />
           {children}
-          <Analytics />
-          <SpeedInsights />
+          <hr className="border-dashed border-neutral-100/15" />
+          <CurrentSponsors />
+          <hr className="border-dashed border-neutral-100/15" />
+          <Footer />
 
           <div className="fixed left-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
           <div className="fixed right-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
+
+          <Analytics />
+          <SpeedInsights />
         </body>
       </html>
     </ViewTransitions>

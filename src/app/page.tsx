@@ -5,7 +5,7 @@ import { getMetadata } from "@/lib/metadata"
 import Hero from "@/components/Hero"
 import FeaturedPosts from "@/components/FeaturedPosts"
 import Testimonial from "@/components/Testimonial"
-import Footer from "@/components/Footer"
+import CurrentSponsors from "@/components/CurrentSponsors"
 
 export const metadata = getMetadata({
   path: "/",
@@ -48,11 +48,11 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <CurrentSponsors />
+      <hr className="border-dashed border-neutral-100/15" />
       {featuredPosts.length > 0 && <FeaturedPosts posts={featuredPosts} />}
       <hr className="border-dashed border-neutral-100/15" />
       <Testimonial />
-      <hr className="border-dashed border-neutral-100/15" />
-      <Footer />
     </main>
   )
 }
