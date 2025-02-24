@@ -106,7 +106,7 @@ export default function Navbar() {
               <Button
                 asChild
                 variant="outline"
-                className="flex items-center gap-2 border border-dashed border-purple-400 bg-transparent text-purple-400 transition-colors ease-in-out hover:bg-purple-400 hover:text-neutral-900 focus:bg-purple-400 focus:text-neutral-900"
+                className="flex items-center gap-2 border border-dashed border-rose-500 bg-transparent text-rose-500 transition-colors ease-in-out hover:bg-rose-500 hover:text-neutral-900 focus:bg-rose-500 focus:text-neutral-900"
               >
                 <Link href="/sponsor">
                   <Heart size={18} />
