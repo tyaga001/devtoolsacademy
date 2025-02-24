@@ -14,7 +14,7 @@ const CurrentSponsors: React.FC<Props> = () => {
     <section>
       <div className="mx-auto max-w-7xl">
         <div className="grid flex-1 place-content-center p-8">
-          <div className="flex items-center gap-10">
+          <div className="flex flex-col items-center gap-10 md:flex-row">
             <a
               href="https://getstream.io/?ref=devtoolsacademy.com"
               target="_blank"
@@ -29,7 +29,7 @@ const CurrentSponsors: React.FC<Props> = () => {
             </a>
             <Link
               href={"/sponsor/"}
-              className="flex items-center gap-3 border border-dashed border-neutral-100/15 px-6 py-3 bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800 outline-none"
+              className="flex items-center gap-3 border border-dashed border-neutral-100/15 bg-neutral-900 px-6 py-3 outline-none hover:bg-neutral-800 focus:bg-neutral-800"
             >
               <Heart size={18} />
               <span>Become a Sponsor</span>
