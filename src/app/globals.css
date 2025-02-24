@@ -31,9 +31,10 @@
   @apply mx-auto;
 }
 
+/* neutral-100 */
 .grid-background {
   background-size: 14px 14px;
   background-image:
-    linear-gradient(to right, #f6f6f6 1px, transparent 1px),
-    linear-gradient(to bottom, #f6f6f6 1px, transparent 1px);
+    linear-gradient(to right, #f5f5f5 1px, transparent 1px),
+    linear-gradient(to bottom, #f5f5f5 1px, transparent 1px);
 }

@@ -24,9 +24,9 @@ interface Props {
 const BlogWrapper: React.FC<Props> = ({ children }) => {
   return (
     <main className="my-[80px]">
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
       <div className="relative mx-auto flex max-w-7xl flex-col lg:flex-row">
-        <div className="w-full border-dashed border-[#f6f6f6]/10 lg:w-3/4 lg:border-r">
+        <div className="w-full border-dashed border-neutral-100/10 lg:w-3/4 lg:border-r">
           <article
             className={cn(
               "p-8",
@@ -40,7 +40,7 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
             {children}
           </article>
 
-          <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+          <hr className="border-dashed border-neutral-100 opacity-10" />
 
           <ClerkProvider>
             <CommentSection />
@@ -54,7 +54,7 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
         </aside>
       </div>
 
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
 
       <BackToTop />
       <ScrollProgressBar />

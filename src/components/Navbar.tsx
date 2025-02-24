@@ -47,7 +47,7 @@ export default function Navbar() {
     <nav
       className={cn(
         isScrolled || isMenuOpen
-          ? "bg-neutral-950 shadow-lg border-b border-dashed border-[#f6f6f6]/10"
+          ? "bg-neutral-950 shadow-lg border-b border-dashed border-neutral-100/10"
           : "",
         "text-neutral-200 fixed top-0 left-0 w-full z-50"
       )}
@@ -85,7 +85,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="rounded-md px-3 py-2 text-sm font-medium outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800"
+                  className="px-3 py-2 text-sm font-medium outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800"
                 >
                   {item.name}
                 </Link>
@@ -119,7 +119,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center rounded-md p-2 text-purple-400 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
+              className="inline-flex items-center justify-center p-2 text-purple-400 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -139,7 +139,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="block rounded-md px-3 py-2 text-base font-medium transition duration-150 ease-in-out hover:bg-neutral-950"
+                className="block px-3 py-2 text-base font-medium transition duration-150 ease-in-out hover:bg-neutral-950"
                 onClick={toggleMenu}
               >
                 {item.name}
@@ -149,7 +149,7 @@ export default function Navbar() {
               href="https://github.com/tyaga001/devtoolsacademy"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-md px-3 py-2 text-base font-medium text-purple-400 transition duration-150 ease-in-out hover:bg-neutral-950"
+              className="block px-3 py-2 text-base font-medium text-purple-400 transition duration-150 ease-in-out hover:bg-neutral-950"
               onClick={toggleMenu}
             >
               <FaGithub className="mr-2 inline-block size-5" />
@@ -157,7 +157,7 @@ export default function Navbar() {
             </a>
             <Link
               href="/sponsor"
-              className="block rounded-md px-3 py-2 text-base font-medium text-pink-400 transition duration-150 ease-in-out hover:bg-neutral-950"
+              className="block px-3 py-2 text-base font-medium text-pink-400 transition duration-150 ease-in-out hover:bg-neutral-950"
               onClick={toggleMenu}
             >
               <Heart className="mr-2 inline-block size-5" />

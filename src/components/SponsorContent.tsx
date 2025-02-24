@@ -70,13 +70,13 @@ const SponsorContent: React.FC<Props> = () => {
 
   return (
     <section className="mx-auto max-w-7xl">
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
       <div className="grid grid-cols-1 lg:grid-cols-4">
         {sponsorTiers.map((tier, index) => (
           <div
             className={cn(
               "flex flex-col p-8",
-              index > 0 ? "border-l border-dashed border-[#f6f6f6]/10" : ""
+              index > 0 ? "border-l border-dashed border-neutral-100/10" : ""
             )}
             key={index}
           >
@@ -113,7 +113,7 @@ const SponsorContent: React.FC<Props> = () => {
           </div>
         ))}
       </div>
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
     </section>
   )
 }

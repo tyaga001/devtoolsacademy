@@ -49,9 +49,9 @@ export default function Home() {
     <main>
       <Hero />
       {featuredPosts.length > 0 && <FeaturedPosts posts={featuredPosts} />}
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
       <Testimonial />
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
       <Footer />
     </main>
   )

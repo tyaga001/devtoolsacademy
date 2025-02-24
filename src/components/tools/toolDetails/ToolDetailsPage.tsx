@@ -92,7 +92,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           </div>
         </section>
 
-        <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+        <hr className="border-dashed border-neutral-100 opacity-10" />
 
         <section className="mb-8 flex flex-col gap-2 p-8">
           <h2 className="mb-1 pb-1 text-2xl font-semibold tracking-tight">
@@ -180,7 +180,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           </div> */}
         </section>
 
-        <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+        <hr className="border-dashed border-neutral-100 opacity-10" />
 
         <div className="mx-auto max-w-4xl  py-6">
           <div className="mt-12  rounded-xl">
@@ -250,7 +250,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
         </div>
       </div>
 
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
 
       <section className="mx-auto max-w-7xl p-8">
         <Suspense fallback={<div>loading...</div>}>
@@ -261,7 +261,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           />
         </Suspense>
       </section>
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
     </div>
   )
 }

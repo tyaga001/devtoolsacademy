@@ -9,7 +9,7 @@ import { Link } from "next-view-transitions"
 const Hero: React.FC = () => {
   return (
     <section className="mt-[80px]">
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
 
       <div className="relative mx-auto grid max-w-7xl place-content-center py-36 md:py-48">
         <div className="grid-background absolute inset-0 -z-10 size-full opacity-5" />
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
     </section>
   )
 }

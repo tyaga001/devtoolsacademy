@@ -127,9 +127,9 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
       Progress on the upcoming blog post:{" "}
       <span className="font-bold text-yellow-400">{progress}%</span>
     </p>
-    <div className="mt-2 h-2 w-full rounded-full bg-neutral-700">
+    <div className="mt-2 h-2 w-full bg-neutral-700">
       <motion.div
-        className="h-full rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
+        className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
         style={{ width: `${progress}%` }}
         initial={{ width: 0 }}
         animate={{ width: `${progress}%` }}
@@ -140,7 +140,7 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
 )
 
 const WebsitePromo: React.FC = () => (
-  <motion.div className="mt-24 rounded-lg bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+  <motion.div className="mt-24 border border-dashed border-neutral-100/10 bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
     <h4 className="mb-2 text-xl font-semibold text-yellow-400">My Website</h4>
     <p className="mb-3 text-neutral-300">
       Explore more about my writing, SaaS dev tools and my journey in the
@@ -150,7 +150,7 @@ const WebsitePromo: React.FC = () => (
       href="https://theankurtyagi.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex items-center rounded-full bg-purple-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-purple-700"
+      className="group inline-flex items-center border border-dashed border-neutral-100/10 bg-purple-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-purple-700"
     >
       <Globe size={16} className="mr-2" />
       <span>Visit theankurtyagi.com</span>
@@ -206,7 +206,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
 
       <div className="mx-auto max-w-7xl p-8">
         <ProgressBar progress={progress} />

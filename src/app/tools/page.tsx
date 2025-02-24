@@ -30,7 +30,7 @@ export default async function ToolsRoute({
 
   return (
     <section className="mt-[80px]">
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
 
       <div className="mx-auto flex max-w-[800px] flex-col items-center py-20 text-center md:py-24">
         <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
@@ -44,7 +44,7 @@ export default async function ToolsRoute({
         </p>
       </div>
 
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
 
       <div className="mb-8 flex w-full flex-col items-center space-y-4">
         <AlgoliaSearch searchParams={searchParamsSync} />

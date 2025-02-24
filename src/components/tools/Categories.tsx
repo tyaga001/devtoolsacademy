@@ -62,14 +62,9 @@ const Categories = async () => {
   if (!response.status) {
     return (
       <div className="flex min-h-[50vh] flex-col items-center justify-center gap-3 px-4 text-center text-neutral-400">
-        <div className="flex h-full items-center justify-center gap-3">
-          <div className=" flex items-center justify-center rounded-full bg-sky-800 p-2">
-            <Frown size={40} />
-          </div>
-          <h1 className="text-2xl font-bold md:text-4xl">
-            Categories Not Found
-          </h1>
-        </div>
+        <h2 className="text-2xl font-bold tracking-tight md:text-4xl">
+          Categories Not Found
+        </h2>
         <p className="text-neutral-600">
           We couldn&apos;t able to find the categories for you. It might have
           been moved or doesn&apos;t exist. Please try again later
@@ -79,7 +74,7 @@ const Categories = async () => {
   }
   return (
     <section className="mb-20">
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
       <div className="mx-auto flex max-w-7xl items-start">
         <div className="p-8">
           <h2 className="mb-2 text-3xl font-bold tracking-tight">
@@ -115,7 +110,7 @@ const Categories = async () => {
           ))}
         </div>
       </div>
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
     </section>
   )
 }

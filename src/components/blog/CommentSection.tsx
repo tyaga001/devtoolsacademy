@@ -84,7 +84,7 @@ const CommentSection: React.FC = () => {
           on the post 💪
         </p>
       </div>
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
       <div className="p-8">
         {isSignedIn ? (
           <form onSubmit={handleSubmitComment} className="mb-6">
@@ -158,7 +158,7 @@ const CommentSection: React.FC = () => {
           )}
         </div>
       </div>
-      <hr className="border-dashed border-[#f6f6f6] opacity-10" />
+      <hr className="border-dashed border-neutral-100 opacity-10" />
       <div className="p-8">
         <div className="text-sm text-neutral-400">
           <span className="font-semibold">Remember:</span> Be kind, be
