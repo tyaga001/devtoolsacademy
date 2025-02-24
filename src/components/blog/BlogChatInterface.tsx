@@ -71,17 +71,17 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
       className="fixed inset-0 z-50 flex size-full items-center justify-center overflow-y-auto bg-neutral-600/50 backdrop-blur-md"
     >
       <motion.div
-        className="mx-auto w-full max-w-2xl overflow-hidden rounded-lg bg-neutral-900 shadow-xl"
+        className="mx-auto w-full max-w-2xl overflow-hidden border border-dashed border-neutral-100/10 bg-neutral-900 shadow-xl"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
-        <div className="flex items-center justify-between p-5">
+        <div className="flex items-center justify-between border-b border-dashed border-neutral-100/10 p-5">
           <h2 className="my-0 text-xl font-bold leading-none text-neutral-200">
             Chat about the Blog
           </h2>
           <button
             onClick={onClose}
-            className="text-neutral-300 hover:text-neutral-200"
+            className="text-neutral-200 hover:text-neutral-400"
           >
             <X size={24} />
           </button>
@@ -121,19 +121,19 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
           <div ref={messagesEndRef} />
         </div>
         <div className="p-4">
-          <div className="flex">
+          <div className="flex border border-dashed border-neutral-100/10">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
-              className="grow rounded-l bg-neutral-800 px-3 py-2 text-neutral-300 focus:outline-none"
+              className="grow bg-neutral-800 px-3 py-2 text-neutral-300 focus:outline-none"
               placeholder="Ask about the blog..."
             />
             <button
               onClick={handleSend}
               disabled={isLoading}
-              className="rounded-r bg-blue-500 px-4 py-2 text-neutral-300 transition-colors hover:bg-blue-600 focus:bg-blue-600 focus:outline-none"
+              className="bg-blue-500 px-4 py-2 text-neutral-300 transition-colors hover:bg-blue-600 focus:bg-blue-600 focus:outline-none"
             >
               <Send size={18} />
             </button>
