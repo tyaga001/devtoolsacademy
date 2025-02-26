@@ -501,7 +501,7 @@ export async function POST() {
       {
         name: "Plausible",
         headline:
-          "HelloPlausible is intuitive, lightweight and open source web analytics.",
+          "Plausible is intuitive, lightweight and open source web analytics.",
         description:
           "Plausible is intuitive, lightweight and open source web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. Made and hosted in the EU, powered by European-owned cloud infrastructure 🇪🇺. Plausible is simple analytics. It is easy to understand and it cuts through the noise. Check your site traffic and get all the essential insights on one page in one minute. There are no layers of menus, there is no need for you to build custom reports, custom dashboards or PowerPoint documents. You can even import your Google Analytics stats. Plausible is lightweight analytics. Our script is 75 times smaller than Google Analytics. Your page weight will be cut down, your site will load faster and you'll reduce your carbon footprint for a greener and more sustainable web. A site with 100,000 monthly visitors can save 8.2 kg of CO2 emissions per year by switching. Plausible is privacy-friendly analytics. All the site measurement is carried out absolutely anonymously. Cookies are not used and no personal data is collected. There are no persistent identifiers. No cross-site or cross-device tracking either. Your site data is not used for any other purposes. All visitor data is exclusively processed with servers owned and operated by European companies and it never leaves the EU.",
         features: [

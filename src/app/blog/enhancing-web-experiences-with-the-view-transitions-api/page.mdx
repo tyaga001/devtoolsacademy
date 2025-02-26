@@ -1,0 +1,216 @@
+import Image from "next/image"
+import { getMetadata } from "@/lib/metadata"
+
+import BlogHeader from "@/components/blog/BlogHeader"
+
+import CoverImage from "./cover.png"
+import ViewTransitionGif from "./view-transition-gif.gif"
+
+export const metadata = getMetadata({
+  path: "/blog/enhancing-web-experiences-with-the-view-transitions-api",
+  title:
+    "Enhancing Web Experiences with the View Transitions API | DevTools Academy",
+  description:
+    "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
+  image: CoverImage.src,
+})
+
+<BlogHeader
+  title={"Enhancing Web Experiences with the View Transitions API"}
+  author={"Jitendra Nirnejak"}
+  publishedAt={"2025-02-24T00:00:00Z"}
+/>
+
+## **Introduction**
+
+In modern web development, users expect interfaces to feel smooth and polished, with transitions that enhance the overall experience. However, achieving seamless animations often requires writing complex CSS, managing JavaScript-based transitions, and handling performance issues, which can be both time-consuming and challenging.
+
+The **View Transitions API** simplifies this process by providing a native browser-based solution for smooth animations during DOM updates. Instead of relying on external libraries or custom animations, this API offers a declarative approach to handling transitions, ensuring better performance and maintainability.
+
+So let’s explore what it is, and how to use it, I also include how to effortlessly implement it in your Next.js Apps.
+
+<img src={ViewTransitionGif.src} alt="View Transition Example" />
+
+---
+
+## **What is the View Transitions API?**
+
+The View Transitions API is a built-in animation engine for your UI updates. Whether you're swapping out content, handling page transitions, or animating a modal, it makes things look fluid **automatically**.
+
+Here’s why it’s different from what you’ve been doing so far:
+
+- **No manual keyframes** – The browser does the heavy lifting for you.
+- **Native optimization** – Unlike janky JS-based animations, this runs **smoothly** at the browser level.
+- **Simpler syntax** – A single function (`document.startViewTransition()`) wraps your updates and makes them transition seamlessly.
+
+---
+
+## **Key Features of the View Transitions API**
+
+- **Built-in Animations:** Handles DOM updates and navigation transitions out of the box.
+- **Zero external dependencies:** No need for GSAP, Framer Motion, or custom CSS/JS hacks.
+- **Customizable:** Want more control? You can define your own animations.
+- **Browser Optimized:** Uses GPU acceleration and frame timing to ensure smooth transitions.
+- **Works for SPAs & MPAs:** Whether you're working with React, Next.js, or a classic multi-page app, you can use it anywhere.
+
+---
+
+### **Where Should You Use It?**
+
+- **SPA Route Changes** – Instead of abrupt page swaps, you get fluid transitions that enhance user experience. Navigating between pages no longer feels jarring but instead flows naturally, making single-page applications feel more polished.
+- **Dynamic Content Updates** – Elements like lists, modals, popovers, and image previews benefit greatly from smooth animations. Instead of content snapping into place, the transitions ensure a visual connection between old and new states.
+- **Multi-Page Transitions** – If you're still working with a traditional multi-page application, this API makes navigating between full document reloads feel more modern and interactive.
+- **UI Interactions** – Expanding cards, switching tabs, toggling views—anything that dynamically modifies the DOM can be enhanced with seamless animations, improving engagement and usability.
+
+---
+
+## **How to Use the View Transitions API**
+
+### **1. The Basics – One Function to Rule Them All**
+
+The core method is `document.startViewTransition()`. It takes a function that updates the DOM and wraps it in an animation.
+
+```jsx
+if (document.startViewTransition) {
+  document.startViewTransition(() => {
+    document.getElementById("content").textContent = "New Content!"
+  })
+} else {
+  document.getElementById("content").textContent = "New Content!"
+}
+```
+
+### **2. Customizing Transitions with CSS**
+
+Wanna tweak the animations? The API exposes pseudo-elements for the old and new states. You can style them like this:
+
+```css
+::view-transition-old(root) {
+  animation: fadeOut 0.3s ease-out;
+}
+
+::view-transition-new(root) {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+```
+
+### **3. Animating Page Navigation**
+
+Need smooth page transitions? Wrap your navigation logic inside `startViewTransition()`.
+
+```jsx
+const links = document.querySelectorAll("a")
+links.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault()
+    document.startViewTransition(() => {
+      window.location.href = link.href
+    })
+  })
+})
+```
+
+---
+
+## Limitations of View Transition API
+
+- **Limited Browser Support** - Currently, the **View Transition API** is only available in **Chromium-based browsers** like **Chrome and Edge**. It’s not supported in **Firefox** or **Safari** yet.
+- **Works Best with Declarative DOM Updates** - The API captures the "before" and "after" states of elements, but it requires **DOM updates to happen synchronously** within a single animation frame. If you’re using **asynchronous updates** (like fetching data before updating the UI), transitions might not work as expected.
+- **Limited Support for Complex Animations** - The API is **great for crossfade and slide transitions**, but it **does not support complex GSAP-style animations** (e.g., morphing, staggered animations, or physics-based transitions).
+- Does not support Spring Animations - The API primarily uses **CSS-based animations** and interpolates element properties (like position, opacity, and scale) over a **fixed duration**. It lacks built-in support for **spring physics**, which require dynamic easing and velocity-based motion.
+
+---
+
+## **Why Should You Bother with View Transitions API?**
+
+- **Saves time** – Writing animations manually is tedious. This makes it effortless.
+- **Better performance** – Browser-optimized animations reduce jank and improve UX.
+- **Cleaner code** – Reduces the need for third-party libraries and custom scripts.
+- **Framework-friendly** – Works seamlessly with React, Next.js, Vue, or plain JavaScript.
+- **Future-proof** – As browser support grows, this API will likely become the standard for UI transitions.
+
+---
+
+<iframe
+  height="300"
+  style={{ width: "100%", border: 0 }}
+  title="View Transitions API"
+  src="https://codepen.io/nirnejak/embed/yyLBMWq?default-tab=html%2Cresult"
+  loading="lazy"
+>
+  See the Pen{" "}
+  <a href="https://codepen.io/nirnejak/pen/yyLBMWq">View Transitions API</a> by
+  Jitendra Nirnejak (<a href="https://codepen.io/nirnejak">@nirnejak</a>) on{" "}
+  <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+---
+
+## **View Transitions API with Next.js**
+
+Fortunately there’s a npm package that integrates with Next.js directly and makes using View Transitions API very easy. Here’s the steps to getting it integrated into your existing Next.js App.
+
+### **1. Installing the Dependency**
+
+For Next.js, install `next-view-transitions` through npm:
+
+```bash
+npm install next-view-transitions
+```
+
+### **2. Setting Up a Layout Wrapper**
+
+To use the package, you need to wrap your Entire Layout with a `<ViewTransitions>` provider that comes with the package.
+
+In `layout.tsx`, wrap your pages with the transition provider:
+
+```tsx
+import { ViewTransitions } from "next-view-transitions"
+
+export default function Layout({ children }) {
+  return <ViewTransitions>{children}</ViewTransitions>
+}
+```
+
+### **3. Replacing `next/link` with View Transitions**
+
+Now to use the page transitions replace your `<Link>` from `next/link` with `<Link>` from `next-view-transitions`
+
+```tsx
+import { Link } from "next-view-transitions"
+
+const MyComponent = () => {
+  return <Link href="/about">Go to About</Link>
+}
+```
+
+And that’s it, now as you navigate between the pages you should be able to see smooth transition. You can take look at there example [here](https://nirnejak.com/)
+
+### **Final Thoughts**
+
+The View Transitions API is still **new**, but it’s already showing massive potential. That makes it the perfect time to learn and get started with it. If you’re building modern web apps, it’s definitely worth experimenting with.
+
+### **Resources**
+
+- [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
+- Example Sites
+  - [Lee Robinson Website](https://leerob.com/)
+  - [Jitendra Nirnejak](https://nirnejak.com/)

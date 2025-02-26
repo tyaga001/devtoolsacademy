@@ -24,10 +24,14 @@ export default function ViewCounter() {
     }
   }, [])
 
-  return (
-    <div className="group flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400">
-      <Eye className="mr-2 size-5 group-hover:text-blue-400" />
-      <span className="text-sm font-medium">{views} views</span>
-    </div>
-  )
+  if (views) {
+    return (
+      <div className="group flex items-center rounded-full bg-neutral-900 px-3 py-1.5 text-neutral-400">
+        <Eye className="mr-2 size-5 group-hover:text-blue-400" />
+        <span className="text-sm font-medium">{views} views</span>
+      </div>
+    )
+  } else {
+    return null
+  }
 }

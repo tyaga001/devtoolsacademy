@@ -4,11 +4,14 @@ import React from "react"
 import { Link } from "next-view-transitions"
 import Image from "next/image"
 
-import { Clock, Bookmark, Share2 } from "lucide-react"
+import { CircleUserRound, Clock } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface BlogCardProps {
+  index: number
   title: string
   excerpt: string
+  author: string
   image: string
   url: string
   slug: string
@@ -18,8 +21,10 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({
+  index,
   title,
   excerpt,
+  author,
   image,
   url,
   readTime,
@@ -31,7 +36,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <Link
       href={url}
-      className="flex flex-col overflow-hidden rounded-xl bg-neutral-900 shadow-lg transition-all hover:scale-105"
+      className={cn(
+        "flex flex-col transition-colors hover:bg-neutral-900",
+        "border-b md:border-b-0 border-dashed border-neutral-100/15",
+        index > 0 ? "md:border-l border-dashed border-neutral-100/15" : ""
+      )}
     >
       <div className="relative h-48">
         <Image src={image} alt={title} layout="fill" objectFit="cover" />
@@ -42,36 +51,20 @@ const BlogCard: React.FC<BlogCardProps> = ({
         )}
       </div>
       <div className="p-6">
-        <span className="mb-2 block text-sm font-medium text-purple-600">
+        <span className="mb-2 block text-sm font-medium text-neutral-500">
           {category}
         </span>
         <h3 className="mb-2 text-xl font-bold text-neutral-200">{title}</h3>
         <p className="mb-4 text-neutral-500">{excerpt}</p>
       </div>
       <div className="mt-auto px-6 pb-6">
-        <div className="mb-4 flex items-center justify-between text-sm text-neutral-500">
-          <span className="flex items-center">
-            <Clock size={16} className="mr-1" /> {readTime || defaultReadTime}
-          </span>
-        </div>
-        <div className="flex items-center justify-between">
-          <p className="font-semibold text-purple-600 hover:text-purple-800">
-            Read More →
+        <div className="flex items-center justify-between text-sm leading-none text-neutral-500">
+          <p className="flex items-center gap-1">
+            <CircleUserRound size={14} /> {author}
           </p>
-          <div className="flex items-center">
-            <button
-              className="mr-2 rounded-full p-1 text-neutral-400 hover:bg-neutral-100"
-              aria-label="Save post"
-            >
-              <Bookmark size={20} />
-            </button>
-            <button
-              className="rounded-full p-1 text-neutral-400 hover:bg-neutral-100"
-              aria-label="Share post"
-            >
-              <Share2 size={20} />
-            </button>
-          </div>
+          <p className="flex items-center gap-1">
+            <Clock size={14} /> {readTime || defaultReadTime}
+          </p>
         </div>
       </div>
     </Link>
@@ -79,26 +72,41 @@ const BlogCard: React.FC<BlogCardProps> = ({
 }
 
 interface FeaturedPostsProps {
-  posts: BlogCardProps[]
+  posts: Omit<BlogCardProps, "index">[]
 }
 
 const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16">
-      <h2 className="mb-12 text-center text-4xl font-bold text-neutral-200">
-        Featured Posts
-      </h2>
-      <div
-        className={`grid gap-8 ${posts.length === 2 ? "mx-auto max-w-4xl md:grid-cols-2" : "md:grid-cols-3"}`}
-      >
-        {posts.slice(0, 3).map((post) => (
-          <BlogCard key={post.slug} {...post} />
-        ))}
+    <section>
+      <div className="mx-auto max-w-7xl py-16 text-center">
+        <h2 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
+          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
+            Featured Posts
+          </span>
+        </h2>
+        <p className="text-base text-neutral-500 md:text-lg">
+          Our most trending blog posts.
+        </p>
       </div>
-      <div className="mt-12 text-center">
+
+      <div className="mx-auto max-w-7xl">
+        <hr className="border-dashed border-neutral-100/15" />
+      </div>
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {posts.slice(0, 3).map((post, index) => (
+            <BlogCard key={index} {...post} index={index} />
+          ))}
+        </div>
+      </div>
+      <div className="mx-auto max-w-7xl">
+        <hr className="border-dashed border-neutral-100/15" />
+      </div>
+
+      <div className="mx-auto max-w-7xl py-16 text-center">
         <Link
           href="/blog"
-          className="inline-block rounded-full bg-purple-600 px-8 py-3 font-semibold text-white transition duration-300 hover:bg-purple-700"
+          className="bg-neutral-200 px-4 py-2 text-base font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400 md:px-6 md:py-3 md:text-lg"
         >
           View All Posts
         </Link>
