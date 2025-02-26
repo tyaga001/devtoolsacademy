@@ -46,7 +46,7 @@ export const getMetadata = ({
     keywords: config.keywords,
 
     icons: {
-      icon: "icons/favicon.png",
+      icon: "/icons/favicon.png",
       shortcut: "/icons/icon-512x512.png",
       apple: "/icons/icon-512x512.png",
     },
