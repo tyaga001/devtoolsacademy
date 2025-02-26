@@ -1,8 +1,7 @@
 import { Link } from "next-view-transitions"
 
-
 import { cn, formatDate } from "@/lib/utils"
-import { baseUrl,getMetadata } from "@/lib/metadata"
+import { baseUrl, getMetadata } from "@/lib/metadata"
 
 import { allBlogs } from "./data"
 
