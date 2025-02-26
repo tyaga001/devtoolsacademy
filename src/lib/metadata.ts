@@ -5,7 +5,7 @@ export const baseUrl = "https://www.devtoolsacademy.com/"
 const config = {
   baseUrl,
   appName: "DevTools Academy",
-  appDescription: "<Application Description>",
+  appDescription: "Your Guide to Developer Tools: Explore, Compare, and Learn.",
   creator: "DevTools Academy",
   authorName: "DevTools Academy",
   authorUrl: "https://www.devtoolsacademy.com/",
@@ -46,7 +46,7 @@ export const getMetadata = ({
     keywords: config.keywords,
 
     icons: {
-      icon: "/favicon.ico",
+      icon: "icons/favicon.png",
       shortcut: "/icons/icon-512x512.png",
       apple: "/icons/icon-512x512.png",
     },
