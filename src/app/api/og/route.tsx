@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
             tw="h-10 w-10"
             alt="Alt"
             // @ts-ignore
-            src={`${baseUrl}favicon.png`}
+            src={`${baseUrl}icons/favicon.png`}
           />
           <span
             tw="ml-3"
