@@ -3,7 +3,7 @@ import { Link } from "next-view-transitions"
 import { GitBranch, GitCommit, GitPullRequest, HelpCircle } from "lucide-react"
 import { FaGithub } from "react-icons/fa6"
 
-import { getMetadata } from "@/lib/metadata"
+import { baseUrl, getMetadata } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
 
 export const metadata = getMetadata({
@@ -11,6 +11,7 @@ export const metadata = getMetadata({
   title: "Contribute to Dev Tools Academy",
   description:
     "Learn how to contribute to Dev Tools Academy and help improve this open-source project",
+  image: `${baseUrl}api/og?title=Contribute%20|%20DevToolsAcademy`,
 })
 
 export default function ContributeRoute() {

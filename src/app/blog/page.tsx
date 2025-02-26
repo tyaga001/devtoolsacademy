@@ -1,7 +1,7 @@
 import { Link } from "next-view-transitions"
 
 import { cn, formatDate } from "@/lib/utils"
-import { getMetadata } from "@/lib/metadata"
+import { baseUrl, getMetadata } from "@/lib/metadata"
 
 import { allBlogs } from "./data"
 
@@ -9,6 +9,7 @@ export const metadata = getMetadata({
   path: "/blog",
   title: "Blog | DevTools Academy",
   description: "Learn about awesome developer tools with our blogs",
+  image: `${baseUrl}api/og?title=Blogs%20|%20DevToolsAcademy`,
 })
 
 export default async function BlogPage() {
