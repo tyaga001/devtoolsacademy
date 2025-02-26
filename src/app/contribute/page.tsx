@@ -3,8 +3,7 @@ import { Link } from "next-view-transitions"
 import { GitBranch, GitCommit, GitPullRequest, HelpCircle } from "lucide-react"
 import { FaGithub } from "react-icons/fa6"
 
-
-import {  baseUrl,getMetadata } from "@/lib/metadata"
+import { baseUrl, getMetadata } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
 
 export const metadata = getMetadata({

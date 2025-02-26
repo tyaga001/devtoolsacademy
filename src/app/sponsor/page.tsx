@@ -1,7 +1,6 @@
 import * as React from "react"
 
-
-import { baseUrl,getMetadata } from "@/lib/metadata"
+import { baseUrl, getMetadata } from "@/lib/metadata"
 import SponsorshipTiers from "@/components/SponsorshipTiers"
 
 export const metadata = getMetadata({
