@@ -68,18 +68,20 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 flex size-full items-center justify-center overflow-y-auto bg-neutral-600/50 p-4"
+      className="fixed inset-0 z-50 flex size-full items-center justify-center overflow-y-auto bg-neutral-600/50 backdrop-blur-md"
     >
       <motion.div
-        className="mx-auto w-full max-w-2xl overflow-hidden rounded-lg bg-neutral-950 shadow-xl"
+        className="mx-auto w-full max-w-2xl overflow-hidden border border-dashed border-neutral-100/15 bg-neutral-900 shadow-xl"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
-        <div className="flex items-center justify-between bg-neutral-700 p-4">
-          <h2 className="text-xl font-bold text-white">Chat about the Blog</h2>
+        <div className="flex items-center justify-between border-b border-dashed border-neutral-100/15 p-5">
+          <h2 className="my-0 text-xl font-bold leading-none text-neutral-200">
+            Chat about the Blog
+          </h2>
           <button
             onClick={onClose}
-            className="text-neutral-300 hover:text-white"
+            className="text-neutral-200 hover:text-neutral-400"
           >
             <X size={24} />
           </button>
@@ -95,10 +97,8 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
                 className={`flex ${msg.role === "human" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[75%] rounded-lg p-3 ${
-                    msg.role === "human"
-                      ? "bg-blue-500 text-white"
-                      : "bg-neutral-700 text-neutral-200"
+                  className={`max-w-[75%] rounded-lg px-3 py-1.5 text-neutral-200 ${
+                    msg.role === "human" ? "bg-blue-500" : "bg-neutral-700"
                   }`}
                 >
                   {msg.content}
@@ -120,20 +120,20 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
           )}
           <div ref={messagesEndRef} />
         </div>
-        <div className="bg-neutral-700 p-4">
-          <div className="flex space-x-2">
+        <div className="p-4">
+          <div className="flex border border-dashed border-neutral-100/15">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
-              className="grow rounded-l bg-neutral-600 p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="grow bg-neutral-800 px-3 py-2 text-neutral-300 focus:outline-none"
               placeholder="Ask about the blog..."
             />
             <button
               onClick={handleSend}
               disabled={isLoading}
-              className="rounded-r bg-blue-500 px-4 py-2 text-white transition-colors duration-200 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700"
+              className="bg-blue-500 px-4 py-2 text-neutral-300 transition-colors hover:bg-blue-600 focus:bg-blue-600 focus:outline-none"
             >
               <Send size={18} />
             </button>

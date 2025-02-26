@@ -14,16 +14,20 @@ export async function GET(request: NextRequest) {
 
   try {
     const client = getClient()
+    console.log("lorem ipsum")
+
     const { data } = await client.getWebsitePageviews(
-      "bbe84049-cfa8-41eb-bc81-3937ca3ee74c",
+      "bbe84049-cfa8-41eb-bc81-3937ca3ee74c", // website id
       {
         startAt: Date.now(),
         endAt: Date.now().valueOf(),
-        unit: "hour",
+        unit: "hour", // try with "day"
         timezone: "America/Los_Angeles",
         url: url,
       }
     )
+
+    console.log("data", data)
 
     if (!data) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 })

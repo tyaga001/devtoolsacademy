@@ -28,7 +28,7 @@ export const getTools = async (text: string): Promise<ToolCardInterface[]> => {
 
 const AlgoliaSearch: React.FC<AlgoliaSearchProps> = async () => {
   return (
-    <div className="mx-auto w-full max-w-4xl">
+    <div className="mx-auto w-full max-w-4xl px-4 md:px-0">
       <ToolsFilter />
     </div>
   )

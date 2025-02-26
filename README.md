@@ -15,14 +15,65 @@
 | [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL?                           |
 | [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)    | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
 
-## 🚀 Quick Start
+## Sponsors
 
-This project is built with [Next.js](https://nextjs.org/). To get started:
+<div style="display:flex; gap: 20px; justify-content: center; background-color: black;">
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Run the development server: `npm run dev`
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+<img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/refs/heads/main/src/assets/coderabbit.svg" alt="CodeRabbit" style="height:35px" />
+
+<img src="https://github.com/tyaga001/devtoolsacademy/blob/7c9462e4dcbf46cabb4b4f6c6667a01beb48ff28/src/assets/stream.png?raw=true" alt="CodeRabbit" style="height:50px" />
+
+</div>
+
+## Available npm scripts
+
+**Install Dependencies**
+
+```bash
+npm install
+```
+
+**Setup Pre-commit(recommended for development)**
+
+```bash
+npm run prepare
+```
+
+**Start Development Server**
+
+```bash
+npm run dev
+```
+
+**Lint all the files**
+
+```bash
+npm run lint
+```
+
+**Format all files with Prettier**
+
+```bash
+npm run format
+```
+
+**Check TypeScript issues**
+
+```bash
+npm run type-check
+```
+
+**Build for Production**
+
+```bash
+npm run build
+```
+
+**Start Production Server**
+
+```bash
+npm start
+```
 
 ## 🤝 How to Contribute
 
