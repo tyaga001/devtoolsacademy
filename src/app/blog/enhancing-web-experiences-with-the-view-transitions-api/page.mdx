@@ -21,23 +21,23 @@ export const metadata = getMetadata({
   publishedAt={"2025-02-24T00:00:00Z"}
 />
 
-## **Introduction**
+## Introduction
 
 In modern web development, users expect interfaces to feel smooth and polished, with transitions that enhance the overall experience. However, achieving seamless animations often requires writing complex CSS, managing JavaScript-based transitions, and handling performance issues, which can be both time-consuming and challenging.
 
 The **View Transitions API** simplifies this process by providing a native browser-based solution for smooth animations during DOM updates. Instead of relying on external libraries or custom animations, this API offers a declarative approach to handling transitions, ensuring better performance and maintainability.
 
-So let’s explore what it is, and how to use it, I also include how to effortlessly implement it in your Next.js Apps.
+So let's explore what it is, and how to use it, I also include how to effortlessly implement it in your Next.js Apps.
 
 <img src={ViewTransitionGif.src} alt="View Transition Example" />
 
 ---
 
-## **What is the View Transitions API?**
+## What is the View Transitions API?
 
 The View Transitions API is a built-in animation engine for your UI updates. Whether you're swapping out content, handling page transitions, or animating a modal, it makes things look fluid **automatically**.
 
-Here’s why it’s different from what you’ve been doing so far:
+Here's why it's different from what you've been doing so far:
 
 - **No manual keyframes** – The browser does the heavy lifting for you.
 - **Native optimization** – Unlike janky JS-based animations, this runs **smoothly** at the browser level.
@@ -45,7 +45,7 @@ Here’s why it’s different from what you’ve been doing so far:
 
 ---
 
-## **Key Features of the View Transitions API**
+## Key Features of the View Transitions API
 
 - **Built-in Animations:** Handles DOM updates and navigation transitions out of the box.
 - **Zero external dependencies:** No need for GSAP, Framer Motion, or custom CSS/JS hacks.
@@ -55,7 +55,7 @@ Here’s why it’s different from what you’ve been doing so far:
 
 ---
 
-### **Where Should You Use It?**
+### Where Should You Use It?
 
 - **SPA Route Changes** – Instead of abrupt page swaps, you get fluid transitions that enhance user experience. Navigating between pages no longer feels jarring but instead flows naturally, making single-page applications feel more polished.
 - **Dynamic Content Updates** – Elements like lists, modals, popovers, and image previews benefit greatly from smooth animations. Instead of content snapping into place, the transitions ensure a visual connection between old and new states.
@@ -64,9 +64,9 @@ Here’s why it’s different from what you’ve been doing so far:
 
 ---
 
-## **How to Use the View Transitions API**
+## How to Use the View Transitions API
 
-### **1. The Basics – One Function to Rule Them All**
+### 1. The Basics – One Function to Rule Them All
 
 The core method is `document.startViewTransition()`. It takes a function that updates the DOM and wraps it in an animation.
 
@@ -80,7 +80,7 @@ if (document.startViewTransition) {
 }
 ```
 
-### **2. Customizing Transitions with CSS**
+### 2. Customizing Transitions with CSS
 
 Wanna tweak the animations? The API exposes pseudo-elements for the old and new states. You can style them like this:
 
@@ -112,7 +112,7 @@ Wanna tweak the animations? The API exposes pseudo-elements for the old and new 
 }
 ```
 
-### **3. Animating Page Navigation**
+### 3. Animating Page Navigation
 
 Need smooth page transitions? Wrap your navigation logic inside `startViewTransition()`.
 
@@ -139,7 +139,7 @@ links.forEach((link) => {
 
 ---
 
-## **Why Should You Bother with View Transitions API?**
+## Why Should You Bother with View Transitions API?
 
 - **Saves time** – Writing animations manually is tedious. This makes it effortless.
 - **Better performance** – Browser-optimized animations reduce jank and improve UX.
@@ -164,11 +164,11 @@ links.forEach((link) => {
 
 ---
 
-## **View Transitions API with Next.js**
+## View Transitions API with Next.js
 
-Fortunately there’s a npm package that integrates with Next.js directly and makes using View Transitions API very easy. Here’s the steps to getting it integrated into your existing Next.js App.
+Fortunately there's a npm package that integrates with Next.js directly and makes using View Transitions API very easy. Here's the steps to getting it integrated into your existing Next.js App.
 
-### **1. Installing the Dependency**
+### 1. Installing the Dependency
 
 For Next.js, install `next-view-transitions` through npm:
 
@@ -176,7 +176,7 @@ For Next.js, install `next-view-transitions` through npm:
 npm install next-view-transitions
 ```
 
-### **2. Setting Up a Layout Wrapper**
+### 2. Setting Up a Layout Wrapper
 
 To use the package, you need to wrap your Entire Layout with a `<ViewTransitions>` provider that comes with the package.
 
@@ -190,7 +190,7 @@ export default function Layout({ children }) {
 }
 ```
 
-### **3. Replacing `next/link` with View Transitions**
+### 3. Replacing `next/link` with View Transitions
 
 Now to use the page transitions replace your `<Link>` from `next/link` with `<Link>` from `next-view-transitions`
 
@@ -202,13 +202,13 @@ const MyComponent = () => {
 }
 ```
 
-And that’s it, now as you navigate between the pages you should be able to see smooth transition. You can take look at there example [here](https://nirnejak.com/)
+And that's it, now as you navigate between the pages you should be able to see smooth transition. You can take look at there example [here](https://nirnejak.com/)
 
-### **Final Thoughts**
+### Final Thoughts
 
-The View Transitions API is still **new**, but it’s already showing massive potential. That makes it the perfect time to learn and get started with it. If you’re building modern web apps, it’s definitely worth experimenting with.
+The View Transitions API is still **new**, but it's already showing massive potential. That makes it the perfect time to learn and get started with it. If you're building modern web apps, it's definitely worth experimenting with.
 
-### **Resources**
+### Resources
 
 - [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
 - Example Sites
