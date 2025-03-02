@@ -24,7 +24,7 @@ const CommentSection: React.FC = () => {
 
   const randomPlaceholder = () =>
     humorousPlaceholders[
-      Math.floor(Math.random() * humorousPlaceholders.length)
+    Math.floor(Math.random() * humorousPlaceholders.length)
     ]
 
   React.useEffect(() => {

@@ -10,12 +10,14 @@ import Breadcrumb from "@/components/blog/Breadcrumb"
 interface BlogHeaderProps {
   title: string
   author: string
+  description: string
   publishedAt: string
 }
 
 const BlogHeader: React.FC<BlogHeaderProps> = ({
   title,
   author,
+  description,
   publishedAt,
 }) => {
   const [content, setContent] = useState("")
@@ -56,17 +58,16 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
           <SocialShare title={title} />
         </div>
         <div className="flex flex-row-reverse items-center justify-between gap-3 md:flex-row">
-          <button
-            onClick={() => setShowChat(true)}
-            className="rounded-full border border-blue-500/50 bg-blue-900/30 px-3 py-1 text-sm text-blue-400 outline-none transition-colors duration-200 hover:bg-blue-900/50 focus:bg-blue-900/50"
-          >
-            Chat with Claude AI
+          <button onClick={() => setShowChat(true)} className="inline-flex h-10 animate-shimmer items-center justify-center  border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 rounded-full text-sm ">
+            Summarize with AI
           </button>
           <ViewCounter />
         </div>
       </div>
       {showChat && (
         <BlogChatInterface
+          blogDescription={description}
+          blogTitle={title}
           blogContent={content}
           onClose={() => setShowChat(false)}
         />

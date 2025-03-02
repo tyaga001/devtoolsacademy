@@ -1,50 +1,68 @@
-import { NextResponse } from "next/server"
-import axios from "axios"
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
-const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
+
+import { GenerativeModel, GoogleGenerativeAI, GoogleGenerativeAIError } from "@google/generative-ai";
+import { NextResponse } from "next/server";
+
+
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+if (!GEMINI_API_KEY) {
+  throw new Error("Something went wrong while fetching API Keys.")
+}
+let model:GenerativeModel;
+try {
+  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY!);
+    model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+    systemInstruction: 
+      "You're an AI assistant, Who only answers questions related to the blog post that have provided to you in the prompt.\n\n" +
+      "Try to Answer using numeric points for readability and Bold the title of the point.\n\n" +
+      "If the user wants help related to the topic mentioned in the blog you can answer that.\n\n" +
+      "If the question is not related to the blog post or the topic that is mentioned on the blog, Throw error response."
+  });
+} catch (error) {
+  console.error('Failed to initialize Gemini model:', error);
+  throw new Error('Failed to initialize AI service. Please try again later.');
+}
 
 export async function POST(request: Request) {
-  try {
-    const { content, query } = await request.json()
+  const body = await request.json();
 
-    if (!ANTHROPIC_API_KEY) {
-      throw new Error("ANTHROPIC_API_KEY is not set")
-    }
-
-    const response = await axios.post(
-      ANTHROPIC_API_URL,
-      {
-        model: "claude-3-sonnet-20240229",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are an AI assistant that answers questions about blog posts.",
-          },
-          {
-            role: "human",
-            content: `Here's a blog post:\n\n${content}\n\nQuestion: ${query}`,
-          },
-        ],
-        max_tokens: 1000,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
-        },
-      }
-    )
-
-    const answer = response.data.content[0].text
-    return NextResponse.json({ answer })
-  } catch (error: any) {
-    console.error("Error in API:", error.response?.data || error.message)
+  if (!body.content || typeof body.content !== 'string' || !body.query || typeof body.query !== 'string') {
     return NextResponse.json(
-      { error: "Error processing request. Please try again." },
-      { status: error.response?.status || 500 }
-    )
+      { error: 'Invalid request: content and query are required and must be strings', success: false },
+      { status: 400 }
+    );
+  }
+
+  const { content, query } = body;
+
+  try {
+    const prompt = `Here's a blog post:\n\n${content}\n\nQuestion: ${query}`;
+
+    const result = await model.generateContent(prompt);
+    return NextResponse.json({
+      answer: result.response.text(),
+    })
+  }
+  catch (error: any) {
+    const isGoogleAIError = error instanceof GoogleGenerativeAIError;
+
+    console.error('API Error:', {
+      type: isGoogleAIError ? 'GoogleGenerativeAI' : 'Unknown',
+      message: error.message,
+      timestamp: new Date().toISOString()
+    });
+
+    const clientMessage = isGoogleAIError
+      ? 'The AI service is temporarily unavailable. Please try again later.'
+      : 'Internal Server Error. Please try again after some time.';
+
+    return NextResponse.json(
+      {
+        error: clientMessage
+      },
+      { status: isGoogleAIError ? 503 : 500 }
+    );
   }
 }

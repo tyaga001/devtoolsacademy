@@ -12,6 +12,7 @@ import Footer from "@/components/Footer"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
+import { Toaster } from "@/components/ui/toaster"
 
 const sansFont = Mona_Sans({
   variable: "--sans-font",
@@ -44,8 +45,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           />
         </head>
         <body className="bg-neutral-950 font-sans text-neutral-200">
-          <Navbar />
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 ">
+              {children}
+            </main>
+          </div>
+          <Toaster></Toaster>
           <Footer />
 
           <div className="fixed left-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
