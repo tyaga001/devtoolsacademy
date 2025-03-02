@@ -2,8 +2,9 @@
 
 import React from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
 import { Quote, Star } from "lucide-react"
+
+import { cn } from "@/lib/utils"
 
 interface ITestimonial {
   quote: string
@@ -34,20 +35,27 @@ const testimonials: ITestimonial[] = [
   },
 ]
 
-function TestimonialCard({ testimonial }: { testimonial: ITestimonial }) {
+function TestimonialCard({
+  index,
+  testimonial,
+}: {
+  index: number
+  testimonial: ITestimonial
+}) {
   return (
-    <motion.div
-      className="relative flex flex-col overflow-hidden rounded-xl bg-gradient-to-br from-purple-900 to-black p-8 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+    <div
+      className={cn(
+        "relative flex flex-col p-12",
+        "border-b md:border-b-0 border-dashed border-neutral-100/15",
+        index > 0 ? "md:border-l border-dashed border-neutral-100/15" : ""
+      )}
     >
       <Quote
         size={48}
-        className="absolute right-4 top-4 text-purple-300 opacity-20"
+        className="absolute right-4 top-4 text-neutral-200 opacity-10"
       />
 
-      <p className="relative z-10 mb-6 text-xl text-white">
+      <p className="relative z-10 mb-12 text-base text-neutral-200 md:text-lg lg:text-xl">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
@@ -58,49 +66,61 @@ function TestimonialCard({ testimonial }: { testimonial: ITestimonial }) {
             alt={testimonial.name}
             width={60}
             height={60}
-            className="rounded-full border-2 border-purple-400"
+            className="rounded-full border-2 border-neutral-400"
           />
         </div>
         <div>
-          <p className="font-semibold text-white">{testimonial.name}</p>
-          <p className="text-sm text-purple-300">{testimonial.position}</p>
+          <p className="font-semibold text-neutral-200">{testimonial.name}</p>
+          <p className="text-sm text-neutral-500">{testimonial.position}</p>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
-export function Testimonial() {
+function Testimonial() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16">
-      <div className="mx-auto mb-12 max-w-3xl text-center">
-        <h2 className="mb-4 text-5xl font-bold">
-          <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+    <section>
+      <div className="mx-auto max-w-7xl py-16 text-center">
+        <h2 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
+          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
             Developers Insights
           </span>
         </h2>
-        <p className="mb-6 text-xl text-purple-300">
+        <p className="mb-10 text-base text-neutral-500 md:text-lg">
           Developers across the globe love DTA
         </p>
         <div
-          className="mb-8 flex justify-center space-x-2"
+          className="flex justify-center space-x-2"
           aria-label="5 out of 5 stars"
         >
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
-              className="size-8 fill-current text-yellow-400"
+              className="size-6 fill-current text-yellow-400"
               aria-hidden="true"
             />
           ))}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {testimonials.map((testimonial, index) => (
-          <TestimonialCard key={index} testimonial={testimonial} />
-        ))}
+      <div className="mx-auto max-w-7xl">
+        <hr className="border-dashed border-neutral-100/15" />
+      </div>
+
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={index}
+              index={index}
+              testimonial={testimonial}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
 }
+
+export default Testimonial

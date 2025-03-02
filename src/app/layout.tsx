@@ -1,57 +1,27 @@
-import React from "react"
-import type { Metadata, Viewport } from "next"
+import * as React from "react"
+import type { Viewport } from "next"
 import Script from "next/script"
-import { Inter, JetBrains_Mono } from "next/font/google"
+import { DM_Mono, Mona_Sans } from "next/font/google"
+import { ViewTransitions } from "next-view-transitions"
 
 import { Analytics } from "@vercel/analytics/react"
-import { ClerkProvider } from "@clerk/nextjs"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import Navbar from "@/components/Navbar"
-import { SocialMetadata } from "@/components/SocialMetadata"
+import Footer from "@/components/Footer"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
-import { Toaster } from '@/components/ui/toaster';
 
-
-export const metadata: Metadata = {
-  title: {
-    default: "Dev Tools Academy",
-    template: "%s | Dev Tools Academy",
-  },
-  description: "Learn about awesome developer tools",
-  metadataBase: new URL("https://devtoolsacademy.com"),
-  openGraph: {
-    title: "Dev Tools Academy",
-    description: "Learn about awesome developer tools",
-    url: "https://devtoolsacademy.com",
-    siteName: "Dev Tools Academy",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dev Tools Academy",
-    description: "Learn about awesome developer tools",
-  },
-  icons: [
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "32x32",
-      url: "/favicon.png",
-    },
-  ],
-}
-
-const sansFont = Inter({
+const sansFont = Mona_Sans({
   variable: "--sans-font",
   subsets: ["latin"],
 })
 
-const monoFont = JetBrains_Mono({
+const monoFont = DM_Mono({
   variable: "--mono-font",
   subsets: ["latin"],
+  weight: "500",
 })
 
 export const viewport: Viewport = {
@@ -62,46 +32,18 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-function getTitle(title: Metadata["title"]): string {
-  if (typeof title === "string") {
-    return title
-  } else if (title && typeof title === "object" && "default" in title) {
-    return title.default
-  }
-  return "Dev Tools Academy"
-}
-
 export default function RootLayout({ children }: RootLayoutProps) {
-  const title = getTitle(metadata.title)
-
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <SocialMetadata
-          title={title}
-          description={
-            metadata.description ?? "Learn about awesome developer tools"
-          }
-          url={
-            metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"
-          }
-          image={`${metadata.metadataBase?.toString() ?? "https://devtoolsacademy.com"}/favicon.png`}
-          type="website"
-        />
-        <Script
-          src="https://cloud.umami.is/script.js"
-          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-          strategy="afterInteractive"
-        />
-      </head>
-      <body
-        className={cn(
-          sansFont.variable,
-          monoFont.variable,
-          "font-sans antialiased bg-neutral-950"
-        )}
-      >
-        <ClerkProvider>
+    <ViewTransitions>
+      <html lang="en" className={cn(sansFont.variable, monoFont.variable)}>
+        <head>
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            strategy="afterInteractive"
+          />
+        </head>
+        <body className="bg-neutral-950 font-sans text-neutral-200">
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 ">
@@ -109,9 +51,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </main>
           </div>
           <Toaster></Toaster>
-        </ClerkProvider>
-        <Analytics />
-      </body>
-    </html>
+          <Footer />
+
+          <div className="fixed left-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
+          <div className="fixed right-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
+
+          <Analytics />
+          <SpeedInsights />
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion } from "motion/react"
 import {
   Twitter,
   Github,
@@ -10,8 +10,12 @@ import {
   BookOpen,
   ExternalLink,
   Globe,
+  Mail,
 } from "lucide-react"
 import { FaMedium } from "react-icons/fa6"
+
+import CurrentSponsors from "./CurrentSponsors"
+
 interface BlogPost {
   title: string
   url: string
@@ -62,21 +66,17 @@ const QuickTip: React.FC<{ tipIndex: number }> = ({ tipIndex }) => (
 
 const BlogPostList: React.FC = () => (
   <div>
-    <h4 className="mb-4 text-xl font-semibold text-yellow-400">
+    <h4 className="mb-4 text-xl font-semibold tracking-tight">
       Other Blog Posts
     </h4>
     <ul className="space-y-3">
       {recentBlogPosts.map((post) => (
-        <motion.li
-          key={post.url}
-          whileHover={{ x: 5 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
+        <li key={post.url}>
           <a
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-start text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
+            className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-200 focus:text-neutral-200"
           >
             <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
             <span className="grow">{post.title}</span>
@@ -85,7 +85,7 @@ const BlogPostList: React.FC = () => (
               className="ml-2 shrink-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             />
           </a>
-        </motion.li>
+        </li>
       ))}
     </ul>
   </div>
@@ -114,7 +114,7 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({ linkVariants }) => (
       <motion.a
         key={label}
         href={href}
-        className="text-neutral-300 transition-colors duration-300 hover:text-yellow-300"
+        className="text-neutral-500 transition-colors hover:text-neutral-200"
         variants={linkVariants}
         whileHover="hover"
         aria-label={label}
@@ -125,32 +125,9 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({ linkVariants }) => (
   </div>
 )
 
-const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
-  <div className="text-center text-neutral-400">
-    <p className="mb-4">
-      Progress on the upcoming blog post:{" "}
-      <span className="font-bold text-yellow-400">{progress}%</span>
-    </p>
-    <div className="mt-2 h-2 w-full rounded-full bg-neutral-700">
-      <motion.div
-        className="h-full rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500"
-        style={{ width: `${progress}%` }}
-        initial={{ width: 0 }}
-        animate={{ width: `${progress}%` }}
-        transition={{ duration: 1 }}
-      />
-    </div>
-  </div>
-)
-
 const WebsitePromo: React.FC = () => (
-  <motion.div
-    className="mt-4 rounded-lg bg-gradient-to-r from-purple-900 to-indigo-900 p-4"
-    whileHover={{ scale: 1.05 }}
-    transition={{ type: "spring", stiffness: 300, damping: 10 }}
-  >
-    <h4 className="mb-2 text-xl font-semibold text-yellow-400">My Website</h4>
-    <p className="mb-3 text-neutral-300">
+  <motion.div className="mt-16 border border-dashed border-neutral-100/15 p-4">
+    <p className="mb-5 text-neutral-500">
       Explore more about my writing, SaaS dev tools and my journey in the
       software engineering.
     </p>
@@ -158,10 +135,23 @@ const WebsitePromo: React.FC = () => (
       href="https://theankurtyagi.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex items-center rounded-full bg-purple-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-purple-700"
+      className="group inline-flex mb-2 items-center border border-dashed outline-none border-neutral-100/15 px-4 py-2 transition-colors bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800"
     >
       <Globe size={16} className="mr-2" />
       <span>Visit theankurtyagi.com</span>
+      <ArrowRight
+        size={16}
+        className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
+      />
+    </a>
+    <a
+      href="https://bytesizedbets.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group inline-flex items-center border border-dashed outline-none border-neutral-100/15 px-4 py-2 transition-colors bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800"
+    >
+      <Mail size={16} className="mr-2" />
+      <span>Subscribe to my Newsletter</span>
       <ArrowRight
         size={16}
         className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
@@ -172,7 +162,6 @@ const WebsitePromo: React.FC = () => (
 
 const Footer: React.FC = () => {
   const [tipIndex, setTipIndex] = useState(0)
-  const [progress] = useState(50)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -187,44 +176,36 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="py-16">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="mb-8 grid gap-8 md:grid-cols-3">
+    <footer>
+      <hr className="border-dashed border-neutral-100/15" />
+
+      <div className="mx-auto max-w-7xl p-8">
+        <div className="grid gap-8 md:grid-cols-3">
           <div className="flex flex-col">
-            <h3 className="mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-3xl font-bold text-transparent">
+            <h3 className="mb-4 text-3xl font-bold tracking-tight">
               Dev Tools Academy
             </h3>
-            <p className="text-neutral-300">
-              Choose the Right Dev Tools for Your SaaS.
+            <p className="mb-4 text-sm text-neutral-500">
+              &copy; 2025 Dev Tools Academy. All rights reserved.
             </p>
+            <SocialLinks linkVariants={linkVariants} />
             <AnimatePresence mode="wait">
               <QuickTip tipIndex={tipIndex} />
             </AnimatePresence>
           </div>
 
-          <BlogPostList />
+          <div></div>
 
           <div>
-            <h4 className="mb-4 text-xl font-semibold text-yellow-400">
-              Connect With Me
-            </h4>
-            <SocialLinks linkVariants={linkVariants} />
+            <BlogPostList />
             <WebsitePromo />
           </div>
         </div>
       </div>
 
-      <hr className="my-8 border-neutral-700" />
+      <hr className="border-dashed border-neutral-100/15" />
 
-      <div className="mx-auto max-w-7xl px-4">
-        <ProgressBar progress={progress} />
-      </div>
-
-      <hr className="my-8 border-neutral-700" />
-
-      <div className="mx-auto mt-6 max-w-7xl px-4 text-center text-neutral-400">
-        <p>&copy; 2024 Dev Tools Academy. All rights reserved.</p>
-      </div>
+      <CurrentSponsors />
     </footer>
   )
 }

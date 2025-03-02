@@ -8,13 +8,12 @@ import {
   BookOpen,
   Camera,
   Music,
-  Frown,
   ShoppingBag,
   Zap,
   Coffee,
   Truck,
 } from "lucide-react"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 
 const getRandomColor = () => {
   const colors = [
@@ -61,15 +60,10 @@ const Categories = async () => {
 
   if (!response.status) {
     return (
-      <div className="flex min-h-[50vh] flex-col items-center justify-center gap-3 px-4 text-center">
-        <div className="flex h-full items-center justify-center gap-3">
-          <div className=" flex items-center justify-center rounded-full bg-sky-800 p-2">
-            <Frown size={40} />
-          </div>
-          <h1 className="text-2xl font-bold md:text-4xl">
-            Categories Not Found
-          </h1>
-        </div>
+      <div className="flex min-h-[50vh] flex-col items-center justify-center gap-3 px-4 text-center text-neutral-400">
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Categories Not Found
+        </h2>
         <p className="text-neutral-600">
           We couldn&apos;t able to find the categories for you. It might have
           been moved or doesn&apos;t exist. Please try again later
@@ -78,26 +72,27 @@ const Categories = async () => {
     )
   }
   return (
-    <div className="w-full px-0 py-8 pt-16 text-neutral-200 md:px-6 lg:px-48">
-      <div className="space-y-6">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">
+    <section className="mb-20">
+      <hr className="border-dashed border-neutral-100/15" />
+      <div className="mx-auto flex max-w-7xl flex-col items-stretch md:flex-row">
+        <div className="border-dashed border-neutral-100/15 p-8 md:border-r">
+          <h2 className="mb-2 text-3xl font-semibold tracking-tight">
             Explore Categories
           </h2>
-          <p className="text-neutral-400">
+          <p className="text-sm text-neutral-500">
             Discover tools and resources across various categories
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 md:gap-4 lg:grid-cols-4">
+        <div className="grid w-full grid-cols-2 border-t border-dashed border-neutral-100/15 px-4 md:border-none md:px-0 lg:grid-cols-4">
           {variousCategories?.map((category) => (
             <Link
               key={category.name}
               href={`/tools?categories=${category.name}`}
             >
-              <div className="flex cursor-pointer items-center space-x-4 rounded-xl bg-neutral-900 p-2 shadow transition-all duration-300 hover:bg-[#141414] md:p-4">
+              <div className="flex cursor-pointer items-center space-x-4 p-2 shadow transition-colors hover:bg-neutral-900 md:p-4">
                 <div
-                  className={`${getRandomColor()} flex size-8 items-center justify-center rounded-full text-white md:size-12`}
+                  className={`${getRandomColor()} flex size-6 items-center justify-center rounded-full text-neutral-200 md:size-12`}
                 >
                   {getRandomIcon()}
                 </div>
@@ -105,7 +100,7 @@ const Categories = async () => {
                   <h3 className="text-sm font-semibold md:text-lg">
                     {capitalizeFirstLetter(category.name)}
                   </h3>
-                  <p className="text-xs text-muted-foreground md:text-sm">
+                  <p className="text-xs text-neutral-500 md:text-sm">
                     {category.count || 0} Categories
                   </p>
                 </div>
@@ -114,7 +109,8 @@ const Categories = async () => {
           ))}
         </div>
       </div>
-    </div>
+      <hr className="border-dashed border-neutral-100/15" />
+    </section>
   )
 }
 

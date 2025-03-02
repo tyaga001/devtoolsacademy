@@ -1,5 +1,5 @@
 import { FrownIcon } from "lucide-react"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 
 const ToolNotFound = () => {
   return (
@@ -16,7 +16,7 @@ const ToolNotFound = () => {
       </p>
       <Link
         href="/tools"
-        className="rounded-lg bg-primary px-6 py-2 text-white transition-colors hover:bg-primary/90"
+        className="rounded-lg bg-primary px-6 py-2 text-neutral-200 transition-colors hover:bg-primary/90"
       >
         Browse Tools
       </Link>

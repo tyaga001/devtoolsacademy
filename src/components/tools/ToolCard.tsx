@@ -3,7 +3,7 @@ import { ToolCardInterface } from "@/lib/types"
 import { Star, GitFork, Clock } from "lucide-react"
 import { Card, CardHeader, CardContent, CardFooter } from "../ui/card"
 import { Badge } from "../ui/badge"
-import Link from "next/link"
+import { Link } from "next-view-transitions"
 
 interface ToolCardProps {
   tool: ToolCardInterface
@@ -12,13 +12,13 @@ interface ToolCardProps {
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
   return (
     <Link href={`/tools/${encodeURIComponent(tool.name)}`} className="block">
-      <Card className="relative size-full max-w-sm overflow-hidden  rounded-xl border-white/10 opacity-90 ring-[#1C1C1C]/50 transition-all hover:opacity-100 hover:ring">
+      <Card className="relative size-full max-w-sm overflow-hidden border-neutral-100/15 opacity-90 ring-[#1C1C1C]/50 transition-all hover:opacity-100 hover:ring">
         <CardHeader className="pb-2">
           <div className="flex items-center gap-3">
             <img
               src={`/images/logo/${tool.name}.png`}
               alt={`${tool.name} logo`}
-              className="size-10 rounded border border-white/10 object-cover"
+              className="size-10 rounded border border-neutral-100/15 object-cover"
             />
             <h2 className="text-xl font-bold text-neutral-100">{tool.name}</h2>
           </div>
