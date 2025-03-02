@@ -10,12 +10,14 @@ import Breadcrumb from "@/components/blog/Breadcrumb"
 interface BlogHeaderProps {
   title: string
   author: string
+  description: string
   publishedAt: string
 }
 
 const BlogHeader: React.FC<BlogHeaderProps> = ({
   title,
   author,
+  description,
   publishedAt,
 }) => {
   const [content, setContent] = useState("")
@@ -64,7 +66,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
       </div>
       {showChat && (
         <BlogChatInterface
-          // blogDescription={description}
+          blogDescription={description}
           blogTitle={title}
           blogContent={content}
           onClose={() => setShowChat(false)}

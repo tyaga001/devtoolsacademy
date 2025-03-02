@@ -12,6 +12,7 @@ import Footer from "@/components/Footer"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
+import { Toaster } from "@/components/ui/toaster"
 
 const sansFont = Mona_Sans({
   variable: "--sans-font",

@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useState } from 'react';
-import BlogChatInterface from '@/components/BlogChatInterface';
 import { EyeIcon } from '@heroicons/react/24/outline';
-import ViewCounter from '@/components/ViewCounter';
-import { SocialMetadata } from '@/components/SocialMetadata';
-import SocialShare from '@/components/SocialShare';
+import BlogChatInterface from './blog/BlogChatInterface';
+// import ViewCounter from '@/components/ViewCounter';
+// import { SocialMetadata } from '@/components/SocialMetadata';
+// import SocialShare from '@/components/SocialShare';
 
 interface BlogPostClientProps {
     slug: string
@@ -42,13 +42,13 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
 
     return (
         <>
-            <SocialMetadata
+            {/* <SocialMetadata
                 title={title}
                 description={description}
                 url={postUrl}
                 image={`${baseUrl}${featuredImage}`}
                 type="article"
-            />
+            /> */}
             <h1 className="text-4xl font-bold mb-4 text-white">{title}</h1>
             <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center space-x-4">
@@ -59,10 +59,10 @@ const BlogPostClient: React.FC<BlogPostClientProps> = ({
                 </div>
                 <div className="flex items-center bg-gray-800 rounded-full px-3 py-1">
                     <EyeIcon className="w-5 h-5 mr-2 text-blue-400" />
-                    <ViewCounter slug={slug} initialViews={initialViews} />
+                    {/* <ViewCounter slug={slug} initialViews={initialViews} /> */}
                 </div>
             </div>
-            <SocialShare url={`/blog/${slug}`} title={title} />
+            {/* <SocialShare url={`/blog/${slug}`} title={title} /> */}
             {showChat && (
                 <BlogChatInterface
                     blogContent={content}
