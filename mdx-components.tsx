@@ -33,8 +33,8 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
               "prose prose-neutral prose-invert prose-lg",
               "prose-ul:opacity-80 prose-ol:opacity-80",
               "prose-pre:py-0 prose-pre:px-3 prose-code:text-sm prose-pre:bg-[#121212]",
-              "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85",
-              "prose-h1:font-bold prose-h1:tracking-tighter"
+              "prose-headings:font-bold prose-headings:tracking-tight prose-headings:opacity-85",
+              "prose-h1:font-extrabold prose-h1:tracking-tighter"
             )}
           >
             {children}
