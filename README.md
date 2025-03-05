@@ -20,11 +20,31 @@
 
 ## Sponsors
 
-<div style="display:flex; gap: 40px; justify-content: center; align-items: center; background-color: black; padding: 20px; border-radius: 8px;">
-<img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/refs/heads/main/src/assets/coderabbit.svg" alt="CodeRabbit" style="height:40px" />
-<a href="https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank">
-  <img src="https://github.com/tyaga001/devtoolsacademy/blob/7c9462e4dcbf46cabb4b4f6c6667a01beb48ff28/src/assets/stream.png?raw=true" alt="Stream" style="height:40px" />
-</a>
+### 💎 VIP Sponsors
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="400px">
+        <a href="https://coderabbit.ai/?ref=devtoolsacademy" target="_blank">
+          <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/refs/heads/main/src/assets/coderabbit.svg" alt="CodeRabbit" height="60" />
+        </a>
+        <br />
+        <br />
+        <a href="https://www.coderabbit.ai/?ref=devtoolsacademy" target="_blank">Start reviewing your PRs</a>
+      </td>
+      <td align="center" width="400px">
+        <a href="https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank">
+          <img src="https://github.com/tyaga001/devtoolsacademy/blob/7c9462e4dcbf46cabb4b4f6c6667a01beb48ff28/src/assets/stream.png?raw=true" alt="Stream" height="60" />
+        </a>
+        <br />
+        <br />
+        <a href="https://getstream.io/chat/react-chat/tutorial/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank">Build a chat app in minutes</a>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <em>These amazing companies help keep DevTools Academy ad-free and independent!</em>
 </div>
 
 ## Available npm scripts
