@@ -15,7 +15,7 @@ export const allBlogs = [
     publishedAt: "2024-12-26T00:00:00Z",
   },
   {
-    author: "Ankur Tyagi",
+    author: "Hrutik Kumthekar",
     slug: "stream-vs-twilio",
     title: "Twilio vs Stream - A Guide to Building Smarter Support Bots",
     description:
