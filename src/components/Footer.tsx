@@ -28,13 +28,12 @@ const recentBlogPosts: BlogPost[] = [
     url: "https://www.freecodecamp.org/news/how-i-built-a-custom-video-conferencing-app-with-stream-and-nextjs/",
   },
   {
-    title:
-      "Next.js, Clerk, and Neon Postgres - A Guide to Full-Stack Development",
-    url: "https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/",
+    title: "How to Perform Code Reviews in Tech – The Painless Way",
+    url: "https://www.freecodecamp.org/news/how-to-perform-code-reviews-in-tech-the-painless-way/",
   },
   {
-    title: "A Software Developer Guide to Writing",
-    url: "https://theankurtyagi.com/a-software-developers-guide-to-writing/",
+    title: "How to Implement Role-Based Access Control in Next.js 15",
+    url: "https://clerk.com/blog/nextjs-role-based-access-control",
   },
 ]
 
@@ -151,7 +150,7 @@ const WebsitePromo: React.FC = () => (
       className="group inline-flex items-center border border-dashed outline-none border-neutral-100/15 px-4 py-2 transition-colors bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800"
     >
       <Mail size={16} className="mr-2" />
-      <span>Subscribe to my Newsletter</span>
+      <span>Subscribe to ByteSizedBets</span>
       <ArrowRight
         size={16}
         className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
