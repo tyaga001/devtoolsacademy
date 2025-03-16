@@ -2,27 +2,49 @@
 
 <img src="public/images/T.png" alt="Dev Tools Academy Logo" width="100" height="100" />
 
-> DevToolsAcademy is an open-source blog dedicated to awesome developer tools, frameworks, and technologies. Our mission is to help developers and founders make informed decisions about the developer tools they use in their daily workflow.
+## The Developer's Guide to Modern Developer Tools
 
-## 🌟 Featured on Hacker News and Hashnode
+> **Featured on Hacker News & Hashnode.**
+> DevTools Academy is the premier open-source resource helping developers and technical founders navigate the complex landscape of modern development tools. We turn technical comparisons into actionable insights.
 
-![Neon vs Supabase](public/images/img_4.png)
+## 🏆 Featured Comparisons
 
-| Blog Post                                                                            | Featured On      | Description                                                                     |
-| ------------------------------------------------------------------------------------ | ---------------- | ------------------------------------------------------------------------------- |
-| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase)  | Hacker News      | Made it to the second page of Hacker News                                       |
-| [Serverless Databases](https://www.devtoolsacademy.com/blog/state-of-databases-2024) | Hashnode         | Featured on [Hashnode](https://theankurtyagi.hashnode.dev/serverless-databases) |
-| [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL) | DevTools Academy | What's the Difference Between MongoDB and PostgreSQL?                           |
-| [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)    | DevTools Academy | A Deep Dive into Modern Auth SaaS Solutions                                     |
+| Comparison                                                                                                                  | Stats                        | Key Finding                                                      |
+| --------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------- |
+| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase)                                         | 📈 Front page on Hacker News | Unbiased and detailed comparisons between 2 serverless databases |
+| [State of Databases 2024](https://www.devtoolsacademy.com/blog/state-of-databases-2024)                                     | 🌟 Featured on Hashnode      | Comprehensive analysis of serverless database options            |
+| [Stream vs Twilio](https://www.devtoolsacademy.com/blog/stream-vs-twilio/)                                                  | 💬 Customer Support Focus    | Head-to-head comparison for building support bots                |
+| [CodeRabbit vs Other AI Code Review Tools](https://www.devtoolsacademy.com/blog/coderabbit-vs-others-ai-code-review-tools/) | 🤖 AI Code Review            | In-depth analysis of generative AI code review solutions         |
+| [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL)                                        | 🔍 Technical deep dive       | Unbiased comparisons with code examples                          |
+| [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)                                           | 🔐 Auth focused              | Unbiased comparisons with actual integration code                |
 
 ## Sponsors
 
-<div style="display:flex; gap: 20px; justify-content: center; background-color: black;">
+### 💎 VIP Sponsors
 
-<img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/refs/heads/main/src/assets/coderabbit.svg" alt="CodeRabbit" style="height:35px" />
-
-<img src="https://github.com/tyaga001/devtoolsacademy/blob/7c9462e4dcbf46cabb4b4f6c6667a01beb48ff28/src/assets/stream.png?raw=true" alt="CodeRabbit" style="height:50px" />
-
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="400px">
+        <a href="https://coderabbit.ai/?ref=devtoolsacademy" target="_blank">
+          <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/refs/heads/main/src/assets/coderabbit.svg" alt="CodeRabbit" height="60" />
+        </a>
+        <br />
+        <br />
+        <a href="https://www.coderabbit.ai/?ref=devtoolsacademy" target="_blank">Start reviewing your PRs</a>
+      </td>
+      <td align="center" width="400px">
+        <a href="https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank">
+          <img src="https://github.com/tyaga001/devtoolsacademy/blob/7c9462e4dcbf46cabb4b4f6c6667a01beb48ff28/src/assets/stream.png?raw=true" alt="Stream" height="60" />
+        </a>
+        <br />
+        <br />
+        <a href="https://getstream.io/chat/react-chat/tutorial/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank">Build a chat app in minutes</a>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <em>These amazing companies help keep DevTools Academy ad-free and independent!</em>
 </div>
 
 ## Available npm scripts
