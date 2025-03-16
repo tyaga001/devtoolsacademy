@@ -1,5 +1,14 @@
 export const allBlogs = [
   {
+    author: "Ankur Tyagi",
+    slug: "cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow",
+    title:
+      "Cody vs. Cursor: Choosing the Right AI Code Assistant for Your Development Workflow",
+    description:
+      "Explore Cody vs. Cursor to find the perfect AI code assistant for your development workflow. Compare features, performance, and integration to boost productivity.",
+    publishedAt: "2025-03-17T00:00:00Z",
+  },
+  {
     author: "Jitendra Nirnejak",
     slug: "enhancing-web-experiences-with-the-view-transitions-api",
     title: "Enhancing Web Experiences with the View Transitions API",
