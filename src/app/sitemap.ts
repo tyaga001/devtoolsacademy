@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next"
-import { allBlogs } from "./blog/data"
 
+import { allBlogs } from "@/app/blog/data"
 import { baseUrl } from "@/lib/metadata"
 
 export default function sitemap(): MetadataRoute.Sitemap {
