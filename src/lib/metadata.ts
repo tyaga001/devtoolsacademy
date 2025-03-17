@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-export const baseUrl = "https://www.devtoolsacademy.com/"
+export const baseUrl = "https://www.devtoolsacademy.com"
 
 const config = {
   baseUrl,
