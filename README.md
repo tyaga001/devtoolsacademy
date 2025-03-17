@@ -1,6 +1,6 @@
 # Dev Tools Academy
 
-<img src="public/images/T.png" alt="Dev Tools Academy Logo" width="100" height="100" />
+<img src="public/icons/icon-256x256.png" alt="Dev Tools Academy Logo" width="100" height="100" />
 
 ## The Developer's Guide to Modern Developer Tools
 
