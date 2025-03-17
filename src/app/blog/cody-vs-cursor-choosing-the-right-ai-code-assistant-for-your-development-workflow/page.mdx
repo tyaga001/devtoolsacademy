@@ -1,0 +1,419 @@
+import Image from "next/image"
+
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+
+import CoverImage from "./cover.png"
+
+import UIImage from "./ui-image.png"
+import CodyOutcome from "./cody-outcome.png"
+import CursorOutcome from "./cursor-outcome.png"
+import CursorWorkflow from "./cursor-workflow.png"
+import CursorYolo from "./cursor-yolo.png"
+import CodyDashboard from "./cody-dashboard.png"
+import CodyExtension from "./cody-extension.png"
+import CursorEditor from "./cursor-editor.png"
+
+export const metadata = getMetadata({
+  path: "/blog/cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow",
+  title:
+    "Cody vs. Cursor: Choosing the Right AI Code Assistant for Your Development Workflow | DevTools Academy",
+  description:
+    "Explore Cody vs. Cursor to find the perfect AI code assistant for your development workflow. Compare features, performance, and integration to boost productivity.",
+  image: CoverImage.src,
+})
+
+<BlogHeader
+  title="Cody vs. Cursor: Choosing the Right AI Code Assistant for Your Development Workflow"
+  author="Ankur Tyagi"
+  publishedAt="2025-03-17T00:00:00Z"
+/>
+
+AI has changed how we code. Since GitHub Copilot launched, many AI coding tools have emerged. These tools make coding faster and help beginners learn more efficiently.
+This article will discuss two popular coding assistants, why you should use them, and how to decide which one best suits your needs.
+
+## Overview of Cody and Cursor
+
+**Cody:** Developed by Sourcegraph, Cody is an AI coding assistant designed for deep code search and extensive repository management.
+
+**Cursor:** Made by Anysphere, Cursor is an AI coding editor based on VS Code that offers real-time code generation and session-aware help.
+
+---
+
+## Feature Comparison
+
+While Cody and Cursor share many features, they differ in AI capabilities, context handling, and integration.
+
+### AI Capabilities
+
+Although they take different approaches, Cody and Cursor are designed to help developers with coding, debugging, and increasing productivity.
+
+**Cody**
+
+- Built around Sourcegraph, its parent company, it is strong in code search across large repositories.
+- Works well with legacy or large codebases.
+- Includes chat functionalities.
+- Focuses more on search than code completion.
+
+**Cursor**
+
+- Strong autocomplete tool that finishes code based on recent changes (the "Tab" feature)
+- Includes chat functionalities that allow users to ask questions about their code.
+- It offers edit functionality that enables it to modify code directly.
+- Supports image uploads with prompts to provide visual context
+
+### Context Handling and Integration
+
+**Cody**
+
+- Deep Sourcegraph integration with excellent search-based assistance
+- Works with multiple IDEs, including JetBrains and Atom, as an extension
+- Can answer questions like "Where is this function used?" or "What does this API do?"
+- Provides repository-wide context but lacks real-time session awareness
+
+**Cursor**
+
+- Allows users to manually select files and symbols to provide context to the AI.
+- It functions as an AI coding editor, a clone of VS Code. This makes it familiar for VS Code users but less ideal for those who prefer other IDEs.
+- Remember your work within a session.
+- It can edit files directly and track conversations across different projects.
+- Strong at local file interactions but weaker at repository-wide searches
+
+**Why Does This Matter?**
+
+The right AI coding assistant depends on both its features and your specific needs.
+
+- **Cody** is ideal if you work on a large, existing codebase, prefer using IDEs other than VS Code, or need repository-wide searching powered by Sourcegraph. It is also a great choice if your team already uses Sourcegraph and requires large-scale code intelligence.
+- **Cursor** is best suited for developers who prefer session-aware coding and debugging. Since it mirrors VS Code, it is an excellent option for those already comfortable with that environment. Cursor’s Tab feature makes it fast, snappy, and accurate within an active session or project.
+
+Cursor is stronger than Cody in terms of general coding assistance due to its real-time session awareness and powerful autocomplete capabilities.
+
+---
+
+## Real-World Use Cases
+
+Let’s compare Cody and Cursor in practical scenarios to understand their effectiveness better.
+
+### Debugging a Function with AI Chat
+
+Here's a buggy JavaScript function:
+
+```javascript
+function getEvenNumbers(numbers) {
+  return numbers.filter((num) => num % 2)
+}
+
+console.log(getEvenNumbers([1, 2, 3, 4, 5, 6]))
+
+// Expected output: [2, 4, 6]
+// Actual output: [1, 3, 5]
+```
+
+**Solution with Cody**
+
+```javascript
+function getEvenNumbers(numbers) {
+  return numbers.filter((num) => num % 2 === 0)
+}
+
+console.log(getEvenNumbers([1, 2, 3, 4, 5, 6]))
+// Output: [2, 4, 6]
+```
+
+**Solution with Cursor**
+
+```javascript
+function getEvenNumbers(numbers) {
+  return numbers.filter((num) => num % 2 === 0)
+}
+
+// ... existing code ...
+```
+
+### Autocomplete: Writing a Factorial Function
+
+**Cody:** You will need to type more manually before completing the function
+
+```javascript
+function fatorial(n) {
+  if (n == 1) {
+    return 1
+  } else {
+    return n * fatorial(n - 1)
+  }
+}
+
+console.log(fatorial(5))
+```
+
+**Cursor:** Provides suggestions instantly upon typing the first few letters of the function.
+
+```javascript
+function factorial(n) {
+  if (n === 0) {
+    return 1
+  }
+  return n * factorial(n - 1)
+}
+
+console.log(factorial(5))
+```
+
+### Refactoring for Performance
+
+Given an O(n²) time complexity function:
+
+```javascript
+function removeDuplicates(arr) {
+  let result = []
+  for (let i = 0; i < arr.length; i++) {
+    if (!result.includes(arr[i])) {
+      result.push(arr[i])
+    }
+  }
+  return result
+}
+```
+
+Both Cody and Cursor optimized it to:
+
+```javascript
+function removeDuplicates(arr) {
+  return [...new Set(arr)]
+}
+```
+
+### Creating UI Code from an Image
+
+Below is the original landing page design you will attempt to recreate:
+
+<Image src={UIImage} alt="Landing Page Design" />
+
+**Cody:** Since Cody does not accept image uploads, you must provide a detailed text description of the design.
+
+Example Prompt:
+
+> "Build a landing page using HTML and CSS with two different background colours (#111111 and #BEB1F5) blending. The main text should say ‘Make Payments Easy and Simplify Your Finances’ in all caps, with smaller text saying ‘A new way to make payments easy, reliable, and secure. Manage all transactions from your phone.’ A phone image should share grid space with the text."
+
+Outcome:
+
+<Image src={CodyOutcome} alt="Cody Outcome" />
+
+**Cursor:** Accepts image uploads, allowing you to provide visual context to the AI.
+
+**Cursor**
+
+It supports image uploads, making UI recreation easier:
+
+1. Upload the design image
+2. Prompt:
+   > "Build this landing page using HTML and CSS."
+
+Outcome:
+
+<Image src={CursorOutcome} alt="Cursor Outcome" />
+
+Cursor generates a more visually accurate landing page than Cody, where results depend on how well the design is described.
+
+---
+
+## Automating for Larger Projects
+
+A good edit-and-test loop helps AI work better. The AI should write code, create tests, run them, and fix errors.
+
+### Cursor’s workflow
+
+**Step 1 - Docs for AI**
+
+Cursor's Agent Mode automatically looks for pertinent files, but organised documentation ensures consistency and minimises errors. You can provide the Cursor with clear instructions on best practices rather than relying solely on previous codes.
+
+The documentation can be placed in a folder as shown below:
+
+```plaintext
+/docs/AI-guidelines/
+  ├── testing.md
+  ├── database-migrations.md
+  ├── rate-limiting.md
+  ├── controller-setup.md
+```
+
+**Step 2 - Ask Cursor to Generate the Code**
+
+Below is an example of a command given in Agent Mode, using the documentation above to guide the AI and keep it on track.
+
+<Image src={CursorWorkflow} alt="Cursor Workflow" />
+
+**Step 3 - Ask Cursor to Generate the test**
+
+Like the example above, you can instruct Cursor to generate a test for the code and include instructions or best practices in your documentation.
+
+**Step 4- Enable Yolo Mode in Cursor and run test**
+
+Yolo Mode allows Cursor to execute commands without asking for permission when in Agent Mode.
+
+To enable Yolo Mode in Cursor:
+
+- Open Cursor settings.
+- Enable Yolo Mode under Automation Settings.
+- Allow test execution without confirmation.
+
+<Image src={CursorYolo} alt="Cursor Yolo" />
+
+**Step 5- Prompt Cursor to run the test**
+
+After enabling the Yolo, you can prompt Cursor to run the test and correct any error if there is a failing test.
+
+After enabling Yolo Mode, you can prompt Cursor to run the test and correct any errors if a test fails.
+
+**Prompt to Cursor:**
+
+> Run npm test and fix any failing tests automatically."
+
+### Cody’s Workflow
+
+**Step 1 - Docs for AI**
+
+You must manually provide AI-specific documentation to guide Cody's responses, as it lacks an equivalent to Cursor's Agent Mode.
+
+```plaintext
+/docs/AI-guidelines/
+  ├── testing.md
+  ├── database-migrations.md
+  ├── rate-limiting.md
+  ├── controller-setup.md
+```
+
+**Step 2 - Ask Cody to Generate the Code**
+
+With the AI docs guidelines, you can ask Cody to generate code.
+
+Example Prompt:
+
+> "Create an Express.js rate limiter middleware following the guideline @rate-limiting.md"
+
+**Step 3 - Generate Unit Tests Using Cody**
+
+Just like before, you can instruct Cody to generate a test for the code and also include instructions or best practices in your docs.
+
+**Step 4 - Manually Run Tests and Debug Errors**
+
+Since Cody does not automatically execute tests like Cursor, you must run them manually.
+
+If a test fails, ask Cody:
+
+> "Explain why this test is failing and suggest fixes."
+
+Cursor automates more steps than Cody, making it better for iterative development.
+
+---
+
+## Developer/User Experience
+
+When choosing between Cody and Cursor, user experience is a significant factor in determining which coding assistant best suits your needs. This includes onboarding and setup, performance, and customization.
+
+### Onboarding and Setup
+
+**Cody**
+
+1. Sign up for an account with Sourcegraph.
+2. Choose a plan (the free plan includes Cody but lacks search index access)
+
+<Image src={CodyDashboard} alt="Cody Dashboard" />
+
+3. Install the Cody extension in your IDE and sign in.
+
+<Image src={CodyExtension} alt="Cody Extension" />
+
+**Cursor**
+
+1. Download Cursor from their website
+2. Install it on your device
+3. Sign up for a Cursor account to get an access key
+
+<Image src={CursorEditor} alt="Cursor Editor" />
+
+### Performance and Customization
+
+**Cody**
+
+- Works well with large enterprise codebases.
+- Not as fast as Cursor.
+- Includes Sourcegraph customization options.
+
+**Cursor**
+
+- Lightweight, fast and responsive
+- Not optimized for large repositories
+- Minimal setup for VS Code users
+- Customizable AI interactions
+
+**Why does this matter?**
+
+Comparing these tools based on user experience highlights how they work and why and when you should use them.
+
+- **Cody’s onboarding and setup** are more suited for organizations using Sourcegraph. For individual users looking for **chat and autocomplete features**, onboarding is straightforward—install the extension and sign in. However, if you need **Sourcegraph’s advanced search capabilities**, you must use Sourcegraph alongside Cody. If **accuracy and deep code analysis across a codebase** are your priorities, Cody’s indexing approach is the better choice.
+
+- Cursor is an excellent option for individuals because it is perfect for immediate usability following installation. The functionality offered by Cursor is easily accessible, and it is most effective when used for real-time coding, debugging, and code snippet generation. Cursor also allows developers to have additional control.
+
+---
+
+## Community and Support
+
+Support and community are essential factors when deciding between Cursor and Cody. They impact long-term usability and troubleshooting, and a strong community also helps introduce new features and improvements.
+
+**Cody**
+
+- It is backed by Sourcegraph, which already has an established community.
+- Offers forums, documentation, and GitHub discussions for troubleshooting.
+- Focuses heavily on enterprise support, including dedicated support plans for large teams.
+- Open-source, allowing developers to contribute.
+
+**Cursor**
+
+- Has a rapidly growing community on **Discord, GitHub, and other forums.**
+- Primarily focused on **individual developers** rather than enterprises.
+- Since Cursor is **similar to VS Code**, it benefits from its **large user community.**
+- Unlike Cody, Cursor lacks strong **enterprise support.**
+
+**Why does this matter?**
+
+Community support determines **how well a tool evolves and how easy it is to get help when needed.**
+
+- For large enterprises, Cody’s corporate backing from Sourcegraph provides structured support. However, the low engagement of individual developers in conversations surrounding Cody seems to be a concern.
+- For individual developers, the buzzing and growing conversation surrounding Cursor builds trust, hence increasing the number of developers using Cursor. However, the lack of enterprise support is still an issue for enterprises intending to use Cursor.
+
+---
+
+## Pricing
+
+Pricing is essential when comparing Cody and Cursor, as it impacts long-term usability and value for money.
+
+**Cody**
+
+- **Free Tier:** Includes basic features and IDE integrations.
+- **Enterprise Starter ($19/month):** Provides expanded capabilities such as increased chat limits and code search, which is unavailable in the free plan.
+- **Enterprise Pro ($59/month):** Includes all Enterprise Starter features plus advanced code search options like Batch Changes, Code Insights, and Code Navigation.
+
+**Cursor**
+
+- **Free Tier:** Includes a 2-week pro trial, 2000 autocomplete completions (Tab feature), and 50 slow premium requests to popular LLMs.
+- **Pro Plan ($20/month):** This plan offers unlimited code completion, 500 fast premium requests, and unlimited slow premium requests to top-tier LLMs.
+- **Business Plan ($40/month):** This plan includes everything from the Pro Plan, plus enforced privacy mode, centralized team billing, an admin dashboard, and SAML/OIDC SSO.
+
+**Why does this matter?**
+
+Pricing impacts whether a tool is accessible for individuals, small teams, or enterprises.
+
+- Cody’s pricing favours enterprises in most cases, making it affordable for companies with up to 15-20 developers. An individual developer does not necessarily find it cheap.
+- Cursor has the perfect plan for an individual due to the wide range of features available in the Pro plan. Enterprises may experience drawbacks due to the lack of structured pricing and support.
+
+---
+
+## Conclusion
+
+Although Cody and Cursor are AI-powered coding assistants, they cater to different types of developers and address coding challenges from various perspectives.
+
+- Cody leverages Sourcegraph’s extensive code intelligence to provide deep assistance across multiple IDEs. It excels in enterprise environments where understanding large, complex codebases is critical.
+- Cursor, built on VS Code, offers a familiar experience for developers using that IDE. It shines in real-time AI integration, making it an excellent choice for individual developers and smaller teams.
+
+Ultimately, your choice depends on whether you need an AI focusing on enterprise code search and integration (Cody) or a developer-friendly AI assistant (Cursor).
