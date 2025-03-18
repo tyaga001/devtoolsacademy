@@ -26,7 +26,7 @@ const featuredPosts = [
   {
     title: "Twilio vs Stream - A Guide to Building Smarter Support Bots",
     excerpt: "A Guide to Building Smarter Support Bots",
-    author: "Ankur Tyagi",
+    author: "Hrutik",
     image: "/images/Twilio vs Stream.png",
     slug: "stream-vs-twilio",
     url: "/blog/stream-vs-twilio",
