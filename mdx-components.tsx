@@ -4,7 +4,7 @@ import { Link } from "next-view-transitions"
 import Image from "next/image"
 import type { MDXComponents } from "mdx/types"
 import { codeToHtml } from "shiki"
-import { nanoid } from "nanoid"
+import { v4 as uuidv4 } from "uuid"
 import { ClerkProvider } from "@clerk/nextjs"
 
 import { cn } from "@/lib/utils"
@@ -65,17 +65,17 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
 const components: MDXComponents = {
   h1: (props: any) => <h1 {...props}>{props.children}</h1>,
   h2: (props: any) => (
-    <h2 id={nanoid()} {...props}>
+    <h2 id={uuidv4()} {...props}>
       {props.children}
     </h2>
   ),
   h3: (props: any) => (
-    <h3 id={nanoid()} {...props}>
+    <h3 id={uuidv4()} {...props}>
       {props.children}
     </h3>
   ),
   h4: (props: any) => (
-    <h4 id={nanoid()} {...props}>
+    <h4 id={uuidv4()} {...props}>
       {props.children}
     </h4>
   ),
