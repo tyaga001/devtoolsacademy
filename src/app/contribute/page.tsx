@@ -6,11 +6,14 @@ import { FaGithub } from "react-icons/fa6"
 import { getMetadata } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
 
+import CoverImage from "./cover.png"
+
 export const metadata = getMetadata({
   path: "/contribute",
   title: "Contribute to Dev Tools Academy",
   description:
     "Learn how to contribute to Dev Tools Academy and help improve this open-source project",
+  image: CoverImage.src,
 })
 
 export default function ContributeRoute() {
