@@ -9,6 +9,7 @@ import CurrentSponsors from "@/components/CurrentSponsors"
 
 import CodeRabbitCoverImage from "@/app/blog/coderabbit-vs-others-ai-code-review-tools/cover.png"
 import TwilioCoverImage from "@/app/blog/stream-vs-twilio/cover.png"
+import NeonCoverImage from "@/app/blog/neon-vs-supabase/cover.png"
 
 export const metadata = getMetadata({
   path: "/",
@@ -21,7 +22,7 @@ const featuredPosts = [
     title: "Neon Postgres vs Supabase: Choose the Right Database for Your SaaS",
     excerpt: "Choose the right Database for your SaaS.",
     author: "Ankur Tyagi",
-    image: "/images/default-og-image.png",
+    image: NeonCoverImage.src,
     slug: "neon-vs-supabase",
     url: "/blog/neon-vs-supabase",
     category: "Database",
