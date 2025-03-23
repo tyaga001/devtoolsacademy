@@ -218,7 +218,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           <div className="flex items-center justify-center">
             <div className="mb-8 flex flex-col gap-2 md:flex-row md:gap-6">
               <Link href={tool.githubUrl}>
-                <div className="rounded-[5px] bg-neutral-950/50 p-2 text-neutral-200 hover:bg-neutral-700/50">
+                <div className="rounded-[5px] bg-neutral-950/50 p-2 text-neutral-200 transition-colors hover:bg-neutral-700/50">
                   <div className="flex items-center  text-sm ">
                     <Github className="mr-2 size-4" />
                     View on GitHub
@@ -227,7 +227,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               </Link>
               {tool.websiteUrl && (
                 <Link href={tool.websiteUrl}>
-                  <div className="rounded-[5px] bg-blue-800/50 p-2 text-blue-200 hover:bg-blue-700/50">
+                  <div className="rounded-[5px] bg-blue-800/50 p-2 text-blue-200 transition-colors hover:bg-blue-700/50">
                     <div className="flex items-center  text-sm ">
                       <ExternalLink className="mr-2 size-4" />
                       Visit Website
@@ -237,7 +237,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               )}
               {tool.documentation && (
                 <Link href={tool.documentation}>
-                  <div className="rounded-[5px] bg-neutral-800/50 p-2 text-neutral-200 hover:bg-neutral-700/50">
+                  <div className="rounded-[5px] bg-neutral-800/50 p-2 text-neutral-200 transition-colors hover:bg-neutral-700/50">
                     <div className="flex items-center  text-sm ">
                       <Book className="mr-2 size-4" />
                       Documentation

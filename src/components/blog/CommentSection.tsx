@@ -96,7 +96,7 @@ const CommentSection: React.FC = () => {
             />
             <button
               type="submit"
-              className="mt-2 rounded bg-blue-600 px-4 py-2 text-neutral-200 hover:bg-blue-700"
+              className="mt-2 rounded bg-blue-600 px-4 py-2 text-neutral-200 transition-colors hover:bg-blue-700"
             >
               Deploy Comment 🚀
             </button>
@@ -107,7 +107,7 @@ const CommentSection: React.FC = () => {
               Hey there, code whisperer. Sign in to join the conversation.
             </p>
             <SignInButton mode="modal">
-              <button className="flex items-center gap-2 rounded bg-neutral-200 px-4 py-2 text-neutral-900 hover:bg-neutral-100">
+              <button className="flex items-center gap-2 rounded bg-neutral-200 px-4 py-2 text-neutral-900 transition-colors hover:bg-neutral-100">
                 <FaGithub />
                 <span>
                   Authenticate with GitHub (it&apos;s where the cool devs hang)

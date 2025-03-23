@@ -29,7 +29,7 @@ const CurrentSponsors: React.FC<Props> = () => {
             </a>
             <Link
               href={"/sponsor/"}
-              className="flex items-center gap-3 border border-dashed border-neutral-100/15 bg-neutral-900 px-6 py-3 outline-none hover:bg-neutral-800 focus:bg-neutral-800"
+              className="flex items-center gap-3 border border-dashed border-neutral-100/15 bg-neutral-900 px-6 py-3 outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800"
             >
               <Heart size={18} />
               <span>Become a Sponsor</span>
