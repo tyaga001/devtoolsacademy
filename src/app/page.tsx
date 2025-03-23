@@ -8,6 +8,7 @@ import Testimonial from "@/components/Testimonial"
 import CurrentSponsors from "@/components/CurrentSponsors"
 
 import CodeRabbitCoverImage from "@/app/blog/coderabbit-vs-others-ai-code-review-tools/cover.png"
+import TwilioCoverImage from "@/app/blog/stream-vs-twilio/cover.png"
 
 export const metadata = getMetadata({
   path: "/",
@@ -29,7 +30,7 @@ const featuredPosts = [
     title: "Twilio vs Stream - A Guide to Building Smarter Support Bots",
     excerpt: "A Guide to Building Smarter Support Bots",
     author: "Ankur Tyagi",
-    image: "/images/Twilio vs Stream.png",
+    image: TwilioCoverImage.src,
     slug: "stream-vs-twilio",
     url: "/blog/stream-vs-twilio",
     category: "SaaS",
