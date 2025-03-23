@@ -4,6 +4,9 @@ import Image from "next/image"
 
 import Img from "./img.png"
 import ImportingData from "./data-supabase-vs-neon.png"
+import Img1 from "./img_1.png"
+import Img2 from "./img_2.png"
+import Img3 from "./img_3.png"
 
 export const metadata = getMetadata({
   path: "/blog/neon-vs-supabase",
@@ -437,11 +440,11 @@ Time Travel utilizes Neon's instant branching capability to create a temporary b
 
 > Supabase provides a CLI for local development and deployment, a management API for programmatic project management, and official client libraries for various languages.
 
-![Performance Metric 1](/images/img_1.png)
+<Image src={Img1} alt="Performance Metric 1" width={1200} height={600} />
 
-![Performance Metric 2](/images/img_2.png)
+<Image src={Img2} alt="Performance Metric 2" width={1200} height={600} />
 
-![Performance Metric 3](/images/img_3.png)
+<Image src={Img3} alt="Performance Metric 3" width={1200} height={600} />
 
 ## Platform Management Features: Neon vs. Supabase.<a id="platform-management-features-neon-vs-supabase"></a>
 
