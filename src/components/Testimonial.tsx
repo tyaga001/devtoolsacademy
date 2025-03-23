@@ -4,6 +4,10 @@ import React from "react"
 import Image from "next/image"
 import { Quote, Star } from "lucide-react"
 
+import Alberto from "@/assets/testimonials/alberto.png"
+import Andy from "@/assets/testimonials/andy.png"
+import Ophir from "@/assets/testimonials/ophir.png"
+
 import { cn } from "@/lib/utils"
 
 interface ITestimonial {
@@ -19,19 +23,19 @@ const testimonials: ITestimonial[] = [
       "The article is great, and provides an amazing in-depth explanation 👏\nThe summary on the bottom right is great too!\nDark mode is my favourite colour scheme\nI love the background you use for each image.",
     name: "Alberto Cubeddu",
     position: "Co-founder of SkillSociety",
-    avatar: "/images/img_6.png",
+    avatar: Alberto.src,
   },
   {
     quote: "Kudos for being a developer who writes :)",
     name: "Ophir Prusak",
     position: "Senior Product Manager",
-    avatar: "/images/img_5.png",
+    avatar: Ophir.src,
   },
   {
     quote: "You really have a great eye for the developer space.",
     name: "Andy Hattemer",
     position: "Head of Marketing, Neon",
-    avatar: "/images/img_7.png",
+    avatar: Andy.src,
   },
 ]
 
