@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa6"
+import { FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6"
 
 interface SocialShareProps {
   title: string
@@ -26,7 +26,7 @@ export default function SocialShare({ title }: SocialShareProps) {
         rel="noopener noreferrer"
         className="text-neutral-500 outline-none transition-colors duration-200 hover:text-blue-400 focus:text-blue-400"
       >
-        <FaTwitter size={19} />
+        <FaXTwitter size={19} />
       </a>
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
