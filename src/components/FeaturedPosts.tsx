@@ -13,7 +13,6 @@ interface BlogCardProps {
   excerpt: string
   author: string
   image: string
-  url: string
   slug: string
   readTime?: string
   category: string
@@ -26,7 +25,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   excerpt,
   author,
   image,
-  url,
+  slug,
   readTime,
   category,
   isNew,
@@ -35,7 +34,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
   return (
     <Link
-      href={url}
+      href={`/blog/${slug}/`}
       className={cn(
         "flex flex-col transition-colors hover:bg-neutral-900",
         "border-b md:border-b-0 border-dashed border-neutral-100/15",

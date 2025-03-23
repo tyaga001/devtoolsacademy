@@ -24,7 +24,6 @@ const featuredPosts = [
     author: "Ankur Tyagi",
     image: NeonCoverImage.src,
     slug: "neon-vs-supabase",
-    url: "/blog/neon-vs-supabase",
     category: "Database",
   },
   {
@@ -33,7 +32,6 @@ const featuredPosts = [
     author: "Ankur Tyagi",
     image: TwilioCoverImage.src,
     slug: "stream-vs-twilio",
-    url: "/blog/stream-vs-twilio",
     category: "SaaS",
   },
   {
@@ -42,7 +40,6 @@ const featuredPosts = [
     author: "Ankur Tyagi",
     image: CodeRabbitCoverImage.src,
     slug: "coderabbit-vs-others-ai-code-review-tools",
-    url: "/blog/coderabbit-vs-others-ai-code-review-tools",
     category: "Code Review",
     isNew: true,
   },
