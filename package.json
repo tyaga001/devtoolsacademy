@@ -12,7 +12,7 @@
     "db-create": "npx prisma db push --schema=./prisma/schema.prisma"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.12.8",
+    "@clerk/nextjs": "^6.12.9",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@neondatabase/serverless": "^0.10.4",
