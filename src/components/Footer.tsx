@@ -182,7 +182,7 @@ const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl p-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="flex flex-col">
-            <Link href="/" className="mb-4 flex items-center gap-2">
+            <Link href="/" className="mb-6 flex items-center gap-2">
               <svg
                 className="h-8"
                 viewBox="0 0 320 320"
@@ -206,10 +206,10 @@ const Footer: React.FC = () => {
               </div>
             </Link>
 
-            <p className="mb-4 text-sm text-neutral-500">
+            <SocialLinks linkVariants={linkVariants} />
+            <p className="my-4 text-sm text-neutral-500">
               &copy; 2025 Dev Tools Academy. All rights reserved.
             </p>
-            <SocialLinks linkVariants={linkVariants} />
             <AnimatePresence mode="wait">
               <QuickTip tipIndex={tipIndex} />
             </AnimatePresence>
