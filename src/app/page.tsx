@@ -7,6 +7,8 @@ import FeaturedPosts from "@/components/FeaturedPosts"
 import Testimonial from "@/components/Testimonial"
 import CurrentSponsors from "@/components/CurrentSponsors"
 
+import CodeRabbitCoverImage from "@/app/blog/coderabbit-vs-others-ai-code-review-tools/cover.png"
+
 export const metadata = getMetadata({
   path: "/",
   title: "DevTools Academy",
@@ -36,7 +38,7 @@ const featuredPosts = [
     title: "CodeRabbit vs Others: Which is the Right AI Code Review Tool",
     excerpt: "Choose the right AI code review tool",
     author: "Ankur Tyagi",
-    image: "/images/coderabbit-vs-others.png",
+    image: CodeRabbitCoverImage.src,
     slug: "coderabbit-vs-others-ai-code-review-tools",
     url: "/blog/coderabbit-vs-others-ai-code-review-tools",
     category: "Code Review",

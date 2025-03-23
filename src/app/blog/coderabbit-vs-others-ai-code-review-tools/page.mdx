@@ -3,6 +3,8 @@ import Image from "next/image"
 import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
 
+import CoverImage from "./cover.png"
+
 import Img from "./img.png"
 import Img1 from "./img_1.png"
 import Img2 from "./img_2.png"
@@ -53,7 +55,7 @@ export const metadata = getMetadata({
   path: "/blog/coderabbit-vs-others-ai-code-review-tools",
   title: "Comparing AI Code Review Tools | DevTools Academy",
   description: "CodeRabbit vs Other AI code review tools",
-  image: "/images/coderabbit-vs-others.png",
+  image: CoverImage.src,
 })
 
 <BlogHeader
