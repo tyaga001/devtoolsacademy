@@ -6,6 +6,7 @@ import BlogChatInterface from "@/components/blog/BlogChatInterface"
 import ViewCounter from "@/components/blog/ViewCounter"
 import SocialShare from "@/components/blog/SocialShare"
 import Breadcrumb from "@/components/blog/Breadcrumb"
+import { CircleUserRound } from "lucide-react"
 
 interface BlogHeaderProps {
   title: string
@@ -51,7 +52,10 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
       </h1>
       <div className="mb-12 flex flex-col justify-between md:mb-16 md:flex-row md:items-center">
         <div className="mb-6 flex items-center gap-4 text-neutral-400 md:mb-0">
-          <span className="text-sm">{author}</span>
+          <span className="flex items-center gap-1 text-sm">
+            <CircleUserRound size={14} />
+            {author}
+          </span>
           <span>|</span>
           <span className="text-sm">{formatDate(publishedAt)}</span>
           <span>|</span>
