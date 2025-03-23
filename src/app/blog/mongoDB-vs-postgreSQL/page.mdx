@@ -5,6 +5,11 @@ import BlogHeader from "@/components/blog/BlogHeader"
 import { Alert, AlertDescription } from "@/components/blog/Alert"
 import { Callout } from "@/components/blog/Callout"
 
+import Img17 from "./img_17.png"
+import Img18 from "./img_18.png"
+import Img19 from "./img_19.png"
+import Img20 from "./img_20.png"
+
 export const metadata = getMetadata({
   path: "/blog/mongoDB-vs-postgreSQL",
   title:
@@ -271,12 +276,7 @@ ORDER BY SUM(total) DESC;
 
 Sharding allows MongoDB to distribute data across multiple nodes or clusters, meaning it can efficiently manage high-volume read and write operations by dividing the workload among several machines. This makes MongoDB an ideal choice for applications where data grows rapidly, such as high-traffic web applications, real-time analytics, content management systems, or IoT platforms.
 
-<Image
-  src="/images/img_17.png"
-  alt="MongoDB-Performance"
-  width={1200}
-  height={600}
-/>
+<Image src={Img17} alt="MongoDB-Performance" width={1200} height={600} />
 
 In MongoDB, sharding involves splitting the data into smaller, more manageable chunks that are distributed across different servers. These chunks are based on a **shard key**, which determines how the data is partitioned. Each shard holds a portion of the dataset, and MongoDB can add more shards as the system scales, ensuring high availability and fault tolerance.
 
@@ -341,7 +341,7 @@ In PostgreSQL, every time a row is modified, a new version of that row is create
 PostgreSQL also supports a variety of **isolation levels**, which determine how isolated each transaction is from others. These levels include:
 
 <Image
-  src="/images/img_18.png"
+  src={Img18}
   alt="PostgreSQL-isolation levels"
   width={1200}
   height={600}
@@ -376,12 +376,7 @@ MongoDB’s sharding system is a core feature that enables horizontal scaling by
 
 The shard key is crucial in balancing the data load, as it defines how documents are assigned to different shards. MongoDB automatically manages **data distribution** and **query routing** through a **mongos** process, which acts as a query router that directs requests to the correct shard.
 
-<Image
-  src="/images/img_19.png"
-  alt="MongoDB-Sharding"
-  width={1200}
-  height={600}
-/>
+<Image src={Img19} alt="MongoDB-Sharding" width={1200} height={600} />
 
 In a sharded MongoDB cluster, each shard can be part of a **replica set**, ensuring redundancy and high availability. MongoDB’s ability to perform **live resharding—rebalancing** data as the dataset grows—eliminates the need for downtime when scaling, which is particularly useful in real-time applications like ecommerce or social media platforms. The live resharding feature automatically redistributes data to avoid bottlenecks when certain shards become overburdened.
 
@@ -468,12 +463,7 @@ In addition to PostGIS, PostgreSQL allows users to write **stored procedures** i
 
 ### MongoDB security
 
-<Image
-  src="/images/img_20.png"
-  alt="MongoDB-security"
-  width={1200}
-  height={600}
-/>
+<Image src={Img20} alt="MongoDB-security" width={1200} height={600} />
 
 MongoDB provides robust, enterprise-grade security controls across various layers, ensuring data protection for cloud and on-premise environments.
 
