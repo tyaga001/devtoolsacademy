@@ -36,6 +36,7 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
               "prose-headings:font-bold prose-headings:tracking-tight prose-headings:opacity-85",
               "prose-h1:font-extrabold prose-h1:tracking-tighter"
             )}
+            style={{ maxWidth: "unset" }}
           >
             {children}
           </article>
