@@ -42,7 +42,7 @@ export const allBlogs = [
   {
     author: "Ankur Tyagi",
     slug: "mongoDB-vs-postgreSQL",
-    title: "MongoDB vs PostgreSQL- A Technical Comparison",
+    title: "MongoDB vs PostgreSQL - A Technical Comparison",
     description:
       "A technical comparison of MongoDB vs. PostgreSQL to help you choose the best database solution for your SaaS",
     publishedAt: "2024-09-26T00:00:00Z",

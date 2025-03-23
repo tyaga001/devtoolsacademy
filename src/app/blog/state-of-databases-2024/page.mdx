@@ -6,6 +6,14 @@ import ServerlessDiagram from "@/components/blog/ServerlessDiagram"
 import { Alert, AlertDescription } from "@/components/blog/Alert"
 import { Callout } from "@/components/blog/Callout"
 
+import Img14 from "./img_14.png"
+import Img12 from "./img_12.png"
+import Img15 from "./img_15.png"
+import Img8 from "./img_8.png"
+import Img16 from "./img_16.png"
+import Img10 from "./img_10.png"
+import Img11 from "./img_11.png"
+
 export const metadata = getMetadata({
   path: "/blog/state-of-databases-2024",
   title: "Databases in 2024 | DevTools Academy",
@@ -88,7 +96,7 @@ so "Serverless" means:
 4. Never paying for idle infrastructure.
 5. Never losing business because you can't scale.
 
-<Image src="/images/img_14.png" alt="Serverless" width={1200} height={600} />
+<Image src={Img14} alt="Serverless" width={1200} height={600} />
 
 ## A New Programming Model
 
@@ -392,12 +400,7 @@ For instance, you can't beat Facebook at its own game if you start a social netw
 
 ### Who Shouldn't go serverless:
 
-<Image
-  src="/images/img_12.png"
-  alt="Serverless bills"
-  width={1200}
-  height={600}
-/>
+<Image src={Img12} alt="Serverless bills" width={1200} height={600} />
 
 <Callout>
 
@@ -412,7 +415,7 @@ No need to be obsessed with "scaling." focus on growing your business.
 > Tradeoffs are tradeoffs. For example - "by running a k8s cluster when you don't need one, a cost you pay is the overhead." but 👇
 
 <Image
-  src="/images/img_15.png"
+  src={Img15}
   alt="Serverless in one simple graphic"
   width={1200}
   height={600}
@@ -421,7 +424,7 @@ No need to be obsessed with "scaling." focus on growing your business.
 but make sure your know all the rules of the game otherwise...you'll see the huge bills once your app goes viral.
 
 <Image
-  src="/images/img_8.png"
+  src={Img8}
   alt="Serverless Architecture Diagram"
   width={800}
   height={600}
@@ -436,7 +439,7 @@ open source hypervisor such as KVM, and run the virtual server on your hardware.
 Comparison of free tiers: [https://paul.totterman.name/posts/free-clouds/](https://paul.totterman.name/posts/free-clouds/)
 
 <Image
-  src="/images/img_16.png"
+  src={Img16}
   alt="Serverless Architecture Diagram"
   width={800}
   height={600}
@@ -451,7 +454,7 @@ It looks like there will be a lot of new developments in the next few years to h
 This blog is? Powered by Neon and Vercel, and my wallet's pretty happy too. Only splurged on the domain name 🚀💸
 
 <Image
-  src="/images/img_10.png"
+  src={Img10}
   alt="Serverless in one simple graphic"
   width={1200}
   height={600}
@@ -525,7 +528,7 @@ And here are some interesting takes from industry experts:
   <a href="https://x.com/GergelyOrosz/status/1630500376033067008"></a>
 </blockquote>
 
-<Image src="/images/img_11.png" alt="Serverless" width={1200} height={600} />
+<Image src={Img11} alt="Serverless" width={1200} height={600} />
 
 For more serverless stories, check out [Serverless Horrors](https://serverlesshorrors.com/).
 
