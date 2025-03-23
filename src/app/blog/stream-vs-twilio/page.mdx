@@ -2,6 +2,8 @@ import Image from "next/image"
 import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
 
+import Img66 from "./img_66.png"
+
 export const metadata = getMetadata({
   path: "/blog/stream-vs-twilio",
   title: "Twilio vs Stream",
@@ -394,12 +396,7 @@ For more details, visit the [Stream Pricing page](https://getstream.io/chat/pric
 
 ## Conclusion
 
-<Image
-  src="/images/img_66.png"
-  alt="Twilio V/S Stream"
-  width={1200}
-  height={600}
-/>
+<Image src={Img66} alt="Twilio V/S Stream" width={1200} height={600} />
 
 Both Twilio and Stream are good, but in their own ways.
 

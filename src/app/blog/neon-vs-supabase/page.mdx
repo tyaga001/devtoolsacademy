@@ -1,5 +1,9 @@
 import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
+import Image from "next/image"
+
+import Img from "./img.png"
+import ImportingData from "./data-supabase-vs-neon.png"
 
 export const metadata = getMetadata({
   path: "/blog/neon-vs-supabase",
@@ -299,7 +303,12 @@ Neon's architecture is based on the separation of compute and storage, managed b
 
 > When migrating to a new database platform, the ability to import data efficiently and reliably is crucial. Here, we explore and compare the methods provided by Supabase and Neon for importing data, helping you determine the best approach for your needs.
 
-![Importing Data: Neon vs. Supabase](/images/data-supabase-vs-neon.png)
+<Image
+  src={ImportingData}
+  alt="Importing Data: Neon vs. Supabase"
+  width={1200}
+  height={600}
+/>
 
 ## Security: Supabase vs. Neon<a id="security-supabase-vs-neon"></a>
 
@@ -314,7 +323,7 @@ Authentication Supabase provides authentication through JWT, integrated with RLS
 - In terms of compliance, Neon has achieved SOC 2 Type 1 and Type 2 compliance, demonstrating adherence to high security and privacy standards.
 - Supabase is [SOC 2 Type 1 and Type 2 compliant](https://supabase.com/security). Supabase is also HIPAA compliant meaning you can store your Protected Health Information (PHI) on their hosted platform. Customers can enter into a Business Associate Agreement (BAA) to fulfill HIPAA obligations under their [shared responsibility model](https://supabase.com/docs/guides/platform/shared-responsibility-model#managing-healthcare-data). .
 
-![Security: Supabase vs. Neon](/images/img.png)
+<Image src={Img} alt="Security: Supabase vs. Neon" width={1200} height={600} />
 
 ## Features of Neon vs. Supabase<a id="features-of-neon-vs-supabase"></a>
 
@@ -506,7 +515,7 @@ Neon offers four support levels: Community, Standard, Priority, and Enterprise.
 <Callout>
 Supabase also has tiered support: Community support is included with the Free plan, while email support is available in the Pro plan.
 
-    The Team plan offers priority email support, SLAs, and daily backups for 14 days. The Enterprise plan provides premium support, a designated support manager, a private Slack channel, and custom SLAs. 
+The Team plan offers priority email support, SLAs, and daily backups for 14 days. The Enterprise plan provides premium support, a designated support manager, a private Slack channel, and custom SLAs. 
 
 </Callout>
 
