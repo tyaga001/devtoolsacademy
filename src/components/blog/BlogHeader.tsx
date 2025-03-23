@@ -46,7 +46,9 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
           { label: title, href: "#" },
         ]}
       />
-      <h1 className="mb-8 text-3xl md:text-5xl">{title}</h1>
+      <h1 className="mb-8 text-3xl md:text-5xl" style={{ lineHeight: 1.1 }}>
+        {title}
+      </h1>
       <div className="mb-12 flex flex-col justify-between md:mb-16 md:flex-row md:items-center">
         <div className="mb-6 flex items-center gap-4 text-neutral-400 md:mb-0">
           <span className="text-sm">{author}</span>
