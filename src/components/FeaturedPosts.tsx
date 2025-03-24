@@ -3,9 +3,12 @@
 import React from "react"
 import { Link } from "next-view-transitions"
 import Image from "next/image"
-
 import { CircleUserRound, Clock } from "lucide-react"
+
 import { cn } from "@/lib/utils"
+import { allBlogs } from "@/app/blog/data"
+
+const featuredPosts = allBlogs.filter((post) => post.isFeatured)
 
 interface BlogCardProps {
   index: number
@@ -13,7 +16,6 @@ interface BlogCardProps {
   excerpt: string
   author: string
   image: string
-  url: string
   slug: string
   readTime?: string
   category: string
@@ -26,7 +28,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   excerpt,
   author,
   image,
-  url,
+  slug,
   readTime,
   category,
   isNew,
@@ -35,7 +37,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
   return (
     <Link
-      href={url}
+      href={`/blog/${slug}/`}
       className={cn(
         "flex flex-col transition-colors hover:bg-neutral-900",
         "border-b md:border-b-0 border-dashed border-neutral-100/15",
@@ -71,11 +73,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   )
 }
 
-interface FeaturedPostsProps {
-  posts: Omit<BlogCardProps, "index">[]
-}
-
-const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
+const FeaturedPosts: React.FC = () => {
   return (
     <section>
       <div className="mx-auto max-w-7xl py-16 text-center">
@@ -94,7 +92,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
       </div>
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-3">
-          {posts.slice(0, 3).map((post, index) => (
+          {featuredPosts.slice(0, 3).map((post, index) => (
             <BlogCard key={index} {...post} index={index} />
           ))}
         </div>

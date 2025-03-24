@@ -21,7 +21,7 @@ const CodeCopyButton: React.FC<Props> = ({ code }) => {
   return (
     <button
       onClick={copyToClipboard}
-      className="absolute -right-1 -top-4 flex size-8 items-center justify-center rounded bg-neutral-800 font-mono leading-none text-neutral-100 hover:bg-neutral-950 focus:bg-neutral-950 focus:outline-none"
+      className="absolute -right-1 -top-4 flex size-8 items-center justify-center rounded bg-neutral-800 font-mono leading-none text-neutral-100 transition-colors hover:bg-neutral-950 focus:bg-neutral-950 focus:outline-none"
     >
       {isCopied ? (
         <Check className="inline-block" size={16} />

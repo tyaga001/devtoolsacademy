@@ -23,14 +23,6 @@
   scroll-margin-top: 100px;
 }
 
-.prose p:has(> img) {
-  @apply flex;
-}
-
-.prose img {
-  @apply mx-auto;
-}
-
 /* neutral-100 */
 .grid-background {
   background-size: 14px 14px;

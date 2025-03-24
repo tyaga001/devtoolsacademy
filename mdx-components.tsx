@@ -4,7 +4,7 @@ import { Link } from "next-view-transitions"
 import Image from "next/image"
 import type { MDXComponents } from "mdx/types"
 import { codeToHtml } from "shiki"
-import { nanoid } from "nanoid"
+import { v4 as uuidv4 } from "uuid"
 import { ClerkProvider } from "@clerk/nextjs"
 
 import { cn } from "@/lib/utils"
@@ -33,9 +33,10 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
               "prose prose-neutral prose-invert prose-lg",
               "prose-ul:opacity-80 prose-ol:opacity-80",
               "prose-pre:py-0 prose-pre:px-3 prose-code:text-sm prose-pre:bg-[#121212]",
-              "prose-headings:font-semibold prose-headings:tracking-tight prose-headings:opacity-85",
-              "prose-h1:font-bold prose-h1:tracking-tighter"
+              "prose-headings:font-bold prose-headings:tracking-tight prose-headings:opacity-85",
+              "prose-h1:font-extrabold prose-h1:tracking-tighter"
             )}
+            style={{ maxWidth: "unset" }}
           >
             {children}
           </article>
@@ -65,17 +66,17 @@ const BlogWrapper: React.FC<Props> = ({ children }) => {
 const components: MDXComponents = {
   h1: (props: any) => <h1 {...props}>{props.children}</h1>,
   h2: (props: any) => (
-    <h2 id={nanoid()} {...props}>
+    <h2 id={uuidv4()} {...props}>
       {props.children}
     </h2>
   ),
   h3: (props: any) => (
-    <h3 id={nanoid()} {...props}>
+    <h3 id={uuidv4()} {...props}>
       {props.children}
     </h3>
   ),
   h4: (props: any) => (
-    <h4 id={nanoid()} {...props}>
+    <h4 id={uuidv4()} {...props}>
       {props.children}
     </h4>
   ),
