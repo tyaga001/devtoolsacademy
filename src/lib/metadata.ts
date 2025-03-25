@@ -54,7 +54,7 @@ export const getMetadata = ({
 
     openGraph: {
       type: "website",
-      url: `${config.baseUrl}/${path}`,
+      url: `${config.baseUrl}${path}`,
       siteName: config.appName,
       title: metaTitle,
       description: metaDescription,
