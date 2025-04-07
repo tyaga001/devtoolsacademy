@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "motion/react"
+import { Link } from "next-view-transitions"
 import {
   Twitter,
   Github,
@@ -125,7 +126,7 @@ const SocialLinks: React.FC<{ linkVariants: any }> = ({ linkVariants }) => (
 )
 
 const WebsitePromo: React.FC = () => (
-  <motion.div className="mt-16 border border-dashed border-neutral-100/15 p-4">
+  <motion.div className="mt-16">
     <p className="mb-5 text-neutral-500">
       Explore more about my writing, SaaS dev tools and my journey in the
       software engineering.
@@ -134,7 +135,7 @@ const WebsitePromo: React.FC = () => (
       href="https://theankurtyagi.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex mb-2 items-center border border-dashed outline-none border-neutral-100/15 px-4 py-2 transition-colors bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800"
+      className="group mb-2 inline-flex items-center border border-dashed border-neutral-100/15 bg-neutral-900 px-4 py-2 outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800"
     >
       <Globe size={16} className="mr-2" />
       <span>Visit theankurtyagi.com</span>
@@ -147,7 +148,7 @@ const WebsitePromo: React.FC = () => (
       href="https://bytesizedbets.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex items-center border border-dashed outline-none border-neutral-100/15 px-4 py-2 transition-colors bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800"
+      className="group inline-flex items-center border border-dashed border-neutral-100/15 bg-neutral-900 px-4 py-2 outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800"
     >
       <Mail size={16} className="mr-2" />
       <span>Subscribe to ByteSizedBets</span>
@@ -181,13 +182,34 @@ const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl p-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="flex flex-col">
-            <h3 className="mb-4 text-3xl font-bold tracking-tight">
-              Dev Tools Academy
-            </h3>
-            <p className="mb-4 text-sm text-neutral-500">
+            <Link href="/" className="mb-6 flex items-center gap-2">
+              <svg
+                className="h-8"
+                viewBox="0 0 320 320"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M240 80H160L240 0H320V80L240 160V80Z" fill="white" />
+                <path d="M80 80H0L80 0H160V80L80 160V80Z" fill="white" />
+                <path
+                  d="M240 240H160L240 160H320V240L240 320V240Z"
+                  fill="white"
+                />
+                <path d="M80 240H0L80 160H160V240L80 320V240Z" fill="white" />
+              </svg>
+
+              <div className="font-mono text-sm uppercase leading-none tracking-wider">
+                <p>Devtools</p>
+                <p>
+                  Academy<span className="cursor-blink">_</span>
+                </p>
+              </div>
+            </Link>
+
+            <SocialLinks linkVariants={linkVariants} />
+            <p className="my-4 text-sm text-neutral-500">
               &copy; 2025 Dev Tools Academy. All rights reserved.
             </p>
-            <SocialLinks linkVariants={linkVariants} />
             <AnimatePresence mode="wait">
               <QuickTip tipIndex={tipIndex} />
             </AnimatePresence>

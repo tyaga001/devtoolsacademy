@@ -1,12 +1,21 @@
 import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
+import Image from "next/image"
+
+import CoverImage from "./cover.png"
+
+import Img from "./img.png"
+import ImportingData from "./data-supabase-vs-neon.png"
+import Img1 from "./img_1.png"
+import Img2 from "./img_2.png"
+import Img3 from "./img_3.png"
 
 export const metadata = getMetadata({
   path: "/blog/neon-vs-supabase",
   title: "Neon Postgres vs Supabase | DevTools Academy",
   description:
     "An in-depth comparison of Neon and Supabase to help you choose the best database for your SaaS",
-  image: "/images/default-og-image.png",
+  image: CoverImage.src,
 })
 
 <BlogHeader
@@ -299,7 +308,12 @@ Neon's architecture is based on the separation of compute and storage, managed b
 
 > When migrating to a new database platform, the ability to import data efficiently and reliably is crucial. Here, we explore and compare the methods provided by Supabase and Neon for importing data, helping you determine the best approach for your needs.
 
-![Importing Data: Neon vs. Supabase](/images/data-supabase-vs-neon.png)
+<Image
+  src={ImportingData}
+  alt="Importing Data: Neon vs. Supabase"
+  width={1200}
+  height={600}
+/>
 
 ## Security: Supabase vs. Neon<a id="security-supabase-vs-neon"></a>
 
@@ -314,7 +328,7 @@ Authentication Supabase provides authentication through JWT, integrated with RLS
 - In terms of compliance, Neon has achieved SOC 2 Type 1 and Type 2 compliance, demonstrating adherence to high security and privacy standards.
 - Supabase is [SOC 2 Type 1 and Type 2 compliant](https://supabase.com/security). Supabase is also HIPAA compliant meaning you can store your Protected Health Information (PHI) on their hosted platform. Customers can enter into a Business Associate Agreement (BAA) to fulfill HIPAA obligations under their [shared responsibility model](https://supabase.com/docs/guides/platform/shared-responsibility-model#managing-healthcare-data). .
 
-![Security: Supabase vs. Neon](/images/img.png)
+<Image src={Img} alt="Security: Supabase vs. Neon" width={1200} height={600} />
 
 ## Features of Neon vs. Supabase<a id="features-of-neon-vs-supabase"></a>
 
@@ -428,11 +442,11 @@ Time Travel utilizes Neon's instant branching capability to create a temporary b
 
 > Supabase provides a CLI for local development and deployment, a management API for programmatic project management, and official client libraries for various languages.
 
-![Performance Metric 1](/images/img_1.png)
+<Image src={Img1} alt="Performance Metric 1" width={1200} height={600} />
 
-![Performance Metric 2](/images/img_2.png)
+<Image src={Img2} alt="Performance Metric 2" width={1200} height={600} />
 
-![Performance Metric 3](/images/img_3.png)
+<Image src={Img3} alt="Performance Metric 3" width={1200} height={600} />
 
 ## Platform Management Features: Neon vs. Supabase.<a id="platform-management-features-neon-vs-supabase"></a>
 
@@ -506,7 +520,7 @@ Neon offers four support levels: Community, Standard, Priority, and Enterprise.
 <Callout>
 Supabase also has tiered support: Community support is included with the Free plan, while email support is available in the Pro plan.
 
-    The Team plan offers priority email support, SLAs, and daily backups for 14 days. The Enterprise plan provides premium support, a designated support manager, a private Slack channel, and custom SLAs. 
+The Team plan offers priority email support, SLAs, and daily backups for 14 days. The Enterprise plan provides premium support, a designated support manager, a private Slack channel, and custom SLAs. 
 
 </Callout>
 

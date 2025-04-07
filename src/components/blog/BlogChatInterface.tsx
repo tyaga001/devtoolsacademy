@@ -68,7 +68,7 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex size-full items-center justify-center overflow-y-auto bg-neutral-600/50 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-neutral-600/50 backdrop-blur-md"
     >
       <motion.div
         className="mx-auto w-full max-w-2xl overflow-hidden border border-dashed border-neutral-100/15 bg-neutral-900 shadow-xl"

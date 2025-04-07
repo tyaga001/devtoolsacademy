@@ -3,10 +3,13 @@ import * as React from "react"
 import { getMetadata } from "@/lib/metadata"
 import SponsorshipTiers from "@/components/SponsorshipTiers"
 
+import CoverImage from "./cover.png"
+
 export const metadata = getMetadata({
   path: "/sponsor",
   title: "Sponsor | DevTools Academy",
   description: "Support the development of DevTools Academy",
+  image: CoverImage.src,
 })
 
 export default function SponsorPage() {

@@ -6,11 +6,14 @@ import { FaGithub } from "react-icons/fa6"
 import { getMetadata } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
 
+import CoverImage from "./cover.png"
+
 export const metadata = getMetadata({
   path: "/contribute",
   title: "Contribute to Dev Tools Academy",
   description:
     "Learn how to contribute to Dev Tools Academy and help improve this open-source project",
+  image: CoverImage.src,
 })
 
 export default function ContributeRoute() {
@@ -60,7 +63,7 @@ export default function ContributeRoute() {
             For more detailed instructions, please check the{" "}
             <Link
               href="https://github.com/tyaga001/devtoolsacademy/blob/main/CONTRIBUTING.md"
-              className="text-neutral-200 underline outline-none transition-colors hover:text-neutral-400 focus:text-neutral-400"
+              className="text-neutral-200 underline underline-offset-4 outline-none transition-colors hover:text-neutral-400 focus:text-neutral-400"
               target="_blank"
               rel="noopener noreferrer"
             >

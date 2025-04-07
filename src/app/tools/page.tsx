@@ -8,10 +8,13 @@ import ToolSkeleton from "@/components/tools/ToolSkeleton"
 import AlgoliaSearch from "@/components/tools/AlgoliaSearch"
 import LoadingCategories from "@/components/tools/LoadingCategories"
 
+import CoverImage from "./cover.png"
+
 export const metadata = getMetadata({
   path: "/tools",
   title: "Browse Tools | DevTools Academy",
   description: "Browser and compare tools, curated by DevTools Academy",
+  image: CoverImage.src,
 })
 
 interface SearchParams {
