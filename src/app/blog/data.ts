@@ -6,8 +6,21 @@ import ViewTransitionsCoverImage from "@/app/blog/enhancing-web-experiences-with
 import SupabaseCoverImage from "@/app/blog/supabase-vs-clerk/cover.png"
 import MongoDBCoverImage from "@/app/blog/mongoDB-vs-postgreSQL/cover.png"
 import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover.png"
+import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 
 export const allBlogs = [
+  {
+    author: "Ankur Tyagi",
+    slug: "cursor-vs-windsurf",
+    title: "Cursor vs Windsurf - Choose the Right AI Code Editor for Your Team",
+    excerpt: "A detailed comparison to help you choose between Cursor and Windsurf AI code editors",
+    description: "Technical comparison of Cursor and Windsurf covering agent-style assistance, local vs cloud processing, context handling, performance benchmarks, and VS Code integration capabilities.",
+    publishedAt: "2025-04-11T00:00:00Z",
+    image: CursorWindsurfCoverImage.src,
+    category: "AI Code Editor",
+    isNew: true,
+    isFeatured: true,
+  },
   {
     author: "Ankur Tyagi",
     slug: "cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow",
