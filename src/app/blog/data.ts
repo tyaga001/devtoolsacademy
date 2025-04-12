@@ -13,10 +13,9 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "cursor-vs-windsurf",
     title: "Cursor vs Windsurf - Choose the Right AI Code Editor for Your Team",
-    excerpt:
-      "AI-assisted coding has surged in popularity, transforming the developer experience. Two tools, Cursor and Windsurf, have risen rapidly to the forefront of this movement. Cursor, launched in 2023, achieved explosive growth (reportedly reaching over a million users and a $100M ARR in 2025) and has been called the fastest-growing SaaS in its domain. Windsurf, part of the Codeium family, swiftly caught up with its large user base (800k+ developers) and a multi-billion valuation.",
+    excerpt: "Choose the right AI code editor for your development workflow.",
     description:
-      "An in-depth comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
+      "An in depth comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
     publishedAt: "2025-04-11T00:00:00Z",
     image: CursorWindsurfCoverImage.src,
     category: "AI Code Editor",
@@ -44,8 +43,7 @@ export const allBlogs = [
     title: "Enhancing Web Experiences with the View Transitions API",
     excerpt:
       "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
-    description:
-      "Learn how the View Transitions API enhances web experiences.",
+    description: "Learn how the View Transitions API enhances web experiences.",
     publishedAt: "2025-02-24T00:00:00Z",
     image: ViewTransitionsCoverImage.src,
     category: "Web Development",
