@@ -6,8 +6,22 @@ import ViewTransitionsCoverImage from "@/app/blog/enhancing-web-experiences-with
 import SupabaseCoverImage from "@/app/blog/supabase-vs-clerk/cover.png"
 import MongoDBCoverImage from "@/app/blog/mongoDB-vs-postgreSQL/cover.png"
 import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover.png"
+import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 
 export const allBlogs = [
+  {
+    author: "Ankur Tyagi",
+    slug: "cursor-vs-windsurf",
+    title: "Cursor vs Windsurf - Choose the Right AI Code Editor for Your Team",
+    excerpt: "Choose the right AI code editor for your development workflow.",
+    description:
+      "An in depth comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
+    publishedAt: "2025-04-11T00:00:00Z",
+    image: CursorWindsurfCoverImage.src,
+    category: "AI Code Editor",
+    isNew: true,
+    isFeatured: true,
+  },
   {
     author: "Ankur Tyagi",
     slug: "cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow",
@@ -16,7 +30,7 @@ export const allBlogs = [
     excerpt:
       "Choose the right AI code assistant for your development workflow.",
     description:
-      "Explore Cody vs. Cursor to find the perfect AI code assistant for your development workflow. Compare features, performance, and integration to boost productivity.",
+      "An in-depth comparison of Cody and Cursor to help you choose the right AI code assistant",
     publishedAt: "2025-03-17T00:00:00Z",
     image: CodyCoverImage.src,
     category: "AI Code Assistant",
@@ -29,8 +43,7 @@ export const allBlogs = [
     title: "Enhancing Web Experiences with the View Transitions API",
     excerpt:
       "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
-    description:
-      "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
+    description: "Learn how the View Transitions API enhances web experiences.",
     publishedAt: "2025-02-24T00:00:00Z",
     image: ViewTransitionsCoverImage.src,
     category: "Web Development",
@@ -42,7 +55,7 @@ export const allBlogs = [
     slug: "coderabbit-vs-others-ai-code-review-tools",
     title: "CodeRabbit vs Others: Which is the Right AI Code Review Tool",
     excerpt: "Choose the right AI code review tool",
-    description: "CodeRabbit vs Other AI code review tools",
+    description: "Everything about AI code review tools",
     publishedAt: "2024-12-26T00:00:00Z",
     image: CodeRabbitCoverImage.src,
     category: "Code Review",
