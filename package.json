@@ -36,6 +36,7 @@
     "motion": "^12.5.0",
     "next": "^15.2.3",
     "next-view-transitions": "^0.3.4",
+    "prisma": "^5.22.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",

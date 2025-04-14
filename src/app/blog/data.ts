@@ -34,8 +34,8 @@ export const allBlogs = [
     publishedAt: "2025-03-17T00:00:00Z",
     image: CodyCoverImage.src,
     category: "AI Code Assistant",
-    isNew: true,
-    isFeatured: true,
+    isNew: false,
+    isFeatured: false,
   },
   {
     author: "Jitendra Nirnejak",
@@ -73,7 +73,7 @@ export const allBlogs = [
     image: TwilioCoverImage.src,
     category: "SaaS",
     isNew: false,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -124,6 +124,6 @@ export const allBlogs = [
     image: NeonCoverImage.src,
     category: "Database",
     isNew: false,
-    isFeatured: false,
+    isFeatured: true,
   },
 ]
