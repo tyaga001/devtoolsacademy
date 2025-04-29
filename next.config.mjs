@@ -7,6 +7,8 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 
   images: {
+    /** Disable Vercel’s runtime optimiser – stops cache-read billing */
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
