@@ -4,6 +4,13 @@ import BlogHeader from "@/components/blog/BlogHeader"
 
 import CoverImage from "./cover.png"
 import Img66 from "./img_66.png"
+import image1 from "./image1.png"
+import image2 from "./image2.png"
+import image3 from "./image3.png"
+import image4 from "./image4.png"
+import img from "./img.png"
+import img_1 from "./img_1.png"
+import img_2 from "./img_2.png"
 
 export const metadata = getMetadata({
   path: "/blog/stream-vs-twilio",
@@ -19,19 +26,23 @@ export const metadata = getMetadata({
   publishedAt={"2024-12-11T00:00:00Z"}
 />
 
-When it comes to communication use cases, developers mostly think of WebRTC or [WebSockets](https://getstream.io/glossary/#websocket), but if you want to use some additional features in communication then most of the software folks go for [Twilio](https://getstream.io/blog/twilio-stream/).
+> When it comes to communication use cases, developers mostly think of WebRTC or [WebSockets](https://getstream.io/glossary/#websocket), but if you want to use some additional features in communication then most of the software folks go for [Twilio](https://getstream.io/blog/twilio-stream/).
 
-Twilio is quite popular in the industry, but today let’s dive deep into the solution as well as [Stream](https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy) by creating an automated customer support bot.
-
-In this post, let's compare Twilio against Stream by building an automated customer support bot to see which platform truly delivers.
-
-Let’s get started.
+Twilio is an established player in the communication space. However, in this post, we'll take a closer look at both **Twilio** and **Stream** by building an automated customer support bot — and see which platform better fits modern application needs.
 
 ## What is Stream
+
+<a href="https://getstream.io/" target="_blank" rel="noopener noreferrer">
+  <Image src={img} alt="Stream" width={1200} height={600} />
+</a>
 
 > **Stream** is a developer-friendly platform that empowers you to build scalable and feature-rich in-app communication tools, including chat messaging, video and audio calls, and activity feeds. With modern SDKs, step-by-step tutorials, and seamless AI integrations, Stream simplifies creating tailored chat experiences, integrating generative AI, and delivering reliable communication solutions—all backed by a $100 usage credit every month for risk-free building and testing.
 
 ## What is Twilio
+
+<a href="https://www.twilio.com/" target="_blank" rel="noopener noreferrer">
+  <Image src={img_1} alt="Stream" width={1200} height={600} />
+</a>
 
 > Twilio is a cloud communications platform that provides APIs for messaging, voice, video, and more. It’s designed to help developers build customer engagement applications.
 
@@ -42,7 +53,7 @@ Let’s get started.
 - [Stream](https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy) is mostly used for in-app chat use cases, use cases like [social apps](https://getstream.io/chat/solutions/social/) or [e-commerce](https://getstream.io/chat/solutions/marketplaces/), and [gaming](https://getstream.io/chat/solutions/gaming/) applications.
 - Twilio is good when it comes to a multi-modal communication API provider.
 
-![twilio vs stream confusion](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2Fd6aa49d9-1c58-4640-b7c9-ec759d3cd190%2Fimage.png?table=block&id=144518a2-f962-80c6-94fa-db5f0d78bd62&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=860&userId=&cache=v2)
+<Image src={image2} alt="Performance Metric 1" width={800} height={100} />
 
 ---
 
@@ -63,18 +74,18 @@ Let’s get started.
 
 > In its early days, Twilio used monoliths, but as the product scaled, Twilio shifted to multi-tenant cloud infrastructure. Twilio offers APIs for SMS, voice, and chat through its globally distributed infrastructure. Reliability and uptime are the most important things for Twilio for critical communications.
 
-![twilio architecture](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2F586aa13e-7b69-4165-be4a-b8ab9739f83c%2Fimage.png?table=block&id=145518a2-f962-80a2-8593-f29d62d065e2&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=1420&userId=&cache=v2)
+<Image src={image4} alt="Performance Metric 1" width={1200} height={600} />
 
 **Tech Stack**
 
 - **Backend:** javascript (NodeJS) and java microservices.
-- \*\*Data Layer: PostgreSQL as a database and ElasticSearch for analytics,
+- **Data Layer:** PostgreSQL as a database and ElasticSearch for analytics,
 - **Global Infra:** For low latency, Twilio utilizes its global infra and highly available services
 
 **Scalability**
 
-Stream handles millions of users, ideal for high-frequency use cases like chats and feeds.
-Twilio is very good in multi-channel use cases like call management.
+- Stream handles millions of users, ideal for high-frequency use cases like chats and feeds.
+- Twilio is very good in multi-channel use cases like call management.
 
 **Integrations and Capabilities**
 
@@ -106,17 +117,20 @@ Twilio is very good in multi-channel use cases like call management.
 - **Reliability:** Ensures 99.95% uptime SLA.
 - **Optimization:** Global routing ensures minimal message and voice delivery delays.
 
-In the next section, let's explore how to build a customer support bot using these two services 👀
+Next, let's see how to build a customer support bot using these two services 👀
 
 ---
 
 ## Let’s Build Twilio Customer Support Bot 🧑‍🍳
 
-Let’s make sure you have prerequisites:
+✅ Prerequisites
 
-- Node.js and npm you will get here
+Before you begin, make sure you have the following installed and set up:
+- Node.js and npm
 - A Twilio account
-- ngrok or localtunnel now-a-days my personal preference is localtunnel
+- A tunneling tool like ngrok or localtunnel
+(I personally prefer localtunnel for its simplicity and quick setup.)
+
 
 ## Clone existing SDK first
 
@@ -141,7 +155,13 @@ TWILIO_API_KEY=""
 TWILIO_API_SECRET=""
 ```
 
-When localtunnel is installed globally, just use the `lt` command to start the tunnel.
+Once localtunnel is installed globally, you can start a tunnel using the lt command:
+
+```bash
+lt --port 3000
+```
+
+This will expose your local app running on port 3000 to the web.
 
 **Configuring Twilio Sync**
 
@@ -205,13 +225,13 @@ setup the webhook endpoint with tunnel
 npm install -g localtunnel
 ```
 
-now grab the exposed url and setup in the console of the Twilio
+now grab the exposed url and setup in the console of the Twilio.
 
 ---
 
 ## Programmatically Control the Messages 💻
 
-Now that you have all the necessary information, let's dive deeper into the [control](https://www.twilio.com/docs/api/ip-messaging/webhooks#pre-processing) these webhooks provide.
+> Now that you have all the necessary information, let's dive deeper into the [control](https://www.twilio.com/docs/api/ip-messaging/webhooks#pre-processing) these webhooks provide.
 
 By returning a status code of 403 instead of 200, we can block the respective message.
 
@@ -275,13 +295,13 @@ server.listen(port, function() {
 
 ```
 
-That was all about Twilio. let’s build with Stream now.
+That was all about Twilio.
+
+Let’s build with Stream now.
 
 ## Customer Support Bot in Stream
 
-Let's use React for creating the customer support bot using [Stream](https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy).
-
-so let’s start 🚀
+> Let's use React for creating the customer support bot using [Stream](https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy).
 
 make sure you have installed `npm`
 
@@ -294,11 +314,11 @@ npx create-react-app getstream-bot
 1. Visit [**Stream**](https://getstream.io/chat/) and register to get an API key.
 2. For the purpose of this tutorial, we’ll disable auth and permissions checks (note you should obviously not do this in a production app, but it allows you to focus on your chat experience instead of integrating your auth system). Open your stream dashboard , click your app, select “**Chat**” and disable authentication & permissions:
 
-![stream dashboard](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2F6fe4edbd-d471-48e5-8bca-db7b2667f634%2Fimage.png?table=block&id=147518a2-f962-80d8-bae8-f880645847a3&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=1420&userId=&cache=v2)
+<Image src={image1} alt="Performance Metric 1" width={1200} height={600} />
 
 Enough talking, let’s write the code.
 
-Open the Stream dashboard and copy the environment variables and cloning the repo.
+> Open the Stream dashboard and copy the environment variables and cloning the repo.
 
 ```bash
 git clone git@github.com:GetStream/chatbot-tutorial.git
@@ -348,11 +368,15 @@ LUIS_REGION=westus
 
 **Pricing**
 
-> **Twilio** :- Twilio is using the strategy of pay when you use their service i.e. the standard rate of one operation is fixed and that operation is performing n times then the cost will be n x rate
+> **Twilio** : Twilio is using the strategy of pay when you use their service i.e. the standard rate of one operation is fixed and that operation is performing n times then the cost will be n x rate
 
-![twilio pricing](https://tender-bugle-dd6.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Ffac3b9e2-153a-47fb-94bf-a917731986a0%2Fc61454eb-055b-4316-98b7-9cf6298c41d2%2Fimage.png?table=block&id=148518a2-f962-80fb-b035-de890d6ad357&spaceId=fac3b9e2-153a-47fb-94bf-a917731986a0&width=1420&userId=&cache=v2)
+<Image src={image3} alt="Performance Metric 1" width={1200} height={600} />
 
 > **Stream :** Stream operates on a standard SaaS model, charging a subscription fee on a monthly basis.
+
+<a href="https://getstream.io/chat/pricing/" target="_blank" rel="noopener noreferrer">
+  <Image src={img_2} alt="Stream" width={1200} height={600} />
+</a>
 
 ## Stream Pricing
 
@@ -389,9 +413,11 @@ LUIS_REGION=westus
 - 24/7 Support
 - SAML/SSO Integration
 
-[Stream](https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy) offers a comprehensive range of features that can scale with your business needs, providing robust solutions for various messaging use cases.
+> **[Stream](https://getstream.io/)** helps developers build highly engaging apps that scale to millions of users with flexible and performant [**Chat**](https://getstream.io/chat/solutions/dating/), [**Video**](https://getstream.io/video/), [**Voice**](https://getstream.io/video/), [**Feeds**](https://getstream.io/activity-feeds/), and [**Moderation**](https://getstream.io/moderation/) APIs and SDKs — all powered by a [**global edge network**](https://getstream.io/blog/chat-edge-infrastructure/) and enterprise-grade infrastructure.
 
-For more details, visit the [Stream Pricing page](https://getstream.io/chat/pricing/).
+You can get started for free with the [**Stream Maker Account**](https://getstream.io/maker-account/), perfect for developers and early-stage startups.
+
+For a detailed overview of plans and pricing, visit the [**Stream Pricing page**](https://getstream.io/chat/pricing/).
 
 ---
 
@@ -422,3 +448,15 @@ These repositories and guides provide a good foundation for integrating advanced
 Feel free to experiment, customize, and build solutions to meet your specific needs.
 
 Happy coding.
+
+## More Comparisons You Might Find Useful
+
+If you liked this breakdown, here are a few more comparisons that might help you choose the right developer tools:
+
+- [Supabase vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk/)
+- [CodeRabbit vs. Other AI Code Review Tools](https://www.devtoolsacademy.com/blog/coderabbit-vs-others-ai-code-review-tools/)
+- [Neon vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase/)
+- [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL/)
+- [Cody vs. Cursor](https://www.devtoolsacademy.com/blog/cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow/)
+- [State of Databases for Serverless in 2024](/blog/state-of-databases-2024)
+- [Cursor vs Windsurf ](https://www.devtoolsacademy.com/blog/cursor-vs-windsurf/)
