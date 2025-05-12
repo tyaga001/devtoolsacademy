@@ -147,8 +147,11 @@ Let's say you're working on a system that interacts with an old database or exte
 
 This function illustrates how you might handle such a situation:
 
-| def process\_data(data): encoded\_data \= data.encode('latin-1')    return encoded\_data |
-| :---- |
+```python
+def process_data(data):
+    encoded_data = data.encode('latin-1')
+    return encoded_data
+```
 
 Code review tools are designed to enforce modern best practices, which means they will likely flag the use of **Latin-1** and recommend switching to **utf-8** for broader compatibility.
 
@@ -159,15 +162,49 @@ While this is technically correct in most cases, AI does not understand that the
 ## 3\. Handling Temporary Workarounds for Critical Bug Fixes.
 
 Ideally, every bug fix would be well-architected, thoroughly tested, and future-proof. But ***production fires don't wait for perfect fixes in the real world***.
+
 Sometimes, when a critical failure occurs, speed is the priority, and devs must act fast to restore functionality, even if that means implementing a temporary, imperfect workaround. I’ve done this so many times and later refactored it.
 
-***Your app is handling thousands of active users, and suddenly, an external service dependency starts failing intermittently.***
+> ***Your app is handling thousands of active users, and suddenly, an external service dependency starts failing intermittently.***
 
-An external service you depend on starts acting up. Maybe the API's timing out, the database is throwing errors, or your authentication provider's gone dark. Whatever it is, your users are suddenly hitting broken features or crashing the app outright. Frustration levels are rising, revenue's taking a hit, and you are potentially violating SLA agreements.
+> An external service you depend on starts acting up. Maybe the API's timing out, the database is throwing errors, or your authentication provider's gone dark. Whatever it is, your users are suddenly hitting broken features or crashing the app outright. Frustration levels are rising, revenue's taking a hit, and you are potentially violating SLA agreements.
 
 Your team jumps into action, trying to figure out what's gone wrong. But finding the real fix will take some serious digging.
 
-Let's say your app relies on an external API to fetch data, but the service is experiencing intermittent failures. Instead of letting the application crash, you implement a temporary workaround that catches the error and returns a fallback response.
+> Let's say your app relies on an external API to fetch data, but the service is experiencing intermittent failures. Instead of letting the application crash, you implement a temporary workaround that catches the error and returns a fallback response.
+
+```python
+import requests
+import logging
+import time
+
+# Enable logging
+logging.basicConfig(level=logging.INFO)
+EXTERNAL_API_URL = "https://api.example.com/data"
+
+def fetch_data():
+    """
+    Fetches data from an external API. Implements a temporary workaround
+    to handle intermittent failures.
+
+    Returns:
+        dict: The API response or a fallback response in case of failure.
+    """
+    try:
+        response = requests.get(EXTERNAL_API_URL, timeout=3)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Temporary Workaround: API request failed - {e}")
+        return {"status": "error", "message": "Data unavailable, using fallback."}
+
+# Simulating multiple requests
+if __name__ == "__main__":
+    for _ in range(3):
+        data = fetch_data()
+        print(data)
+        time.sleep(2)
+```
 
 In the example above, where the function catches API failures and returns a fallback response, AI may ***flag*** the implementation as insufficient due to the lack of proper error\-handling mechanisms.
 
@@ -179,7 +216,7 @@ From an AI perspective, proper error handling would go beyond logging the error 
 * Using structured exception handling to differentiate between transient failures (e.g., timeouts) and permanent errors (e.g., 404 Not Found).
 * Providing more detailed feedback rather than a generic "Data unavailable" message. etc.
 
-![][image7]
+<Image src={image7} alt="code review" width={1200} height={600} />
 
 Although these recommendations are accurate from a best-practices perspective, they do not always reflect real-world examples. In the face of an urgent production failure, devs usually fix the functionality rather than make it mirror perfect.
 
@@ -188,14 +225,27 @@ Although these recommendations are accurate from a best-practices perspective, t
 We often write quick scripts to solve immediate problems, whether cleaning up a dataset for a one-time analysis, transforming a file format, or automating a simple task.
 In these cases, simplicity and speed matter more than long-term maintainability.
 
-***A short script that does the job efficiently is preferable to an over-engineered solution. If the script isn't meant to be part of a larger system or reused frequently, adding unnecessary complexity only slows things down.***
+> ***A short script that does the job efficiently is preferable to an over-engineered solution. If the script isn't meant to be part of a larger system or reused frequently, adding unnecessary complexity only slows things down.***
 
 Here's an example of a quick, one-off script that cleans a CSV file containing customer survey responses.
 
 Some columns in the dataset have missing values, and we need to remove incomplete rows and save a clean version for analysis. There's no need for elaborate error handling or configurability—just read, clean, and save.
 
-| import pandas as pddef clean\_survey\_data(file):"""Load a CSV file, drop rows with missing values, and save the cleaned data."""data \= pd.read\_csv(file)  \# Load the datasetdata.dropna(inplace=True)  \# Remove incomplete responsesdata.to\_csv("cleaned\_survey.csv", index=False)\# Usageclean\_survey\_data("raw\_survey\_data.csv") |
-| :---- |
+```python
+import pandas as pd
+
+def clean_survey_data(file):
+    """
+    Load a CSV file, drop rows with missing values,
+    and save the cleaned data.
+    """
+    data = pd.read_csv(file)            # Load the dataset
+    data.dropna(inplace=True)           # Remove incomplete responses
+    data.to_csv("cleaned_survey.csv", index=False)
+
+# Usage
+clean_survey_data("raw_survey_data.csv")
+```
 
 This script solves the problem in just a few lines.
 
@@ -206,7 +256,7 @@ But AI-powered tools don’t always distinguish between a simple one-off script 
 
 In this case, the AI suggests refactoring the script to make it more robust by adding input validation, configurable output paths, structured error handling, and logging.
 
-![][image8]
+<Image src={image8} alt="code review" width={1200} height={600} />
 
 While these improvements might be helpful in a **long-term project**, they are unnecessary for a dev who just wants a **quick solution** to clean a dataset and move on.
 
@@ -214,7 +264,7 @@ While these improvements might be helpful in a **long-term project**, they are u
 
 In some projects, especially in research-driven fields like machine learning, scientific computing, or high-performance computing, developers often have to step outside standard implementations to create solutions tailored to highly specific problems.
 
-AI-powered code review tools, however, tend to favor well-established best practices over unconventional but necessary customizations. This can create friction when working on novel challenges where deviating from common patterns is justified and required.
+> AI-powered code review tools, however, tend to favor well-established best practices over unconventional but necessary customizations. This can create friction when working on novel challenges where deviating from common patterns is justified and required.
 
 ***Here's an example**: you're building a machine learning model for diagnosing rare diseases using a dataset with highly imbalanced classes, where positive cases (disease detected) are far fewer than negative cases (no disease).*
 
@@ -222,19 +272,35 @@ A standard loss function like ***Mean Squared Error (MSE)*** or ***Cross-Entropy
 
 To address this, you implement a custom weighted loss function that assigns higher importance to rare positive cases.
 
-| import tensorflow as tfdef custom\_loss(y\_true, y\_pred):"""Custom loss function to handle class imbalance in rare disease classification.   Positive cases (y\_true \= 1\) are given higher weight to improve sensitivity."""weights \= tf.where(y\_true \== 1, 25.0, 1.0)  \# Give rare cases more importance    return tf.reduce\_mean(weights \* (y\_true \- y\_pred)\*\*2)  \# Weighted MSE loss\# Example usage in a modelmodel.compile(optimizer='adam', loss=custom\_loss, metrics=\['accuracy'\]) |
-| :---- |
+```python
+import tensorflow as tf
+
+def custom_loss(y_true, y_pred):
+    """
+    Custom loss function to handle class imbalance in rare disease classification.
+
+    Positive cases (y_true = 1) are given higher weight to improve sensitivity.
+    """
+    weights = tf.where(y_true == 1, 25.0, 1.0)  # Give rare cases more importance
+    return tf.reduce_mean(weights * (y_true - y_pred)**2)  # Weighted MSE loss
+
+# Example usage in a model
+model.compile(optimizer='adam', loss=custom_loss,
+              metrics=['accuracy'])
+```
 
 This function solves a real-world problem that standard loss functions struggle with. Medical AI models must prioritize recall (catching positive cases) over simple accuracy, which this function helps achieve.
 
 However, AI code reviewers might flag this as non-standard and suggest using a built-in loss function like **BinaryCrossentropy()**, arguing that sticking to standard implementations improves reliability and maintainability.
-![][image9]
+
+<Image src={image9} alt="code review" width={1200} height={600} />
+
 
 As a developer who understands their data, you must trust your expertise over generic AI recommendations.
 
 ## 6\. Performance Optimization vs. Readability
 
-In low-level programming and high-performance computing, optimizing execution speed is often more important than keeping the code highly readable.
+> In low-level programming and high-performance computing, optimizing execution speed is often more important than keeping the code highly readable.
 
 Unlike higher-level languages like ***Python*** or ***JavaScript***, ***C*** developers prioritize efficiency, especially when working with large datasets, real-time systems, or embedded applications.
 
@@ -244,12 +310,52 @@ While AI-powered tools may flag this technique as unnecessary complexity, the tr
 
 ***Here's an example of a function that processes a dataset using loop unrolling, which handles four elements per iteration instead of one, reducing the number of loop control operations and improving.***
 
+```c
+#include <stdio.h>
+#define DATA_SIZE 1000  // Example dataset size
 
-###
+void process(int value) {
+    // Simulated computation
+    printf("Processing value: %d\n", value);
+}
+
+void process_data(int *data, int n) {
+    // Optimized loop using loop unrolling
+    int i = 0;
+    for (; i + 3 < n; i += 4) {
+        process(data[i]);
+        process(data[i + 1]);
+        process(data[i + 2]);
+        process(data[i + 3]);
+    }
+    // Handle any remaining elements
+    for (; i < n; i++) {
+        process(data[i]);
+    }
+}
+
+int main() {
+    int data[DATA_SIZE];
+    // Initialize data
+    for (int i = 0; i < DATA_SIZE; i++) {
+        data[i] = i;
+    }
+    // Process the dataset
+    process_data(data, DATA_SIZE);
+    return 0;
+}
+```
 
 AI-powered code reviewers may flag this and suggest replacing it with a **standard loop** for better readability and maintainability:
 
-
+```c
+void process_data(int *data, int n) {
+// AI-suggested code: More readable but potentially slower
+    for (int i = 0; i < n; i++) {
+process(data[i]);
+}
+}
+```
 This version is cleaner and easier to read. However, it increases the number of iterations, introducing more CPU overhead in performance-critical applications.
 
 #### **Why This AI Suggestion Falls Short**
@@ -258,7 +364,7 @@ Unrolling the loop means your code runs faster, particularly with large datasets
 
 ## 7\. Ignoring Domain-Specific Conventions.
 
-Accuracy is critical in financial apps. Whether you're calculating account balances, processing transactions, or handling taxes, even the smallest rounding error can accumulate into significant discrepancies over time.
+> Accuracy is critical in financial apps. Whether you're calculating account balances, processing transactions, or handling taxes, even the smallest rounding error can accumulate into significant discrepancies over time.
 
 The problem is that floating-point arithmetic, which is often used for general numerical calculations in programming, is inherently imprecise because of how floating-point numbers are stored in memory.
 
@@ -266,17 +372,26 @@ However, accuracy is non-negotiable in finance, and devs must use decimal\-based
 
 On the other hand, our AI code review tool suggests using floating-point arithmetic, which is faster.
 
-| def calculate\_total(prices):    return sum(prices) |
-| :---- |
+```python
+def calculate_total(prices):
+    return sum(prices)
+```
 
 However, using the AI-suggested approach could cause precision errors when dealing with fractional amounts.
 
 Financial applications use **Python's** **Decimal class to ensure precision**, which provides exact arithmetic for monetary values.
 
-| from decimal import Decimaldef calculate\_total(prices):"""Accurately sums monetary values using Decimal to prevent floating-point errors."""total \= Decimal('0.00')  \# Start with an exact decimal representation    for price in prices:total \+= Decimal(price)  \# Convert each price to Decimal before summing    return total |
-| :---- |
-
-###
+```python
+from decimal import Decimal
+def calculate_total(prices):
+"""
+Accurately sums monetary values using Decimal to prevent floating-point errors.
+"""
+total = Decimal('0.00')  # Start with an exact decimal representation
+    for price in prices:
+total += Decimal(price)  # Convert each price to Decimal before summing
+    return total
+```
 
 ### **Why the AI's suggestion misses the point**
 
@@ -284,8 +399,9 @@ Floating-point numbers can't perfectly represent every decimal value, so roundin
 
 For instance, adding 0.1 and 0.2 doesn't always give you exactly 0.3.
 
-| print(0.1 \+ 0.2)  \# Output: 0.30000000000000004 |
-| :---- |
+```python
+print(0.1 + 0.2)  # Output: 0.30000000000000004
+```
 
 While a tiny difference like that might seem unimportant, those little errors can add up and cause big problems when dealing with millions of transactions in a financial system.
 
@@ -297,10 +413,13 @@ When developing apps for resource-constrained environments like embedded systems
 
 Unlike traditional desktop or server environments, embedded systems have strict constraints; a trivial file operation on a high-performance machine may consume too much RAM or block execution in an embedded system.
 
-AI-powered code review tools prioritize best practices from general-purpose computing, where standard libraries for file handling work efficiently without concern for hardware limitations. Given this, the AI is likely to suggest a more straightforward, more readable approach, using Python's built-in **open()** function to read the entire file into memory at once:
+> AI-powered code review tools prioritize best practices from general-purpose computing, where standard libraries for file handling work efficiently without concern for hardware limitations. Given this, the AI is likely to suggest a more straightforward, more readable approach, using Python's built-in **open()** function to read the entire file into memory at once:
 
-| def read\_config(file\_path):    with open(file\_path, 'r') as file:        return file.read()  |
-| :---- |
+```python
+def read_config(file_path):
+    with open(file_path, 'r') as file:
+        return file.read()
+```
 
 This approach usually works well on most of today's systems since RAM and processing power aren't typically a problem. The AI prioritizes readability and simplicity, which makes the code easier to maintain and keeps the line count down.
 
@@ -310,8 +429,18 @@ The AI's suggestion doesn't consider the limitations of specific platforms.
 
 AI-powered reviews learn from common programming patterns, which means they might miss optimizations specific to a particular platform.
 
-| def read\_config(file\_path):    try:        with open(file\_path, 'r') as file:\# Custom buffered reading to manage memory usageconfig\_data \= \[\]            while chunk := file.read(64):  \# Read in small chunksconfig\_data.append(chunk)            return ''.join(config\_data)    except OSError:        return "Error reading file" |
-| :---- |
+```python
+def read_config(file_path):
+    try:
+        with open(file_path, 'r') as file:
+# Custom buffered reading to manage memory usage
+config_data = []
+            while chunk := file.read(64):  # Read in small chunks
+config_data.append(chunk)
+            return ''.join(config_data)
+    except OSError:
+        return "Error reading file"
+```
 
 For example, the buffered reading approach is much more scalable, which is important because our system will need to handle larger files in the future.
 
@@ -321,10 +450,13 @@ We've looked at some situations where AI code review tools and human reviewers m
 
 AI code review tools are not a static field. These tools learn more and accumulate data from the day-to-day use of the tools, recording this data and providing feedback based on daily updates.
 
-***AI is not meant to replace human reviewers; it's to help speed up development, find better code quality, and save time.***
-***![][image10]***
+> ***AI is not meant to replace human reviewers; it's to help speed up development, find better code quality, and save time.***
+
+<Image src={image10} alt="code review" width={1200} height={600} />
+
 Many code-review tools now support custom rule configurations so dev teams can calibrate AI review standards to their particular workflows.
-![][image11]
+
+<Image src={image11} alt="code review" width={1200} height={600} />
 
 Over time, these tools will better understand ***project-specific contexts***, leading to fewer ***false positives*** and more relevant suggestions.
 
