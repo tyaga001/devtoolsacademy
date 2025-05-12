@@ -20,7 +20,7 @@ export const allBlogs = [
     category: "Code Review",
     image: CodeRabbitCoverImage.src,
     isNew: false,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -99,7 +99,7 @@ export const allBlogs = [
     image: SupabaseCoverImage.src,
     category: "Auth",
     isNew: false,
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     author: "Ankur Tyagi",
