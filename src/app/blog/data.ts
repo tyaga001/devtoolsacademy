@@ -13,14 +13,13 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "ai-code-reviewers-vs-human-code-reviewers",
     title: "AI Code Reviewers vs Human Code Reviewers",
-    excerpt:
-      "No-fluff comparison of AI-driven and human code review: pros, pitfalls & hybrid workflows",
+    excerpt: "No-fluff comparison of AI-driven and human code reviewers",
     description:
-      "A practical deep-dive into AI code review tools vs traditional human reviewers—covering static & dynamic analysis, LLM insights, rule-based systems, contextual blind spots, and how to blend both for optimal code quality.",
+      "A comparison of AI code review tools vs traditional human reviewers",
     publishedAt: "2025-05-12T00:00:00Z",
-    image: CodeRabbitCoverImage.src,
     category: "Code Review",
-    isNew: true,
+    image: CodeRabbitCoverImage.src,
+    isNew: false,
     isFeatured: true,
   },
   {
