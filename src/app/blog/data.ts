@@ -11,15 +11,29 @@ import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 export const allBlogs = [
   {
     author: "Ankur Tyagi",
+    slug: "ai-code-reviewers-vs-human-code-reviewers",
+    title: "AI Code Reviewers vs Human Code Reviewers",
+    excerpt:
+      "No-fluff comparison of AI-driven and human code review: pros, pitfalls & hybrid workflows",
+    description:
+      "A practical deep-dive into AI code review tools vs traditional human reviewers—covering static & dynamic analysis, LLM insights, rule-based systems, contextual blind spots, and how to blend both for optimal code quality.",
+    publishedAt: "2025-05-12T00:00:00Z",
+    image: CodeRabbitCoverImage.src,
+    category: "Code Review",
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    author: "Ankur Tyagi",
     slug: "cursor-vs-windsurf",
-    title: "Cursor vs Windsurf - Choose the Right AI Code Editor for Your Team",
+    title: "Cursor vs Windsurf: Choose the Right AI Code Editor for Your Team",
     excerpt: "Choose the right AI code editor for your development workflow.",
     description:
       "An in depth comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
     publishedAt: "2025-04-11T00:00:00Z",
     image: CursorWindsurfCoverImage.src,
     category: "AI Code Editor",
-    isNew: true,
+    isNew: false,
     isFeatured: true,
   },
   {
@@ -65,7 +79,7 @@ export const allBlogs = [
   {
     author: "Hrutik Kumthekar",
     slug: "stream-vs-twilio",
-    title: "Twilio vs Stream - A Guide to Building Smarter Support Bots",
+    title: "Twilio vs Stream: A Guide to Building Smarter Support Bots",
     excerpt: "A Guide to Building Smarter Support Bots",
     description:
       "A comparison of Twilio and Stream for building automated customer support solutions",
@@ -78,7 +92,7 @@ export const allBlogs = [
   {
     author: "Ankur Tyagi",
     slug: "supabase-vs-clerk",
-    title: "Supabase vs Clerk - Choose the Right Auth for Your SaaS",
+    title: "Supabase vs Clerk: Choose the Right Auth for Your SaaS",
     excerpt: "Choose the right Auth for your SaaS",
     description:
       "An in-depth comparison of Clerk and Supabase to help you choose the best auth for your SaaS",
@@ -91,7 +105,7 @@ export const allBlogs = [
   {
     author: "Ankur Tyagi",
     slug: "mongoDB-vs-postgreSQL",
-    title: "MongoDB vs PostgreSQL - A Technical Comparison",
+    title: "MongoDB vs PostgreSQL: A Technical Comparison",
     excerpt: "A technical comparison of MongoDB vs. PostgreSQL",
     description:
       "A technical comparison of MongoDB vs. PostgreSQL to help you choose the best database solution for your SaaS",
