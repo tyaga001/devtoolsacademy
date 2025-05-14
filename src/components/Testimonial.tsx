@@ -97,6 +97,7 @@ function Testimonial() {
         <div
           className="flex justify-center space-x-2"
           aria-label="5 out of 5 stars"
+          role="img"
         >
           {[...Array(5)].map((_, i) => (
             <Star

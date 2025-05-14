@@ -66,9 +66,9 @@ const QuickTip: React.FC<{ tipIndex: number }> = ({ tipIndex }) => (
 
 const BlogPostList: React.FC = () => (
   <div>
-    <h4 className="mb-4 text-xl font-semibold tracking-tight">
+    <h2 className="mb-4 text-xl font-semibold tracking-tight">
       Other Blog Posts
-    </h4>
+    </h2>
     <ul className="space-y-3">
       {recentBlogPosts.map((post) => (
         <li key={post.url}>
