@@ -6,7 +6,8 @@ import BlogChatInterface from "@/components/blog/BlogChatInterface"
 import ViewCounter from "@/components/blog/ViewCounter"
 import SocialShare from "@/components/blog/SocialShare"
 import Breadcrumb from "@/components/blog/Breadcrumb"
-import { CircleUserRound } from "lucide-react"
+import { CircleUserRound, Clock } from "lucide-react"
+import { calculateReadingTime } from "@/lib/utils"
 
 interface BlogHeaderProps {
   title: string
@@ -21,11 +22,14 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
 }) => {
   const [content, setContent] = useState("")
   const [showChat, setShowChat] = useState(false)
+  const [readTime, setReadTime] = useState<number>(0)
 
   React.useEffect(() => {
     const ele = document.querySelector("article")
     if (ele !== null) {
-      setContent(ele.innerHTML)
+      const articleContent = ele.innerHTML
+      setContent(articleContent)
+      setReadTime(calculateReadingTime(articleContent))
     }
   }, [])
 
@@ -58,6 +62,11 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
           </span>
           <span>|</span>
           <span className="text-sm">{formatDate(publishedAt)}</span>
+          <span>|</span>
+          <span className="flex items-center gap-1 text-sm">
+            <Clock size={14} />
+            {readTime} min read
+          </span>
           <span>|</span>
           <SocialShare title={title} />
         </div>

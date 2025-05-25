@@ -1,11 +1,11 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "next-view-transitions"
 import Image from "next/image"
 import { CircleUserRound, Clock } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn, calculateReadingTime } from "@/lib/utils"
 import { allBlogs } from "@/app/blog/data"
 
 const featuredPosts = allBlogs.filter((post) => post.isFeatured)
@@ -17,7 +17,6 @@ interface BlogCardProps {
   author: string
   image: string
   slug: string
-  readTime?: string
   category: string
   isNew?: boolean
 }
@@ -29,11 +28,26 @@ const BlogCard: React.FC<BlogCardProps> = ({
   author,
   image,
   slug,
-  readTime,
   category,
   isNew,
 }) => {
-  const defaultReadTime = "8 min read"
+  const [readTime, setReadTime] = useState<number>(0)
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch(`/api/blog-content?slug=${slug}`)
+        if (!response.ok) throw new Error("Failed to fetch content")
+        const data = await response.json()
+        setReadTime(calculateReadingTime(data.content))
+      } catch (error) {
+        console.error(`Failed to fetch content for ${slug}:`, error)
+        // Fallback to excerpt if content fetch fails
+        setReadTime(calculateReadingTime(excerpt))
+      }
+    }
+    fetchContent()
+  }, [slug, excerpt])
 
   return (
     <Link
@@ -65,7 +79,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
             <CircleUserRound size={14} /> {author}
           </p>
           <p className="flex items-center gap-1">
-            <Clock size={14} /> {readTime || defaultReadTime}
+            <Clock size={14} /> {readTime} min read
           </p>
         </div>
       </div>
