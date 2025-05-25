@@ -34,19 +34,28 @@ const BlogCard: React.FC<BlogCardProps> = ({
   const [readTime, setReadTime] = useState<number>(0)
 
   useEffect(() => {
+    let isMounted = true
     const fetchContent = async () => {
       try {
         const response = await fetch(`/api/blog-content?slug=${slug}`)
         if (!response.ok) throw new Error("Failed to fetch content")
         const data = await response.json()
-        setReadTime(calculateReadingTime(data.content))
+        if (isMounted) {
+          setReadTime(calculateReadingTime(data.content))
+        }
       } catch (error) {
         console.error(`Failed to fetch content for ${slug}:`, error)
-        // Fallback to excerpt if content fetch fails
-        setReadTime(calculateReadingTime(excerpt))
+        if (isMounted) {
+          // Fallback to excerpt if content fetch fails
+          setReadTime(calculateReadingTime(excerpt))
+        }
       }
     }
     fetchContent()
+
+    return () => {
+      isMounted = false
+    }
   }, [slug, excerpt])
 
   return (
