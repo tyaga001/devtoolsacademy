@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef } from "react"
+"use client"
+
+import React, { useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { Send, X, Loader2 } from "lucide-react"
-
-interface ChatMessage {
-  role: "human" | "assistant"
-  content: string
-}
+import { useChat } from "@ai-sdk/react"
 
 interface BlogChatInterfaceProps {
   blogContent: string
@@ -16,50 +14,34 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
   blogContent,
   onClose,
 }) => {
-  const [messages, setMessages] = useState<ChatMessage[]>([])
-  const [input, setInput] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+  const { messages, input, setInput, append, status } = useChat({
+    body: {
+      blogContent,
+    },
+  })
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
-  useEffect(scrollToBottom, [messages])
+  useEffect(() => {
+    scrollToBottom()
+    inputRef.current?.focus()
+  }, [messages])
 
   const handleSend = async () => {
-    if (!input.trim()) return
-
-    const userMessage: ChatMessage = { role: "human", content: input }
-    setMessages((prev) => [...prev, userMessage])
+    if (!input.trim() || status === "streaming") return
+    const currentInput = input
     setInput("")
-    setIsLoading(true)
+    append({ content: currentInput, role: "user" })
+  }
 
-    try {
-      const response = await fetch("/api/summarize", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: blogContent, query: input }),
-      })
-
-      if (!response.ok) throw new Error("Failed to get response")
-
-      const data = await response.json()
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.answer },
-      ])
-    } catch (error) {
-      console.error("Error in chat:", error)
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Sorry, I encountered an error. Please try again.",
-        },
-      ])
-    } finally {
-      setIsLoading(false)
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault()
+      handleSend()
     }
   }
 
@@ -94,19 +76,17 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className={`flex ${msg.role === "human" ? "justify-end" : "justify-start"}`}
+                className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[75%] rounded-lg px-3 py-1.5 text-neutral-200 ${
-                    msg.role === "human" ? "bg-blue-500" : "bg-neutral-700"
-                  }`}
+                  className={`max-w-[75%] rounded-lg px-3 py-1.5 text-neutral-200 ${msg.role === "user" ? "bg-blue-500" : "bg-neutral-700"}`}
                 >
                   {msg.content}
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
-          {isLoading && (
+          {status === "submitted" && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -123,17 +103,19 @@ const BlogChatInterface: React.FC<BlogChatInterfaceProps> = ({
         <div className="p-4">
           <div className="flex border border-dashed border-neutral-100/15">
             <input
+              ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && handleSend()}
+              onKeyDown={handleKeyPress}
               className="grow bg-neutral-800 px-3 py-2 text-neutral-300 focus:outline-none"
               placeholder="Ask about the blog..."
+              disabled={status === "streaming"}
             />
             <button
               onClick={handleSend}
-              disabled={isLoading}
-              className="bg-blue-500 px-4 py-2 text-neutral-300 transition-colors hover:bg-blue-600 focus:bg-blue-600 focus:outline-none"
+              disabled={status === "streaming" || !input.trim()}
+              className="bg-blue-500 px-4 py-2 text-neutral-300 transition-colors hover:bg-blue-600 focus:bg-blue-600 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
             >
               <Send size={18} />
             </button>
