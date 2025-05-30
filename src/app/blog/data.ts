@@ -11,6 +11,20 @@ import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 export const allBlogs = [
   {
     author: "Ankur Tyagi",
+    slug: "betterauth-vs-nextauth",
+    title:
+      "BetterAuth vs NextAuth: Choose the Right Authentication Library For Your Next.js App?",
+    excerpt:
+      "No-fluff comparison of BetterAuth and NextAuth for modern authentication in Next.js apps.",
+    description:
+      "An in-depth comparison of BetterAuth and NextAuth to help you choose the best auth for your SaaS",
+    publishedAt: "2025-06-02T00:00:00Z",
+    category: "Authentication",
+    isNew: false,
+    isFeatured: false,
+  },
+  {
+    author: "Ankur Tyagi",
     slug: "ai-code-reviewers-vs-human-code-reviewers",
     title: "AI Code Reviewers vs Human Code Reviewers",
     excerpt: "No-fluff comparison of AI-driven and human code reviewers",
