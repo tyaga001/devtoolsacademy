@@ -13,7 +13,7 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "betterauth-vs-nextauth",
     title:
-      "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS?",
+      "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS",
     excerpt: "Choose the right authentication library for your Next.js app",
     description:
       "A comparison of BetterAuth and NextAuth to help you choose the best authentication library for your app",
