@@ -13,12 +13,11 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "betterauth-vs-nextauth",
     title:
-      "BetterAuth vs NextAuth: Choose the Right Authentication Library For Your Next.js App?",
-    excerpt:
-      "No-fluff comparison of BetterAuth and NextAuth for modern authentication in Next.js apps.",
+      "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS?",
+    excerpt: "Choose the right authentication library for your Next.js app",
     description:
-      "An in-depth comparison of BetterAuth and NextAuth to help you choose the best auth for your SaaS",
-    publishedAt: "2025-06-02T00:00:00Z",
+      "A comparison of BetterAuth and NextAuth to help you choose the best authentication library for your app",
+    publishedAt: "2025-05-30T00:00:00Z",
     category: "Authentication",
     image: CodeRabbitCoverImage.src,
     isNew: false,
@@ -28,9 +27,9 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "ai-code-reviewers-vs-human-code-reviewers",
     title: "AI Code Reviewers vs Human Code Reviewers",
-    excerpt: "No-fluff comparison of AI-driven and human code reviewers",
+    excerpt: "A comparison of AI code review tools vs human reviewers",
     description:
-      "A comparison of AI code review tools vs traditional human reviewers",
+      "A comparison of AI code reviewers and human reviewers to help you choose the best tool for your team",
     publishedAt: "2025-05-12T00:00:00Z",
     category: "Code Review",
     image: CodeRabbitCoverImage.src,
@@ -43,7 +42,7 @@ export const allBlogs = [
     title: "Cursor vs Windsurf: Choose the Right AI Code Editor for Your Team",
     excerpt: "Choose the right AI code editor for your development workflow.",
     description:
-      "An in depth comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
+      "A comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
     publishedAt: "2025-04-11T00:00:00Z",
     image: CursorWindsurfCoverImage.src,
     category: "AI Code Editor",
@@ -58,7 +57,7 @@ export const allBlogs = [
     excerpt:
       "Choose the right AI code assistant for your development workflow.",
     description:
-      "An in-depth comparison of Cody and Cursor to help you choose the right AI code assistant",
+      "A comparison of Cody and Cursor to help you choose the right AI code assistant",
     publishedAt: "2025-03-17T00:00:00Z",
     image: CodyCoverImage.src,
     category: "AI Code Assistant",
@@ -109,7 +108,7 @@ export const allBlogs = [
     title: "Supabase vs Clerk: Choose the Right Auth for Your SaaS",
     excerpt: "Choose the right Auth for your SaaS",
     description:
-      "An in-depth comparison of Clerk and Supabase to help you choose the best auth for your SaaS",
+      "A comparison of Clerk and Supabase to help you choose the best auth for your SaaS",
     publishedAt: "2024-10-28T00:00:00Z",
     image: SupabaseCoverImage.src,
     category: "Auth",
@@ -147,7 +146,7 @@ export const allBlogs = [
     title: "Neon Postgres vs Supabase: Choose the Right Database for Your SaaS",
     excerpt: "Choose the right Database for your SaaS.",
     description:
-      "An in-depth comparison of Neon and Supabase to help you choose the best database for your SaaS",
+      "A comparison of Neon and Supabase to help you choose the best database for your SaaS",
     publishedAt: "2024-08-08T00:00:00Z",
     image: NeonCoverImage.src,
     category: "Database",
