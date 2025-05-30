@@ -21,8 +21,8 @@ export const allBlogs = [
     publishedAt: "2025-05-30T00:00:00Z",
     category: "Authentication",
     image: BetterAuthCoverImage.src,
-    isNew: false,
-    isFeatured: false,
+    isNew: true,
+    isFeatured: true,
   },
   {
     author: "Ankur Tyagi",
