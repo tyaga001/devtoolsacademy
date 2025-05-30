@@ -7,6 +7,7 @@ import SupabaseCoverImage from "@/app/blog/supabase-vs-clerk/cover.png"
 import MongoDBCoverImage from "@/app/blog/mongoDB-vs-postgreSQL/cover.png"
 import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover.png"
 import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
+import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
 
 export const allBlogs = [
   {
@@ -19,7 +20,7 @@ export const allBlogs = [
       "A comparison of BetterAuth and NextAuth to help you choose the best authentication library for your app",
     publishedAt: "2025-05-30T00:00:00Z",
     category: "Authentication",
-    image: CodeRabbitCoverImage.src,
+    image: BetterAuthCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
