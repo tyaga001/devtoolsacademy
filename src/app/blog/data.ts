@@ -20,6 +20,7 @@ export const allBlogs = [
       "An in-depth comparison of BetterAuth and NextAuth to help you choose the best auth for your SaaS",
     publishedAt: "2025-06-02T00:00:00Z",
     category: "Authentication",
+    image: CodeRabbitCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
