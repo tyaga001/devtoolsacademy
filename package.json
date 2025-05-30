@@ -12,6 +12,7 @@
     "db-create": "npx prisma db push --schema=./prisma/schema.prisma"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^1.2.12",
     "@clerk/nextjs": "^6.12.9",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
@@ -27,6 +28,7 @@
     "@umami/api-client": "^0.78.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
+    "ai": "^4.3.16",
     "algoliasearch": "4.24",
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",
@@ -45,8 +47,8 @@
     "uuid": "^11.1.0",
     "vaul": "^1.1.2",
     "zod": "^3.24.2"
-    },
-    "devDependencies": {
+  },
+  "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22.13.11",
     "@types/react": "^19.0.12",
@@ -61,9 +63,9 @@
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "prisma": "^5.22.0",
     "shiki": "^3.2.1",
     "tailwindcss": "^3.4.17",
-    "prisma": "^5.22.0",
     "typescript": "^5.8.2"
-    }
+  }
 }
