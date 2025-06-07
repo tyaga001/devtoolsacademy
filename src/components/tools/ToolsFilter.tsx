@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Check, ChevronDown, Filter, SortAsc } from "lucide-react"
+import { Check, ChevronDown, Filter, SortAsc, X } from "lucide-react"
 import {
   Popover,
   PopoverContent,
@@ -213,21 +213,23 @@ const ToolsFilter: React.FC = () => {
       {selectedTags.length > 0 && (
         <>
           <hr className="border-dashed border-neutral-100/15" />
-          <div className="flex items-center gap-1 p-2 ">
+          <div className="flex items-center gap-1 p-3">
             <p className="font-semibold leading-none">Tags Selected:</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               {selectedTags.map((item) => (
                 <span
                   key={item}
-                  className="flex items-center gap-2 rounded-full bg-neutral-800 px-3 py-1 text-sm leading-none transition-colors hover:bg-neutral-900"
+                  className="flex items-center gap-2 rounded-full bg-neutral-800 p-2 transition-colors hover:bg-neutral-900"
                 >
-                  {item}
+                  <span className="pl-1.5 text-sm capitalize leading-none">
+                    {item}
+                  </span>
                   <button
                     onClick={() => updateFilters("tags", item)}
-                    className="transition-colors duration-200 hover:text-red-400"
+                    className="text-sm transition-colors hover:text-red-400"
                     aria-label={`Remove ${item} filter`}
                   >
-                    x
+                    <X className="size-4" />
                   </button>
                 </span>
               ))}
@@ -238,21 +240,23 @@ const ToolsFilter: React.FC = () => {
       {selectedCategories.length > 0 && (
         <>
           <hr className="border-dashed border-neutral-100/15" />
-          <div className="flex items-center gap-1 p-2">
+          <div className="flex items-center gap-1 p-3">
             <p className="font-semibold leading-none">Categories Selected:</p>
             <div className="flex flex-wrap items-center gap-2">
               {selectedCategories.map((item) => (
                 <span
                   key={item}
-                  className="flex items-start gap-2 rounded-full bg-neutral-800 px-3 py-1.5 text-sm leading-none transition-colors hover:bg-neutral-900"
+                  className="flex items-center gap-2 rounded-full bg-neutral-800 p-2 transition-colors hover:bg-neutral-900"
                 >
-                  <span className="text-sm capitalize">{item}</span>
+                  <span className="pl-1.5 text-sm capitalize leading-none">
+                    {item}
+                  </span>
                   <button
                     onClick={() => updateFilters("categories", item)}
                     className="text-sm transition-colors hover:text-red-400"
                     aria-label={`Remove ${item} filter`}
                   >
-                    x
+                    <X className="size-4" />
                   </button>
                 </span>
               ))}
