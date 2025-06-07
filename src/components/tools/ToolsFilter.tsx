@@ -113,86 +113,68 @@ const ToolsFilter: React.FC = () => {
               </div>
               <ChevronDown className="size-4" />
             </PopoverTrigger>
-            <PopoverContent className="ml-2 w-[300px] rounded border border-white/20 bg-[#141414] p-4 shadow-lg md:ml-0 md:w-[400px]">
+            <PopoverContent className="ml-2 w-[300px] rounded-none border border-dashed border-neutral-100/15 bg-[#141414] p-4 shadow-lg md:ml-0 md:w-[400px]">
               <div className="rounded-lg">
-                <div className="mb-4 flex items-center justify-between">
-                  <h2 className="text-xl font-bold text-neutral-200 md:text-2xl">
-                    Filters
-                  </h2>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={clearFilters}
-                    className="rounded-full text-xs text-neutral-400 hover:text-neutral-300 md:text-sm"
-                  >
-                    Clear All
-                  </Button>
-                </div>
-
-                <div className="flex gap-6">
+                <div className="mb-4 flex gap-6">
                   <div className="flex-1">
                     <h3 className="mb-2 flex items-center text-sm font-semibold text-neutral-200 md:text-lg">
-                      <Folder className="mr-2 size-4 md:size-5" />
                       Categories
                     </h3>
-                    <div className="rounded-[10px]">
-                      <div className="p-2">
-                        {categories.map((category) => (
-                          <div
-                            key={category}
-                            className={`flex w-full cursor-pointer items-center justify-between rounded px-3 py-2 text-left text-neutral-300 transition-colors duration-200 hover:bg-neutral-700`}
-                            tabIndex={0}
-                            role="button"
-                            onKeyDown={(e) => {
-                              e.key === "Enter" &&
-                                updateFilters("categories", category)
-                            }}
-                            onClick={() =>
-                              updateFilters("categories", category)
-                            }
-                          >
-                            <span className="text-xs capitalize md:text-sm">
-                              {category}
-                            </span>
-                            {selectedCategories.includes(category) && (
-                              <Check className="size-3 md:size-4" />
-                            )}
-                          </div>
-                        ))}
+                    {categories.map((category) => (
+                      <div
+                        key={category}
+                        className={`flex w-full cursor-pointer items-center justify-between border border-dashed border-transparent px-3 py-2 text-left text-neutral-300 transition-colors duration-200 hover:border-neutral-100/15`}
+                        tabIndex={0}
+                        role="button"
+                        onKeyDown={(e) => {
+                          e.key === "Enter" &&
+                            updateFilters("categories", category)
+                        }}
+                        onClick={() => updateFilters("categories", category)}
+                      >
+                        <span className="text-xs capitalize md:text-sm">
+                          {category}
+                        </span>
+                        {selectedCategories.includes(category) && (
+                          <Check className="size-3 md:size-4" />
+                        )}
                       </div>
-                    </div>
+                    ))}
                   </div>
 
                   <div className="flex-1">
                     <h3 className="mb-2 flex items-center text-sm font-semibold text-neutral-200 md:text-lg">
-                      <Tag className="mr-2 size-4 md:size-5" />
                       Tags
                     </h3>
-                    <div className="rounded-[10px]">
-                      <div className="p-2">
-                        {tags.map((tag) => (
-                          <div
-                            key={tag}
-                            className={`flex w-full cursor-pointer items-center justify-between rounded px-3 py-2 text-left text-neutral-300 transition-colors duration-200 hover:bg-neutral-700`}
-                            tabIndex={0}
-                            role="button"
-                            onKeyDown={(e) =>
-                              e.key === "Enter" && updateFilters("tags", tag)
-                            }
-                            onClick={() => updateFilters("tags", tag)}
-                          >
-                            <span className="text-xs capitalize md:text-sm">
-                              {tag}
-                            </span>
-                            {selectedTags.includes(tag) && (
-                              <Check className="size-3 md:size-4" />
-                            )}
-                          </div>
-                        ))}
+                    {tags.map((tag) => (
+                      <div
+                        key={tag}
+                        className={`flex w-full cursor-pointer items-center justify-between border border-dashed border-transparent px-3 py-2 text-left text-neutral-300 transition-colors duration-200 hover:border-neutral-100/15`}
+                        tabIndex={0}
+                        role="button"
+                        onKeyDown={(e) =>
+                          e.key === "Enter" && updateFilters("tags", tag)
+                        }
+                        onClick={() => updateFilters("tags", tag)}
+                      >
+                        <span className="text-xs capitalize md:text-sm">
+                          {tag}
+                        </span>
+                        {selectedTags.includes(tag) && (
+                          <Check className="size-3 md:size-4" />
+                        )}
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={clearFilters}
+                  className="w-full border border-dashed border-neutral-100/15 bg-neutral-800 text-xs text-neutral-200 md:text-sm"
+                >
+                  Clear All
+                </Button>
               </div>
             </PopoverContent>
           </Popover>
@@ -205,12 +187,12 @@ const ToolsFilter: React.FC = () => {
               </div>
               <ChevronDown className="size-4" />
             </PopoverTrigger>
-            <PopoverContent className="w-36 rounded border border-white/20 bg-[#141414] p-2 shadow-lg md:w-48">
-              <div className="flex flex-col gap-1">
+            <PopoverContent className="w-36 rounded-none border border-dashed border-neutral-100/15 bg-[#141414] p-0 shadow-lg md:w-48">
+              <div className="flex flex-col">
                 {["recent", "popular", "alphabetical"].map((option) => (
                   <button
                     key={option}
-                    className="flex items-center justify-between rounded px-3 py-2 text-left text-xs capitalize text-neutral-300 transition-colors duration-200 hover:bg-neutral-100/10 md:text-sm"
+                    className="flex items-center justify-between p-3 text-left text-xs capitalize text-neutral-300 transition-colors duration-200 hover:bg-neutral-100/10 md:text-sm"
                     onClick={() => {
                       updateSort(option)
                       setSelectedSort(option)
@@ -229,50 +211,54 @@ const ToolsFilter: React.FC = () => {
       </div>
 
       {selectedTags.length > 0 && (
-        <div className="flex flex-col gap-1">
-          <div>
-            <p className="m-0 p-0">Tags Selected:</p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {selectedTags.map((item) => (
-              <span
-                key={item}
-                className="flex items-center gap-2 rounded-full bg-neutral-100/10 px-3 py-1 text-sm transition-colors duration-200 hover:bg-white/20"
-              >
-                {item}
-                <button
-                  onClick={() => updateFilters("tags", item)}
-                  className="transition-colors duration-200 hover:text-red-400"
-                  aria-label={`Remove ${item} filter`}
+        <>
+          <hr className="border-dashed border-neutral-100/15" />
+          <div className="flex items-center gap-1 p-2 ">
+            <p className="font-semibold leading-none">Tags Selected:</p>
+            <div className="flex flex-wrap gap-2">
+              {selectedTags.map((item) => (
+                <span
+                  key={item}
+                  className="flex items-center gap-2 rounded-full bg-neutral-800 px-3 py-1 text-sm leading-none transition-colors hover:bg-neutral-900"
                 >
-                  x
-                </button>
-              </span>
-            ))}
+                  {item}
+                  <button
+                    onClick={() => updateFilters("tags", item)}
+                    className="transition-colors duration-200 hover:text-red-400"
+                    aria-label={`Remove ${item} filter`}
+                  >
+                    x
+                  </button>
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
       {selectedCategories.length > 0 && (
-        <div className="flex items-center gap-1">
-          <p className="leading-none">Categories Selected:</p>
-          <div className="flex flex-wrap items-center gap-2">
-            {selectedCategories.map((item) => (
-              <span
-                key={item}
-                className="flex items-start gap-2 rounded-full bg-neutral-800 px-3 py-1.5 text-sm leading-none transition-colors hover:bg-neutral-900"
-              >
-                <span className="text-sm capitalize">{item}</span>
-                <button
-                  onClick={() => updateFilters("categories", item)}
-                  className="text-sm transition-colors hover:text-red-400"
-                  aria-label={`Remove ${item} filter`}
+        <>
+          <hr className="border-dashed border-neutral-100/15" />
+          <div className="flex items-center gap-1 p-2">
+            <p className="font-semibold leading-none">Categories Selected:</p>
+            <div className="flex flex-wrap items-center gap-2">
+              {selectedCategories.map((item) => (
+                <span
+                  key={item}
+                  className="flex items-start gap-2 rounded-full bg-neutral-800 px-3 py-1.5 text-sm leading-none transition-colors hover:bg-neutral-900"
                 >
-                  x
-                </button>
-              </span>
-            ))}
+                  <span className="text-sm capitalize">{item}</span>
+                  <button
+                    onClick={() => updateFilters("categories", item)}
+                    className="text-sm transition-colors hover:text-red-400"
+                    aria-label={`Remove ${item} filter`}
+                  >
+                    x
+                  </button>
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   )
