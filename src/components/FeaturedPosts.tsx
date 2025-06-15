@@ -45,7 +45,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
       )}
     >
       <div className="relative h-48">
-        <Image src={image} alt={title} layout="fill" objectFit="cover" />
+        <Image src={image} alt={title} fill className="object-cover" />
         {isNew && (
           <span className="absolute right-2 top-2 rounded-full bg-yellow-400 px-2 py-1 text-xs font-bold text-black">
             NEW
