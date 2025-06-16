@@ -12,24 +12,28 @@ export function calculateReadingTime(content: string): number {
 }
 
 export function formatDate(date: Date | string): string {
-  if (date)
-    return new Date(date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-  else {
-    return ""
-  }
+  if (!date) return ""
+
+  const d = typeof date === "string" ? new Date(date) : date
+
+  if (Number.isNaN(d.getTime())) return ""
+
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  })
 }
 
 export function formatTime(date: Date | string): string {
-  if (date)
-    return new Date(date).toLocaleDateString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    })
-  else {
-    return ""
-  }
+  if (!date) return ""
+
+  const d = typeof date === "string" ? new Date(date) : date
+
+  if (Number.isNaN(d.getTime())) return ""
+
+  return d.toLocaleDateString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  })
 }
