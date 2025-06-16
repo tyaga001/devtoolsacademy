@@ -97,10 +97,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
         <aside className="md:col-span-2">
           <div className="grid grid-cols-1 gap-6 p-8 md:grid-cols-2">
             <div>
-              <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-                <Tag className="size-4" />
-                Categories
-              </h3>
+              <h3 className="mb-3 text-lg font-semibold">Categories</h3>
               <div className="flex flex-wrap gap-2">
                 {tool.categories.map((category) => (
                   <Badge
@@ -114,10 +111,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               </div>
             </div>
             <div>
-              <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-                <Hash className="size-4" />
-                Tags
-              </h3>
+              <h3 className="mb-3 text-lg font-semibold">Tags</h3>
               <div className="flex flex-wrap gap-2">
                 {tool.tags.map((tag) => (
                   <Badge
