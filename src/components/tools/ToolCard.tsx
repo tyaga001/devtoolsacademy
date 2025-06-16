@@ -1,9 +1,11 @@
 import * as React from "react"
-import { ToolCardInterface } from "@/lib/types"
-import { Star, GitFork, Clock } from "lucide-react"
-import { Card, CardHeader, CardContent, CardFooter } from "../ui/card"
-import { Badge } from "../ui/badge"
 import { Link } from "next-view-transitions"
+import { Star, GitFork, Clock } from "lucide-react"
+
+import { ToolCardInterface } from "@/lib/types"
+import { formatDate } from "@/lib/utils"
+import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 interface ToolCardProps {
   tool: ToolCardInterface
@@ -73,9 +75,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
               <span>Last Commit</span>
             </div>
             <div>
-              {tool.lastUpdated && (
-                <span>{new Date(tool.lastUpdated).toLocaleDateString()}</span>
-              )}
+              {tool.lastUpdated && <span>{formatDate(tool.lastUpdated)}</span>}
             </div>
           </div>
         </CardFooter>
