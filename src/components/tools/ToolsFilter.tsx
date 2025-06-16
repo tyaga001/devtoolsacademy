@@ -103,12 +103,12 @@ const ToolsFilter: React.FC = () => {
   return (
     <div className="flex w-full flex-col border border-dashed border-neutral-100/15 text-neutral-200">
       <div className="flex w-full flex-col-reverse md:flex-row">
-        <div className="flex-1">
+        <div className="flex-1 border-t md:border-t-0 border-dashed border-neutral-100/15">
           <SearchBar />
         </div>
         <div className="flex items-center justify-end">
           <Popover>
-            <PopoverTrigger className="flex w-full items-center justify-around gap-2 border-x border-dashed border-neutral-100/15 bg-neutral-900 px-2 py-1 outline-none transition-colors duration-200 hover:bg-neutral-100/10 focus:bg-neutral-100/10 md:w-fit md:px-4 md:py-3">
+            <PopoverTrigger className="flex w-full items-center justify-around gap-2 border-r md:border-l border-dashed border-neutral-100/15 bg-neutral-900 px-2 py-3 outline-none transition-colors duration-200 hover:bg-neutral-100/10 focus:bg-neutral-100/10 md:w-fit md:px-4 md:py-3">
               <div className="flex items-center gap-2">
                 <Filter className="size-4" />
                 Filters
@@ -182,7 +182,7 @@ const ToolsFilter: React.FC = () => {
           </Popover>
 
           <Popover>
-            <PopoverTrigger className="flex w-full items-center justify-around gap-2 bg-neutral-900 px-2 py-1 outline-none transition-colors duration-200 hover:bg-neutral-100/10 focus:bg-neutral-100/10 md:w-fit md:px-4 md:py-3">
+            <PopoverTrigger className="flex w-full items-center justify-around gap-2 bg-neutral-900 px-2 py-3 outline-none transition-colors duration-200 hover:bg-neutral-100/10 focus:bg-neutral-100/10 md:w-fit md:px-4 md:py-3">
               <div className="flex items-center gap-2">
                 <SortAsc className="size-4" />
                 Sort By
