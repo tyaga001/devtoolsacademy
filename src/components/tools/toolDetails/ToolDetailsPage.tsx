@@ -4,6 +4,7 @@ import { Star, GitFork, Clock, ExternalLink, Book, Code } from "lucide-react"
 import { FaGithub } from "react-icons/fa6"
 
 import { ToolDetailsInterface } from "@/lib/types"
+import { formatDate } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 
 import SimilarTools from "./SimilarTools"
@@ -169,13 +170,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 <div className="mt-4">
                   <p className="text-xs text-neutral-400">Last Commit</p>
                   <p className="text-base font-semibold">
-                    {tool.lastUpdated
-                      ? new Date(tool.lastUpdated).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        })
-                      : "N/A"}
+                    {tool.lastUpdated ? formatDate(tool.lastUpdated) : "N/A"}
                   </p>
                 </div>
               </div>

@@ -1,12 +1,13 @@
 "use client"
 
 import React, { useState } from "react"
+import { CircleUserRound } from "lucide-react"
 
+import { formatDate } from "@/lib/utils"
 import BlogChatInterface from "@/components/blog/BlogChatInterface"
 import ViewCounter from "@/components/blog/ViewCounter"
 import SocialShare from "@/components/blog/SocialShare"
 import Breadcrumb from "@/components/blog/Breadcrumb"
-import { CircleUserRound } from "lucide-react"
 
 interface BlogHeaderProps {
   title: string
@@ -28,15 +29,6 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
       setContent(ele.innerHTML)
     }
   }, [])
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-  }
 
   return (
     <>
