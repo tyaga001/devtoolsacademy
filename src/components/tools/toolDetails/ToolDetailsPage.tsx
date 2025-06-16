@@ -39,23 +39,17 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <section className="flex items-center justify-between gap-8 p-8">
-        <div className="flex flex-col gap-2">
-          <div className="mb-4 flex items-center gap-4">
-            <img
-              src={`/images/logo/${tool.name}.png`}
-              alt={`${tool.name} logo`}
-              className="size-10 rounded border border-neutral-100/15 object-cover"
-            />
-            <div>
-              <h1 className="text-4xl font-bold tracking-tighter">
-                {tool.name}
-              </h1>
-            </div>
-          </div>
-          <p className=" pb-1 text-neutral-500">{tool.headline}</p>
-        </div>
-        <div className="flex flex-col gap-2 md:flex-row md:gap-6">
+      <section className="flex flex-col items-center justify-between p-8 md:py-16">
+        <img
+          src={`/images/logo/${tool.name}.png`}
+          alt={`${tool.name} logo`}
+          className="size-16 rounded object-cover"
+        />
+        <h1 className="mb-2 mt-4 text-3xl font-bold tracking-tighter md:text-5xl">
+          {tool.name}
+        </h1>
+        <p className="mb-12 text-neutral-500">{tool.headline}</p>
+        <div className="flex flex-col items-center gap-2 md:flex-row md:gap-6">
           {tool.websiteUrl && (
             <Link href={tool.websiteUrl}>
               <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900 px-5 py-2.5 text-sm outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800">
@@ -119,7 +113,6 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 ))}
               </div>
             </div>
-
             <div>
               <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
                 <Hash className="size-4" />
