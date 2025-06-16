@@ -101,7 +101,7 @@ const ToolsFilter: React.FC = () => {
   }
 
   return (
-    <div className="mt-12 flex w-full flex-col border border-dashed border-neutral-100/15 text-neutral-200">
+    <div className="flex w-full flex-col border border-dashed border-neutral-100/15 text-neutral-200">
       <div className="flex w-full flex-col-reverse md:flex-row">
         <div className="flex-1">
           <SearchBar />

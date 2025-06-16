@@ -3,12 +3,14 @@
 import * as React from "react"
 import { useSearchParams } from "next/navigation"
 import axios from "axios"
+import { Search, TriangleAlert } from "lucide-react"
+
 import { ToolCardInterface } from "@/lib/types"
+
 import ToolCard from "./ToolCard"
 import ToolsPagination from "./ToolsPagination"
 import ToolSkeleton from "./ToolSkeleton"
-import { getTools } from "./AlgoliaSearch"
-import { Search, TriangleAlert } from "lucide-react"
+import { getTools } from "./ToolsSearchAndFilter"
 
 interface ToolPageProps {
   page: number
@@ -104,7 +106,7 @@ const ToolsPage: React.FC<ToolPageProps> = ({ page }) => {
 
   return (
     <section className="mx-auto mb-20 flex max-w-7xl flex-col px-4 md:px-0">
-      <div className="flex w-full flex-col gap-2 px-0 py-4 text-neutral-200">
+      <div className="flex w-full flex-col gap-2 px-0 pb-4 text-neutral-200">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {tools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />

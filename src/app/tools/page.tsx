@@ -5,7 +5,7 @@ import { getMetadata } from "@/lib/metadata"
 import ToolsPage from "@/components/tools/ToolsPage"
 import Categories from "@/components/tools/Categories"
 import ToolSkeleton from "@/components/tools/ToolSkeleton"
-import AlgoliaSearch from "@/components/tools/AlgoliaSearch"
+import ToolsSearchAndFilter from "@/components/tools/ToolsSearchAndFilter"
 import LoadingCategories from "@/components/tools/LoadingCategories"
 
 import CoverImage from "./cover.png"
@@ -49,9 +49,7 @@ export default async function ToolsRoute({
 
       <hr className="border-dashed border-neutral-100/15" />
 
-      <div className="mb-8 flex w-full flex-col items-center space-y-4">
-        <AlgoliaSearch searchParams={searchParamsSync} />
-      </div>
+      <ToolsSearchAndFilter searchParams={searchParamsSync} />
       <Suspense fallback={<ToolSkeleton />}>
         <ToolsPage page={page} />
       </Suspense>
