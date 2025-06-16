@@ -40,20 +40,24 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
   return (
     <div className="mb-20">
       <div className="mx-auto mb-20 flex max-w-7xl flex-col">
-        <section className="mb-8 flex flex-col gap-2 p-8">
-          <div className="mb-4 flex items-center gap-4 rounded-lg">
-            <img
-              src={`/images/logo/${tool.name}.png`}
-              alt={`${tool.name} logo`}
-              className="size-10 rounded border border-neutral-100/15 object-cover"
-            />
-            <div>
-              <h1 className="text-4xl font-bold tracking-tight">{tool.name}</h1>
+        <section className="grid grid-cols-1 md:grid-cols-5">
+          <section className="flex flex-col gap-2 border-r border-dashed border-neutral-100/15 p-8 md:col-span-3">
+            <div className="mb-4 flex items-center gap-4">
+              <img
+                src={`/images/logo/${tool.name}.png`}
+                alt={`${tool.name} logo`}
+                className="size-10 rounded border border-neutral-100/15 object-cover"
+              />
+              <div>
+                <h1 className="text-4xl font-bold tracking-tighter">
+                  {tool.name}
+                </h1>
+              </div>
             </div>
-          </div>
-          <div>
             <p className=" pb-1 text-neutral-500">{tool.headline}</p>
-            <div className="grid grid-cols-1 gap-6 pt-10 md:grid-cols-2">
+          </section>
+          <div className="p-8 md:col-span-2">
+            <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
                   <Tag className="size-4" />
@@ -89,105 +93,41 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 </div>
               </div>
             </div>
+            <div className="flex flex-col gap-2 md:flex-row md:gap-6">
+              <Link href={tool.githubUrl}>
+                <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900 px-5 py-2.5 text-sm outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800">
+                  <Github className="size-4" />
+                  View on GitHub
+                </div>
+              </Link>
+              {tool.websiteUrl && (
+                <Link href={tool.websiteUrl}>
+                  <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900 px-5 py-2.5 text-sm outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800">
+                    <ExternalLink className="size-4" />
+                    Visit Website
+                  </div>
+                </Link>
+              )}
+              {tool.documentation && (
+                <Link href={tool.documentation}>
+                  <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900 px-5 py-2.5 text-sm outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800">
+                    <Book className="size-4" />
+                    Documentation
+                  </div>{" "}
+                </Link>
+              )}
+            </div>
           </div>
         </section>
 
         <hr className="border-dashed border-neutral-100/15" />
 
-        <section className="mb-8 flex flex-col gap-2 p-8">
-          <h2 className="mb-1 pb-1 text-2xl font-semibold tracking-tight">
-            Repository Details:
-          </h2>
-          <div className="mb-8 flex flex-wrap gap-x-4 gap-y-1">
-            {Object.entries(languages).map(([lang, lines]) => (
-              <div key={lang} className="flex items-center">
-                <span
-                  className="mr-1 size-2 rounded-full"
-                  style={{
-                    backgroundColor: languageColors[lang] || "#8e8e8e",
-                  }}
-                />
-                <span className="text-xs">{lang}</span>
-                <span className="ml-1 text-xs text-neutral-400">
-                  {((lines / totalLines) * 100).toFixed(1)}%
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 ">
-            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
-              <Star className="mr-3 size-8 text-yellow-500" />
-              <div>
-                <p className="text-sm text-neutral-400">Stars</p>
-                <p className="text-xl font-semibold">
-                  {typeof tool.stars === "number"
-                    ? tool.stars.toLocaleString()
-                    : "N/A"}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
-              <GitFork className="mr-3 size-8 text-blue-500" />
-              <div>
-                <p className="text-sm text-neutral-400">Forks</p>
-                <p className="text-xl font-semibold">
-                  {typeof tool.forks === "number"
-                    ? tool.forks.toLocaleString()
-                    : "N/A"}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center rounded border border-neutral-100/15 bg-gradient-to-br from-[#141414] to-transparent p-4">
-              <Clock className="mr-3 size-8 text-green-500" />
-              <div>
-                <p className="text-sm text-neutral-400">Last Commited</p>
-                <p className="text-xl font-semibold">
-                  {tool.lastUpdated
-                    ? new Date(tool.lastUpdated).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })
-                    : "N/A"}
-                </p>
-              </div>
-            </div>
-          </div>
-          {/* <div className="flex flex-col md:flex-row gap-2 md:gap-6 mb-8">
-            <Link href={tool.githubUrl}>
-              <div className="flex items-center text-neutral-400 hover:text-neutral-300 text-sm ">
-                <Github className="w-4 h-4 mr-2" />
-                View on GitHub
-              </div>
-            </Link>
-            {tool.websiteUrl && (
-              <Link href={tool.websiteUrl}>
-                <div className="flex items-center text-neutral-400 hover:text-neutral-300 text-sm ">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Visit Website
-                </div>
-              </Link>
-            )}
-            {tool.documentation && (
-              <Link href={tool.documentation}>
-                <div className="flex items-center text-neutral-400 hover:text-neutral-300 text-sm ">
-                  <Book className="w-4 h-4 mr-2" />
-                  Documentation
-                </div>
-              </Link>
-            )}
-          </div> */}
-        </section>
-
-        <hr className="border-dashed border-neutral-100/15" />
-
-        <div className="mx-auto max-w-4xl  py-6">
-          <div className="mt-12  rounded-xl">
-            <h2 className="mb-2 text-2xl font-semibold tracking-tighter md:text-3xl">
+        <section className="grid grid-cols-1 md:grid-cols-5">
+          <div className="border-r border-dashed border-neutral-100/15 p-8 md:col-span-3">
+            <h2 className="mb-2 text-xl font-semibold tracking-tighter">
               About {tool.name}
             </h2>
-            <p className="mb-6 text-justify text-sm font-medium text-neutral-400 md:text-base">
+            <p className="mb-6 text-justify text-sm text-neutral-500 md:text-base">
               {tool.description}
             </p>
             <div className="pt-10">
@@ -199,60 +139,99 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             </div>
           </div>
 
-          <section className="mb-20 mt-24">
-            <h2 className="mb-6 text-2xl font-semibold tracking-tight md:text-3xl">
-              Key Features
-            </h2>
-            <ul className=" grid-cols-1 gap-4 md:grid md:grid-cols-2">
-              {tool.features.map((feature, index) => (
-                <li
-                  key={index}
-                  className="flex items-center gap-2 text-neutral-300"
-                >
-                  <Code className="text-green-400" size={20} />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <div className="flex items-center justify-center">
-            <div className="mb-8 flex flex-col gap-2 md:flex-row md:gap-6">
-              <Link href={tool.githubUrl}>
-                <div className="rounded-[5px] bg-neutral-950/50 p-2 text-neutral-200 transition-colors hover:bg-neutral-700/50">
-                  <div className="flex items-center  text-sm ">
-                    <Github className="mr-2 size-4" />
-                    View on GitHub
+          <section className="md:col-span-2">
+            <section className="flex flex-col gap-2 p-8 md:col-span-2">
+              <h2 className="mb-2 text-xl font-semibold tracking-tight">
+                Repository Details
+              </h2>
+              <div className="mb-8 flex flex-wrap gap-x-4 gap-y-1">
+                {Object.entries(languages).map(([lang, lines]) => (
+                  <div key={lang} className="flex items-center">
+                    <span
+                      className="mr-1 size-2 rounded-full"
+                      style={{
+                        backgroundColor: languageColors[lang] || "#8e8e8e",
+                      }}
+                    />
+                    <span className="text-xs">{lang}</span>
+                    <span className="ml-1 text-xs text-neutral-400">
+                      {((lines / totalLines) * 100).toFixed(1)}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3">
+                <div className="flex flex-col border-r border-dashed border-neutral-100/15 py-3">
+                  <Star className="mr-3 size-8 text-yellow-500" />
+                  <div className="mt-4">
+                    <p className="text-xs text-neutral-400">Stars</p>
+                    <p className="text-base font-semibold">
+                      {typeof tool.stars === "number"
+                        ? tool.stars.toLocaleString()
+                        : "N/A"}
+                    </p>
                   </div>
                 </div>
-              </Link>
-              {tool.websiteUrl && (
-                <Link href={tool.websiteUrl}>
-                  <div className="rounded-[5px] bg-blue-800/50 p-2 text-blue-200 transition-colors hover:bg-blue-700/50">
-                    <div className="flex items-center  text-sm ">
-                      <ExternalLink className="mr-2 size-4" />
-                      Visit Website
-                    </div>
-                  </div>{" "}
-                </Link>
-              )}
-              {tool.documentation && (
-                <Link href={tool.documentation}>
-                  <div className="rounded-[5px] bg-neutral-800/50 p-2 text-neutral-200 transition-colors hover:bg-neutral-700/50">
-                    <div className="flex items-center  text-sm ">
-                      <Book className="mr-2 size-4" />
-                      Documentation
-                    </div>
-                  </div>{" "}
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
+                <div className="flex flex-col border-r border-dashed border-neutral-100/15 py-3 pl-5">
+                  <GitFork className="mr-3 size-8 text-blue-500" />
+                  <div className="mt-4">
+                    <p className="text-xs text-neutral-400">Forks</p>
+                    <p className="text-base font-semibold">
+                      {typeof tool.forks === "number"
+                        ? tool.forks.toLocaleString()
+                        : "N/A"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col border-dashed border-neutral-100/15 py-3 pl-5">
+                  <Clock className="mr-3 size-8 text-green-500" />
+                  <div className="mt-4">
+                    <p className="text-xs text-neutral-400">Last Commit</p>
+                    <p className="text-base font-semibold">
+                      {tool.lastUpdated
+                        ? new Date(tool.lastUpdated).toLocaleDateString(
+                            "en-US",
+                            {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            }
+                          )
+                        : "N/A"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <hr className="border-dashed border-neutral-100/15" />
+
+            <section className="p-8">
+              <h2 className="mb-4 text-xl font-semibold tracking-tight">
+                Key Features
+              </h2>
+              <ul className="space-y-2">
+                {tool.features.map((feature, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-neutral-500"
+                  >
+                    <Code className="text-green-400" size={20} />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <hr className="border-dashed border-neutral-100/15" />
+          </section>
+        </section>
+
+        <hr className="border-dashed border-neutral-100/15" />
       </div>
 
-      <hr className="border-dashed border-neutral-100/15" />
-
-      <section className="mx-auto max-w-7xl p-8">
+      <section className="mx-auto max-w-7xl">
         <Suspense fallback={<div>loading...</div>}>
           <SimilarTools
             slug={tool.name}
