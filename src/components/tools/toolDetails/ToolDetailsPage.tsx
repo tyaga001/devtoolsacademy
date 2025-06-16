@@ -1,19 +1,11 @@
 import * as React from "react"
-import { ToolDetailsInterface } from "@/lib/types"
-import {
-  Star,
-  GitFork,
-  Clock,
-  ExternalLink,
-  Github,
-  Book,
-  Code,
-  Hash,
-  Tag,
-} from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 import { Link } from "next-view-transitions"
-import { Suspense } from "react"
+import { Star, GitFork, Clock, ExternalLink, Book, Code } from "lucide-react"
+import { FaGithub } from "react-icons/fa6"
+
+import { ToolDetailsInterface } from "@/lib/types"
+import { Badge } from "@/components/ui/badge"
+
 import SimilarTools from "./SimilarTools"
 
 interface ToolCardProps {
@@ -60,7 +52,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
           )}
           <Link href={tool.githubUrl}>
             <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900 px-5 py-2.5 text-sm outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800">
-              <Github className="size-4" />
+              <FaGithub className="size-4" />
               View on GitHub
             </div>
           </Link>
@@ -213,13 +205,13 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
 
       <hr className="border-dashed border-neutral-100/15" />
 
-      <Suspense fallback={<div>loading...</div>}>
+      <React.Suspense fallback={<div>loading...</div>}>
         <SimilarTools
           slug={tool.name}
           tags={tool.tags}
           categories={tool.categories}
         />
-      </Suspense>
+      </React.Suspense>
     </div>
   )
 }
