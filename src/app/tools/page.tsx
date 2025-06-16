@@ -36,9 +36,9 @@ export default async function ToolsRoute({
       <hr className="border-dashed border-neutral-100/15" />
 
       <div className="mx-auto flex max-w-[800px] flex-col items-center px-4 pt-20 pb-12 text-center md:px-0 md:py-24">
-        <h1 className="mb-6 md:mb-12 text-4xl font-bold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
-          <span className="bg-gradient-to-b from-[#141414] to-white bg-clip-text text-transparent">
-            Browse Devtools for your next product
+        <h1 className="mb-6 md:mb-12 text-2xl font-bold tracking-tight md:text-5xl">
+          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
+            Browse Devtools for your next Product or Project
           </span>
         </h1>
         <ToolsSearchAndFilter searchParams={searchParamsSync} />
