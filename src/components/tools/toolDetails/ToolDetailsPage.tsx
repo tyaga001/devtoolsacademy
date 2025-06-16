@@ -88,18 +88,17 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
         </div>
 
         <aside className="md:col-span-2">
-          <div className="grid grid-cols-1 gap-6 p-8 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 p-8 md:grid-cols-2">
             <div>
               <h3 className="mb-3 text-lg font-semibold">Categories</h3>
               <div className="flex flex-wrap gap-2">
                 {tool.categories.map((category) => (
-                  <Badge
+                  <span
                     key={category}
-                    variant="secondary"
-                    className="cursor-pointer bg-neutral-800 text-sm text-neutral-200 hover:bg-neutral-900"
+                    className="font-medium text-sm text-neutral-500 px-1 border border-dashed border-neutral-100/15"
                   >
                     {category}
-                  </Badge>
+                  </span>
                 ))}
               </div>
             </div>
@@ -107,13 +106,12 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               <h3 className="mb-3 text-lg font-semibold">Tags</h3>
               <div className="flex flex-wrap gap-2">
                 {tool.tags.map((tag) => (
-                  <Badge
+                  <span
                     key={tag}
-                    variant="secondary"
-                    className="cursor-pointer bg-neutral-800 text-sm text-neutral-200 hover:bg-neutral-900"
+                    className="font-medium text-sm text-neutral-500"
                   >
-                    {tag}
-                  </Badge>
+                    <span className="text-neutral-400">#</span> {tag}
+                  </span>
                 ))}
               </div>
             </div>
