@@ -5,7 +5,6 @@ import { FaGithub } from "react-icons/fa6"
 
 import { ToolDetailsInterface } from "@/lib/types"
 import { formatDate } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
 
 import SimilarTools from "./SimilarTools"
 
@@ -95,7 +94,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 {tool.categories.map((category) => (
                   <span
                     key={category}
-                    className="font-medium text-sm text-neutral-500 px-1 border border-dashed border-neutral-100/15"
+                    className="font-medium text-sm text-neutral-500 px-1.5 border border-dashed border-neutral-100/15"
                   >
                     {category}
                   </span>

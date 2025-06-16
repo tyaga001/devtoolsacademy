@@ -5,7 +5,6 @@ import { Star, GitFork, Clock } from "lucide-react"
 import { ToolCardInterface } from "@/lib/types"
 import { formatDate } from "@/lib/utils"
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 
 interface ToolCardProps {
   tool: ToolCardInterface
@@ -32,21 +31,17 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           <div className="flex flex-wrap gap-1.5">
             {tool?.categories &&
               tool.categories.slice(0, 3).map((category) => (
-                <Badge
+                <span
                   key={category}
-                  variant="secondary"
-                  className="bg-[#141414] text-xs text-neutral-300 hover:bg-[#141414] hover:bg-[#141414]/10"
+                  className="font-medium text-sm text-neutral-500 px-1.5 border border-dashed border-neutral-100/15"
                 >
                   {category}
-                </Badge>
+                </span>
               ))}
             {tool.categories && tool.categories.length > 3 && (
-              <Badge
-                variant="secondary"
-                className="bg-[#141414] text-neutral-300 opacity-90 hover:bg-[#141414]"
-              >
+              <span className="font-medium text-sm text-neutral-500 px-1.5 border border-dashed border-neutral-100/15">
                 +{tool.categories.length - 3}
-              </Badge>
+              </span>
             )}
           </div>
         </CardContent>
