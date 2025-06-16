@@ -70,7 +70,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
       <hr className="border-dashed border-neutral-100/15" />
 
       <section className="grid grid-cols-1 md:grid-cols-5">
-        <div className="border-r border-dashed border-neutral-100/15 p-8 md:col-span-3">
+        <div className="border-b border-dashed border-neutral-100/15 p-8 md:col-span-3 md:border-b-0 md:border-r">
           <h2 className="mb-2 text-xl font-semibold tracking-tighter">
             About {tool.name}
           </h2>
@@ -142,7 +142,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3">
-              <div className="flex flex-col border-r border-dashed border-neutral-100/15 py-3">
+              <div className="flex flex-col border-b border-dashed border-neutral-100/15 py-3 md:border-b-0 md:border-r">
                 <Star className="mr-3 size-8 text-yellow-500" />
                 <div className="mt-4">
                   <p className="text-xs text-neutral-400">Stars</p>
@@ -153,7 +153,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col border-r border-dashed border-neutral-100/15 py-3 pl-5">
+              <div className="flex flex-col border-b border-dashed border-neutral-100/15 py-3 md:border-b-0 md:border-r md:pl-5">
                 <GitFork className="mr-3 size-8 text-blue-500" />
                 <div className="mt-4">
                   <p className="text-xs text-neutral-400">Forks</p>
@@ -164,7 +164,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col border-dashed border-neutral-100/15 py-3 pl-5">
+              <div className="flex flex-col border-dashed border-neutral-100/15 py-3 md:pl-5">
                 <Clock className="mr-3 size-8 text-green-500" />
                 <div className="mt-4">
                   <p className="text-xs text-neutral-400">Last Commit</p>
@@ -192,9 +192,9 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
               {tool.features.map((feature, index) => (
                 <li
                   key={index}
-                  className="flex items-center gap-2 text-neutral-500"
+                  className="flex items-start gap-2 text-neutral-500"
                 >
-                  <Code className="text-green-400" size={20} />
+                  <Code className="mt-1 text-green-400" size={18} />
                   <span>{feature}</span>
                 </li>
               ))}

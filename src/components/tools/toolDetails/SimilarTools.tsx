@@ -67,7 +67,7 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
     <>
       {similarTagTools && similarTagTools.length > 0 && (
         <section className="p-8">
-          <h3 className="mb-6 text-center text-2xl font-bold tracking-tight">
+          <h3 className="mb-6 text-center text-xl font-bold tracking-tight md:text-2xl">
             Similar Tools (based on Tags)
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -82,7 +82,7 @@ const SimilarTools: React.FC<SimilarToolsProps> = ({
 
       {similarCategoriesTools && similarCategoriesTools.length > 0 && (
         <section className="p-8">
-          <h3 className="mb-6 text-center text-2xl font-bold tracking-tight">
+          <h3 className="mb-6 text-center text-xl font-bold tracking-tight md:text-2xl">
             Similar Tools (based on Categories)
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
