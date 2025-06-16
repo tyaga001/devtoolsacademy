@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Check, ChevronDown, Filter, SortAsc, X } from "lucide-react"
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { Button } from "../ui/button"
+import { Button } from "@/components/ui/button"
+
 import SearchBar from "./SearchBar"
 
 const categories = [
@@ -106,7 +108,7 @@ const ToolsFilter: React.FC = () => {
         </div>
         <div className="flex items-center justify-end">
           <Popover>
-            <PopoverTrigger className="flex w-full items-center justify-around gap-2 border-x border-dashed border-neutral-100/15 bg-neutral-900 px-2 py-1 transition-colors duration-200 hover:bg-neutral-100/10 md:w-fit md:px-4 md:py-3">
+            <PopoverTrigger className="flex w-full items-center justify-around gap-2 border-x border-dashed border-neutral-100/15 bg-neutral-900 px-2 py-1 outline-none transition-colors duration-200 hover:bg-neutral-100/10 focus:bg-neutral-100/10 md:w-fit md:px-4 md:py-3">
               <div className="flex items-center gap-2">
                 <Filter className="size-4" />
                 Filters
@@ -123,7 +125,7 @@ const ToolsFilter: React.FC = () => {
                     {categories.map((category) => (
                       <div
                         key={category}
-                        className={`flex w-full cursor-pointer items-center justify-between border border-dashed border-transparent px-3 py-2 text-left text-neutral-300 transition-colors duration-200 hover:border-neutral-100/15`}
+                        className={`flex w-full cursor-pointer items-center justify-between border border-dashed border-transparent px-3 py-2 text-left text-neutral-300 outline-none transition-colors duration-200 hover:border-neutral-100/15 focus:border-neutral-100/15`}
                         tabIndex={0}
                         role="button"
                         onKeyDown={(e) => {
@@ -149,7 +151,7 @@ const ToolsFilter: React.FC = () => {
                     {tags.map((tag) => (
                       <div
                         key={tag}
-                        className={`flex w-full cursor-pointer items-center justify-between border border-dashed border-transparent px-3 py-2 text-left text-neutral-300 transition-colors duration-200 hover:border-neutral-100/15`}
+                        className={`flex w-full cursor-pointer items-center justify-between border border-dashed border-transparent px-3 py-2 text-left text-neutral-300 outline-none transition-colors duration-200 hover:border-neutral-100/15 focus:border-neutral-100/15`}
                         tabIndex={0}
                         role="button"
                         onKeyDown={(e) =>
@@ -180,7 +182,7 @@ const ToolsFilter: React.FC = () => {
           </Popover>
 
           <Popover>
-            <PopoverTrigger className="flex w-full items-center justify-around gap-2 bg-neutral-900 px-2 py-1 transition-colors duration-200 hover:bg-neutral-100/10 md:w-fit md:px-4 md:py-3">
+            <PopoverTrigger className="flex w-full items-center justify-around gap-2 bg-neutral-900 px-2 py-1 outline-none transition-colors duration-200 hover:bg-neutral-100/10 focus:bg-neutral-100/10 md:w-fit md:px-4 md:py-3">
               <div className="flex items-center gap-2">
                 <SortAsc className="size-4" />
                 Sort By
@@ -192,7 +194,7 @@ const ToolsFilter: React.FC = () => {
                 {["recent", "popular", "alphabetical"].map((option) => (
                   <button
                     key={option}
-                    className="flex items-center justify-between p-3 text-left text-xs capitalize text-neutral-300 transition-colors duration-200 hover:bg-neutral-100/10 md:text-sm"
+                    className="flex items-center justify-between p-3 text-left text-xs capitalize text-neutral-300 outline-none transition-colors duration-200 hover:bg-neutral-100/10 focus:bg-neutral-100/10 md:text-sm"
                     onClick={() => {
                       updateSort(option)
                       setSelectedSort(option)

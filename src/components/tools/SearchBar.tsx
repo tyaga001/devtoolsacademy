@@ -64,7 +64,7 @@ export default function SearchBar() {
         placeholder="Search tools..."
         value={searchValue}
         onChange={handleSearchChange}
-        className="w-full bg-neutral-900 py-3 pl-12 pr-4 outline-none transition-all duration-200 focus:border-solid"
+        className="w-full bg-neutral-900 py-3 pl-12 pr-4 outline-none transition-all duration-200 hover:bg-neutral-100/10 focus:bg-neutral-100/10"
       />
       <Search className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-neutral-400" />
     </div>
