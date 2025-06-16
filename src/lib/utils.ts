@@ -22,3 +22,14 @@ export function formatDate(date: Date | string): string {
     return ""
   }
 }
+
+export function formatTime(date: Date | string): string {
+  if (date)
+    return new Date(date).toLocaleDateString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+  else {
+    return ""
+  }
+}

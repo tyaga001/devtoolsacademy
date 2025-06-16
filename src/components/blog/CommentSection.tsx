@@ -5,7 +5,7 @@ import { useUser, SignInButton } from "@clerk/nextjs"
 import { Comment, BlogUser } from "@prisma/client"
 import { FaGithub } from "react-icons/fa6"
 
-import { formatDate } from "@/lib/utils"
+import { formatDate, formatTime } from "@/lib/utils"
 
 type CommentWithUser = Comment & { user: BlogUser }
 
@@ -142,7 +142,11 @@ const CommentSection: React.FC = () => {
                     </p>
                     <p className="text-sm text-neutral-400">
                       {formatDate(comment.createdAt)} at{" "}
-                      {formatDate(comment.createdAt)}
+                      {formatTime(comment.createdAt)}
+                      {new Date(comment.createdAt).toLocaleTimeString("en-US", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
                     </p>
                   </div>
                 </div>
