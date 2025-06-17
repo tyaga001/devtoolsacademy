@@ -69,8 +69,8 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
 
       <hr className="border-dashed border-neutral-100/15" />
 
-      <section className="grid grid-cols-1 md:grid-cols-5">
-        <div className="border-b border-dashed border-neutral-100/15 p-8 md:col-span-3 md:border-b-0 md:border-r">
+      <section className="grid grid-cols-1 md:grid-cols-6">
+        <div className="border-b border-dashed border-neutral-100/15 p-8 md:col-span-4 md:border-b-0 md:border-r">
           <h2 className="mb-2 text-xl font-semibold tracking-tighter">
             About {tool.name}
           </h2>
@@ -94,7 +94,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 {tool.categories.map((category) => (
                   <span
                     key={category}
-                    className="font-medium text-sm text-neutral-500 px-1.5 border border-dashed border-neutral-100/15"
+                    className="border border-dashed border-neutral-100/15 px-1.5 text-sm font-medium text-neutral-500"
                   >
                     {category}
                   </span>
@@ -107,7 +107,7 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
                 {tool.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-medium text-sm text-neutral-500"
+                    className="text-sm font-medium text-neutral-500"
                   >
                     <span className="text-neutral-400">#</span> {tag}
                   </span>
