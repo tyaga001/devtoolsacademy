@@ -26,6 +26,11 @@ const languages: { [key: string]: number } = {
   HTML: 5,
 }
 
+const transformUrl = (url: string): string => {
+  const separator = url.includes("?") ? "&" : "?"
+  return `${url}${separator}ref=devtoolsacademy.com`
+}
+
 const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
   const totalLines = Object.values(languages).reduce((a, b) => a + b, 0)
 
@@ -43,21 +48,21 @@ const ToolDetailsPage: React.FC<ToolCardProps> = ({ tool }) => {
         <p className="mb-12 text-neutral-500">{tool.headline}</p>
         <div className="flex flex-col items-center gap-2 md:flex-row md:gap-6">
           {tool.websiteUrl && (
-            <Link href={tool.websiteUrl}>
+            <Link href={transformUrl(tool.websiteUrl)} target="_blank">
               <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900 px-5 py-2.5 text-sm outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800">
                 <ExternalLink className="size-4" />
                 Visit Website
               </div>
             </Link>
           )}
-          <Link href={tool.githubUrl}>
+          <Link href={tool.githubUrl} target="_blank">
             <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900 px-5 py-2.5 text-sm outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800">
               <FaGithub className="size-4" />
               View on GitHub
             </div>
           </Link>
           {tool.documentation && (
-            <Link href={tool.documentation}>
+            <Link href={transformUrl(tool.documentation)} target="_blank">
               <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900 px-5 py-2.5 text-sm outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800">
                 <Book className="size-4" />
                 Documentation
