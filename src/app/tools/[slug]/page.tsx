@@ -1,4 +1,5 @@
 import React from "react"
+import type { Metadata } from "next"
 
 import { getToolDetails } from "@/lib/tools"
 import { getMetadata } from "@/lib/metadata"
@@ -6,11 +7,23 @@ import { getMetadata } from "@/lib/metadata"
 import ToolDetailsPage from "@/components/tools/details/ToolDetailsPage"
 import ToolNotFound from "@/components/tools/details/ToolNotFound"
 
-export const metadata = getMetadata({
-  path: "/tools",
-  title: "Tools Details | DevTools Academy",
-  description: "DevToolsAcademy Tool details",
-})
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+
+  const response = await getToolDetails(slug)
+  const toolDetails = response.toolDetails
+
+  return getMetadata({
+    path: "/tools",
+    title: `${toolDetails?.name} | Tools | DevTools Academy`,
+    description: `${toolDetails?.headline}, DevToolsAcademy`,
+  })
+}
 
 export default async function ToolDetailRoute({
   params,
