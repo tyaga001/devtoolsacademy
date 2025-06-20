@@ -3,8 +3,8 @@ import React from "react"
 import { getToolDetails } from "@/lib/tools"
 import { getMetadata } from "@/lib/metadata"
 
-import ToolDetailsPage from "@/components/tools/toolDetails/ToolDetailsPage"
-import ToolNotFound from "@/components/tools/toolDetails/ToolNotFound"
+import ToolDetailsPage from "@/components/tools/details/ToolDetailsPage"
+import ToolNotFound from "@/components/tools/details/ToolNotFound"
 
 export const metadata = getMetadata({
   path: "/tools",
