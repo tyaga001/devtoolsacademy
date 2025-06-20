@@ -5,7 +5,7 @@ import { getMetadata } from "@/lib/metadata"
 import ToolsPage from "@/components/tools/ToolsPage"
 import Categories from "@/components/tools/Categories"
 import ToolSkeleton from "@/components/tools/ToolSkeleton"
-import ToolsSearchAndFilter from "@/components/tools/ToolsSearchAndFilter"
+import ToolsFilter from "@/components/tools/ToolsFilter"
 import LoadingCategories from "@/components/tools/LoadingCategories"
 
 import CoverImage from "./cover.png"
@@ -35,13 +35,13 @@ export default async function ToolsRoute({
     <section className="mt-[80px]">
       <hr className="border-dashed border-neutral-100/15" />
 
-      <div className="mx-auto flex max-w-[800px] flex-col items-center px-4 pt-20 pb-12 text-center md:px-0 md:py-24">
-        <h1 className="mb-6 md:mb-12 text-2xl font-bold tracking-tight md:text-5xl">
+      <div className="mx-auto flex max-w-[800px] flex-col items-center px-4 pb-12 pt-20 text-center md:px-0 md:py-24">
+        <h1 className="mb-6 text-2xl font-bold tracking-tight md:mb-12 md:text-5xl">
           <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
             Browse Devtools for your next Product or Project
           </span>
         </h1>
-        <ToolsSearchAndFilter searchParams={searchParamsSync} />
+        <ToolsFilter searchParams={searchParamsSync} />
       </div>
 
       <Suspense fallback={<ToolSkeleton />}>

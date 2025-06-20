@@ -10,7 +10,7 @@ import { ToolCardInterface } from "@/lib/types"
 import ToolCard from "./ToolCard"
 import ToolsPagination from "./ToolsPagination"
 import ToolSkeleton from "./ToolSkeleton"
-import { getTools } from "./ToolsSearchAndFilter"
+import { getTools } from "./ToolsFilter"
 
 interface ToolPageProps {
   page: number
