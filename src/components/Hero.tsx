@@ -21,10 +21,16 @@ const Hero: React.FC = () => {
             compare options effortlessly, and dive into our blog for analyses
             that help you work smarter and build with confidence.
           </p>
-          <div>
+          <div className="flex justify-center gap-4">
             <Link
-              href="/blog"
-              className="bg-neutral-200 px-4 py-2 text-base font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400 md:px-6 md:py-3 md:text-lg"
+              href="/tools/"
+              className="bg-neutral-700 px-4 py-2 text-base font-medium outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800 md:px-6 md:py-3 md:text-lg"
+            >
+              Explore Tools
+            </Link>
+            <Link
+              href="/blog/"
+              className="bg-neutral-200 text-neutral-800 px-4 py-2 text-base font-medium outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400 md:px-6 md:py-3 md:text-lg"
             >
               Start Reading
             </Link>

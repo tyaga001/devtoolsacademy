@@ -5,7 +5,7 @@ import { getMetadata } from "@/lib/metadata"
 import ToolsPage from "@/components/tools/ToolsPage"
 import Categories from "@/components/tools/Categories"
 import ToolSkeleton from "@/components/tools/ToolSkeleton"
-import AlgoliaSearch from "@/components/tools/AlgoliaSearch"
+import ToolsFilter from "@/components/tools/ToolsFilter"
 import LoadingCategories from "@/components/tools/LoadingCategories"
 
 import CoverImage from "./cover.png"
@@ -35,23 +35,15 @@ export default async function ToolsRoute({
     <section className="mt-[80px]">
       <hr className="border-dashed border-neutral-100/15" />
 
-      <div className="mx-auto flex max-w-[800px] flex-col items-center px-4 py-20 text-center md:px-0 md:py-24">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
-          <span className="bg-gradient-to-b from-[#141414] to-white bg-clip-text text-transparent">
-            Browse Devtools for your next product
+      <div className="mx-auto flex max-w-[800px] flex-col items-center px-4 pb-12 pt-20 text-center md:px-0 md:py-24">
+        <h1 className="mb-6 text-2xl font-bold tracking-tight md:mb-12 md:text-5xl">
+          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
+            Browse Devtools for your next Product or Project
           </span>
         </h1>
-        <p className="mb-8 max-w-xl text-base text-neutral-100 text-opacity-50 md:text-xl">
-          Discover new devtools from a well researched collection for hassle{" "}
-          free development of your next product
-        </p>
+        <ToolsFilter searchParams={searchParamsSync} />
       </div>
 
-      <hr className="border-dashed border-neutral-100/15" />
-
-      <div className="mb-8 flex w-full flex-col items-center space-y-4">
-        <AlgoliaSearch searchParams={searchParamsSync} />
-      </div>
       <Suspense fallback={<ToolSkeleton />}>
         <ToolsPage page={page} />
       </Suspense>

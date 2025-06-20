@@ -11,10 +11,29 @@ export function calculateReadingTime(content: string): number {
   return Math.ceil(wordCount / wordsPerMinute)
 }
 
-export function formatDate(date: Date): string {
-  return date.toLocaleDateString("en-US", {
+export function formatDate(date: Date | string): string {
+  if (!date) return ""
+
+  const d = typeof date === "string" ? new Date(date) : date
+
+  if (Number.isNaN(d.getTime())) return ""
+
+  return d.toLocaleDateString("en-US", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
+  })
+}
+
+export function formatTime(date: Date | string): string {
+  if (!date) return ""
+
+  const d = typeof date === "string" ? new Date(date) : date
+
+  if (Number.isNaN(d.getTime())) return ""
+
+  return d.toLocaleDateString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
   })
 }

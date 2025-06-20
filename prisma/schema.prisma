@@ -1,10 +1,10 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
 }
 
 model Post {
@@ -18,38 +18,36 @@ model Comment {
   content   String
   postSlug  String
   createdAt DateTime @default(now())
-
-  userId String
-  user   BlogUser @relation(fields: [userId], references: [id])
-
-  post Post @relation(fields: [postSlug], references: [slug])
+  userId    String
+  post      Post     @relation(fields: [postSlug], references: [slug])
+  user      BlogUser @relation(fields: [userId], references: [id])
 }
 
 model BlogUser {
   id       String    @id @default(uuid())
   name     String
   email    String    @unique
-  comments Comment[] // Relation to Comment model
+  comments Comment[]
 }
 
 model Tool {
-  id          String   @id @default(cuid())
-  name        String
-  headline    String
-  description String
-  categories  String[]
-  features    String[]
-  stars       Int
-  forks       Int
-  lastUpdated DateTime
-  logo        String
-  tags        String[]
-  githubUrl   String   @unique
-  websiteUrl  String?
+  id            String   @id @default(cuid())
+  name          String
+  headline      String
+  description   String
+  categories    String[]
+  features      String[]
+  stars         Int
+  forks         Int
+  lastUpdated   DateTime
+  logo          String
+  tags          String[]
+  githubUrl     String   @unique
+  websiteUrl    String?
   documentation String?
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  slug          String   @unique
 
   @@index([name])
   @@index([categories])
@@ -57,10 +55,9 @@ model Tool {
 }
 
 model Categories {
-  id          String @id @default(uuid())
-  name        String @unique
-  count       Int
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(uuid())
+  name      String   @unique
+  count     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
