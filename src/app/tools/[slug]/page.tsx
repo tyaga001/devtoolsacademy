@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const toolDetails = response.toolDetails
 
   return getMetadata({
-    path: "/tools",
+    path: `/tools/${slug}/`,
     title: `${toolDetails?.name} | Tools | DevTools Academy`,
     description: `${toolDetails?.headline}, DevToolsAcademy`,
   })
