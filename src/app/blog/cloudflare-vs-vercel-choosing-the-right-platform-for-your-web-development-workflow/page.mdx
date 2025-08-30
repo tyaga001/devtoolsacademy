@@ -3,37 +3,39 @@ import Image from "next/image"
 import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
 
-
-import CloudfareFullStackForm from"./Cloudfare-Full-Stack-form"
-import CloudfareHome from"./Cloudfare-Home"
-import CloudfarePagePerformance from"./Cloudfare-Page-Performance"
-import CloudfarePage from"./Cloudfare-Page"
-import CloudfarePagesDeploymentStatus from"./Cloudfare-Pages-Deployment-status"
-import CloudfareSettingYourApp from"./Cloudfare-setting-your-app"
-import CloudfareWorker from"./Cloudfare-Worker"
-import VercelAPIRoutes from"./Vercel-API-routes"
-import WranglerDeploySuccessful from"./Wrangler-Deploy-Successful"
+import CloudflareFullStackForm from "./Cloudflare-Full-Stack-form.jpg"
+import CloudflareHome from "./Cloudflare-Home.jpg"
+import CloudflarePagePerformance from "./Cloudflare-Page-Performance.jpg"
+import CloudflarePage from "./Cloudflare-Page.jpg"
+import CloudflarePagesDeploymentStatus from "./Cloudflare-Pages-Deployment-status.jpg"
+import CloudflareSettingYourApp from "./Cloudflare-setting-your-app.jpg"
+import CloudflareWorker from "./Cloudflare-Worker.jpg"
+import VercelAPIRoutes from "./Vercel-API-routes.jpg"
+import WranglerDeploySuccessful from "./Wrangler-Deploy-Successful.jpg"
 import VercelTimeTaken from "./Time-taken-in-Vercel.jpg"
-import VercelPerformance from  "./Performance-Insights-of-Vercel-Site.jpg"
-
+import VercelPerformance from "./Performance-Insights-of-Vercel-Site.jpg"
 
 export const metadata = getMetadata({
   path: "/blog/cloudflare-vs-vercel-choosing-the-right-platform-for-your-web-development-workflow",
+  {/* The title and description */}
   title:
-    "Clouflare vs. VVercel: Choosing the Right Platform for Your Web Development Workflow | DevTools Academy",
+    "Cloudflare vs. Vercel: Choosing the Right Platform for Your Web Development Workflow | DevTools Academy",
   description:
-    "Compare Cloudflare and Vercel to find the best fit for your web development workflow. Explore features, performance, pricing, and use cases."
+    "Compare Cloudflare and Vercel to find the best fit for your web development workflow. Explore features, performance, pricing, and use cases.",
+    keywords: ["Cloudflare", "Vercel", "Pages", "Workers", "Next.js", "serverless", "edge"]
 })
 
+{/* The Blog Header */}
+
 <BlogHeader
-  title="Clouflare vs. Vercel: Choosing the Right Platform for Your Web Development Workflow"
+  title="Cloudflare vs. Vercel: Choosing the Right Platform for Your Web Development Workflow"
   author="Quincy Oghenetejiri"
   publishedAt="2025-08-29T00:00:00Z"
 />
 
-For hosting web applications, there are a lot of options that come to mind when trying to deploy them. Cloudflare and Vercel are among these options. They both offer great developer experience; however, depending on your workflow or what you need, one might serve you better than the other. This comprehensive comparison will help you understand which platform best suits your specific needs.
+For hosting web applications, there are many options that come to mind when trying to deploy them. Cloudflare and Vercel are among these options. They both offer great developer experience; however, depending on your workflow or what you need, one might serve you better than the other. This comprehensive comparison will help you understand which platform best suits your specific needs.
 
-In this article, we’ll walk through a side-by-side comparison of Cloudflare and Vercel from both theoretical and practical perspectives. 
+In this article, we’ll walk through a side-by-side comparison of Cloudflare and Vercel from both theoretical and practical perspectives.
 
 ## Overview of Vercel and Cloudflare
 
@@ -45,154 +47,149 @@ Vercel is a frontend-focused platform built for the seamless deployment of moder
 
 ### Cloudflare
 
-* Create an account at [cloudflare.com](https://cloudflare.com/)  
-* Set up Cloudflare Pages or Workers  
-* Configure build settings manually and not automatically  
-* Learn Wrangler CLI for advanced features like hosting in workers  
-* More complex initial setup when making use of Cloudflare workers  
-* Highly customizable platform  
-* Steeper learning curve  
-* More control over infrastructure  
-* Extensive configuration options
+- Create an account at [cloudflare.com](https://cloudflare.com/)
+- Set up Cloudflare Pages or Workers
+- Configure build settings manually and not automatically
+- Learn Wrangler CLI for advanced features like hosting in workers
+- More complex initial setup when making use of Cloudflare workers
+- Highly customizable platform
+- Steeper learning curve
+- More control over infrastructure
+- Extensive configuration options
 
-<Image src={CloudfareHome} alt="Cloudflare Home" />
+<Image src={CloudflareHome} alt="Cloudflare Home" />
 
 ### Vercel
 
-* Sign up at [vercel.com](https://vercel.com/)  
-* Connect your Git repository  
-* Auto Detection of the framework  
-* One-click deployment  
-* Intuitive dashboard interface  
-* Optimised for popular frameworks  
-* Fast build times  
-* Limited customisation options  
-* Focus on simplicity and speed
+- Sign up at [vercel.com](https://vercel.com/)
+- Connect your Git repository
+- Auto Detection of the framework
+- One-click deployment
+- Intuitive dashboard interface
+- Optimised for popular frameworks
+- Fast build times
+- Limited customisation options
+- Focus on simplicity and speed
 
 ### Why Does This Matter?
 
 Developer experience affects team productivity, onboarding time, and long-term maintenance costs.
 
-* Cloudflare's customisation options provide more flexibility but require deeper technical knowledge. This matters for teams with specific infrastructure requirements or those building complex applications that need fine-grained control.  
-* Vercel's optimised experience means faster onboarding for new team members and fewer context switches between tools. This is valuable for teams prioritising development velocity over infrastructure control.
+- Cloudflare's customisation options provide more flexibility but require deeper technical knowledge. This matters for teams with specific infrastructure requirements or those building complex applications that need fine-grained control.
+- Vercel's optimised experience means faster onboarding for new team members and fewer context switches between tools. This is valuable for teams prioritising development velocity over infrastructure control.
 
 ## Deployment Workflow/Experience
 
-Now, in this section, you will be focusing on real-world performance. You will deploy the same Vite \+ React Landing page to both platforms and run several performance tests using [page insights](https://pagespeed.web.dev/) to measure their behaviour.  
- 
+Now, in this section, you will be focusing on real-world performance. You will deploy the same Vite \+ React Landing page to both platforms and run several performance tests using [PageSpeed Insights](https://pagespeed.web.dev/) to measure their behaviour.
 
 ### Cloudflare
 
-Cloudflare, unlike Vercel, has two products that are used for hosting, while Cloudflare Workers is recommended by Cloudflare for hosting  web applications, either frontend, backend, or full stack. Cloudflare pages seem to work really like Vercel in hosting static pages with Continuous Integration and development (CI/CD) already configured, allowing for fast hosting.
+Cloudflare, unlike Vercel, has two products that are used for hosting, while Cloudflare Workers is recommended by Cloudflare for hosting web applications, either frontend, backend, or full-stack. Cloudflare Pages seem to work really like Vercel in hosting static pages with Continuous Integration and development (CI/CD) already configured, allowing for fast hosting.
 
-<Image src={CloudfarePage} alt="Cloudflare Page" />
+<Image src={CloudflarePage} alt="Cloudflare Page" />
 
+Cloudflare Pages also provides GitHub integration and allows custom build settings.
 
-Cloudflare Pages also provides GitHub integration and allows custom build settings. 
+- Manually set `npm run build`
+- Output directory: `dist`
 
-* Manually set `npm run build`  
-* Output directory: `dist`
-
-<Image src={CloudfareSettingYourApp} alt="Cloudflare Setting Your app" />
-
+<Image src={CloudflareSettingYourApp} alt="Cloudflare Setting Your app" />
 
 After configuration, the deployment of the application took **24 seconds**.
 
-<Image src={CloudfarePagesDeploymentStatus} alt="Cloudflare Deployment status" />
-
+<Image
+  src={CloudflarePagesDeploymentStatus}
+  alt="Cloudflare Deployment status"
+/>
 
 Here is the link to the [site](https://comparing-appwrite-sites-vs-vercel.pages.dev/).
 
-Below is the performance reports from page insights on analysing site hosted on Cloudflare Pages:
+Below is the performance reports from PageSpeed Insights on analysing site hosted on Cloudflare Pages:
 
-<Image src={CloudfarePagePerformance} alt="Cloudflare Page Performance" />
-
+<Image src={CloudflarePagePerformance} alt="Cloudflare Page Performance" />
 
 ### Vercel
 
-Deploying the Vite \+ React landing page to Vercel is straightforward with the provision of GitHub integration, automatic framework detection, zero-config build and Automatic CI/CD.	
+Deploying the Vite \+ React landing page to Vercel is straightforward with the provision of GitHub integration, automatic framework detection, zero-config build and Automatic CI/CD.
 
 Vercel detected the Vite \+ React app and automatically configured the build. The deployment process from push to live took **9 seconds**
-<Image src={VercelTimeTaken} alt="Vercel Time Taken" />
 
+<Image src={VercelTimeTaken} alt="Vercel Time Taken" />
 
 Here is the link to the [site](https://comparing-appwrite-sites-vs-vercel.vercel.app/).
 
-Below is the performance reports from page insights on analysing site hosted on Vercel:
+Below is the performance reports from PageSpeed Insights on analysing site hosted on Vercel:
 
 <Image src={VercelPerformance} alt="Vercel Performance" />
 
-
 ### Summary
 
-| Features  | Vercel | Cloudflare Pages |
-| :---- | :---- | :---- |
-| Auto framework detection | Yes | No (manual) |
-| Deploy speed  |  9s | 24s |
-| GitHub Integration | Yes | Yes |
-|  Automatic CI/CD | Yes  | Yes |
-
-## 
+| Features                 | Vercel | Cloudflare Pages |
+| :----------------------- | :----- | :--------------- |
+| Auto framework detection | Yes    | No (manual)      |
+| Deploy speed             | 9s     | 24s              |
+| GitHub Integration       | Yes    | Yes              |
+| Automatic CI/CD          | Yes    | Yes              |
 
 ## Backend Support and Serverless Functions
 
 Cloudflare and Vercel both support backend functionality, but they approach it differently.
 
-###  Vercel
+### Vercel
 
-* Doesn't support traditional, always-on backend servers.  
-* Backend support is handled through **API routes**.  
-* These API routes are available in frameworks such as Next.js, React, Svelte, Remix e.t.c  
-* APIs are colocated with the frontend in the same project directory.
+- Doesn't support traditional, always-on backend servers.
+- Backend support is handled through **API routes**.
+- These API routes are available in frameworks such as Next.js, React, Svelte, Remix e.t.c
+- APIs are colocated with the frontend in the same project directory.
 
 ### Cloudflare
 
-* Offers two backend-capable platform products:  
-  * Cloudflare Pages  
-  * Cloudflare Workers
+- Offers two backend-capable platform products:
+  - Cloudflare Pages
+  - Cloudflare Workers
 
 #### Cloudflare Pages
 
-* Similar to Vercel in backend support.  
-* Uses **serverless functions** placed inside a `/functions` folder.  
-* Suitable for light API endpoints (like form handling).
+- Similar to Vercel in backend support.
+- Uses **serverless functions** placed inside a `/functions` folder.
+- Suitable for light API endpoints (like form handling).
 
 #### Cloudflare Workers
 
-* A serverless compute platform that runs code at the edge.  
-* Stateless by design, not suitable for traditional servers like Express.  
-* Works similarly to AWS Lambda, but at edge locations.  
-* Uses route-based routing (e.g., `mydomain.com/api/*`).  
-* Can function as a standalone API backend, independent of any frontend.
+- A serverless compute platform that runs code at the edge.
+- Stateless by design, not suitable for traditional servers like Express.
+- Works similarly to AWS Lambda, but at edge locations.
+- Uses route-based routing (e.g., `mydomain.com/api/*`).
+- Can function as a standalone API backend, independent of any frontend.
 
-### Hosting a Full Stack App to both Platforms
+### Hosting a Full-stack App to both Platforms
 
-To fully acknowledge these differences in how these platforms handle backend/serverless functions, we are going to host a full stack app. The application is a simple form that does basic validation and submission.
+To fully acknowledge these differences in how these platforms handle backend/serverless functions, we are going to host a full-stack app. The application is a simple form that does basic validation and submission.
 
 #### Cloudflare
 
 On Cloudflare, we took a different approach:
 
-* The frontend was hosted using Cloudflare Pages  
-* The backend (API endpoint for the form) was deployed separately using Cloudflare Workers
+- The frontend was hosted using Cloudflare Pages
+- The backend (API endpoint for the form) was deployed separately using Cloudflare Workers
 
-While it's possible to serve both frontend and backend from Workers alone, the configuration is more complex and not beginner friendly, as  it entails a lot of manual configurations. Cloudflare Pages simplifies static site hosting, so it's often better to separate concerns unless deep customization is needed.
+While it's possible to serve both frontend and backend from Workers alone, the configuration is more complex and not beginner friendly, as it entails many manual configurations. Cloudflare Pages simplifies static site hosting, so it's often better to separate concerns unless deep customization is needed.
 
-<Image src={CloudfareWorker} alt="Cloudflare Worker" />
+<Image src={CloudflareWorker} alt="Cloudflare Worker" />
 
+For the same form UI hosted on Cloudflare Pages, we deployed the backend to Cloudflare Workers. The setup required defining a Worker route and binding it to handle form submissions, slightly more setup than Vercel’s API directory but more flexible in terms of routing and deployment.
 
-For the same form UI hosted on Cloudflare Pages, we deployed the backend to Cloudflare Workers. The setup required defining a Worker route and binding it to handle form submissions,  slightly more setup than Vercel’s API directory but more flexible in terms of routing and deployment.
+The Frontend is hosted through the Cloudflare dashboard while the Cloudflare worker is hosted via the Wrangler CLI through the following commands:
 
-The Frontend is hosted through the Cloudflare dasboard while the Cloudflare worker is hosted via the Wrangler CLI through the following commands:
 ```bash
 npm install -g wrangler
-cd workers/ 
+cd workers/
 wrangler login
-wrangler deploy 
+wrangler deploy
 ```
 
+Below is the screenshot after the worker folder was deployed via Wrangler CLI
 
-Below is the screenshot after the worker folder was deployed via Wrangler CLI	  
 <Image src={WranglerDeploySuccessful} alt="Cloudflare Page Performance" />
 
 For every Worker project you host, there must be a `wrangler.toml` that guides the deployment:
@@ -213,190 +210,206 @@ compatibility_date = "2025-06-26"
 ```
 
 And the `index.js` file that contains the backend code:
-```javascript// Cloudflare Workers Contact Form API
+
+```javascript
+// Cloudflare Workers Contact Form API
 // This runs at the edge globally
 
 export default {
-    async fetch(request, env, ctx) {
-      // Handle CORS preflight requests
-      if (request.method === 'OPTIONS') {
-        return new Response(null, {
-          status: 200,
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type',
-          },
-        });
-      }
-  
-      // Only handle POST requests to /contact
-      if (request.method !== 'POST') {
-        return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-          status: 405,
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-          },
-        });
-      }
-  
-      try {
-        // Parse the request body
-        const data = await request.json();
-        
-        // Basic validation
-        if (!data.name || !data.email || !data.message) {
-          return new Response(JSON.stringify({ 
-            error: 'Missing required fields: name, email, message' 
-          }), {
+  async fetch(request, env, ctx) {
+    // Handle CORS preflight requests
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+        },
+      })
+    }
+
+    // Only handle POST requests to /contact
+    if (request.method !== "POST") {
+      return new Response(JSON.stringify({ error: "Method not allowed" }), {
+        status: 405,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+    }
+
+    try {
+      // Parse the request body
+      const data = await request.json()
+
+      // Basic validation
+      if (!data.name || !data.email || !data.message) {
+        return new Response(
+          JSON.stringify({
+            error: "Missing required fields: name, email, message",
+          }),
+          {
             status: 400,
             headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
             },
-          });
-        }
-  
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
-          return new Response(JSON.stringify({ 
-            error: 'Invalid email format' 
-          }), {
-            status: 400,
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-            },
-          });
-        }
-  
-        // Get edge location info for demonstration
-        const cf = request.cf || {};
-        const edgeLocation = cf.colo || 'Unknown';
-        const country = cf.country || 'Unknown';
-  
-        // Simulate processing (in real app, you'd save to database, send email, etc.) 
-        const response = {
-          success: true,
-          message: 'Contact form submitted successfully!',
-          data: {
-            name: data.name,
-            email: data.email,
-            messageLength: data.message.length,
-            timestamp: new Date().toISOString(),
-            processedAt: `${edgeLocation}, ${country}`,
-            edgeInfo: {
-              datacenter: edgeLocation,
-              country: country,
-              timezone: cf.timezone || 'Unknown'
-            }
           }
-        };
-  
-        return new Response(JSON.stringify(response), {
-          status: 200,
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+        )
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(data.email)) {
+        return new Response(
+          JSON.stringify({
+            error: "Invalid email format",
+          }),
+          {
+            status: 400,
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        )
+      }
+
+      // Get edge location info for demonstration
+      const cf = request.cf || {}
+      const edgeLocation = cf.colo || "Unknown"
+      const country = cf.country || "Unknown"
+
+      // Simulate processing (in real app, you'd save to database, send email, etc.)
+      const response = {
+        success: true,
+        message: "Contact form submitted successfully!",
+        data: {
+          name: data.name,
+          email: data.email,
+          messageLength: data.message.length,
+          timestamp: new Date().toISOString(),
+          processedAt: `${edgeLocation}, ${country}`,
+          edgeInfo: {
+            datacenter: edgeLocation,
+            country: country,
+            timezone: cf.timezone || "Unknown",
           },
-        });
-  
-      } catch (error) {
-        return new Response(JSON.stringify({ 
-          error: 'Invalid JSON data' 
-        }), {
+        },
+      }
+
+      return new Response(JSON.stringify(response), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+    } catch (error) {
+      return new Response(
+        JSON.stringify({
+          error: "Invalid JSON data",
+        }),
+        {
           status: 400,
           headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
           },
-        });
-      }
-    },
-  };
-  ```
-Here is the [link](https://be02a0b0.forms-apis.pages.dev/) to the deployed project and here is the [link](https://contact-form-api.ukumakubequincy.workers.dev) to the API deployed in Workers. 
+        }
+      )
+    }
+  },
+}
+```
 
-<Image src={Full CloudfareFullStackForm} alt="Full stack" />
+Here is the [link](https://be02a0b0.forms-apis.pages.dev/) to the deployed project and here is the [link](https://contact-form-api.ukumakubequincy.workers.dev) to the API deployed in Workers.
+
+<Image src={CloudflareFullStackForm} alt="full-stack" />
 
 #### Vercel
 
 On Vercel, you can define API routes directly inside your frontend project, making it seamless to keep backend and frontend logic together. Although you cannot have the backend separately on its own like Cloudflare Workers, it works similarly to the functions in Cloudflare Pages.
 
-The Vercel Function Code 
+The Vercel Function Code
+
 ```javascript
-/ api/contact.js - Vercel API Route
+// api/contact.js - Vercel API Route
 // This must be part of a frontend project, runs regionally
 
 export default async function handler(req, res) {
-    // Set CORS headers
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  
-    // Handle preflight
-    if (req.method === 'OPTIONS') {
-      res.status(200).end();
-      return;
-    }
-  
-    // Only allow POST
-    if (req.method !== 'POST') {
-      return res.status(405).json({ error: 'Method not allowed' });
-    }
-  
-    try {
-      const { name, email, message } = req.body;
-  
-      // Basic validation
-      if (!name || !email || !message) {
-        return res.status(400).json({ 
-          error: 'Missing required fields: name, email, message' 
-        });
-      }
-  
-      // Email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        return res.status(400).json({ 
-          error: 'Invalid email format' 
-        });
-      }
-  
-      // Get server info for comparison with Workers
-      const serverRegion = process.env.VERCEL_REGION || 'unknown';
-      const deploymentId = process.env.VERCEL_DEPLOYMENT_ID || 'local';
-  
-      // Simulate processing
-      const response = {
-        success: true,
-        message: 'Contact form submitted successfully!',
-        data: {
-          name,
-          email,
-          messageLength: message.length,
-          timestamp: new Date().toISOString(),
-          processedAt: `Vercel ${serverRegion}`,
-          serverInfo: {
-            region: serverRegion,
-            deploymentId: deploymentId.substring(0, 8) + '...',
-            runtime: 'Node.js'
-          }
-        }
-      };
-  
-      res.status(200).json(response);
-  
-    } catch (error) {
-      console.error('API Error:', error);
-      res.status(500).json({ 
-        error: 'Internal server error' 
-      });
-    }
+  // Set CORS headers
+  const origin = req.headers.origin || ""
+  res.setHeader("Access-Control-Allow-Credentials", "true")
+  res.setHeader("Access-Control-Allow-Origin", origin)
+  res.setHeader("Vary", "Origin")
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+  )
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type")
+
+  // Handle preflight
+  if (req.method === "OPTIONS") {
+    res.status(200).end()
+    return
   }
+
+  // Only allow POST
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" })
+  }
+
+  try {
+    const { name, email, message } = req.body
+
+    // Basic validation
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        error: "Missing required fields: name, email, message",
+      })
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        error: "Invalid email format",
+      })
+    }
+
+    // Get server info for comparison with Workers
+    const serverRegion = process.env.VERCEL_REGION || "unknown"
+    const deploymentId = process.env.VERCEL_DEPLOYMENT_ID || "local"
+
+    // Simulate processing
+    const response = {
+      success: true,
+      message: "Contact form submitted successfully!",
+      data: {
+        name,
+        email,
+        messageLength: message.length,
+        timestamp: new Date().toISOString(),
+        processedAt: `Vercel ${serverRegion}`,
+        serverInfo: {
+          region: serverRegion,
+          deploymentId: deploymentId.substring(0, 8) + "...",
+          runtime: "Node.js",
+        },
+      },
+    }
+
+    res.status(200).json(response)
+  } catch (error) {
+    console.error("API Error:", error)
+    res.status(500).json({
+      error: "Internal server error",
+    })
+  }
+}
 ```
 
 From the above, you will see that the form data was posted to the Vercel API route, and it was straightforward to set up.
@@ -407,79 +420,81 @@ Here is the [link](https://forms-ap-is.vercel.app/) to the deployed project.
 
 ### Summary
 
-| Features  | Vercel | Cloudflare Worker |
-| :---- | :---- | :---- |
-| Deployment Experience  | Via dashboard and Vercel CLI | Via Wrangler CLI only. |
-| Daily Request  |  1000/day | 100k/day |
-| GitHub Integration  | Yes | No |
-|  Automatic CI/CD | Yes  | No(have to set it up) |
+{/* Feature Table Comparison */}
+
+| Features              | Vercel                       | Cloudflare Worker      |
+| :-------------------- | :--------------------------- | :--------------------- |
+| Deployment Experience | Via dashboard and Vercel CLI | Via Wrangler CLI only. |
+| Daily Request         | 1000/day                     | 100k/day               |
+| GitHub Integration    | Yes                          | No                     |
+| Automatic CI/CD       | Yes                          | No(have to set it up)  |
 
 ## Custom Email
 
-### Cloudflare 
+### Cloudflare
 
 One underrated advantage of using Cloudflare’s ecosystem is free custom email routing. As [@chiziaruhoma](https://x.com/chiziaruhoma/status/1939987882174804177) put it:
 
 “0 custom email, with just your domain, Cloudflare, and an existing Google account. Now I pay $0 for sending both promotional and transactional emails.”
 
-With Cloudflare Email Routing, you can receive emails using a branded domain (e.g., hello@yourdomain.com) and forward them to your Gmail,  without paying for hosting or a mailbox provider. This is done by creating a redirect with cloudflare to your Gmail and then create an alias in Gmail to your custom email with a password.
+With Cloudflare Email Routing, you can receive emails using a branded domain (e.g., hello@yourdomain.com) and forward them to your Gmail, without paying for hosting or a mailbox provider. This is done by creating a redirect with cloudflare to your Gmail and then create an alias in Gmail to your custom email with a password.
 
 ### Vercel
 
 Vercel does not offer any email solution. To set up a custom domain email on Vercel sites, you’ll need to:
 
-* Configure DNS externally (e.g., Cloudflare, Namecheap).  
-* Pay for services like Google Workspace, Zoho Mail, or Mailgun for transactional email.
+- Configure DNS externally (e.g., Cloudflare, Namecheap).
+- Pay for services like Google Workspace, Zoho Mail, or Mailgun for transactional email.
 
 ## Community and Support
 
 ### Cloudflare
 
-* Large enterprise community  
-* Comprehensive documentation  
-* Active Discord and community forums  
-* Enterprise-grade support options  
-* Strong focus on security and performance communities
+- Large enterprise community
+- Comprehensive documentation
+- Active Discord and community forums
+- Enterprise-grade support options
+- Strong focus on security and performance communities
 
 ### Vercel
 
-* Strong community around the Next.js ecosystem  
-* Excellent documentation and tutorials   
-* Active GitHub discussions  
-* Regular framework updates and improvements  
-* Good support for individual developers and teams
+- Strong community around the Next.js ecosystem
+- Excellent documentation and tutorials
+- Active GitHub discussions
+- Regular framework updates and improvements
+- Good support for individual developers and teams
 
 ### Why Does This Matter?
 
 Community support is one of the keypoint developers often checkout when trying to make use of a new platform. This is because it helps especially in problem-solving capabilities.
 
-* Cloudflare community offers solutions for complex infrastructure challenges and security concerns around enterprises. Though not lot of community support around solo or individual developers, there seems to be an increase in recent times which might double in the coming time.  
-* Vercel community provides excellent resources for modern web development practices. The tight integration with the Next.js ecosystem means abundant tutorials, examples, and community solutions for common problems. In respect to enterprise support, it lags behind Cloudflare but very good for solo/Individual developers.
+- Cloudflare community offers solutions for complex infrastructure challenges and security concerns around enterprises. Though not lot of community support around solo or individual developers, there seems to be an increase in recent times which might double in the coming time.
+- Vercel community provides excellent resources for modern web development practices. The tight integration with the Next.js ecosystem means abundant tutorials, examples, and community solutions for common problems. In respect to enterprise support, it lags behind Cloudflare but very good for solo/Individual developers.
 
-## Pricing 
+## Pricing
 
 ### Cloudflare
 
-* Offers a Free tier that contain basic CDN, DDos protection, SSL certificates.  
-* The pro plan($20/month) has enhanced security, image optimisation and mobile optimisation.  
-* Business plan ($200/month) has advanced security and support.  
-* Enterprise(Custom) plan has full security suite and dedicated support.
+- Offers a Free tier that contain basic CDN, DDoS protection, SSL certificates.
+- The pro [plan](https://www.cloudflare.com/lp/pg-all-plans-multi-sku-simple/) ($25/month) has enhanced security, image optimisation and mobile optimisation.
+- Business plan ($250/month) has advanced security and support.
+- Enterprise(Custom) plan has full security suite and dedicated support.
 
-###  Vercel
+### Vercel
 
-* Vercel has a free plan which is good for personal projects, and allows for custom domains.  
-* The pro plan ($20/month) contains team collaboration, analytics and password protection.  
-* Vercel Enterprise plan contain full security suite and dedicated support.
+- Vercel has a free plan which is good for personal projects, and allows for custom domains.
+- The pro [plan](https://vercel.com/pricing) ($20/month) contains team collaboration, analytics and password protection.
+- Vercel Enterprise plan contain full security suite and dedicated support.
 
 ### Why Does This Matter?
 
 Pricing is another major factor when trying to choose platform for hosting due to budget planning, feature access, and scaling decisions.
 
-* Cloudfare’s free tier provide significant value for startups and small projects, as it offer a lot of infrastructure features for free. Although the jump to enterprise pricing can be substantial, the comprehensive feature justify the cost for the organization.  
-* Vercel’s pricing makes it easier to budget for growing teams and projects. The clear feature tier help teams understand exactly what they are paying for and when they need to upgrade.
+- Cloudfare’s free tier provide significant value for startups and small projects, as it offer many infrastructure features for free. Although the jump to enterprise pricing can be substantial, the comprehensive feature justify the cost for the organization.
+- Vercel’s pricing makes it easier to budget for growing teams and projects. The clear feature tier help teams understand exactly what they are paying for and when they need to upgrade.
 
 ## Conclusion
 
 Vercel excels in providing an exceptional developer experience for frontend-focused applications. It's the clear choice for teams using modern JavaScript frameworks, particularly Next.js, who value simplicity and rapid deployment.Cloudflare on the other hand offers a more comprehensive platform for applications requiring global performance, advanced security, or full-stack capabilities. It's ideal for enterprises and applications with complex infrastructure needs.
 
-In the deployment of the landing page, using the same Vite + React app, Cloudflare Pages came out slightly ahead in performance and cost-effectiveness, while Vercel excelled in developer experience and tooling. While in the deployment of the full stack application to both platforms, you saw how Cloudflare workers provide flexible and fast API responses, while Vercel makes API setup easier within a frontend codebase.While both approaches are valid, the choice you will make will depend on the need of the project at that point in time in terms of scale, speed or simplicity.
+In the deployment of the landing page, using the same Vite + React app, Cloudflare Pages came out slightly ahead in performance and cost-effectiveness, while Vercel excelled in developer experience and tooling. While in the deployment of the full-stack application to both platforms, you saw how Cloudflare workers provide flexible and fast API responses, while Vercel makes API setup easier within a frontend codebase.While both approaches are valid, the choice you will make will depend on the need of the project at that point in time in terms of scale, speed or simplicity.
