@@ -17,12 +17,20 @@ import VercelPerformance from "./Performance-Insights-of-Vercel-Site.jpg"
 
 export const metadata = getMetadata({
   path: "/blog/cloudflare-vs-vercel-choosing-the-right-platform-for-your-web-development-workflow",
-  {/* The title and description */}
+  /* The title and description */
   title:
     "Cloudflare vs. Vercel: Choosing the Right Platform for Your Web Development Workflow | DevTools Academy",
   description:
     "Compare Cloudflare and Vercel to find the best fit for your web development workflow. Explore features, performance, pricing, and use cases.",
-    keywords: ["Cloudflare", "Vercel", "Pages", "Workers", "Next.js", "serverless", "edge"]
+  keywords: [
+    "Cloudflare",
+    "Vercel",
+    "Pages",
+    "Workers",
+    "Next.js",
+    "serverless",
+    "edge",
+  ],
 })
 
 {/* The Blog Header */}
@@ -57,7 +65,7 @@ Vercel is a frontend-focused platform built for the seamless deployment of moder
 - More control over infrastructure
 - Extensive configuration options
 
-<Image src={CloudflareHome} alt="Cloudflare Home" />
+<Image src={CloudflareHome} alt="Cloudflare Home Page" />
 
 ### Vercel
 
@@ -124,12 +132,12 @@ Below is the performance reports from PageSpeed Insights on analysing site hoste
 
 ### Summary
 
-| Features                 | Vercel | Cloudflare Pages |
-| :----------------------- | :----- | :--------------- |
-| Auto framework detection | Yes    | No (manual)      |
-| Deploy speed             | 9s     | 24s              |
-| GitHub Integration       | Yes    | Yes              |
-| Automatic CI/CD          | Yes    | Yes              |
+| Features                 | Vercel | Cloudflare Pages       |
+| :----------------------- | :----- | :--------------------- |
+| Auto framework detection | Yes    | Yes(for common stacks) |
+| Deploy speed             | 9s     | 24s                    |
+| GitHub Integration       | Yes    | Yes                    |
+| Automatic CI/CD          | Yes    | Yes                    |
 
 ## Backend Support and Serverless Functions
 
@@ -173,7 +181,7 @@ On Cloudflare, we took a different approach:
 - The frontend was hosted using Cloudflare Pages
 - The backend (API endpoint for the form) was deployed separately using Cloudflare Workers
 
-While it's possible to serve both frontend and backend from Workers alone, the configuration is more complex and not beginner friendly, as it entails many manual configurations. Cloudflare Pages simplifies static site hosting, so it's often better to separate concerns unless deep customization is needed.
+While it's possible to serve both frontend and backend from Workers alone, the configuration is more complex and not beginner friendly, as it entails many manual configurations. Cloudflare Pages simplifies static site hosting, so it's often better to separate concerns unless deep customisation is needed.
 
 <Image src={CloudflareWorker} alt="Cloudflare Worker" />
 
@@ -190,7 +198,7 @@ wrangler deploy
 
 Below is the screenshot after the worker folder was deployed via Wrangler CLI
 
-<Image src={WranglerDeploySuccessful} alt="Cloudflare Page Performance" />
+<Image src={WranglerDeploySuccessful} alt="Wrangler CLI" />
 
 For every Worker project you host, there must be a `wrangler.toml` that guides the deployment:
 
@@ -230,7 +238,8 @@ export default {
     }
 
     // Only handle POST requests to /contact
-    if (request.method !== "POST") {
+    const { pathname } = new URL(request.url)
+    if (request.method !== "POST" || pathname !== "/contact") {
       return new Response(JSON.stringify({ error: "Method not allowed" }), {
         status: 405,
         headers: {
@@ -327,7 +336,7 @@ export default {
 
 Here is the [link](https://be02a0b0.forms-apis.pages.dev/) to the deployed project and here is the [link](https://contact-form-api.ukumakubequincy.workers.dev) to the API deployed in Workers.
 
-<Image src={CloudflareFullStackForm} alt="full-stack" />
+<Image src={CloudflareFullStackForm} alt="full-stack contact form" />
 
 #### Vercel
 
@@ -340,11 +349,21 @@ The Vercel Function Code
 // This must be part of a frontend project, runs regionally
 
 export default async function handler(req, res) {
-  // Set CORS headers
+  // CORS (restrict credentials to trusted origins)
+  const ALLOWED_ORIGINS = [
+    "https://forms-ap-is.vercel.app",
+    "https://yourdomain.com",
+  ]
   const origin = req.headers.origin || ""
-  res.setHeader("Access-Control-Allow-Credentials", "true")
-  res.setHeader("Access-Control-Allow-Origin", origin)
-  res.setHeader("Vary", "Origin")
+  const allowOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ""
+  if (allowOrigin) {
+    res.setHeader("Access-Control-Allow-Credentials", "true")
+    res.setHeader("Access-Control-Allow-Origin", allowOrigin)
+    res.setHeader("Vary", "Origin")
+  } else {
+    // Public, non-credentialed fallback
+    res.setHeader("Access-Control-Allow-Origin", "*")
+  }
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET,OPTIONS,PATCH,DELETE,POST,PUT"
@@ -416,18 +435,16 @@ From the above, you will see that the form data was posted to the Vercel API rou
 
 Here is the [link](https://forms-ap-is.vercel.app/) to the deployed project.
 
-<Image src={VercelAPIRoutes} alt="Vercel API routes" />
+<Image src={VercelAPIRoutes} alt="Vercel API routes screenshot" />
 
 ### Summary
 
-{/* Feature Table Comparison */}
-
-| Features              | Vercel                       | Cloudflare Worker      |
-| :-------------------- | :--------------------------- | :--------------------- |
-| Deployment Experience | Via dashboard and Vercel CLI | Via Wrangler CLI only. |
-| Daily Request         | 1000/day                     | 100k/day               |
-| GitHub Integration    | Yes                          | No                     |
-| Automatic CI/CD       | Yes                          | No(have to set it up)  |
+| Features              | Vercel                       | Cloudflare Worker                    |
+| :-------------------- | :--------------------------- | :----------------------------------- |
+| Deployment Experience | Via dashboard and Vercel CLI | Via dashboard and Wrangler CLI only. |
+| Daily Request         | 1,000,000/month (Hobby)      | 100k/day (Free plan)                 |
+| GitHub Integration    | Yes                          | Yes ( via Worker Builds)             |
+| Automatic CI/CD       | Yes                          | Yes ( via GitHub Actions/CLI)        |
 
 ## Custom Email
 
@@ -495,6 +512,6 @@ Pricing is another major factor when trying to choose platform for hosting due t
 
 ## Conclusion
 
-Vercel excels in providing an exceptional developer experience for frontend-focused applications. It's the clear choice for teams using modern JavaScript frameworks, particularly Next.js, who value simplicity and rapid deployment.Cloudflare on the other hand offers a more comprehensive platform for applications requiring global performance, advanced security, or full-stack capabilities. It's ideal for enterprises and applications with complex infrastructure needs.
+Vercel excels in providing an exceptional developer experience for frontend-focused applications. It's the clear choice for teams using modern JavaScript frameworks, particularly Next.js, who value simplicity and rapid deployment. Cloudflare, on the other hand, offers a more comprehensive platform for applications requiring global performance, advanced security, or full-stack capabilities. It's ideal for enterprises and applications with complex infrastructure needs.
 
 In the deployment of the landing page, using the same Vite + React app, Cloudflare Pages came out slightly ahead in performance and cost-effectiveness, while Vercel excelled in developer experience and tooling. While in the deployment of the full-stack application to both platforms, you saw how Cloudflare workers provide flexible and fast API responses, while Vercel makes API setup easier within a frontend codebase.While both approaches are valid, the choice you will make will depend on the need of the project at that point in time in terms of scale, speed or simplicity.
