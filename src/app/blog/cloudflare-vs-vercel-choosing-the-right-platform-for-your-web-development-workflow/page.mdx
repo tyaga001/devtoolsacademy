@@ -112,7 +112,7 @@ After configuration, the deployment of the application took **24 seconds**.
 
 Here is the link to the [site](https://comparing-appwrite-sites-vs-vercel.pages.dev/).
 
-Below is the performance reports from PageSpeed Insights on analysing site hosted on Cloudflare Pages:
+Below are the performance reports from PageSpeed Insights analyzing the site hosted on Cloudflare Pages:
 
 <Image src={CloudflarePagePerformance} alt="Cloudflare Page Performance" />
 
@@ -126,7 +126,7 @@ Vercel detected the Vite \+ React app and automatically configured the build. Th
 
 Here is the link to the [site](https://comparing-appwrite-sites-vs-vercel.vercel.app/).
 
-Below is the performance reports from PageSpeed Insights on analysing site hosted on Vercel:
+Below are the performance reports from PageSpeed Insights analyzing the site hosted on Vercel:
 
 <Image src={VercelPerformance} alt="Vercel Performance" />
 
@@ -147,7 +147,7 @@ Cloudflare and Vercel both support backend functionality, but they approach it d
 
 - Doesn't support traditional, always-on backend servers.
 - Backend support is handled through **API routes**.
-- These API routes are available in frameworks such as Next.js, React, Svelte, Remix e.t.c
+- These API routes are available in frameworks such as Next.js, Remix, and SvelteKit (each with its own conventions).
 - APIs are colocated with the frontend in the same project directory.
 
 ### Cloudflare
@@ -436,12 +436,12 @@ Here is the [link](https://forms-ap-is.vercel.app/) to the deployed project.
 
 ### Summary
 
-| Features              | Vercel                       | Cloudflare Worker                    |
-| :-------------------- | :--------------------------- | :----------------------------------- |
-| Deployment Experience | Via dashboard and Vercel CLI | Via dashboard and Wrangler CLI only. |
-| Included usage        | 1,000,000/month (Hobby)      | 100k/day (Free plan)                 |
-| GitHub Integration    | Yes                          | Yes ( via Worker Builds)             |
-| Automatic CI/CD       | Yes                          | Yes ( via GitHub Actions/CLI)        |
+| Features              | Vercel                       | Cloudflare Worker                         |
+| :-------------------- | :--------------------------- | :---------------------------------------- |
+| Deployment Experience | Via dashboard and Vercel CLI | Via dashboard and Wrangler CLI            |
+| Included usage        | 1,000,000/month (Hobby)      | 100k/day (Free plan)                      |
+| GitHub Integration    | Yes                          | Yes ( via Workers Builds)                 |
+| Automatic CI/CD       | Yes                          | Yes (via Workers Builds / GitHub Actions) |
 
 ## Custom Email
 
@@ -483,7 +483,6 @@ Vercel does not offer any email solution. To set up a custom domain email on Ver
 Community support is a key point developers often check out when adopting a new platform because it helps with problem‑solving.
 
 - The Cloudflare community offers solutions for complex infrastructure challenges and enterprise security concerns. Although there isn’t a lot of support aimed at solo developers, this has been improving recently.
-  @@
 - The Vercel community provides excellent resources for modern web development. Tight integration with the Next.js ecosystem yields abundant tutorials, examples, and community solutions. For enterprise support, it trails Cloudflare, but it’s strong for solo and small teams.
 
 ## Pricing
