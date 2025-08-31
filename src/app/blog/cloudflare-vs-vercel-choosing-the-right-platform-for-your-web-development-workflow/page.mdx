@@ -334,7 +334,7 @@ export default {
 }
 ```
 
-Here is the [link](https://be02a0b0.forms-apis.pages.dev/) to the deployed project and here is the [link](https://contact-form-api.ukumakubequincy.workers.dev) to the API deployed in Workers.
+Here is the [link](https://be02a0b0.forms-apis.pages.dev/) to the deployed project and here is the [link](https://contact-form-api.ukumakubequincy.workers.dev/contact) to the API deployed in Workers.
 
 <Image src={CloudflareFullStackForm} alt="full-stack contact form" />
 
@@ -360,10 +360,7 @@ export default async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Credentials", "true")
     res.setHeader("Access-Control-Allow-Origin", allowOrigin)
     res.setHeader("Vary", "Origin")
-  } else {
-    // Public, non-credentialed fallback
-    res.setHeader("Access-Control-Allow-Origin", "*")
-  }
+  } // else: omit Allow-Origin for disallowed origins
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET,OPTIONS,PATCH,DELETE,POST,PUT"
@@ -442,7 +439,7 @@ Here is the [link](https://forms-ap-is.vercel.app/) to the deployed project.
 | Features              | Vercel                       | Cloudflare Worker                    |
 | :-------------------- | :--------------------------- | :----------------------------------- |
 | Deployment Experience | Via dashboard and Vercel CLI | Via dashboard and Wrangler CLI only. |
-| Daily Request         | 1,000,000/month (Hobby)      | 100k/day (Free plan)                 |
+| Included usage        | 1,000,000/month (Hobby)      | 100k/day (Free plan)                 |
 | GitHub Integration    | Yes                          | Yes ( via Worker Builds)             |
 | Automatic CI/CD       | Yes                          | Yes ( via GitHub Actions/CLI)        |
 
@@ -483,32 +480,33 @@ Vercel does not offer any email solution. To set up a custom domain email on Ver
 
 ### Why Does This Matter?
 
-Community support is one of the keypoint developers often checkout when trying to make use of a new platform. This is because it helps especially in problem-solving capabilities.
+Community support is a key point developers often check out when adopting a new platform because it helps with problem‑solving.
 
-- Cloudflare community offers solutions for complex infrastructure challenges and security concerns around enterprises. Though not lot of community support around solo or individual developers, there seems to be an increase in recent times which might double in the coming time.
-- Vercel community provides excellent resources for modern web development practices. The tight integration with the Next.js ecosystem means abundant tutorials, examples, and community solutions for common problems. In respect to enterprise support, it lags behind Cloudflare but very good for solo/Individual developers.
+- The Cloudflare community offers solutions for complex infrastructure challenges and enterprise security concerns. Although there isn’t a lot of support aimed at solo developers, this has been improving recently.
+  @@
+- The Vercel community provides excellent resources for modern web development. Tight integration with the Next.js ecosystem yields abundant tutorials, examples, and community solutions. For enterprise support, it trails Cloudflare, but it’s strong for solo and small teams.
 
 ## Pricing
 
 ### Cloudflare
 
-- Offers a Free tier that contain basic CDN, DDoS protection, SSL certificates.
+- Offers a Free tier that contains basic CDN, DDoS protection, and SSL certificates.
 - The pro [plan](https://www.cloudflare.com/lp/pg-all-plans-multi-sku-simple/) ($25/month) has enhanced security, image optimisation and mobile optimisation.
 - Business plan ($250/month) has advanced security and support.
-- Enterprise(Custom) plan has full security suite and dedicated support.
+- Enterprise (Custom) plan has a full security suite and dedicated support.
 
 ### Vercel
 
 - Vercel has a free plan which is good for personal projects, and allows for custom domains.
 - The pro [plan](https://vercel.com/pricing) ($20/month) contains team collaboration, analytics and password protection.
-- Vercel Enterprise plan contain full security suite and dedicated support.
+- Vercel Enterprise plan contains a full security suite and dedicated support.
 
 ### Why Does This Matter?
 
 Pricing is another major factor when trying to choose platform for hosting due to budget planning, feature access, and scaling decisions.
 
-- Cloudfare’s free tier provide significant value for startups and small projects, as it offer many infrastructure features for free. Although the jump to enterprise pricing can be substantial, the comprehensive feature justify the cost for the organization.
-- Vercel’s pricing makes it easier to budget for growing teams and projects. The clear feature tier help teams understand exactly what they are paying for and when they need to upgrade.
+- Cloudflare’s free tier provides significant value for startups and small projects, as it offers many infrastructure features for free. Although the jump to enterprise pricing can be substantial, the comprehensive feature justify the cost for the organization.
+- Vercel’s pricing makes it easier to budget for growing teams and projects. The clear feature tiers help teams understand exactly what they are paying for and when they need to upgrade.
 
 ## Conclusion
 
