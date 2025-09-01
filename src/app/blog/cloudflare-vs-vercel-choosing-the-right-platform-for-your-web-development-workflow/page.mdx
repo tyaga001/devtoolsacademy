@@ -57,7 +57,7 @@ Vercel is a frontend-focused platform built for the seamless deployment of moder
 
 - Create an account at [cloudflare.com](https://cloudflare.com/)
 - Set up Cloudflare Pages or Workers
-- Configure build settings manually and not automatically
+- Auto-detects common frameworks; manual config still needed for custom builds
 - Learn Wrangler CLI for advanced features like hosting in workers
 - More complex initial setup when making use of Cloudflare workers
 - Highly customizable platform
@@ -74,17 +74,17 @@ Vercel is a frontend-focused platform built for the seamless deployment of moder
 - Auto Detection of the framework
 - One-click deployment
 - Intuitive dashboard interface
-- Optimised for popular frameworks
+- Optimized for popular frameworks
 - Fast build times
-- Limited customisation options
+- Limited customization options
 - Focus on simplicity and speed
 
 ### Why Does This Matter?
 
 Developer experience affects team productivity, onboarding time, and long-term maintenance costs.
 
-- Cloudflare's customisation options provide more flexibility but require deeper technical knowledge. This matters for teams with specific infrastructure requirements or those building complex applications that need fine-grained control.
-- Vercel's optimised experience means faster onboarding for new team members and fewer context switches between tools. This is valuable for teams prioritising development velocity over infrastructure control.
+- Cloudflare's customization options provide more flexibility but require deeper technical knowledge. This matters for teams with specific infrastructure requirements or those building complex applications that need fine-grained control.
+- Vercel's optimized experience means faster onboarding for new team members and fewer context switches between tools. This is valuable for teams prioritising development velocity over infrastructure control.
 
 ## Deployment Workflow/Experience
 
@@ -101,7 +101,7 @@ Cloudflare Pages also provides GitHub integration and allows custom build settin
 - Manually set `npm run build`
 - Output directory: `dist`
 
-<Image src={CloudflareSettingYourApp} alt="Cloudflare Setting Your app" />
+<Image src={CloudflareSettingYourApp} alt="Cloudflare: setting your app" />
 
 After configuration, the deployment of the application took **24 seconds**.
 
@@ -181,9 +181,9 @@ On Cloudflare, we took a different approach:
 - The frontend was hosted using Cloudflare Pages
 - The backend (API endpoint for the form) was deployed separately using Cloudflare Workers
 
-While it's possible to serve both frontend and backend from Workers alone, the configuration is more complex and not beginner friendly, as it entails many manual configurations. Cloudflare Pages simplifies static site hosting, so it's often better to separate concerns unless deep customisation is needed.
+While it's possible to serve both frontend and backend from Workers alone, the configuration is more complex and not beginner friendly, as it entails many manual configurations. Cloudflare Pages simplifies static site hosting, so it's often better to separate concerns unless deep customization is needed.
 
-<Image src={CloudflareWorker} alt="Cloudflare Worker" />
+<Image src={CloudflareWorker} alt="Cloudflare Worker dashboard" />
 
 For the same form UI hosted on Cloudflare Pages, we deployed the backend to Cloudflare Workers. The setup required defining a Worker route and binding it to handle form submissions, slightly more setup than Vercel’s API directory but more flexible in terms of routing and deployment.
 
@@ -239,7 +239,17 @@ export default {
 
     // Only handle POST requests to /contact
     const { pathname } = new URL(request.url)
-    if (request.method !== "POST" || pathname !== "/contact") {
+    if (pathname !== "/contact") {
+      return new Response(JSON.stringify({ error: "Not found" }), {
+        status: 404,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+    }
+
+    if (request.method !== "POST") {
       return new Response(JSON.stringify({ error: "Method not allowed" }), {
         status: 405,
         headers: {
@@ -359,8 +369,8 @@ export default async function handler(req, res) {
   if (allowOrigin) {
     res.setHeader("Access-Control-Allow-Credentials", "true")
     res.setHeader("Access-Control-Allow-Origin", allowOrigin)
-    res.setHeader("Vary", "Origin")
-  } // else: omit Allow-Origin for disallowed origins
+  }
+  res.setHeader("Vary", "Origin")
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET,OPTIONS,PATCH,DELETE,POST,PUT"
@@ -436,12 +446,12 @@ Here is the [link](https://forms-ap-is.vercel.app/) to the deployed project.
 
 ### Summary
 
-| Features              | Vercel                       | Cloudflare Worker                         |
-| :-------------------- | :--------------------------- | :---------------------------------------- |
-| Deployment Experience | Via dashboard and Vercel CLI | Via dashboard and Wrangler CLI            |
-| Included usage        | 1,000,000/month (Hobby)      | 100k/day (Free plan)                      |
-| GitHub Integration    | Yes                          | Yes ( via Workers Builds)                 |
-| Automatic CI/CD       | Yes                          | Yes (via Workers Builds / GitHub Actions) |
+| Features              | Vercel                                           | Cloudflare Worker                         |
+| :-------------------- | :----------------------------------------------- | :---------------------------------------- |
+| Deployment Experience | Via dashboard and Vercel CLI                     | Via dashboard and Wrangler CLI            |
+| Included usage        | 100,000 invocations & 100 GB-hours/month (Hobby) | 100k/day (Free plan)                      |
+| GitHub Integration    | Yes                                              | Yes ( via Workers Builds)                 |
+| Automatic CI/CD       | Yes                                              | Yes (via Workers Builds / GitHub Actions) |
 
 ## Custom Email
 
@@ -451,7 +461,7 @@ One underrated advantage of using Cloudflare’s ecosystem is free custom email 
 
 “0 custom email, with just your domain, Cloudflare, and an existing Google account. Now I pay $0 for sending both promotional and transactional emails.”
 
-With Cloudflare Email Routing, you can receive emails using a branded domain (e.g., hello@yourdomain.com) and forward them to your Gmail, without paying for hosting or a mailbox provider. This is done by creating a redirect with cloudflare to your Gmail and then create an alias in Gmail to your custom email with a password.
+With Cloudflare Email Routing, you can receive emails at a branded address (e.g., hello@yourdomain.com) and forward them to Gmail at no cost. Sending still requires an SMTP provider (e.g., Gmail with an app password) and is subject to that provider’s sending limits and policies.
 
 ### Vercel
 
@@ -497,7 +507,7 @@ Community support is a key point developers often check out when adopting a new 
 ### Vercel
 
 - Vercel has a free plan which is good for personal projects, and allows for custom domains.
-- The pro [plan](https://vercel.com/pricing) ($20/month) contains team collaboration, analytics and password protection.
+- The pro [plan](https://vercel.com/pricing) ($20 per seat/month) contains team collaboration, analytics and password protection,plus 1,000,000 function invocations and 1,000 GB-hours per billing cycle (as of Aug 31 2025).
 - Vercel Enterprise plan contains a full security suite and dedicated support.
 
 ### Why Does This Matter?
