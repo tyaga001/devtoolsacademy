@@ -35,6 +35,7 @@ model BlogUser {
 model Tool {
   id          String   @id @default(cuid())
   name        String
+  slug        String   @unique
   headline    String
   description String
   categories  String[]
@@ -47,13 +48,86 @@ model Tool {
   githubUrl   String   @unique
   websiteUrl  String?
   documentation String?
+  npmPackage  String?
+  dockerImage String?
+  pricingUrl  String?
+  
+  // Relations
+  integrations Integration[]
+  metrics      ToolMetric[]
+  snippets     CodeSnippet[]
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@index([name])
+  @@index([slug])
   @@index([categories])
   @@index([tags])
+}
+
+model Integration {
+  id        String @id @default(cuid())
+  toolId    String
+  target    String  // e.g., "Next.js", "Vercel", "Prisma"
+  docsUrl   String?
+  status    IntegrationStatus @default(AVAILABLE)
+  
+  tool      Tool @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  snippets  CodeSnippet[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([toolId, target])
+  @@index([toolId])
+  @@index([target])
+}
+
+model ToolMetric {
+  id            String @id @default(cuid())
+  toolId        String
+  githubStars   Int?
+  githubForks   Int?
+  commits30d    Int?
+  npmWeekly     Int?
+  dockerPulls   Int?
+  lastReleaseAt DateTime?
+  refreshedAt   DateTime @default(now())
+  
+  tool          Tool @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  
+  createdAt     DateTime @default(now())
+
+  @@unique([toolId])
+  @@index([toolId])
+  @@index([refreshedAt])
+}
+
+model CodeSnippet {
+  id           String @id @default(cuid())
+  toolId       String
+  integrationId String?
+  title        String
+  code         String
+  language     String
+  verified     Boolean @default(false)
+  
+  tool         Tool @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  integration  Integration? @relation(fields: [integrationId], references: [id], onDelete: Cascade)
+  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([toolId])
+  @@index([integrationId])
+}
+
+enum IntegrationStatus {
+  AVAILABLE
+  BETA
+  DEPRECATED
+  PLANNED
 }
 
 model Categories {
