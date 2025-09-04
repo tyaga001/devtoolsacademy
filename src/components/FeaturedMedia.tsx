@@ -57,7 +57,7 @@ const FeaturedMedia: React.FC = () => {
               {/* Content */}
               <div className="space-y-4 md:col-span-2">
                 <h3 className="text-xl font-bold leading-tight text-neutral-200 md:text-2xl">
-                  "How to use AI as an accelerator, not a crutch"
+                  &ldquo;How to use AI as an accelerator, not a crutch&rdquo;
                 </h3>
                 <p className="leading-relaxed text-neutral-400">
                   Sharing insights about dev tools, GTM strategies, developer

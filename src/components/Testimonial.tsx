@@ -95,7 +95,8 @@ function Testimonial() {
           Developers across the globe love DTA
         </p>
         <p className="mb-10 text-sm text-neutral-600">
-          Featured on freeCodeCamp Podcast • Trusted by 10,000+ developers monthly
+          Featured on freeCodeCamp Podcast • Trusted by 10,000+ developers
+          monthly
         </p>
         <div
           className="flex justify-center space-x-2"

@@ -130,8 +130,8 @@ export default function SponsorPage() {
           <div className="space-y-4 leading-relaxed text-neutral-500">
             <p>
               I&apos;m a software engineer based in Sweden who cares deeply
-              about &quot;Writing&quot;. I&apos;ve worked at multinational companies 
-              like Volvo, Barclays, and Accenture.
+              about &quot;Writing&quot;. I&apos;ve worked at multinational
+              companies like Volvo, Barclays, and Accenture.
             </p>
             <p>
               Recently featured on the{" "}
