@@ -91,7 +91,7 @@ function Testimonial() {
             Developers Insights
           </span>
         </h2>
-        <p className="mb-10 text-base text-neutral-500 md:text-lg">
+        <p className="mb-6 text-base text-neutral-500 md:text-lg">
           Developers across the globe love DTA
         </p>
         <div
