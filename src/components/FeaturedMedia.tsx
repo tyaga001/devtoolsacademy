@@ -22,10 +22,13 @@ const FeaturedMedia: React.FC = () => {
         <div className="mx-auto mb-12 max-w-5xl">
           <div className="relative aspect-video overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900">
             <iframe
-              src="https://www.youtube.com/embed/ebarbEsoHzg"
+              src="https://www.youtube-nocookie.com/embed/ebarbEsoHzg"
               title="How to use AI as an accelerator, not a crutch - freeCodeCamp Podcast"
-              className="absolute inset-0 size-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              className="absolute inset-0 w-full h-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin allow-presentation"
+              allow="encrypted-media; picture-in-picture"
               allowFullScreen
             />
           </div>
