@@ -192,15 +192,19 @@ const JobSubmissionForm: React.FC = () => {
           {/* Contact Information */}
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="contactName"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Contact name
               </label>
               <Input
+                id="contactName"
                 type="text"
                 placeholder="Your name"
-                value={formData.contactEmail || ""}
+                value={formData.contactName || ""}
                 onChange={(e) =>
-                  handleInputChange("contactEmail", e.target.value)
+                  handleInputChange("contactName", e.target.value)
                 }
                 className="bg-neutral-800 border-neutral-700 text-neutral-100"
               />
@@ -212,10 +216,14 @@ const JobSubmissionForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="contactEmail"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Contact email
               </label>
               <Input
+                id="contactEmail"
                 type="email"
                 placeholder="your.email@company.com"
                 value={formData.contactEmail || ""}
@@ -235,10 +243,14 @@ const JobSubmissionForm: React.FC = () => {
           {/* Company Information */}
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="company"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Company name
               </label>
               <Input
+                id="company"
                 type="text"
                 placeholder="e.g. Stripe, Vercel, OpenAI"
                 value={formData.company || ""}
@@ -251,10 +263,14 @@ const JobSubmissionForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="companyLogo"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Company logo URL (optional)
               </label>
               <Input
+                id="companyLogo"
                 type="url"
                 placeholder="https://company.com/logo.png"
                 value={formData.companyLogo || ""}
@@ -274,10 +290,14 @@ const JobSubmissionForm: React.FC = () => {
           {/* Job Details */}
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Job title
               </label>
               <Input
+                id="title"
                 type="text"
                 placeholder="e.g. Senior Developer Advocate"
                 value={formData.title || ""}
@@ -290,10 +310,14 @@ const JobSubmissionForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="applyUrl"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Job posting URL
               </label>
               <Input
+                id="applyUrl"
                 type="url"
                 placeholder="https://company.com/careers/devrel-role"
                 value={formData.applyUrl || ""}
@@ -306,10 +330,14 @@ const JobSubmissionForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="location"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Location
               </label>
               <Input
+                id="location"
                 type="text"
                 placeholder="e.g. Remote, San Francisco, New York"
                 value={formData.location || ""}
@@ -322,7 +350,10 @@ const JobSubmissionForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="jobType"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Job type
               </label>
               <DropdownMenu>
@@ -354,11 +385,15 @@ const JobSubmissionForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-neutral-300 mb-2">
+              <label
+                htmlFor="salary"
+                className="block text-sm font-medium text-neutral-300 mb-2"
+              >
                 Salary range{" "}
                 <span className="text-neutral-500">(optional)</span>
               </label>
               <Input
+                id="salary"
                 type="text"
                 placeholder="e.g. $120k-$180k, €80k-€120k, Competitive"
                 value={formData.salary || ""}
@@ -373,13 +408,17 @@ const JobSubmissionForm: React.FC = () => {
 
           {/* Job Description */}
           <div>
-            <label className="block text-sm font-medium text-neutral-300 mb-2">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-neutral-300 mb-2"
+            >
               Job description
               <span className="ml-2 text-xs text-neutral-500">
                 {formData.description?.length || 0}/2000
               </span>
             </label>
             <textarea
+              id="description"
               placeholder="Provide a brief description of the role, key responsibilities, and requirements..."
               value={formData.description || ""}
               onChange={(e) => handleInputChange("description", e.target.value)}

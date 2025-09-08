@@ -54,6 +54,10 @@ export const JobSubmissionSchema = z.object({
     .max(20, { message: "Maximum 20 benefits allowed" })
     .optional(),
   applyUrl: z.string().url({ message: "Apply URL must be a valid URL" }),
+  contactName: z
+    .string()
+    .min(1, { message: "Contact name is required" })
+    .max(50, { message: "Contact name must be less than 50 characters" }),
   contactEmail: z.string().email({ message: "Invalid email format" }),
   categories: z
     .string()
