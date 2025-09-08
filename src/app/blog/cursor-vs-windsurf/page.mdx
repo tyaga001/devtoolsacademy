@@ -28,16 +28,17 @@ import Image21 from "./image21.png"
 import Image22 from "./image22.gif"
 
 export const metadata = getMetadata({
-    path: "/blog/cursor-vs-windsurf",
-    title: "Cursor vs Windsurf - Choose the Right AI Code Editor for Your Team",
-    description: "Technical comparison of Cursor and Windsurf covering agent-style assistance, local vs cloud processing, context handling, performance benchmarks, and VS Code integration capabilities.",
-    image: CoverImage.src,
+  path: "/blog/cursor-vs-windsurf",
+  title: "Cursor vs Windsurf - Choose the Right AI Code Editor for Your Team",
+  description:
+    "Technical comparison of Cursor and Windsurf covering agent-style assistance, local vs cloud processing, context handling, performance benchmarks, and VS Code integration capabilities.",
+  image: CoverImage.src,
 })
 
 <BlogHeader
-    title={"Cursor vs Windsurf - Choose the Right AI Code Editor for Your Team"}
-    author={"Ankur Tyagi"}
-    publishedAt={"2025-04-11T00:00:00Z"}
+  title={"Cursor vs Windsurf - Choose the Right AI Code Editor for Your Team"}
+  author={"Ankur Tyagi"}
+  publishedAt={"2025-04-11T00:00:00Z"}
 />
 
 # Cursor vs. Windsurf
@@ -62,17 +63,17 @@ In an assistant-style operation, Cursor’s Chat behaves like a conversational c
 
 <Image src={Image1} alt="Cursor" width={1200} height={600} />
 
-Enabling *Agent mode* lets Cursor actively take steps on your behalf in agent-style operation: it can understand your request, search your codebase, plan changes, open files, apply changes, and even run commands via a built-in agent workflow and verify the results​. This agent capability is designed to interpret high-level tasks and execute a sequence of actions to fulfill them and verify the end result.
+Enabling _Agent mode_ lets Cursor actively take steps on your behalf in agent-style operation: it can understand your request, search your codebase, plan changes, open files, apply changes, and even run commands via a built-in agent workflow and verify the results​. This agent capability is designed to interpret high-level tasks and execute a sequence of actions to fulfill them and verify the end result.
 
 <Image src={Image17} alt="Cursor" width={1200} height={600} />
 
-**Windsurf**, on the other hand, emphasizes an *agentic design* from the outset. Its AI assistant is called **Cascade**, often described as an *“agentic IDE”* that can collaborate in non-trivial ways​.
+**Windsurf**, on the other hand, emphasizes an _agentic design_ from the outset. Its AI assistant is called **Cascade**, often described as an _“agentic IDE”_ that can collaborate in non-trivial ways​.
 
 <Image src={Image19} alt="Windsurf AI Code Editor" width={1200} height={600} />
 
 Instead of a passive assistant that only answers prompts, Cascade is meant to handle context and file management somewhat autonomously, more like an AI co-developer who can take the initiative. In practice, Windsurf doesn’t make the user explicitly switch modes; Cascade can both chat and, when needed, perform multi-step “AI Flows” that involve reading multiple files or executing commands.
 
-> To illustrate, consider a task like *“Add a new function to handle user authentication and update all relevant parts of the app.”* In Windsurf, you might simply ask Cascade in chat to implement this, and Cascade will search the codebase, possibly open relevant files (e.g. user model, config, etc.), create a new file for the auth function, and modify existing code to integrate it.
+> To illustrate, consider a task like _“Add a new function to handle user authentication and update all relevant parts of the app.”_ In Windsurf, you might simply ask Cascade in chat to implement this, and Cascade will search the codebase, possibly open relevant files (e.g. user model, config, etc.), create a new file for the auth function, and modify existing code to integrate it.
 
 You could achieve the same in Cursor, but you may need to invoke the Agent in Composer mode.
 
@@ -88,7 +89,7 @@ Think of MCP as a plugin system for Cursor. It allows you to extend the Agent’
 
 <Image src={Image20} alt="Windsurf AI Code Editor" width={1200} height={600} />
 
-Windsurf’s Cascade was built to handle these *“AI flow”* multi-step edits more seamlessly.
+Windsurf’s Cascade was built to handle these _“AI flow”_ multi-step edits more seamlessly.
 
 > In short, Windsurf defaults to an agent-style philosophy, whereas Cursor gives users a choice between direct assistance and an agent executing tasks (triggered via its Agent mode or Composer feature).
 
@@ -108,7 +109,7 @@ This means Cursor requires an internet connection and uses cloud processing for 
 
 > There is no fully-offline mode for Cursor’s main features at this time. If you enable “Privacy Mode,” it ensures nothing is stored server-side long-term (zero data retention), but the model inference still happens on remote servers.​
 
-> Windsurf (by Codeium) similarly uses cloud models by default. When you use Cascade or get a completion, it’s contacting Codeium’s AI endpoints. However, Codeium strongly focuses on enterprise and offers a self-hosted deployment option: companies can run the Codeium AI engine on-premises or in a private cloud so that *“Your sensitive IP never leaves your network.”* effectively an air-gapped setup.
+> Windsurf (by Codeium) similarly uses cloud models by default. When you use Cascade or get a completion, it’s contacting Codeium’s AI endpoints. However, Codeium strongly focuses on enterprise and offers a self-hosted deployment option: companies can run the Codeium AI engine on-premises or in a private cloud so that _“Your sensitive IP never leaves your network.”_ effectively an air-gapped setup.
 
 This is a major selling point for Windsurf in enterprise contexts, organizations can own the AI model deployment and keep everything internal, addressing sensitive code privacy concerns.
 
@@ -138,7 +139,7 @@ You can also expand the **Show Settings** section to access more advanced option
 
 Here, you can decide whether to enable automatic indexing for new repositories and configure the files Cursor will ignore during repository indexing.
 
-> When enabled, Cursor will upload your code in chunks to its server to compute embeddings, but it *“does not store plaintext code”*. Only the numeric embeddings and some metadata (file hashes, etc.) are stored​. So, Cursor’s code search is cloud-powered but privacy-masked (embeddings from which original code can’t be reconstructed).
+> When enabled, Cursor will upload your code in chunks to its server to compute embeddings, but it _“does not store plaintext code”_. Only the numeric embeddings and some metadata (file hashes, etc.) are stored​. So, Cursor’s code search is cloud-powered but privacy-masked (embeddings from which original code can’t be reconstructed).
 
 <Image src={Image7} alt="Cursor" width={1200} height={600} />
 
@@ -154,17 +155,17 @@ Next, we’ll see how these design choices impact actual multi-file assistance.
 
 3. ### Multi-file Refactoring Capabilities
 
-> Cursor and Windsurf support multi-file editing and refactoring, but their approach highlights the assistant vs. agent design. Cursor introduced a feature called *“Composer”* for orchestrating multi-file changes. Essentially, you can ask Cursor in its chat to perform a refactor that spans multiple files. It will plan out changes to each relevant file and present the modifications.
+> Cursor and Windsurf support multi-file editing and refactoring, but their approach highlights the assistant vs. agent design. Cursor introduced a feature called _“Composer”_ for orchestrating multi-file changes. Essentially, you can ask Cursor in its chat to perform a refactor that spans multiple files. It will plan out changes to each relevant file and present the modifications.
 
 Windsurf’s equivalent is the **“Cascade”** AI flow, which leans into agent behavior.
 
-It deeply understands your project structure and can automatically propagate changes across many files when you request a refactor. In fact, Windsurf’s Cascade mode will generate or modify code project-wide and you will be *asked for your approval* before running or applying the changes.
+It deeply understands your project structure and can automatically propagate changes across many files when you request a refactor. In fact, Windsurf’s Cascade mode will generate or modify code project-wide and you will be _asked for your approval_ before running or applying the changes.
 
 This built-in review step (e.g. “Accept” or “Reject” changes in each file) ensures the agent doesn’t apply the changes without your consent, a useful safety for large refactors.
 
-> For example, imagine you want to rename a function and update all its callers across a codebase. With Cursor, you might prompt its chat: “Rename function ***processData*** to ***transformData*** everywhere and update references.” Cursor (via Composer) will search for the symbol and produce diffs for each file that uses it, which you can then approve and apply.
+> For example, imagine you want to rename a function and update all its callers across a codebase. With Cursor, you might prompt its chat: “Rename function **_processData_** to **_transformData_** everywhere and update references.” Cursor (via Composer) will search for the symbol and produce diffs for each file that uses it, which you can then approve and apply.
 
-> On the other hand, Windsurf might let you simply issue a command in Cascade chat: “Please rename ***processData*** to **transformData** project-wide.” Windsurf’s agent will automatically edit all files where ***processData*** appears, maybe run the project’s tests to verify nothing broke, and then present you with the changes and results.
+> On the other hand, Windsurf might let you simply issue a command in Cascade chat: “Please rename **_processData_** to **transformData** project-wide.” Windsurf’s agent will automatically edit all files where **_processData_** appears, maybe run the project’s tests to verify nothing broke, and then present you with the changes and results.
 
 <Image src={Image8} alt="Windsurf AI Code Editor" width={1200} height={600} />
 
@@ -180,7 +181,7 @@ Notably, Windsurf’s agent can chain actions.
 
 In other words, when sweeping changes across many files are needed, Windsurf’s depth of analysis and automation can handle them more gracefully. Cursor is no slouch either; in fact, some analyses credit Cursor with advanced refactoring strength, particularly on contained code changes.
 
->The bottom line is that both tools can perform multi-file refactors, but Cursor (assistant) acts as a smart guide listing changes for you to apply, whereas Windsurf (agent) acts more like an autonomous teammate carrying out the refactor across files and verifying it works, subject to your approval.
+> The bottom line is that both tools can perform multi-file refactors, but Cursor (assistant) acts as a smart guide listing changes for you to apply, whereas Windsurf (agent) acts more like an autonomous teammate carrying out the refactor across files and verifying it works, subject to your approval.
 
 4. ### Context Window and Codebase Context Handling
 
@@ -210,7 +211,7 @@ It has a “knows your codebase” feature that lets you ask questions about you
 
 You can ask a question about a function, and it will find the definition even if it’s buried in a different module because it has indexed it.
 
-> Windsurf also implements *“Memories”*, a system to persist context across sessions. There are user-defined memories (like rules or notes you set for the AI) and automatic memories from past interactions.
+> Windsurf also implements _“Memories”_, a system to persist context across sessions. There are user-defined memories (like rules or notes you set for the AI) and automatic memories from past interactions.
 
 <Image src={Image4} alt="Windsurf AI Code Editor" width={1200} height={600} />
 
@@ -279,7 +280,7 @@ Cursor, being cloud-based, knew it needed to earn developers’ trust in sensiti
 
 - It offers a **Privacy Mode,** which, when enabled, ensures that none of your code is retained on their servers.
 
-> According to Cursor’s documentation, *“with Privacy Mode, none of your code will ever be stored by us or any third party”* beyond the immediate processing needed for the AI.
+> According to Cursor’s documentation, _“with Privacy Mode, none of your code will ever be stored by us or any third party”_ beyond the immediate processing needed for the AI.
 
 <Image src={Image2} alt="Cursor" width={1200} height={600} />
 
@@ -287,17 +288,17 @@ Cursor, being cloud-based, knew it needed to earn developers’ trust in sensiti
 
 - It’s worth noting that privacy mode in Cursor can be toggled off. Even if it is off, Cursor may still collect usage and telemetry data (including prompts, code snippets, or editor actions) to help improve It.
 
-- Cursor does rely on third-party LLM APIs (like OpenAI) under the hood, so your code may go to OpenAI’s servers as part of a request. OpenAI has its policy of not using API data for training by default, and Cursor mentions *“except for OpenAI which persists the prompts we send to them…”* for a short period.
+- Cursor does rely on third-party LLM APIs (like OpenAI) under the hood, so your code may go to OpenAI’s servers as part of a request. OpenAI has its policy of not using API data for training by default, and Cursor mentions _“except for OpenAI which persists the prompts we send to them…”_ for a short period.
 
 > Windsurf's local-first or on-prem approach addresses privacy by **keeping as much processing local as possible**. In the ideal case, an enterprise could deploy Windsurf’s AI engine on internal servers so that code never leaves its network.
 
-However, even the cloud-connected version of Windsurf (for individual users) has strong privacy guardrails. Codeium (Windsurf’s parent platform) explicitly **does not train on your private code** *“no training on non-permissive data”* is a stated policy.
+However, even the cloud-connected version of Windsurf (for individual users) has strong privacy guardrails. Codeium (Windsurf’s parent platform) explicitly **does not train on your private code** _“no training on non-permissive data”_ is a stated policy.
 
 > All data in transit is encrypted, and like Cursor, Windsurf offers **optional zero-day data retention**.
 
 <Image src={Image10} alt="Windsurf AI Code Editor" width={1200} height={600} />
 
-- Additionally, Codeium/Windsurf emphasizes it *“does not use information without permission to train its models”* and *“provides encryption for data in transit”*, echoing a security-by-design approach.
+- Additionally, Codeium/Windsurf emphasizes it _“does not use information without permission to train its models”_ and _“provides encryption for data in transit”_, echoing a security-by-design approach.
 
 > Windsurf also supports a self-hosted solution for companies, meaning the entire AI stack (the model, the orchestrator, etc.) can run in a private cloud or on your local servers with no external calls. In that scenario, developers get the full power of the AI agent with total code privacy (since even model inference happens behind the company’s firewall). This on-prem mode is a strong advantage for businesses with strict compliance requirements, and it’s something Cursor currently does not offer.
 
@@ -307,7 +308,7 @@ How do Cursor and Windsurf compare in real-world performance metrics like startu
 
 #### Startup time & editor performance
 
-- Despite packing a lot of AI capability, Cursor and Windsurf try to remain lightweight as editors. Windsurf’s engineering prioritizes speed – it’s *“engineered to be lean and fast, with optimized load times”*, even claiming a *smaller memory footprint than typical VS Code*.
+- Despite packing a lot of AI capability, Cursor and Windsurf try to remain lightweight as editors. Windsurf’s engineering prioritizes speed – it’s _“engineered to be lean and fast, with optimized load times”_, even claiming a _smaller memory footprint than typical VS Code_.
 
 - Cursor is built on Electron like VS Code, so the baseline startup is on par with VS Code, plus there is a slight overhead to initialize the AI backend. In practice, you might not notice a big difference in startup between them: both open in a few seconds on modern machines.
 
@@ -327,30 +328,30 @@ How do Cursor and Windsurf compare in real-world performance metrics like startu
 
 We don’t have formal benchmark numbers (like operations per second) since these tools don’t lend themselves to a simple benchmark. But based on user experiences and our trials:
 
-* **Startup time:** Both \~ are 2-5 seconds for a typical project. Windsurf may perform a longer initial index on huge projects.
+- **Startup time:** Both \~ are 2-5 seconds for a typical project. Windsurf may perform a longer initial index on huge projects.
 
-* **Initial Memory on load:** Cursor \~300-500MB on a small project idle; Windsurf \~400-600MB (with index loaded). With a medium project open and some AI usage, \~1-2GB each.
+- **Initial Memory on load:** Cursor \~300-500MB on a small project idle; Windsurf \~400-600MB (with index loaded). With a medium project open and some AI usage, \~1-2GB each.
 
-* **Memory under heavy use:** Both can exceed 8GB if pushed; cases of 10-15GB are reported for each
+- **Memory under heavy use:** Both can exceed 8GB if pushed; cases of 10-15GB are reported for each
 
-* **Autocomplete latency:** Cursor often \<100ms for simple suggestions (subjectively very fast). Windsurf may be \~200ms if it’s hitting the index. For multi-line completions, both might take 0.5-1.5s, with Cursor being at the lower end often.
-* **Agent task completion time:** For a multi-file refactor, Cursor might generate all diffs in, say, 5-15 seconds (depending on complexity). Windsurf might take 10-30 seconds but we will also attempt to execute tests/fixes in that time. These are ballpark observations; both are still far faster than doing the tasks manually.
+- **Autocomplete latency:** Cursor often \<100ms for simple suggestions (subjectively very fast). Windsurf may be \~200ms if it’s hitting the index. For multi-line completions, both might take 0.5-1.5s, with Cursor being at the lower end often.
+- **Agent task completion time:** For a multi-file refactor, Cursor might generate all diffs in, say, 5-15 seconds (depending on complexity). Windsurf might take 10-30 seconds but we will also attempt to execute tests/fixes in that time. These are ballpark observations; both are still far faster than doing the tasks manually.
 
-> In practice, developers often mention that **Cursor “feels” more lightweight**, whereas **Windsurf “feels” more heavyweight but powerful**. One developer summarized it well: use Windsurf if you *“prefer more comprehensive (though sometimes slower) code suggestions”* or choose Cursor if you *“prioritize speed and reliability”*.
+> In practice, developers often mention that **Cursor “feels” more lightweight**, whereas **Windsurf “feels” more heavyweight but powerful**. One developer summarized it well: use Windsurf if you _“prefer more comprehensive (though sometimes slower) code suggestions”_ or choose Cursor if you _“prioritize speed and reliability”_.
 
 ## Future Implications
 
 8. ### IDE Evolution and VS Code’s Future
 
-- The rise of Cursor and Windsurf signals a broader evolution in IDEs. We’re moving from AI as a *plugin* (like GitHub Copilot in VS Code) to AI as a *core architectural feature* of the IDE. This raises the question: what might the **IDE of the future** look like?
+- The rise of Cursor and Windsurf signals a broader evolution in IDEs. We’re moving from AI as a _plugin_ (like GitHub Copilot in VS Code) to AI as a _core architectural feature_ of the IDE. This raises the question: what might the **IDE of the future** look like?
 
 - One likely scenario is that mainstream IDEs like Visual Studio Code and IntelliJ will natively integrate agent/assistant capabilities. Microsoft has already announced deeper integration of GitHub copilot (Copilot X) in VS Code, adding chat and some refactoring tools. But Cursor and Windsurf push even further, forked VS Code to weave AI into every aspect (from autocompletion to running code) tightly.
 
 - This could pressure the VS Code team to adopt similar features or risk users migrating to these AI-augmented forks. It’s telling that both products leverage VS Code’s openness; it allowed startups to innovate faster than the core VS Code team could. In the future, we may see VS Code absorb some of these ideas, such as having a built-in project indexing service and an AI agent panel by default.
 
-- If such agent capabilities become standard, **the developer's role will shift** more towards supervision, design, and integration and less towards writing boilerplate. IDEs might evolve to have two modes: a *creative mode,* where the developer writes code normally, and an *agent mode,* where the IDE takes over routine coding under your direction.
+- If such agent capabilities become standard, **the developer's role will shift** more towards supervision, design, and integration and less towards writing boilerplate. IDEs might evolve to have two modes: a _creative mode,_ where the developer writes code normally, and an _agent mode,_ where the IDE takes over routine coding under your direction.
 
-- Another implication is **collaboration**. Cursor has emphasized collaboration features (like sharing Chat sessions or their forum integration) and is noted as a *“better tool for team-based development”*. We can expect IDEs to bake in such features as an “AI code review”, where the agent reviews a PR and leaves comments.
+- Another implication is **collaboration**. Cursor has emphasized collaboration features (like sharing Chat sessions or their forum integration) and is noted as a _“better tool for team-based development”_. We can expect IDEs to bake in such features as an “AI code review”, where the agent reviews a PR and leaves comments.
 
 - It’s also possible that **AI agents will become programming assistants across the software lifecycle,** not just in writing code but also in tracking issues, writing documentation, and monitoring software.
 
@@ -360,14 +361,14 @@ We don’t have formal benchmark numbers (like operations per second) since thes
 
 Agentic AI tools can be a force multiplier for startups and agile teams. Developers often wear many hats in a startup, and time is the most precious resource. Here’s how models like Cursor and Windsurf are impacting workflows:
 
-* **Rapid prototyping:** Startups need to build MVPs quickly. An AI assistant can generate boilerplate code, set up the basic project structure, and create initial UI components from a simple prompt. By leveraging AI for the grunt work, a small startup team could go from idea to working prototype much faster. Instead of spending days writing setup code, they could focus on unique business logic while the AI scaffolds the rest.
+- **Rapid prototyping:** Startups need to build MVPs quickly. An AI assistant can generate boilerplate code, set up the basic project structure, and create initial UI components from a simple prompt. By leveraging AI for the grunt work, a small startup team could go from idea to working prototype much faster. Instead of spending days writing setup code, they could focus on unique business logic while the AI scaffolds the rest.
 
-* **Smaller Teams, higher productivity:** For a startup with 2-5 engineers, a 2x boost is like having double the team. This doesn’t mean AI replaces developers but augments them to produce and maintain more code than is normally possible. Routine work (writing CRUD endpoints, converting one data format to another, writing tests) can be offloaded to the AI, freeing developers to tackle harder problems.
+- **Smaller Teams, higher productivity:** For a startup with 2-5 engineers, a 2x boost is like having double the team. This doesn’t mean AI replaces developers but augments them to produce and maintain more code than is normally possible. Routine work (writing CRUD endpoints, converting one data format to another, writing tests) can be offloaded to the AI, freeing developers to tackle harder problems.
 
 **AI as a team member:** Some startups treat the AI agent as an actual team member. You might have tasks in your sprint explicitly assigned to the AI (via a developer driving it)
 
-* **Continuous integration/deployment (CI/CD):** Startups that deploy daily could have AI agents that automatically fix simple build errors or update config files when a deployment fails. Cursor and Windsurf are not quite CI tools, but they can already generate Dockerfiles, YAML configs, etc., on the fly when asked.
-* **Learning and skill:** For junior developers in startups (who often have to climb the learning curve quickly), AI assistants are mentors. They can ask, “How do I implement OAuth login?” and get a code plus an explanation. This can accelerate onboarding. Startups can ramp up new hires faster with AI, bridging the knowledge gap of the codebase.
+- **Continuous integration/deployment (CI/CD):** Startups that deploy daily could have AI agents that automatically fix simple build errors or update config files when a deployment fails. Cursor and Windsurf are not quite CI tools, but they can already generate Dockerfiles, YAML configs, etc., on the fly when asked.
+- **Learning and skill:** For junior developers in startups (who often have to climb the learning curve quickly), AI assistants are mentors. They can ask, “How do I implement OAuth login?” and get a code plus an explanation. This can accelerate onboarding. Startups can ramp up new hires faster with AI, bridging the knowledge gap of the codebase.
 
 > Ultimately, these AI tools are leveling the playing field. A tiny startup can implement features at a pace closer to a much larger team. The caveat is managing the AI’s outputs and ensuring quality. The startups that figure out the right balance between harnessing AI for productivity and avoiding its pitfalls will have an edge in delivering software faster and more continuously.
 
@@ -375,7 +376,7 @@ Agentic AI tools can be a force multiplier for startups and agile teams. Develop
 
 10. ### AI model ownership and control
 
-> One fundamental trade-off between Windsurf and Cursor is **ownership and control of the AI model and environment**. With Windsurf, you effectively *own* the AI environment (especially with self-hosted deployment options), whereas, with Cursor, you subscribe to a service where the provider controls the model tuning, updates, and environment.
+> One fundamental trade-off between Windsurf and Cursor is **ownership and control of the AI model and environment**. With Windsurf, you effectively _own_ the AI environment (especially with self-hosted deployment options), whereas, with Cursor, you subscribe to a service where the provider controls the model tuning, updates, and environment.
 
 - By running Windsurf, especially self-hosted, you can control which AI models are used (Codeium could choose between their own “Sonnet” model or an open-source model, etc.) and when updates are applied. This can be important for consistency: you wouldn’t want an update to the AI to suddenly change how it formats code in the middle of a project.
 
@@ -401,7 +402,7 @@ Control also relates to data. With the Windsurf self-hosted option, any custom d
 
 > **Concrete productivity metrics** are hard to quantify, but one can gauge productivity levels based on personal accounts of developers who have used these tools and shared their experiences online. Cursor’s team touts that engineers using it often see a **\>2x productivity** improvement in coding tasks. Windsurf is similarly impressive.
 
-With great power comes great responsibility. One trade-off in productivity is the risk of complacency or overreliance. A developer might not see huge productivity gains in the initial days until they adapt their workflow. Some challenges noted include the AI sometimes *“getting ahead of itself”* – e.g., Windsurf might try to solve more than you asked and go on a tangent, which can waste time if not managed.
+With great power comes great responsibility. One trade-off in productivity is the risk of complacency or overreliance. A developer might not see huge productivity gains in the initial days until they adapt their workflow. Some challenges noted include the AI sometimes _“getting ahead of itself”_ – e.g., Windsurf might try to solve more than you asked and go on a tangent, which can waste time if not managed.
 
 > Overall, Cursor and Windsurf demonstrably boost productivity, and most users largely agree. Cursor might make you faster in the small, day-to-day tasks, and Windsurf might enable you to take on tasks that would be infeasible or too time-consuming otherwise.
 
@@ -411,15 +412,15 @@ From the developer’s perspective, code privacy is not just about what the tool
 
 The primary concerns are:
 
-* *Could my proprietary code leak or be seen by unauthorized parties?*
+- _Could my proprietary code leak or be seen by unauthorized parties?_
 
-* *Could snippets of my code end up in someone else’s suggestions (as with some past AI assistants)?*
+- _Could snippets of my code end up in someone else’s suggestions (as with some past AI assistants)?_
 
-* *Is using this tool compliant with my company’s policies or industry regulations?*
+- _Is using this tool compliant with my company’s policies or industry regulations?_
 
-> Since Cursor is cloud-based, developers might initially be wary. Early on, some companies outright banned cloud AI code assistants (like Copilot) until privacy assurances were clearer. Cursor has tried to address these fears with Privacy Mode and clear policies. They advertise *“Privacy Options —if you enable Privacy Mode, your code is never stored remotely”*, which directly addresses the leak/storage concern.
+> Since Cursor is cloud-based, developers might initially be wary. Early on, some companies outright banned cloud AI code assistants (like Copilot) until privacy assurances were clearer. Cursor has tried to address these fears with Privacy Mode and clear policies. They advertise _“Privacy Options —if you enable Privacy Mode, your code is never stored remotely”_, which directly addresses the leak/storage concern.
 
-Also, *“Cursor is SOC 2 certified”*, meaning it has been vetted for handling sensitive data. For many devs, that is enough reassurance to try it on non-extremely-sensitive code.
+Also, _“Cursor is SOC 2 certified”_, meaning it has been vetted for handling sensitive data. For many devs, that is enough reassurance to try it on non-extremely-sensitive code.
 
 > Windsurf is designed for privacy-sensitive use. It offers fully self-hosted deployment options, including air-gapped deployments with zero third-party dependencies. Your sensitive IP never leaves your network, which is a huge win for code privacy.
 
@@ -438,6 +439,7 @@ Also, *“Cursor is SOC 2 certified”*, meaning it has been vetted for handling
 ## Further Reading and Resources
 
 - **Official**
+
   - [Cursor](https://www.cursor.com/)
   - [Windsurf](https://windsurf.com/editor)
 
