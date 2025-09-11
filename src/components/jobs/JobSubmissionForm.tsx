@@ -140,28 +140,42 @@ const JobSubmissionForm: React.FC = () => {
   // But keeping it as fallback in case redirect fails
   if (submitSuccess) {
     return (
-      <Card className="border-neutral-100/15 bg-[#141414]">
-        <CardContent className="p-8 text-center">
-          <div className="mb-4 text-6xl">🎉</div>
-          <h2 className="mb-4 text-2xl font-bold text-neutral-100">
-            Job Submitted Successfully!
+      <Card className="border border-green-600/30 bg-green-600/10 shadow-lg">
+        <CardContent className="p-12 text-center">
+          <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-600/20">
+            <svg
+              className="h-8 w-8 text-green-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
+          <h2 className="mb-4 text-2xl font-light text-neutral-100">
+            Position Submitted Successfully
           </h2>
-          <p className="mb-6 text-neutral-400">
-            Thank you for submitting your job posting. You should be redirected
-            to complete payment via Stripe. If not redirected automatically,{" "}
+          <p className="mb-8 text-neutral-300">
+            Thank you for your submission. You should be redirected to complete
+            payment via Stripe. If not redirected automatically,{" "}
             <a
               href="https://buy.stripe.com/7sYaEZays1SZ1aZ2U9frW0n"
-              className="text-blue-400 hover:text-blue-300 underline"
+              className="font-medium text-neutral-100 underline decoration-2 hover:text-neutral-300"
             >
-              click here to pay
+              click here to proceed
             </a>
             .
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link href="/jobs">
               <Button
                 variant="outline"
-                className="border-neutral-600 text-neutral-300 hover:bg-neutral-700"
+                className="border-neutral-300 text-neutral-300 hover:bg-neutral-50"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Job Board
@@ -169,9 +183,9 @@ const JobSubmissionForm: React.FC = () => {
             </Link>
             <Button
               onClick={() => setSubmitSuccess(false)}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-white text-black hover:bg-neutral-100"
             >
-              Submit Another Job
+              Submit Another Position
             </Button>
           </div>
         </CardContent>
@@ -180,21 +194,24 @@ const JobSubmissionForm: React.FC = () => {
   }
 
   return (
-    <Card className="border-neutral-100/15 bg-[#141414]">
-      <CardContent className="p-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
+    <Card className="border border-neutral-800 bg-[#141414] shadow-lg">
+      <CardContent className="p-12">
+        <form onSubmit={handleSubmit} className="space-y-8">
           {errors.general && (
-            <div className="rounded-md bg-red-900/20 border border-red-500/30 p-4 text-red-400">
+            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
               {errors.general}
             </div>
           )}
 
           {/* Contact Information */}
-          <div className="space-y-4">
+          <div className="space-y-6">
+            <h3 className="text-lg font-medium text-neutral-100">
+              Contact Information
+            </h3>
             <div>
               <label
                 htmlFor="contactName"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Contact name
               </label>
@@ -206,10 +223,10 @@ const JobSubmissionForm: React.FC = () => {
                 onChange={(e) =>
                   handleInputChange("contactName", e.target.value)
                 }
-                className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
               />
               {errors.contactEmail && (
-                <p className="mt-1 text-sm text-red-400">
+                <p className="mt-2 text-sm text-red-600">
                   {errors.contactEmail}
                 </p>
               )}
@@ -218,7 +235,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="contactEmail"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Contact email
               </label>
@@ -230,10 +247,10 @@ const JobSubmissionForm: React.FC = () => {
                 onChange={(e) =>
                   handleInputChange("contactEmail", e.target.value)
                 }
-                className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
               />
               {errors.contactEmail && (
-                <p className="mt-1 text-sm text-red-400">
+                <p className="mt-2 text-sm text-red-600">
                   {errors.contactEmail}
                 </p>
               )}
@@ -245,7 +262,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="company"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Company name
               </label>
@@ -255,17 +272,17 @@ const JobSubmissionForm: React.FC = () => {
                 placeholder="e.g. Stripe, Vercel, OpenAI"
                 value={formData.company || ""}
                 onChange={(e) => handleInputChange("company", e.target.value)}
-                className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
               />
               {errors.company && (
-                <p className="mt-1 text-sm text-red-400">{errors.company}</p>
+                <p className="mt-2 text-sm text-red-600">{errors.company}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="companyLogo"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Company logo URL (optional)
               </label>
@@ -277,10 +294,10 @@ const JobSubmissionForm: React.FC = () => {
                 onChange={(e) =>
                   handleInputChange("companyLogo", e.target.value)
                 }
-                className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
               />
               {errors.companyLogo && (
-                <p className="mt-1 text-sm text-red-400">
+                <p className="mt-2 text-sm text-red-600">
                   {errors.companyLogo}
                 </p>
               )}
@@ -292,7 +309,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="title"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Job title
               </label>
@@ -302,17 +319,17 @@ const JobSubmissionForm: React.FC = () => {
                 placeholder="e.g. Senior Developer Advocate"
                 value={formData.title || ""}
                 onChange={(e) => handleInputChange("title", e.target.value)}
-                className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
               />
               {errors.title && (
-                <p className="mt-1 text-sm text-red-400">{errors.title}</p>
+                <p className="mt-2 text-sm text-red-600">{errors.title}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="applyUrl"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Job posting URL
               </label>
@@ -322,17 +339,17 @@ const JobSubmissionForm: React.FC = () => {
                 placeholder="https://company.com/careers/devrel-role"
                 value={formData.applyUrl || ""}
                 onChange={(e) => handleInputChange("applyUrl", e.target.value)}
-                className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
               />
               {errors.applyUrl && (
-                <p className="mt-1 text-sm text-red-400">{errors.applyUrl}</p>
+                <p className="mt-2 text-sm text-red-600">{errors.applyUrl}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="location"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Location
               </label>
@@ -342,17 +359,17 @@ const JobSubmissionForm: React.FC = () => {
                 placeholder="e.g. Remote, San Francisco, New York"
                 value={formData.location || ""}
                 onChange={(e) => handleInputChange("location", e.target.value)}
-                className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
               />
               {errors.location && (
-                <p className="mt-1 text-sm text-red-400">{errors.location}</p>
+                <p className="mt-2 text-sm text-red-600">{errors.location}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="jobType"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Job type
               </label>
@@ -380,14 +397,14 @@ const JobSubmissionForm: React.FC = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
               {errors.type && (
-                <p className="mt-1 text-sm text-red-400">{errors.type}</p>
+                <p className="mt-2 text-sm text-red-600">{errors.type}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="salary"
-                className="block text-sm font-medium text-neutral-300 mb-2"
+                className="block text-sm font-medium text-neutral-300 mb-3"
               >
                 Salary range{" "}
                 <span className="text-neutral-500">(optional)</span>
@@ -398,10 +415,10 @@ const JobSubmissionForm: React.FC = () => {
                 placeholder="e.g. $120k-$180k, €80k-€120k, Competitive"
                 value={formData.salary || ""}
                 onChange={(e) => handleInputChange("salary", e.target.value)}
-                className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
               />
               {errors.salary && (
-                <p className="mt-1 text-sm text-red-400">{errors.salary}</p>
+                <p className="mt-2 text-sm text-red-600">{errors.salary}</p>
               )}
             </div>
           </div>
@@ -424,7 +441,7 @@ const JobSubmissionForm: React.FC = () => {
               onChange={(e) => handleInputChange("description", e.target.value)}
               rows={6}
               maxLength={2000}
-              className="w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2 text-neutral-100 placeholder:text-neutral-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-md border border-neutral-700 bg-neutral-800 px-4 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:outline-none focus:ring-0"
             />
             {errors.description && (
               <p className="mt-1 text-sm text-red-400">{errors.description}</p>
@@ -450,7 +467,7 @@ const JobSubmissionForm: React.FC = () => {
                       setNewCategory("")
                     }
                   }}
-                  className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                  className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
                 />
                 <Button
                   type="button"
@@ -523,7 +540,7 @@ const JobSubmissionForm: React.FC = () => {
                       setNewRequirement("")
                     }
                   }}
-                  className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                  className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
                 />
                 <Button
                   type="button"
@@ -578,7 +595,7 @@ const JobSubmissionForm: React.FC = () => {
                       setNewBenefit("")
                     }
                   }}
-                  className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                  className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
                 />
                 <Button
                   type="button"
@@ -633,7 +650,7 @@ const JobSubmissionForm: React.FC = () => {
                       setNewTag("")
                     }
                   }}
-                  className="bg-neutral-800 border-neutral-700 text-neutral-100"
+                  className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
                 />
                 <Button
                   type="button"
@@ -670,11 +687,11 @@ const JobSubmissionForm: React.FC = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-6">
+          <div className="pt-8">
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+              className="w-full bg-white text-black hover:bg-neutral-100 py-4 text-base font-medium disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
@@ -682,7 +699,7 @@ const JobSubmissionForm: React.FC = () => {
                   Submitting & Redirecting to Payment...
                 </>
               ) : (
-                "Submit Job & Pay $199"
+                "Submit Position & Pay $199"
               )}
             </Button>
           </div>

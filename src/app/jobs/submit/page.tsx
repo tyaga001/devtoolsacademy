@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 export default function SubmitJobPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] py-20">
-      <div className="container mx-auto max-w-2xl px-4">
+    <main className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#111111] to-[#0A0A0A]">
+      <div className="mx-auto max-w-3xl px-6 py-20">
         {/* Back to Jobs Button */}
-        <div className="mb-6">
+        <div className="mb-8">
           <Link href="/jobs">
             <Button
               variant="ghost"
-              className="p-2 text-neutral-400 hover:bg-neutral-800 hover:text-neutral-100"
+              className="p-3 text-neutral-400 hover:bg-neutral-800 hover:text-neutral-100"
             >
               <ArrowLeft className="mr-2 size-4" />
               Back to Job Board
@@ -27,18 +27,19 @@ export default function SubmitJobPage() {
           </Link>
         </div>
 
-        <div className="mb-8 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-neutral-100">
-            Submit a Job
+        <div className="mb-12 text-center">
+          <h1 className="mb-6 text-4xl font-light tracking-tight text-white md:text-5xl">
+            Submit Position
           </h1>
-          <p className="text-lg text-neutral-400">
-            Add your information below, and you&apos;ll be redirected to
-            complete payment via{" "}
-            <span className="font-semibold text-green-400">$199</span> Stripe
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-neutral-300">
+            Share your opportunity with exceptional developers. Complete the
+            form below and proceed to secure payment via{" "}
+            <span className="font-semibold text-white">$199</span> Stripe
             checkout.
           </p>
-          <div className="mt-4 text-sm text-neutral-500">
-            • Job post is featured for 60 days
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-800 px-4 py-2 text-sm text-neutral-400">
+            <span className="size-2 rounded-full bg-green-500"></span>
+            60-day featured placement included
           </div>
         </div>
 
