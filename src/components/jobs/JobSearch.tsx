@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
-import { Search, MapPin, Briefcase, X } from "lucide-react"
+import { Search, MapPin, Briefcase, X, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -78,6 +78,13 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
     }
   }, [featured, updateURL, searchParams.featured])
 
+  // Update URL when job type filter changes
+  useEffect(() => {
+    if (searchParams.type !== type) {
+      updateURL()
+    }
+  }, [type, updateURL, searchParams.type])
+
   const clearFilters = () => {
     setSearch("")
     setLocation("")
@@ -121,51 +128,54 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
       </div>
 
       {/* Filters Row */}
-      <div className="mb-6 flex flex-wrap items-center gap-3">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              className="w-[140px] border-neutral-700 bg-neutral-900"
-            >
-              <Briefcase className="mr-2 size-4" />
-              {type
-                ? jobTypes.find((jt) => jt.value === type)?.label
-                : "Job Type"}
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="border-neutral-700 bg-neutral-900">
-            <DropdownMenuItem onClick={() => setType("")}>
-              All Types
-            </DropdownMenuItem>
-            {jobTypes.map((jobType) => (
-              <DropdownMenuItem
-                key={jobType.value}
-                onClick={() => setType(jobType.value)}
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-3">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="min-w-[140px] border-neutral-700 bg-neutral-900 text-neutral-200 hover:bg-neutral-800 hover:text-neutral-100"
               >
-                {jobType.label}
+                <Briefcase className="mr-2 size-4" />
+                {type
+                  ? jobTypes.find((jt) => jt.value === type)?.label
+                  : "Job Type"}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="border-neutral-700 bg-neutral-900">
+              <DropdownMenuItem onClick={() => setType("")}>
+                All Types
               </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+              {jobTypes.map((jobType) => (
+                <DropdownMenuItem
+                  key={jobType.value}
+                  onClick={() => setType(jobType.value)}
+                >
+                  {jobType.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-        <Button
-          variant="outline"
-          onClick={() => setFeatured(!featured)}
-          className={
-            featured
-              ? "border-yellow-500/30 bg-yellow-600/20 text-yellow-400"
-              : "border-neutral-700"
-          }
-        >
-          ⭐ Featured
-        </Button>
+          <Button
+            variant="outline"
+            onClick={() => setFeatured(!featured)}
+            className={
+              featured
+                ? "border-amber-500/30 bg-amber-600/20 text-amber-400 hover:bg-amber-600/30 hover:text-amber-300"
+                : "border-neutral-700 bg-neutral-900 text-neutral-200 hover:bg-neutral-800 hover:text-neutral-100"
+            }
+          >
+            <Star className="mr-2 size-4" />
+            Featured
+          </Button>
+        </div>
 
         {hasActiveFilters && (
           <Button
             variant="ghost"
             onClick={clearFilters}
-            className="text-neutral-400 hover:text-neutral-200"
+            className="text-neutral-400 hover:bg-neutral-800 hover:text-neutral-200"
           >
             <X className="mr-2 size-4" />
             Clear All
@@ -178,12 +188,13 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
         <div className="mb-6 flex flex-wrap gap-2">
           <Badge
             variant="secondary"
-            className="border-yellow-500/30 bg-yellow-600/20 text-yellow-400"
+            className="border-amber-500/30 bg-amber-600/20 text-amber-400"
           >
-            ⭐ Featured
+            <Star className="mr-1.5 size-3" />
+            Featured
             <button
               onClick={() => setFeatured(false)}
-              className="ml-2 hover:text-yellow-300"
+              className="ml-2 hover:text-amber-300"
             >
               <X className="size-3" />
             </button>
