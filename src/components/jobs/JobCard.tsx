@@ -44,16 +44,15 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
       className="group block h-full"
     >
       <Card className="relative h-full overflow-hidden border border-neutral-800 bg-[#141414] shadow-sm transition-all duration-300 hover:border-neutral-700 hover:shadow-lg">
-        {job.featured && (
-          <div className="absolute right-4 top-4 z-10">
-            <Badge className="border-amber-600/30 bg-amber-600/20 text-amber-400 shadow-sm">
-              <Crown className="mr-1.5 h-3 w-3" />
-              Featured
-            </Badge>
-          </div>
-        )}
-
-        <CardHeader className="border-b border-neutral-800 pb-6">
+        <CardHeader className="border-b border-neutral-800 pb-6 relative">
+          {job.featured && (
+            <div className="absolute right-4 top-4 z-10">
+              <Badge className="border-amber-600/30 bg-amber-600/20 text-amber-400 shadow-sm text-xs px-2 py-1">
+                <Crown className="mr-1 h-3 w-3" />
+                Featured
+              </Badge>
+            </div>
+          )}
           <div className="flex items-start gap-4">
             {job.companyLogo && !imageError ? (
               <img
@@ -68,7 +67,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
                 <Building2 className="h-6 w-6 text-neutral-400" />
               </div>
             )}
-            <div className="min-w-0 flex-1">
+            <div className="min-w-0 flex-1 pr-24">
               <h3 className="text-lg font-semibold leading-tight text-neutral-100 group-hover:text-white">
                 {job.title}
               </h3>
