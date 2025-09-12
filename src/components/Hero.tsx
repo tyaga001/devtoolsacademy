@@ -21,12 +21,18 @@ const Hero: React.FC = () => {
             compare options effortlessly, and dive into our blog for analyses
             that help you work smarter and build with confidence.
           </p>
-          <div>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/blog"
               className="bg-neutral-200 px-4 py-2 text-base font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400 md:px-6 md:py-3 md:text-lg"
             >
               Start Reading
+            </Link>
+            <Link
+              href="/services"
+              className="border border-dashed border-neutral-200 px-4 py-2 text-base font-medium text-neutral-200 outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800 md:px-6 md:py-3 md:text-lg"
+            >
+              Our Services
             </Link>
           </div>
         </div>
