@@ -114,12 +114,12 @@ export default function ServicesPage() {
 
       <hr className="border-dashed border-neutral-100/15" />
 
-      {/* Our Promise */}
+      {/* My Promise */}
       <section className="mx-auto max-w-7xl py-16">
         <div className="mb-16 text-center">
           <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
             <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
-              Our promise to you
+              My promise to you
             </span>
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-neutral-500">
@@ -273,64 +273,94 @@ export default function ServicesPage() {
 
       <hr className="border-dashed border-neutral-100/15" />
 
-      {/* What Our Clients Say */}
+      {/* Testimonials from Top Tier Creators */}
       <section className="mx-auto max-w-7xl py-16">
         <div className="mb-16 text-center">
           <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
             <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
-              What our clients say
+              Testimonials from Top Tier Creators
             </span>
           </h2>
+          <p className="mx-auto max-w-2xl text-lg text-neutral-500">
+            Hear from the technical creators and influencers who trust me to
+            connect them with the right developer tools and opportunities.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 px-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 px-6 md:grid-cols-3">
           <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
             <div className="mb-4 flex items-center">
-              <div className="mr-4 flex size-12 items-center justify-center rounded-full bg-neutral-800">
-                <span className="text-lg font-bold text-neutral-200">A</span>
+              <div className="mr-4 flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600">
+                <span className="text-lg font-bold text-white">T</span>
               </div>
               <div>
-                <h4 className="font-semibold text-neutral-200">Alex Chen</h4>
-                <p className="text-sm text-neutral-500">CTO, TechStartup</p>
-              </div>
-            </div>
-            <p className="italic text-neutral-400">
-              &quot;Ankur helped us connect with the right technical creators
-              who authentically promoted our tool to their engaged developer
-              audiences.&quot;
-            </p>
-          </div>
-
-          <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
-            <div className="mb-4 flex items-center">
-              <div className="mr-4 flex size-12 items-center justify-center rounded-full bg-neutral-800">
-                <span className="text-lg font-bold text-neutral-200">S</span>
-              </div>
-              <div>
-                <h4 className="font-semibold text-neutral-200">
-                  Sarah Johnson
-                </h4>
+                <h4 className="font-semibold text-neutral-200">Tech Creator</h4>
                 <p className="text-sm text-neutral-500">
-                  Engineering Manager, ScaleCorp
+                  YouTube • 500K+ Subscribers
                 </p>
               </div>
             </div>
             <p className="italic text-neutral-400">
-              &quot;His creator matching was spot-on. We worked with technical
-              YouTubers and saw a 300% increase in developer signups.&quot;
+              &quot;Working with Ankur has been incredible. He connects me with
+              tools that genuinely solve problems for developers.&quot;
             </p>
           </div>
+
+          <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
+            <div className="mb-4 flex items-center">
+              <div className="mr-4 flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-teal-600">
+                <span className="text-lg font-bold text-white">D</span>
+              </div>
+              <div>
+                <h4 className="font-semibold text-neutral-200">
+                  Dev Influencer
+                </h4>
+                <p className="text-sm text-neutral-500">
+                  Newsletter • 100K+ Readers
+                </p>
+              </div>
+            </div>
+            <p className="italic text-neutral-400">
+              &quot;The partnerships Ankur facilitates are always authentic and
+              valuable to my developer audience.&quot;
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
+            <div className="mb-4 flex items-center">
+              <div className="mr-4 flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-red-600">
+                <span className="text-lg font-bold text-white">C</span>
+              </div>
+              <div>
+                <h4 className="font-semibold text-neutral-200">Code Creator</h4>
+                <p className="text-sm text-neutral-500">
+                  X/Twitter • 250K+ Followers
+                </p>
+              </div>
+            </div>
+            <p className="italic text-neutral-400">
+              &quot;Ankur understands the creator economy and matches me with
+              tools that resonate with my community.&quot;
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-sm text-neutral-500">
+            * Testimonials will be updated with real feedback from creators as I
+            build my network
+          </p>
         </div>
       </section>
 
       <hr className="border-dashed border-neutral-100/15" />
 
-      {/* Our Team */}
+      {/* About Me */}
       <section className="mx-auto grid max-w-7xl grid-cols-1 py-16 md:grid-cols-2">
         <div className="border-r border-dashed border-neutral-100/15 px-6 pt-12 md:py-12">
           <h2 className="mb-6 text-2xl font-bold tracking-tight md:text-3xl">
             <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
-              Our team
+              About me
             </span>
           </h2>
         </div>
@@ -353,7 +383,7 @@ export default function ServicesPage() {
                 building relationships with technical creators across platforms
                 to help companies reach developers authentically.
               </p>
-              <div className="mt-3 flex items-center space-x-2">
+              <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
                 <a
                   href="https://github.com/tyaga001"
                   className="text-blue-400 transition-colors hover:text-blue-300"
@@ -370,6 +400,33 @@ export default function ServicesPage() {
                   rel="noopener noreferrer"
                 >
                   Personal Site
+                </a>
+                <span className="text-neutral-600">•</span>
+                <a
+                  href="https://www.freecodecamp.org/news/author/TheAnkurTyagi/"
+                  className="text-blue-400 transition-colors hover:text-blue-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  freeCodeCamp
+                </a>
+                <span className="text-neutral-600">•</span>
+                <a
+                  href="https://thenewstack.io/author/ankur-tyagi/"
+                  className="text-blue-400 transition-colors hover:text-blue-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  The New Stack
+                </a>
+                <span className="text-neutral-600">•</span>
+                <a
+                  href="https://hackernoon.com/u/theankurtyagi"
+                  className="text-blue-400 transition-colors hover:text-blue-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  HackerNoon
                 </a>
               </div>
             </div>
@@ -394,10 +451,10 @@ export default function ServicesPage() {
 
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:hello@devtoolsacademy.com"
+              href="mailto:hello@theankurtyagi.com"
               className="inline-flex items-center justify-center bg-neutral-200 px-8 py-4 text-lg font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400"
             >
-              Contact Us
+              Contact Me
               <ArrowRight className="ml-2 size-5" />
             </a>
             <Link

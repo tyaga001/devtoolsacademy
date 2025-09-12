@@ -131,7 +131,20 @@ export default function SponsorPage() {
           <div className="space-y-4 leading-relaxed text-neutral-500">
             <p>
               I&apos;m a software engineer based in Sweden who cares deeply
-              about &quot;Writing&quot;.
+              about &quot;Writing&quot;. I&apos;ve worked at multinational
+              companies like Volvo, Barclays, and Accenture.
+            </p>
+            <p>
+              Recently featured on the{" "}
+              <a
+                href="https://www.freecodecamp.org/news/how-to-use-ai-as-an-accelerator-not-a-crutch-with-freelance-engineer-ankur-tyagi-podcast-186/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 underline transition-colors duration-300 hover:text-blue-300"
+              >
+                freeCodeCamp Podcast (#186)
+              </a>{" "}
+              discussing AI tools for developers and running a consultancy.
             </p>
             <p>
               My mission is to help founders and developers learn, grow, and

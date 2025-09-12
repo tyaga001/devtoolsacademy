@@ -1,10 +1,10 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
 }
 
 model Post {
@@ -18,38 +18,35 @@ model Comment {
   content   String
   postSlug  String
   createdAt DateTime @default(now())
-
-  userId String
-  user   BlogUser @relation(fields: [userId], references: [id])
-
-  post Post @relation(fields: [postSlug], references: [slug])
+  userId    String
+  post      Post     @relation(fields: [postSlug], references: [slug])
+  user      BlogUser @relation(fields: [userId], references: [id])
 }
 
 model BlogUser {
   id       String    @id @default(uuid())
   name     String
   email    String    @unique
-  comments Comment[] // Relation to Comment model
+  comments Comment[]
 }
 
 model Tool {
-  id          String   @id @default(cuid())
-  name        String
-  headline    String
-  description String
-  categories  String[]
-  features    String[]
-  stars       Int
-  forks       Int
-  lastUpdated DateTime
-  logo        String
-  tags        String[]
-  githubUrl   String   @unique
-  websiteUrl  String?
+  id            String   @id @default(cuid())
+  name          String
+  description   String
+  categories    String[]
+  stars         Int
+  forks         Int
+  lastUpdated   DateTime
+  logo          String
+  tags          String[]
+  githubUrl     String   @unique
+  websiteUrl    String?
   documentation String?
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  features      String[]
+  headline      String
 
   @@index([name])
   @@index([categories])
@@ -57,10 +54,51 @@ model Tool {
 }
 
 model Categories {
-  id          String @id @default(uuid())
-  name        String @unique
-  count       Int
+  id        String   @id @default(uuid())
+  name      String   @unique
+  count     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Job {
+  id           String   @id @default(cuid())
+  title        String
+  company      String
+  companyLogo  String?
+  location     String
+  type         JobType  @default(FULL_TIME)
+  salary       String?
+  description  String
+  requirements String[]
+  benefits     String[]
+  applyUrl     String
+  contactEmail String?
+  featured     Boolean  @default(false)
+  active       Boolean  @default(true)
+  approved     Boolean  @default(false)
+  categories   String[]
+  tags         String[]
+  slug         String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  expiresAt    DateTime
+
+  @@index([company])
+  @@index([location])
+  @@index([categories])
+  @@index([tags])
+  @@index([active])
+  @@index([featured])
+  @@index([slug])
+  @@index([type])
+  @@index([approved])
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  FREELANCE
+  INTERNSHIP
 }

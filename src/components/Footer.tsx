@@ -215,8 +215,10 @@ const Footer: React.FC = () => {
             </AnimatePresence>
           </div>
 
+          {/* Empty middle column to maintain 3-column layout */}
           <div>
-            <h4 className="mb-4 text-xl font-semibold tracking-tight">
+            {/* Services section temporarily hidden */}
+            {/* <h4 className="mb-4 text-xl font-semibold tracking-tight">
               Services
             </h4>
             <ul className="space-y-3">
@@ -247,7 +249,7 @@ const Footer: React.FC = () => {
                   <span className="grow">Tool Database & Reviews</span>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
 
           <div>

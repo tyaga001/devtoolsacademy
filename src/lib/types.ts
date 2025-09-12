@@ -35,3 +35,45 @@ export interface ToolDetailsInterface {
   createdAt: Date
   updatedAt: Date
 }
+
+export interface JobCardInterface {
+  id: string
+  title: string
+  company: string
+  companyLogo?: string | null
+  location: string
+  type: "FULL_TIME" | "PART_TIME" | "CONTRACT" | "FREELANCE" | "INTERNSHIP"
+  salary?: string | null
+  description: string
+  categories: string[]
+  tags: string[]
+  featured: boolean
+  slug: string
+  applyUrl: string
+  createdAt: Date
+  expiresAt: Date
+}
+
+export interface JobDetailsInterface {
+  id: string
+  title: string
+  company: string
+  companyLogo?: string | null
+  location: string
+  type: "FULL_TIME" | "PART_TIME" | "CONTRACT" | "FREELANCE" | "INTERNSHIP"
+  salary?: string | null
+  description: string
+  requirements: string[]
+  benefits: string[]
+  applyUrl: string
+  contactEmail?: string | null
+  categories: string[]
+  tags: string[]
+  featured: boolean
+  active: boolean
+  approved: boolean
+  slug: string
+  createdAt: Date
+  updatedAt: Date
+  expiresAt: Date
+}

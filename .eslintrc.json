@@ -11,6 +11,9 @@
   "plugins": ["jsx-a11y", "tailwindcss"],
   "rules": {
     "@next/next/no-img-element": "off",
+    "tailwindcss/classnames-order": "warn",
+    "tailwindcss/enforces-shorthand": "warn",
+    "jsx-a11y/label-has-associated-control": "warn",
     "tailwindcss/no-custom-classname": [
       "warn",
       {

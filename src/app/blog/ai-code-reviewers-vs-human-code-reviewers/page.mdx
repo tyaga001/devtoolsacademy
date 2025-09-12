@@ -18,7 +18,8 @@ import image11 from "./image11.png"
 export const metadata = getMetadata({
   path: "/blog/ai-code-reviewers-vs-human-code-reviewers",
   title: "AI vs Human Code Reviewers: Pros, Pitfalls & Best Practices",
-  description: "Discover how AI driven and human code reviewers compare. Explore static & dynamic analysis, LLM insights, contextual pitfalls, rule based checks, and hybrid workflows to optimize your code review process.",
+  description:
+    "Discover how AI driven and human code reviewers compare. Explore static & dynamic analysis, LLM insights, contextual pitfalls, rule based checks, and hybrid workflows to optimize your code review process.",
 })
 
 <BlogHeader
@@ -35,18 +36,21 @@ In software development, AI code reviewers have become indispensable.
 
 > Tools like [CodeRabbit](https://www.coderabbit.ai/), GitHub [Copilot](https://github.com/features/copilot), and [SonarQube](https://en.wikipedia.org/wiki/SonarQube) scan code for errors, security flaws, and style violations at speeds no human can match. Yet their rise has sparked a quiet dilemma.
 
-*What happens when developers disagree with the suggestions made by AI Code Review tools?*
+_What happens when developers disagree with the suggestions made by AI Code Review tools?_
 
 Disagreements between AI and human reviewers go beyond simple technical disputes. They expose a deeper struggle between the precision of these AI powered code review solutions and their ability to decipher the grey areas of human intent and context.
 
-> *For example, if I ignore AI's warning about some code in my changes, I risk allowing a hidden vulnerability to enter our production code.*
+> _For example, if I ignore AI's warning about some code in my changes, I risk allowing a hidden vulnerability to enter our production code._
 
 On the other hand, if I dismiss my expertise and blindly accept all AI recommendations, I could add huge technical debt that stifles creativity, conflicts with my team, and potentially slow down my team.
+
 <Image src={image2} alt="code review" width={1200} height={600} />
 
 As generative AI code review tools become more embedded in our coding process, one question feels more important to all the teams.
+
 <Image src={image3} alt="code review" width={1200} height={600} />
-How do we reconcile the cold logic of AI powered tools with the wisdom of human experience, and who ultimately decides what "**better code**" looks like?
+How do we reconcile the cold logic of AI powered tools with the wisdom of human
+experience, and who ultimately decides what "**better code**" looks like?
 
 In this article, let’s discuss the tensions, consequences, and future of AI code review tools and human disagreements in code reviews.
 
@@ -54,11 +58,11 @@ In this article, let’s discuss the tensions, consequences, and future of AI co
 
 > AI [code reviews](https://www.freecodecamp.org/news/how-to-perform-code-reviews-in-tech-the-painless-way/) examine code for errors, security problems, performance concerns, and adherence to industry best practices. Unlike traditional static analysis tools, generative AI code review tools have improved functionality by integrating ML models, rule based techniques, and LLMs.
 
-AI code review tools stand out for their ability to scan through thousands of lines of code and ***detect speed*** and ***patterns***, ***security flaws***, and ***bugs*** with precision that human reviewers cannot match.
+AI code review tools stand out for their ability to scan through thousands of lines of code and **_detect speed_** and **_patterns_**, **_security flaws_**, and **_bugs_** with precision that human reviewers cannot match.
 
 ## How AI Code Review Tools Work.
 
-> AI code review tools use several techniques, including ***static analysis***, ***dynamic analysis***, ***natural language processing***, and ***rule-based systems***.
+> AI code review tools use several techniques, including **_static analysis_**, **_dynamic analysis_**, **_natural language processing_**, and **_rule-based systems_**.
 
 ### 1\. Static code analysis
 
@@ -72,11 +76,11 @@ AI code review tools stand out for their ability to scan through thousands of li
 
 > NLP and LLMs like GPT-4, [DeepSeek](https://www.deepseek.com/), [Gemini](https://gemini.google.com/), or [Claude](https://claude.ai/) represent the frontier of AI code review. These models are trained on vast code datasets and understand context, logic, and intent. They don't just flag issues; they explain them in plain language and suggest fixes.
 
-***For example, a tool like GitHub Copilot has shown an impressive ability to review code in Java, Python, Rust, etc., offering suggestions specific to each language syntax.***
+**_For example, a tool like GitHub Copilot has shown an impressive ability to review code in Java, Python, Rust, etc., offering suggestions specific to each language syntax._**
 
 ### 4\. Rule based systems.
 
-> Rule based systems enforce coding standards and best practices through predefined guidelines. They act as automated policy enforcers, ensuring compliance with organizational rules (e.g., "*Always encrypt user data*") or industry regulations (e.g., ***HIPAA, GDPR***).
+> Rule based systems enforce coding standards and best practices through predefined guidelines. They act as automated policy enforcers, ensuring compliance with organizational rules (e.g., "_Always encrypt user data_") or industry regulations (e.g., **_HIPAA, GDPR_**).
 
 **Why AI Code Review is a Game Changer**
 
@@ -90,7 +94,7 @@ AI code review tools stand out for their ability to scan through thousands of li
 
 AI code reviews are powerful allies, but they're not all knowing.
 
-> As developers, we often possess something machines lack ‘***context’***. While AI excels at pattern recognition and rule enforcement, it can't grasp the nuances of business deadlines, legacy systems, or the creative compromises required to ship software in the real world.
+> As developers, we often possess something machines lack ‘**_context’_**. While AI excels at pattern recognition and rule enforcement, it can't grasp the nuances of business deadlines, legacy systems, or the creative compromises required to ship software in the real world.
 
 ## Let’s Compare Both Approaches
 
@@ -110,10 +114,10 @@ Once a pull request is created, CodeRabbit will automatically analyze the new co
 
 CodeRabbit also flags the **fetchUserData** function, highlighting areas for improvement:
 
-* Adding a request timeout to avoid long running API calls.
-* Replacing console logs with meaningful success messages while avoiding logging full user data.
-* Throwing errors instead of returning null to prevent silent failures.
-* Finally, It identifies a **security issue** in logging practices, advising against logging full user data.
+- Adding a request timeout to avoid long running API calls.
+- Replacing console logs with meaningful success messages while avoiding logging full user data.
+- Throwing errors instead of returning null to prevent silent failures.
+- Finally, It identifies a **security issue** in logging practices, advising against logging full user data.
 
 <Image src={image5} alt="code review" width={1200} height={600} />
 
@@ -129,7 +133,7 @@ Now, let’s explore 8 real world cases where AI recommendations and human judgm
 
 > AI code review tools operate on static analysis, meaning they analyze code without running it or understanding its context within the application. While AI excels at identifying potential inefficiencies, it lacks the ability to determine their real world impact.
 
-This can lead to misguided optimization suggestions. For example, AI may flag a piece of code as "***inefficient***" without knowing whether it affects system performance meaningfully.
+This can lead to misguided optimization suggestions. For example, AI may flag a piece of code as "**_inefficient_**" without knowing whether it affects system performance meaningfully.
 
 > AI treats all inefficiencies equally, assuming that every optimization is beneficial when, in reality, not all inefficiencies need fixing. Some code sections are performance critical and require deep optimization, while others are rarely executed and do not need additional complexity.
 
@@ -139,7 +143,7 @@ This is where human judgment comes in. I don't just look at inefficiencies; I co
 
 ## 2\. Contextual Understanding in Legacy Systems
 
-I remember working with legacy systems during my Barclays days in India, which imposed strict data ***processing***, ***storage***, and ***transmission requirements***.
+I remember working with legacy systems during my Barclays days in India, which imposed strict data **_processing_**, **_storage_**, and **_transmission requirements_**.
 
 These systems often rely on old tech and configs that may no longer be considered best practices today.
 
@@ -161,11 +165,11 @@ While this is technically correct in most cases, AI does not understand that the
 
 ## 3\. Handling Temporary Workarounds for Critical Bug Fixes.
 
-Ideally, every bug fix would be well architected, thoroughly tested, and future proof. But ***production fires don't wait for perfect fixes in the real world***.
+Ideally, every bug fix would be well architected, thoroughly tested, and future proof. But **_production fires don't wait for perfect fixes in the real world_**.
 
 Sometimes, when a critical failure occurs, speed is the priority, and devs must act fast to restore functionality, even if that means implementing a temporary, imperfect workaround. I’ve done this so many times and later refactored it.
 
-> ***Your app is handling thousands of active users, and suddenly, an external service dependency starts failing intermittently.***
+> **_Your app is handling thousands of active users, and suddenly, an external service dependency starts failing intermittently._**
 
 > An external service you depend on starts acting up. Maybe the API's timing out, the database is throwing errors, or your authentication provider's gone dark. Whatever it is, your users are suddenly hitting broken features or crashing the app outright. Frustration levels are rising, revenue's taking a hit, and you are potentially violating SLA agreements.
 
@@ -206,15 +210,15 @@ if __name__ == "__main__":
         time.sleep(2)
 ```
 
-In the example above, where the function catches API failures and returns a fallback response, AI may ***flag*** the implementation as insufficient due to the lack of proper error handling mechanisms.
+In the example above, where the function catches API failures and returns a fallback response, AI may **_flag_** the implementation as insufficient due to the lack of proper error handling mechanisms.
 
 From an AI perspective, proper error handling would go beyond logging the error and returning a generic fallback message.
 
 **AI Code Review tools might suggest:**
 
-* Implementing a retry mechanism instead of immediately returning an error response.
-* Using structured exception handling to differentiate between transient failures (e.g., timeouts) and permanent errors (e.g., 404 Not Found).
-* Providing more detailed feedback rather than a generic "Data unavailable" message. etc.
+- Implementing a retry mechanism instead of immediately returning an error response.
+- Using structured exception handling to differentiate between transient failures (e.g., timeouts) and permanent errors (e.g., 404 Not Found).
+- Providing more detailed feedback rather than a generic "Data unavailable" message. etc.
 
 <Image src={image7} alt="code review" width={1200} height={600} />
 
@@ -225,7 +229,7 @@ Although these recommendations are accurate from a best practices perspective, t
 We often write quick scripts to solve immediate problems, whether cleaning up a dataset for a one time analysis, transforming a file format, or automating a simple task.
 In these cases, simplicity and speed matter more than long term maintainability.
 
-> ***A short script that does the job efficiently is preferable to an over engineered solution. If the script isn't meant to be part of a larger system or reused frequently, adding unnecessary complexity only slows things down.***
+> **_A short script that does the job efficiently is preferable to an over engineered solution. If the script isn't meant to be part of a larger system or reused frequently, adding unnecessary complexity only slows things down._**
 
 Here's an example of a quick, one off script that cleans a CSV file containing customer survey responses.
 
@@ -266,9 +270,9 @@ In some projects, especially in research driven fields like machine learning, sc
 
 > AI powered code review tools, however, tend to favor well established best practices over unconventional but necessary customizations. This can create friction when working on novel challenges where deviating from common patterns is justified and required.
 
-***Here's an example**: you're building a machine learning model for diagnosing rare diseases using a dataset with highly imbalanced classes, where positive cases (disease detected) are far fewer than negative cases (no disease).*
+**\*Here's an example**: you're building a machine learning model for diagnosing rare diseases using a dataset with highly imbalanced classes, where positive cases (disease detected) are far fewer than negative cases (no disease).\*
 
-A standard loss function like ***Mean Squared Error (MSE)*** or ***Cross Entropy Loss*** would treat all samples equally, leading to poor learning performance for the rare class.
+A standard loss function like **_Mean Squared Error (MSE)_** or **_Cross Entropy Loss_** would treat all samples equally, leading to poor learning performance for the rare class.
 
 To address this, you implement a custom weighted loss function that assigns higher importance to rare positive cases.
 
@@ -295,20 +299,19 @@ However, AI code reviewers might flag this as non standard and suggest using a b
 
 <Image src={image9} alt="code review" width={1200} height={600} />
 
-
 As a developer who understands their data, you must trust your expertise over generic AI recommendations.
 
 ## 6\. Performance Optimization vs. Readability
 
 > In low level programming and high performance computing, optimizing execution speed is often more important than keeping the code highly readable.
 
-Unlike higher level languages like ***Python*** or ***JavaScript***, ***C*** developers prioritize efficiency, especially when working with large datasets, real time systems, or embedded applications.
+Unlike higher level languages like **_Python_** or **_JavaScript_**, **_C_** developers prioritize efficiency, especially when working with large datasets, real time systems, or embedded applications.
 
 One effective optimization technique is loop unrolling, which reduces the number of iterations and minimizes CPU overhead caused by loop control operations.
 
 While AI powered tools may flag this technique as unnecessary complexity, the trade off between readability and efficiency is intentional in performance critical code.
 
-***Here's an example of a function that processes a dataset using loop unrolling, which handles four elements per iteration instead of one, reducing the number of loop control operations and improving.***
+**_Here's an example of a function that processes a dataset using loop unrolling, which handles four elements per iteration instead of one, reducing the number of loop control operations and improving._**
 
 ```c
 #include <stdio.h>
@@ -356,6 +359,7 @@ process(data[i]);
 }
 }
 ```
+
 This version is cleaner and easier to read. However, it increases the number of iterations, introducing more CPU overhead in performance critical applications.
 
 #### **Why This AI Suggestion Falls Short**
@@ -450,7 +454,7 @@ We've looked at some situations where AI code review tools and human reviewers m
 
 AI code review tools are not a static field. These tools learn more and accumulate data from the day to day use of the tools, recording this data and providing feedback based on daily updates.
 
-> ***AI is not meant to replace human reviewers; it's to help speed up development, find better code quality, and save time.***
+> **_AI is not meant to replace human reviewers; it's to help speed up development, find better code quality, and save time._**
 
 <Image src={image10} alt="code review" width={1200} height={600} />
 
@@ -458,7 +462,7 @@ Many code review tools now support custom rule configurations so dev teams can c
 
 <Image src={image11} alt="code review" width={1200} height={600} />
 
-Over time, these tools will better understand ***project specific contexts***, leading to fewer ***false positives*** and more relevant suggestions.
+Over time, these tools will better understand **_project specific contexts_**, leading to fewer **_false positives_** and more relevant suggestions.
 
 Additionally, developers can train AI reviewers by providing context, adjusting rule settings, and overriding incorrect suggestions.
 
@@ -473,7 +477,6 @@ So, while we've seen some cases where AI code review tools and human developers 
 Tools like [CodeRabbit](https://www.coderabbit.ai/blog/how-to-setup-python-code-reviews-with-coderabbit) can make things much more efficient and help us keep code consistent. And they're constantly getting better, learning from how developers use them to give more helpful, context aware feedback.
 
 These tools allow development teams to work more smoothly, maintain high code quality, and free up their time to focus on interesting and challenging problems.
-
 
 ## More Blog Posts and Comparisons
 
