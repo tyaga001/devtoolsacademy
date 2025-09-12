@@ -73,7 +73,6 @@ model Job {
   requirements String[]
   benefits     String[]
   applyUrl     String
-  contactName  String?
   contactEmail String?
   featured     Boolean  @default(false)
   active       Boolean  @default(true)
