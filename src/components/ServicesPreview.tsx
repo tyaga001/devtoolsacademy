@@ -63,7 +63,7 @@ export default function ServicesPreview() {
           href="/services"
           className="inline-flex items-center bg-neutral-200 px-8 py-4 text-lg font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400"
         >
-          Learn More About Our IaaS
+          Learn More About My Services
           <ArrowRight className="ml-2 size-5" />
         </Link>
       </div>
