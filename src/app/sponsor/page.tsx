@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "next-view-transitions"
 
 import { getMetadata } from "@/lib/metadata"
 import SponsorshipTiers from "@/components/SponsorshipTiers"
@@ -130,7 +131,20 @@ export default function SponsorPage() {
           <div className="space-y-4 leading-relaxed text-neutral-500">
             <p>
               I&apos;m a software engineer based in Sweden who cares deeply
-              about &quot;Writing&quot;.
+              about &quot;Writing&quot;. I&apos;ve worked at multinational
+              companies like Volvo, Barclays, and Accenture.
+            </p>
+            <p>
+              Recently featured on the{" "}
+              <a
+                href="https://www.freecodecamp.org/news/how-to-use-ai-as-an-accelerator-not-a-crutch-with-freelance-engineer-ankur-tyagi-podcast-186/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 underline transition-colors duration-300 hover:text-blue-300"
+              >
+                freeCodeCamp Podcast (#186)
+              </a>{" "}
+              discussing AI tools for developers and running a consultancy.
             </p>
             <p>
               My mission is to help founders and developers learn, grow, and
@@ -150,6 +164,42 @@ export default function SponsorPage() {
             </p>
           </div>
         </div>
+      </section>
+
+      <hr className="border-dashed border-neutral-100/15" />
+
+      {/* Services Promotion */}
+      <section className="mx-auto max-w-7xl py-16 text-center">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight md:text-3xl">
+          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
+            Need help reaching developers?
+          </span>
+        </h2>
+        <p className="mx-auto mb-8 max-w-3xl text-lg text-neutral-500">
+          Beyond this blog, I also offer Tech Influencers as a Service (IaaS) to
+          help companies connect with technical creators and reach developers
+          authentically.
+        </p>
+        <Link
+          href="/services"
+          className="inline-flex items-center bg-neutral-200 px-8 py-4 text-lg font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400"
+        >
+          Learn About Our IaaS
+          <svg
+            className="ml-2 size-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </Link>
       </section>
     </main>
   )
