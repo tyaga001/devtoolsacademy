@@ -20,7 +20,7 @@ interface ITestimonial {
 const testimonials: ITestimonial[] = [
   {
     quote:
-      "The article is great, and provides an amazing in-depth explanation 👏\nThe summary on the bottom right is great too!\nDark mode is my favourite colour scheme\nI love the background you use for each image.",
+      "The article is great, and provides an amazing in-depth explanation. The summary on the bottom right is great too! Dark mode is my favourite colour scheme. I love the background you use for each image.",
     name: "Alberto Cubeddu",
     position: "Co-founder of SkillSociety",
     avatar: Alberto.src,
@@ -49,33 +49,33 @@ function TestimonialCard({
   return (
     <div
       className={cn(
-        "relative flex flex-col p-12",
+        "relative flex flex-col p-10 md:p-12",
         "border-b md:border-b-0 border-dashed border-neutral-100/15",
         index > 0 ? "md:border-l border-dashed border-neutral-100/15" : ""
       )}
     >
       <Quote
-        size={48}
-        className="absolute right-4 top-4 text-neutral-200 opacity-10"
+        size={40}
+        className="absolute right-6 top-6 text-neutral-400 opacity-20"
       />
 
-      <p className="relative z-10 mb-12 text-base text-neutral-200 md:text-lg lg:text-xl">
+      <p className="relative z-10 mb-10 text-lg text-neutral-300 leading-relaxed md:text-xl">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
       <div className="mt-auto flex items-center">
-        <div className="relative mr-4">
+        <div className="relative mr-5">
           <Image
             src={testimonial.avatar}
             alt={testimonial.name}
-            width={60}
-            height={60}
-            className="rounded-full border-2 border-neutral-400"
+            width={56}
+            height={56}
+            className="rounded-full border border-neutral-600"
           />
         </div>
         <div>
-          <p className="font-semibold text-neutral-200">{testimonial.name}</p>
-          <p className="text-sm text-neutral-500">{testimonial.position}</p>
+          <p className="font-semibold text-neutral-100">{testimonial.name}</p>
+          <p className="text-sm text-neutral-400">{testimonial.position}</p>
         </div>
       </div>
     </div>
@@ -85,23 +85,23 @@ function TestimonialCard({
 function Testimonial() {
   return (
     <section>
-      <div className="mx-auto max-w-7xl py-16 text-center">
-        <h2 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
-          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
-            Developers Insights
+      <div className="mx-auto max-w-7xl py-20 text-center">
+        <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-5xl">
+          <span className="bg-gradient-to-b from-neutral-600 to-neutral-200 bg-clip-text text-transparent">
+            Developer Insights
           </span>
         </h2>
-        <p className="mb-6 text-base text-neutral-500 md:text-lg">
-          Developers across the globe love DTA
+        <p className="mb-8 text-lg text-neutral-400 md:text-xl">
+          Developers across the globe love DevTools Academy
         </p>
         <div
-          className="flex justify-center space-x-2"
+          className="flex justify-center space-x-1"
           aria-label="5 out of 5 stars"
         >
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
-              className="size-6 fill-current text-yellow-400"
+              className="size-5 fill-current text-neutral-300"
               aria-hidden="true"
             />
           ))}

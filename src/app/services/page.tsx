@@ -26,31 +26,30 @@ export default function ServicesPage() {
       <hr className="border-dashed border-neutral-100/15" />
 
       {/* Hero Section */}
-      <section className="py-16 text-center">
-        <h1 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
-          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
+      <section className="py-20 text-center">
+        <h1 className="mb-6 text-3xl font-bold tracking-tight md:text-6xl">
+          <span className="bg-gradient-to-b from-neutral-600 to-neutral-200 bg-clip-text text-transparent">
             Tech Influencers on Tap
           </span>
         </h1>
-        <p className="mx-auto mb-8 max-w-3xl text-base text-neutral-500 md:text-lg">
+        <p className="mx-auto mb-10 max-w-3xl text-lg text-neutral-400 leading-relaxed md:text-xl">
           I connect SaaS companies with YouTube creators, newsletter writers,
-          technical writers developers who post deep technical content on
-          X/Twitter and LinkedIn, and people who create short videos on
-          Instagram/TikTok with companies who need authentic promotion of their
-          developer tools.
+          technical writers, and developers who post deep technical content on
+          X/Twitter and LinkedIn, as well as short‑form creators on Instagram
+          and TikTok—people who can authentically promote developer tools.
         </p>
-        <div className="flex flex-col justify-center gap-4 sm:flex-row">
+        <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
           <Link
             href="#contact"
-            className="bg-neutral-200 px-6 py-3 text-base font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400"
+            className="inline-flex items-center justify-center rounded-lg bg-neutral-100 px-8 py-4 text-lg font-medium text-neutral-900 shadow-sm transition-all hover:bg-neutral-200 hover:shadow-md focus:bg-neutral-200 focus:shadow-md"
           >
             Book a Consultation
           </Link>
           <Link
             href="/blog"
-            className="border border-dashed border-neutral-200 px-6 py-3 text-base font-medium text-neutral-200 outline-none transition-colors hover:bg-neutral-800 focus:bg-neutral-800"
+            className="inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-transparent px-8 py-4 text-lg font-medium text-neutral-200 transition-all hover:bg-neutral-800 hover:border-neutral-600 focus:bg-neutral-800 focus:border-neutral-600"
           >
-            Read blog
+            Read Blog
           </Link>
         </div>
       </section>
