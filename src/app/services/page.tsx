@@ -338,7 +338,8 @@ export default function ServicesPage() {
               &quot;Ankur has a real gift for connecting people. Without any
               hassle, he introduced me to clients for promotional posts and made
               the whole experience feel natural and easy. Beyond being a great
-              friend, he's someone who genuinely looks out for others.&quot;
+              friend, he&apos;s someone who genuinely looks out for
+              others.&quot;
             </p>
           </div>
         </div>
