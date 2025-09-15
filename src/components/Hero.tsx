@@ -13,13 +13,13 @@ const Hero: React.FC = () => {
         <div className="flex flex-col px-6 text-center text-neutral-200 md:px-0">
           <h1 className="mb-6 max-w-5xl text-4xl font-bold tracking-tight text-neutral-200 md:mb-10 md:text-7xl md:leading-[1.05]">
             <span className="bg-gradient-to-b from-neutral-600 to-neutral-100 bg-clip-text text-transparent">
-              Your Guide to Developer Tools: Explore, Compare, and Learn.
+              Where Developers, Creators, and SaaS Companies Connect
             </span>
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg text-neutral-400 md:mb-14 md:text-xl leading-relaxed">
-            Explore a platform built for developers. Browse essential tools,
-            compare options effortlessly, and dive into our blog for analyses
-            that help you work smarter and build with confidence.
+            Open-source platform connecting developers with tool insights,
+            premium job opportunities, and SaaS companies with authentic
+            technical creators for developer marketing.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
             <Link

@@ -25,7 +25,7 @@ export default function ServicesPreview() {
           <h3 className="mb-4 text-xl font-semibold text-neutral-100">
             Target the right creators
           </h3>
-          <p className="text-neutral-400 leading-relaxed">
+          <p className="leading-relaxed text-neutral-400">
             I help you identify and connect with the perfect technical creators
             for your specific audience.
           </p>
@@ -38,7 +38,7 @@ export default function ServicesPreview() {
           <h3 className="mb-4 text-xl font-semibold text-neutral-100">
             Generate authentic reach
           </h3>
-          <p className="text-neutral-400 leading-relaxed">
+          <p className="leading-relaxed text-neutral-400">
             My network drives thousands of high-quality impressions, helping
             companies reach developers through trusted voices.
           </p>
@@ -51,7 +51,7 @@ export default function ServicesPreview() {
           <h3 className="mb-4 text-xl font-semibold text-neutral-100">
             Build developer trust
           </h3>
-          <p className="text-neutral-400 leading-relaxed">
+          <p className="leading-relaxed text-neutral-400">
             Technical decision-makers trust these creators because they&apos;ve
             built authentic relationships in their communities.
           </p>
