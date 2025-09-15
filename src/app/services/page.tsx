@@ -1,4 +1,5 @@
 import * as React from "react"
+import Image from "next/image"
 import { getMetadata } from "@/lib/metadata"
 import {
   Users,
@@ -32,7 +33,7 @@ export default function ServicesPage() {
             Tech Influencers on Tap
           </span>
         </h1>
-        <p className="mx-auto mb-10 max-w-3xl text-lg text-neutral-400 leading-relaxed md:text-xl">
+        <p className="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-neutral-400 md:text-xl">
           I connect SaaS companies with YouTube creators, newsletter writers,
           technical writers, and developers who post deep technical content on
           X/Twitter and LinkedIn, as well as short‑form creators on Instagram
@@ -47,7 +48,7 @@ export default function ServicesPage() {
           </Link>
           <Link
             href="/blog"
-            className="inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-transparent px-8 py-4 text-lg font-medium text-neutral-200 transition-all hover:bg-neutral-800 hover:border-neutral-600 focus:bg-neutral-800 focus:border-neutral-600"
+            className="inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-transparent px-8 py-4 text-lg font-medium text-neutral-200 transition-all hover:border-neutral-600 hover:bg-neutral-800 focus:border-neutral-600 focus:bg-neutral-800"
           >
             Read Blog
           </Link>
@@ -286,68 +287,66 @@ export default function ServicesPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 px-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 px-6 md:grid-cols-2">
           <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
             <div className="mb-4 flex items-center">
-              <div className="mr-4 flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600">
-                <span className="text-lg font-bold text-white">T</span>
+              <div className="mr-4">
+                <Image
+                  src="/images/testimonials/david.jpg"
+                  alt="David Asaolu"
+                  width={48}
+                  height={48}
+                  className="size-12 rounded-full border border-neutral-600 object-cover"
+                />
               </div>
               <div>
-                <h4 className="font-semibold text-neutral-200">Tech Creator</h4>
+                <h4 className="font-semibold text-neutral-200">David Asaolu</h4>
                 <p className="text-sm text-neutral-500">
-                  YouTube • 500K+ Subscribers
+                  Software Engineer & Technical Writer
                 </p>
               </div>
             </div>
             <p className="italic text-neutral-400">
-              &quot;Working with Ankur has been incredible. He connects me with
-              tools that genuinely solve problems for developers.&quot;
+              &quot;Ankur Tyagi is an outstanding mentor and leader with deep
+              knowledge of developer tools and developer experience. He makes
+              complex topics easy to understand and always focuses on creating
+              content that genuinely helps developers. I strongly recommend
+              trusting Ankur and DevToolsAcademy if you want guidance that
+              delivers real results.&quot;
             </p>
           </div>
 
           <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
             <div className="mb-4 flex items-center">
-              <div className="mr-4 flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-teal-600">
-                <span className="text-lg font-bold text-white">D</span>
+              <div className="mr-4">
+                <Image
+                  src="/images/testimonials/daniel-moka.jpg"
+                  alt="Daniel Moka"
+                  width={48}
+                  height={48}
+                  className="size-12 rounded-full border border-neutral-600 object-cover"
+                />
               </div>
               <div>
-                <h4 className="font-semibold text-neutral-200">
-                  Dev Influencer
-                </h4>
+                <h4 className="font-semibold text-neutral-200">Daniel Moka</h4>
                 <p className="text-sm text-neutral-500">
-                  Newsletter • 100K+ Readers
+                  Software Engineer • Clean Code & Testing Expert
                 </p>
               </div>
             </div>
             <p className="italic text-neutral-400">
-              &quot;The partnerships Ankur facilitates are always authentic and
-              valuable to my developer audience.&quot;
-            </p>
-          </div>
-
-          <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
-            <div className="mb-4 flex items-center">
-              <div className="mr-4 flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-red-600">
-                <span className="text-lg font-bold text-white">C</span>
-              </div>
-              <div>
-                <h4 className="font-semibold text-neutral-200">Code Creator</h4>
-                <p className="text-sm text-neutral-500">
-                  X/Twitter • 250K+ Followers
-                </p>
-              </div>
-            </div>
-            <p className="italic text-neutral-400">
-              &quot;Ankur understands the creator economy and matches me with
-              tools that resonate with my community.&quot;
+              &quot;Ankur has a real gift for connecting people. Without any
+              hassle, he introduced me to clients for promotional posts and made
+              the whole experience feel natural and easy. Beyond being a great
+              friend, he's someone who genuinely looks out for others.&quot;
             </p>
           </div>
         </div>
 
         <div className="mt-12 text-center">
           <p className="text-sm text-neutral-500">
-            * Testimonials will be updated with real feedback from creators as I
-            build my network
+            Real feedback from creators who trust me to connect them with the
+            right opportunities
           </p>
         </div>
       </section>
