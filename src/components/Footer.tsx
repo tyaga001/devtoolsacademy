@@ -215,7 +215,42 @@ const Footer: React.FC = () => {
             </AnimatePresence>
           </div>
 
-          <div></div>
+          {/* Empty middle column to maintain 3-column layout */}
+          <div>
+            {/* Services section temporarily hidden */}
+            {/* <h4 className="mb-4 text-xl font-semibold tracking-tight">
+              Services
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/services"
+                  className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-200 focus:text-neutral-200"
+                >
+                  <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
+                  <span className="grow">Developer Tool Consulting</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-200 focus:text-neutral-200"
+                >
+                  <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
+                  <span className="grow">Tool Comparisons & Analysis</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tools"
+                  className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-200 focus:text-neutral-200"
+                >
+                  <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
+                  <span className="grow">Tool Database & Reviews</span>
+                </Link>
+              </li>
+            </ul> */}
+          </div>
 
           <div>
             <BlogPostList />

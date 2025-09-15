@@ -76,13 +76,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
 const FeaturedPosts: React.FC = () => {
   return (
     <section>
-      <div className="mx-auto max-w-7xl py-16 text-center">
-        <h2 className="mb-4 text-2xl font-bold tracking-tight md:text-5xl">
-          <span className="bg-gradient-to-b from-neutral-700 to-neutral-200 bg-clip-text text-transparent">
+      <div className="mx-auto max-w-7xl py-20 text-center">
+        <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-5xl">
+          <span className="bg-gradient-to-b from-neutral-600 to-neutral-200 bg-clip-text text-transparent">
             Featured Posts
           </span>
         </h2>
-        <p className="text-base text-neutral-500 md:text-lg">
+        <p className="text-lg text-neutral-400 md:text-xl">
           Our most trending blog posts.
         </p>
       </div>
@@ -101,10 +101,10 @@ const FeaturedPosts: React.FC = () => {
         <hr className="border-dashed border-neutral-100/15" />
       </div>
 
-      <div className="mx-auto max-w-7xl py-16 text-center">
+      <div className="mx-auto max-w-7xl py-20 text-center">
         <Link
           href="/blog"
-          className="bg-neutral-200 px-4 py-2 text-base font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400 md:px-6 md:py-3 md:text-lg"
+          className="inline-flex items-center justify-center rounded-lg bg-neutral-100 px-8 py-4 text-lg font-medium text-neutral-900 shadow-sm transition-all hover:bg-neutral-200 hover:shadow-md focus:bg-neutral-200 focus:shadow-md"
         >
           View All Posts
         </Link>

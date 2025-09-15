@@ -24,7 +24,7 @@ const FeaturedMedia: React.FC = () => {
             <iframe
               src="https://www.youtube-nocookie.com/embed/ebarbEsoHzg"
               title="How to use AI as an accelerator, not a crutch - freeCodeCamp Podcast"
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 size-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               sandbox="allow-scripts allow-same-origin allow-presentation"
