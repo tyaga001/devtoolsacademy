@@ -34,10 +34,9 @@ export default function ServicesPage() {
         </h1>
         <p className="mx-auto mb-10 max-w-3xl text-lg text-neutral-400 leading-relaxed md:text-xl">
           I connect SaaS companies with YouTube creators, newsletter writers,
-          technical writers developers who post deep technical content on
-          X/Twitter and LinkedIn, and people who create short videos on
-          Instagram/TikTok with companies who need authentic promotion of their
-          developer tools.
+          technical writers, and developers who post deep technical content on
+          X/Twitter and LinkedIn, as well as short‑form creators on Instagram
+          and TikTok—people who can authentically promote developer tools.
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
           <Link
