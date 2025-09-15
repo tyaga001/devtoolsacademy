@@ -13,7 +13,8 @@ import image6 from "./image6.png"
 export const metadata = getMetadata({
   path: "/blog/betterauth-vs-nextauth",
   title: "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS",
-  description: "A comparison of BetterAuth and NextAuth to help you choose the best authentication library for your app",
+  description:
+    "A comparison of BetterAuth and NextAuth to help you choose the best authentication library for your app",
 })
 
 <BlogHeader
@@ -29,6 +30,7 @@ export const metadata = getMetadata({
 In this article, let's do a comparison of [BetterAuth](https://www.better-auth.com/) and [NextAuth](https://next-auth.js.org/) across key points.
 
 I’ll keep the discussion focused on
+
 - developer experience
 - feature sets
 - pricing/scaling considerations
@@ -48,6 +50,7 @@ npm install next-auth
 #or
 yarn add next-auth
 ```
+
 Create an API route for authentication:
 
 ```js
@@ -61,7 +64,7 @@ export default NextAuth({
       name: "Credentials",
       credentials: {
         username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
         // Add your authentication logic here
@@ -70,18 +73,18 @@ export default NextAuth({
           return user
         }
         return null
-      }
-    })
+      },
+    }),
   ],
   session: {
-    strategy: "jwt"
+    strategy: "jwt",
   },
   callbacks: {
     async session({ session, token }) {
       // Add custom session handling
       return session
-    }
-  }
+    },
+  },
 })
 ```
 
@@ -125,11 +128,11 @@ export const auth = createAuth({
   secret: process.env.AUTH_SECRET,
   database: {
     type: "postgres",
-    url: process.env.DATABASE_URL
+    url: process.env.DATABASE_URL,
   },
   session: {
-    strategy: "jwt"
-  }
+    strategy: "jwt",
+  },
 })
 ```
 
@@ -145,7 +148,7 @@ export default createHandler(auth)
 
 The overall setup feels familiar to NextAuth users, but with less boilerplate. Many developers report an immediate improvement:
 
-*“Setup was a breeze. Way easier and better. \- Reddit User”*
+_“Setup was a breeze. Way easier and better. \- Reddit User”_
 
 ## Configuration & TypeScript Support
 
@@ -156,15 +159,15 @@ The overall setup feels familiar to NextAuth users, but with less boilerplate. M
 ```js
 import { betterAuth } from "better-auth"
 export const auth = betterAuth({
-    emailAndPassword: {
-        enabled: true
-    }
+  emailAndPassword: {
+    enabled: true,
+  },
 })
 ```
 
 The library can even generate database schema definitions for you (for example, integration with Drizzle ORM to auto-create tables for users and sessions), which developers find highly convenient.
 
-> from a Reddit user, *“This has been the best auth experience by a mile… full type safe and dead simple API,”*.
+> from a Reddit user, _“This has been the best auth experience by a mile… full type safe and dead simple API,”_.
 
 - Both libraries include TypeScript definitions, but BetterAuth’s approach yields more autocomplete and compile-time checks with minimal config.
 - In contrast, NextAuth often requires augmenting types (e.g. to define custom user properties in the session token) manually in your project.
@@ -173,14 +176,14 @@ The library can even generate database schema definitions for you (for example, 
 
 > As the established player, NextAuth (rebranded to Auth.js) has extensive documentation and examples, but the learning curve can be steep. Many developers report confusion, especially with custom credential flows.
 
-> ℹ️ One Reddit user vented that NextAuth’s **v5 beta** docs were so confusing that *“if this were my first experience with web auth, I would have just thought auth ought to be this hard.”*
+> ℹ️ One Reddit user vented that NextAuth’s **v5 beta** docs were so confusing that _“if this were my first experience with web auth, I would have just thought auth ought to be this hard.”_
 
 NextAuth requires defining providers and callbacks in a \[...nextauth\].ts API route. For example, setting up a simple credentials login might look like:
 
 ```js
 // pages/api/auth/[...nextauth].ts
-import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import NextAuth from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials"
 
 export default NextAuth({
   providers: [
@@ -188,56 +191,56 @@ export default NextAuth({
       name: "Credentials",
       credentials: {
         username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         // TODO: authenticate user with credentials
-        const user = await authenticateUser(credentials);
-        return user ?? null;
-      }
-    })
+        const user = await authenticateUser(credentials)
+        return user ?? null
+      },
+    }),
   ],
   session: {
-    strategy: "jwt"
+    strategy: "jwt",
   },
   // callbacks, pages, etc. as needed
-});
+})
 ```
 
 > NextAuth’s flexibility means you can plug in OAuth providers or custom logic, but it also means more upfront config. For instance, adding email/password requires implementing user database checks and password hashing.
 
 On the plus side, once you **do** get it configured correctly, NextAuth is quite powerful and has a large community to lean on. If you follow the common paths (e.g. Google/GitHub login, basic sessions), it’s workable. But customization (like password login, multi-factor, etc.) often feels like swimming upstream.
 
-> BetterAuth was created explicitly to improve the developer experience for in-app auth. It strives to be *“ridiculously easy”*  to roll your own auth without needing a separate service. The setup reflects this goal. Instead of configuring multiple providers and writing custom logic for verification emails, BetterAuth gives you a higher-level API with sensible defaults. For example, you can initialize it in a Next.js project with just a few lines:
+> BetterAuth was created explicitly to improve the developer experience for in-app auth. It strives to be _“ridiculously easy”_ to roll your own auth without needing a separate service. The setup reflects this goal. Instead of configuring multiple providers and writing custom logic for verification emails, BetterAuth gives you a higher-level API with sensible defaults. For example, you can initialize it in a Next.js project with just a few lines:
 
 ```js
 // lib/auth.ts (BetterAuth config example)
-import { betterAuth } from "better-auth";
-import { createHandler } from "better-auth/next";
-import { organization, twoFactor } from "better-auth/plugins";  // plugins for extras
+import { betterAuth } from "better-auth"
+import { createHandler } from "better-auth/next"
+import { organization, twoFactor } from "better-auth/plugins" // plugins for extras
 
 export const auth = betterAuth({
   secret: process.env.AUTH_SECRET,
   database: {
     type: "postgres",
-    url: process.env.DATABASE_URL
+    url: process.env.DATABASE_URL,
   },
-  emailAndPassword: { enabled: true },      // enable built-in email/password
+  emailAndPassword: { enabled: true }, // enable built-in email/password
   plugins: [
-    organization(),                        // enable org/teams (multi-tenant)
-    twoFactor()                            // enable 2FA
-  ]
-});
+    organization(), // enable org/teams (multi-tenant)
+    twoFactor(), // enable 2FA
+  ],
+})
 
 // Next.js API route
-export default createHandler(auth);
+export default createHandler(auth)
 ```
 
 This succinct configuration sets up an email/password auth with sessions stored in your database, plus adds organizations and 2FA support via plugins. There’s no need to define custom callbacks for common flows. BetterAuth provides those out of the box.
 
 The library will even auto-generate database schemas (e.g., for users and sessions) if you want, using modern typesafe ORM tools like Drizzle ORM. The result is far less boilerplate for initial setup.
 
-Developers consistently report that **BetterAuth’s onboarding is smooth**: *“Setup was a breeze. Way easier and better,”* said one who migrated from Auth.js.
+Developers consistently report that **BetterAuth’s onboarding is smooth**: _“Setup was a breeze. Way easier and better,”_ said one who migrated from Auth.js.
 
 On the client side, BetterAuth also shines. It provides a React hook (useAuth) to manage auth state and perform actions like login, logout, etc., which feels very natural in a TypeScript app. For example, logging in a user might be as simple as:
 
@@ -327,30 +330,32 @@ const secretKey = process.env.SESSION_SECRET
 3. Encrypt/Decrypt Sessions with jose
 
 ```js
-import { SignJWT, jwtVerify } from 'jose'
+import { SignJWT, jwtVerify } from "jose"
 const encodedKey = new TextEncoder().encode(process.env.SESSION_SECRET)
 
 export async function encrypt(payload) {
   return new SignJWT(payload)
-    .setProtectedHeader({ alg: 'HS256' })
+    .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime('7d')
+    .setExpirationTime("7d")
     .sign(encodedKey)
 }
 
-export async function decrypt(session = '') {
+export async function decrypt(session = "") {
   try {
-    const { payload } = await jwtVerify(session, encodedKey, { algorithms: ['HS256'] })
+    const { payload } = await jwtVerify(session, encodedKey, {
+      algorithms: ["HS256"],
+    })
     return payload
   } catch (e) {
-    console.log('Failed to verify session')
+    console.log("Failed to verify session")
   }
 }
 ```
 
 > In database mode, NextAuth will persist session records and tokens in your DB (supported via adapters for PostgreSQL, MySQL, MongoDB, etc.), which allows explicit invalidation (and is required for some features like rotating refresh tokens).
 
-1. Create a Sessions Table. Use your DB to store session data (userId, expiresAt).  Check if your auth library supports this.
+1. Create a Sessions Table. Use your DB to store session data (userId, expiresAt). Check if your auth library supports this.
 2. Insert \+ Store Session in Cookie.
 
 ```js
@@ -390,9 +395,9 @@ Both libraries implement sessions with security in mind: cookies are HTTP-only a
 import { betterAuth } from "better-auth"
 
 export const auth = betterAuth({
-    advanced: {
-        useSecureCookies: true
-    }
+  advanced: {
+    useSecureCookies: true,
+  },
 })
 ```
 
@@ -405,26 +410,26 @@ Notably, NextAuth does **not** include rate limiting out of the box (the develop
 BetterAuth builds this in as a standard feature (you can even set custom rate limit rules), which is a significant advantage for security at scale.
 
 ```js
-import { betterAuth } from "better-auth";
+import { betterAuth } from "better-auth"
 export const auth = betterAuth({
-    //...other options
-    rateLimit: {
-        window: 60, // time window in seconds
-        max: 100, // max requests in the window
-        customRules: {
-            "/sign-in/email": {
-                window: 10,
-                max: 3,
-            },
-            "/two-factor/*": async (request)=> {
-                // custom function to return rate limit window and max
-                return {
-                    window: 10,
-                    max: 3,
-                }
-            }
-        },
+  //...other options
+  rateLimit: {
+    window: 60, // time window in seconds
+    max: 100, // max requests in the window
+    customRules: {
+      "/sign-in/email": {
+        window: 10,
+        max: 3,
+      },
+      "/two-factor/*": async (request) => {
+        // custom function to return rate limit window and max
+        return {
+          window: 10,
+          max: 3,
+        }
+      },
     },
+  },
 })
 ```
 
@@ -437,7 +442,7 @@ In practice, both solutions can scale to many concurrent sessions, but BetterAut
 - NextAuth keeps things minimal in this regard, it will create basic user entries (if using a DB adapter) and handle login sessions, but it doesn’t impose any structure for user profiles or roles.
 - Developers typically extend NextAuth by storing additional user info in the database (e.g. adding a role field to the User model) and exposing it via JWT or session callbacks.
 
->   There are two ways to add role-based access control (RBAC) to your application with Auth.js, based on the session strategy you choose.
+> There are two ways to add role-based access control (RBAC) to your application with Auth.js, based on the session strategy you choose.
 
 Let’s see an example for each of these.
 
@@ -554,12 +559,12 @@ You decide how to manage the role updates, either through direct database access
 
 BetterAuth includes role-based and multi-tenant capabilities that are out of the box via its plugin system.BetterAuth's Admin plugin provides a comprehensive suite of user and session management tools for administrators. With it, admins can:
 
-* Create, update, and delete users
-* Set roles and permissions
-* Ban/unban users with custom reasons and durations
-* List and manage user sessions
-* Impersonate users temporarily
-* Configure access control with fine-grained permissions
+- Create, update, and delete users
+- Set roles and permissions
+- Ban/unban users with custom reasons and durations
+- List and manage user sessions
+- Impersonate users temporarily
+- Configure access control with fine-grained permissions
 
 To use it, developers must install the plugin, run a database migration, and register the admin plugin both on the server (auth.ts) and the client (auth-client.ts). The plugin supports pagination, custom queries for listing users, and flexible configuration options such as default roles, admin user IDs, and impersonation duration.
 
@@ -568,10 +573,8 @@ import { betterAuth } from "better-auth"
 import { admin } from "better-auth/plugins"
 
 export const auth = betterAuth({
-    // ... other config options
-    plugins: [
-        admin()
-    ]
+  // ... other config options
+  plugins: [admin()],
 })
 ```
 
@@ -585,9 +588,7 @@ import { betterAuth } from "better-auth"
 import { organization } from "better-auth/plugins"
 
 export const auth = betterAuth({
-    plugins: [
-        organization()
-    ]
+  plugins: [organization()],
 })
 ```
 
@@ -606,14 +607,12 @@ See the Schema section to add the fields manually.
 3. **Add the client plugin**
 
 ```ts
-auth-client.ts
+auth - client.ts
 import { createAuthClient } from "better-auth/client"
 import { organizationClient } from "better-auth/client/plugins"
 
 export const authClient = createAuthClient({
-    plugins: [
-        organizationClient()
-    ]
+  plugins: [organizationClient()],
 })
 ```
 
@@ -637,14 +636,14 @@ For instance, the username plugin wraps the email and password authenticator and
 
 This means you can include only what you need and even add new capabilities as the community develops plugins.
 
-> It also makes BetterAuth highly **flexible**: developers have noted they like the ability to *“pick and choose what you need”* so that nothing you don’t want is forced on you. Integrations with other tools are also part of extensibility.
+> It also makes BetterAuth highly **flexible**: developers have noted they like the ability to _“pick and choose what you need”_ so that nothing you don’t want is forced on you. Integrations with other tools are also part of extensibility.
 
 - NextAuth, being older, has community guides for integrating with things like Next.js middleware for route protection, or using it alongside third-party services (e.g. how to use NextAuth with Azure AD, etc.), though sometimes these require workarounds.
 - BetterAuth's framework-agnostic nature means it can integrate in many contexts. For example, you can use it in an Express server or a Cloudflare Worker, and it supports natively sending **webhooks** for auth events.
 
 ### Security and Best Practices
 
-> NextAuth promotes *“secure by default”* design (e.g. it always uses HTTP-only cookies, implements CSRF protection on sign-in forms, and suggests using passwordless or OAuth instead of raw passwords).
+> NextAuth promotes _“secure by default”_ design (e.g. it always uses HTTP-only cookies, implements CSRF protection on sign-in forms, and suggests using passwordless or OAuth instead of raw passwords).
 
 <Image src={image3} alt="auth" width={1200} height={600} />
 
@@ -700,12 +699,12 @@ Of course, “free” in this context means no software fee, but you still have 
 
 There are reports of NextAuth being used with hundreds of thousands of users. BetterAuth, being newer, is still proving itself, but early indications are that it performs well and is designed to scale. It uses efficient libraries under the hood (like Kysely for database queries and Web Crypto APIs for security) and supports stateless JWT mode if you need to offload session state for horizontal scaling.
 
-> *Developers who have used BetterAuth in real apps have noted it is lightweight and fast. One Hacker News commenter mentioned “using Better Auth in production apps, and have seen it in all kinds of real-world use cases”, calling it the best option for TypeScript developers.*
+> _Developers who have used BetterAuth in real apps have noted it is lightweight and fast. One Hacker News commenter mentioned “using Better Auth in production apps, and have seen it in all kinds of real-world use cases”, calling it the best option for TypeScript developers._
 
 ### Maintenance and Support Costs
 
 - NextAuth being old player and stable, but as noted earlier, its docs and support might cost developers extra time troubleshooting when implementing complex flows.
-- BetterAuth, by bundling common features, can save development time, which is a real cost factor. For instance, implementing your 2FA auth or organizational user grouping could take days or weeks of engineering,  but BetterAuth provides those in minutes. If we consider that “time is money,” BetterAuth’s comprehensive nature can be seen as cost-efficient for development.
+- BetterAuth, by bundling common features, can save development time, which is a real cost factor. For instance, implementing your 2FA auth or organizational user grouping could take days or weeks of engineering, but BetterAuth provides those in minutes. If we consider that “time is money,” BetterAuth’s comprehensive nature can be seen as cost-efficient for development.
 
 On the other hand, adopting a very new library has its own risks, you might encounter edge-case bugs and have to patch or wait for fixes, which is a form of maintenance cost. The BetterAuth project has been moving fast with updates, and the community is actively reporting and fixing issues.
 
@@ -731,11 +730,11 @@ Let’s break down the trade-offs:
 
 1. ### Ownership and Control
 
-> With BetterAuth/NextAuth, *you own your authentication system*. All your user data (emails, hashes, OAuth identities, sessions) resides in your database, and the auth logic runs on your servers. This is a big advantage for many, it means **no vendor lock-in** and a single source of truth for user accounts. If you ever need to migrate or modify behavior, you have full access to the data and code.
+> With BetterAuth/NextAuth, _you own your authentication system_. All your user data (emails, hashes, OAuth identities, sessions) resides in your database, and the auth logic runs on your servers. This is a big advantage for many, it means **no vendor lock-in** and a single source of truth for user accounts. If you ever need to migrate or modify behavior, you have full access to the data and code.
 
 With a hosted service, your user data lives in that third-party system; moving away (say to another service or to self-hosted) can be complicated, as you’d need to export users, handle passwords or tokens, etc. Many developers prefer to avoid that trap:
 
-> *“You don’t want to give up user data to a third party… you want to keep your users in your own database,”*
+> _“You don’t want to give up user data to a third party… you want to keep your users in your own database,”_
 
 Because both NextAuth and BetterAuth are open-source, you also have the **freedom to customize** anything. If something doesn’t work exactly as needed, you can extend the code.
 
@@ -804,7 +803,6 @@ In reality, BetterAuth and NextAuth are not rivals.
 > BetterAuth is highly inspired by NextAuth (per its author), just extended to solve more use cases. Many developers see BetterAuth as the “spiritual successor” that addresses NextAuth’s limitations. If you’re starting a new TypeScript project today, it’s hard not to recommend BetterAuth given its trajectory and the love it’s receiving from the community for its DX and completeness.
 
 Evaluate your project’s needs on the features, control, and effort axes. NextAuth served the community well for basic needs and still might in particular constrained scenarios. But if you find yourself pushing against its boundaries or considering a move off a pricey auth service, BetterAuth is likely the better path forward.
-
 
 ## More Blog Posts and Comparisons
 
