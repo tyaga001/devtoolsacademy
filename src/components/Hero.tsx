@@ -18,15 +18,24 @@ const Hero: React.FC = () => {
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg text-neutral-400 md:mb-14 md:text-xl leading-relaxed">
             Open-source platform connecting developers with{" "}
-            <Link href="/tools" className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2">
+            <Link
+              href="/tools"
+              className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2"
+            >
               curated tool insights
             </Link>
             ,{" "}
-            <Link href="/jobs" className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2">
+            <Link
+              href="/jobs"
+              className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2"
+            >
               premium job opportunities
             </Link>
             , and SaaS companies with{" "}
-            <Link href="/services" className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2">
+            <Link
+              href="/services"
+              className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2"
+            >
               authentic technical creators
             </Link>{" "}
             for developer marketing.
