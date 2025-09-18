@@ -41,7 +41,7 @@ export const metadata = getMetadata({
   publishedAt={"2025-04-11T00:00:00Z"}
 />
 
-# Cursor vs. Windsurf
+## Introduction
 
 > AI-assisted coding has surged in popularity, transforming the developer experience. Among the emerging tools, [Cursor](https://cursor.sh) and [Windsurf](https://codeium.com/windsurf) stand out as innovative AI code editors built on [VS Code](https://code.visualstudio.com/).
 
@@ -57,19 +57,19 @@ Both Cursor and Windsurf are built on the foundation of VS Code, but their appro
 
 > Cursor positions itself as an AI-augmented IDE with multiple modes: it provides conversational code assistance similar to traditional tools while offering an advanced Agent mode for more complex tasks.
 
-<Image src={Image11} alt="Cursor" width={1200} height={600} />
+<Image src={Image11} alt="Cursor AI code editor interface showing agent mode capabilities and conversational coding assistance" width={1200} height={600} />
 
 In an assistant-style operation, Cursor’s Chat behaves like a conversational coding helper. You ask it questions or instruct it to modify code, and it responds with suggestions.
 
-<Image src={Image1} alt="Cursor" width={1200} height={600} />
+<Image src={Image1} alt="Cursor chat interface demonstrating conversational code assistance and AI-powered suggestions" width={1200} height={600} />
 
 Enabling _Agent mode_ lets Cursor actively take steps on your behalf in agent-style operation: it can understand your request, search your codebase, plan changes, open files, apply changes, and even run commands via a built-in agent workflow and verify the results​. This agent capability is designed to interpret high-level tasks and execute a sequence of actions to fulfill them and verify the end result.
 
-<Image src={Image17} alt="Cursor" width={1200} height={600} />
+<Image src={Image17} alt="Cursor Agent mode workflow showing automated code changes, file management, and command execution" width={1200} height={600} />
 
 **Windsurf**, on the other hand, emphasizes an _agentic design_ from the outset. Its AI assistant is called **Cascade**, often described as an _“agentic IDE”_ that can collaborate in non-trivial ways​.
 
-<Image src={Image19} alt="Windsurf AI Code Editor" width={1200} height={600} />
+<Image src={Image19} alt="Windsurf AI code editor featuring Cascade assistant with agentic design and autonomous collaboration capabilities" width={1200} height={600} />
 
 Instead of a passive assistant that only answers prompts, Cascade is meant to handle context and file management somewhat autonomously, more like an AI co-developer who can take the initiative. In practice, Windsurf doesn’t make the user explicitly switch modes; Cascade can both chat and, when needed, perform multi-step “AI Flows” that involve reading multiple files or executing commands.
 
