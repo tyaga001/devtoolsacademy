@@ -67,7 +67,7 @@ function TestimonialCard({
         <div className="relative mr-5">
           <Image
             src={testimonial.avatar}
-            alt={testimonial.name}
+            alt={`${testimonial.name}, ${testimonial.position} - DevTools Academy testimonial`}
             width={56}
             height={56}
             className="rounded-full border border-neutral-600"

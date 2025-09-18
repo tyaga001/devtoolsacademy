@@ -17,9 +17,21 @@ const Hero: React.FC = () => {
             </span>
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg text-neutral-400 md:mb-14 md:text-xl leading-relaxed">
-            Open-source platform connecting developers with tool insights,
-            premium job opportunities, and SaaS companies with authentic
-            technical creators for developer marketing.
+            Open-source platform connecting developers with{" "}
+            <Link
+              href="/jobs"
+              className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2"
+            >
+              premium job opportunities
+            </Link>
+            , and SaaS companies with{" "}
+            <Link
+              href="/services"
+              className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2"
+            >
+              authentic technical creators
+            </Link>{" "}
+            for developer marketing.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
             <Link
