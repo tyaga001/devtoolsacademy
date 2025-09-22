@@ -294,7 +294,7 @@ export default function ServicesPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 px-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 px-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
             <div className="mb-4 flex items-center">
               <div className="mr-4">
@@ -347,6 +347,33 @@ export default function ServicesPage() {
               the whole experience feel natural and easy. Beyond being a great
               friend, he&apos;s someone who genuinely looks out for
               others.&quot;
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-dashed border-neutral-100/15 bg-neutral-900 p-6">
+            <div className="mb-4 flex items-center">
+              <div className="mr-4">
+                <Image
+                  src="/images/testimonials/neo.jpg"
+                  alt="Neo Kim"
+                  width={48}
+                  height={48}
+                  className="size-12 rounded-full border border-neutral-600 object-cover"
+                />
+              </div>
+              <div>
+                <h4 className="font-semibold text-neutral-200">Neo Kim</h4>
+                <p className="text-sm text-neutral-500">
+                  Creator • The System Design Newsletter
+                </p>
+              </div>
+            </div>
+            <p className="italic text-neutral-400">
+              &quot;When I started working with Ankur, my newsletter had almost
+              zero revenue. Today, I get regular sponsors and even receive
+              helpful feedback on how to improve the process. If you want to
+              grow your revenue as a content creator, Ankur is the person you
+              need to work with.&quot;
             </p>
           </div>
         </div>
