@@ -66,23 +66,23 @@ Everything is transparent, community-driven, and built in the open.
 <table>
   <tr>
     <td align="center" width="350px" style="padding: 20px; border: 1px solid #e1e5e9; border-radius: 8px; margin: 10px;">
-      <a href="https://coderabbit.ai/?ref=devtoolsacademy" target="_blank">
-        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/refs/heads/main/src/assets/coderabbit.svg" alt="CodeRabbit" height="50" style="margin-bottom: 15px;" />
+      <a href="https://coderabbit.ai/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/coderabbit.svg" alt="CodeRabbit" height="50" style="margin-bottom: 15px;" />
       </a>
       <br />
       <h4 style="margin: 10px 0 5px 0; font-size: 18px;">CodeRabbit</h4>
       <p style="margin: 5px 0; color: #666; font-size: 14px;">AI Code Reviews</p>
-      <a href="https://www.coderabbit.ai/?ref=devtoolsacademy" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">Try Free</a>
+      <a href="https://www.coderabbit.ai/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">Try Free</a>
     </td>
     <td width="50px"></td>
     <td align="center" width="350px" style="padding: 20px; border: 1px solid #e1e5e9; border-radius: 8px; margin: 10px;">
-      <a href="https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank">
-        <img src="https://github.com/tyaga001/devtoolsacademy/blob/7c9462e4dcbf46cabb4b4f6c6667a01beb48ff28/src/assets/stream.png?raw=true" alt="Stream" height="50" style="margin-bottom: 15px;" />
+      <a href="https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/stream.png" alt="Stream" height="50" style="margin-bottom: 15px;" />
       </a>
       <br />
       <h4 style="margin: 10px 0 5px 0; font-size: 18px;">Stream</h4>
       <p style="margin: 5px 0; color: #666; font-size: 14px;">Chat, Video & Feeds API</p>
-      <a href="https://getstream.io/chat/react-chat/tutorial/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">Start Building</a>
+      <a href="https://getstream.io/chat/react-chat/tutorial/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">Start Building</a>
     </td>
   </tr>
 </table>
@@ -140,14 +140,30 @@ npm run migrate      # Run database migrations
 
 ---
 
-## 📄 **License**
+## 📄 **Licensing**
 
-This project is open source under the Creative Commons License.
+This project uses **dual licensing** to appropriately cover different types of content:
 
-- ✅ Use as inspiration for your projects
-- ✅ Learn from our implementation
-- ❌ Please don't copy directly
-- 🙏 Attribution appreciated
+### **🔧 Code & Software**
+
+- **License**: [MIT License](LICENSE)
+- **Applies to**: Source code, configuration files, scripts, and technical implementations
+- **Usage**: Free to use, modify, and distribute with attribution
+
+### **📝 Content & Documentation**
+
+- **License**: [Creative Commons Attribution 4.0](LICENSE-CONTENT)
+- **Applies to**: Blog posts, articles, documentation, images, and creative works
+- **Usage**: Free to share and adapt with proper attribution
+
+### **📋 Quick Reference**
+
+- ✅ **Fork and modify** the codebase under MIT terms
+- ✅ **Share and adapt** content with CC BY 4.0 attribution
+- ✅ **Commercial use** allowed for both licenses
+- 🙏 **Attribution required** - link back to DevTools Academy
+
+**Full license terms**: See [LICENSE](LICENSE) and [LICENSE-CONTENT](LICENSE-CONTENT) files.
 
 ---
 
