@@ -17,9 +17,9 @@ const Hero: React.FC = () => {
             </span>
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-neutral-400 md:mb-14 md:text-xl">
-            Open-source platform connecting developers with premium job
-            opportunities, and SaaS companies with authentic technical creators
-            for developer marketing.
+            Skip the tech influencers with zero commits. Partner with technical
+            creators who understand your developer tools because they use them
+            to build real products and share real feedback.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
             <Link
