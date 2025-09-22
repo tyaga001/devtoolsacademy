@@ -60,10 +60,10 @@ export default function ServicesPreview() {
 
       <div className="text-center">
         <Link
-          href="/services"
+          href="/creator-partnerships"
           className="inline-flex items-center justify-center rounded-lg bg-neutral-100 px-8 py-4 text-lg font-medium text-neutral-900 shadow-sm transition-all hover:bg-neutral-200 hover:shadow-md focus:bg-neutral-200 focus:shadow-md"
         >
-          Learn More About My Services
+          Learn More About Creator Partnerships
           <ArrowRight className="ml-2 size-5" />
         </Link>
       </div>

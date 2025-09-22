@@ -21,14 +21,14 @@ import { Link } from "next-view-transitions"
 import CoverImage from "./cover.png"
 
 export const metadata = getMetadata({
-  path: "/services",
-  title: "Tech Influencers as a Service (IaaS) | DevTools Academy",
+  path: "/creator-partnerships",
+  title: "Creator Partnerships | DevTools Academy",
   description:
-    "Connect with technical creators and influencers who can authentically promote your developer tools to their engaged audiences",
+    "Partner with technical creators and influencers who can authentically promote your developer tools to their engaged audiences",
   image: CoverImage.src,
 })
 
-export default function ServicesPage() {
+export default function CreatorPartnershipsPage() {
   return (
     <main className="mt-[80px]">
       <hr className="border-dashed border-neutral-100/15" />
@@ -37,14 +37,15 @@ export default function ServicesPage() {
       <section className="py-20 text-center">
         <h1 className="mb-6 text-3xl font-bold tracking-tight md:text-6xl">
           <span className="bg-gradient-to-b from-neutral-600 to-neutral-200 bg-clip-text text-transparent">
-            Tech Influencers on Tap
+            Creator Partnerships
           </span>
         </h1>
         <p className="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-neutral-400 md:text-xl">
-          I connect SaaS companies with YouTube creators, newsletter writers,
-          technical writers, and developers who post deep technical content on
-          X/Twitter and LinkedIn, as well as short‑form creators on Instagram
-          and TikTok—people who can authentically promote developer tools.
+          Partner with YouTube creators, newsletter writers, technical writers,
+          and developers who create deep technical content on X/Twitter and
+          LinkedIn, as well as short‑form creators on Instagram and
+          TikTok—authentic voices who can genuinely promote your developer
+          tools.
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
           <Link

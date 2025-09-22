@@ -16,21 +16,9 @@ const Hero: React.FC = () => {
               Where Developers, Creators, and SaaS Companies Connect
             </span>
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-neutral-400 md:mb-14 md:text-xl leading-relaxed">
-            Open-source platform connecting developers with{" "}
-            <Link
-              href="/jobs"
-              className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2"
-            >
-              premium job opportunities
-            </Link>
-            , and SaaS companies with{" "}
-            <Link
-              href="/services"
-              className="text-blue-400 transition-colors hover:text-blue-300 underline decoration-blue-400/30 underline-offset-2"
-            >
-              authentic technical creators
-            </Link>{" "}
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-neutral-400 md:mb-14 md:text-xl">
+            Open-source platform connecting developers with premium job
+            opportunities, and SaaS companies with authentic technical creators
             for developer marketing.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
@@ -41,10 +29,10 @@ const Hero: React.FC = () => {
               Start Reading
             </Link>
             <Link
-              href="/services"
-              className="inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-transparent px-8 py-4 text-lg font-medium text-neutral-200 transition-all hover:bg-neutral-800 hover:border-neutral-600 focus:bg-neutral-800 focus:border-neutral-600"
+              href="/creator-partnerships"
+              className="inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-transparent px-8 py-4 text-lg font-medium text-neutral-200 transition-all hover:border-neutral-600 hover:bg-neutral-800 focus:border-neutral-600 focus:bg-neutral-800"
             >
-              My Services
+              Partnerships
             </Link>
           </div>
         </div>
