@@ -222,11 +222,11 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/services"
+                  href="/creator-partnerships"
                   className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-200 focus:text-neutral-200"
                 >
                   <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
-                  <span className="grow">Creator Marketing Services</span>
+                  <span className="grow">Creator Partnerships</span>
                 </Link>
               </li>
               <li>

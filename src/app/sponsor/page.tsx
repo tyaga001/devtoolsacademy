@@ -181,10 +181,10 @@ export default function SponsorPage() {
           authentically.
         </p>
         <Link
-          href="/services"
+          href="/creator-partnerships"
           className="inline-flex items-center bg-neutral-200 px-8 py-4 text-lg font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400"
         >
-          Learn About Our IaaS
+          Learn About Creator Partnerships
           <svg
             className="ml-2 size-5"
             fill="none"
