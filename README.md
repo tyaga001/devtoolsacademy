@@ -1,142 +1,179 @@
-# Dev Tools Academy
-
-<img src="public/icons/icon-256x256.png" alt="Dev Tools Academy Logo" width="100" height="100" />
-
-## The Developer's Guide to Modern Developer Tools
-
-> **Featured on Hacker News & Hashnode.**
-> DevTools Academy is the premier open-source resource helping developers and technical founders navigate the complex landscape of modern development tools. We turn technical comparisons into actionable insights.
-
-## 🏆 Featured Comparisons
-
-| Comparison                                                                                                                  | Stats                        | Key Finding                                                      |
-| --------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------- |
-| [Neon Postgres vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase)                                         | 📈 Front page on Hacker News | Unbiased and detailed comparisons between 2 serverless databases |
-| [State of Databases 2024](https://www.devtoolsacademy.com/blog/state-of-databases-2024)                                     | 🌟 Featured on Hashnode      | Comprehensive analysis of serverless database options            |
-| [Stream vs Twilio](https://www.devtoolsacademy.com/blog/stream-vs-twilio/)                                                  | 💬 Customer Support Focus    | Head-to-head comparison for building support bots                |
-| [CodeRabbit vs Other AI Code Review Tools](https://www.devtoolsacademy.com/blog/coderabbit-vs-others-ai-code-review-tools/) | 🤖 AI Code Review            | In-depth analysis of generative AI code review solutions         |
-| [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL)                                        | 🔍 Technical deep dive       | Unbiased comparisons with code examples                          |
-| [Supabase Auth vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)                                           | 🔐 Auth focused              | Unbiased comparisons with actual integration code                |
-
-## Sponsors
-
-### 💎 VIP Sponsors
+# DevTools Academy 🚀
 
 <div align="center">
-  <table>
-    <tr>
-      <td align="center" width="400px">
-        <a href="https://coderabbit.ai/?ref=devtoolsacademy" target="_blank">
-          <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/refs/heads/main/src/assets/coderabbit.svg" alt="CodeRabbit" height="60" />
-        </a>
-        <br />
-        <br />
-        <a href="https://www.coderabbit.ai/?ref=devtoolsacademy" target="_blank">Start reviewing your PRs</a>
-      </td>
-      <td align="center" width="400px">
-        <a href="https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank">
-          <img src="https://github.com/tyaga001/devtoolsacademy/blob/7c9462e4dcbf46cabb4b4f6c6667a01beb48ff28/src/assets/stream.png?raw=true" alt="Stream" height="60" />
-        </a>
-        <br />
-        <br />
-        <a href="https://getstream.io/chat/react-chat/tutorial/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank">Build a chat app in minutes</a>
-      </td>
-    </tr>
-  </table>
-  <br />
-  <em>These amazing companies help keep DevTools Academy ad-free and independent!</em>
+  <img src="public/icons/icon-256x256.png" alt="DevTools Academy Logo" width="120" height="120" />
+  
+  <h3>Where Developers, Creators, and SaaS Companies Connect</h3>
+  
+  [![Featured on Hacker News](https://img.shields.io/badge/Featured-Hacker%20News-orange?style=flat-square)](https://news.ycombinator.com)
+  [![Featured on Hashnode](https://img.shields.io/badge/Featured-Hashnode-blue?style=flat-square)](https://hashnode.com)
+  [![Open Source](https://img.shields.io/badge/Open%20Source-❤️-red?style=flat-square)](https://github.com/tyaga001/devtoolsacademy)
+  [![Live Site](https://img.shields.io/badge/Live-devtoolsacademy.com-green?style=flat-square)](https://www.devtoolsacademy.com)
 </div>
-
-## Available npm scripts
-
-**Install Dependencies**
-
-```bash
-npm install
-```
-
-**Setup Pre-commit(recommended for development)**
-
-```bash
-npm run prepare
-```
-
-**Start Development Server**
-
-```bash
-npm run dev
-```
-
-**Lint all the files**
-
-```bash
-npm run lint
-```
-
-**Format all files with Prettier**
-
-```bash
-npm run format
-```
-
-**Check TypeScript issues**
-
-```bash
-npm run type-check
-```
-
-**Build for Production**
-
-```bash
-npm run build
-```
-
-**Start Production Server**
-
-```bash
-npm start
-```
-
-## 🤝 How to Contribute
-
-I welcome contributions from developers of all skill levels. Here's how you can help:
-
-1. **Submit a Blog Post**: Have experience with dev tools? Write a post and submit a pull request.
-2. **Improve the Site**: Help me enhance the user experience or add new features.
-3. **Spread the Word**: Share the articles in developer communities and invite others to contribute.
-
-Check out the [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
-
-## ✍️ Calling All Developers Who Cares About Writing and Developer Tools
-
-Are you a person in tech looking to showcase your honest take on any developer tool? DevToolsAcademy offers a unique opportunity:
-
-- **Showcase Your Expertise**: Write in-depth, comparative analyses of developer tools.
-- **Gain Exposure**: Your articles will be promoted by me across Hacker News, Reddit, and our social media channels, reaching thousands of developers.
-- **Make an Impact**: Help fellow developers and founders make informed decisions about the tools they use daily.
-
-To get started, check our [CONTRIBUTING.md](CONTRIBUTING.md) file and reach out to us at <hello@theankurtyagi.com> with your ideas or draft outlines.
-
-## 📝 Blog Post Guidelines
-
-- Focus on comparing 2 developer tools at a time, not more than that.
-- Provide objective analysis based on real-world usage.
-- Include code examples and performance metrics when relevant.
-- Aim for a length of 1500-2000 words.
-- Build something and compare, don't just rely on docs and other blogs.
-
-## 📬 Contact
-
-Have questions or suggestions? Open an issue or reach out to me at [hello@theankurtyagi.com](mailto:hello@theankurtyagi.com).
-
-## 📄 License
-
-This project is licensed under the Creative Commons License - see the [LICENSE](LICENSE) file for details.
-
-- You are free to use this code as inspiration.
-- Please do not copy it directly.
-- Crediting the author is appreciated.
 
 ---
 
-Let's build the go-to resource for developer tool space, together 🚀
+## 🎯 **Founders & DevRel Teams**
+
+**Tired of influencers who can't code?** DevTools Academy connects you with technical creators who:
+
+- ✅ **Actually use your dev tool** to build and ship an open source app
+- ✅ **Have real developer credibility** (not just follower counts)
+- ✅ **Share actual and real feedback** that improves your product
+- ✅ **Reach engaged developer audiences** who trust their recommendations
+
+### 🤝 **Creator Partnerships**
+
+Connect with vetted technical creators who understand your developer tool from a builder's perspective, not just a marketing one.
+
+**[Read about Partnerships →](https://www.devtoolsacademy.com/creator-partnerships)**
+
+---
+
+## 🔥 **What Makes DevTools Academy Different**
+
+### **Real Technical Depth**
+
+Comparisons technical blogs are written by developers who actually build with these tools. No marketing fluff.
+
+### **Unbiased Analysis**
+
+We're not affiliated with any single vendor. Our goal is helping developers/founders make informed decisions.
+
+### **Open Source Community**
+
+Everything is transparent, community-driven, and built in the open.
+
+---
+
+## **Featured Technical Comparisons**
+
+| Comparison                                                                                                                | Impact                         | Focus                                     |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------------------------------------- |
+| [**Neon vs. Supabase**](https://www.devtoolsacademy.com/blog/neon-vs-supabase)                                            | Front page Hacker News         | Serverless Postgres performance deep-dive |
+| [**CodeRabbit vs. AI Code Review Tools**](https://www.devtoolsacademy.com/blog/coderabbit-vs-others-ai-code-review-tools) | 10K+ developers reached        | AI code review comparison                 |
+| [**Cursor vs. Windsurf**](https://www.devtoolsacademy.com/blog/cursor-vs-windsurf)                                        | Trending on multiple platforms | AI code editor comparison                 |
+| [**Supabase Auth vs. Clerk**](https://www.devtoolsacademy.com/blog/supabase-vs-clerk)                                     | Auth community favorite        | Auth comparison                           |
+
+---
+
+## **Sponsors**
+
+<div align="center">
+
+[![Sponsors](https://img.shields.io/badge/Sponsors-💎%20Trusted-blue)](https://www.devtoolsacademy.com/creator-partnerships/)
+
+<table>
+  <tr>
+    <td align="center" width="350px" style="padding: 20px; border: 1px solid #e1e5e9; border-radius: 8px; margin: 10px;">
+      <a href="https://coderabbit.ai/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/coderabbit.svg" alt="CodeRabbit" height="50" style="margin-bottom: 15px;" />
+      </a>
+      <br />
+      <h4 style="margin: 10px 0 5px 0; font-size: 18px;">CodeRabbit</h4>
+      <p style="margin: 5px 0; color: #666; font-size: 14px;">AI Code Reviews</p>
+      <a href="https://www.coderabbit.ai/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">Try Free</a>
+    </td>
+    <td width="50px"></td>
+    <td align="center" width="350px" style="padding: 20px; border: 1px solid #e1e5e9; border-radius: 8px; margin: 10px;">
+      <a href="https://getstream.io/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/stream.png" alt="Stream" height="50" style="margin-bottom: 15px;" />
+      </a>
+      <br />
+      <h4 style="margin: 10px 0 5px 0; font-size: 18px;">Stream</h4>
+      <p style="margin: 5px 0; color: #666; font-size: 14px;">Chat, Video & Feeds API</p>
+      <a href="https://getstream.io/chat/react-chat/tutorial/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">Start Building</a>
+    </td>
+  </tr>
+</table>
+
+---
+
+👉 [**Become a Sponsor**](https://www.devtoolsacademy.com/creator-partnerships/) to support DevTools Academy and reach thousands of developers.
+
+</div>
+
+---
+
+## 💼 **Engineers & Contributors**
+
+### **🛠️ Tech Stack**
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS + Framer Motion
+- **Database**: PostgreSQL with Prisma ORM
+- **Deployment**: Vercel
+- **Analytics**: Umami (privacy-focused)
+
+### **🚀 Quick Start**
+
+```bash
+# Clone the repository
+git clone https://github.com/tyaga001/devtoolsacademy.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open http://localhost:3000
+```
+
+### **📋 Available Scripts**
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run lint         # Lint all files
+npm run format       # Format with Prettier
+npm run migrate      # Run database migrations
+```
+
+---
+
+## 📬 **Get In Touch**
+
+- 💌 **Email**: [hello@theankurtyagi.com](mailto:hello@theankurtyagi.com)
+- 🐦 **Twitter**: [@theankurtyagi](https://twitter.com/theankurtyagi)
+- 🌐 **Website**: [devtoolsacademy.com](https://www.devtoolsacademy.com)
+
+---
+
+## 📄 **Licensing**
+
+This project uses **dual licensing** to appropriately cover different types of content:
+
+### **🔧 Code & Software**
+
+- **License**: [MIT License](LICENSE)
+- **Applies to**: Source code, configuration files, scripts, and technical implementations
+- **Usage**: Free to use, modify, and distribute with attribution
+
+### **📝 Content & Documentation**
+
+- **License**: [Creative Commons Attribution 4.0](LICENSE-CONTENT)
+- **Applies to**: Blog posts, articles, documentation, images, and creative works
+- **Usage**: Free to share and adapt with proper attribution
+
+### **📋 Quick Reference**
+
+- ✅ **Fork and modify** the codebase under MIT terms
+- ✅ **Share and adapt** content with CC BY 4.0 attribution
+- ✅ **Commercial use** allowed for both licenses
+- 🙏 **Attribution required** - link back to DevTools Academy
+
+**Full license terms**: See [LICENSE](LICENSE) and [LICENSE-CONTENT](LICENSE-CONTENT) files.
+
+---
+
+<div align="center">
+  <h3>🚀 Let's build the go to resource for the developer tools space, together.</h3>
+  
+  <p>
+    <a href="https://www.devtoolsacademy.com">Visit DevTools Academy</a> •
+    <a href="https://www.devtoolsacademy.com/creator-partnerships">Partnerships</a> •
+    <a href="https://www.devtoolsacademy.com/jobs">Developer Jobs</a> •
+    <a href="CONTRIBUTING.md">Contribute</a>
+  </p>
+</div>
