@@ -24,11 +24,13 @@ export async function GET() {
       const pubDate = new Date(post.publishedAt).toUTCString()
       const description = escapeXml(post.description ?? post.excerpt ?? "")
 
+      const escapedUrl = escapeXml(postUrl)
+
       return `
         <item>
           <title>${escapeXml(post.title)}</title>
-          <link>${postUrl}</link>
-          <guid>${postUrl}</guid>
+          <link>${escapedUrl}</link>
+          <guid>${escapedUrl}</guid>
           <description>${description}</description>
           <pubDate>${pubDate}</pubDate>
         </item>
