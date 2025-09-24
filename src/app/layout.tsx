@@ -1,7 +1,6 @@
 import * as React from "react"
 import type { Viewport } from "next"
 import Script from "next/script"
-import { headers } from "next/headers"
 import { DM_Mono, Mona_Sans } from "next/font/google"
 import { ViewTransitions } from "next-view-transitions"
 
@@ -11,8 +10,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { cn } from "@/lib/utils"
-import config from "@/lib/metadata"
-
 import "./globals.css"
 
 const sansFont = Mona_Sans({
@@ -36,20 +33,11 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-function CanonicalLink() {
-  const headersList = headers()
-  const path = headersList.get("next-url") ?? "/"
-  const canonicalUrl = `${config.baseUrl}${path}`
-
-  return <link rel="canonical" href={canonicalUrl} />
-}
-
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ViewTransitions>
       <html lang="en" className={cn(sansFont.variable, monoFont.variable)}>
         <head>
-          <CanonicalLink />
           <Script
             src="https://cloud.umami.is/script.js"
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
