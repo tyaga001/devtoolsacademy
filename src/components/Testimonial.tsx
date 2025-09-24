@@ -59,7 +59,7 @@ function TestimonialCard({
         className="absolute right-6 top-6 text-neutral-400 opacity-20"
       />
 
-      <p className="relative z-10 mb-10 text-lg text-neutral-300 leading-relaxed md:text-xl">
+      <p className="relative z-10 mb-10 text-lg leading-relaxed text-neutral-300 md:text-xl">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
@@ -67,7 +67,7 @@ function TestimonialCard({
         <div className="relative mr-5">
           <Image
             src={testimonial.avatar}
-            alt={`${testimonial.name}, ${testimonial.position} - DevTools Academy testimonial`}
+            alt={`Portrait of ${testimonial.name}, ${testimonial.position}`}
             width={56}
             height={56}
             className="rounded-full border border-neutral-600"
@@ -116,7 +116,7 @@ function Testimonial() {
         <div className="grid grid-cols-1 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
-              key={index}
+              key={`${testimonial.name}-${index}`}
               index={index}
               testimonial={testimonial}
             />

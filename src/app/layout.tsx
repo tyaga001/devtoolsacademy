@@ -10,18 +10,19 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { cn } from "@/lib/utils"
-
 import "./globals.css"
 
 const sansFont = Mona_Sans({
   variable: "--sans-font",
   subsets: ["latin"],
+  display: "swap",
 })
 
 const monoFont = DM_Mono({
   variable: "--mono-font",
   subsets: ["latin"],
   weight: "500",
+  display: "swap",
 })
 
 export const viewport: Viewport = {
@@ -44,8 +45,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
           />
         </head>
         <body className="bg-neutral-950 font-sans text-neutral-200">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-neutral-100 focus:px-4 focus:py-2 focus:text-neutral-900"
+          >
+            Skip to content
+          </a>
           <Navbar />
-          {children}
+          <div id="main-content" tabIndex={-1} className="min-h-screen">
+            {children}
+          </div>
           <Footer />
 
           <div className="fixed left-[calc((100vw-1280px)/2)] top-0 h-screen border-l border-dashed border-neutral-100/15" />
