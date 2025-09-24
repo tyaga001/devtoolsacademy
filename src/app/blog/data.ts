@@ -22,7 +22,7 @@ export const allBlogs = [
     category: "Authentication",
     image: BetterAuthCoverImage.src,
     isNew: true,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -48,7 +48,7 @@ export const allBlogs = [
     image: CursorWindsurfCoverImage.src,
     category: "AI Code Editor",
     isNew: false,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",

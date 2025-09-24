@@ -12,7 +12,7 @@ type BreadcrumbProps = {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
-    <nav className="mb-4 text-sm text-neutral-500">
+    <nav aria-label="Breadcrumb" className="mb-4 text-sm text-neutral-500">
       {items.map((item, index) => (
         <span key={item.href}>
           {index > 0 && <span className="mx-2">{">"}</span>}

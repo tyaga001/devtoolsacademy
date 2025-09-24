@@ -2,6 +2,7 @@ import Image from "next/image"
 
 import { getMetadata } from "@/lib/metadata"
 import BlogHeader from "@/components/blog/BlogHeader"
+import RelatedPosts from "@/components/blog/RelatedPosts"
 
 import image1 from "./image1.png"
 import image2 from "./image2.png"
@@ -25,7 +26,7 @@ export const metadata = getMetadata({
 
 > Building authentication for web apps can be challenging. BetterAuth and NextAuth (recently renamed Auth.js in v5) are popular solutions developers consider for Node/TypeScript projects. Both are open-source libraries that let you own your auth (i.e., manage user accounts in your database) rather than rely on a third-party service.
 
-<Image src={image6} alt="auth" width={1200} height={600} />
+<Image src={image6} alt="BetterAuth vs NextAuth comparison - authentication library features and setup comparison" width={1200} height={600} />
 
 In this article, let's do a comparison of [BetterAuth](https://www.better-auth.com/) and [NextAuth](https://next-auth.js.org/) across key points.
 
@@ -815,3 +816,5 @@ Evaluate your project’s needs on the features, control, and effort axes. NextA
 - [Stream vs Twilio](https://www.devtoolsacademy.com/blog/stream-vs-twilio/)
 - [State of Databases for Serverless in 2024](https://www.devtoolsacademy.com/blog/state-of-databases-2024/)
 - [AI Code Reviewers vs Human Code Reviewers](https://www.devtoolsacademy.com/blog/ai-code-reviewers-vs-human-code-reviewers/)
+
+<RelatedPosts currentSlug="betterauth-vs-nextauth" currentCategory="Authentication" />

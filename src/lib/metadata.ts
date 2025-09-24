@@ -37,6 +37,9 @@ export const getMetadata = ({
     description: metaDescription,
 
     metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `${config.baseUrl}${path}`,
+    },
 
     applicationName: config.appName,
     creator: config.creator,
