@@ -13,11 +13,12 @@ const escapeXml = (value: string) =>
 export const revalidate = 3600
 
 export async function GET() {
-  const items = [...allBlogs]
-    .sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    )
+  const sortedBlogs = [...allBlogs].sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  )
+
+  const items = sortedBlogs
     .map((post) => {
       const postUrl = `${siteUrl}/blog/${post.slug}/`
       const pubDate = new Date(post.publishedAt).toUTCString()
@@ -35,9 +36,9 @@ export async function GET() {
     })
     .join("\n")
 
-  const lastBuildDate = new Date(
-    allBlogs[0]?.publishedAt ?? Date.now()
-  ).toUTCString()
+  const lastBuildDate = sortedBlogs.length
+    ? new Date(sortedBlogs[0].publishedAt).toUTCString()
+    : new Date().toUTCString()
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
   <rss version="2.0">
