@@ -406,7 +406,7 @@ export default function CreatorPartnershipsPage() {
               <div className="mr-4 shrink-0">
                 <Image
                   src="/images/testimonials/burak.png"
-                  alt="Burak Özdemir - DevTools Academy testimonial"
+                  alt="Burak Örkmez - DevTools Academy testimonial"
                   width={56}
                   height={56}
                   className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
@@ -414,7 +414,7 @@ export default function CreatorPartnershipsPage() {
               </div>
               <div className="min-w-0 flex-1">
                 <h4 className="text-lg font-semibold text-neutral-100">
-                  Burak Özdemir
+                  Burak Örkmez
                 </h4>
                 <p className="text-sm font-medium text-neutral-400">
                   Creator • CodeSistency • 113K+ subscribers
@@ -674,9 +674,9 @@ export default function CreatorPartnershipsPage() {
               engineering tutorials
             </div>
             <p className="text-sm text-neutral-500">
-              Burak creates high-quality software engineering content focusing
-              on best practices, clean code, and modern development techniques
-              for professional developers.
+              Burak Örkmez creates high-quality software engineering content
+              focusing on best practices, clean code, and modern development
+              techniques for professional developers.
             </p>
           </div>
 
