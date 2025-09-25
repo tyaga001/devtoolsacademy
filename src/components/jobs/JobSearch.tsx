@@ -66,24 +66,10 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
     if (type) params.set("type", type)
     if (featured) params.set("featured", "true")
 
-    params.set("page", "1") // Reset to first page
+    params.set("page", "1")
 
     router.push(`/jobs?${params.toString()}`)
   }, [search, location, type, featured, router])
-
-  // Update URL when featured filter changes
-  useEffect(() => {
-    if (searchParams.featured !== (featured ? "true" : undefined)) {
-      updateURL()
-    }
-  }, [featured, updateURL, searchParams.featured])
-
-  // Update URL when job type filter changes
-  useEffect(() => {
-    if (searchParams.type !== type) {
-      updateURL()
-    }
-  }, [type, updateURL, searchParams.type])
 
   const clearFilters = () => {
     setSearch("")
@@ -96,45 +82,46 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
   const hasActiveFilters = search || location || type || featured
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 md:px-0">
-      {/* Main Search Bar */}
+    <div className="mx-auto w-full max-w-6xl rounded-2xl border border-neutral-900 bg-neutral-900/40 px-4 py-6 shadow-lg backdrop-blur md:px-8">
       <div className="mb-6 flex flex-col gap-4 md:flex-row">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-500" />
           <Input
             placeholder="Search jobs, companies, or skills..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && updateURL()}
-            className="border-neutral-700 bg-neutral-900 pl-10 text-neutral-200 placeholder:text-neutral-500"
+            className="border-neutral-900 bg-neutral-950/70 pl-10 text-neutral-200 placeholder:text-neutral-500 focus:border-neutral-700"
           />
         </div>
 
         <div className="relative flex-1 md:max-w-xs">
-          <MapPin className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+          <MapPin className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-500" />
           <Input
             placeholder="Location (e.g., Remote, SF)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && updateURL()}
-            className="border-neutral-700 bg-neutral-900 pl-10 text-neutral-200 placeholder:text-neutral-500"
+            className="border-neutral-900 bg-neutral-950/70 pl-10 text-neutral-200 placeholder:text-neutral-500 focus:border-neutral-700"
           />
         </div>
 
-        <Button onClick={updateURL} className="bg-blue-600 hover:bg-blue-700">
+        <Button
+          onClick={updateURL}
+          className="bg-neutral-100 text-neutral-900 hover:bg-neutral-200"
+        >
           <Search className="mr-2 size-4" />
           Search
         </Button>
       </div>
 
-      {/* Filters Row */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
                 variant="outline"
-                className="min-w-[140px] border-neutral-700 bg-neutral-900 text-neutral-200 hover:bg-neutral-800 hover:text-neutral-100"
+                className="min-w-[150px] rounded-full border-neutral-900 bg-neutral-950/70 px-4 py-2 text-sm font-medium text-neutral-200 hover:border-neutral-800 hover:bg-neutral-900"
               >
                 <Briefcase className="mr-2 size-4" />
                 {type
@@ -142,7 +129,7 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
                   : "Job Type"}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="border-neutral-700 bg-neutral-900">
+            <DropdownMenuContent className="border-neutral-800 bg-neutral-900 text-neutral-200">
               <DropdownMenuItem onClick={() => setType("")}>
                 All Types
               </DropdownMenuItem>
@@ -158,13 +145,13 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
           </DropdownMenu>
 
           <Button
-            variant="outline"
+            variant="ghost"
             onClick={() => setFeatured(!featured)}
-            className={
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
               featured
-                ? "border-amber-500/30 bg-amber-600/20 text-amber-400 hover:bg-amber-600/30 hover:text-amber-300"
-                : "border-neutral-700 bg-neutral-900 text-neutral-200 hover:bg-neutral-800 hover:text-neutral-100"
-            }
+                ? "border-amber-500/40 bg-amber-500/15 text-amber-300 hover:bg-amber-500/20"
+                : "border-neutral-900 bg-neutral-950/70 text-neutral-300 hover:border-neutral-800 hover:bg-neutral-900"
+            }`}
           >
             <Star className="mr-2 size-4" />
             Featured
@@ -175,7 +162,7 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
           <Button
             variant="ghost"
             onClick={clearFilters}
-            className="text-neutral-400 hover:bg-neutral-800 hover:text-neutral-200"
+            className="rounded-full border border-neutral-900 bg-neutral-950/60 px-4 py-2 text-sm text-neutral-400 hover:border-neutral-800 hover:bg-neutral-900 hover:text-neutral-100"
           >
             <X className="mr-2 size-4" />
             Clear All
@@ -188,13 +175,13 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
         <div className="mb-6 flex flex-wrap gap-2">
           <Badge
             variant="secondary"
-            className="border-amber-500/30 bg-amber-600/20 text-amber-400"
+            className="rounded-full border-amber-500/30 bg-amber-500/15 text-amber-300"
           >
             <Star className="mr-1.5 size-3" />
             Featured
             <button
               onClick={() => setFeatured(false)}
-              className="ml-2 hover:text-amber-300"
+              className="ml-2 hover:text-amber-200"
             >
               <X className="size-3" />
             </button>
@@ -202,10 +189,9 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
         </div>
       )}
 
-      {/* Quick Location Filters */}
-      <div className="flex flex-wrap gap-2">
-        <span className="mr-2 text-sm text-neutral-400">
-          Popular locations:
+      <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-500">
+        <span className="mr-1 uppercase tracking-wide text-neutral-500">
+          Popular:
         </span>
         {popularLocations.slice(0, 6).map((loc) => (
           <button
@@ -214,7 +200,7 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
               setLocation(loc)
               updateURL()
             }}
-            className="text-sm text-neutral-500 underline hover:text-neutral-300"
+            className="rounded-full border border-neutral-900 bg-neutral-950/60 px-3 py-1 text-xs text-neutral-300 transition hover:border-neutral-800 hover:bg-neutral-900"
           >
             {loc}
           </button>

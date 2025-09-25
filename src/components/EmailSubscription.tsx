@@ -12,25 +12,30 @@ export default function EmailSubscription() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4">
-      <label htmlFor="email-input" className="sr-only">
-        Email address
-      </label>
-      <input
-        id="email-input"
-        aria-label="Email address"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        className="rounded-l-md border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        required
-      />
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-full flex-col gap-3 sm:flex-row sm:items-center"
+    >
+      <div className="relative w-full flex-1">
+        <label htmlFor="email-input" className="sr-only">
+          Email address
+        </label>
+        <input
+          id="email-input"
+          aria-label="Email address"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@company.com"
+          className="w-full rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3 text-sm text-neutral-200 placeholder:text-neutral-500 focus:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-600"
+          required
+        />
+      </div>
       <button
         type="submit"
-        className="rounded-r-md bg-blue-500 px-4 py-2 text-neutral-200 transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="inline-flex items-center justify-center rounded-lg bg-neutral-100 px-5 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-400"
       >
-        Subscribe
+        Join the list
       </button>
     </form>
   )

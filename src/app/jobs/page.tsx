@@ -2,8 +2,6 @@ import React, { Suspense } from "react"
 import Link from "next/link"
 
 import { getMetadata } from "@/lib/metadata"
-import { Button } from "@/components/ui/button"
-
 import JobsPage from "@/components/jobs/JobsPage"
 import JobCategories from "@/components/jobs/JobCategories"
 import JobSkeleton from "@/components/jobs/JobSkeleton"
@@ -41,58 +39,83 @@ export default async function JobsRoute({
   const page = Math.max(1, Math.floor(pageNumber))
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#111111] to-[#0A0A0A]">
+    <section className="relative min-h-screen bg-[#080808]">
       {/* Hero Section */}
-      <div className="relative pb-20 pt-32">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h1 className="mb-6 text-5xl font-light tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Premium Developer
-            <span className="block font-extralight text-neutral-400">
-              Opportunities
+      <div className="relative">
+        <div className="grid-background pointer-events-none absolute inset-0 -z-10 opacity-[0.08]" />
+        <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-20 sm:py-24 md:flex-row md:items-center md:gap-16">
+          <div className="flex-1 text-center md:text-left">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-4 py-1 text-xs font-medium uppercase tracking-wide text-neutral-400">
+              Curated devtool roles
             </span>
-          </h1>
-          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-neutral-300">
-            Vetted opportunities for exceptional professionals.
-          </p>
-
-          <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
-            <Link href="/jobs/submit">
-              <Button className="group relative overflow-hidden bg-white px-8 py-4 text-base font-medium text-black transition-all duration-300 hover:bg-neutral-100 hover:shadow-lg">
-                <span className="relative z-10">Submit Position</span>
-                <span className="ml-2 text-sm font-light text-neutral-600">
-                  $199
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-neutral-50 to-neutral-100 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </Button>
+            <h1 className="mb-6 text-4xl font-semibold tracking-tight text-neutral-50 sm:text-5xl md:text-6xl">
+              Find your next
+              <br className="hidden md:block" /> devtools move
+            </h1>
+            <p className="mx-auto max-w-xl text-base leading-relaxed text-neutral-400 md:mx-0">
+              Weekly drops of developer marketing, DevRel, DX, and AI platform
+              roles hand-picked for founders, community builders, and product
+              storytellers.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-4 text-sm text-neutral-400 md:flex-row md:items-center md:justify-start">
+              <div className="flex items-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900/60 px-4 py-3">
+                <div className="text-left">
+                  <p className="text-xs uppercase tracking-wide text-neutral-500">
+                    Featured
+                  </p>
+                  <p className="text-sm font-medium text-neutral-200">
+                    {""}Kilocode, Deepgram, Apple
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900/60 px-4 py-3">
+                <div className="text-left">
+                  <p className="text-xs uppercase tracking-wide text-neutral-500">
+                    Updated
+                  </p>
+                  <p className="text-sm font-medium text-neutral-200">
+                    Every Week
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex w-full flex-1 flex-col gap-6 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 text-left shadow-lg backdrop-blur md:max-w-sm">
+            <div>
+              <h2 className="text-base font-semibold text-neutral-100">
+                Showcase a role in front of builders
+              </h2>
+              <p className="mt-2 text-sm text-neutral-400">
+                Submit a devtools job and we will feature it for 45 days across
+                the site, jobs feed, and ByteSizedBets newsletter.
+              </p>
+            </div>
+            <Link
+              href="/jobs/submit"
+              className="inline-flex items-center justify-center rounded-lg bg-neutral-100 px-5 py-2.5 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-200"
+            >
+              Submit a role
             </Link>
-            <p className="text-sm text-neutral-500">
-              60-day featured placement included
+            <p className="text-xs text-neutral-500">
+              Includes newsletter mention + social amplification.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="mx-auto max-w-6xl">
-        <div className="h-px bg-gradient-to-r from-transparent via-neutral-700 to-transparent" />
-      </div>
-
-      {/* Search Section */}
       <div className="py-16">
-        <div className="mx-auto max-w-4xl px-6">
+        <div className="mx-auto max-w-5xl px-6">
           <JobSearch searchParams={searchParamsSync} />
         </div>
       </div>
 
-      {/* Jobs List */}
-      <div className="bg-[#0A0A0A]">
+      <div className="bg-[#070707]">
         <Suspense fallback={<JobSkeleton />}>
           <JobsPage page={page} searchParams={searchParamsSync} />
         </Suspense>
       </div>
 
-      {/* Categories */}
-      <div className="bg-[#111111]">
+      <div className="bg-[#060606]">
         <Suspense fallback={<LoadingCategories />}>
           <JobCategories />
         </Suspense>
