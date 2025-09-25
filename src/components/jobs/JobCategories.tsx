@@ -1,10 +1,12 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import React, { useEffect, useMemo, useState } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import axios from "axios"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { X } from "lucide-react"
 import {
   Briefcase,
   Code,
@@ -78,8 +80,12 @@ const groupCategories = (categories: Category[]) => {
 
 const JobCategories: React.FC = () => {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
   const [categories, setCategories] = useState<Category[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const selectedCategory = searchParams.get("categories")
+  const hasSelectedCategory = Boolean(selectedCategory)
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -97,8 +103,28 @@ const JobCategories: React.FC = () => {
   }, [])
 
   const handleCategoryClick = (categoryName: string) => {
-    router.push(`/jobs?categories=${encodeURIComponent(categoryName)}`)
+    const params = new URLSearchParams(searchParams.toString())
+    params.set("categories", categoryName)
+    params.set("page", "1")
+    router.push(`${pathname}?${params.toString()}`)
   }
+
+  const clearCategory = () => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete("categories")
+    params.delete("page")
+    router.push(`${pathname}?${params.toString()}`)
+  }
+
+  const groupedCategories = useMemo(
+    () => groupCategories(categories),
+    [categories]
+  )
+
+  const topCategories = useMemo(
+    () => [...categories].sort((a, b) => b.count - a.count).slice(0, 8),
+    [categories]
+  )
 
   if (isLoading) {
     return (
@@ -137,12 +163,26 @@ const JobCategories: React.FC = () => {
     return null
   }
 
-  const groupedCategories = groupCategories(categories)
-  const topCategories = categories.sort((a, b) => b.count - a.count).slice(0, 8)
-
   return (
     <section className="py-20">
       <div className="mx-auto max-w-6xl px-6">
+        {hasSelectedCategory && (
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/50 px-4 py-3 text-sm text-neutral-200">
+            <span>
+              Filtering by{" "}
+              <span className="font-semibold">{selectedCategory}</span>
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={clearCategory}
+              className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950 px-3 py-1 text-xs text-neutral-300 hover:border-neutral-700 hover:bg-neutral-900"
+            >
+              <X className="size-3" />
+              Reset filters
+            </Button>
+          </div>
+        )}
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-light tracking-tight text-white md:text-4xl">
             Explore by Specialty
@@ -159,7 +199,11 @@ const JobCategories: React.FC = () => {
             return (
               <Card
                 key={category.name}
-                className="group cursor-pointer border border-neutral-800 bg-[#141414] shadow-sm transition-all duration-300 hover:border-neutral-700 hover:shadow-md"
+                className={`group cursor-pointer border border-neutral-800 bg-[#141414] shadow-sm transition-all duration-300 hover:border-neutral-700 hover:shadow-md ${
+                  selectedCategory === category.name
+                    ? "border-neutral-600 bg-neutral-800"
+                    : ""
+                }`}
                 onClick={() => handleCategoryClick(category.name)}
               >
                 <CardContent className="p-8 text-center">
@@ -213,7 +257,11 @@ const JobCategories: React.FC = () => {
                       >
                         <Badge
                           variant="outline"
-                          className="flex items-center gap-2 border-neutral-700 bg-[#141414] px-4 py-2 text-sm font-medium text-neutral-300 transition-all duration-200 hover:border-neutral-700 hover:bg-neutral-800 hover:text-neutral-100"
+                          className={`flex items-center gap-2 border-neutral-700 bg-[#141414] px-4 py-2 text-sm font-medium text-neutral-300 transition-all duration-200 hover:border-neutral-700 hover:bg-neutral-800 hover:text-neutral-100 ${
+                            selectedCategory === category.name
+                              ? "border-neutral-600 bg-neutral-800 text-neutral-100"
+                              : ""
+                          }`}
                         >
                           {category.name}
                           <span className="rounded-full bg-neutral-100 px-2 py-0.5 text-xs text-neutral-500 group-hover:bg-neutral-200">
