@@ -507,6 +507,76 @@ export default function CreatorPartnershipsPage() {
               </p>
             </blockquote>
           </div>
+
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/emmanuel.jpg"
+                  alt="Emmanuel Aiyenigba - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Emmanuel Aiyenigba
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Software Engineer & Developer Advocate
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                I have had the pleasure of working with Ankur for nearly 3 years
+                now and his commitment to delivering excellence to clients is
+                top notch. We&apos;ve collaborated on numerous projects for
+                diverse companies and the feedback has been nothing short of
+                excellent. Ankur is simply a great developer advocate and a
+                wonderful friend and work partner. I strongly recommend him to
+                anyone who cares about excellent delivery.
+              </p>
+            </blockquote>
+          </div>
+
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/piyush.jpg"
+                  alt="Piyush Agarwal - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Piyush Agarwal
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Creator • RoadsideCoder • 162K+ subscribers
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Ankur&apos;s the reason I&apos;ve been able to land great
+                sponsors lately without stressing over the back-and-forth that
+                usually comes with it. Having him handle that side of things has
+                freed me up time to focus on creating. Couldn&apos;t recommend
+                him enough, Huge thanks!
+              </p>
+            </blockquote>
+          </div>
         </div>
 
         <div className="mt-12 text-center">
