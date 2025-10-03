@@ -296,7 +296,150 @@ export default function CreatorPartnershipsPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 px-6 md:grid-cols-2 lg:gap-8">
-          {/* First Row - David & Daniel */}
+          {/* Spotlight: Burak & Code with Antonio */}
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/burak.png"
+                  alt="Burak Örkmez - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Burak Örkmez
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Creator • CodeSistency • 113K+ subscribers
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Ankur did an outstanding job connecting me with the many dev
+                tools team, and that introduction has grown into months of
+                effective collaboration.
+              </p>
+            </blockquote>
+          </div>
+
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/antonio.jpg"
+                  alt="Code with Antonio - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Code with Antonio
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Creator • 390K+ YouTube subscribers
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Ankur lined up two pivotal brand collaborations for my channel.
+                I had previously tried to work with one partner but the timing
+                wasn&apos;t right. When Ankur re-opened the conversation, we
+                shipped a campaign that became one of my strongest-performing
+                recent videos. His second introduction turned into a long-term
+                engagement that keeps renewing because the results stay strong.
+                Ankur has a unique instinct for pairing creators with developer
+                products that truly resonate.
+              </p>
+            </blockquote>
+          </div>
+
+          {/* Additional Creator Voices */}
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/neo.jpg"
+                  alt="Neo Kim - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Neo Kim
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Creator • The System Design Newsletter
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Since I started working with Ankur, I no longer spend time
+                chasing sponsors. He handles the business side so I can focus
+                fully on creating quality content. Not only do I get consistent
+                sponsorship deals, but I also receive valuable feedback on how
+                to improve my newsletter and grow long term. If you want to
+                scale as a content creator, Ankur is the partner you need.
+              </p>
+            </blockquote>
+          </div>
+
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/isaac.jpg"
+                  alt="Isaac Tonyloi - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Isaac Tonyloi
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Software Engineer & Technical Writer
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Working with Ankur has been a game-changer. He not only
+                connected me with the right developer tools but also guided me
+                on how to present my technical expertise to a broader audience.
+                His ability to bridge the gap between creators and opportunities
+                is unmatched. Thanks to his support, I&apos;ve been able to
+                focus on building impactful projects while growing my reach as a
+                developer and writer. If you&apos;re serious about reaching the
+                right audience and communicating with the developer community,
+                Ankur is the person you want in your corner.
+              </p>
+            </blockquote>
+          </div>
+
           <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
             <div className="mb-6 flex items-start">
               <div className="mr-4 shrink-0">
@@ -365,13 +508,12 @@ export default function CreatorPartnershipsPage() {
             </blockquote>
           </div>
 
-          {/* Second Row - Neo & Burak */}
           <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
             <div className="mb-6 flex items-start">
               <div className="mr-4 shrink-0">
                 <Image
-                  src="/images/testimonials/neo.jpg"
-                  alt="Neo Kim - DevTools Academy testimonial"
+                  src="/images/testimonials/emmanuel.jpg"
+                  alt="Emmanuel Aiyenigba - DevTools Academy testimonial"
                   width={56}
                   height={56}
                   className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
@@ -379,10 +521,10 @@ export default function CreatorPartnershipsPage() {
               </div>
               <div className="min-w-0 flex-1">
                 <h4 className="text-lg font-semibold text-neutral-100">
-                  Neo Kim
+                  Emmanuel Aiyenigba
                 </h4>
                 <p className="text-sm font-medium text-neutral-400">
-                  Creator • The System Design Newsletter
+                  Software Engineer & Developer Advocate
                 </p>
               </div>
             </div>
@@ -391,12 +533,13 @@ export default function CreatorPartnershipsPage() {
                 &ldquo;
               </span>
               <p className="relative z-10 pl-4">
-                Since I started working with Ankur, I no longer spend time
-                chasing sponsors. He handles the business side so I can focus
-                fully on creating quality content. Not only do I get consistent
-                sponsorship deals, but I also receive valuable feedback on how
-                to improve my newsletter and grow long term. If you want to
-                scale as a content creator, Ankur is the partner you need.
+                I have had the pleasure of working with Ankur for nearly 3 years
+                now and his commitment to delivering excellence to clients is
+                top notch. We&apos;ve collaborated on numerous projects for
+                diverse companies and the feedback has been nothing short of
+                excellent. Ankur is simply a great developer advocate and a
+                wonderful friend and work partner. I strongly recommend him to
+                anyone who cares about excellent delivery.
               </p>
             </blockquote>
           </div>
@@ -405,8 +548,8 @@ export default function CreatorPartnershipsPage() {
             <div className="mb-6 flex items-start">
               <div className="mr-4 shrink-0">
                 <Image
-                  src="/images/testimonials/burak.png"
-                  alt="Burak Örkmez - DevTools Academy testimonial"
+                  src="/images/testimonials/piyush.jpg"
+                  alt="Piyush Agarwal - DevTools Academy testimonial"
                   width={56}
                   height={56}
                   className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
@@ -414,10 +557,10 @@ export default function CreatorPartnershipsPage() {
               </div>
               <div className="min-w-0 flex-1">
                 <h4 className="text-lg font-semibold text-neutral-100">
-                  Burak Örkmez
+                  Piyush Agarwal
                 </h4>
                 <p className="text-sm font-medium text-neutral-400">
-                  Creator • CodeSistency • 113K+ subscribers
+                  Creator • RoadsideCoder • 162K+ subscribers
                 </p>
               </div>
             </div>
@@ -426,9 +569,11 @@ export default function CreatorPartnershipsPage() {
                 &ldquo;
               </span>
               <p className="relative z-10 pl-4">
-                Ankur did an outstanding job connecting me with the many dev
-                tools team, and that introduction has grown into months of
-                effective collaboration.
+                Ankur&apos;s the reason I&apos;ve been able to land great
+                sponsors lately without stressing over the back-and-forth that
+                usually comes with it. Having him handle that side of things has
+                freed me up time to focus on creating. Couldn&apos;t recommend
+                him enough, Huge thanks!
               </p>
             </blockquote>
           </div>
