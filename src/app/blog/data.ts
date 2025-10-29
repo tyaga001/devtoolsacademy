@@ -1,3 +1,4 @@
+import RuffAndUvImage from "@/app/blog/ruff-and-uv-turbocharging-python-development-with-rust-powered-tools/cover.png"
 import StateOfAICodeReviewCoverImage from "@/app/blog/state-of-ai-code-review-tools-2025/cover.png"
 import CodeRabbitCoverImage from "@/app/blog/coderabbit-vs-others-ai-code-review-tools/cover.png"
 import TwilioCoverImage from "@/app/blog/stream-vs-twilio/cover.png"
@@ -11,6 +12,20 @@ import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
 
 export const allBlogs = [
+  {
+    author: "Jitendra Nirnejak",
+    slug: "ruff-and-uv-turbocharging-python-development-with-rust-powered-tools",
+    title:
+      "Ruff and uv: Turbocharging Python Development with Rust-Powered Tools",
+    excerpt: "Rust based linter and dependency manager for python",
+    description:
+      "Discover Ruff and uv, Rust-fueled beasts revolutionizing Python dev. Blast through linting, packaging, and deps with 10x speed gains. Level up your code game now.",
+    publishedAt: "2025-10-31T00:00:00Z",
+    category: "Python",
+    image: RuffAndUvImage.src,
+    isNew: true,
+    isFeatured: true,
+  },
   {
     author: "Ankur Tyagi",
     slug: "state-of-ai-code-review-tools-2025",
