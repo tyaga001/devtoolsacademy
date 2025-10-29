@@ -11,6 +11,11 @@ import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover
 import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
 
+export const allAuthors = [
+  { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
+  { name: "Jitendra Nirnejak", link: "https://nirnejak.com/" },
+]
+
 export const allBlogs = [
   {
     author: "Jitendra Nirnejak",

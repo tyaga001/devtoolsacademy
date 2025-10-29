@@ -1,12 +1,15 @@
 "use client"
 
 import React, { useState } from "react"
+import { CircleUserRound } from "lucide-react"
 
 import BlogChatInterface from "@/components/blog/BlogChatInterface"
 import ViewCounter from "@/components/blog/ViewCounter"
 import SocialShare from "@/components/blog/SocialShare"
 import Breadcrumb from "@/components/blog/Breadcrumb"
-import { CircleUserRound } from "lucide-react"
+
+import { allAuthors } from "@/app/blog/data"
+import { Link } from "next-view-transitions"
 
 interface BlogHeaderProps {
   title: string
@@ -22,12 +25,22 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
   const [content, setContent] = useState("")
   const [showChat, setShowChat] = useState(false)
 
+  const [authorLink, setAuthorLink] = useState("")
+
   React.useEffect(() => {
     const ele = document.querySelector("article")
     if (ele !== null) {
       setContent(ele.innerHTML)
     }
-  }, [])
+
+    if (author) {
+      allAuthors.forEach((auth) => {
+        if (auth.name === author) {
+          setAuthorLink(auth.link)
+        }
+      })
+    }
+  }, [author])
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
@@ -52,10 +65,14 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
       </h1>
       <div className="mb-12 flex flex-col justify-between md:mb-16 md:flex-row md:items-center">
         <div className="mb-6 flex items-center gap-4 text-neutral-400 md:mb-0">
-          <span className="flex items-center gap-1 text-sm">
+          <Link
+            href={authorLink}
+            target="_blank"
+            className="flex items-center gap-1 text-sm text-neutral-400 no-underline hover:text-neutral-200"
+          >
             <CircleUserRound size={14} />
             {author}
-          </span>
+          </Link>
           <span>|</span>
           <span className="text-sm">{formatDate(publishedAt)}</span>
           <span>|</span>
