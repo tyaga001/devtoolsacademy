@@ -177,3 +177,8 @@ This project uses **dual licensing** to appropriately cover different types of c
     <a href="CONTRIBUTING.md">Contribute</a>
   </p>
 </div>
+
+
+## AI Development Tools
+
+- [Roundtable MCP Server](https://github.com/askbudi/roundtable) - Zero-configuration MCP server that unifies multiple AI coding assistants (Codex, Claude Code, Cursor, Gemini) through intelligent auto-discovery and standardized interface
