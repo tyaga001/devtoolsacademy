@@ -25,7 +25,7 @@ export const allBlogs = [
     excerpt: "Rust based linter and dependency manager for python",
     description:
       "Discover Ruff and uv, Rust-fueled beasts revolutionizing Python dev. Blast through linting, packaging, and deps with 10x speed gains. Level up your code game now.",
-    publishedAt: "2025-10-31T00:00:00Z",
+    publishedAt: "2025-11-03T00:00:00Z",
     category: "Python",
     image: RuffAndUvImage.src,
     isNew: true,
