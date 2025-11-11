@@ -1,0 +1,573 @@
+import Image from "next/image"
+
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+import { Callout } from "@/components/blog/Callout"
+import RelatedPosts from "@/components/blog/RelatedPosts"
+
+import CoverImage from "./cover.png"
+import image1 from "./image1.png"
+import image2 from "./image2.png"
+import image3 from "./image3.png"
+import image4 from "./image4.png"
+import image5 from "./image5.png"
+import image6 from "./image6.png"
+import image7 from "./image7.png"
+import image8 from "./image8.png"
+import image9 from "./image9.png"
+import image10 from "./image10.png"
+import image11 from "./image11.png"
+import image12 from "./image12.png"
+import image13 from "./image13.png"
+import image14 from "./image14.png"
+import image15 from "./image15.png"
+import image16 from "./image16.png"
+import image17 from "./image17.png"
+import image18 from "./image18.png"
+import image19 from "./image19.png"
+import image20 from "./image20.png"
+import image21 from "./image21.png"
+import image22 from "./image22.png"
+import image23 from "./image23.png"
+import image24 from "./image24.png"
+import image25 from "./image25.png"
+import image26 from "./image26.png"
+
+export const metadata = getMetadata({
+  path: "/blog/state-of-ai-code-review-tools-2025",
+  title: "State of AI Code Review Tools in 2025",
+  description: "A detailed overview of AI code review tools in 2025.",
+  image: CoverImage.src,
+})
+
+<BlogHeader
+  title={"State of AI Code Review Tools in 2025"}
+  author={"Ankur Tyagi"}
+  publishedAt={"2025-10-21T00:00:00Z"}
+/>
+
+> More than 45% of developers are now actively using AI coding tools in their workflow, but can those same AI tools reliably review code?
+
+This question is top of mind, as code reviews remain a tedious, time-consuming part of software development.
+
+<Image
+  src={image23}
+  alt="AI Code Review Tools Overview"
+  width={1200}
+  height={600}
+/>
+
+Developers spend hours fighting on pull requests (PRs) for bugs and issues. AI promises to help reduce this grind by catching bugs automatically and alleviating reviewer fatigue. But which AI code review tool actually catches bugs that matter?
+
+Can they do it reliably without any noise or false positives?
+
+<Callout type="info">
+
+**The Scale of the Problem**
+
+Consider a team of 250 developers, each merging just one pull request per day:
+
+- Nearly **65,000 PRs per year**
+- At 20 minutes per review = **21,000+ hours** of manual review time annually
+- Reviewers lose effectiveness after **80-100 lines of code**
+- It takes **12-14 reviewers** to achieve 95% confidence in detecting security vulnerabilities
+
+</Callout>
+
+The challenge is clear at the current development velocity, especially with AI-assisted code generation, manual code review at scale is simply unsustainable.
+
+<Image src={image12} alt="Code Review Challenges" width={1200} height={600} />
+
+In short, teams are writing code faster than they can review it. AI reviewers are emerging as a critical solution to bridge this gap, catching bugs and providing feedback at machine speed.
+
+## Why Have AI Code Review Tools Gone Mainstream?
+
+Not long ago, using AI for code review was a curiosity; now it's becoming a necessity. AI reviewers are appearing in countless pull requests across organizations of all sizes.
+
+> In one word: productivity or [velocity](https://www.coderabbit.ai/blog/we-raised-60-million-last-week-so-we-made-a-funny-video).
+
+While [AI code reviewers and human reviewers](/blog/ai-code-reviewers-vs-human-code-reviewers) each have their strengths, the key is finding the right balance for your team.
+
+### Key Benefits of AI Code Review
+
+**1. Speed and efficiency**
+
+> Instead of waiting hours or days for a busy senior dev to give feedback, an AI reviewer can respond within **minutes**. This accelerates the development cycle without sacrificing thoroughness.
+
+**2. Consistency**
+
+> Whether it's the fifth line or the 500th, AI reviewers will apply the same standards, catching issues that a fatigued human reviewer might miss.
+
+**3. Bug detection**
+
+> AI models excel at spotting subtle issues. They can identify edge case bugs, security vulnerabilities, or performance pitfalls that might slip through a manual review. AI adds a second pair of eyes (trained on millions of code examples and with a large context window) to every review.
+
+**4. Mentorship and learning**
+
+> Far from just nitpicking, AI tools provide educational feedback and commentary.
+
+---
+
+These benefits address the core reasons code reviews used to be bottlenecks. After long hours and constant context switching, even the best developers can lose momentum when left waiting for code reviews.
+
+> **AI helps by handling the routine "low-hanging fruit"** – style issues, bugs, and missing tests – so that human reviewers can focus on higher-value aspects.
+
+## Categories of AI Code Review Tools in 2025
+
+AI code review tools fall into several categories, each suited to different stages of development and team needs.
+
+I personally used most of them so here is my review of each category:
+
+### CLI Based Reviewers: CodeRabbit
+
+> CodeRabbit began by introducing AI code reviews for pull requests, later expanding into VS Code, Cursor, and Windsurf.
+
+> Now with CodeRabbit CLI, you can bring instant code reviews directly to your terminal, seamlessly integrating with Codex, Claude Code, Cursor CLI, and other AI coding agents. While you generate code, CodeRabbit ensures it's production-ready and catches bugs, security issues, and AI hallucinations before they hit your codebase, making it the most comprehensive AI code review tool across PRs, IDEs, and the command line.
+
+<Image src={image8} alt="CodeRabbit CLI" width={1200} height={600} />
+
+**Getting started with CodeRabbit CLI**  
+CodeRabbit CLI is available now. Install and try your first review:
+
+```bash
+#install CodeRabbit
+curl -fsSL https://cli.coderabbit.ai/install.sh | sh
+
+#Run a review in interactive mode
+coderabbit
+```
+
+### For more info, visit their [docs](https://docs.coderabbit.ai/cli/overview)
+
+### IDE Native Reviewers (In-Editor Assistants)
+
+These AI tools integrate directly into developers’ IDEs and offer real-time suggestions and code checking as you write code. They act like a pair of programmers living in your editor.
+
+- CodeRabbit supports code reviews in [Cursor, VS Code, and Windsurf](https://www.coderabbit.ai/ide), and supports all languages, including JavaScript, TypeScript, Python, Java, C\#, C++, Ruby, Rust, Go, PHP, and other commonly used languages.
+- Other AI tools that support IDE reviews include Cursor (AI Code Editor), Sweep AI (a JetBrains plugin), and Windsurf (a Codeium VS Code fork).
+
+<Image src={image18} alt="IDE Native Code Review" width={1200} height={600} />
+
+#### How they work
+
+They integrate with environments like VS Code, JetBrains IDEs, and Neovim, and continuously analyse your code as soon as you commit. You’ll get a push notification, and you can trigger the code review locally.
+
+#### Strengths
+
+You get immediate, inline feedback. This tight loop can catch mistakes before code is ever committed. It boosts individual developer productivity, saving you from having to switch to an external tool or wait for a PR review. Because they have access to your entire workspace, they can sometimes conduct more in-depth analysis (e.g., identify usage of a function across files). These tools shine in speeding up the development phase.
+
+#### Trade-offs
+
+IDE-based assistants might not enforce team wide standards unless everyone uses them. Their suggestions are confined to what’s in the developer’s environment.
+
+### PR-Based Review Bots (GitHub/GitLab Integrations)
+
+This category comprises AI bots that integrate into version control and code hosting platforms to review pull requests (PRs) or merge requests.
+
+They act as automated reviewers in your repository’s workflow.
+
+> **Examples:** CodeRabbit, Greptile, Graphite, Qodo Merge.
+
+<Image src={image25} alt="PR-Based Review Bots" width={1200} height={600} />
+
+#### How they work
+
+> You typically install these bots as an app or GitHub Action on your repo. When a pull request is opened or updated, the AI analyzes the diffs and leaves comments on the PR, just like a human reviewer would. Many also provide a summary of the PR and highlight potential problem areas. They often support GitHub and GitLab, and some work with Bitbucket or Azure DevOps.
+
+#### Strengths
+
+> Seamless workflow integration means developers don’t have to use a new interface; the AI review appears right in the code hosting platform. This catches issues before code is merged. AI Reviewers can examine the change in the context of the base branch, run on CI triggers, and even block merges if required.
+
+They’re great for ensuring that nothing of low quality gets into the main branch.
+
+#### Trade-offs
+
+> Because they operate at the PR level, their feedback comes later in the cycle (after code is written). If an issue is found, you still have to go back and fix it post-hoc. Also, striking the right balance between thoroughness and noise is a challenge.
+
+Some AI Reviewers in this category have been criticized for excessive or trivial comments.
+
+This category has experienced a surge in popularity because it directly addresses the bottleneck of PR waiting times.
+
+### Hybrid & Security-Focused Review Platforms
+
+Trust and thoroughness are very important in high-stakes environments (think fintech, healthcare, big enterprise). Several platforms, therefore, combine AI with human expertise or focus heavily on security analysis to deliver more reliable reviews.
+
+> **Examples:** **DeepCode AI by Snyk**, **CodePeer**, **HackerOne Code** (formerly PullRequest, with a security focus, a platform initially providing on-demand human code reviews, now augmented with AI).
+
+<Image
+  src={image21}
+  alt="Security-Focused Review Platforms"
+  width={1200}
+  height={600}
+/>
+
+#### How they work
+
+These tools often incorporate AI analysis as a first pass, followed by human experts reviewing the AI findings or adding their own feedback. PullRequest, for instance, combines human insights and AI-powered solutions to eliminate vulnerabilities across the software development lifecycle with unmatched effectiveness.
+
+> DeepCode (integrated into Snyk’s platform) scans code for vulnerabilities using a combination of symbolic AI, machine learning, and security rules from Snyk’s database.
+
+It’s less about style, more about **security and bug risk**. These platforms tend to plug into your Git process similarly to PR bots, but some (like PullRequest) can operate asynchronously. You request a review and get results that blend AI and human comments.
+
+#### Strengths
+
+By involving human oversight, they mitigate the risk of AI misjudgment.
+
+> For example, PullRequest advertises that it “bridges the gap between automated AI feedback and seasoned human expertise,” giving teams both speed and mentorship in one package.
+
+#### Trade-offs
+
+They are often more expensive (you’re partly paying for human reviewers or advanced security tooling). They may not be as fast as pure-AI solutions, since a human-in-the-loop step takes hours instead of seconds. Also, using such services can involve sharing your code with third parties.
+
+### Open-Source and Community-Driven Reviewers
+
+Not every team can afford a proprietary AI service. For those who prioritize customization, transparency, or cost savings, open-source or self-hosted AI review tools are emerging.
+
+> **CodeRabbit is free for [open source](https://www.coderabbit.ai/blog/coderabbit-commits-1-million-to-open-source) projects**,
+> Sourcery (has both a free tier and an on-prem option), Kodus “Kody” (an open-source AI code review agent), All-hands.dev (allows local model usage), and Cline (with Ollama).
+
+<Image
+  src={image7}
+  alt="Open-Source Code Reviewers"
+  width={1200}
+  height={600}
+/>
+
+#### How they work
+
+Many of these are projects you can run yourself or inexpensive SaaS with free tiers. Kody, for example, is an open-source Git-based AI reviewer from Kodus that you can integrate into your workflow. It “learns from your team’s code, standards, and feedback to deliver contextual reviews” covering code quality and performance, and runs in your Git environment.
+
+> Sourcery is an AI that can run as a GitHub app or VS Code extension to provide instant code review suggestions; some users noted its very accurate results. Some tools in this category allow you to plug in your own model, e.g., All-hands.dev and Cline, which enable running a local LLM, ensuring your code never leaves your environment.
+
+#### Strengths
+
+> Cost-effectiveness and control. Open-source tools can often be self-hosted, thereby avoiding the need to send code to a third party and allowing for customisation of the model or rules. They also foster community improvements; for instance, you can tweak the prompts or contribute fixes.
+
+Another strength is transparency; you can see what the AI is doing under the hood, which builds trust in its recommendations (or at least allows you to debug weird suggestions).
+
+Sourcery’s free offerings have made it attractive to individual developers or small teams.
+
+#### Trade-offs
+
+The downsides include more setup and maintenance effort. You might need ML expertise to update or integrate the model with your CI. The support and polish may lag behind those of commercial tools, documentation could be sparse, and you won’t have a dedicated support line to call.
+
+> Open-source AI models might not be as cutting-edge as the proprietary ones. There’s also a question of scalability: some self-hosted solutions might struggle with very large projects or heavy loads, unless you invest in significant compute power.
+
+## Benchmarks and Adoption Trends
+
+With so many tools in the mix, a natural question arises: Which AI code reviewers perform best and are most widely adopted? 2025 has seen a few public evaluations aimed at answering the former, while industry surveys and platform metrics shed light on the latter.
+
+We scored 15 AI code reviewers on the following metrics:
+
+> _Comment Quality, Summary Quality, Setup, Accuracy, Noise, and Speed._
+
+<Image
+  src={image3}
+  alt="AI Code Review Benchmark Metrics"
+  width={1200}
+  height={600}
+/>
+
+One of the most detailed recent evaluations comes from [**Macroscope's 2025 benchmark**](https://blog.macroscope.com/blog/code-review-benchmark), which compared several leading tools against a curated dataset of real production bugs.
+
+<Image
+  src={image22}
+  alt="Macroscope Benchmark Results"
+  width={1200}
+  height={600}
+/>
+
+_Source: Macroscope_
+
+> Each sample represented a real bug-fix commit, paired with the introducing commit and a description of the defect. This design focused the evaluation on a fair test: **could a code review tool, given the buggy PR diff, correctly identify the defect in its comments?**
+
+The assessment ran each tool in isolation on GitHub pull requests, using default settings and minimum commercial plans. The results were scored based on whether the review comments matched the known bug descriptions.
+
+<Callout type="success">
+
+**🏆 Benchmark Results: Bug Detection Accuracy**
+
+- **🥇 Macroscope** - 48% bug detection rate
+- **🥈 CodeRabbit** - 46% (close second, strong consistency)
+- **🥉 Cursor Bugbot** - 42% (solid performance)
+- **Greptile** - 24%
+- **Graphite Diamond** - 18%
+
+</Callout>
+
+<Image src={image24} alt="Bug Detection Percentage" width={1200} height={600} />
+
+_Source: Macroscope_
+
+Beyond accuracy, the study also measured **the volume of comments**. CodeRabbit was the most "talkative," leaving the highest number of comments per PR (including both runtime and style issues).
+
+<Image src={image9} alt="Comment Volume Comparison" width={1200} height={600} />
+
+_Source: Macroscope_
+
+### Interpretation and Caveats
+
+As with any benchmark, context matters. Macroscope’s study only evaluated self-contained runtime bugs, excluding style and documentation issues. All tools were run with default configurations; therefore, teams that tune their rulesets may see different results.
+
+> The key takeaway is that no tool is flawless. Still, the leading tools like Macroscope, CodeRabbit, Cursor BugBot, and Greptile are already detecting nearly half of real-world bugs in automated reviews, a significant step forward from traditional linters and static analyzers.
+
+## Overview of the Leading Code Review Tools
+
+<Image
+  src={image15}
+  alt="Leading Code Review Tools Overview"
+  width={1200}
+  height={600}
+/>
+
+## 1\. CodeRabbit \- Hybrid PR, CLI & IDE AI Reviewer
+
+> CodeRabbit is an AI code review platform that supports pull request integration, CLI and in-IDE reviews. It’s one of the most widely adopted AI review apps on GitHub/GitLab, with over 2 million repositories connected and 13 million PRs reviewed.
+
+When installed as a GitHub/GitLab app, CodeRabbit’s bot automatically reviews each PR in seconds, leaving comments that resemble a diligent senior engineer’s feedback. In the IDE (via a VS Code extension), it can ‘vibe check’ your code as you write, reviewing staged or unstaged changes and catching bugs before you even commit.
+
+<Image src={image19} alt="CodeRabbit Overview" width={1200} height={600} />
+
+[CodeRabbit](https://www.devtoolsacademy.com/blog/coderabbit-vs-others-ai-code-review-tools/) now brings its trusted AI-powered code reviews directly into the command line with CodeRabbit CLI, extending the same intelligence developers already use in pull requests, VS Code, Cursor, and Windsurf.
+
+<Image
+  src={image13}
+  alt="CodeRabbit CLI Integration"
+  width={1200}
+  height={600}
+/>
+This makes it the most comprehensive AI code review tool available, working
+seamlessly everywhere you work.
+
+> **Category:** Hybrid (PR, CLI & IDE)
+
+## 2\. GitHub Copilot \- IDE Assistant
+
+> GitHub Copilot has expanded into the code review domain with Copilot for Pull Requests (also called Copilot “[PR Agent](https://docs.github.com/en/copilot/concepts/agents/code-review)”). This tool, available to Copilot subscribers, can automatically review PRs on GitHub, finding bugs and performance issues and even suggesting fixes.
+
+<Image
+  src={image6}
+  alt="GitHub Copilot for Pull Requests"
+  width={1200}
+  height={600}
+/>
+
+Copilot can be invoked on-demand in a PR (or set up to run automatically via repository rules). It will then analyze the diff and leave comments or summaries highlighting potential problems.
+
+> For example, it might identify an out-of-bounds array access or an inefficient loop and suggest a code change.
+
+In the IDE, Copilot also assists with code understanding during reviews: developers can select a chunk of code and ask Copilot to explain it or look for issues. This in-IDE code explanation capability helps reviewers grasp complex logic quickly.
+
+> Copilot supports multiple editors (VS Code, JetBrains, Neovim, etc.) and many languages (Python, JavaScript, Go, Java, C/C++, etc.). When used interactively, it can even generate unit tests or suggest refactoring.
+
+## 3\. Gemini Code Assist \- Google’s AI Reviewer (PR & IDE)
+
+> [Gemini Code Assist](https://github.com/marketplace/gemini-code-assist) is Google’s entry into AI code reviews, offering an AI partner in your pull requests with the power of Google’s Gemini models. Integrated directly into GitHub, Gemini Code Assist can be added as a reviewer on your PRs at no charge. Once assigned, it produces an instant PR summary of the changes, flags potential bugs or deviations from best practices, and even suggests code changes.
+
+<Image src={image2} alt="Gemini Code Assist" width={1200} height={600} />
+
+Uniquely, anyone on the PR can interact with the AI by commenting with /gemini commands, such as asking for an alternative implementation or a more detailed explanation of an issue. This interactivity turns the static review into a dynamic review session.
+
+Gemini Code Assist was recently upgraded to use Gemini 2.5, Google’s latest AI model, which improved its code understanding and accuracy. It now offers more profound insights, going beyond styling nitpicks to catch logical bugs and inefficient code flows.
+
+> **Category:** Hybrid (PR & IDE) \- Gemini Code Assist primarily appears in GitHub PR workflows (as a bot and slash-command assistant).
+
+## 4\. Cursor (Bugbot) – AI-First IDE with Built-in Code Review
+
+> [**Cursor**](https://www.devtoolsacademy.com/blog/cursor-vs-windsurf/) is an AI code editor (a fork of VS Code) with a built-in AI assistant for coding _and_ code review. Its code review feature is aptly named [**Bugbot**](https://cursor.com/bugbot). Unlike simple linters, Bugbot “goes beyond typos and linting errors, focusing on catching real bugs and security issues before they make it to production”.
+
+<Image src={image1} alt="Cursor Bugbot" width={1200} height={600} />
+
+Essentially, as you write or before you push code, you can invoke Bugbot to perform an AI review of your changes. It will analyze your code (with awareness of your project context) and surface potential logic bugs, security vulnerabilities, or anti-patterns.
+
+One neat aspect is inline fixes. For each issue Bugbot finds, you can press a button to apply the fix directly in the Cursor IDE. This tight integration short-circuits the usual review loop.
+
+> Cursor also allows defining **Bugbot Rules**, essentially custom code review rules or style guides in natural language, which Bugbot will enforce across your project. This is similar to how some PR bots (like Graphite's Diamond or Ellipsis) let you enforce team-specific guidelines.
+
+<Callout type="warning">
+
+**⚠️ Important Note on Usage**
+
+While Cursor advertises Bugbot as a free feature, some users have [reported](https://www.reddit.com/r/cursor/comments/1nlk1a1/cursor_just_ate_my_usage_limit_with_bugbot_and/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) that it **unexpectedly consumed their paid usage quota** when running on GitHub pull requests.
+
+In one case, usage jumped from 20% to 99% before resetting without explanation. Until Cursor clarifies how Bugbot usage is counted, **teams may want to disable it by default** or revoke its GitHub permissions to avoid unexpected quota issues.
+
+</Callout>
+
+<Image src={image16} alt="Cursor Usage Warning" width={1200} height={600} />
+<Image src={image17} alt="Cursor Issue Discussion" width={1200} height={600} />
+
+> Category: IDE-based (with PR integration). Cursor’s Bugbot can also integrate with GitHub PRs: Cursor offers a subscription where Bugbot will review up to several monthly PRs for your team.
+
+## 5\. Sourcery \- Multi-Language AI Reviewer (PR & IDE)
+
+> [**Sourcery**](https://sourcery.ai/) is an AI code reviewer that has been around since the early days of the AI coding wave, and it has matured into a robust tool for identifying bugs and enhancing code quality.
+
+Sourcery works across 30+ programming languages and integrates with GitHub/GitLab to provide instant feedback on every PR and with popular IDEs (VS Code, PyCharm, etc.) to offer in-IDE review.
+
+It’s designed not only to catch issues but also to share knowledge. It explains its suggestions and can generate diagrams or summaries to help the team understand the changes more effectively.
+
+<Image
+  src={image14}
+  alt="Sourcery AI Code Reviewer"
+  width={1200}
+  height={600}
+/>
+
+On GitHub, Sourcery installs as a bot that reviews pull requests when opened. It leaves comments identifying potential bugs, security issues, code smells, and even stylistic inconsistencies, complete with suggested fixes. A notable feature is its **learning capability**:
+
+Sourcery uses feedback from developers to improve over time. If you dismiss a specific type of comment as noise, Sourcery will learn and adapt, focusing its future reviews on what your team finds valuable.
+
+> **Category:** Hybrid (PR & IDE) \- Sourcery spans both worlds. It’s well known for its GitHub Marketplace app, which performs AI reviews on PRs, and it also has IDE extensions for VS Code, JetBrains IDEs, etc.
+
+## 6\. Greptile \- Codebase-Aware PR Reviewer
+
+> [**Greptile**](https://www.greptile.com/) is an AI code review developer tool distinguished by its ability to review pull requests with the complete context of your codebase. It doesn’t just look at the diff in isolation; Greptile indexes your entire repository so that when it reviews a PR, it can do so efficiently.
+
+<Image
+  src={image20}
+  alt="Greptile Codebase-Aware Reviewer"
+  width={1200}
+  height={600}
+/>
+
+This context-awareness helps it catch issues like mismatches with module conventions, duplicate code existing elsewhere, or changes that could impact other parts of the codebase.
+
+In fact, Greptile advertises that it _“understands your entire codebase”_ to provide deeper insights and catch 3x more bugs.
+
+Greptile integrates primarily as a GitHub pull request bot. Once installed, it will comment on new PRs with its findings. It often provides an excellent PR summary, including sequence diagrams of code flow or even a fun poem summarizing the changes.
+
+> Category: PR-based \- Greptile currently focuses on automated PR reviews (for GitHub).
+
+## 7\. Graphite (Diamond) \- AI Code Reviewer
+
+> [**Graphite**](https://graphite.dev/) is known as a platform for modern code review workflows (e.g., stacked PRs), and its AI code review assistant is called Diamond. Graphite’s Diamond is a senior engineer reviewing every pull request with codebase-aware intelligence.
+
+<Image
+  src={image11}
+  alt="Graphite Diamond AI Reviewer"
+  width={1200}
+  height={600}
+/>
+Once connected to your GitHub, Diamond analyzes each PR within seconds and
+leaves contextual feedback focusing on logic bugs, edge cases, performance
+issues, copy-paste mistakes, and security vulnerabilities. It is particularly
+praised for catching deep logic errors that might slip past a cursory human
+review.
+
+> **Category**: PR-based \- Graphite Diamond functions as a GitHub-integrated AI reviewer. You authorize it with your repos, and it posts comments on PRs. Graphite as a platform also has a CLI and a VS Code extension, but those are more for managing stacked PRs and interacting with Graphite’s system.
+
+## 8\. Ellipsis \- Automated PR Reviews
+
+> [Ellipsis](https://www.ellipsis.dev/) (YC W24) is an AI developer tool that automatically reviews code and fixes bugs on every pull request. It promises to act as an AI team member that catches issues in code as it’s being written and helps teams merge faster (they advertise that teams merge code 13% faster with Ellipsis). Once installed on a GitHub repository, Ellipsis will analyze every commit of every PR, flagging logical mistakes, style guide violations, anti-patterns, and more.
+
+<Image
+  src={image4}
+  alt="Ellipsis Automated Reviews"
+  width={1200}
+  height={600}
+/>
+
+Ellipsis can open a side-PR with bug fixes or directly suggest code changes to address the issues it finds. It goes beyond just commenting \- it can act on the code with your permission.
+
+What sets Ellipsis apart is its focus on being more than just “LGTM” (“Looks Good To Me”) – it doesn’t merely rubber-stamp or point out superficial issues; it attempts to understand the code’s intent.
+
+> Ellipsis features an “AI teammate” persona: tag @ellipsis-dev in a GitHub comment to ask questions about the code, and it will respond.
+
+_Another powerful feature is Style Guide-as-code: you can write your project’s style guide or best practices in natural language, and Ellipsis will enforce those on PRs_
+
+> **Category:** PR-based \- Ellipsis works via GitHub integration. You install it (it’s a 2-click install for GitHub), and it immediately starts reviewing code on each push.
+
+## 9\. Cubic \- AI Reviewer
+
+> [**Cubic**](https://www.cubic.dev/) is another Y Combinator-born AI code review platform that makes pull request reviews 4× faster and catches bugs before they reach production.
+
+- It integrates with GitHub to automatically review PRs the moment they’re opened. Cubic’s bot leaves inline feedback in seconds, pointing out bugs, performance issues, style problems, unmet acceptance criteria, etc., and even writes out the code changes as suggestions for you to accept.
+
+- A key feature of Cubic is that it learns from your team. It analyzes your past code and comments to understand your coding patterns and preferences. Over time, Cubic improves its reviews by learning from what your human reviewers focus on (and what they ignore).
+- It also allows custom rule enforcement: you can input your rules or pick from suggested ones, and Cubic will enforce them on every PR.
+
+> **Category**: PR-based, Cubic functions as a GitHub App that reviews pull requests. There’s no direct IDE plugin (though developers can use Cubic’s output in their editor by pulling the suggested patches).
+
+## 10\. Windsurf (formerly Codeium) \- AI Coding Environment & Assistant
+
+> [Windsurf](https://www.devtoolsacademy.com/blog/cursor-vs-windsurf/) is both an AI-powered IDE and a GitHub PR review bot. Inside the editor, it offers context-aware code suggestions, refactoring support, and features like Cascade for multi-file changes. On GitHub, Windsurf-bot Reviews automatically analyzes pull requests, adds actionable comments, and generates PR titles and descriptions with a simple /windsurf command.
+
+<Image src={image5} alt="Windsurf IDE and PR Bot" width={1200} height={600} />
+
+> **Category:** Hybrid (PR & IDE)
+
+## 11\. Qodo \- Open-Source Empowered AI Reviews (PR & IDE)
+
+> [**Qodo**](https://www.qodo.ai/) (formerly “Codium”, not to be confused with Codeium) is an AI code review platform with a somewhat unique approach: it offers open-source tools and a managed service. Qodo aims to help developers ship quality code faster by embedding AI checks throughout the development lifecycle.
+
+It has multiple components, including:<Image src={image10} alt="Qodo Code Review Platform" width={1200} height={600} />
+
+> **Category:** Hybrid (PR & IDE) \- Qodo supports IDE integration (the Qodo Gen extension has tens of thousands of users, helping write and review code in editors), as well as PR reviews (Qodo Merge, which can be cloud-based or self-hosted).
+
+Developers can also use their CLI tool (Qodo Command) to analyze code outside of PRs, acting like a power tool for debugging and review. Qodo stands out for its open-source nature.
+
+> **Category:** Hybrid (PR & IDE)
+
+## 12\. Claude (Anthropic) – AI Model with Powerful Code Reasoning
+
+> Claude is a general-purpose model widely used by code-review products under the hood. Anthropic now ships Claude Code, a first-party developer tool that adds automated security reviews to your workflow. Two new capabilities matter for reviews: a terminal command, **/security-review**, that scans your repo for standard vulnerability classes and proposes fixes, and a GitHub Actions integration that auto-analyzes every new PR, filters likely false positives with configurable rules, and posts inline comments with remediation guidance.
+
+What the security pass looks for: typical patterns such as SQL injection, XSS, auth/authz flaws, insecure data handling, and dependency risks, with step-by-step explanations and optional auto-fixes you can apply. These checks run ad-hoc from the terminal or automatically on PR opens via the Action.
+
+Using these features internally, examples include catching a DNS-rebind-enabled RCE in a local HTTP server change and flagging SSRF risks in a credentials proxy, with issues fixed before merge.  
+Venturebeat
+
+> Getting started. Update Claude Code and run **\\security-review** locally for ad-hoc scans; install the official Claude Code GitHub Action to enforce PR-time checks. Anthropic maintains a general Action and a security-focused variant on GitHub, and provides setup documentation.
+
+<Image
+  src={image26}
+  alt="Claude Code Security Review"
+  width={1200}
+  height={600}
+/>
+
+**Category**: Where Claude fits in the ecosystem. Beyond Claude Code, many third-party reviewers run on Claude: e.g., Graphite (Diamond) and CodeRabbit cite Claude for major review-cycle gain and faster delivery.
+
+## Making the Best Use of AI Code Review Tools
+
+Adopting an AI code reviewer isn't a magic bullet; it requires **thoughtful integration** into your development process. The most effective approach combines the speed and consistency of AI with the contextual understanding of [human code reviewers](/blog/ai-code-reviewers-vs-human-code-reviewers).
+
+<Callout type="info">
+
+**💡 Best Practices for AI Code Reviews**
+
+**1. Augment, don't replace human reviewers**  
+Treat AI as an assistant. Make it clear to your team that AI's comments are recommendations, not mandates.
+
+**2. Maintain a shared "Code review checklist"**  
+A consistent standard means AI's output is aligned with what humans care about. Codify the checklist so AI can follow it.
+
+**3. Regularly audit and tune AI feedback**  
+Review what AI is flagging and how the team responds. Adjust rules or thresholds to reduce false positives.
+
+**4. Integrate with human workflow**  
+Use AI's output as a conversation starter. Have AI run on each PR, then human reviewers address straightforward AI comments first before diving into deeper issues.
+
+**5. Educate your team and evolve practices**  
+Ensure everyone knows how to work with AI through training sessions on interpreting AI suggestions.
+
+</Callout>
+
+<Callout type="warning">
+
+**⚠️ The Era of AI Slop Cleanup**
+
+As AI-generated code becomes more prevalent, we're seeing a surge in projects that need significant cleanup. AI is trained on publicly available code (good and bad), which means it produces mostly mediocre code at scale.
+
+Without proper code review practices, teams accumulate technical debt faster than ever. I've written more about this trend and how to avoid becoming a statistic in my post: **[Era of AI slop cleanup has begun](https://bytesizedbets.com/p/era-of-ai-slop-cleanup-has-begun)**
+
+The bottom line: AI code reviewers aren't just nice-to-have anymore but they're essential for maintaining code quality in the age of AI-assisted development.
+
+</Callout>
+
+## Conclusion
+
+AI code review has firmly taken root in the software development process. What began as experimental GitHub apps and IDE plugins has evolved into a rich ecosystem of tools that now review millions of pull requests and guide developers in real time.
+
+> **CodeRabbit**, in particular is at the centre of the conversation. It's widely adopted and highly regarded for seamlessly integrating into team workflows, offering tangible productivity boosts (some teams report **four times faster PR merge times** with it).

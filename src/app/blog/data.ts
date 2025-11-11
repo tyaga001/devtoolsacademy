@@ -1,3 +1,4 @@
+import StateOfAICodeReviewCoverImage from "@/app/blog/state-of-ai-code-review-tools-2025/cover.png"
 import CodeRabbitCoverImage from "@/app/blog/coderabbit-vs-others-ai-code-review-tools/cover.png"
 import TwilioCoverImage from "@/app/blog/stream-vs-twilio/cover.png"
 import NeonCoverImage from "@/app/blog/neon-vs-supabase/cover.png"
@@ -12,6 +13,18 @@ import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
 export const allBlogs = [
   {
     author: "Ankur Tyagi",
+    slug: "state-of-ai-code-review-tools-2025",
+    title: "State of AI Code Review Tools in 2025",
+    excerpt: "A detailed overview of AI code review tools in 2025.",
+    description: "A detailed overview of AI code review tools in 2025.",
+    publishedAt: "2025-10-21T00:00:00Z",
+    category: "Code Review",
+    image: StateOfAICodeReviewCoverImage.src,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    author: "Ankur Tyagi",
     slug: "betterauth-vs-nextauth",
     title:
       "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS",
@@ -21,7 +34,7 @@ export const allBlogs = [
     publishedAt: "2025-05-30T00:00:00Z",
     category: "Authentication",
     image: BetterAuthCoverImage.src,
-    isNew: true,
+    isNew: false,
     isFeatured: false,
   },
   {
