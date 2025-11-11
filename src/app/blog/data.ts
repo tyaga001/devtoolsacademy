@@ -21,7 +21,7 @@ export const allBlogs = [
     author: "Jitendra Nirnejak",
     slug: "uv-and-ruff-turbocharging-python-development-with-rust-powered-tools",
     title:
-      "Ruff and uv: Turbocharging Python Development with Rust-Powered Tools",
+      "UV and Ruff: Turbocharging Python Development with Rust-Powered Tools",
     excerpt: "Rust based linter and dependency manager for python",
     description:
       "Discover Ruff and uv, Rust-fueled beasts revolutionizing Python dev. Blast through linting, packaging, and deps with 10x speed gains. Level up your code game now.",
