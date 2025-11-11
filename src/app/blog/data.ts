@@ -1,4 +1,4 @@
-import RuffAndUvImage from "@/app/blog/ruff-and-uv-turbocharging-python-development-with-rust-powered-tools/cover.png"
+import RuffAndUvImage from "@/app/blog/uv-and-ruff-turbocharging-python-development-with-rust-powered-tools/cover.png"
 import StateOfAICodeReviewCoverImage from "@/app/blog/state-of-ai-code-review-tools-2025/cover.png"
 import CodeRabbitCoverImage from "@/app/blog/coderabbit-vs-others-ai-code-review-tools/cover.png"
 import TwilioCoverImage from "@/app/blog/stream-vs-twilio/cover.png"
