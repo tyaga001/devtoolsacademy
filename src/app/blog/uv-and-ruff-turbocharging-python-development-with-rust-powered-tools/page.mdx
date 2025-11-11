@@ -8,102 +8,26 @@ import RelatedPosts from "@/components/blog/RelatedPosts"
 import CoverImage from "./cover.png"
 
 export const metadata = getMetadata({
-  path: "/blog/ruff-and-uv-turbocharging-python-development-with-rust-powered-tools/",
+  path: "/blog/uv-and-ruff-turbocharging-python-development-with-rust-powered-tools/",
   title:
-    "Ruff and uv: Turbocharging Python Development with Rust-Powered Tools",
-  description: "A detailed overview of AI code review tools in 2025.",
+    "UV and Ruff: Turbocharging Python Development with Rust-Powered Tools",
+  description:
+    "Boost your Python workflow with UV and Ruff, two Rust-powered tools that deliver blazing-fast dependency management, linting, and formatting. Learn how they transform modern Python development for speed, reliability, and productivity.",
   image: CoverImage.src,
 })
 
 <BlogHeader
   title={
-    "Ruff and uv: Turbocharging Python Development with Rust-Powered Tools"
+    "UV and Ruff: Turbocharging Python Development with Rust-Powered Tools"
   }
   author={"Jitendra Nirnejak"}
-  publishedAt={"2025-11-03T00:00:00Z"}
+  publishedAt={"2025-11-12T00:00:00Z"}
 />
 
-## Introduction
+Python’s a powerhouse, but let’s be honest, managing code quality and dependencies can feel like herding cats. Linting, formatting, and package management often involve juggling multiple tools, each with its own quirks. Enter UV and Ruff: two Rust-powered tools that streamline these tasks with blazing speed and simplicity. This post dives deep into how they work, why they’re game-changers, and how to use them effectively in your Python projects.
 
-Python’s a powerhouse, but let’s be honest, managing code quality and dependencies can feel like herding cats. Linting, formatting, and package management often involve juggling multiple tools, each with its own quirks. Enter Ruff and uv: two Rust-powered tools that streamline these tasks with blazing speed and simplicity. This post dives deep into how they work, why they’re game-changers, and how to use them effectively in your Python projects.
-
-- **Why Ruff and uv?** They’re fast, unified, and built in Rust for performance.
+- **Why UV and Ruff?** They’re fast, unified, and built in Rust for performance.
 - **What’s the goal?** Show you how to integrate these tools into your workflow with practical, code-heavy examples.
-
-## What is Ruff?
-
-Ruff is a Python linter and formatter written in Rust, designed to replace a slew of tools like Flake8, Pylint, isort, and Black. It’s not just fast, it’s blazingly fast, often 10-100x quicker than its Python-based counterparts. Ruff combines linting and formatting into a single tool, supports auto-fixing issues, and offers over 700 configurable rules. Whether you’re catching syntax errors, enforcing style guidelines, or tidying up imports, Ruff does it all in one pass, making it a powerhouse for maintaining code quality.
-
-**Key Features**:
-
-- Combines linting and formatting, reducing tool sprawl.
-- Supports over 700 rules, including compatibility with Flake8 plugins.
-- Auto-fixes issues like unused imports, missing commas, or incorrect syntax.
-- Integrates seamlessly with IDEs like VS Code, PyCharm, and CI pipelines.
-
-**Benefits**:
-
-- Simplifies setup by replacing multiple tools with one.
-- Scales effortlessly for large codebases (100k+ lines of code).
-- Requires minimal configuration to get started.
-
-### **Why is Ruff So Fast?**
-
-Ruff’s speed comes from Rust, a compiled language that produces highly optimized machine code. Unlike Python, which is interpreted and slowed by the Global Interpreter Lock (GIL), Rust supports multithreading, allowing Ruff to parallelize tasks across CPU cores. For example, linting thousands of files can be split into concurrent jobs, slashing processing time. Additionally, Rust’s memory safety eliminates the overhead of Python’s garbage collection, ensuring Ruff runs lean and mean.
-
-### **Example of Linting and Formatting with Ruff**
-
-Install Ruff globally to enable system-wide usage (we will cover installing Ruff for a specific project using uv later in this guide)
-
-```bash
-pip install ruff # we will later install ruff with uv
-```
-
-Imagine you’ve got a sloppy Python script, [sample.py](http://sample.py/), with some common issues:
-
-```python
-# sample.py
-def greet(name):
-    print(f"hello {name}") # Missing comma, unformatted
-    unused_var = 42
-    return None
-```
-
-**To catch these problems, run Ruff’s linter:**
-
-```bash
-ruff check sample.py
-```
-
-**Output:**
-
-```text
-sample.py:2:5: E703 Missing comma in f-string
-sample.py:3:5: F841 Local variable `unused_var` is assigned to but never used
-Found 2 errors (1 fixable).
-```
-
-**Ruff pinpoints the missing comma and unused variable. To fix the fixable issue automatically:**
-
-```bash
-ruff check sample.py --fix
-```
-
-**Then, format the code to adhere to PEP 8 style guidelines:**
-
-```bash
-ruff format sample.py
-```
-
-**The updated `sample.py` looks clean:**
-
-```bash
-def greet(name):
-    print(f"hello, {name}")
-    return None
-```
-
-This process is lightning-fast because Ruff’s Rust backend processes the abstract syntax tree (AST) in parallel, unlike Flake8 or Pylint, which are constrained by Python’s single-threaded execution.
 
 ---
 
@@ -165,85 +89,117 @@ uv’s dependency resolution takes milliseconds, even for projects with dozens o
 
 ---
 
+## What is Ruff?
+
+Ruff is a Python linter and formatter written in Rust, designed to replace a slew of tools like Flake8, Pylint, isort, and Black. It’s not just fast, it’s blazingly fast, often 10-100x quicker than its Python-based counterparts. Ruff combines linting and formatting into a single tool, supports auto-fixing issues, and offers over 700 configurable rules. Whether you’re catching syntax errors, enforcing style guidelines, or tidying up imports, Ruff does it all in one pass, making it a powerhouse for maintaining code quality.
+
+**Key Features**:
+
+- Combines linting and formatting, reducing tool sprawl.
+- Supports over 700 rules, including compatibility with Flake8 plugins.
+- Auto-fixes issues like unused imports, missing commas, or incorrect syntax.
+- Integrates seamlessly with IDEs like VS Code, PyCharm, and CI pipelines.
+
+**Benefits**:
+
+- Simplifies setup by replacing multiple tools with one.
+- Scales effortlessly for large codebases (100k+ lines of code).
+- Requires minimal configuration to get started.
+
+### **Why is Ruff So Fast?**
+
+Ruff’s speed comes from Rust, a compiled language that produces highly optimized machine code. Unlike Python, which is interpreted and slowed by the Global Interpreter Lock (GIL), Rust supports multithreading, allowing Ruff to parallelize tasks across CPU cores. For example, linting thousands of files can be split into concurrent jobs, slashing processing time. Additionally, Rust’s memory safety eliminates the overhead of Python’s garbage collection, ensuring Ruff runs lean and mean.
+
+### **Example of Linting and Formatting with Ruff**
+
+Install Ruff globally to enable system-wide usage using UV
+
+```bash
+uv tool install ruff
+```
+
+Imagine you’ve got a sloppy Python script, [sample.py](http://sample.py/), with some common issues:
+
+```python
+# sample.py
+def greet(name):
+    print(f"hello {name}") # Missing comma, unformatted
+    unused_var = 42
+    return None
+```
+
+**To catch these problems, run Ruff’s linter:**
+
+```bash
+ruff check sample.py
+```
+
+**Output:**
+
+```
+sample.py:2:5: E703 Missing comma in f-string
+sample.py:3:5: F841 Local variable `unused_var` is assigned to but never used
+Found 2 errors (1 fixable).
+```
+
+**Ruff pinpoints the missing comma and unused variable. To fix the fixable issue automatically:**
+
+```bash
+ruff check sample.py --fix
+```
+
+**Then, format the code to adhere to PEP 8 style guidelines:**
+
+```bash
+ruff format sample.py
+```
+
+**The updated `sample.py` looks clean:**
+
+```bash
+def greet(name):
+    print(f"hello, {name}")
+    return None
+```
+
+This process is lightning-fast because Ruff’s Rust backend processes the abstract syntax tree (AST) in parallel, unlike Flake8 or Pylint, which are constrained by Python’s single-threaded execution.
+
+---
+
 ## Why Rust for Python Tools?
 
-Rust is the backbone of Ruff and uv’s performance. Here’s why it outshines Python for these tools:
+Rust is the backbone of UV and Ruff’s performance. Here’s why it outshines Python for these tools:
 
 - **Compiled vs. Interpreted**: Rust compiles to machine code, executing directly on the CPU. Python, being interpreted, incurs overhead as the interpreter translates code at runtime.
 - **Multithreading**: Rust’s ownership model enables safe, concurrent execution across multiple threads. Python’s GIL forces single-threaded execution, bottlenecking tools like Flake8 or pip.
 - **Memory Efficiency**: Rust’s zero-cost abstractions and lack of garbage collection minimize memory overhead, unlike Python’s dynamic memory management.
-- **Parallel Processing**: Both Ruff and uv leverage Rust’s parallelism to process files or resolve dependencies concurrently, scaling with CPU cores.
+- **Parallel Processing**: Both UV and Ruff leverage Rust’s parallelism to process files or resolve dependencies concurrently, scaling with CPU cores.
 
 The Python community is rallying around these tools. X posts and tech blogs highlight their adoption in projects like Django, FastAPI, and even internal tools at companies like Microsoft. Developers love the speed and simplicity, and the Rust-Python synergy is proving to be a winning formula.
 
-## Comparing Ruff and uv to Traditional Tools
+## Comparing UV and Ruff to Traditional Tools
 
-<table>
-  <thead>
-    <tr>
-      <th>Tool</th>
-      <th>Speed</th>
-      <th>Features</th>
-      <th>Integration</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Ruff</td>
-      <td>10-100x faster than Flake8/Pylint</td>
-      <td>Linting + formatting, 700+ rules</td>
-      <td>VS Code, GitHub Actions</td>
-    </tr>
-    <tr>
-      <td>Flake8</td>
-      <td>Slow on large codebases</td>
-      <td>Linting only, plugin ecosystem</td>
-      <td>Similar IDE support</td>
-    </tr>
-    <tr>
-      <td>Black</td>
-      <td>Moderate speed</td>
-      <td>Formatting only</td>
-      <td>IDEs, CI/CD</td>
-    </tr>
-    <tr>
-      <td>uv</td>
-      <td>Resolves dependencies in milliseconds</td>
-      <td>Package & Project management, lockfiles</td>
-      <td>Seamless with Ruff</td>
-    </tr>
-    <tr>
-      <td>pip</td>
-      <td>Slower resolution</td>
-      <td>Package management only</td>
-      <td>Manual venv handling</td>
-    </tr>
-    <tr>
-      <td>Poetry</td>
-      <td>Slow for large projects</td>
-      <td>Package + project management</td>
-      <td>Limited tool runner</td>
-    </tr>
-    <tr>
-      <td>pipenv</td>
-      <td>Slow resolution, heavy setup</td>
-      <td>Package + virtualenv management, lockfiles</td>
-      <td>Clunky CLI, IDE support</td>
-    </tr>
-  </tbody>
-</table>
+| **Tool**   | **Speed**                             | **Features**                               | **Integration**         |
+| ---------- | ------------------------------------- | ------------------------------------------ | ----------------------- |
+| **Ruff**   | 10-100x faster than Flake8/Pylint     | Linting + formatting, 700+ rules           | VS Code, GitHub Actions |
+| **Flake8** | Slow on large codebases               | Linting only, plugin ecosystem             | Similar IDE support     |
+| **Black**  | Moderate speed                        | Formatting only                            | IDEs, CI/CD             |
+| **uv**     | Resolves dependencies in milliseconds | Package & Project management, lockfiles    | Seamless with Ruff      |
+| **pip**    | Slower resolution                     | Package management only                    | Manual venv handling    |
+| **Poetry** | Slow for large projects               | Package + project management               | Limited tool runner     |
+| **pipenv** | Slow resolution, heavy setup          | Package + virtualenv management, lockfiles | Clunky CLI, IDE support |
 
 - **Ruff**: Replaces multiple tools, runs faster, and scales better. Flake8 and Pylint struggle with large codebases due to Python’s GIL, while Black is limited to formatting.
 - **uv**: Outpaces pip, Poetry, and pipenv in dependency resolution and project setup. pipenv’s slow resolution and cumbersome CLI make it less appealing for modern workflows.
-- **Integration**: Ruff and uv shine in IDEs and CI/CD, with uv’s tool runner bridging the gap between project management and linting.
+- **Integration**: UV and Ruff shine in IDEs and CI/CD, with uv’s tool runner bridging the gap between project management and linting.
 
 pipenv, while popular for its lockfile support, suffers from slow dependency resolution and a heavy virtualenv setup. Its Python-based resolver can’t match uv’s Rust-powered SAT solver, and its CLI feels clunky compared to uv’s streamlined commands.
 
 ---
 
-## Practical Example: Using Ruff and uv Together
+## Practical Example: Using UV and Ruff Together
 
-Let’s walk through building a small API client to fetch data from a REST endpoint. This example shows how Ruff and uv streamline real-world development.
+Let’s walk through building a small API client to fetch data from a REST endpoint. This example shows how UV and Ruff streamline real-world development.
 
 **Step 1: Set Up the Project**
 
@@ -251,6 +207,9 @@ Let’s walk through building a small API client to fetch data from a REST endpo
 uv init api-client
 cd api-client
 uv add requests httpx
+
+# add Ruff to your project.
+uv add --dev ruff
 ```
 
 This sets up a virtual environment and adds `requests` and `httpx` to `pyproject.toml`.
@@ -294,12 +253,12 @@ This code fetches JSON data but lacks error handling and uses a vague variable n
 Run Ruff to catch issues:
 
 ```bash
-ruff check main.py
+uv run ruff check main.py
 ```
 
 **Output:**
 
-```text
+```
 main.py:5:5: E741 Unhandled exception: `requests.RequestException`
 main.py:6:5: E741 Ambiguous variable name: `data`
 Found 2 errors (1 fixable).
@@ -308,7 +267,7 @@ Found 2 errors (1 fixable).
 **Fix the exception handling:**
 
 ```bash
-ruff check main.py --fix
+uv run ruff check main.py --fix
 ```
 
 **Updated `main.py`:**
@@ -337,7 +296,7 @@ Ruff’s Rust backend makes this process near-instant, catching errors and forma
 **Format the code:**
 
 ```bash
-ruff format main.py
+uv run ruff format main.py
 ```
 
 **Step 4: Run with uv**
@@ -345,7 +304,7 @@ ruff format main.py
 Execute the script:
 
 ```bash
-uv run python main.py
+uv run main.py
 ```
 
 uv handles the virtual environment and dependencies transparently, so you can focus on coding.
@@ -428,7 +387,7 @@ fixable = ["ALL"]  # Auto-fix all fixable issues
 Run Ruff with the config:
 
 ```bash
-ruff check . --config ruff.toml
+uv run ruff check . --config ruff.toml
 ```
 
 ### **Using uv’s Tool Runner**
@@ -453,12 +412,12 @@ The lockfile pins exact dependency versions, ensuring consistency across environ
 
 ---
 
-Ruff and uv are a dream team for Python developers. Ruff’s blazing-fast linting and formatting keep your code clean, while uv’s rapid dependency management and script execution simplify project setup. Their Rust foundation, compiled, multithreaded, and free from Python’s GIL, makes them orders of magnitude faster than tools like Flake8, pip, or pipenv. Try them out, tweak their configs, and see how they transform your workflow. The Python community’s buzzing about them on X, and Astral’s ongoing updates promise even more improvements. Dive in and experience the speed for yourself!
+UV and Ruff are a dream team for Python developers. Ruff’s blazing-fast linting and formatting keep your code clean, while uv’s rapid dependency management and script execution simplify project setup. Their Rust foundation, compiled, multithreaded, and free from Python’s GIL, makes them orders of magnitude faster than tools like Flake8, pip, or pipenv. Try them out, tweak their configs, and see how they transform your workflow. The Python community’s buzzing about them on X, and Astral’s ongoing updates promise even more improvements. Dive in and experience the speed for yourself!
 
 ## References and Links
 
-- [Ruff Documentation](https://docs.astral.sh/ruff/)
 - [uv Documentation](https://docs.astral.sh/uv/)
+- [Ruff Documentation](https://docs.astral.sh/ruff/)
 - Ruff VSCode Extension - [https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
 
 ## More Blog Posts You Might Find Useful

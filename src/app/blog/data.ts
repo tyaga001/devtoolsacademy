@@ -19,7 +19,7 @@ export const allAuthors = [
 export const allBlogs = [
   {
     author: "Jitendra Nirnejak",
-    slug: "ruff-and-uv-turbocharging-python-development-with-rust-powered-tools",
+    slug: "uv-and-ruff-turbocharging-python-development-with-rust-powered-tools",
     title:
       "Ruff and uv: Turbocharging Python Development with Rust-Powered Tools",
     excerpt: "Rust based linter and dependency manager for python",
