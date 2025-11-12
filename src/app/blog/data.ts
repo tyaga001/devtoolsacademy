@@ -14,6 +14,7 @@ import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
   { name: "Jitendra Nirnejak", link: "https://nirnejak.com/" },
+  { name: "Hrutik Kumthekar", link: "#" },
 ]
 
 export const allBlogs = [
