@@ -25,21 +25,16 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
   const [content, setContent] = useState("")
   const [showChat, setShowChat] = useState(false)
 
-  const [authorLink, setAuthorLink] = useState("")
-
   React.useEffect(() => {
     const ele = document.querySelector("article")
     if (ele !== null) {
       setContent(ele.innerHTML)
     }
+  }, [])
 
-    if (author) {
-      allAuthors.forEach((auth) => {
-        if (auth.name === author) {
-          setAuthorLink(auth.link)
-        }
-      })
-    }
+  const authorLink = React.useMemo(() => {
+    const foundAuthor = allAuthors.find((auth) => auth.name === author)
+    return foundAuthor?.link ?? "#"
   }, [author])
 
   const formatDate = (dateString: string) => {
