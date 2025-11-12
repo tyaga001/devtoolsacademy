@@ -63,6 +63,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
           <Link
             href={authorLink}
             target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-1 text-sm text-neutral-400 no-underline hover:text-neutral-200"
           >
             <CircleUserRound size={14} />
