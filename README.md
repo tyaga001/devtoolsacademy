@@ -94,6 +94,16 @@ Everything is transparent, community-driven, and built in the open.
       <p style="margin: 5px 0; color: #666; font-size: 14px;">Database infrastructure for the AI</p>
       <a href="https://www.eloqdata.com/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">Try Free</a>
     </td>
+    <td width="30px"></td>
+    <td align="center" width="300px" style="padding: 20px; border: 1px solid #e1e5e9; border-radius: 8px; margin: 10px;">
+      <a href="https://cline.bot/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/cline.png" alt="Cline" height="55" style="margin-bottom: 15px;" />
+      </a>
+      <br />
+      <h4 style="margin: 10px 0 5px 0; font-size: 18px;">Cline</h4>
+      <p style="margin: 5px 0; color: #666; font-size: 14px;">AI coding agent for complex work</p>
+      <a href="https://cline.bot/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">Get Started</a>
+    </td>
   </tr>
 </table>
 
