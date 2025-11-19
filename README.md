@@ -97,7 +97,7 @@ Everything is transparent, community-driven, and built in the open.
     <td width="30px"></td>
     <td align="center" width="300px" style="padding: 20px; border: 1px solid #e1e5e9; border-radius: 8px; margin: 10px;">
       <a href="https://cline.bot/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
-        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/cline.png" alt="Cline" height="55" style="margin-bottom: 15px;" />
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/cline.svg" alt="Cline" height="55" style="margin-bottom: 15px;" />
       </a>
       <br />
       <h4 style="margin: 10px 0 5px 0; font-size: 18px;">Cline</h4>
