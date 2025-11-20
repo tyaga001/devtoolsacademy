@@ -179,15 +179,60 @@ The Python community is rallying around these tools. X posts and tech blogs high
 
 ## Comparing UV and Ruff to Traditional Tools
 
-| **Tool**   | **Speed**                             | **Features**                               | **Integration**         |
-| ---------- | ------------------------------------- | ------------------------------------------ | ----------------------- |
-| **Ruff**   | 10-100x faster than Flake8/Pylint     | Linting + formatting, 700+ rules           | VS Code, GitHub Actions |
-| **Flake8** | Slow on large codebases               | Linting only, plugin ecosystem             | Similar IDE support     |
-| **Black**  | Moderate speed                        | Formatting only                            | IDEs, CI/CD             |
-| **uv**     | Resolves dependencies in milliseconds | Package & Project management, lockfiles    | Seamless with Ruff      |
-| **pip**    | Slower resolution                     | Package management only                    | Manual venv handling    |
-| **Poetry** | Slow for large projects               | Package + project management               | Limited tool runner     |
-| **pipenv** | Slow resolution, heavy setup          | Package + virtualenv management, lockfiles | Clunky CLI, IDE support |
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Speed</th>
+      <th>Features</th>
+      <th>Integration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ruff</td>
+      <td>10-100x faster than Flake8/Pylint</td>
+      <td>Linting + formatting, 700+ rules</td>
+      <td>VS Code, GitHub Actions</td>
+    </tr>
+    <tr>
+      <td>Flake8</td>
+      <td>Slow on large codebases</td>
+      <td>Linting only, plugin ecosystem</td>
+      <td>Similar IDE support</td>
+    </tr>
+    <tr>
+      <td>Black</td>
+      <td>Moderate speed</td>
+      <td>Formatting only</td>
+      <td>IDEs, CI/CD</td>
+    </tr>
+    <tr>
+      <td>uv</td>
+      <td>Resolves dependencies in milliseconds</td>
+      <td>Package & Project management, lockfiles</td>
+      <td>Seamless with Ruff</td>
+    </tr>
+    <tr>
+      <td>pip</td>
+      <td>Slower resolution</td>
+      <td>Package management only</td>
+      <td>Manual venv handling</td>
+    </tr>
+    <tr>
+      <td>Poetry</td>
+      <td>Slow for large projects</td>
+      <td>Package + project management</td>
+      <td>Limited tool runner</td>
+    </tr>
+    <tr>
+      <td>pipenv</td>
+      <td>Slow resolution, heavy setup</td>
+      <td>Package + virtualenv management, lockfiles</td>
+      <td>Clunky CLI, IDE support</td>
+    </tr>
+  </tbody>
+</table>
 
 - **Ruff**: Replaces multiple tools, runs faster, and scales better. Flake8 and Pylint struggle with large codebases due to Python’s GIL, while Black is limited to formatting.
 - **uv**: Outpaces pip, Poetry, and pipenv in dependency resolution and project setup. pipenv’s slow resolution and cumbersome CLI make it less appealing for modern workflows.
