@@ -366,6 +366,44 @@ export default function CreatorPartnershipsPage() {
             </blockquote>
           </div>
 
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/webprodigies.png"
+                  alt="Web Prodigies - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Web Prodigies
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Creator • YouTube Channel
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Working with Ankur was exceptional. We landed clients on day
+                one, and he handled everything so smoothly that the entire
+                process felt effortless. His coordination made onboarding and
+                working with new clients a breeze. Having someone take full
+                ownership of client acquisition has simplified my business more
+                than I expected. It frees up my time, removes all the stress of
+                outreach, and lets me focus purely on delivering results.
+                It&apos;s been a total game-changer for how I run my channel
+                now.
+              </p>
+            </blockquote>
+          </div>
+
           {/* Additional Creator Voices */}
           <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
             <div className="mb-6 flex items-start">
