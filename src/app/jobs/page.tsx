@@ -104,7 +104,7 @@ export default async function JobsRoute({
       </div>
 
       <div className="py-16">
-        <div className="mx-auto max-w-5xl px-6">
+        <div className="mx-auto max-w-6xl px-6">
           <JobSearch searchParams={searchParamsSync} />
         </div>
       </div>
