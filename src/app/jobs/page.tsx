@@ -80,7 +80,7 @@ export default async function JobsRoute({
               </div>
             </div>
           </div>
-          <div className="flex w-full flex-1 flex-col gap-6 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 text-left shadow-lg backdrop-blur md:max-w-sm">
+          <div className="flex w-full flex-1 flex-col gap-6 border border-dashed border-neutral-100/15 bg-neutral-900/60 p-6 text-left shadow-lg backdrop-blur md:max-w-sm">
             <div>
               <h2 className="text-base font-semibold text-neutral-100">
                 Showcase a role in front of builders
