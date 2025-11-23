@@ -46,7 +46,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
     >
       <Card className="relative flex h-full flex-col border border-dashed border-neutral-100/15 bg-neutral-900/50 transition-all duration-300 hover:border-solid">
         {job.featured && (
-          <span className="absolute -right-2 -top-2 z-20 inline-flex items-center gap-1 rounded-full border border-amber-600 bg-amber-950 px-2.5 py-0.5 text-xs font-semibold text-amber-300">
+          <span className="absolute -right-2 -top-3 z-20 inline-flex items-center gap-1 rounded-full border border-amber-600 bg-amber-950 px-2.5 py-0.5 text-xs font-semibold text-amber-300">
             <Sparkles className="size-3" /> Hot role
           </span>
         )}
