@@ -16,7 +16,9 @@ if (process.env.NODE_ENV === "production") {
   prisma = global.prisma
 }
 
-// Ensure the client is properly connected and typed
-prisma.$connect()
+prisma.$connect().catch((err) => {
+  console.error("Failed to connect to database:", err)
+  process.exit(1)
+})
 
 export default prisma
