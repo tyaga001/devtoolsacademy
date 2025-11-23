@@ -142,7 +142,7 @@ const JobsPage: React.FC<JobsPageProps> = ({
   return (
     <section className="mx-auto mb-24 flex w-full max-w-6xl flex-col gap-10 px-6">
       <div className="flex flex-col justify-between gap-4 text-sm text-neutral-400 md:flex-row md:items-center">
-        <p>
+        <p className="leading-none">
           Showing
           <span className="pl-2 font-medium text-neutral-200">
             {jobs.length}
