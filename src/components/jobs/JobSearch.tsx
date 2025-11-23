@@ -108,7 +108,7 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
 
         <Button
           onClick={updateURL}
-          className="bg-neutral-100 text-neutral-900 hover:bg-neutral-200"
+          className="bg-neutral-100 px-6 text-neutral-900 hover:bg-neutral-200"
         >
           <Search className="mr-2 size-4" />
           Search
