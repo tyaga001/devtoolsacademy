@@ -137,7 +137,7 @@ export default function JobsPagination({
         disabled={currentPage <= 1}
         className="border-neutral-600 bg-transparent text-neutral-300 hover:bg-neutral-800 hover:text-neutral-200 disabled:opacity-50"
       >
-        <ChevronLeft className="h-4 w-4" />
+        <ChevronLeft className="size-4" />
         Previous
       </Button>
 
@@ -151,7 +151,7 @@ export default function JobsPagination({
         className="border-neutral-600 bg-transparent text-neutral-300 hover:bg-neutral-800 hover:text-neutral-200 disabled:opacity-50"
       >
         Next
-        <ChevronRight className="h-4 w-4" />
+        <ChevronRight className="size-4" />
       </Button>
     </div>
   )
