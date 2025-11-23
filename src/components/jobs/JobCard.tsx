@@ -44,8 +44,13 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
       rel="noopener noreferrer"
       className="group block h-full"
     >
-      <Card className="relative flex h-full flex-col overflow-hidden border border-neutral-900 bg-neutral-900/50 shadow-lg transition-all duration-300 hover:border-neutral-800 hover:shadow-xl">
-        <CardHeader className="space-y-4 border-b border-neutral-900 pb-5">
+      <Card className="relative flex h-full flex-col border border-dashed border-neutral-100/15 bg-neutral-900/50 transition-all duration-300 hover:border-solid">
+        {job.featured && (
+          <span className="absolute -right-2 -top-2 z-20 inline-flex items-center gap-1 rounded-full border border-amber-600 bg-amber-950 px-2.5 py-0.5 text-xs font-semibold text-amber-300">
+            <Sparkles className="size-3" /> Hot role
+          </span>
+        )}
+        <CardHeader className="space-y-4 border-b border-neutral-900 p-4">
           <div className="flex items-start gap-4">
             {job.companyLogo && !imageError ? (
               <img
@@ -62,42 +67,37 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
             )}
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
-                <h3 className="text-lg font-semibold leading-tight text-neutral-100 group-hover:text-white">
+                <h3 className="text-lg font-semibold leading-tight tracking-tight text-neutral-100 group-hover:text-white">
                   {job.title}
                 </h3>
-                {job.featured && (
-                  <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/15 px-2.5 py-0.5 text-xs font-semibold text-amber-300">
-                    <Sparkles className="size-3" /> Hot role
-                  </span>
-                )}
               </div>
               <p className="mt-1 text-sm text-neutral-400">{job.company}</p>
             </div>
           </div>
         </CardHeader>
 
-        <CardContent className="flex flex-1 flex-col gap-6 py-6">
+        <CardContent className="flex flex-1 flex-col gap-6 p-4">
           <p className="line-clamp-3 text-sm leading-relaxed text-neutral-300">
             {job.description}
           </p>
 
           <div className="grid grid-cols-1 gap-3 text-xs font-medium text-neutral-400 sm:grid-cols-2">
-            <div className="flex items-center gap-2 rounded-lg border border-neutral-900 bg-neutral-900/60 px-3 py-2">
-              <MapPin className="size-4 text-neutral-500" />
+            <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900/60 p-2">
+              <MapPin className="size-4 text-neutral-600" />
               <span>{job.location}</span>
             </div>
-            <div className="flex items-center gap-2 rounded-lg border border-neutral-900 bg-neutral-900/60 px-3 py-2">
-              <Clock className="size-4 text-neutral-500" />
+            <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900/60 p-2">
+              <Clock className="size-4 text-neutral-600" />
               <span>{formatJobType(job.type)}</span>
             </div>
             {job.salary && (
-              <div className="flex items-center gap-2 rounded-lg border border-neutral-900 bg-neutral-900/60 px-3 py-2">
-                <DollarSign className="size-4 text-neutral-500" />
+              <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900/60 p-2">
+                <DollarSign className="size-4 text-neutral-600" />
                 <span className="text-neutral-200">{job.salary}</span>
               </div>
             )}
-            <div className="flex items-center gap-2 rounded-lg border border-neutral-900 bg-neutral-900/60 px-3 py-2">
-              <Calendar className="size-4 text-neutral-500" />
+            <div className="flex items-center gap-2 border border-dashed border-neutral-100/15 bg-neutral-900/60 p-2">
+              <Calendar className="size-4 text-neutral-600" />
               <span>Posted {formatDate(job.createdAt)}</span>
             </div>
           </div>
@@ -108,7 +108,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
                 <Badge
                   key={category}
                   variant="secondary"
-                  className="rounded-full border border-neutral-900 bg-neutral-900/70 px-3 py-1 text-xs font-medium text-neutral-300"
+                  className="rounded-full border border-neutral-900 bg-neutral-900/70 px-3 py-1.5 text-xs font-medium leading-none text-neutral-400"
                 >
                   {category}
                 </Badge>
@@ -116,7 +116,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
               {job.categories.length > 3 && (
                 <Badge
                   variant="secondary"
-                  className="rounded-full border border-neutral-900 bg-neutral-900/70 px-3 py-1 text-xs font-medium text-neutral-400"
+                  className="rounded-full border border-neutral-900 bg-neutral-900/70 px-3 py-1.5 text-xs font-medium leading-none text-neutral-400"
                 >
                   +{job.categories.length - 3} more
                 </Badge>
@@ -125,9 +125,11 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
           )}
         </CardContent>
 
-        <CardFooter className="mt-auto flex items-center justify-between border-t border-neutral-900 bg-neutral-900/40 px-6 py-4 text-xs text-neutral-400">
-          <span>Expires {formatDate(job.expiresAt)}</span>
-          <span className="inline-flex items-center gap-1 text-neutral-300">
+        <CardFooter className="mt-auto flex items-center justify-between border-t border-neutral-900 bg-neutral-900/40 px-4 py-3 text-xs">
+          <span className="text-neutral-500">
+            Expires {formatDate(job.expiresAt)}
+          </span>
+          <span className="inline-flex items-center gap-1 text-neutral-400">
             View role
             <ArrowUpRight className="size-3" />
           </span>
