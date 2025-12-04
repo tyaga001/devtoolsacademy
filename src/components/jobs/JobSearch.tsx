@@ -82,7 +82,7 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
   const hasActiveFilters = search || location || type || featured
 
   return (
-    <div className="mx-auto w-full max-w-6xl rounded-2xl border border-neutral-900 bg-neutral-900/40 px-4 py-6 shadow-lg backdrop-blur md:px-8">
+    <div className="mx-auto w-full max-w-6xl border border-dashed border-neutral-100/15 bg-neutral-900/40 px-4 py-6 shadow-lg backdrop-blur md:px-8">
       <div className="mb-6 flex flex-col gap-4 md:flex-row">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-500" />
@@ -91,7 +91,7 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && updateURL()}
-            className="border-neutral-900 bg-neutral-950/70 pl-10 text-neutral-200 placeholder:text-neutral-500 focus:border-neutral-700"
+            className="rounded-none border-dashed border-neutral-100/15 bg-neutral-950/70 pl-10 text-neutral-200 placeholder:text-neutral-500 focus:border-neutral-700"
           />
         </div>
 
@@ -102,13 +102,13 @@ const JobSearch: React.FC<JobSearchProps> = ({ searchParams }) => {
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && updateURL()}
-            className="border-neutral-900 bg-neutral-950/70 pl-10 text-neutral-200 placeholder:text-neutral-500 focus:border-neutral-700"
+            className="rounded-none border-dashed border-neutral-100/15 bg-neutral-950/70 pl-10 text-neutral-200 placeholder:text-neutral-500 focus:border-neutral-700"
           />
         </div>
 
         <Button
           onClick={updateURL}
-          className="bg-neutral-100 text-neutral-900 hover:bg-neutral-200"
+          className="bg-neutral-100 px-6 text-neutral-900 hover:bg-neutral-200"
         >
           <Search className="mr-2 size-4" />
           Search

@@ -86,7 +86,7 @@ export async function GET(req: NextRequest) {
     }
 
     const [jobs, totalJobs] = await Promise.all([
-      prisma.job.findMany({
+      (prisma as any).job.findMany({
         where,
         orderBy,
         skip,
@@ -109,7 +109,7 @@ export async function GET(req: NextRequest) {
           expiresAt: true,
         },
       }),
-      prisma.job.count({ where }),
+      (prisma as any).job.count({ where }),
     ])
 
     // Shuffle jobs if random sorting is requested
@@ -184,7 +184,7 @@ export async function POST(req: NextRequest) {
     const expiresAt = new Date()
     expiresAt.setDate(expiresAt.getDate() + 30)
 
-    const job = await prisma.job.create({
+    const job = await (prisma as any).job.create({
       data: {
         title,
         company,

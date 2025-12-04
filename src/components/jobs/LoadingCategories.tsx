@@ -18,7 +18,7 @@ const LoadingCategories: React.FC = () => {
         {[...Array(8)].map((_, index) => (
           <div
             key={index}
-            className="h-10 w-24 bg-neutral-800 rounded animate-pulse"
+            className="h-10 w-24 animate-pulse rounded bg-neutral-800"
           />
         ))}
       </div>

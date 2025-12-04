@@ -107,30 +107,30 @@ const JobsPage: React.FC<JobsPageProps> = ({
 
   if (error || jobs.length === 0) {
     return (
-      <div className="mx-auto flex min-h-[320px] max-w-4xl flex-col items-center justify-center rounded-3xl border border-neutral-900 bg-neutral-900/50 p-12 text-center shadow-inner">
-        <div className="flex size-16 items-center justify-center rounded-full border border-neutral-800 bg-neutral-900/60">
+      <div className="mx-auto mb-10 flex min-h-[320px] max-w-4xl flex-col items-center justify-center border border-dashed border-neutral-100/15 p-12 text-center">
+        <div className="flex size-16 items-center justify-center rounded-full border border-dashed border-neutral-100/15 bg-neutral-900/60">
           <TriangleAlert className="size-6 text-amber-400" />
         </div>
         <h2 className="mt-6 text-2xl font-semibold text-neutral-100">
           No matches yet
         </h2>
-        <p className="mt-3 max-w-xl text-sm text-neutral-400">
+        <p className="mt-1.5 max-w-[380px] text-sm text-neutral-400">
           Adjust filters or explore featured roles below.
           <span className="block">
             We refresh this board every week with new devtool marketing, DX, and
             community openings.
           </span>
         </p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-neutral-400">
-          <div className="flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-4 py-2">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm text-neutral-400">
+          <div className="flex items-center gap-2 rounded-full border border-dashed border-neutral-100/15 bg-neutral-900/60 px-4 py-2">
             <Compass className="size-4 text-neutral-500" />
             <span>Try a broader location</span>
           </div>
-          <div className="flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-4 py-2">
+          <div className="flex items-center gap-2 rounded-full border border-dashed border-neutral-100/15 bg-neutral-900/60 px-4 py-2">
             <Briefcase className="size-4 text-neutral-500" />
             <span>Clear job type filters</span>
           </div>
-          <div className="flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-4 py-2">
+          <div className="flex items-center gap-2 rounded-full border border-dashed border-neutral-100/15 bg-neutral-900/60 px-4 py-2">
             <ArrowUpRight className="size-4 text-neutral-500" />
             <span>Submit a role instead</span>
           </div>
@@ -142,7 +142,7 @@ const JobsPage: React.FC<JobsPageProps> = ({
   return (
     <section className="mx-auto mb-24 flex w-full max-w-6xl flex-col gap-10 px-6">
       <div className="flex flex-col justify-between gap-4 text-sm text-neutral-400 md:flex-row md:items-center">
-        <p>
+        <p className="leading-none">
           Showing
           <span className="pl-2 font-medium text-neutral-200">
             {jobs.length}
@@ -157,7 +157,7 @@ const JobsPage: React.FC<JobsPageProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {jobs.map((job) => (
           <JobCard key={job.id} job={job} />
         ))}

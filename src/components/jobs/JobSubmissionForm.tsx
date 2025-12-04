@@ -142,9 +142,9 @@ const JobSubmissionForm: React.FC = () => {
     return (
       <Card className="border border-green-600/30 bg-green-600/10 shadow-lg">
         <CardContent className="p-12 text-center">
-          <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-600/20">
+          <div className="mb-6 inline-flex size-16 items-center justify-center rounded-full bg-green-600/20">
             <svg
-              className="h-8 w-8 text-green-600"
+              className="size-8 text-green-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -177,7 +177,7 @@ const JobSubmissionForm: React.FC = () => {
                 variant="outline"
                 className="border-neutral-300 text-neutral-300 hover:bg-neutral-50"
               >
-                <ArrowLeft className="mr-2 h-4 w-4" />
+                <ArrowLeft className="mr-2 size-4" />
                 Back to Job Board
               </Button>
             </Link>
@@ -211,7 +211,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="contactName"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Contact name
               </label>
@@ -235,7 +235,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="contactEmail"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Contact email
               </label>
@@ -262,7 +262,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="company"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Company name
               </label>
@@ -282,7 +282,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="companyLogo"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Company logo URL (optional)
               </label>
@@ -309,7 +309,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="title"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Job title
               </label>
@@ -329,7 +329,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="applyUrl"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Job posting URL
               </label>
@@ -349,7 +349,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="location"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Location
               </label>
@@ -369,7 +369,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="jobType"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Job type
               </label>
@@ -377,14 +377,14 @@ const JobSubmissionForm: React.FC = () => {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="outline"
-                    className="w-full justify-between bg-neutral-800 border-neutral-700 text-neutral-100 hover:bg-neutral-700"
+                    className="w-full justify-between border-neutral-700 bg-neutral-800 text-neutral-100 hover:bg-neutral-700"
                   >
                     {jobTypes.find((type) => type.value === formData.type)
                       ?.label || "Select job type"}
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-full bg-neutral-800 border-neutral-700">
+                <DropdownMenuContent className="w-full border-neutral-700 bg-neutral-800">
                   {jobTypes.map((type) => (
                     <DropdownMenuItem
                       key={type.value}
@@ -404,7 +404,7 @@ const JobSubmissionForm: React.FC = () => {
             <div>
               <label
                 htmlFor="salary"
-                className="block text-sm font-medium text-neutral-300 mb-3"
+                className="mb-3 block text-sm font-medium text-neutral-300"
               >
                 Salary range{" "}
                 <span className="text-neutral-500">(optional)</span>
@@ -427,7 +427,7 @@ const JobSubmissionForm: React.FC = () => {
           <div>
             <label
               htmlFor="description"
-              className="block text-sm font-medium text-neutral-300 mb-2"
+              className="mb-2 block text-sm font-medium text-neutral-300"
             >
               Job description
               <span className="ml-2 text-xs text-neutral-500">
@@ -450,7 +450,10 @@ const JobSubmissionForm: React.FC = () => {
 
           {/* Categories */}
           <div>
-            <label className="block text-sm font-medium text-neutral-300 mb-2">
+            <label
+              htmlFor="category"
+              className="mb-2 block text-sm font-medium text-neutral-300"
+            >
               Categories
             </label>
             <div className="space-y-2">
@@ -467,6 +470,7 @@ const JobSubmissionForm: React.FC = () => {
                       setNewCategory("")
                     }
                   }}
+                  id="category"
                   className="border-neutral-700 bg-neutral-800 py-3 text-neutral-100 placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-0"
                 />
                 <Button
@@ -477,7 +481,7 @@ const JobSubmissionForm: React.FC = () => {
                   }}
                   className="bg-blue-600 hover:bg-blue-700"
                 >
-                  <Plus className="h-4 w-4" />
+                  <Plus className="size-4" />
                 </Button>
               </div>
 
@@ -509,7 +513,7 @@ const JobSubmissionForm: React.FC = () => {
                         onClick={() => removeArrayItem("categories", index)}
                         className="text-blue-300 hover:text-blue-100"
                       >
-                        <X className="h-3 w-3" />
+                        <X className="size-3" />
                       </button>
                     </div>
                   ))}
@@ -523,7 +527,10 @@ const JobSubmissionForm: React.FC = () => {
 
           {/* Requirements */}
           <div>
-            <label className="block text-sm font-medium text-neutral-300 mb-2">
+            <label
+              htmlFor="requirements"
+              className="mb-2 block text-sm font-medium text-neutral-300"
+            >
               Requirements (optional)
             </label>
             <div className="space-y-2">
@@ -531,6 +538,7 @@ const JobSubmissionForm: React.FC = () => {
                 <Input
                   type="text"
                   placeholder="Add requirement"
+                  id="requirements"
                   value={newRequirement}
                   onChange={(e) => setNewRequirement(e.target.value)}
                   onKeyPress={(e) => {
@@ -550,7 +558,7 @@ const JobSubmissionForm: React.FC = () => {
                   }}
                   className="bg-blue-600 hover:bg-blue-700"
                 >
-                  <Plus className="h-4 w-4" />
+                  <Plus className="size-4" />
                 </Button>
               </div>
 
@@ -567,7 +575,7 @@ const JobSubmissionForm: React.FC = () => {
                         onClick={() => removeArrayItem("requirements", index)}
                         className="text-neutral-500 hover:text-neutral-300"
                       >
-                        <X className="h-4 w-4" />
+                        <X className="size-4" />
                       </button>
                     </div>
                   ))}
@@ -578,7 +586,10 @@ const JobSubmissionForm: React.FC = () => {
 
           {/* Benefits */}
           <div>
-            <label className="block text-sm font-medium text-neutral-300 mb-2">
+            <label
+              htmlFor="benefit"
+              className="mb-2 block text-sm font-medium text-neutral-300"
+            >
               Benefits (optional)
             </label>
             <div className="space-y-2">
@@ -587,6 +598,7 @@ const JobSubmissionForm: React.FC = () => {
                   type="text"
                   placeholder="Add benefit"
                   value={newBenefit}
+                  id="benefit"
                   onChange={(e) => setNewBenefit(e.target.value)}
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {
@@ -605,7 +617,7 @@ const JobSubmissionForm: React.FC = () => {
                   }}
                   className="bg-blue-600 hover:bg-blue-700"
                 >
-                  <Plus className="h-4 w-4" />
+                  <Plus className="size-4" />
                 </Button>
               </div>
 
@@ -622,7 +634,7 @@ const JobSubmissionForm: React.FC = () => {
                         onClick={() => removeArrayItem("benefits", index)}
                         className="text-neutral-500 hover:text-neutral-300"
                       >
-                        <X className="h-4 w-4" />
+                        <X className="size-4" />
                       </button>
                     </div>
                   ))}
@@ -633,7 +645,10 @@ const JobSubmissionForm: React.FC = () => {
 
           {/* Tags */}
           <div>
-            <label className="block text-sm font-medium text-neutral-300 mb-2">
+            <label
+              htmlFor="tag"
+              className="mb-2 block text-sm font-medium text-neutral-300"
+            >
               Tags (optional)
             </label>
             <div className="space-y-2">
@@ -641,6 +656,7 @@ const JobSubmissionForm: React.FC = () => {
                 <Input
                   type="text"
                   placeholder="Add tag"
+                  id="tag"
                   value={newTag}
                   onChange={(e) => setNewTag(e.target.value)}
                   onKeyPress={(e) => {
@@ -660,7 +676,7 @@ const JobSubmissionForm: React.FC = () => {
                   }}
                   className="bg-blue-600 hover:bg-blue-700"
                 >
-                  <Plus className="h-4 w-4" />
+                  <Plus className="size-4" />
                 </Button>
               </div>
 
@@ -677,7 +693,7 @@ const JobSubmissionForm: React.FC = () => {
                         onClick={() => removeArrayItem("tags", index)}
                         className="text-green-300 hover:text-green-100"
                       >
-                        <X className="h-3 w-3" />
+                        <X className="size-3" />
                       </button>
                     </div>
                   ))}
@@ -691,11 +707,11 @@ const JobSubmissionForm: React.FC = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-white text-black hover:bg-neutral-100 py-4 text-base font-medium disabled:opacity-50"
+              className="w-full bg-white py-4 text-base font-medium text-black hover:bg-neutral-100 disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="mr-2 size-4 animate-spin" />
                   Submitting & Redirecting to Payment...
                 </>
               ) : (
