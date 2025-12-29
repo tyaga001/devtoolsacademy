@@ -1090,9 +1090,39 @@ export default function CreatorPartnershipsPage() {
             technical creators and reach developers authentically.
           </p>
 
+          {/* Contact Info */}
+          <div className="mx-auto mb-10 max-w-xl rounded-xl border border-dashed border-neutral-100/15 bg-neutral-900/50 p-6">
+            <div className="mb-4 flex items-center justify-center gap-2">
+              <Mail className="size-5 text-blue-400" />
+              <span className="font-medium text-neutral-200">Get in touch</span>
+            </div>
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a
+                href="mailto:ankur@devtoolsacademy.com"
+                className="text-lg font-semibold text-blue-400 transition-colors hover:text-blue-300"
+              >
+                ankur@devtoolsacademy.com
+              </a>
+              <span className="hidden text-neutral-600 sm:inline">or</span>
+              <a
+                href="https://x.com/TheAnkurTyagi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg font-semibold text-blue-400 transition-colors hover:text-blue-300"
+              >
+                DM on X
+              </a>
+            </div>
+            <p className="mt-4 text-sm text-neutral-500">
+              Whether you&apos;re a developer tool company looking for creator
+              partnerships or a content creator interested in collaborations,
+              I&apos;d love to hear from you.
+            </p>
+          </div>
+
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:hello@theankurtyagi.com"
+              href="mailto:ankur@devtoolsacademy.com"
               className="inline-flex items-center justify-center bg-neutral-200 px-8 py-4 text-lg font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400"
             >
               Contact Me
