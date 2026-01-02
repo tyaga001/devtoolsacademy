@@ -48,8 +48,7 @@ export const allBlogs = [
   {
     author: "Jitendra Nirnejak",
     slug: "uv-and-ruff-turbocharging-python-development-with-rust-powered-tools",
-    title:
-      "UV and Ruff: Turbocharging Python Development with Rust-Powered Tools",
+    title: "UV and Ruff: Turbocharging Python Development with Rust-Powered Tools",
     excerpt: "Rust based linter and dependency manager for python",
     description:
       "Discover Ruff and uv, Rust-fueled beasts revolutionizing Python dev. Blast through linting, packaging, and deps with 10x speed gains. Level up your code game now.",
@@ -74,8 +73,7 @@ export const allBlogs = [
   {
     author: "Ankur Tyagi",
     slug: "betterauth-vs-nextauth",
-    title:
-      "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS",
+    title: "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS",
     excerpt: "Choose the right authentication library for your Next.js app",
     description:
       "A comparison of BetterAuth and NextAuth to help you choose the best authentication library for your app",
@@ -106,8 +104,8 @@ export const allBlogs = [
     description:
       "A comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
     publishedAt: "2025-04-11T00:00:00Z",
-    image: CursorWindsurfCoverImage.src,
     category: "AI Code Editor",
+    image: CursorWindsurfCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -115,14 +113,13 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow",
     title:
-      "Cody vs. Cursor: Choosing the Right AI Code Assistant for Your Development Workflow",
-    excerpt:
-      "Choose the right AI code assistant for your development workflow.",
+      "Cody vs Cursor: Choosing the Right AI Code Assistant for Your Development Workflow",
+    excerpt: "Choose the right AI code assistant for your development workflow.",
     description:
       "A comparison of Cody and Cursor to help you choose the right AI code assistant",
     publishedAt: "2025-03-17T00:00:00Z",
-    image: CodyCoverImage.src,
     category: "AI Code Assistant",
+    image: CodyCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -134,8 +131,8 @@ export const allBlogs = [
       "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
     description: "Learn how the View Transitions API enhances web experiences.",
     publishedAt: "2025-02-24T00:00:00Z",
-    image: ViewTransitionsCoverImage.src,
     category: "Web Development",
+    image: ViewTransitionsCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -146,8 +143,8 @@ export const allBlogs = [
     excerpt: "Choose the right AI code review tool",
     description: "Everything about AI code review tools",
     publishedAt: "2024-12-26T00:00:00Z",
-    image: CodeRabbitCoverImage.src,
     category: "Code Review",
+    image: CodeRabbitCoverImage.src,
     isNew: false,
     isFeatured: true,
   },
@@ -159,8 +156,8 @@ export const allBlogs = [
     description:
       "A comparison of Twilio and Stream for building automated customer support solutions",
     publishedAt: "2024-12-11T00:00:00Z",
-    image: TwilioCoverImage.src,
     category: "SaaS",
+    image: TwilioCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -172,8 +169,8 @@ export const allBlogs = [
     description:
       "A comparison of Clerk and Supabase to help you choose the best auth for your SaaS",
     publishedAt: "2024-10-28T00:00:00Z",
-    image: SupabaseCoverImage.src,
     category: "Auth",
+    image: SupabaseCoverImage.src,
     isNew: false,
     isFeatured: true,
   },
@@ -181,12 +178,12 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "mongoDB-vs-postgreSQL",
     title: "MongoDB vs PostgreSQL: A Technical Comparison",
-    excerpt: "A technical comparison of MongoDB vs. PostgreSQL",
+    excerpt: "A technical comparison of MongoDB vs PostgreSQL",
     description:
-      "A technical comparison of MongoDB vs. PostgreSQL to help you choose the best database solution for your SaaS",
+      "A technical comparison of MongoDB vs PostgreSQL to help you choose the best database solution for your SaaS",
     publishedAt: "2024-09-26T00:00:00Z",
-    image: MongoDBCoverImage.src,
     category: "Database",
+    image: MongoDBCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -197,8 +194,8 @@ export const allBlogs = [
     excerpt: "My thoughts on the state of Databases for Serverless",
     description: "My thoughts on the state of Databases for Serverless",
     publishedAt: "2024-09-03T00:00:00Z",
-    image: StateOfDatabasesCoverImage.src,
     category: "Database",
+    image: StateOfDatabasesCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -210,8 +207,8 @@ export const allBlogs = [
     description:
       "A comparison of Neon and Supabase to help you choose the best database for your SaaS",
     publishedAt: "2024-08-08T00:00:00Z",
-    image: NeonCoverImage.src,
     category: "Database",
+    image: NeonCoverImage.src,
     isNew: false,
     isFeatured: true,
   },
