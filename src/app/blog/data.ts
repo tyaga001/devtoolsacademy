@@ -21,24 +21,24 @@ export const allAuthors = [
 export const allBlogs = [
   {
     author: "Ankur Tyagi",
-    slug: "eloqdoc-vs-mongodb-part2",
+    slug: "eloqdoc-vs-mongodb-feature-comparison",
     title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
     excerpt: "Feature-by-feature comparison of EloqDoc and MongoDB capabilities",
     description:
-      "In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of features and capabilities. We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).",
+      "A detailed comparison of key features including transactions, indexing, consistency guarantees, and query capabilities. This part highlights where the two databases overlap and where their design philosophies clearly diverge in real world usage.",
     publishedAt: "2026-01-02T00:00:00Z",
     category: "Databases",
     image: EloqdocVSMongoDB.src,
-    isNew: true,
+    isNew: false,
     isFeatured: true,
   },
   {
     author: "Ankur Tyagi",
-    slug: "eloqdoc-vs-mongodb-part1",
+    slug: "eloqdoc-vs-mongodb-architecture-and-design",
     title: "EloqDoc vs MongoDB - Part 1: Architecture and Design Overview",
     excerpt: "An overview of EloqDoc and MongoDB architecture",
     description:
-      "In this first part of our comparison series, we provide an overview of the core architecture of EloqDoc and MongoDB, highlighting how their design principles diverge. By understanding the architectural foundations, you can better judge which database aligns with your project needs.",
+      "This article breaks down the core architecture of EloqDoc and MongoDB. It focuses on storage layout, replication model, and how each system is designed to scale. The goal is to understand what tradeoffs were made at the foundation level before looking at features or performance.",
     publishedAt: "2026-01-02T00:00:00Z",
     category: "Databases",
     image: EloqdocVSMongoDB.src,
