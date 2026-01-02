@@ -26,7 +26,7 @@ import image18 from "./image18.png"
 import image19 from "./image19.png"
 
 export const metadata = getMetadata({
-  path: "/blog/eloqdoc-vs-mongodb-part2",
+  path: "/blog/eloqdoc-vs-mongodb-feature-comparison",
   title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
   description:
     "In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of features and capabilities. We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).",
@@ -41,7 +41,7 @@ export const metadata = getMetadata({
 
 In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of **features and capabilities.** We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).
 
-Both EloqDoc and MongoDB are capable document databases, but as we saw in [Part 1](/blog/eloqdoc-vs-mongodb-part1), their underlying architectures differ. Those differences trickle up to the feature level, affecting how each database behaves and what it’s best suited for. In this article, I’ll share a candid comparison of these features. By the end, you should have a clearer opinion on which system is the better choice for specific technical requirements.
+Both EloqDoc and MongoDB are capable document databases, but as we saw in [Part 1](/blog/eloqdoc-vs-mongodb-architecture-and-design), their underlying architectures differ. Those differences trickle up to the feature level, affecting how each database behaves and what it’s best suited for. In this article, I’ll share a candid comparison of these features. By the end, you should have a clearer opinion on which system is the better choice for specific technical requirements.
 
 ## ACID Compliance and Consistency Models
 
@@ -313,7 +313,7 @@ Once authenticated, MongoDB enforces role-based access control (RBAC), allowing 
   height={600}
 />
 
-EloqDoc, being MongoDB API - API-compatible, inherits the same model. You can create users and roles with standard MongoDB commands (db.createUser(), etc.), and they’ll be enforced identically. SCRAM-based authentication and RBAC work out of the box, offering equivalent access control.
+EloqDoc, being MongoDB API-compatible, inherits the same model. You can create users and roles with standard MongoDB commands (db.createUser(), etc.), and they’ll be enforced identically. SCRAM-based authentication and RBAC work out of the box, offering equivalent access control.
 
 <Image
   src={image16}

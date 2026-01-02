@@ -10,7 +10,7 @@ import image2 from "./image2.png"
 import image3 from "./image3.png"
 
 export const metadata = getMetadata({
-  path: "/blog/eloqdoc-vs-mongodb-part1",
+  path: "/blog/eloqdoc-vs-mongodb-architecture-and-design",
   title: "EloqDoc vs MongoDB - Part 1: Architecture and Design Overview",
   description:
     "In this first part of our comparison series, we provide an overview of the core architecture of EloqDoc and MongoDB, highlighting how their design principles diverge. By understanding the architectural foundations, you can better judge which database aligns with your project needs.",
@@ -143,4 +143,4 @@ However, it’s worth noting that MongoDB’s architecture, while older, is a we
 
 If you’re building a new system that requires easy horizontal scaling and you prefer the system to handle data distribution seamlessly (perhaps you don’t have a DBA team to manage sharding), [EloqDoc’s](https://www.eloqdata.com/product/eloqdoc) architecture provides a compelling solution. On the other hand, if your needs are modest or you already have a well-established sharded MongoDB deployment strategy, MongoDB’s architecture will serve you reliably, and you might stick with the familiar route.
 
-In **Part 2**, we will take a deep dive into how these design choices impact features such as transactions, consistency, and query performance. Understanding the architectural underpinnings will help make sense of those feature-level differences and what they mean for real-world use.
+In **[Part 2](/blog/eloqdoc-vs-mongodb-feature-comparison)**, we will take a deep dive into how these design choices impact features such as transactions, consistency, and query performance. Understanding the architectural underpinnings will help make sense of those feature-level differences and what they mean for real-world use.
