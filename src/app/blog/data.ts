@@ -19,6 +19,19 @@ export const allAuthors = [
 
 export const allBlogs = [
   {
+    author: "Ankur Tyagi",
+    slug: "eloqdoc-vs-mongodb-part1",
+    title: "EloqDoc vs MongoDB - Part 1: Architecture and Design Overview",
+    excerpt: "An overview of EloqDoc and MongoDB architecture",
+    description:
+      "In this first part of our comparison series, we provide an overview of the core architecture of EloqDoc and MongoDB, highlighting how their design principles diverge. By understanding the architectural foundations, you can better judge which database aligns with your project needs.",
+    publishedAt: "2026-01-05T00:00:00Z",
+    category: "Databases",
+    image: StateOfAICodeReviewCoverImage.src,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
     author: "Jitendra Nirnejak",
     slug: "uv-and-ruff-turbocharging-python-development-with-rust-powered-tools",
     title:
