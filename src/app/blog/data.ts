@@ -10,6 +10,7 @@ import MongoDBCoverImage from "@/app/blog/mongoDB-vs-postgreSQL/cover.png"
 import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover.png"
 import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
+import EloqdocVSMongoDB from "@/app/blog/eloqdoc-vs-mongodb-architecture-and-design/cover.png"
 
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
@@ -18,6 +19,33 @@ export const allAuthors = [
 ]
 
 export const allBlogs = [
+  {
+    author: "Ankur Tyagi",
+    slug: "eloqdoc-vs-mongodb-feature-comparison",
+    title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
+    excerpt:
+      "Feature-by-feature comparison of EloqDoc and MongoDB capabilities",
+    description:
+      "A detailed comparison of key features including transactions, indexing, consistency guarantees, and query capabilities. This part highlights where the two databases overlap and where their design philosophies clearly diverge in real world usage.",
+    publishedAt: "2026-01-02T00:00:00Z",
+    category: "Databases",
+    image: EloqdocVSMongoDB.src,
+    isNew: false,
+    isFeatured: true,
+  },
+  {
+    author: "Ankur Tyagi",
+    slug: "eloqdoc-vs-mongodb-architecture-and-design",
+    title: "EloqDoc vs MongoDB - Part 1: Architecture and Design Overview",
+    excerpt: "An overview of EloqDoc and MongoDB architecture",
+    description:
+      "This article breaks down the core architecture of EloqDoc and MongoDB. It focuses on storage layout, replication model, and how each system is designed to scale. The goal is to understand what tradeoffs were made at the foundation level before looking at features or performance.",
+    publishedAt: "2026-01-02T00:00:00Z",
+    category: "Databases",
+    image: EloqdocVSMongoDB.src,
+    isNew: true,
+    isFeatured: true,
+  },
   {
     author: "Jitendra Nirnejak",
     slug: "uv-and-ruff-turbocharging-python-development-with-rust-powered-tools",
@@ -79,8 +107,8 @@ export const allBlogs = [
     description:
       "A comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
     publishedAt: "2025-04-11T00:00:00Z",
-    image: CursorWindsurfCoverImage.src,
     category: "AI Code Editor",
+    image: CursorWindsurfCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -88,14 +116,14 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow",
     title:
-      "Cody vs. Cursor: Choosing the Right AI Code Assistant for Your Development Workflow",
+      "Cody vs Cursor: Choosing the Right AI Code Assistant for Your Development Workflow",
     excerpt:
       "Choose the right AI code assistant for your development workflow.",
     description:
       "A comparison of Cody and Cursor to help you choose the right AI code assistant",
     publishedAt: "2025-03-17T00:00:00Z",
-    image: CodyCoverImage.src,
     category: "AI Code Assistant",
+    image: CodyCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -107,8 +135,8 @@ export const allBlogs = [
       "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
     description: "Learn how the View Transitions API enhances web experiences.",
     publishedAt: "2025-02-24T00:00:00Z",
-    image: ViewTransitionsCoverImage.src,
     category: "Web Development",
+    image: ViewTransitionsCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -119,8 +147,8 @@ export const allBlogs = [
     excerpt: "Choose the right AI code review tool",
     description: "Everything about AI code review tools",
     publishedAt: "2024-12-26T00:00:00Z",
-    image: CodeRabbitCoverImage.src,
     category: "Code Review",
+    image: CodeRabbitCoverImage.src,
     isNew: false,
     isFeatured: true,
   },
@@ -132,8 +160,8 @@ export const allBlogs = [
     description:
       "A comparison of Twilio and Stream for building automated customer support solutions",
     publishedAt: "2024-12-11T00:00:00Z",
-    image: TwilioCoverImage.src,
     category: "SaaS",
+    image: TwilioCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -145,8 +173,8 @@ export const allBlogs = [
     description:
       "A comparison of Clerk and Supabase to help you choose the best auth for your SaaS",
     publishedAt: "2024-10-28T00:00:00Z",
-    image: SupabaseCoverImage.src,
     category: "Auth",
+    image: SupabaseCoverImage.src,
     isNew: false,
     isFeatured: true,
   },
@@ -154,12 +182,12 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "mongoDB-vs-postgreSQL",
     title: "MongoDB vs PostgreSQL: A Technical Comparison",
-    excerpt: "A technical comparison of MongoDB vs. PostgreSQL",
+    excerpt: "A technical comparison of MongoDB vs PostgreSQL",
     description:
-      "A technical comparison of MongoDB vs. PostgreSQL to help you choose the best database solution for your SaaS",
+      "A technical comparison of MongoDB vs PostgreSQL to help you choose the best database solution for your SaaS",
     publishedAt: "2024-09-26T00:00:00Z",
-    image: MongoDBCoverImage.src,
     category: "Database",
+    image: MongoDBCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -170,8 +198,8 @@ export const allBlogs = [
     excerpt: "My thoughts on the state of Databases for Serverless",
     description: "My thoughts on the state of Databases for Serverless",
     publishedAt: "2024-09-03T00:00:00Z",
-    image: StateOfDatabasesCoverImage.src,
     category: "Database",
+    image: StateOfDatabasesCoverImage.src,
     isNew: false,
     isFeatured: false,
   },
@@ -183,8 +211,8 @@ export const allBlogs = [
     description:
       "A comparison of Neon and Supabase to help you choose the best database for your SaaS",
     publishedAt: "2024-08-08T00:00:00Z",
-    image: NeonCoverImage.src,
     category: "Database",
+    image: NeonCoverImage.src,
     isNew: false,
     isFeatured: true,
   },

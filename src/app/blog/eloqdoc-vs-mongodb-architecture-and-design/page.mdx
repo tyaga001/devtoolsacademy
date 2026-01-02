@@ -1,0 +1,146 @@
+import Image from "next/image"
+
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+import { Callout } from "@/components/blog/Callout"
+
+import CoverImage from "./cover.png"
+import image1 from "./image1.png"
+import image2 from "./image2.png"
+import image3 from "./image3.png"
+
+export const metadata = getMetadata({
+  path: "/blog/eloqdoc-vs-mongodb-architecture-and-design",
+  title: "EloqDoc vs MongoDB - Part 1: Architecture and Design Overview",
+  description:
+    "In this first part of our comparison series, we provide an overview of the core architecture of EloqDoc and MongoDB, highlighting how their design principles diverge. By understanding the architectural foundations, you can better judge which database aligns with your project needs.",
+  image: CoverImage.src,
+})
+
+<BlogHeader
+  title={"EloqDoc vs MongoDB - Part 1: Architecture and Design Overview"}
+  author={"Ankur Tyagi"}
+  publishedAt={"2026-01-02T00:00:00Z"}
+/>
+
+EloqDoc (from EloqData) and MongoDB are both modern document-oriented databases, but they are built on very different architectural philosophies.
+
+MongoDB rose to popularity as a NoSQL database that later added transactional features, while EloqDoc is a next-generation open-source document store engineered from the ground up with cloud-native principles and distributed ACID transactions in mind. This contrast in design goals results in significant differences in how each system handles scalability, consistency, and operational efficiency.
+
+In this first part of our comparison series, we provide an overview of the core architecture of EloqDoc and MongoDB, highlighting how their design principles diverge. By understanding the architectural foundations, you can better judge which database aligns with your project’s needs.
+
+## EloqDoc’s Cloud-Native, Decoupled Architecture
+
+[EloqDoc](https://github.com/eloqdata/eloqdoc) embraces a fully decoupled, distributed architecture tailored for cloud environments. In EloqDoc’s design, the cluster is treated as a unified resource pool for data and processing, rather than a collection of independent servers. Key aspects of this architecture include:
+
+### Separation of Compute and Storage
+
+Unlike traditional databases that store data on each server’s local disk, EloqDoc stores data in a shared **object storage** (e.g. Amazon S3), which serves as the source of truth. Compute nodes (the servers that handle queries) do not have their own exclusive disk storage for data. Instead, any node can access any piece of data from the central object store. This means you can add or remove compute nodes without moving data between servers – new nodes simply connect to the same storage pool.
+
+### Intelligent Caching Layers
+
+To achieve high performance despite using a network storage layer, EloqDoc uses a tiered caching system. **Hot data** (frequently accessed documents) is cached in RAM, **warm data** is stored on fast local NVMe SSDs, and only **cold data** resides in the object store. This tiered storage design provides most reads and writes with the speed of memory or SSD, while infrequently used data is offloaded to inexpensive, durable storage.
+
+<Image
+  src={image1}
+  alt="EloqDoc Architecture Diagram"
+  width={1200}
+  height={600}
+/>
+
+It’s a cost-effective approach, as object storage can be ~3–4 times cheaper per GB than cloud SSD volumes. EloqDoc’s background processes asynchronously flush data to the object store and maintain cache coherence, ensuring that applications continue to experience fast performance.
+
+### Multi-Master Replication
+
+EloqDoc is natively distributed and multi-master, meaning any node in the cluster can accept write operations. There is no single “primary” node that all writes must go through. This eliminates a potential bottleneck and single point of failure. Every write is coordinated through a global transactional mechanism (more on that in Part 2) that ensures all nodes agree on the order of changes without needing a primary.
+
+### No Routing Layer Required
+
+In EloqDoc, clients can connect to any node and issue read or write operations. The cluster internally figures out which node should handle the request or how to scatter/gather it if needed. There is **no separate query router process** (like MongoDB’s mongos in a sharded cluster). This simplifies deployment because there’s one less component to manage or potentially fail. The distribution of data and queries is handled transparently by the EloqDoc cluster itself.
+
+### Unified Data Engine for Multiple APIs
+
+EloqDoc’s architecture isn’t limited to just the MongoDB-style document API. Under the hood, it features a common **Data Substrate** that supports multiple data models (document, key-value, and relational SQL) simultaneously. This means the same cluster can potentially offer a MongoDB-like interface and a SQL interface on the same dataset. It’s built to be multimodel from the start, which can be advantageous if your application grows to need different data access patterns. (By contrast, MongoDB is focused on the JSON document model, with SQL access only available via third-party connectors or BI tools.)
+
+<Image src={image2} alt="EloqDoc Cluster Topology" width={1200} height={600} />
+
+Overall, EloqDoc’s architecture is very “cloud-native”. It aims to provide elasticity and resilience out of the box. You can scale by adding nodes without complex reconfiguration, and if a node goes down, the data isn’t lost (since it lives in shared storage), and other nodes can take over seamlessly.
+
+This is a bold design that addresses many pain points of scaling traditional databases – it’s clear that EloqDoc is designed to avoid the manual sharding and painful migrations that ops teams often struggle with in systems like MongoDB.
+
+## MongoDB’s Traditional Distributed Design
+
+[MongoDB’s](https://github.com/mongodb) architecture, while also distributed, follows a more conventional approach to scaling. It started as a single-node database and evolved to support replication and sharding over time. Key characteristics of MongoDB’s design include:
+
+### Replica Sets with a Single Primary
+
+In a MongoDB cluster, the basic high-availability unit is a **replica set** – typically one primary node (which handles all writes and also serves reads by default) and multiple secondary nodes (which replicate the primary’s data and can serve read queries). Applications connect to the primary for writes (the driver usually handles this automatically). If the primary crashes, one of the secondaries is elected to become the new primary. This design provides fault tolerance; however, at any given time, **writes are funnelled through one node per replica set**. It means write throughput is limited by the capacity of that primary node.
+
+<Image
+  src={image3}
+  alt="MongoDB Replica Set Architecture"
+  width={1200}
+  height={600}
+/>
+
+### Sharding for Horizontal Scale
+
+To scale out beyond a single replica set’s write or storage capacity, MongoDB uses **sharding**. In a sharded deployment, data is partitioned across multiple replica sets, known as shards. A special routing service (mongos) is used by clients to query the cluster; mongos directs each query to the appropriate shard(s) based on the data’s shard key. Additionally, a config server (or a config server replica set) maintains metadata about which data resides on which shard. While sharding does allow MongoDB to handle extensive data and throughput by dividing the workload, it introduces operational complexity:
+
+1. You must choose a shard key carefully. A poorly chosen shard key can lead to imbalanced data and load (so-called “hot shards”).
+2. If data distribution becomes uneven, you may have to **reshard** or manually rebalance chunks of data between servers. MongoDB automatically moves chunks when they grow beyond a threshold, but migrations can impact performance.
+3. The mongos routers and config servers are additional moving parts that need to be managed (and in the case of config servers, protected because if they are down or lost, the cluster cannot function correctly).
+4. Each shard still has its own primary/secondary set, so you have multiple replication groups to monitor. And a shard can become a single point of failure for part of your data if its replica set is down.
+
+### Coupled Compute and Storage
+
+In MongoDB’s design, each node (whether primary or secondary) manages its own storage on the local disk (or attached network storage, such as EBS, if in the cloud). This is a **shared-nothing architecture**, where the advantage is that each shard is independent (with no central storage or coordination required for reads), but the disadvantage is that scaling or recovering can be a heavyweight process.
+
+For example, if you add a new shard, MongoDB has to move some portion of data to that new shard over the network from other nodes. If a node fails and you need to restore it, you either replicate from another node or recover from a backup. MongoDB doesn’t natively do what EloqDoc does with shared storage – there’s no concept of simply mounting an existing data store on a new node.
+
+### Focus on Ease of Development
+
+Historically, MongoDB’s initial design decisions prioritized developer agility: schema-less JSON documents and a simple query language made it quick to build applications. It accepted eventual consistency (reads from secondaries might be stale) and didn’t originally support multi-document transactions, in exchange for performance and simplicity.
+
+Over the years, MongoDB’s architecture has added more “relational” features (like transactions in version 4.0 and later), but these were added onto an existing core rather than being part of the original design. As a result, some aspects (like how transactions work in a sharded environment) are more complex under the hood, using two-phase commit and so on.
+
+MongoDB relies on a shard-and-replicate model with a primary-oriented consistency approach. It works very well for many use cases and is a proven technology; however, it requires more hands-on management when scaling out. In my experience, running MongoDB at scale means carefully designing your shard key and topology upfront and being prepared to adjust as the workload grows.
+
+It’s powerful but not “auto-magical”. You trade off some of that flexibility for control. EloqDoc’s approach, by contrast, aims to make scaling transparent, shifting more of the complexity onto the system rather than the user.
+
+## Key Architectural Differences and Implications
+
+To highlight the contrast, let’s summarize some fundamental differences between EloqDoc and MongoDB architectures:
+
+1. Sharding vs. Shared Data Fabric
+   MongoDB partitions data into discrete shards, each with its own subset of data and a primary node. EloqDoc treats the entire data store as a single database accessible by all nodes through the shared object storage and distributed transactions. The implication: **EloqDoc can scale without explicit re-sharding** – you simply add nodes and they join the cluster and start handling queries. With MongoDB, scaling out involves adding shards and a careful data partitioning strategy.
+
+2. Scaling Compute Independently
+   In EloqDoc, because storage is decoupled, you can scale compute (the number of nodes) up or down independently of storage capacity. If you experience a spike in traffic, you can add more stateless nodes to handle it, then remove them later without moving any data. MongoDB can also scale out/in to some degree (shard add/remove), but **removing a shard** requires ensuring its data is drained and merged into other shards first – a potentially slow and manual process. MongoDB also now has some auto-scaling features in its Atlas cloud service (adding cluster tiers or resizing), but that still often means vertically scaling instance sizes or enabling sharding behind the scenes.
+
+3. Write Conflict Handling
+   Multi-master vs single-master affects how write conflicts are handled. EloqDoc must coordinate concurrent writes arriving at different nodes for the same document using a global ordering (it employs techniques such as timestamp ordering and a form of optimistic concurrency control). This ensures the cluster remains consistent without a primary, but it means every write in EloqDoc involves a distributed commit protocol.
+
+   MongoDB’s single-primary per shard model means writes are naturally ordered on that primary, simplifying conflict resolution on that shard (at the cost of that primary being a choke point).
+
+4. Failure Recovery
+   If a node running EloqDoc crashes, the system routes around it. Since there’s no primary, there’s no failover election needed; the main impact is that any data cached only on that node might need to be fetched again from storage by another node. MongoDB, on the other hand, triggers a failover if the primary goes down, causing a brief window during which writes are paused.
+
+   Once a new primary is elected (typically a few seconds), normal operations resume. Both systems aim for high availability, but EloqDoc’s shared storage design means recovery can be faster and more seamless in theory (assuming the object storage is always available and not a bottleneck).
+
+5. Operational Complexity
+   EloqDoc’s design aims to simplify operations by automating data distribution and eliminating roles such as configuration servers and routers. MongoDB’s approach might require more careful setup and monitoring (you have to keep an eye on your mongos routers, config servers, etc.).
+
+   This doesn’t mean EloqDoc is zero-maintenance, but many tasks that a DBA would handle in MongoDB (shard balancing, capacity planning for shards, etc.) are intended to be handled by EloqDoc internally. From an operational perspective, EloqDoc can be seen as simpler to manage at scale, whereas MongoDB offers more direct control at the expense of added complexity.
+
+## Author’s Perspective on the Architecture
+
+From my perspective, **EloqDoc’s architecture is a forward-looking design** that aligns with how cloud infrastructure operates today. Decoupling compute and storage and leveraging object storage for durability is similar to what some modern distributed SQL databases (like Snowflake or Amazon Aurora) do. It can offer compelling advantages in elasticity and cost. If your application is cloud-based and you anticipate scaling up and down or handling extensive data with minimal ops effort, EloqDoc’s design is beautiful.
+
+However, it’s worth noting that MongoDB’s architecture, while older, is a well-trodden path. Thousands of deployments have proven its resilience and performance when configured correctly.
+
+## Conclusion
+
+If you’re building a new system that requires easy horizontal scaling and you prefer the system to handle data distribution seamlessly (perhaps you don’t have a DBA team to manage sharding), [EloqDoc’s](https://www.eloqdata.com/product/eloqdoc) architecture provides a compelling solution. On the other hand, if your needs are modest or you already have a well-established sharded MongoDB deployment strategy, MongoDB’s architecture will serve you reliably, and you might stick with the familiar route.
+
+In **[Part 2](/blog/eloqdoc-vs-mongodb-feature-comparison)**, we will take a deep dive into how these design choices impact features such as transactions, consistency, and query performance. Understanding the architectural underpinnings will help make sense of those feature-level differences and what they mean for real-world use.

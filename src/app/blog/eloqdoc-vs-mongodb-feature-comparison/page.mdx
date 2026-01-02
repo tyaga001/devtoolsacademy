@@ -1,0 +1,406 @@
+import Image from "next/image"
+
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+import { Callout } from "@/components/blog/Callout"
+
+import CoverImage from "./cover.png"
+import image1 from "./image1.png"
+import image2 from "./image2.png"
+import image3 from "./image3.png"
+import image4 from "./image4.png"
+import image5 from "./image5.png"
+import image6 from "./image6.png"
+import image7 from "./image7.png"
+import image8 from "./image8.png"
+import image9 from "./image9.png"
+import image10 from "./image10.png"
+import image11 from "./image11.png"
+import image12 from "./image12.png"
+import image13 from "./image13.png"
+import image14 from "./image14.png"
+import image15 from "./image15.png"
+import image16 from "./image16.png"
+import image17 from "./image17.png"
+import image18 from "./image18.png"
+import image19 from "./image19.png"
+
+export const metadata = getMetadata({
+  path: "/blog/eloqdoc-vs-mongodb-feature-comparison",
+  title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
+  description:
+    "In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of features and capabilities. We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).",
+  image: CoverImage.src,
+})
+
+<BlogHeader
+  title={"EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison"}
+  author={"Ankur Tyagi"}
+  publishedAt={"2026-01-02T00:00:00Z"}
+/>
+
+In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of **features and capabilities.** We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).
+
+Both EloqDoc and MongoDB are capable document databases, but as we saw in [Part 1](/blog/eloqdoc-vs-mongodb-architecture-and-design), their underlying architectures differ. Those differences trickle up to the feature level, affecting how each database behaves and what it’s best suited for. In this article, I’ll share a candid comparison of these features. By the end, you should have a clearer opinion on which system is the better choice for specific technical requirements.
+
+## ACID Compliance and Consistency Models
+
+MongoDB has evolved from a basically eventually-consistent NoSQL store to a fully ACID-compliant database for multi-document transactions (since version 4.0).
+
+- **Atomicity**: MongoDB has always ensured atomicity on single-document updates (no partial writes to a document). With multi-document transactions, MongoDB ensures all operations in a transaction commit, or none do.
+
+<Image
+  src={image1}
+  alt="MongoDB Multi-Document ACID Transactions"
+  width={1200}
+  height={600}
+/>
+
+- **Consistency**: In a replica set, MongoDB can guarantee consistency depending on read/write concerns – by default, writes with writeConcern: "majority" ensure the data is on a majority of replicas (preventing rollback on primary failover), and transactions enforce consistency at commit (they will abort on any conflict). MongoDB falls into the category of tunably consistent systems.
+
+- **Isolation**: MongoDB’s transactions provide snapshot isolation (also known as repeatable reads) by default. Under the hood, WiredTiger’s MVCC means readers see a consistent snapshot and don’t block writers. Write conflicts are handled by locking at the document level; if two writes conflict on the same document, one will wait or fail.
+
+- **Durability**: MongoDB, with journaling and replication, ensures that once a write is acknowledged with w: "majority", it is durable to crashes (WiredTiger logs it) and will survive one or more node failures (replicated to secondaries).
+
+<Image
+  src={image2}
+  alt="Database Update Operations"
+  width={1200}
+  height={600}
+/>
+
+MongoDB supports linearizable writes and reads (with readConcern set to "linearizable") for the strongest consistency, albeit at a performance cost.
+
+Still, certain behaviours label MongoDB’s distributed transactions as “weak” in comparison to a relational database. For instance, long-running MongoDB transactions are discouraged (they will abort if running over 60 seconds), and there’s a performance hit to using them.
+
+<Image
+  src={image3}
+  alt="MongoDB for Linearizable Read Operations"
+  width={1200}
+  height={600}
+/>
+
+**EloqDoc** was designed to offer “True ACID” across the distributed system by default. Every EloqDoc write operation is part of a transactional system, even if you don’t explicitly start a multi-document transaction.
+
+The underlying data substrate provides fully ACID-compliant transactions with configurable isolation levels. This means EloqDoc can support similar isolation levels to traditional databases (e.g. Read Committed, Repeatable Read/Snapshot).
+
+- **Atomicity**: EloqDoc commits all changes as a single unit across any number of documents or partitions, either everything applies or nothing does.
+
+- **Consistency**: EloqDoc provides strong consistency. Committed writes are immediately visible, and global timestamp ordering ensures conflicting writes from different nodes resolve deterministically.
+
+- **Isolation**: By using a one-phase commit and timestamp ordering, EloqDoc provides global snapshot isolation, which is beneficial for all operations. Because each partition (CCMap) in the Data Substrate handles concurrency locally and uses message passing, many transactions can run in parallel without locking each other.
+
+- **Durability**: EloqDoc’s durability is ensured by its distributed WAL (log), which writes to stable storage (it can use multiple log devices and replicates log records or uses a highly-reliable service like EBS for logs). A transaction in EloqDoc is considered committed once its WAL entry is persisted to the log service; at that point, it’s durable and will survive failures.
+
+<Image
+  src={image4}
+  alt="EloqDoc Transaction Commit Process"
+  width={1200}
+  height={600}
+/>
+
+This design decouples durability from memory, so even if a node crashes, another node can recover the committed transactions from the global log and object store.
+
+## Scalability (Horizontal and Vertical)
+
+MongoDB and EloqDoc both support horizontal scaling, but in very different ways. MongoDB achieves horizontal scale via sharding, where data is distributed across multiple shards (each a replica set). This requires choosing a shard key and possibly resharding if the data distribution is uneven.
+
+<Image
+  src={image5}
+  alt="MongoDB Sharding Architecture"
+  width={1200}
+  height={600}
+/>
+
+Adding a new shard to a MongoDB cluster involves spinning up a new replica set, then MongoDB will rebalance chunks of data to that shard (which can be time-consuming and network-intensive). During rebalancing, there’s some overhead and potential I/O performance hit.
+
+Scaling reads horizontally in MongoDB is simpler; you can add more secondaries to a replica set to distribute read load (with the caveat of eventual consistency on secondaries). Scaling writes, however, mandates sharding; a single replica set (one primary) cannot scale writes beyond the capacity of that primary node.
+
+In contrast, EloqDoc is designed for effortless horizontal scale-out. Because compute and storage are decoupled, adding a new node to an EloqDoc cluster does not require moving existing data off other nodes – the new node can immediately start serving requests by accessing the shared data store. This means elastic scaling is fast and non-disruptive: you can increase throughput or capacity by simply adding compute nodes, which mount the standard object storage.
+
+EloqDoc supports proper elasticity without the need for traditional chunk migration or manual rebalancing, unlike MongoDB’s sharded architecture, which requires shard rebalancing and data movement. EloqDoc’s architecture decouples compute and storage, enabling compute nodes to scale independently and operate over a globally distributed data substrate with minimal reconfiguration.
+
+The cluster can even dynamically rebalance workload by shifting which node handles which partition, all without downtime.
+
+### Vertical scalability
+
+MongoDB scales vertically by taking full advantage of additional CPU and memory. The database engine is highly concurrent, using multiple threads to parallelize reads, writes, and background operations across all available CPU cores. Its WiredTiger storage engine relies heavily on RAM to cache active documents and indexes. Hence, increasing memory directly improves throughput by allowing more of the working set to remain in memory and reducing the need for disk I/O.
+
+<Image
+  src={image6}
+  alt="MongoDB Vertical Scalability"
+  width={1200}
+  height={600}
+/>
+
+**EloqDoc** was explicitly designed to leverage modern multi-core and many-core systems. Data Substrate employs a sharded design at the thread level, partitioning the in-memory data (TxMap) into multiple shards (CCMaps), each managed by a dedicated thread to mitigate lock contention.
+
+This effectively means EloqDoc _scales nearly_ linearly with CPU cores for many workloads, as each core can manage a different partition without interference (they communicate via message passing). The system also supports scaling up memory independently; you can allocate more memory to the EloqDoc cache to hold more hot data without changing the storage or compute count.
+
+Both systems can leverage faster storage (e.g., NVMe SSDs); MongoDB will experience faster I/O for disk-bound workloads, and EloqDoc will benefit from faster caching and log flushes. One vertical scaling difference: MongoDB requires scaling up if one shard can’t handle the load, whereas EloqDoc could alternatively split that shard’s data across multiple threads/nodes if needed.
+
+## Data Modelling Flexibility
+
+Both MongoDB and EloqDoc use the JSON document model as their primary data model. This means data is organized in collections of documents (akin to JSON objects) rather than rigid tables of rows. This model is inherently flexible: each document can have its own structure, including optional or extra fields, as well as nested subdocuments or arrays.
+
+MongoDB popularized this approach and allows schema validation rules, but does not enforce the schema by default. You can embed related data in a single document or reference across collections, depending on your needs.
+
+EloqDoc is fully compatible with MongoDB’s document model and API. In fact, it uses MongoDB’s query parser and execution engine, so it understands BSON types, nested documents, arrays, ObjectIds, etc., exactly as MongoDB does.
+
+<Image
+  src={image7}
+  alt="Data Modelling Flexibility"
+  width={1200}
+  height={600}
+/>
+
+For a developer, using EloqDoc is intended to feel no different from using MongoDB – your existing data model can be migrated without changes, and all the richness of MongoDB’s BSON types (dates, geospatial coordinates, decimals) is supported. EloqDoc imposes no new schema requirements; it retains the same schema-less flexibility that MongoDB offers.
+
+## Query Capabilities and Indexing Options
+
+MongoDB offers a diverse range of index types, including B-tree, compound, multikey, geospatial, text, hashed, wildcard, and more. Some of these index types, such as **hashed indexes**, exist primarily to serve MongoDB’s _sharding layer_.
+
+Hashed indexes ensure uniform distribution of shard key values, reducing data hotspots across shards. They are tied directly to MongoDB’s architectural need to pre-distribute data across many independent storage/compute islands.
+
+EloqDoc supports the core set of MongoDB-compatible index types required for rich query performance, including single-field, compound, TTL, and multikey indexes. However, it omits index types whose sole purpose is to support sharded distribution.
+
+<Image
+  src={image8}
+  alt="Query Capabilities and Indexing Options"
+  width={1200}
+  height={600}
+/>
+
+Because EloqDoc is a _natively distributed database_, it does **not** rely on shard keys or a separate sharding layer. The underlying Data Substrate automatically spreads data uniformly across the cluster. As a result:
+
+- No shard key selection
+- No resharding
+- No hashed indexes
+- No data hotspots or chunk balancing
+- Simpler index design and lower operational overhead
+
+This dramatically simplifies schema design and cluster operations, while still delivering performance comparable to a traditional sharded MongoDB cluster.
+
+## Transactions and Concurrency Control
+
+MongoDB manages concurrency using a combination of multi-version concurrency control (MVCC) for reads and locks for writes. With the WiredTiger storage engine, readers access a consistent snapshot of data, ensuring that writers are never blocked from accessing it. Each read operates at a logical cluster time, ensuring it doesn’t see partial or uncommitted changes.
+
+<Image
+  src={image9}
+  alt="MongoDB Snapshots and Checkpoints"
+  width={1200}
+  height={600}
+/>
+
+Writes acquire document-level exclusive locks and intent locks at the collection and database levels, isolating concurrent updates to the same document. In multi-document transactions, MongoDB effectively uses two-phase locking - holding locks until commit - to maintain atomicity. Because of this, long transactions can accumulate many locked documents and consume more memory, so MongoDB recommends keeping them short.
+
+For distributed transactions across shards, MongoDB employs a two-phase commit protocol, where one shard acts as the coordinator, preparing and committing all participants.
+
+<Image
+  src={image10}
+  alt="MongoDB Two-Phase Commit Protocol"
+  width={1200}
+  height={600}
+/>
+
+During this process, each shard holds locks on the affected documents, which adds network latency and coordination overhead. MongoDB transactions provide snapshot isolation, preventing dirty or non-repeatable reads within the same transaction snapshot.
+
+**EloqDoc**, by contrast, is built on the EloqData Data Substrate, which implements a share-everything, cloud-native architecture. The system operates without a global sequencer or single synchronization point, achieving concurrency control through decentralized coordination. Rather than relying on centralized locks, each component runs in a thread-per-core model, where threads communicate through message passing instead of shared mutexes.
+
+Transactions follow an optimistic concurrency control (OCC) model, where operations proceed without blocking, and conflicts are detected and resolved at commit time of commit. To order events consistently across distributed nodes, the Data Substrate utilises hybrid logical clocks (HLCs) in conjunction with its own timestamping mechanism.
+
+This allows transactions to be validated globally, ensuring that if two concurrent writes target the same item out of order, one is aborted.
+
+EloqDoc supports multi-document transactions across partitions using our patented 1PC protocol, designed to minimise network round-trips and eliminate the need for a classic two-phase commit coordinator.
+
+The underlying Data Substrate architecture distributes transaction logging, compute, and storage, enabling transactions to commit with minimal coordination overhead.
+
+## Replication and High Availability
+
+MongoDB ensures high availability primarily through the use of **replica sets**. A replica set typically has three or more nodes: one primary and the rest secondaries. The primary continuously streams its write operations (oplog) to secondaries. If the primary node fails (due to a crash or a network partition), the remaining members hold an **election** to promote one of the secondaries to the primary role. This failover process usually completes within a few seconds.
+
+<Image
+  src={image11}
+  alt="MongoDB Replica Set Architecture"
+  width={1200}
+  height={600}
+/>
+
+During an election, the MongoDB cluster briefly becomes read-only until a new primary is elected. Once elected, clients reconnect and resume writing.
+
+This setup avoids a single point of failure as long as a majority of nodes remain active, for instance, in a 3-node replica set, one node can fail without losing availability. Replication is asynchronous by default, but can be made synchronous using **w:majority** write acknowledgements.
+
+For disaster recovery, MongoDB supports multi-region replication, where nodes across data centers can elect a new primary if a region fails, provided a majority of nodes are preserved.
+
+EloqDoc’s architecture distinctly handles replication. Instead of maintaining multiple complete copies of data on different nodes (such as primary-secondary), EloqDoc uses shared durable storage (object store) in conjunction with caching. The object storage (e.g., S3) itself is typically replicated across availability zones by the cloud provider.
+
+That gives a base durability; if one disk or even one AZ fails, the data is still safe in another AZ’s copy. EloqDoc also employs a cache redundancy mechanism, single replica stateless compute, and uses EBS for recent data durability.
+
+<Image
+  src={image12}
+  alt="EloqDoc High Availability Architecture"
+  width={1200}
+  height={600}
+/>
+
+EloqDoc provides high availability via a “shared storage, stateless compute” paradigm, achieving failovers in sub-second times and avoiding data loss by relying on highly durable storage and distributed logging. MongoDB provides high availability via replica sets and automatic failover, typically with a few seconds of write outage during primary elections.
+
+EloqDoc is particularly attractive for cloud deployments that require fast elasticity and failover.
+
+## Backup and Data Management (The Object Storage Advantage)
+
+MongoDB supports two main backup types:
+
+- **Logical backups** – using tools such as mongodump or mongoexport to export data in BSON or JSON format.
+
+- **Physical backups** – capturing filesystem or cloud snapshots via Ops Manager or Atlas.
+
+MongoDB Atlas and Ops Manager also offer continuous backups by tailing the oplog, enabling point-in-time recovery.
+
+<Image
+  src={image13}
+  alt="MongoDB Backup and Restore Options"
+  width={1200}
+  height={600}
+/>
+
+MongoDB’s mature backup ecosystem, including Atlas backup services, mongodump, and tools like Percona Backup for MongoDB, makes full or partial restores straightforward.
+
+EloqDoc’s object-storage-first architecture provides backup and recovery capabilities fundamentally different from MongoDB’s filesystem-level or oplog-based backups.
+
+Because all persistent data files in EloqDoc are immutable objects stored on S3 (or S3-compatible storage), the system can create backups using a zero-copy Copy-on-Write (CoW) snapshot mechanism. Instead of copying gigabytes or terabytes of data, EloqDoc simply generates a new manifest, a lightweight metadata file that references the existing immutable objects. This offers several advantages:
+
+### Instant Backups
+
+Backups complete in **seconds**, regardless of dataset size, because no data is copied.
+Storage overhead is **effectively zero**, unless data diverges later.
+
+### Fast Data Branching
+
+The exact snapshot mechanism supports instant “data branches” for:
+
+- CI/CD pipelines
+- Development and testing environments
+- AI and ML workloads that evaluate models on historical data
+- Experimentation with isolated datasets
+
+Branches initially share all their underlying data files with the primary dataset. Only new writes trigger CoW behaviour, allowing branch environments to diverge without incurring double storage costs.
+
+This branching model is compelling, comparable to Snowflake’s data cloning or Neon’s database branching, and is particularly attractive for AI-native applications that require rapid iteration on extensive training or inference datasets.
+
+Combined with distributed WAL (for point-in-time restore), EloqDoc offers a backup and DR model far more flexible than snapshotting traditional block storage or replicating a WAL-driven database like MongoDB.
+
+In addition to storage-level features, EloqDoc natively supports key backup utilities:
+
+<Image
+  src={image14}
+  alt="EloqDoc Backup and Restore Options"
+  width={1200}
+  height={600}
+/>
+
+## Security and Access Control
+
+**Authentication & Authorization**
+MongoDB supports multiple authentication methods, including SCRAM (username/password), x.509 certificates, LDAP, and Kerberos.
+
+Once authenticated, MongoDB enforces role-based access control (RBAC), allowing admins to assign fine-grained privileges, such as readWrite or dbAdmin, to users. Enterprise editions also support field-level redaction and collection-level access.
+
+<Image
+  src={image15}
+  alt="MongoDB Security Features"
+  width={1200}
+  height={600}
+/>
+
+EloqDoc, being MongoDB API-compatible, inherits the same model. You can create users and roles with standard MongoDB commands (db.createUser(), etc.), and they’ll be enforced identically. SCRAM-based authentication and RBAC work out of the box, offering equivalent access control.
+
+<Image
+  src={image16}
+  alt="EloqDoc Security Features"
+  width={1200}
+  height={600}
+/>
+
+Both MongoDB and EloqDoc support TLS/SSL encryption for client and inter-node communication, ensuring all traffic is protected. Configurations like net.tls.mode and net.tls.certificateKeyFile can be applied similarly in both systems to enforce secure connections and IP-level access control.
+
+In MongoDB, encryption at rest is available in the Enterprise edition via WiredTiger with KMS integration; community users typically rely on OS or disk encryption.
+
+EloqDoc relies on its object storage layer (e.g., S3), which already encrypts data using server-side encryption (SSE). Additional protection can be added using OS-level or volume encryption for local caches.
+
+| Feature               | MongoDB                             | EloqDoc                   |
+| --------------------- | ----------------------------------- | ------------------------- |
+| Authentication        | SCRAM, LDAP, Kerberos               | SCRAM (Mongo-compatible)  |
+| Authorization         | Full RBAC                           | Same RBAC model           |
+| Encryption in Transit | TLS/SSL                             | TLS/SSL                   |
+| Encryption at Rest    | WiredTiger (Enterprise) or OS-level | Object storage + OS-level |
+| Auditing              | Built-in (Enterprise)               | Manual/external logging   |
+| License               | SSPL (source-available)             | AGPL (open source)        |
+
+## Deployment Models (Cloud, On-Premises, Hybrid)
+
+MongoDB offers flexible deployment options across on-premises, cloud, and hybrid environments. On-premises, it runs smoothly on servers, virtual machines, or containers, making it ideal for self-managed clusters in data centers or private clouds.
+
+In the cloud, MongoDB Atlas provides a fully managed experience on AWS, Azure, and GCP, complete with autoscaling, automated backups, and monitoring. Organizations can also deploy manually on cloud VMs or through Kubernetes using official or third-party operators.
+
+EloqDoc is open-source (AGPLv3), allowing you to run it on-premises or in your own cloud instances. [It’s packaged as a binary tarball for major Linux distributions](https://github.com/eloqdata/eloqdoc).
+
+<Image
+  src={image17}
+  alt="EloqDoc Deployment Models"
+  width={1200}
+  height={600}
+/>
+
+For on-premises use, it requires an S3-compatible storage system such as MinIO or Ceph. If unavailable, EloqDoc can fall back to RocksDB for local persistence, which is helpful for development or testing environments.
+
+<Image
+  src={image18}
+  alt="EloqDoc On-Premises Deployment"
+  width={1200}
+  height={600}
+/>
+
+Using MongoDB Atlas is ideal for teams that want fully managed, hassle-free database operations with automatic scaling, upgrades, and monitoring.
+
+EloqDoc’s managed cloud service, EloqCloud, offers a similar experience within the EloqData ecosystem. It enables users to deploy EloqDoc clusters directly in the cloud, selecting providers such as AWS and regions like us-west-1 through a simple interface.
+
+<Image
+  src={image19}
+  alt="EloqDoc Managed Cloud Service"
+  width={1200}
+  height={600}
+/>
+
+EloqDoc, whether self-hosted or delivered via EloqCloud, follows a cloud-native design built around **object storage + stateless compute**. This model has several implications that reduce operational complexity and cost:
+
+### Decoupled Scaling (Compute vs Storage)
+
+Compute and storage scale independently:
+
+- You can run a small compute cluster with high QPS/transaction throughput
+- While storing petabyte-scale datasets on low-cost S3 or S3-compatible storage
+
+This avoids the rigid “bigger VM = more storage” coupling common in MongoDB’s self-managed deployments.
+
+### Reduced High-Availability Overhead
+
+EloqDoc achieves high availability using:
+
+- A single compute replica (because the durable log + object storage provides multi-AZ redundancy)
+- Automatic failover with sub-second recovery
+- Stateless nodes that can be replaced instantly
+
+Compared to MongoDB Atlas, which requires maintaining three continuously running nodes, EloqDoc reduces compute costs by **2/3** for equivalent durability and uptime.
+
+We’ll explore this in much more detail in Part III, where we compare Atlas and EloqCloud directly and look at how these architectural differences translate into real-world Total Cost of Ownership (TCO) savings.
+
+## Conclusion - Which Option Is Best for Your Needs?
+
+We’ve covered a lot of ground on features. Both MongoDB and EloqDoc are capable document databases, but each has its sweet spots.
+
+At EloqData, our mission is to build the foundational data layer for the AI era - one that combines simplicity, performance, and adaptability at its core. We envision a future where database systems are unified into a single, seamless platform that empowers both developers and enterprises.
+
+Try [EloqDoc today](https://github.com/eloqdata/eloqdoc) and experience the next generation of data management. We’d love to hear your feedback and thoughts. [Chat with us on Discord](https://discord.com/invite/nmYjBkfak6).
+
+In the next part (Part 3), we’ll compare the managed cloud offerings (MongoDB Atlas vs EloqCloud) and delve into cost, performance benchmarks, and other practical considerations when deploying these databases in the cloud.
