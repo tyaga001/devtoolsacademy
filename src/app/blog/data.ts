@@ -23,7 +23,8 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "eloqdoc-vs-mongodb-feature-comparison",
     title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
-    excerpt: "Feature-by-feature comparison of EloqDoc and MongoDB capabilities",
+    excerpt:
+      "Feature-by-feature comparison of EloqDoc and MongoDB capabilities",
     description:
       "A detailed comparison of key features including transactions, indexing, consistency guarantees, and query capabilities. This part highlights where the two databases overlap and where their design philosophies clearly diverge in real world usage.",
     publishedAt: "2026-01-02T00:00:00Z",
@@ -48,7 +49,8 @@ export const allBlogs = [
   {
     author: "Jitendra Nirnejak",
     slug: "uv-and-ruff-turbocharging-python-development-with-rust-powered-tools",
-    title: "UV and Ruff: Turbocharging Python Development with Rust-Powered Tools",
+    title:
+      "UV and Ruff: Turbocharging Python Development with Rust-Powered Tools",
     excerpt: "Rust based linter and dependency manager for python",
     description:
       "Discover Ruff and uv, Rust-fueled beasts revolutionizing Python dev. Blast through linting, packaging, and deps with 10x speed gains. Level up your code game now.",
@@ -73,7 +75,8 @@ export const allBlogs = [
   {
     author: "Ankur Tyagi",
     slug: "betterauth-vs-nextauth",
-    title: "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS",
+    title:
+      "BetterAuth vs NextAuth: Choose the Right Auth Library for Your SaaS",
     excerpt: "Choose the right authentication library for your Next.js app",
     description:
       "A comparison of BetterAuth and NextAuth to help you choose the best authentication library for your app",
@@ -114,7 +117,8 @@ export const allBlogs = [
     slug: "cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow",
     title:
       "Cody vs Cursor: Choosing the Right AI Code Assistant for Your Development Workflow",
-    excerpt: "Choose the right AI code assistant for your development workflow.",
+    excerpt:
+      "Choose the right AI code assistant for your development workflow.",
     description:
       "A comparison of Cody and Cursor to help you choose the right AI code assistant",
     publishedAt: "2025-03-17T00:00:00Z",
