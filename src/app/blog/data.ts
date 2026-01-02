@@ -10,6 +10,7 @@ import MongoDBCoverImage from "@/app/blog/mongoDB-vs-postgreSQL/cover.png"
 import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover.png"
 import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
+import EloqdocVSMongoDB from "@/app/blog/eloqdoc-vs-mongodb-part1/cover.png"
 
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
@@ -20,14 +21,27 @@ export const allAuthors = [
 export const allBlogs = [
   {
     author: "Ankur Tyagi",
+    slug: "eloqdoc-vs-mongodb-part2",
+    title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
+    excerpt: "An overview of EloqDoc and MongoDB architecture",
+    description:
+      "In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of features and capabilities. We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).",
+    publishedAt: "2026-01-02T00:00:00Z",
+    category: "Databases",
+    image: EloqdocVSMongoDB.src,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    author: "Ankur Tyagi",
     slug: "eloqdoc-vs-mongodb-part1",
     title: "EloqDoc vs MongoDB - Part 1: Architecture and Design Overview",
     excerpt: "An overview of EloqDoc and MongoDB architecture",
     description:
       "In this first part of our comparison series, we provide an overview of the core architecture of EloqDoc and MongoDB, highlighting how their design principles diverge. By understanding the architectural foundations, you can better judge which database aligns with your project needs.",
-    publishedAt: "2026-01-05T00:00:00Z",
+    publishedAt: "2026-01-02T00:00:00Z",
     category: "Databases",
-    image: StateOfAICodeReviewCoverImage.src,
+    image: EloqdocVSMongoDB.src,
     isNew: true,
     isFeatured: true,
   },
