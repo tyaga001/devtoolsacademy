@@ -328,14 +328,47 @@ In MongoDB, encryption at rest is available in the Enterprise edition via WiredT
 
 EloqDoc relies on its object storage layer (e.g., S3), which already encrypts data using server-side encryption (SSE). Additional protection can be added using OS-level or volume encryption for local caches.
 
-| Feature               | MongoDB                             | EloqDoc                   |
-| --------------------- | ----------------------------------- | ------------------------- |
-| Authentication        | SCRAM, LDAP, Kerberos               | SCRAM (Mongo-compatible)  |
-| Authorization         | Full RBAC                           | Same RBAC model           |
-| Encryption in Transit | TLS/SSL                             | TLS/SSL                   |
-| Encryption at Rest    | WiredTiger (Enterprise) or OS-level | Object storage + OS-level |
-| Auditing              | Built-in (Enterprise)               | Manual/external logging   |
-| License               | SSPL (source-available)             | AGPL (open source)        |
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>MongoDB</th>
+      <th>EloqDoc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Authentication</td>
+      <td>SCRAM, LDAP, Kerberos</td>
+      <td>SCRAM (Mongo-compatible)</td>
+    </tr>
+    <tr>
+      <td>Authorization</td>
+      <td>Full RBAC</td>
+      <td>Same RBAC model</td>
+    </tr>
+    <tr>
+      <td>Encryption in Transit</td>
+      <td>TLS/SSL</td>
+      <td>TLS/SSL</td>
+    </tr>
+    <tr>
+      <td>Encryption at Rest</td>
+      <td>WiredTiger (Enterprise) or OS-level</td>
+      <td>Object storage + OS-level</td>
+    </tr>
+    <tr>
+      <td>Auditing</td>
+      <td>Built-in (Enterprise)</td>
+      <td>Manual/external logging</td>
+    </tr>
+    <tr>
+      <td>License</td>
+      <td>SSPL (source-available)</td>
+      <td>AGPL (open source)</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Deployment Models (Cloud, On-Premises, Hybrid)
 
@@ -397,10 +430,10 @@ We’ll explore this in much more detail in Part III, where we compare Atlas and
 
 ## Conclusion - Which Option Is Best for Your Needs?
 
-We’ve covered a lot of ground on features. Both MongoDB and EloqDoc are capable document databases, but each has its sweet spots.
+This article covered a lot of ground on features. Both MongoDB and EloqDoc are capable document databases, but each has its sweet spots.
 
-At EloqData, our mission is to build the foundational data layer for the AI era - one that combines simplicity, performance, and adaptability at its core. We envision a future where database systems are unified into a single, seamless platform that empowers both developers and enterprises.
+> EloqData's mission is to build the foundational data layer for the AI era - one that combines simplicity, performance, and adaptability at its core. They envision a future where database systems are unified into a single, seamless platform that empowers both developers and enterprises.
 
-Try [EloqDoc today](https://github.com/eloqdata/eloqdoc) and experience the next generation of data management. We’d love to hear your feedback and thoughts. [Chat with us on Discord](https://discord.com/invite/nmYjBkfak6).
+> Try [EloqDoc today](https://github.com/eloqdata/eloqdoc) and experience the next generation of data management. The EloqData team would love to hear your feedback and thoughts. [Chat with them on Discord](https://discord.com/invite/nmYjBkfak6).
 
-In the next part (Part 3), we’ll compare the managed cloud offerings (MongoDB Atlas vs EloqCloud) and delve into cost, performance benchmarks, and other practical considerations when deploying these databases in the cloud.
+In the next part (Part 3), the series will compare the managed cloud offerings (MongoDB Atlas vs EloqCloud) and delve into cost, performance benchmarks, and other practical considerations when deploying these databases in the cloud.
