@@ -42,7 +42,7 @@ export const allBlogs = [
     description:
       "In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of features and capabilities. We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).",
     publishedAt: "2026-01-02T00:00:00Z",
-    category: "Databases",
+    category: "Database",
     image: EloqdocVSMongoDB.src,
     isNew: true,
     isFeatured: true,
@@ -55,7 +55,7 @@ export const allBlogs = [
     description:
       "In this first part of our comparison series, we provide an overview of the core architecture of EloqDoc and MongoDB, highlighting how their design principles diverge. By understanding the architectural foundations, you can better judge which database aligns with your project needs.",
     publishedAt: "2026-01-02T00:00:00Z",
-    category: "Databases",
+    category: "Database",
     image: EloqdocVSMongoDB.src,
     isNew: true,
     isFeatured: true,
