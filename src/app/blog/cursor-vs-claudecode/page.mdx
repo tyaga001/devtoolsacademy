@@ -85,7 +85,7 @@ Cursor’s IDE-based agent has its own set of productivity features:
 
 - **Tabs**: You can open multiple agent “workspaces” (tabs) within Cursor, each with an independent conversation context and even a different model selection. This lets you work on separate tasks in parallel.
 
-- **Checkpoints**: Cursor automatically snapshots your code changes as you go, providing undo/rollback points. (In the Agent Chat, each code-modifying step has a “+” icon to restore a previous checkpoint.
+- **Checkpoints**: Cursor automatically snapshots your code changes as you go, providing undo/rollback points. (In the Agent Chat, each code-modifying step has a “+” icon to restore a previous checkpoint).
 
 - **Export**: You can export an entire chat conversation to a Markdown file for documentation or sharing. (For example, telling the AI “write down our discussion to notes.md” will create a file with the chat history.)
 
@@ -120,7 +120,7 @@ Claude Code (and the underlying Claude model) supports a rich set of advanced fe
 
 - **Prompt caching** allows you to optimise your API usage by resuming prompts from specific prefixes. This can reduce processing time and costs.
 
-- **Extended thinking** supports multi-step reasoning chains,, allowing you to execute complex tasks while providing transparency into its step-by-step thought process before delivering its final answer.
+- **Extended thinking** supports multi-step reasoning chains, allowing you to execute complex tasks while providing transparency into its step-by-step thought process before delivering its final answer.
 
 - **Streaming messages** - When creating a Message, you can set "stream": true to incrementally stream the response using server-sent events (SSE).
 
@@ -132,7 +132,7 @@ Claude Code (and the underlying Claude model) supports a rich set of advanced fe
 
 - **Token counting** - Token counting enables you to determine the number of tokens in a message before sending it to Claude.
 
-- **Embeddings** - Anthropic does not offer its own embedding model. Claude code enables us to utilise embedding models for tasks such as search, recommendations, and anomaly detection, leveraging Voyage 'sAI's state-of-the-art embedding models.
+- **Embeddings** - Anthropic does not offer its own embedding model. Claude code enables us to utilise embedding models for tasks such as search, recommendations, and anomaly detection, leveraging Voyage's AI's state-of-the-art embedding models.
 
 - **Vision** - The Claude 3 and 4 families of models come with new vision capabilities that allow Claude to understand and analyze images, opening up exciting possibilities for multimodal interaction.
 
@@ -312,7 +312,7 @@ The **text-editor tool** allows Claude to view and modify files directly, functi
 
 For external data, Claude includes a **web-fetch tool** that retrieves full content from web pages or PDFs, and a **web-search tool** that performs live searches with automatic citation of sources.
 
-All of these are invoked via slash commands or API calls, and Anthropic’s design emphasises token-efficient streaming and fine-grained scoping, ensuring that only the necessary tools are active during each step. In practice, developers use commands like** /agents\*\***, /config\*\*, **or /review** to orchestrate these capabilities and embed them into workflows.
+All of these are invoked via slash commands or API calls, and Anthropic's design emphasises token-efficient streaming and fine-grained scoping, ensuring that only the necessary tools are active during each step. In practice, developers use commands like **/agents**, **/config**, or **/review** to orchestrate these capabilities and embed them into workflows.
 
 ## MCP (Model Context Protocol): Claude Code vs. Cursor
 
@@ -361,7 +361,7 @@ Responses are rendered **inside the chat** with expandable arguments and results
 
 Cursor’s docs emphasize sensible **security practices** (verify sources, least-privilege keys, review permissions, audit critical servers), and it’s easy to disable or debug a server from the same UI temporarily.
 
-Claude code, on the other han,d brings MCP to multiple surfaces:
+Claude code on the other hand brings MCP to multiple surfaces:
 
 1. **Messages API (MCP connector)** : You can add remote MCP servers directly to an API call (HTTP/SSE). This enables tool calls from MCP servers without a separate client. The connector supports OAuth and multiple servers per request, but is intentionally scoped: it only handles tool calls (not prompts/resources/roots), does not use STDIO, and is not currently supported on Bedrock/Vertex.
 
@@ -484,7 +484,7 @@ As AI coding assistants (like Cursor and Claude Code) accelerate feature deliver
 
 ### IDE + AI Agent Workflow
 
-ith Cursor, as you generate or refactor code using Cursor’s inline agent, CodeRabbit reviews changes live in the IDE, providing inline suggestions and one-click fixes.
+With Cursor, as you generate or refactor code using Cursor’s inline agent, CodeRabbit reviews changes live in the IDE, providing inline suggestions and one-click fixes.
 
 <Image
   src={image25}
