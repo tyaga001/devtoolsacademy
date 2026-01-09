@@ -10,7 +10,7 @@ import MongoDBCoverImage from "@/app/blog/mongoDB-vs-postgreSQL/cover.png"
 import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover.png"
 import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
-import EloqdocVSMongoDB from "@/app/blog/eloqdoc-vs-mongodb-part1/cover.png"
+import EloqdocVSMongoDB from "@/app/blog/eloqdoc-vs-mongodb-architecture-and-design/cover.png"
 import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
 
 export const allAuthors = [
