@@ -22,6 +22,21 @@ export const allAuthors = [
 export const allBlogs = [
   {
     author: "Ankur Tyagi",
+    slug: "eloqdoc-vs-mongodb-cloud-services",
+    title:
+      "EloqDoc vs MongoDB - Part 3: Cloud Services (MongoDB Atlas vs EloqCloud)",
+    excerpt:
+      "Comparison of EloqDoc and MongoDB managed cloud services: MongoDB Atlas and EloqCloud",
+    description:
+      "In this third part of our series comparing EloqDoc and MongoDB, we focus on their managed cloud services: MongoDB Atlas and EloqCloud. We evaluate performance, cost, security, and features to help you decide which service best fits your needs.",
+    publishedAt: "2026-01-09T00:00:00Z",
+    category: "Database",
+    image: EloqdocVSMongoDB.src,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    author: "Ankur Tyagi",
     slug: "cursor-vs-claudecode",
     title: "Cursor vs Claude Code: A Comprehensive Comparison",
     excerpt:
