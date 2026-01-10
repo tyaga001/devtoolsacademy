@@ -29,7 +29,7 @@ export const allBlogs = [
       "Comparison of EloqDoc and MongoDB managed cloud services: MongoDB Atlas and EloqCloud",
     description:
       "In this third part of our series comparing EloqDoc and MongoDB, we focus on their managed cloud services: MongoDB Atlas and EloqCloud. We evaluate performance, cost, security, and features to help you decide which service best fits your needs.",
-    publishedAt: "2026-01-09T00:00:00Z",
+    publishedAt: "2026-01-10T00:00:00Z",
     category: "Database",
     image: EloqdocVSMongoDB.src,
     isNew: true,
