@@ -11,6 +11,8 @@ import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover
 import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
 import EloqdocVSMongoDB from "@/app/blog/eloqdoc-vs-mongodb-architecture-and-design/cover.png"
+import EloqdocVSMongoDBPart2 from "@/app/blog/eloqdoc-vs-mongodb-feature-comparison/cover.png"
+import EloqdocVSMongoDBPart3 from "@/app/blog/eloqdoc-vs-mongodb-cloud-services/cover.png"
 import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
 
 export const allAuthors = [
@@ -31,7 +33,7 @@ export const allBlogs = [
       "In this third part of our series comparing EloqDoc and MongoDB, we focus on their managed cloud services: MongoDB Atlas and EloqCloud. We evaluate performance, cost, security, and features to help you decide which service best fits your needs.",
     publishedAt: "2026-01-10T00:00:00Z",
     category: "Database",
-    image: EloqdocVSMongoDB.src,
+    image: EloqdocVSMongoDBPart3.src,
     isNew: true,
     isFeatured: true,
   },
@@ -59,7 +61,7 @@ export const allBlogs = [
       "In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of features and capabilities. We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).",
     publishedAt: "2026-01-02T00:00:00Z",
     category: "Database",
-    image: EloqdocVSMongoDB.src,
+    image: EloqdocVSMongoDBPart2.src,
     isNew: true,
     isFeatured: true,
   },
