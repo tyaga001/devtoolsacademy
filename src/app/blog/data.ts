@@ -146,7 +146,7 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow",
     title:
-      "Cody vs. Cursor: Choosing the Right AI Code Assistant for Your Development Workflow",
+      "Cody vs Cursor: Choosing the Right AI Code Assistant for Your Development Workflow",
     excerpt:
       "Choose the right AI code assistant for your development workflow.",
     description:
@@ -212,7 +212,7 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "mongoDB-vs-postgreSQL",
     title: "MongoDB vs PostgreSQL: A Technical Comparison",
-    excerpt: "A technical comparison of MongoDB vs. PostgreSQL",
+    excerpt: "A technical comparison of MongoDB vs PostgreSQL",
     description:
       "A technical comparison of MongoDB vs. PostgreSQL to help you choose the best database solution for your SaaS",
     publishedAt: "2024-09-26T00:00:00Z",
