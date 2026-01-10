@@ -38,7 +38,8 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "eloqdoc-vs-mongodb-feature-comparison",
     title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
-    excerpt: "Feature-by-feature comparison of EloqDoc and MongoDB capabilities",
+    excerpt:
+      "Feature-by-feature comparison of EloqDoc and MongoDB capabilities",
     description:
       "In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of features and capabilities. We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).",
     publishedAt: "2026-01-02T00:00:00Z",
