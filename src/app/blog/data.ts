@@ -20,20 +20,6 @@ export const allAuthors = [
 ]
 
 export const allBlogs = [
-   {
-    author: "Ankur Tyagi",
-    slug: "cursor-vs-claudecode",
-    title: "Cursor vs Claude Code: A Comprehensive Comparison",
-    excerpt:
-      "A comprehensive comparison of Cursor and Claude Code AI code editors",
-    description:
-      "In this article, we compare Cursor and Claude Code across a range of aspects, including context window size, tooling, code review, refactoring and debugging support, editor ergonomics, language support, workflow integration, and pricing. This structured comparison will help you understand which tool best suits your different development needs.",
-    publishedAt: "2026-01-08T00:00:00Z",
-    category: "AI Code Editor",
-    image: CursorVSClaudeCode.src,
-    isNew: true,
-    isFeatured: true,
-  },
   {
     author: "Ankur Tyagi",
     slug: "eloqdoc-vs-mongodb-feature-comparison",
