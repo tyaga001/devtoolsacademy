@@ -24,7 +24,8 @@ export const allBlogs = [
     author: "Ankur Tyagi",
     slug: "cursor-vs-claudecode",
     title: "Cursor vs Claude Code: A Comprehensive Comparison",
-    excerpt: "A comprehensive comparison of Cursor and Claude Code AI code editors",
+    excerpt:
+      "A comprehensive comparison of Cursor and Claude Code AI code editors",
     description:
       "This article compares Cursor and Claude Code across a range of aspects, including context window size, tooling, code review, refactoring and debugging support, editor ergonomics, language support, workflow integration, and pricing.",
     publishedAt: "2026-01-08T00:00:00Z",
