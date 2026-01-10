@@ -36,7 +36,7 @@ export const allBlogs = [
   },
   {
     author: "Ankur Tyagi",
-    slug: "eloqdoc-vs-mongodb-part2",
+    slug: "eloqdoc-vs-mongodb-feature-comparison",
     title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
     excerpt: "An overview of EloqDoc and MongoDB architecture",
     description:
@@ -49,7 +49,7 @@ export const allBlogs = [
   },
   {
     author: "Ankur Tyagi",
-    slug: "eloqdoc-vs-mongodb-part1",
+      slug: "eloqdoc-vs-mongodb-architecture-and-design",
     title: "EloqDoc vs MongoDB - Part 1: Architecture and Design Overview",
     excerpt: "An overview of EloqDoc and MongoDB architecture",
     description:
