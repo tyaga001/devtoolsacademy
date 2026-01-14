@@ -154,7 +154,7 @@ npm run migrate      # Run database migrations
 
 ## 📬 **Get In Touch**
 
-- 💌 **Email**: [hello@theankurtyagi.com](mailto:hello@theankurtyagi.com)
+- 💌 **Email**: [ankur@devtoolsacademy.com](mailto:ankur@devtoolsacademy.com)
 - 🐦 **Twitter**: [@theankurtyagi](https://twitter.com/theankurtyagi)
 - 🌐 **Website**: [devtoolsacademy.com](https://www.devtoolsacademy.com)
 

@@ -39,7 +39,11 @@ export const metadata = getMetadata({
   publishedAt={"2026-01-09T00:00:00Z"}
 />
 
-We shift focus to the managed cloud services for MongoDB and EloqDoc. **MongoDB Atlas** is MongoDB Inc.’s fully managed database-as-a-service, available on all major cloud providers, which has been around for years. **EloqCloud** is EloqData’s managed service for deploying [EloqDoc](https://www.eloqdata.com/product/eloqdoc) and [EloqKV](https://www.eloqdata.com/eloqkv/introduction) clusters in the cloud. Using a managed service can drastically simplify the operational burden – no need to manually set up servers, handle backups, or manage scaling; the service takes care of that. However, not all cloud services are equal.
+In this third part of our EloqDoc vs MongoDB series, we shift focus to the managed cloud services.
+
+> If you haven't read them yet, check out **[Part 1: Architecture and Design](/blog/eloqdoc-vs-mongodb-architecture-and-design)** and **[Part 2: Feature Comparison](/blog/eloqdoc-vs-mongodb-feature-comparison)** to understand the architectural foundations and feature-level differences.
+
+> **MongoDB Atlas** is MongoDB Inc.'s fully managed database-as-a-service, available on all major cloud providers, which has been around for years. **EloqCloud** is EloqData's managed service for deploying [EloqDoc](https://www.eloqdata.com/product/eloqdoc) and [EloqKV](https://www.eloqdata.com/eloqkv/introduction) clusters in the cloud. Using a managed service can drastically simplify the operational burden – no need to manually set up servers, handle backups, or manage scaling; the service takes care of that. However, not all cloud services are equal.
 
 We will compare Atlas and EloqCloud in terms of performance, cost, security, and overall capabilities. The goal is to help you determine which service might be the better fit for your needs, whether it’s getting the most bang for your buck or meeting strict performance and security requirements.
 
@@ -53,24 +57,59 @@ We ran a controlled benchmark to evaluate real-world performance of MongoDB Atla
 - Same hardware tiers: AWS us-west1 c5n.2xlarge (8 CPU cores, 16GB memory)
 - Workloads evaluated: Read-only, Read-write (50/50 mixed), and Write-only
 
-| Tier   | CPU / Memory       |
-| ------ | ------------------ |
-| Tier A | 2 cores / 16GB RAM |
-| Tier B | 8 cores / 64GB RAM |
+<table>
+  <thead>
+    <tr>
+      <th>Tier</th>
+      <th>CPU / Memory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tier A</td>
+      <td>2 cores / 16GB RAM</td>
+    </tr>
+    <tr>
+      <td>Tier B</td>
+      <td>8 cores / 64GB RAM</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Key Findings
 
-EloqCloud consistently delivers higher throughput across read, write, and mixed workloads, even as concurrency rises.
+> EloqCloud consistently delivers higher throughput across read, write, and mixed workloads, even as concurrency rises.
 
 ### Throughput (QPS) - 2 cores / 16GB
 
 **Read-only Workload**
 
-| Concurrency | Atlas QPS | EloqCloud QPS |
-| ----------- | --------- | ------------- |
-| 64          | 16,643    | 29,193        |
-| 128         | 12,860    | 33,556        |
-| 256         | 12,512    | 34,803        |
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency</th>
+      <th>Atlas QPS</th>
+      <th>EloqCloud QPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>16,643</td>
+      <td>29,193</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>12,860</td>
+      <td>33,556</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>12,512</td>
+      <td>34,803</td>
+    </tr>
+  </tbody>
+</table>
 
 As concurrency increases, Atlas read throughput declines while EloqCloud continues to scale. At 256 threads, EloqCloud sustains nearly 2× the throughput of Atlas, maintaining efficiency under parallel access instead of tapering off under load.
 
@@ -83,11 +122,32 @@ As concurrency increases, Atlas read throughput declines while EloqCloud continu
 
 **Read-Write (Mixed)**
 
-| Concurrency | Atlas QPS | EloqCloud QPS |
-| ----------- | --------- | ------------- |
-| 64          | 4,978     | 10,054        |
-| 128         | 5,241     | 12,988        |
-| 256         | 5,333     | 14,939        |
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency</th>
+      <th>Atlas QPS</th>
+      <th>EloqCloud QPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>4,978</td>
+      <td>10,054</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>5,241</td>
+      <td>12,988</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>5,333</td>
+      <td>14,939</td>
+    </tr>
+  </tbody>
+</table>
 
 Under mixed traffic, EloqCloud more than doubles throughput relative to Atlas across all concurrency levels. The performance gap widens as threads increase, indicating a commit path that handles parallel reads and writes without significant coordination overhead.
 
@@ -100,11 +160,32 @@ Under mixed traffic, EloqCloud more than doubles throughput relative to Atlas ac
 
 **Write-only**
 
-| Concurrency | Atlas QPS | EloqCloud QPS |
-| ----------- | --------- | ------------- |
-| 64          | 3,617     | 5,811         |
-| 128         | 3,599     | 8,063         |
-| 256         | 3,515     | 10,661        |
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency</th>
+      <th>Atlas QPS</th>
+      <th>EloqCloud QPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>3,617</td>
+      <td>5,811</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>3,599</td>
+      <td>8,063</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>3,515</td>
+      <td>10,661</td>
+    </tr>
+  </tbody>
+</table>
 
 Write throughput on the Atlas plateaus quickly. EloqCloud continues to grow linearly, achieving over 2× throughput at 256 threads.
 
@@ -119,11 +200,32 @@ Write throughput on the Atlas plateaus quickly. EloqCloud continues to grow line
 
 **Read-only**
 
-| Concurrency | Atlas QPS | EloqCloud QPS |
-| ----------- | --------- | ------------- |
-| 64          | 45,328    | 44,160        |
-| 128         | 50,745    | 49,458        |
-| 256         | 48,994    | 54,352        |
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency</th>
+      <th>Atlas QPS</th>
+      <th>EloqCloud QPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>45,328</td>
+      <td>44,160</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>50,745</td>
+      <td>49,458</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>48,994</td>
+      <td>54,352</td>
+    </tr>
+  </tbody>
+</table>
 
 At lower concurrency levels, performance between the two systems remains comparable. At higher thread counts, EloqCloud maintains throughput while Atlas begins to taper, resulting in a measurable advantage at 256 threads.
 
@@ -136,11 +238,32 @@ At lower concurrency levels, performance between the two systems remains compara
 
 **Read-Write (Mixed)**
 
-| Concurrency | Atlas QPS | EloqCloud QPS |
-| ----------- | --------- | ------------- |
-| 64          | 14,172    | 17,112        |
-| 128         | 19,929    | 26,263        |
-| 256         | 24,050    | 35,266        |
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency</th>
+      <th>Atlas QPS</th>
+      <th>EloqCloud QPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>14,172</td>
+      <td>17,112</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>19,929</td>
+      <td>26,263</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>24,050</td>
+      <td>35,266</td>
+    </tr>
+  </tbody>
+</table>
 
 Increasing CPU capacity improves throughput for both engines, but EloqCloud converts the additional compute into greater sustained throughput. At peak concurrency, EloqCloud delivers approximately 46% higher mixed-workload throughput.
 
@@ -153,11 +276,32 @@ Increasing CPU capacity improves throughput for both engines, but EloqCloud conv
 
 **Write-only**
 
-| Concurrency | Atlas QPS | EloqCloud QPS |
-| ----------- | --------- | ------------- |
-| 64          | 7,063     | 9,422         |
-| 128         | 10,887    | 16,535        |
-| 256         | 14,388    | 23,760        |
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency</th>
+      <th>Atlas QPS</th>
+      <th>EloqCloud QPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>7,063</td>
+      <td>9,422</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>10,887</td>
+      <td>16,535</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>14,388</td>
+      <td>23,760</td>
+    </tr>
+  </tbody>
+</table>
 
 Write-heavy workloads show continuous gains on EloqCloud as threads scale. Atlas increases initially but flattens at higher concurrency levels. EloqCloud continues to experience upward growth, achieving even higher throughput at 256 threads.
 
@@ -172,11 +316,40 @@ Write-heavy workloads show continuous gains on EloqCloud as threads scale. Atlas
 
 **2c/16GB (Read Latency)**
 
-| Concurrency | Atlas P50 | EloqCloud P50 | Atlas P99 | EloqCloud P99 |
-| ----------- | --------- | ------------- | --------- | ------------- |
-| 64          | 3615 µs   | 1646 µs       | 11,191 µs | 11,879 µs     |
-| 128         | 9,575 µs  | 2,895 µs      | 17,839 µs | 12,975 µs     |
-| 256         | 19,759 µs | 6,007 µs      | 44,991 µs | 17,519 µs     |
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency</th>
+      <th>Atlas P50</th>
+      <th>EloqCloud P50</th>
+      <th>Atlas P99</th>
+      <th>EloqCloud P99</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>3615 µs</td>
+      <td>1646 µs</td>
+      <td>11,191 µs</td>
+      <td>11,879 µs</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>9,575 µs</td>
+      <td>2,895 µs</td>
+      <td>17,839 µs</td>
+      <td>12,975 µs</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>19,759 µs</td>
+      <td>6,007 µs</td>
+      <td>44,991 µs</td>
+      <td>17,519 µs</td>
+    </tr>
+  </tbody>
+</table>
 
 Latency grows sharply on Atlas as concurrency increases. EloqCloud exhibits stable tails and significantly lower medians, resulting in faster response times and improved performance under load.
 
@@ -189,11 +362,40 @@ Latency grows sharply on Atlas as concurrency increases. EloqCloud exhibits stab
 
 **8c/64GB (Read Latency)**
 
-| Concurrency | Atlas P50 | EloqCloud P50 | Atlas P99 | EloqCloud P99 |
-| ----------- | --------- | ------------- | --------- | ------------- |
-| 64          | 1,269 µs  | 1,019 µs      | 3,413 µs  | 10,199 µs     |
-| 128         | 2,413 µs  | 1,280 µs      | 5,319 µs  | 42,527 µs     |
-| 256         | 4,967 µs  | 1,874 µs      | 14,567 µs | 55,583 µs     |
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency</th>
+      <th>Atlas P50</th>
+      <th>EloqCloud P50</th>
+      <th>Atlas P99</th>
+      <th>EloqCloud P99</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>1,269 µs</td>
+      <td>1,019 µs</td>
+      <td>3,413 µs</td>
+      <td>10,199 µs</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>2,413 µs</td>
+      <td>1,280 µs</td>
+      <td>5,319 µs</td>
+      <td>42,527 µs</td>
+    </tr>
+    <tr>
+      <td>256</td>
+      <td>4,967 µs</td>
+      <td>1,874 µs</td>
+      <td>14,567 µs</td>
+      <td>55,583 µs</td>
+    </tr>
+  </tbody>
+</table>
 
 Median (P50) latency on EloqCloud remains significantly lower, especially under high concurrency, where Atlas latency rises sharply. Tail latency (P99) readings vary depending on the cache state and burst pattern, but median values consistently favour EloqCloud, indicating a faster response under load conditions.
 
@@ -212,7 +414,7 @@ Cost is often the make-or-break factor when choosing a cloud service. Let’s co
 
 Atlas uses a usage-based pricing, but essentially, you **pay for the size of the cluster you provision** (even if you’re not using it entirely). You choose a tier (which corresponds to a specific VM size for the MongoDB nodes and the number of nodes, typically a minimum of 3 for a replica set).
 
-For example, an M30 cluster might cost a few hundred dollars per month, an M50 more, and so on up to multiple thousands for large clusters.
+> For example, an M30 cluster might cost a few hundred dollars per month, an M50 more, and so on up to multiple thousands for large clusters.
 
 <Image
   src={image9}
@@ -236,13 +438,13 @@ In Atlas, because each production cluster is a replica set with at least 3 nodes
 
 EloqCloud is designed to be **very cost-effective and flexible**. The big difference is that EloqCloud’s architecture doesn’t require multiple full copies of your data on different nodes – the primary copy of data is in an object store (S3). EloqCloud’s use of cheap object storage drastically reduces storage cost for the end user.
 
-For example, Amazon S3 costs roughly $0.023 per GB-month (and that includes auto replication across availability zones). By contrast, an equivalent amount of SSD storage (like EBS gp3) might cost around $0.10 per GB-month or more, and if you have 3 replicas, effectively $0.30 per GB-month for protection.
+> For example, Amazon S3 costs roughly $0.023 per GB-month (and that includes auto replication across availability zones). By contrast, an equivalent amount of SSD storage (like EBS gp3) might cost around $0.10 per GB-month or more, and if you have 3 replicas, effectively $0.30 per GB-month for protection.
 
 EloqCloud provides the durability of multiple copies at a cost comparable to that of a single, inexpensive copy on object storage. This approach can yield up to 90% storage cost savings.
 
 Additionally, EloqCloud pricing is very granular and elastic.
 
-They offer a **generous free tier**: at no cost, you can run up to 3 clusters with a total of 25 GB storage, and they even allow significant throughput (up to 10k reads and 1k writes per second) on that free tier.
+> They offer a **generous free tier**: at no cost, you can run up to 3 clusters with a total of 25 GB storage, and they even allow significant throughput (up to 10k reads and 1k writes per second) on that free tier.
 
 <Image src={image11} alt="EloqCloud Free Tier" width={1200} height={600} />
 
@@ -250,23 +452,23 @@ It’s “free forever” for a decent workload, not just a tiny development san
 
 Their paid tiers include a certain amount of storage and “compute hours” with the ability to **scale to zero**. “Scale to zero” means if your database is idle, it can shut down compute to save you money – something Atlas does not do for a cluster (Atlas requires your cluster always to have at least one primary and one secondary running).
 
-The pricing is broken down by storage (**$0.10 per GB** beyond the included amount) and compute hours (**$0.14 per hour** beyond the included amount). They also include some amount of data transfer free.
+> The pricing is broken down by storage (**$0.10 per GB** beyond the included amount) and compute hours (**$0.14 per hour** beyond the included amount). They also include some amount of data transfer free.
 
 These rates are competitive; for instance, $0.14 per compute hour is roughly $100/month per compute instance (1 compute unit = 1 vCPU, 8GB RAM).
 
-The Enterprise tier of EloqCloud offers SOC2 compliance, SLA, priority support, and private networking at a base monthly rate of $999 for companies requiring compliance and custom SLAs.
+> The Enterprise tier of EloqCloud offers SOC2 compliance, SLA, priority support, and private networking at a base monthly rate of $999 for companies requiring compliance and custom SLAs.
 
 <Image src={image12} alt="EloqCloud Pricing Model" width={1200} height={600} />
 
-EloqCloud positions itself as a **significantly more cost-efficient** alternative to Atlas. By decoupling storage, they minimize the cost of keeping data (you essentially pay near raw storage costs). By allowing scale-to-zero and granular compute hour billing, they ensure you don’t pay for idle capacity. Atlas, while convenient, can become costly because you’re often running 3 nodes 24/7, even if your usage is sporadic.
+> EloqCloud positions itself as a **significantly more cost-efficient** alternative to Atlas. By decoupling storage, they minimize the cost of keeping data (you essentially pay near raw storage costs). By allowing scale-to-zero and granular compute hour billing, they ensure you don’t pay for idle capacity. Atlas, while convenient, can become costly because you’re often running 3 nodes 24/7, even if your usage is sporadic.
 
 **A scenario to illustrate costs**
 
-If you have a dataset of 100 GB and an application that during peak hours needs a lot of throughput, but is hardly used off-peak.
+> If you have a dataset of 100 GB and an application that during peak hours needs a lot of throughput, but is hardly used off-peak.
 
 On MongoDB Atlas, choose an M50 cluster with 3 nodes, each having maybe 160 GB of storage (to fit 100 GB and allow growth). You pay for those nodes full-time.
 
-Let’s say that’s on the order of $ 1.50 to $ 2/hour for the cluster (just ballpark), which in a month is $ 1,000 to $ 1,500.
+> Let’s say that’s on the order of $ 1.50 to $ 2/hour for the cluster (just ballpark), which in a month is $ 1,000 to $ 1,500.
 
 <Image
   src={image13}
@@ -285,7 +487,7 @@ EloqCloud decouples compute from storage:
 
 For our scenario:
 
-**Storage: **100 GB for $10/month
+Storage: 100 GB for $10/month
 
 **Compute:**
 
@@ -303,30 +505,63 @@ The difference comes from the fact that EloqCloud charges for compute only when 
 
 Let’s extend the scenario to workloads with **10 peak hours/day** and **300 compute hours/month**.
 
-| Scenario              | MongoDB Atlas M50 | EloqCloud (Business Tier) |
-| --------------------- | ----------------- | ------------------------- |
-| Dataset size          | 100 GB            | 100 GB                    |
-| Storage cost          | Included          | $10                       |
-| Peak compute hours    | 300               | 300                       |
-| Compute model         | Always on         | Pay per hour              |
-| Off-peak compute cost | Full cost         | $0                        |
-| Monthly total         | $1000–$1500       | ≈ $45.80                  |
+<table>
+  <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>MongoDB Atlas M50</th>
+      <th>EloqCloud (Business Tier)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dataset size</td>
+      <td>100 GB</td>
+      <td>100 GB</td>
+    </tr>
+    <tr>
+      <td>Storage cost</td>
+      <td>Included</td>
+      <td>$10</td>
+    </tr>
+    <tr>
+      <td>Peak compute hours</td>
+      <td>300</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <td>Compute model</td>
+      <td>Always on</td>
+      <td>Pay per hour</td>
+    </tr>
+    <tr>
+      <td>Off-peak compute cost</td>
+      <td>Full cost</td>
+      <td>$0</td>
+    </tr>
+    <tr>
+      <td>Monthly total</td>
+      <td>$1000–$1500</td>
+      <td>≈ $45.80</td>
+    </tr>
+  </tbody>
+</table>
 
 Your monthly compute cost might end up significantly lower, and you’ve saved dramatically on storage costs. Even if you keep some nodes always on, the storage difference plus cheaper compute could easily cut your bill by a large fraction.
 
 ### One more thing - licensing costs
 
-MongoDB’s server license (SSPL) doesn’t charge you directly, but if you wanted an Enterprise feature (like encryption at rest on-prem), you’d need to pay for Enterprise. In Atlas, those features are included in the service cost. EloqDoc, being AGPL, has no licensing cost for usage.
+> MongoDB’s server license (SSPL) doesn’t charge you directly, but if you wanted an Enterprise feature (like encryption at rest on-prem), you’d need to pay for Enterprise. In Atlas, those features are included in the service cost. EloqDoc, being AGPL, has no licensing cost for usage.
 
 If cost optimization is a top priority and you have the flexibility to try a newer service, EloqCloud is extremely attractive. Especially noting that EloqCloud even offers things like a free tier for real usage - something basically unheard of with Atlas for production-scale work.
 
-Atlas is the more expensive option, but it comes with the backing of MongoDB Inc., a longer track record, and a larger ops team behind it. Some companies are willing to pay a premium for that peace of mind or because they require specific enterprise support.
+> Atlas is the more expensive option, but it comes with the backing of MongoDB Inc., a longer track record, and a larger ops team behind it. Some companies are willing to pay a premium for that peace of mind or because they require specific enterprise support.
 
 But if you’re looking to maximise database performance per dollar, EloqCloud makes a strong case.
 
 ## Security and Compliance in the Cloud
 
-Security in a managed service context means not just the database’s features but also the cloud platform’s measures. Both Atlas and EloqCloud know that users entrust them with critical data, so they provide robust security configurations.
+> Security in a managed service context means not just the database’s features but also the cloud platform’s measures. Both Atlas and EloqCloud know that users entrust them with critical data, so they provide robust security configurations.
 
 **MongoDB Atlas Security**
 
@@ -353,24 +588,25 @@ Security in a managed service context means not just the database’s features b
 - One notable security aspect of EloqCloud’s architecture is that, since the primary data is stored in object storage, even if a compute node is compromised, it retains only a subset of cached data (and possibly not even in a human-readable form if it’s in a binary format in memory or on disk). Object storage access can be tightly controlled with IAM roles.
 
 **Data Recovery and Reliability**
-Both services replicate data across zones by default - Atlas via replica sets, EloqCloud via storing in cross-zone object storage and redundant logs.
+
+> Both services replicate data across zones by default - Atlas via replica sets, EloqCloud via storing in cross-zone object storage and redundant logs.
 
 **User Control**
 One key difference is how each platform exposes infrastructure.
 
-On MongoDB Atlas, you do not have access to the underlying VMs or operating system; everything is abstracted behind the Atlas control plane. This means OS-level operations (file system access, custom auditing agents, kernel tuning, etc.) are not available; you rely on Atlas-managed features only.
+> On MongoDB Atlas, you do not have access to the underlying VMs or operating system; everything is abstracted behind the Atlas control plane. This means OS-level operations (file system access, custom auditing agents, kernel tuning, etc.) are not available; you rely on Atlas-managed features only.
 
-EloqCloud operates similarly, as you also do not receive OS-level access. Its compute layer is stateless, auto-managed, and infrastructure-abstracted, so users interact with the database only through the provided connection string and the EloqCloud control plane.
+> EloqCloud operates similarly, as you also do not receive OS-level access. Its compute layer is stateless, auto-managed, and infrastructure-abstracted, so users interact with the database only through the provided connection string and the EloqCloud control plane.
 
-Both platforms provide a fully managed environment where you administer the database through their UI and API.
+- Both platforms provide a fully managed environment where you administer the database through their UI and API.
 
-Both Atlas and EloqCloud allow you to restrict access by IP, require TLS, and so forth, which are standard for any DBaaS.
+- Both Atlas and EloqCloud allow you to restrict access by IP, require TLS, and so forth, which are standard for any DBaaS.
 
-Both services provide a secure environment out of the box. You should always follow best practices (use strong passwords, limit network access, turn on audit logs if needed, etc.), which you can do on both platforms.
+- Both services provide a secure environment out of the box. You should always follow best practices (use strong passwords, limit network access, turn on audit logs if needed, etc.), which you can do on both platforms.
 
 ## Ease of Use and Additional Features
 
-How do Atlas and EloqCloud compare in terms of user experience and extra bells and whistles?
+> How do Atlas and EloqCloud compare in terms of user experience and extra bells and whistles?
 
 **Atlas User Experience**
 
@@ -381,7 +617,8 @@ How do Atlas and EloqCloud compare in terms of user experience and extra bells a
 - They also offer a mobile/edge sync (Realm) if needed, as well as various other add-ons. These may not be directly related to database performance features, but they cater to developers who want a one-stop platform.
 
 **EloqCloud User Experience**
-EloqCloud, being newer, is focused on core database service. The basics are there: you can easily create a cluster (select your cloud and region, e.g., AWS us-west), define its size, and get a connection string.
+
+> EloqCloud, being newer, is focused on core database service. The basics are there: you can easily create a cluster (select your cloud and region, e.g., AWS us-west), define its size, and get a connection string.
 
 <Image
   src={image14}
@@ -401,7 +638,7 @@ EloqCloud also provides a built-in Serverless monitoring dashboard, giving you r
 
 They support “scale to zero” and serverless-like operation, which is a user experience advantage if you want automatic cost savings on low usage.
 
-EloqCloud integrates with EloqData’s other offerings, including EloqKV (Redis API) and EloqDoc, all of which fall under the EloqCloud umbrella. So, if you wanted a multi-model setup (document, cache, and relational), EloqCloud could be a unified solution for that.
+> EloqCloud integrates with EloqData’s other offerings, including EloqKV (Redis API) and EloqDoc, all of which fall under the EloqCloud umbrella. So, if you wanted a multi-model setup (document, cache, and relational), EloqCloud could be a unified solution for that.
 
 <Image
   src={image16}
@@ -418,20 +655,20 @@ EloqCloud integrates with EloqData’s other offerings, including EloqKV (Redis 
 
 ## Conclusion: Atlas or EloqCloud?
 
-Both MongoDB Atlas and EloqCloud are impressive in their own ways, but your choice will hinge on your priorities:
+> Both MongoDB Atlas and EloqCloud are impressive in their own ways, but your choice will hinge on your priorities:
 
-**Choose EloqCloud** if cost and performance are top priorities, or if you’re excited about the technological advantages of EloqDoc. EloqCloud can offer significant savings for data-heavy or variable workloads, and as we saw, it can deliver superior performance at scale.
+> Choose EloqCloud if cost and performance are top priorities, or if you’re excited about the technological advantages of EloqDoc. EloqCloud can offer significant savings for data-heavy or variable workloads, and as we saw, it can deliver superior performance at scale.
 
 It’s an excellent choice for start-ups and growing projects where you need to maximize every dollar and achieve scalability without a massive budget. Additionally, if you want the flexibility to move on-prem or to other clouds later (thanks to EloqDoc being open source), EloqCloud gives you a path without lock-in.
 
-Choose MongoDB Atlas if you value a tried-and-true service with a rich feature set and are willing to accept the higher cost. Atlas is ideal for teams that want a “set it and forget it” solution backed by MongoDB’s reputation, or who need those extras like built-in analytics, charts, or a multitude of compliance certifications. If your company already uses Atlas widely, consolidating on it could make sense despite the cost.
+> Choose MongoDB Atlas if you value a tried-and-true service with a rich feature set and are willing to accept the higher cost. Atlas is ideal for teams that want a “set it and forget it” solution backed by MongoDB’s reputation, or who need those extras like built-in analytics, charts, or a multitude of compliance certifications. If your company already uses Atlas widely, consolidating on it could make sense despite the cost.
 
 One strategy could be: start with EloqCloud on its free tier (since it’s surprisingly generous, you can run a real production app on it at no cost up to certain limits) and see if it meets your needs.
 
-You’re not losing anything by trying, given the API is MongoDB-compatible. If down the line you outgrow it or need features it doesn’t have, you could still consider switching to Atlas or another solution.
+> You’re not losing anything by trying, given the API is MongoDB-compatible. If down the line you outgrow it or need features it doesn’t have, you could still consider switching to Atlas or another solution.
 
 For those already on Atlas and feeling the pain of the bill or hitting performance ceilings, EloqCloud (or self-managed EloqDoc) is an intriguing alternative. Migration would involve some effort (data sync and testing), but since the application interface remains the same, it’s one of the more straightforward migrations you could undertake in the database world.
 
 ### Final thoughts
 
-Atlas has set the standard for cloud MongoDB services, but EloqCloud is bringing fresh competition by addressing many cost and scalability issues upfront. In my perspective, if your application aligns with the strengths of EloqDoc (distributed ACID, cloud-native scaling) and you’re not tied into proprietary Atlas features, giving EloqCloud a shot could reap major rewards in performance and savings.
+> Atlas has set the standard for cloud MongoDB services, but EloqCloud is bringing fresh competition by addressing many cost and scalability issues upfront. In my perspective, if your application aligns with the strengths of EloqDoc (distributed ACID, cloud-native scaling) and you’re not tied into proprietary Atlas features, giving EloqCloud a shot could reap major rewards in performance and savings.
