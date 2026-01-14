@@ -408,5 +408,4 @@ npm run lint
 npm run format
 ```
 
-This ensures code quality and consistent formatting across the codebase.</content>
-<parameter name="filePath">/Users/nirnejak/Code/studio/devtoolsacademy/AGENTS.md
+This ensures code quality and consistent formatting across the codebase.
