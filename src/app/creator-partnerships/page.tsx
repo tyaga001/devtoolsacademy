@@ -48,12 +48,14 @@ export default function CreatorPartnershipsPage() {
           tools.
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
-          <Link
-            href="#contact"
+          <a
+            href="https://cal.com/ankur-tyagi"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-lg bg-neutral-100 px-8 py-4 text-lg font-medium text-neutral-900 shadow-sm transition-all hover:bg-neutral-200 hover:shadow-md focus:bg-neutral-200 focus:shadow-md"
           >
             Book a Consultation
-          </Link>
+          </a>
           <Link
             href="/blog"
             className="inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-transparent px-8 py-4 text-lg font-medium text-neutral-200 transition-all hover:border-neutral-600 hover:bg-neutral-800 focus:border-neutral-600 focus:bg-neutral-800"
@@ -297,6 +299,41 @@ export default function CreatorPartnershipsPage() {
 
         <div className="grid grid-cols-1 gap-6 px-6 md:grid-cols-2 lg:gap-8">
           {/* Spotlight: Burak & Code with Antonio */}
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/tubeguruji.jpg"
+                  alt="TubeGuruji - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  TubeGuruji
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Creator • YouTube Creator
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Ankur helped me secure high-quality sponsorships that truly fit
+                my channel. He understands creators and knows exactly how to
+                position content for brands. Since working with him, my
+                collaborations have improved in quality and consistency. I no
+                longer worry about outreach or negotiations. My focus is fully
+                on creating, and my overall growth has improved significantly.
+              </p>
+            </blockquote>
+          </div>
+
           <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
             <div className="mb-6 flex items-start">
               <div className="mr-4 shrink-0">
@@ -1096,7 +1133,7 @@ export default function CreatorPartnershipsPage() {
               <Mail className="size-5 text-blue-400" />
               <span className="font-medium text-neutral-200">Get in touch</span>
             </div>
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <div className="mb-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a
                 href="mailto:ankur@devtoolsacademy.com"
                 className="text-lg font-semibold text-blue-400 transition-colors hover:text-blue-300"
@@ -1120,7 +1157,18 @@ export default function CreatorPartnershipsPage() {
             </p>
           </div>
 
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="mb-6 flex justify-center">
+            <a
+              href="https://cal.com/ankur-tyagi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-medium text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md focus:bg-blue-700 focus:shadow-md"
+            >
+              Schedule a Call
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <a
               href="mailto:ankur@devtoolsacademy.com"
               className="inline-flex items-center justify-center bg-neutral-200 px-8 py-4 text-lg font-medium text-neutral-800 outline-none transition-colors hover:bg-neutral-400 focus:bg-neutral-400"
