@@ -208,7 +208,7 @@ const Footer: React.FC = () => {
 
             <SocialLinks linkVariants={linkVariants} />
             <p className="my-4 text-sm text-neutral-500">
-              &copy; 2025 Dev Tools Academy. All rights reserved.
+              &copy; 2026 Dev Tools Academy. All rights reserved.
             </p>
             <AnimatePresence mode="wait">
               <QuickTip tipIndex={tipIndex} />
