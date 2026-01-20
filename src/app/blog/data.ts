@@ -35,7 +35,7 @@ export const allBlogs = [
     category: "Database",
     image: EloqdocVSMongoDBPart3.src,
     isNew: true,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -49,7 +49,7 @@ export const allBlogs = [
     category: "AI Code Editor",
     image: CursorVSClaudeCode.src,
     isNew: true,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -63,7 +63,7 @@ export const allBlogs = [
     category: "Database",
     image: EloqdocVSMongoDBPart2.src,
     isNew: true,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -75,8 +75,8 @@ export const allBlogs = [
     publishedAt: "2026-01-02T00:00:00Z",
     category: "Database",
     image: EloqdocVSMongoDB.src,
-    isNew: true,
-    isFeatured: true,
+    isNew: false,
+    isFeatured: false,
   },
   {
     author: "Jitendra Nirnejak",
@@ -89,7 +89,7 @@ export const allBlogs = [
     publishedAt: "2025-11-12T00:00:00Z",
     category: "Python",
     image: RuffAndUvImage.src,
-    isNew: true,
+    isNew: false,
     isFeatured: true,
   },
   {
@@ -101,7 +101,7 @@ export const allBlogs = [
     publishedAt: "2025-10-21T00:00:00Z",
     category: "Code Review",
     image: StateOfAICodeReviewCoverImage.src,
-    isNew: true,
+    isNew: false,
     isFeatured: true,
   },
   {
@@ -182,7 +182,7 @@ export const allBlogs = [
     image: CodeRabbitCoverImage.src,
     category: "Code Review",
     isNew: false,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Hrutik Kumthekar",
