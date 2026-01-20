@@ -8,8 +8,6 @@ import { CircleUserRound, Clock } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { allBlogs } from "@/app/blog/data"
 
-const featuredPosts = allBlogs.filter((post) => post.isFeatured)
-
 interface BlogCardProps {
   index: number
   title: string
@@ -84,11 +82,11 @@ const FeaturedPosts: React.FC = () => {
       <div className="mx-auto max-w-7xl py-20 text-center">
         <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-5xl">
           <span className="bg-gradient-to-b from-neutral-600 to-neutral-200 bg-clip-text text-transparent">
-            Featured Posts
+            Recent Posts
           </span>
         </h2>
         <p className="text-lg text-neutral-400 md:text-xl">
-          Our most trending blog posts.
+          Our most recent blog posts.
         </p>
       </div>
 
@@ -97,7 +95,7 @@ const FeaturedPosts: React.FC = () => {
       </div>
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-3">
-          {featuredPosts.slice(0, 3).map((post, index) => (
+          {allBlogs.slice(0, 3).map((post, index) => (
             <BlogCard key={index} {...post} index={index} />
           ))}
         </div>
