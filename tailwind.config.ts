@@ -1,5 +1,4 @@
 const config = {
-  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -40,12 +39,7 @@ const config = {
         },
       },
     },
-    fontFamily: {
-      sans: ["var(--sans-font)"],
-      mono: ["var(--mono-font)"],
-    },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
 }
 
 export default config

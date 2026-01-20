@@ -1,7 +1,7 @@
+import type { NextConfig } from "next"
 import createMDX from "@next/mdx"
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
@@ -17,10 +17,6 @@ const nextConfig = {
         hostname: "tender-bugle-dd6.notion.site",
       },
     ],
-  },
-
-  experimental: {
-    mdxRs: true,
   },
 }
 

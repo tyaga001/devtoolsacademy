@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
 
 * {
   @apply antialiased;
@@ -29,6 +30,11 @@
   background-image:
     linear-gradient(to right, #f5f5f5 1px, transparent 1px),
     linear-gradient(to bottom, #f5f5f5 1px, transparent 1px);
+}
+
+@theme {
+  --font-sans: var(--sans-font);
+  --font-mono: var(--mono-font);
 }
 
 @keyframes cursor-blink {
