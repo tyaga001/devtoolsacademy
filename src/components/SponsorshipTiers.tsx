@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react"
 
-import { Star, Trophy, Award, Heart } from "lucide-react"
+import { Star, Trophy } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -18,39 +18,28 @@ const sponsorTiers: SponsorTier[] = [
   {
     title: "VIP Sponsor",
     icon: <Star className="size-6 text-yellow-400" />,
-    price: 2000,
+    price: 5000,
     benefits: [
       "Big logo on homepage and DevToolsAcademy repo",
       "Backlink to your website",
-      "Dedicated review blog post on DevToolsAcademy and The Ankur Tyagi",
+      "Dedicated review blog post",
       "Featured in BytesizedBets newsletter (5000+ subscribers)",
+      "1:1 consultation (30 min) for content strategy/developer marketing",
+      "Guest post opportunity on DevToolsAcademy blog",
+      "Featured in detailed comparison post vs competitors",
     ],
     stripeLink: "https://buy.stripe.com/dR6fZvbAz9dvcbm28m",
   },
   {
     title: "Hero Sponsor",
     icon: <Trophy className="size-6 text-yellow-500" />,
-    price: 1000,
+    price: 3000,
     benefits: [
       "Big logo on homepage and DevToolsAcademy repo",
       "Backlink to your website",
       "Dedicated review blog post on DevToolsAcademy website",
     ],
     stripeLink: "https://buy.stripe.com/8wMdRn7kj4Xf0sE28n",
-  },
-  {
-    title: "Catalyst Sponsor",
-    icon: <Award className="size-6 text-orange-400" />,
-    price: 500,
-    benefits: ["Small logo on homepage and DevToolsAcademy repo"],
-    stripeLink: "https://buy.stripe.com/28ofZvbAzblD3EQfZe",
-  },
-  {
-    title: "Backer Sponsor",
-    icon: <Heart className="size-6 text-red-400" />,
-    price: 99,
-    benefits: ["Small logo in DevToolsAcademy repo", "my heartfelt thanks."],
-    stripeLink: "https://buy.stripe.com/8wM9B78ongFXa3e9AN",
   },
 ]
 
@@ -64,7 +53,7 @@ const SponsorshipTiers: React.FC<Props> = () => {
   return (
     <section className="mx-auto max-w-7xl">
       <hr className="border-dashed border-neutral-100/15" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {sponsorTiers.map((tier, index) => (
           <div
             className={cn(
@@ -77,7 +66,7 @@ const SponsorshipTiers: React.FC<Props> = () => {
             <div className="mb-3 flex items-start justify-between">
               {tier.icon}
               <span className="text-sm font-semibold text-neutral-400">
-                MEMBERSHIP
+                ONE-TIME
               </span>
             </div>
             <p className="mb-6 text-2xl font-semibold tracking-tight">

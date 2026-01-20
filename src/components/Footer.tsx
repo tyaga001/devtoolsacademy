@@ -208,7 +208,7 @@ const Footer: React.FC = () => {
 
             <SocialLinks linkVariants={linkVariants} />
             <p className="my-4 text-sm text-neutral-500">
-              &copy; 2025 Dev Tools Academy. All rights reserved.
+              &copy; 2026 Dev Tools Academy. All rights reserved.
             </p>
             <AnimatePresence mode="wait">
               <QuickTip tipIndex={tipIndex} />
@@ -227,15 +227,6 @@ const Footer: React.FC = () => {
                 >
                   <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
                   <span className="grow">Creator Partnerships</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/jobs"
-                  className="group flex items-start text-neutral-500 outline-none transition-colors hover:text-neutral-200 focus:text-neutral-200"
-                >
-                  <BookOpen size={16} className="mr-2 mt-1 shrink-0" />
-                  <span className="grow">Premium Job Opportunities</span>
                 </Link>
               </li>
               <li>

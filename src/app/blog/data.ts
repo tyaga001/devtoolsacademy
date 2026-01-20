@@ -11,6 +11,9 @@ import StateOfDatabasesCoverImage from "@/app/blog/state-of-databases-2024/cover
 import CursorWindsurfCoverImage from "@/app/blog/cursor-vs-windsurf/cover.png"
 import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
 import EloqdocVSMongoDB from "@/app/blog/eloqdoc-vs-mongodb-architecture-and-design/cover.png"
+import EloqdocVSMongoDBPart2 from "@/app/blog/eloqdoc-vs-mongodb-feature-comparison/cover.png"
+import EloqdocVSMongoDBPart3 from "@/app/blog/eloqdoc-vs-mongodb-cloud-services/cover.png"
+import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
 
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
@@ -21,16 +24,45 @@ export const allAuthors = [
 export const allBlogs = [
   {
     author: "Ankur Tyagi",
+    slug: "eloqdoc-vs-mongodb-cloud-services",
+    title:
+      "EloqDoc vs MongoDB - Part 3: Cloud Services (MongoDB Atlas vs EloqCloud)",
+    excerpt:
+      "Comparison of EloqDoc and MongoDB managed cloud services: MongoDB Atlas and EloqCloud",
+    description:
+      "In this third part of our series comparing EloqDoc and MongoDB, we focus on their managed cloud services: MongoDB Atlas and EloqCloud. We evaluate performance, cost, security, and features to help you decide which service best fits your needs.",
+    publishedAt: "2026-01-10T00:00:00Z",
+    category: "Database",
+    image: EloqdocVSMongoDBPart3.src,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    author: "Ankur Tyagi",
+    slug: "cursor-vs-claudecode",
+    title: "Cursor vs Claude Code: A Comprehensive Comparison",
+    excerpt:
+      "A comprehensive comparison of Cursor and Claude Code AI code editors",
+    description:
+      "In this article, we compare Cursor and Claude Code across a range of aspects, including context window size, tooling, code review, refactoring and debugging support, editor ergonomics, language support, workflow integration, and pricing. This structured comparison will help you understand which tool best suits your different development needs.",
+    publishedAt: "2026-01-08T00:00:00Z",
+    category: "AI Code Editor",
+    image: CursorVSClaudeCode.src,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    author: "Ankur Tyagi",
     slug: "eloqdoc-vs-mongodb-feature-comparison",
     title: "EloqDoc vs MongoDB - Part 2: Feature-by-Feature Comparison",
     excerpt:
       "Feature-by-feature comparison of EloqDoc and MongoDB capabilities",
     description:
-      "A detailed comparison of key features including transactions, indexing, consistency guarantees, and query capabilities. This part highlights where the two databases overlap and where their design philosophies clearly diverge in real world usage.",
+      "In this second part of our series comparing EloqDoc with MongoDB, we will examine how the two databases stack up in terms of features and capabilities. We’ll look at their transaction models, consistency guarantees, query and indexing abilities, scaling behavior from a user perspective, and other operational features (like security and backup).",
     publishedAt: "2026-01-02T00:00:00Z",
-    category: "Databases",
-    image: EloqdocVSMongoDB.src,
-    isNew: false,
+    category: "Database",
+    image: EloqdocVSMongoDBPart2.src,
+    isNew: true,
     isFeatured: true,
   },
   {
@@ -39,9 +71,9 @@ export const allBlogs = [
     title: "EloqDoc vs MongoDB - Part 1: Architecture and Design Overview",
     excerpt: "An overview of EloqDoc and MongoDB architecture",
     description:
-      "This article breaks down the core architecture of EloqDoc and MongoDB. It focuses on storage layout, replication model, and how each system is designed to scale. The goal is to understand what tradeoffs were made at the foundation level before looking at features or performance.",
+      "In this first part of our comparison series, we provide an overview of the core architecture of EloqDoc and MongoDB, highlighting how their design principles diverge. By understanding the architectural foundations, you can better judge which database aligns with your project needs.",
     publishedAt: "2026-01-02T00:00:00Z",
-    category: "Databases",
+    category: "Database",
     image: EloqdocVSMongoDB.src,
     isNew: true,
     isFeatured: true,
@@ -107,8 +139,8 @@ export const allBlogs = [
     description:
       "A comparison of Cursor and Windsurf to help you choose the best AI code editor for your team",
     publishedAt: "2025-04-11T00:00:00Z",
-    category: "AI Code Editor",
     image: CursorWindsurfCoverImage.src,
+    category: "AI Code Editor",
     isNew: false,
     isFeatured: false,
   },
@@ -122,8 +154,8 @@ export const allBlogs = [
     description:
       "A comparison of Cody and Cursor to help you choose the right AI code assistant",
     publishedAt: "2025-03-17T00:00:00Z",
-    category: "AI Code Assistant",
     image: CodyCoverImage.src,
+    category: "AI Code Assistant",
     isNew: false,
     isFeatured: false,
   },
@@ -135,8 +167,8 @@ export const allBlogs = [
       "Discover how the View Transitions API enhances web experiences with seamless animations and smooth page transitions, improving user engagement and performance.",
     description: "Learn how the View Transitions API enhances web experiences.",
     publishedAt: "2025-02-24T00:00:00Z",
-    category: "Web Development",
     image: ViewTransitionsCoverImage.src,
+    category: "Web Development",
     isNew: false,
     isFeatured: false,
   },
@@ -147,8 +179,8 @@ export const allBlogs = [
     excerpt: "Choose the right AI code review tool",
     description: "Everything about AI code review tools",
     publishedAt: "2024-12-26T00:00:00Z",
-    category: "Code Review",
     image: CodeRabbitCoverImage.src,
+    category: "Code Review",
     isNew: false,
     isFeatured: true,
   },
@@ -160,8 +192,8 @@ export const allBlogs = [
     description:
       "A comparison of Twilio and Stream for building automated customer support solutions",
     publishedAt: "2024-12-11T00:00:00Z",
-    category: "SaaS",
     image: TwilioCoverImage.src,
+    category: "SaaS",
     isNew: false,
     isFeatured: false,
   },
@@ -173,8 +205,8 @@ export const allBlogs = [
     description:
       "A comparison of Clerk and Supabase to help you choose the best auth for your SaaS",
     publishedAt: "2024-10-28T00:00:00Z",
-    category: "Auth",
     image: SupabaseCoverImage.src,
+    category: "Auth",
     isNew: false,
     isFeatured: false,
   },
@@ -184,10 +216,10 @@ export const allBlogs = [
     title: "MongoDB vs PostgreSQL: A Technical Comparison",
     excerpt: "A technical comparison of MongoDB vs PostgreSQL",
     description:
-      "A technical comparison of MongoDB vs PostgreSQL to help you choose the best database solution for your SaaS",
+      "A technical comparison of MongoDB vs. PostgreSQL to help you choose the best database solution for your SaaS",
     publishedAt: "2024-09-26T00:00:00Z",
-    category: "Database",
     image: MongoDBCoverImage.src,
+    category: "Database",
     isNew: false,
     isFeatured: false,
   },
@@ -198,8 +230,8 @@ export const allBlogs = [
     excerpt: "My thoughts on the state of Databases for Serverless",
     description: "My thoughts on the state of Databases for Serverless",
     publishedAt: "2024-09-03T00:00:00Z",
-    category: "Database",
     image: StateOfDatabasesCoverImage.src,
+    category: "Database",
     isNew: false,
     isFeatured: false,
   },
@@ -211,8 +243,8 @@ export const allBlogs = [
     description:
       "A comparison of Neon and Supabase to help you choose the best database for your SaaS",
     publishedAt: "2024-08-08T00:00:00Z",
-    category: "Database",
     image: NeonCoverImage.src,
+    category: "Database",
     isNew: false,
     isFeatured: true,
   },
