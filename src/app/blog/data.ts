@@ -176,7 +176,7 @@ export const allBlogs = [
     category: "Auth",
     image: SupabaseCoverImage.src,
     isNew: false,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
