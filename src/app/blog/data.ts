@@ -49,7 +49,7 @@ export const allBlogs = [
     category: "AI Code Editor",
     image: CursorVSClaudeCode.src,
     isNew: true,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -90,7 +90,7 @@ export const allBlogs = [
     category: "Python",
     image: RuffAndUvImage.src,
     isNew: true,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -102,7 +102,7 @@ export const allBlogs = [
     category: "Code Review",
     image: StateOfAICodeReviewCoverImage.src,
     isNew: true,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Ankur Tyagi",
@@ -182,7 +182,7 @@ export const allBlogs = [
     image: CodeRabbitCoverImage.src,
     category: "Code Review",
     isNew: false,
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     author: "Hrutik Kumthekar",
@@ -246,6 +246,6 @@ export const allBlogs = [
     image: NeonCoverImage.src,
     category: "Database",
     isNew: false,
-    isFeatured: true,
+    isFeatured: false,
   },
 ]
