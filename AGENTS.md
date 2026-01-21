@@ -4,15 +4,16 @@ This file contains essential information for agentic coding assistants working o
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript (strict mode enabled)
-- **Styling**: Tailwind CSS with shadcn/ui components
-- **Database**: PostgreSQL with Prisma ORM
+- **Framework**: Next.js 16 with App Router (React 19, TypeScript 5.9)
+- **Language**: TypeScript (strict mode enabled, ES2017 target)
+- **Styling**: Tailwind CSS v4 with shadcn/ui components
+- **Database**: PostgreSQL with Prisma ORM v7
 - **Deployment**: Vercel
-- **Analytics**: Umami
+- **Analytics**: Umami, Vercel Analytics, Vercel Speed Insights
 - **Authentication**: Clerk
 - **State Management**: React hooks (useState, useEffect)
 - **Icons**: Lucide React
+- **Additional Libraries**: Motion (animations), Mermaid (diagrams), Algolia (search), MDX (content)
 
 ## Build, Lint, and Test Commands
 
@@ -28,7 +29,10 @@ npm run start        # Start production server
 
 ```bash
 npm run lint         # Run ESLint across the codebase
+npm run lint:fix     # Run ESLint with auto-fix
 npm run format       # Format code with Prettier
+npm run format:check # Check if code is formatted correctly
+npm run type-check   # Run TypeScript type checking
 ```
 
 ### Database
@@ -53,6 +57,19 @@ For running a single test file (once testing is set up):
 npm run test -- path/to/test/file.test.tsx
 # or
 npx jest path/to/test/file.test.tsx
+# or (for Vitest)
+npx vitest run path/to/test/file.test.tsx
+```
+
+### Running Tests and Linting Before Commits
+
+ALWAYS run these commands before committing changes:
+
+```bash
+npm run type-check  # Ensure TypeScript compilation passes
+npm run lint        # Check for linting errors
+npm run format:check # Verify code formatting
+# Run tests if available: npm run test
 ```
 
 ## Code Style Guidelines
@@ -60,10 +77,15 @@ npx jest path/to/test/file.test.tsx
 ### TypeScript Configuration
 
 - **Strict mode**: Enabled - all type checking is enforced
-- **Path aliases**: Use `@/` for imports from `src/` directory
+- **Target**: ES2017
+- **Path aliases**:
+  - `@/*` → `./src/*`
+  - `@/components/*` → `./src/components/*`
+  - `@/lib/*` → `./src/lib/*`
+  - `@prisma` → `prisma`
 - **Type definitions**: Define interfaces for component props and data structures
 - **Optional properties**: Use `?` for optional properties in interfaces
-- **Union types**: Use union types for enums and variant props (e.g., `"FULL_TIME" | "PART_TIME"`)
+- **Union types**: Use union types for enums and variant props (e.g., `"FULL_TIME" | "PART_TIME" | "CONTRACT" | "FREELANCE" | "INTERNSHIP"`)
 
 ### Import Organization
 
@@ -123,10 +145,11 @@ ComponentName.displayName = "ComponentName"
 
 #### Tailwind CSS
 
-- Use Tailwind utility classes for styling
+- Use Tailwind CSS v4 utility classes for styling
 - Use `cn()` function from `@/lib/utils` for conditional classes
 - Follow Tailwind's responsive prefixes (`sm:`, `md:`, `lg:`, `xl:`)
 - Use CSS custom properties for theme colors (defined in `tailwind.config.ts`)
+- Safelist includes `mermaid` for diagram support
 
 #### Class Variance Authority (CVA)
 
@@ -154,6 +177,20 @@ const componentVariants = cva("base-classes", {
 
 export interface ComponentProps extends VariantProps<typeof componentVariants> {
   // Other props
+}
+```
+
+### Formatting Conventions
+
+#### Prettier Configuration
+
+```json
+{
+  "endOfLine": "lf",
+  "semi": false,
+  "singleQuote": false,
+  "tabWidth": 2,
+  "trailingComma": "es5"
 }
 ```
 
@@ -383,7 +420,9 @@ src/
 │   ├── prisma.ts         # Database client
 │   ├── types.ts          # TypeScript interfaces
 │   ├── utils.ts          # Utility functions
-│   └── zodSchema.ts      # Validation schemas
+│   ├── ZodSchema.ts      # Validation schemas
+│   ├── toolData.json     # Tool data
+│   └── tools.ts          # Tool utilities
 └── assets/               # Static assets
 ```
 
@@ -399,6 +438,16 @@ Recommended extensions:
 - ESLint
 - Prisma
 
+#### ESLint Configuration
+
+Uses the new flat config format with these plugins:
+
+- `eslint-config-next` (core web vitals and TypeScript rules)
+- `eslint-config-prettier` (disables conflicting ESLint rules)
+- `eslint-plugin-prettier` (runs Prettier as an ESLint rule)
+- `eslint-plugin-promise` (promise-related rules)
+- `eslint-plugin-better-tailwindcss` (Tailwind CSS linting)
+
 #### Pre-commit Hooks
 
 Run linting and formatting before commits:
@@ -409,3 +458,24 @@ npm run format
 ```
 
 This ensures code quality and consistent formatting across the codebase.
+
+## Additional Development Notes
+
+### Key Libraries and Versions
+
+- **Next.js**: 16.1.4 with App Router
+- **React**: 19.2.3
+- **TypeScript**: 5.9.3 (strict mode)
+- **Tailwind CSS**: v4.1.18
+- **Prisma**: 7.2.0
+- **Clerk**: 6.36.8 (authentication)
+- **Zod**: 4.3.5 (validation)
+- **Lucide React**: 0.562.0 (icons)
+- **Motion**: 12.27.5 (animations)
+- **Algolia**: 5.47.0 (search)
+
+### Environment Variables
+
+- Use `NEXT_PUBLIC_` prefix for client-side accessible variables
+- Store all sensitive data (API keys, database URLs, etc.) as environment variables
+- Never commit `.env` files to version control
