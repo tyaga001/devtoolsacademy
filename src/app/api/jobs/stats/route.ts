@@ -105,15 +105,15 @@ export async function GET() {
         recentJobs,
       },
       breakdown: {
-        byType: jobsByType.map((item) => ({
+        byType: jobsByType.map((item: any) => ({
           type: item.type,
           count: item._count.type,
         })),
-        byLocation: jobsByLocation.map((item) => ({
+        byLocation: jobsByLocation.map((item: any) => ({
           location: item.location,
           count: item._count.location,
         })),
-        topCompanies: topCompanies.map((item) => ({
+        topCompanies: topCompanies.map((item: any) => ({
           company: item.company,
           count: item._count.company,
         })),

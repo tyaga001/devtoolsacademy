@@ -20,8 +20,8 @@ export async function GET() {
     // Flatten and count categories
     const categoryCount: { [key: string]: number } = {}
 
-    jobs.forEach((job) => {
-      job.categories.forEach((category) => {
+    jobs.forEach((job: any) => {
+      job.categories.forEach((category: any) => {
         categoryCount[category] = (categoryCount[category] || 0) + 1
       })
     })

@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Fetch all tools directly from the database
   const tools = await prisma.tool.findMany()
-  const toolPages = tools.map((tool) => ({
+  const toolPages = tools.map((tool: any) => ({
     url: `${baseUrl}/tools/${tool.name}/`,
     lastModified: tool.updatedAt || tool.lastUpdated || new Date(),
     changeFrequency: "weekly" as const,

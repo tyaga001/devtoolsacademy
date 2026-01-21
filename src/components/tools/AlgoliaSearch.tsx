@@ -1,5 +1,5 @@
 import React from "react"
-import algoliasearch from "algoliasearch"
+import { algoliasearch } from "algoliasearch"
 import ToolsFilter from "./ToolsFilter"
 import { ToolCardInterface } from "@/lib/types"
 
@@ -18,12 +18,15 @@ export const getTools = async (text: string): Promise<ToolCardInterface[]> => {
     process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!
   )
 
-  const index = client.initIndex("toolData")
-  const { hits } = await index.search<ToolCardInterface>(text, {
-    hitsPerPage: 20,
+  const response = await client.searchSingleIndex({
+    indexName: "toolData",
+    searchParams: {
+      query: text,
+      hitsPerPage: 20,
+    },
   })
 
-  return hits
+  return response.hits as unknown as ToolCardInterface[]
 }
 
 const AlgoliaSearch: React.FC<AlgoliaSearchProps> = async () => {
