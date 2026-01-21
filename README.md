@@ -132,10 +132,10 @@ Everything is transparent, community-driven, and built in the open.
 git clone https://github.com/tyaga001/devtoolsacademy.git
 
 # Install dependencies
-npm install
+bun install
 
 # Start development server
-npm run dev
+bun run dev
 
 # Open http://localhost:3000
 ```
@@ -143,11 +143,11 @@ npm run dev
 ### **📋 Available Scripts**
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run lint         # Lint all files
-npm run format       # Format with Prettier
-npm run migrate      # Run database migrations
+bun run dev          # Start development server
+bun run build        # Build for production
+bun run lint         # Lint all files
+bun run format       # Format with Prettier
+bun run migrate      # Run database migrations
 ```
 
 ---
