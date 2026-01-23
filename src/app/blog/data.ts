@@ -13,6 +13,7 @@ import BetterAuthCoverImage from "@/app/blog/betterauth-vs-nextauth/cover.png"
 import EloqdocVSMongoDB from "@/app/blog/eloqdoc-vs-mongodb-architecture-and-design/cover.png"
 import EloqdocVSMongoDBPart2 from "@/app/blog/eloqdoc-vs-mongodb-feature-comparison/cover.png"
 import EloqdocVSMongoDBPart3 from "@/app/blog/eloqdoc-vs-mongodb-cloud-services/cover.png"
+import EloqdocVSMongoDBPart4 from "@/app/blog/eloqdoc-vs-ferretdb-vs-mongodb-benchmark-guide/cover.png"
 import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
 
 export const allAuthors = [
@@ -22,6 +23,20 @@ export const allAuthors = [
 ]
 
 export const allBlogs = [
+  {
+    author: "Ankur Tyagi",
+    slug: "eloqdoc-vs-ferretdb-vs-mongodb-benchmark-guide",
+    title: "EloqDoc vs MongoDB - Part4: A Comprehensive Benchmark Guide",
+    excerpt:
+      "A comprehensive benchmark guide comparing EloqDoc, FerretDB, and MongoDB performance",
+    description:
+      "In this final part of our series comparing EloqDoc, FerretDB, and MongoDB, we present a detailed benchmark guide. We evaluate the performance of each database across various workloads, including read-heavy, write-heavy, and mixed operations. By analyzing latency, throughput, and resource utilization, we provide insights to help you choose the right database for your specific use case.",
+    publishedAt: "2026-01-23T00:00:00Z",
+    category: "Database",
+    image: EloqdocVSMongoDBPart4.src,
+    isNew: true,
+    isFeatured: false,
+  },
   {
     author: "Ankur Tyagi",
     slug: "eloqdoc-vs-mongodb-cloud-services",

@@ -1,0 +1,298 @@
+import Image from "next/image"
+
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+import { Callout } from "@/components/blog/Callout"
+
+import CoverImage from "./cover.png"
+import image1 from "./image1.png"
+import image2 from "./image2.png"
+import image3 from "./image3.png"
+import image4 from "./image4.png"
+import image5 from "./image5.png"
+import image6 from "./image6.png"
+import image7 from "./image7.png"
+import image8 from "./image8.png"
+import image9 from "./image9.png"
+
+export const metadata = getMetadata({
+  path: "/blog/eloqdoc-vs-ferretdb-vs-mongodb-benchmark-guide",
+  title: "EloqDoc vs FerretDB vs MongoDB - Benchmark Guide",
+  description:
+    "In this final part of our series, we benchmark EloqDoc, FerretDB, and MongoDB to see how they perform under various workloads.",
+  image: CoverImage.src,
+})
+
+<BlogHeader
+  title={"EloqDoc vs FerretDB vs MongoDB - Benchmark Guide"}
+  author={"Ankur Tyagi"}
+  publishedAt={"2026-01-23T00:00:00Z"}
+/>
+
+[EloqDoc](https://www.eloqdata.com/product/eloqdoc) is a MongoDB-compatible document database designed around a different idea of how storage should work in the cloud. Instead of relying only on network-attached disks, it uses local NVMe SSD for fast access to active data, while keeping durable copies in cloud object storage in the background.
+
+This contrasts with databases, such as MongoDB, which in managed cloud environments typically rely on network-attached block storage (e.g., EBS), and FerretDB, which layers MongoDB compatibility on top of PostgreSQL, inheriting PostgreSQL’s block-storage-based I/O model.
+
+In this guide, we compare EloqDoc, MongoDB, and FerretDB using the same hardware, dataset size, and workload patterns. By running all three systems under identical conditions, the results highlight how their different storage designs affect throughput and latency at scale.
+
+## Benchmark Setup and Environment Configuration
+
+This benchmark was designed to isolate one thing, how different storage architectures behave when forced to do real disk I/O on a 1 TB dataset. All three databases, **MongoDB**, **FerretDB**, and **EloqDoc**, were run on the same Google Cloud machine type:
+
+- Machine Type: z3-highmem-14-standardlssd
+- Total vCPUs and Model: 14 vCPUs (Intel Xeon Platinum 8481C, 2.7 GHz)
+- 110 GB system memory
+- Ubuntu 24.04.1 (Kernel 6.14.0-1019-gcp, x86_64)
+
+We used a 1 TB dataset on a machine with 110 GB of RAM. The underlying PostgreSQL for FerretDB, MongoDB, and EloqDoc will each be configured with 90 GB of memory, ensuring all three systems operate under the same memory constraints.
+
+## Storage Layout
+
+The key difference between the systems lies in where their data resides.
+
+| System                    | Persistent Disk (MongoDB / FerretDB)                                 |
+| :------------------------ | :------------------------------------------------------------------- |
+| **MongoDB**               | Google Cloud pd-balanced persistent disk                             |
+| **FerretDB (PostgreSQL)** | Google Cloud pd-balanced persistent disk                             |
+| **EloqDoc**               | 2.9 TB Titanium SSD (standardlssd) - used as the EloqDoc local cache |
+
+## Disk performance
+
+| Storage type                                          | IOPS                   | Throughput                         |
+| :---------------------------------------------------- | :--------------------- | :--------------------------------- |
+| **Local NVMe (Titanium SSD)**                         | 750k read / 500k write | 3000 MiB/s read / 2500 MiB/s write |
+| **3.0 TB pd-balanced Persistent Disk (Google Cloud)** | 3000 read / 3000 write | ~140 MiB/s                         |
+
+## Database Configuration
+
+### MongoDB
+
+MongoDB was deployed using version 8.2.2 with the WiredTiger storage engine. Its internal cache was set to 100 GB, and journaling was enabled with a 1 ms commit interval, which effectively makes every write synchronous.
+
+All MongoDB data files were stored on the pd-balanced persistent disk mounted at /mnt/d1. This means that whenever a request misses the 100 GB cache, MongoDB must fetch data from a network-attached disk.
+
+### FerretDB
+
+FerretDB v2.7.0 was used together with PostgreSQL 16 and the DocumentDB extension, which provides MongoDB-compatible behavior on top of PostgreSQL.
+
+PostgreSQL was configured with:
+
+- **80 GB** of shared buffers
+- **100 GB** effective cache size
+- Full durability enabled (fsync, synchronous_commit, and full_page_writes all turned on)
+
+All PostgreSQL data files were also stored on the pd-balanced persistent disk ( /mnt/d1). As a result, FerretDB reads and writes are backed by the same network-attached disk layer used by MongoDB.
+
+### EloqDoc
+
+[EloqDoc](https://www.eloqdata.com/product/eloqdoc) was configured to use the eloq storage engine with its data paths placed on local NVMe (/mnt/d2). Write-ahead logging was enabled, and durable storage was provided through Google Cloud Storage.
+
+In this setup, EloqDoc serves active data from local NVMe, while durability is handled by its WAL and cloud-backed object store. This allows fast local access without sacrificing persistence.
+
+## Workloads
+
+All benchmarks were run using **YCSB 0.18.0** built from the latest GitHub snapshot, configured to stress the storage layer rather than in-memory caching.
+
+Each test used:
+
+- 1 billion records
+- 2 million operations per run
+- Uniform request distribution, ensuring every access had an equal probability of hitting any record
+
+The following workloads were evaluated:
+
+- **100% Reads** - full random reads
+- **100% Updates** - full write workload (non-Zipfian, sequential insert/update order)
+- **50% Reads / 50% Updates** - balanced mixed workload
+- **95% Reads / 5% Updates** - read-heavy mixed workload
+
+### Read-Only Workload (100% Reads)
+
+This workload is designed to highlight the impact of storage architecture when the working set is much larger than memory. With a 1 TB dataset and only 90 GB of database memory, most reads miss the cache and must be served from storage. This makes the test a direct comparison of local NVMe (EloqDoc) versus network-attached persistent disk (MongoDB and FerretDB).
+
+#### Read throughput
+
+<Image
+  src={image1}
+  alt="Read throughput comparison between EloqDoc, FerretDB, and MongoDB"
+  width={1200}
+  height={600}
+/>
+
+MongoDB and FerretDB both reach their maximum throughput very early. MongoDB stabilizes around **8,000 QPS**, and FerretDB around **10,000 QPS**, with little or no improvement as threads increase. This indicates that both systems become limited by their storage layer: adding more threads only increases queuing, not useful work.
+
+EloqDoc scales very differently. Throughput increases steadily from **97k QPS at 64 threads** to almost **129k QPS at 512 threads**, before flattening at **~126k QPS** at 1024 threads. This shows that EloqDoc continues to convert additional concurrency into useful work, rather than stalling on I/O.
+
+At peak, EloqDoc delivers about 16× more read throughput than MongoDB and 13× more than FerretDB on the same hardware and dataset.
+
+#### Read latency at high concurrency
+
+At **256 threads**, the latency distributions look like this:
+
+<Image
+  src={image2}
+  alt="Read latency comparison between EloqDoc, FerretDB, and MongoDB"
+  width={1200}
+  height={600}
+/>
+
+MongoDB and FerretDB show very high latencies at this level of concurrency. MongoDB’s p99 reaches nearly **60,000 µs**, and FerretDB exceeds **30,000 µs**, meaning a significant portion of reads are waiting tens of milliseconds before being served.
+
+EloqDoc remains in a completely different range: even at 256 threads, its p99 is only **3,441 µs**. This indicates that most reads are being served quickly from NVMe, with far less queuing and far fewer long stalls.
+
+### Mixed Workload (95% Reads / 5% Updates)
+
+This workload is still read-dominant, but it introduces a small amount of write pressure. Even at 5% updates, the system must handle background write work (journal/WAL activity, page updates, and synchronization). That’s important because in many real systems, “mostly reads” still includes periodic writes (sessions, counters, metadata, etc.).
+
+The goal here is to observe how each database behaves when reads remain the majority, but writes introduce contention in the storage path.
+
+#### Throughput (QPS)
+
+<Image
+  src={image3}
+  alt="Mixed workload (95% reads / 5% updates) throughput comparison between EloqDoc, FerretDB, and MongoDB"
+  width={1200}
+  height={600}
+/>
+
+MongoDB and FerretDB remain essentially flat across concurrency. MongoDB stays
+around** ~8,0xx QPS** from 64 through 1024 threads, and FerretDB stays around**
+~7,7xx QPS**. This suggests both systems saturate quickly once writes are
+introduced, and additional threads mostly contribute to queueing.
+
+EloqDoc, however, continues scaling with concurrency: from **8,954 QPS at 64 threads** to **45,405 QPS at 1024 threads**. Unlike the pure read case, where EloqDoc is already very high at low threads, here you can see the write component pulling the throughput down at low concurrency, but as concurrency increases, EloqDoc is able to exploit parallelism and continue increasing total ops.
+
+#### Read latency (µs)
+
+At **256 threads**, read latencies look like this:
+
+<Image
+  src={image4}
+  alt="Read latency comparison between EloqDoc, FerretDB, and MongoDB under mixed workload"
+  width={1200}
+  height={600}
+/>
+
+Read latency increases across all systems compared to the 100% read workload because writes introduce interference. EloqDoc’s median read latency (lat50) remains relatively low **(6,175 µs)**, but its tail grows more substantially at this point **(lat99 101,951 µs)**, which reflects that even with NVMe, mixed workloads can still create bursts and queuing at high concurrency.
+
+MongoDB and FerretDB show higher average read latency than EloqDoc at this concurrency **(32,171 µs and 31,581 µs latAvg, respectively)**, consistent with persistent-disk I/O becoming the dominant delay under load.
+
+#### Update latency (µs)
+
+At **256 threads**, update latencies look like this:
+
+<Image
+  src={image5}
+  alt="Update latency comparison between EloqDoc, FerretDB, and MongoDB under mixed workload"
+  width={1200}
+  height={600}
+/>
+
+FerretDB clearly struggles with updates: **55,176 µs** average and **81,151 µs** p99 at 256 threads, which is a strong signal of contention in the PostgreSQL backend under write activity.
+
+MongoDB’s updates remain relatively controlled at this specific thread count, with **30,303 µs** p99. EloqDoc’s update latency is higher than MongoDB’s here (**p99 119,615 µs**), but EloqDoc is also processing **more than 2× the throughput** at 256 threads (**18,793 QPS vs 8,094 QPS**). EloqDoc is pushing much more work through the system, and its tail latency reflects the queuing that appears as it continues scaling while the others plateau.
+
+With only **5% updates**, MongoDB and FerretDB still hit throughput ceilings early and remain mostly flat across threads. EloqDoc continues scaling throughput strongly with concurrency, indicating it is able to utilize the NVMe path and parallelism more effectively, even with write interference.
+
+### Mixed Workload (50% Reads / 50% Writes)
+
+This workload represents a more realistic production pattern, where reads and writes occur in roughly equal proportion. Unlike the read-only case, writes introduce log flushes, page updates, and additional synchronization, making storage performance even more important.
+
+#### Throughput
+
+<Image
+  src={image6}
+  alt="Mixed workload (50% reads / 50% writes) throughput comparison between EloqDoc, FerretDB, and MongoDB"
+  width={1200}
+  height={600}
+/>
+
+MongoDB initially performs well at low concurrency, reaching **8,046 QPS at 64 threads**, but then stagnates. Even at 1024 threads, it only reaches **8,500 QPS**, showing that its write path becomes a bottleneck once write traffic increases.
+
+FerretDB peaks even earlier. It reaches about **4,500 QPS at 64 threads** and barely improves beyond that. With 1024 threads, it still processes only **4,692 QPS**, indicating that its PostgreSQL-based backend and protocol translation introduce heavy contention under mixed read/write load.
+
+EloqDoc shows a completely different scaling pattern. Throughput grows steadily from **4,909 QPS at 64 threads** to **14,892 QPS at 1024 threads**, more than 3× FerretDB and 75% higher than MongoDB at peak concurrency.
+
+This indicates that EloqDoc’s write handling and local NVMe buffering allow it to absorb increasing concurrency without immediately saturating the storage layer.
+
+#### Read latency
+
+At **256 threads**, read latencies look like this:
+
+<Image
+  src={image7}
+  alt="Read latency comparison between EloqDoc, FerretDB, and MongoDB under 50% read / 50% write workload"
+  width={1200}
+  height={600}
+/>
+
+MongoDB and FerretDB both show rising read latencies under mixed load, as writes interfere with read I/O. FerretDB is particularly affected, with **p99 reads exceeding 200,000 µs**, indicating long delays caused by write contention and backend overhead.
+
+EloqDoc’s read latencies are higher than in the pure-read case, but they remain competitive despite much higher throughput. This reflects the fact that EloqDoc is doing far more work per second, yet still keeps read requests moving through NVMe rather than blocking on networked storage.
+
+#### Write latency
+
+At the same **256-thread** point:
+
+<Image
+  src={image8}
+  alt="Write latency comparison between EloqDoc, FerretDB, and MongoDB under 50% read / 50% write workload"
+  width={1200}
+  height={600}
+/>
+
+MongoDB’s and FerretDB’s write paths suffer significantly from persistent disk latency. MongoDB’s **p99 write latency reaches 266,751 µs**, while FerretDB goes even higher. These long tails mean a non-trivial fraction of write requests experience hundreds of milliseconds of delay.
+
+EloqDoc’s writes are also affected at high concurrency, but much less severely. Its **p99 write latency of 146,175 µs** is almost **2× lower than MongoDB and about half of FerretDB’s**, despite EloqDoc handling far more operations per second.
+
+Under a balanced read/write workload, MongoDB and FerretDB quickly become constrained by the cost of synchronizing writes to network-attached storage. Their throughput plateaus early, and write latency grows rapidly as concurrency increases.
+
+EloqDoc, by contrast, continues to scale because most read and write traffic is absorbed by local NVMe before being pushed to durable storage. This allows EloqDoc to maintain higher throughput while keeping both read and write latencies under better control.
+
+### Update-Only Workload (100% Updates)
+
+This workload isolates the write path. Every operation performs a document update, appends to the WAL or journal, and must be made durable before returning. With a 1 TB dataset and only ~90 GB of memory, almost every write hits storage, making this test a direct comparison of:
+
+- EloqDoc’s NVMe-backed write buffer + cloud persistence
+- MongoDB’s synchronous journal on pd-balanced disk
+- FerretDB’s PostgreSQL WAL on pd-balanced disk
+
+This is the most punishing workload for any storage system because fsync and log flushing dominate performance
+
+#### Throughput
+
+<Image
+  src={image9}
+  alt="Update-only workload throughput comparison between EloqDoc, FerretDB, and MongoDB"
+  width={1200}
+  height={600}
+/>
+
+FerretDB plateaus around ~3.8k updates/sec across all thread counts, indicating a hard limit in its PostgreSQL-based write path. MongoDB shows unstable scaling as concurrency increases, with throughput fluctuating rather than rising smoothly, consistent with contention on its pd-balanced disk write path.
+
+EloqDoc continues to increase throughput with concurrency, reaching 8,814 QPS at 1024 threads, more than 2× FerretDB and slightly higher than MongoDB, reflecting its use of local NVMe for the primary write path with durability maintained through its WAL and cloud storage layer
+
+#### Write Latency (256 threads)
+
+FerretDB shows the heaviest write pressure. Its **lat99 exceeds 338,000 µs**, meaning a large fraction of updates wait hundreds of milliseconds for PostgreSQL WAL and disk synchronization.
+
+MongoDB’s median and average are lower than FerretDB’s, but its tail latency is the worst: **467,199 µs at p99**, indicating severe queueing when the journal and disk become saturated.
+
+<Image
+  src={image10}
+  alt="Update latency comparison between EloqDoc, FerretDB, and MongoDB under update-only workload"
+  width={1200}
+  height={600}
+/>
+
+EloqDoc’s write latency sits between the two in absolute terms, but it is doing **far more work per second** at this point. Its **p99 of 210,175 µs** is less than half of MongoDB’s, despite EloqDoc sustaining higher throughput.
+
+## Conclusion
+
+What this benchmark really shows is that once your data no longer fits in memory, storage becomes the database. At that point, it doesn’t matter how good your query engine is; you are only as fast as the disk you are reading from and writing to.
+
+MongoDB and FerretDB both run into that wall quickly in this test. As soon as concurrency rises and requests start missing cache, they flatten out on network-attached storage. More threads just mean more waiting.
+
+EloqDoc behaves differently. By putting local NVMe on the hot path and pushing durability into the background, it keeps turning extra concurrency into real work. That’s why it keeps scaling while the others stall, not because of tricks or shortcuts, but because the I/O path is fundamentally faster.
+
+If you are running MongoDB-compatible workloads at scale and you’re tired of being bottlenecked by EBS-style storage, [EloqDoc](https://www.eloqdata.com/product/eloqdoc) is worth trying. We’d love to hear your feedback and thoughts. [Chat with us on Discord](https://discord.com/invite/nmYjBkfak6).
