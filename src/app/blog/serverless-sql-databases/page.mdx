@@ -71,7 +71,7 @@ Turso is built on `libSQL` (an open-source fork of SQLite). This is the one to p
 PlanetScale is built on Vitess, which is what powers the massive scale of YouTube. It’s MySQL-compatible(and now Postgres too) and handles schema changes better than almost anyone. You can propose a "Deploy Request" for a schema change, and it will run it in the background without locking your tables or taking your app down.
 
 - **The Vibe:** "I’m building the next big thing and I cannot afford downtime."
-- **The Catch:** They killed their free tier recently. It's now strictly for projects with a budget.
+- **The Catch:** PlanetScale now offers a $5/month single-node tier for development and low-traffic workloads Pricing and plans — PlanetScale +2, alongside their $50/month Metal tier with HA.
 
 ---
 
@@ -169,7 +169,7 @@ If you're starting today, don't get paralyzed by the choice. Here is how I usual
 2. **Building a Next.js/React app?** Use **Neon**. The branching makes your CI/CD pipeline feel like magic.
 3. **Need raw speed at the edge?** Use **Turso**. The latency is unbeatable and 5GB for free is wild.
 4. **Scaling a MySQL app on a budget?** **TiDB Starter** is the best serverless MySQL tier for most devs.
-5. **Scaling a high-traffic MySQL app with a budget?** **PlanetScale** is the gold standard if you can justify the $39/mo starting price.
+5. **Scaling a high-traffic MySQL app with a budget?** **PlanetScale** is the gold standard with it's Vitess backend.
 
 Pick the one that matches the SQL flavor you know best. You can always migrate later, but you can't get back the time spent over-architecting on day one.
 
