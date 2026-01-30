@@ -31,7 +31,7 @@ But "serverless SQL" has become a crowded space. Between the Postgres-alikes and
 
 Before we look at the specific tools, it’s worth noting why these feel different from traditional RDS. They all fundamentally separate **Compute** from **Storage**.
 
-In a legacy setup, your database is a VM that’s always running. In serverless land, your data sits in a storage layer (like S3 or a specialized distributed layer), and the "Compute" (the SQL engine) only spins up when a query hits it. This is how we get "Scale to Zero", if no one is using your app, you aren't paying for a CPU to sit idl. You can get a deeper [comparison of serverless vs traditional databases here](https://datavidhya.com/blog/serverless-sql-database/)
+In a legacy setup, your database is a VM that’s always running. In serverless land, your data sits in a storage layer (like S3 or a specialized distributed layer), and the "Compute" (the SQL engine) only spins up when a query hits it. This is how we get "Scale to Zero", if no one is using your app, you aren't paying for a CPU to sit idle. You can get a deeper [comparison of serverless vs traditional databases here](https://datavidhya.com/blog/serverless-sql-database/)
 
 ---
 
