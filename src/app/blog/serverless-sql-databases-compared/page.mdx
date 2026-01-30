@@ -1,0 +1,199 @@
+import Image from "next/image"
+
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+import { Callout } from "@/components/blog/Callout"
+import RelatedPosts from "@/components/blog/RelatedPosts"
+
+import CoverImage from "./cover.png"
+
+export const metadata = getMetadata({
+  path: "/blog/serverless-sql-databases-compared/",
+  title: "6 Best Serverless SQL Databases for Developers (2026 Comparison)",
+  description:
+    "Serverless databases compared. Compare Neon, Supabase, Turso, and PlanetScale based on cold starts, branching, and free tiers to find your perfect SQL stack",
+  image: CoverImage.src,
+})
+
+<BlogHeader
+  title={"6 Best Serverless SQL Databases for Developers (2026 Comparison)"}
+  author={"Jitendra Nirnejak"}
+  publishedAt={"2026-01-30T00:00:00Z"}
+/>
+
+If you’re spinning up a new project, you’ve probably realized that managing a database server in 2024 feels like a chore. We’ve moved past the days of SSH-ing into a box just to tweak memory settings. Now, we just want a connection string that scales when our app gets hit and shrinks when we’re sleeping.
+
+But "serverless SQL" has become a crowded space. Between the Postgres-alikes and the MySQL giants, the "best" choice depends entirely on your stack and your tolerance for things like cold starts. Here is my take on the current landscape from a developer's perspective.
+
+---
+
+## **The "Serverless" Magic: Separation of Concerns**
+
+Before we look at the specific tools, it’s worth noting why these feel different from traditional RDS. They all fundamentally separate **Compute** from **Storage**.
+
+In a legacy setup, your database is a VM that’s always running. In serverless land, your data sits in a storage layer (like S3 or a specialized distributed layer), and the "Compute" (the SQL engine) only spins up when a query hits it. This is how we get "Scale to Zero", if no one is using your app, you aren't paying for a CPU to sit idl. You can get a deeper [comparison of serverless vs traditional databases here](https://datavidhya.com/blog/serverless-sql-database/)
+
+---
+
+## Choosing the Right SQL Tool for the Job
+
+### **Neon: The Workflow King (Postgres)**
+
+Neon is my go-to when I want a "pure" Postgres experience but with modern developer experience (DX).
+
+The killer feature here is **Database Branching**. If you’ve ever had to run a risky migration on production data and held your breath, you’ll love this. You can branch your entire database just like a Git branch. You get a separate connection string with all your production data (using copy-on-write, so it’s instant) to test your migrations or new features.
+
+- **The Vibe:** It feels like Postgres, but with a "Time Machine" button.
+- **The Catch:** There is a real "cold start." If your DB has scaled to zero, that first request might take a second or two to wake up.
+
+---
+
+### **Supabase: The "Batteries Included" Backend**
+
+Supabase is technically a wrapper around Postgres, but it's more like a "Firebase alternative." If you use Supabase, you aren't just getting a database; you're getting an API, Auth, and Storage.
+
+- **The Vibe:** "I don't want to write a backend; I just want to build my frontend."
+- **The Catch:** On the free tier, it doesn't scale to zero; it stays always on. This sounds good, but it means you're managed by strict project limits rather than usage-based billing.
+
+---
+
+### **Turso: The Edge Speedster (SQLite)**
+
+Turso is built on `libSQL` (an open-source fork of SQLite). This is the one to pick if you care about latency above all else. Because SQLite is so lightweight, Turso can replicate your data to "the edge", meaning your database can live in the same data center as your serverless functions (like Vercel or Cloudflare).
+
+- **The Vibe:** Your queries feel like they're hitting a local file. It is incredibly snappy.
+- **The Catch:** It's SQLite. If you need heavy-duty Postgres extensions or complex stored procedures, you'll hit a wall.
+
+---
+
+### **PlanetScale: The Scalability Giant**
+
+PlanetScale is built on Vitess, which is what powers the massive scale of YouTube. It’s MySQL-compatible(and now Postgres too) and handles schema changes better than almost anyone. You can propose a "Deploy Request" for a schema change, and it will run it in the background without locking your tables or taking your app down.
+
+- **The Vibe:** "I’m building the next big thing and I cannot afford downtime."
+- **The Catch:** They killed their free tier recently. It's now strictly for projects with a budget.
+
+---
+
+### **TiDB Cloud: The Distributed Hybrid**
+
+TiDB is interesting because it’s a distributed MySQL database. Their "Starter" plan is fully serverless and handles "spiky" traffic better than most. If you have a marketing campaign that might suddenly send 10,000 users to your site, TiDB’s architecture is designed to spread that load across nodes automatically.
+
+- **The Vibe:** Great MySQL alternative with a very generous 5GB free tier.
+- **The Catch:** The community and ecosystem aren't as massive as Postgr
+
+---
+
+### **Prisma Postgres: The DX Optimizer**
+
+If your app is already built with the Prisma ORM, this is the most seamless experience. They use "unikernels" to solve the cold start problem, making it one of the fastest waking serverless DBs out there.
+
+- **The Vibe:** "I already use Prisma, just give me a DB that works with it."
+- **The Catch:** It’s newer, so you’re buying into their specific ecosystem.
+
+### Feature Comparison At-A-Glance
+
+<table className="w-full text-sm">
+  <thead>
+    <tr className="border-b border-zinc-700">
+      <th className="py-3 px-2 text-left font-medium">Feature</th>
+      <th className="py-3 px-2 text-left font-medium">Neon</th>
+      <th className="py-3 px-2 text-left font-medium">Supabase</th>
+      <th className="py-3 px-2 text-left font-medium">Turso</th>
+      <th className="py-3 px-2 text-left font-medium">PlanetScale</th>
+      <th className="py-3 px-2 text-left font-medium">TiDB Serverless</th>
+      <th className="py-3 px-2 text-left font-medium">Prisma Postgres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr className="border-b border-zinc-800">
+      <td className="py-3 px-2 font-medium">Engine</td>
+      <td className="py-3 px-2">Postgres</td>
+      <td className="py-3 px-2">Postgres</td>
+      <td className="py-3 px-2">SQLite</td>
+      <td className="py-3 px-2">MySQL</td>
+      <td className="py-3 px-2">MySQL</td>
+      <td className="py-3 px-2">Postgres</td>
+    </tr>
+    <tr className="border-b border-zinc-800">
+      <td className="py-3 px-2 font-medium">Scale to Zero</td>
+      <td className="py-3 px-2">✅ Yes</td>
+      <td className="py-3 px-2">❌ No</td>
+      <td className="py-3 px-2">✅ Yes</td>
+      <td className="py-3 px-2">✅ Yes</td>
+      <td className="py-3 px-2">✅ Yes</td>
+      <td className="py-3 px-2">✅ Yes</td>
+    </tr>
+    <tr className="border-b border-zinc-800">
+      <td className="py-3 px-2 font-medium">Free Tier</td>
+      <td className="py-3 px-2">0.5GB</td>
+      <td className="py-3 px-2">500MB DB</td>
+      <td className="py-3 px-2">9GB</td>
+      <td className="py-3 px-2">❌ Paid Only</td>
+      <td className="py-3 px-2">5GB</td>
+      <td className="py-3 px-2">100k Ops</td>
+    </tr>
+    <tr className="border-b border-zinc-800">
+      <td className="py-3 px-2 font-medium">Cold Start</td>
+      <td className="py-3 px-2">~1s</td>
+      <td className="py-3 px-2">None</td>
+      <td className="py-3 px-2">None</td>
+      <td className="py-3 px-2">~1s</td>
+      <td className="py-3 px-2">Fast</td>
+      <td className="py-3 px-2">Instant</td>
+    </tr>
+    <tr className="border-b border-zinc-800">
+      <td className="py-3 px-2 font-medium">Branching</td>
+      <td className="py-3 px-2">✅ Yes</td>
+      <td className="py-3 px-2">❌ No</td>
+      <td className="py-3 px-2">✅ Yes</td>
+      <td className="py-3 px-2">✅ Yes</td>
+      <td className="py-3 px-2">✅ Yes</td>
+      <td className="py-3 px-2">✅ Yes</td>
+    </tr>
+    <tr>
+      <td className="py-3 px-2 font-medium">Best For</td>
+      <td className="py-3 px-2">Dev Workflows</td>
+      <td className="py-3 px-2">Full-stack Apps</td>
+      <td className="py-3 px-2">Edge/Speed</td>
+      <td className="py-3 px-2">Massive Scale</td>
+      <td className="py-3 px-2">Spiky Traffic</td>
+      <td className="py-3 px-2">Prisma Users</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+### Which one should you pick?
+
+If you're starting today, don't get paralyzed by the choice. Here is how I usually break it down:
+
+1. **Building an MVP solo?** Use **Supabase**. Having Auth and DB in one place saves you days of setup.
+2. **Building a Next.js/React app?** Use **Neon**. The branching makes your CI/CD pipeline feel like magic.
+3. **Need raw speed at the edge?** Use **Turso**. The latency is unbeatable and 9GB for free is wild.
+4. **Scaling a MySQL app on a budget?** **TiDB Starter** is the best serverless MySQL tier for most devs.
+5. **Scaling a high-traffic MySQL app with a budget?** **PlanetScale** is the gold standard if you can justify the $39/mo starting price.
+
+Pick the one that matches the SQL flavor you know best. You can always migrate later, but you can't get back the time spent over-architecting on day one.
+
+## References and Links
+
+-
+- [Ruff Documentation](https://docs.astral.sh/ruff/)
+- [Demo Repo](https://github.com/nirnejak/ruff-uv-api-client)
+- Ruff VSCode Extension - [https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
+
+## More Blog Posts You Might Find Useful
+
+If you liked this blog post, here are a few more posts that might help you choose the right developer tools:
+
+- [Supabase vs. Clerk](https://www.devtoolsacademy.com/blog/supabase-vs-clerk/)
+- [CodeRabbit vs. Other AI Code Review Tools](https://www.devtoolsacademy.com/blog/coderabbit-vs-others-ai-code-review-tools/)
+- [Neon vs. Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase/)
+- [MongoDB vs. PostgreSQL](https://www.devtoolsacademy.com/blog/mongoDB-vs-postgreSQL/)
+- [Cody vs. Cursor](https://www.devtoolsacademy.com/blog/cody-vs-cursor-choosing-the-right-ai-code-assistant-for-your-development-workflow/)
+- [State of Databases for Serverless in 2024](/blog/state-of-databases-2024)
+- [Cursor vs Windsurf ](https://www.devtoolsacademy.com/blog/cursor-vs-windsurf/)
+
+Check them out.

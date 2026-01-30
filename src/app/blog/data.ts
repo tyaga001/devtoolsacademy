@@ -15,6 +15,7 @@ import EloqdocVSMongoDBPart2 from "@/app/blog/eloqdoc-vs-mongodb-feature-compari
 import EloqdocVSMongoDBPart3 from "@/app/blog/eloqdoc-vs-mongodb-cloud-services/cover.png"
 import EloqdocVSMongoDBPart4 from "@/app/blog/eloqdoc-vs-ferretdb-vs-mongodb-benchmark-guide/cover.png"
 import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
+import ServerlessDatabasesCompared from "@/app/blog/serverless-sql-databases-compared/cover.png"
 
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
@@ -23,6 +24,20 @@ export const allAuthors = [
 ]
 
 export const allBlogs = [
+  {
+    author: "Jitendra Nirnejak",
+    slug: "serverless-sql-databases-compared",
+    title: "6 Best Serverless SQL Databases for Developers (2026 Comparison)",
+    excerpt:
+      "A comprehensive guide comparing Neon, Supabase, Turso, and PlanetScale and other serverless SQL databases",
+    description:
+      "Serverless databases compared. Compare Neon, Supabase, Turso, and PlanetScale based on cold starts, branching, and free tiers to find your perfect SQL stack",
+    publishedAt: "2026-01-30T00:00:00Z",
+    category: "Database",
+    image: ServerlessDatabasesCompared.src,
+    isNew: true,
+    isFeatured: false,
+  },
   {
     author: "Ankur Tyagi",
     slug: "eloqdoc-vs-ferretdb-vs-mongodb-benchmark-guide",
