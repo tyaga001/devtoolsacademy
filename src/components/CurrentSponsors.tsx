@@ -6,6 +6,7 @@ import StreamLogo from "@/assets/stream.png"
 import CodeRabbitLogo from "@/assets/coderabbit.svg"
 import EloqDataLogo from "@/assets/eloqdata.png"
 import ClineLogo from "@/assets/cline.svg"
+import OrchidsLogo from "@/assets/orchids.png"
 import { Heart } from "lucide-react"
 import { Link } from "next-view-transitions"
 
@@ -60,6 +61,14 @@ const CurrentSponsors: React.FC<Props> = () => {
             rel="noopener noreferrer"
           >
             <Image src={ClineLogo} alt="Cline Logo" height={45} />
+          </a>
+          <a
+            href="https://www.orchids.app/?ref=devtoolsacademy.com"
+            target="_blank"
+            className="flex items-center transition-all hover:scale-105 hover:opacity-80"
+            rel="noopener noreferrer"
+          >
+            <Image src={OrchidsLogo} alt="Orchids Logo" height={45} />
           </a>
         </div>
 
