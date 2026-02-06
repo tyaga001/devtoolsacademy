@@ -63,7 +63,7 @@ Everything is transparent, community-driven, and built in the open.
 
 [![Sponsors](https://img.shields.io/badge/Sponsors-💎%20Trusted-blue)](https://www.devtoolsacademy.com/creator-partnerships/)
 
-### 🌟 Gold Sponsors
+### 🌟 VIP Sponsors
 
 <table>
   <tr>
