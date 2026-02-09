@@ -18,7 +18,6 @@ import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
 import ServerlessDatabasesCompared from "@/app/blog/serverless-sql-databases/cover.png"
 import AICodingAgent from "@/app/blog/ai-coding-agents-practical-guide/cover.png"
 
-
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
   { name: "Jitendra Nirnejak", link: "https://nirnejak.com/" },
