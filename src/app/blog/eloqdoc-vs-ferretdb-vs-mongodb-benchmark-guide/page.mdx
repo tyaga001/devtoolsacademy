@@ -51,18 +51,52 @@ We used a 1 TB dataset on a machine with 110 GB of RAM. The underlying PostgreSQ
 
 The key difference between the systems lies in where their data resides.
 
-| System                    | Persistent Disk (MongoDB / FerretDB)                                 |
-| :------------------------ | :------------------------------------------------------------------- |
-| **MongoDB**               | Google Cloud pd-balanced persistent disk                             |
-| **FerretDB (PostgreSQL)** | Google Cloud pd-balanced persistent disk                             |
-| **EloqDoc**               | 2.9 TB Titanium SSD (standardlssd) - used as the EloqDoc local cache |
+<table>
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>Storage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>MongoDB</strong></td>
+      <td>Google Cloud pd-balanced persistent disk</td>
+    </tr>
+    <tr>
+      <td><strong>FerretDB (PostgreSQL)</strong></td>
+      <td>Google Cloud pd-balanced persistent disk</td>
+    </tr>
+    <tr>
+      <td><strong>EloqDoc</strong></td>
+      <td>2.9 TB Titanium SSD (standardlssd) - used as the EloqDoc local cache</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Disk performance
 
-| Storage type                                          | IOPS                   | Throughput                         |
-| :---------------------------------------------------- | :--------------------- | :--------------------------------- |
-| **Local NVMe (Titanium SSD)**                         | 750k read / 500k write | 3000 MiB/s read / 2500 MiB/s write |
-| **3.0 TB pd-balanced Persistent Disk (Google Cloud)** | 3000 read / 3000 write | ~140 MiB/s                         |
+<table>
+  <thead>
+    <tr>
+      <th>Storage type</th>
+      <th>IOPS</th>
+      <th>Throughput</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Local NVMe (Titanium SSD)</strong></td>
+      <td>750k read / 500k write</td>
+      <td>3000 MiB/s read / 2500 MiB/s write</td>
+    </tr>
+    <tr>
+      <td><strong>3.0 TB pd-balanced Persistent Disk (Google Cloud)</strong></td>
+      <td>3000 read / 3000 write</td>
+      <td>~140 MiB/s</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Database Configuration
 

@@ -15,6 +15,8 @@ import EloqdocVSMongoDBPart2 from "@/app/blog/eloqdoc-vs-mongodb-feature-compari
 import EloqdocVSMongoDBPart3 from "@/app/blog/eloqdoc-vs-mongodb-cloud-services/cover.png"
 import EloqdocVSMongoDBPart4 from "@/app/blog/eloqdoc-vs-ferretdb-vs-mongodb-benchmark-guide/cover.png"
 import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
+import ServerlessDatabasesCompared from "@/app/blog/serverless-sql-databases/cover.png"
+import AICodingAgent from "@/app/blog/ai-coding-agents-practical-guide/cover.png"
 
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
@@ -23,6 +25,35 @@ export const allAuthors = [
 ]
 
 export const allBlogs = [
+  {
+    author: "Ankur Tyagi",
+    slug: "ai-coding-agents-practical-guide",
+    title: "AI Coding Agents: A Practical Guide for Software Developers",
+    excerpt:
+      "A practical guide to working with AI coding agents without the hype.",
+    description:
+      "A practical guide to working with AI coding agents without the hype.",
+
+    publishedAt: "2026-02-10T00:00:00Z",
+    category: "AI Code Editor",
+    image: AICodingAgent.src,
+    isNew: true,
+    isFeatured: false,
+  },
+  {
+    author: "Jitendra Nirnejak",
+    slug: "serverless-sql-databases",
+    title: "6 Best Serverless SQL Databases for Developers (2026 Comparison)",
+    excerpt:
+      "A comprehensive guide comparing Neon, Supabase, Turso, and PlanetScale and other serverless SQL databases",
+    description:
+      "Serverless databases compared. Compare Neon, Supabase, Turso, and PlanetScale based on cold starts, branching, and free tiers to find your perfect SQL stack",
+    publishedAt: "2026-01-30T00:00:00Z",
+    category: "Database",
+    image: ServerlessDatabasesCompared.src,
+    isNew: true,
+    isFeatured: false,
+  },
   {
     author: "Ankur Tyagi",
     slug: "eloqdoc-vs-ferretdb-vs-mongodb-benchmark-guide",
