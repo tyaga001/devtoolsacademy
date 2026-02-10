@@ -16,6 +16,7 @@ import EloqdocVSMongoDBPart3 from "@/app/blog/eloqdoc-vs-mongodb-cloud-services/
 import EloqdocVSMongoDBPart4 from "@/app/blog/eloqdoc-vs-ferretdb-vs-mongodb-benchmark-guide/cover.png"
 import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
 import ServerlessDatabasesCompared from "@/app/blog/serverless-sql-databases/cover.png"
+import AICodingAgent from "@/app/blog/ai-coding-agents-practical-guide/cover.png"
 
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
@@ -24,6 +25,21 @@ export const allAuthors = [
 ]
 
 export const allBlogs = [
+  {
+    author: "Ankur Tyagi",
+    slug: "ai-coding-agents-practical-guide",
+    title: "AI Coding Agents: A Practical Guide for Software Developers",
+    excerpt:
+      "A practical guide to working with AI coding agents without the hype.",
+    description:
+      "A practical guide to working with AI coding agents without the hype.",
+
+    publishedAt: "2026-02-10T00:00:00Z",
+    category: "AI Code Editor",
+    image: AICodingAgent.src,
+    isNew: true,
+    isFeatured: false,
+  },
   {
     author: "Jitendra Nirnejak",
     slug: "serverless-sql-databases",
