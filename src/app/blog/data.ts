@@ -26,20 +26,6 @@ export const allAuthors = [
 
 export const allBlogs = [
   {
-    author: "Jitendra Nirnejak",
-    slug: "serverless-sql-databases",
-    title: "6 Best Serverless SQL Databases for Developers (2026 Comparison)",
-    excerpt:
-      "A comprehensive guide comparing Neon, Supabase, Turso, and PlanetScale and other serverless SQL databases",
-    description:
-      "Serverless databases compared. Compare Neon, Supabase, Turso, and PlanetScale based on cold starts, branching, and free tiers to find your perfect SQL stack",
-    publishedAt: "2026-01-30T00:00:00Z",
-    category: "Database",
-    image: ServerlessDatabasesCompared.src,
-    isNew: true,
-    isFeatured: false,
-  },
-  {
     author: "Ankur Tyagi",
     slug: "ai-coding-agents-practical-guide",
     title: "AI Coding Agents: A Practical Guide for Software Developers",
