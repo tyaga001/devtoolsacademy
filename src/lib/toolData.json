@@ -714,5 +714,24 @@
     "githubUrl": "https://github.com/risingwavelabs/risingwave",
     "websiteUrl": "https://risingwave.com/",
     "documentation": "https://docs.risingwave.com/get-started/intro"
+  },
+  {
+    "name": "Spiderhash",
+    "headline": "Webhook debugging, inspection, and replay for API teams.",
+    "description": "Spiderhash is a webhook testing and debugging platform for developers and API teams. It provides unique endpoints to capture incoming webhook payloads, inspect headers and bodies, replay deliveries, and speed up integration troubleshooting. Teams can use Spiderhash to validate webhook contracts, debug callback issues, and monitor event flows during development and QA.",
+    "features": [
+      "Capture webhook requests in real time",
+      "Inspect headers, payloads, and delivery metadata",
+      "Replay webhook deliveries to test reliability",
+      "Use temporary and shareable endpoints for integration testing",
+      "Debug webhook failures faster during development and QA"
+    ],
+    "categories": ["api", "tools"],
+    "tags": ["webhooks", "api-testing", "debugging"],
+    "stars": 0,
+    "forks": 0,
+    "githubUrl": "https://spiderhash.io/",
+    "websiteUrl": "https://spiderhash.io/",
+    "documentation": "https://spiderhash.io/"
   }
 ]
