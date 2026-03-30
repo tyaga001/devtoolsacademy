@@ -1,0 +1,553 @@
+import { getMetadata } from "@/lib/metadata"
+import BlogHeader from "@/components/blog/BlogHeader"
+import RelatedPosts from "@/components/blog/RelatedPosts"
+import Image from "next/image"
+
+import CoverImage from "./cover.png"
+import SupabaseArch from "./image1.png"
+import ConvexArch from "./image2.png"
+import ConvexMutation from "./image3.png"
+import ConvexFunctionTypes from "./image4.png"
+import ConvexCronDashboard from "./image5.png"
+import SupabaseCron from "./image6.png"
+import SupabaseSQLEditor from "./image7.png"
+import SupabaseCLI from "./image8.png"
+import ConvexProjectStructure from "./image9.png"
+import ConvexLogs from "./image10.png"
+import SupabaseDashboard from "./image11.png"
+import SupabaseVectorSearch from "./image12.png"
+import ConvexAI from "./image13.png"
+import ConvexAgentWorkflow from "./image14.png"
+import ConvexFunctionArchitecture from "./image15.png"
+import SupabaseExtensions from "./image16.png"
+import ConvexComponents from "./image17.png"
+import SupabaseScaling from "./image18.png"
+import SupabaseReadReplicas from "./image19.png"
+import ConvexScaling from "./image20.png"
+import SupabaseRLS from "./image21.png"
+import ConvexSecurity from "./image22.png"
+
+export const metadata = getMetadata({
+  path: "/blog/supabase-vs-convex",
+  title: "Supabase vs Convex | DevTools Academy",
+  description:
+    "A comprehensive comparison of Supabase and Convex backend platforms to help you choose the right one for your project",
+  image: CoverImage.src,
+})
+
+<BlogHeader
+  title={"Supabase vs Convex"}
+  author={"Ankur Tyagi"}
+  publishedAt={"2026-03-27T00:00:00Z"}
+/>
+
+Supabase and Convex both position themselves as modern backend platforms, but they start from very different assumptions about how backend systems should work.
+
+Supabase hit the scene in 2020 with a pretty clear mission: make PostgreSQL easier to use. Instead of building a new database from scratch, they just wrapped Postgres in a solid layer of managed services. You get REST APIs via PostgREST, real-time updates through Elixir, and auth via GoTrue, all right out of the box. When you create a Supabase project, you are essentially provisioning a dedicated Postgres instance surrounded by these integrated services. Importantly, Supabase does not hide the database; you retain full SQL access and control.
+
+Convex takes a different route. Instead of exposing SQL, it introduces a reactive backend model in which developers write TypeScript query and mutation functions that run in its managed runtime. Data is stored as JSON-like documents organized into tables, with relational behavior achieved through document IDs. Clients communicate over WebSocket and invoke these server functions directly.
+
+A defining characteristic is that queries are reactive by default: when underlying data changes, Convex automatically re-executes affected queries and pushes updated results to subscribed clients.
+
+Both platforms cover the same fundamental backend needs, database storage, authentication, file handling, and real-time capabilities, and both are open source with managed cloud options. The difference lies less in feature checklists and more in architectural philosophy: Supabase centers the database and layers services around it, while Convex centers application functions and integrates data access into that execution model.
+
+## Architecture: Postgres Modular vs Reactive Engine
+
+The architectural difference between Supabase and Convex is not cosmetic. It reflects two fundamentally different ways of thinking about backend systems.
+
+### Supabase - Database-Centered, Modular
+
+Supabase is built around PostgreSQL as the source of truth. Rather than replacing the database layer, it layers managed services on top of it.
+
+At a high level, a Supabase deployment includes:
+
+1. PostgreSQL as the core database
+2. PostgREST to auto-generate REST APIs from your schema
+3. Kong as the API gateway
+4. GoTrue for authentication and JWT issuance
+5. Realtime (Phoenix/Elixir) for streaming WAL changes via WebSocket
+6. Storage service for file uploads (metadata in Postgres, files in S3-compatible storage)
+7. Edge functions for custom backend logic
+
+<Image src={SupabaseArch} alt="Supabase architecture diagram showing Kong API gateway, PostgREST, GoTrue, Realtime, Storage, Functions, and pg_graphql services layered on top of PostgreSQL" width={1200} height={600} />
+
+Each service is modular. You can connect directly to the database using standard SQL clients, install extensions, inspect query plans, and also tune performance as needed.
+
+Realtime works by listening to Postgres's write-ahead log (WAL) and broadcasting row-level changes to subscribed clients. Reads (via REST or SQL) and real-time updates travel through separate channels, which gives flexibility but requires coordination in the application layer.
+
+The strength of this architecture lies in openness and familiarity. You are working with standard Postgres infrastructure, enhanced by managed services.
+
+The trade-off is shared responsibility: performance tuning, indexing, and query optimization remain partially in your hands.
+
+### Convex - Function-centred
+
+Convex takes a different architectural stance. Instead of exposing the database directly, it routes all data access through developer-defined functions.
+
+A Convex deployment consists of:
+
+- A transactional data store that is managed automatically
+- A function runner that executes query and mutation functions
+- A sync worker that manages client WebSocket sessions and reactive updates
+
+<Image src={ConvexArch} alt="Convex architecture diagram showing Web app with Client library connecting via WebSocket to Server functions and Database" width={1200} height={600} />
+
+Clients connect via WebSocket and invoke server-side query or mutation functions written in TypeScript. There is no direct SQL access layer.
+
+Mutations execute as ACID transactions with serializable isolation and optimistic concurrency control. If conflicts occur, Convex automatically retries transactions.
+
+Queries are reactive. Convex tracks that data a query reads. When that data changes, the query is re-executed, and updated results are pushed to subscribed clients over the same connection.
+
+This tightly integrated model means:
+
+- Database, compute, and synchronization operate as one system
+- Reads & writes flow through a single channel
+- Consistency guarantees are enforced by design
+
+The trade-off is reduced low-level control. Developers cannot manually tune SQL queries or directly inspect database internals.
+
+## Data Model and Query Language
+
+One of the most obvious differences between Supabase and Convex is how you interact with your data. This boils down to SQL vs. JavaScript/TypeScript, and relational tables vs. document-style records.
+
+Since Supabase uses PostgreSQL, it is a relational SQL database at heart. You define a schema (tables, columns, types, etc.) via SQL migration scripts or using the Supabase Studio GUI. The full power of Postgres is available – relations (foreign keys), joins, indexes, advanced types (JSON, geometry, etc.), and decades of mature functionality. To query or update data, you typically have a few options:
+
+- **Auto-generated REST:** Supabase's PostgREST service turns every table into a REST endpoint and every Postgres function into an RPC call.
+- **SQL directly:** You can bypass the auto-API and connect using a PostgreSQL connection string with any standard driver. 
+- Supabase's ecosystem also includes a GraphQL extension named pg_graphql if you prefer GraphQL queries.
+- **Edge Functions:** For custom logic, write a Supabase Edge Function (in TS/JS) that queries the database via the server side, especially if you need to enforce custom business rules or combine calls.
+
+Because it's SQL, you manage migrations when your schema changes (the Supabase CLI can help generate scripts). You might also use ORMs or query builders if connecting directly.
+
+The upside is expressiveness, and complex joins or subqueries can be handled in a single SQL statement. The downside is that developers must know SQL, and data constraints must be enforced through SQL rules or application logic.
+
+Convex takes a different route by eliminating direct SQL. Instead of writing queries in SQL, you define your data structures in a TypeScript schema file or via the Convex CLI. Data is stored as JSON-like documents in named tables (collections). You can create relational-style links by storing document IDs from one table inside another, but there is no join keyword. If you need related data, you write a Convex function that queries one table and then looks up the referenced documents.
+
+All data access happens through Convex functions. There are two main types:
+
+- **Query functions** (read-only, often used for reactive data)
+- **Mutation functions** (create, update, or delete data, check authentication, and run as transactions)
+
+These are JavaScript/TypeScript async functions using Convex's database API.
+
+<Image src={ConvexMutation} alt="Convex mutation function example showing a createTask mutation in TypeScript" width={1200} height={600} />
+
+Convex's data model is often described as "document-relational." You can store nested objects like a document database, while still organizing data into structured tables with indexes for efficient querying. Because the schema is inferred from your code (or defined explicitly), the Convex CLI and client libraries auto-generate TypeScript types for your data.
+
+The advantage is staying entirely in TypeScript across the stack. Business logic and data access live in the same language and often the same file. The trade-off is that complex queries that would be expressed in a single SQL statement, such as multi-table joins or aggregates, may require multiple lookups and additional code logic. Convex's philosophy assumes that most application queries involve few or no heavy relational joins, and when they do, the data model may need to be structured differently.
+
+## Authentication & Authorization
+
+Supabase Auth issues JWTs and is tightly integrated with PostgreSQL Row Level Security (RLS). RLS is a native Postgres feature and acts as the primary authorization boundary. When enabled on tables in exposed schemas (such as public), it enforces access rules directly at the database layer, even if data is accessed through third-party tools.
+
+Supabase provides a wide range of built-in authentication flows, including:
+
+- Password-based login
+- Email (magic link or OTP)
+- First-class support for third-party authentication providers
+- Phone login
+- Social login (OAuth providers)
+- Enterprise SSO (SAML 2.0)
+- Anonymous sign-ins
+- Web3 authentication
+- Multi-Factor Authentication (TOTP and phone)
+- Identity linking
+- Mobile deep linking
+- Server-side rendering support
+
+Authentication is handled by Supabase Auth (GoTrue), and user identity is embedded in JWTs that Postgres can read during query execution. Authorization is then enforced through RLS policies written in SQL.
+
+Convex uses an OIDC-compatible authentication model where identity providers issue JWT tokens used to authenticate WebSocket connections and RPC calls. Convex integrates with external providers such as Clerk, Auth0, and WorkOS and allows configuring custom OIDC or JWT providers in convex/auth.config.ts.
+
+Convex also provides a library, Convex Auth, that supports basic authentication methods, including email/password login, magic links, email OTP, and OAuth providers. Advanced capabilities such as enterprise SSO, MFA, and passkeys are typically implemented through external identity providers like Clerk or WorkOS.
+
+The key architectural difference lies in where authorization is enforced. In Supabase, RLS policies inside PostgreSQL typically serve as the final enforcement layer.
+
+In Convex, authorization is implemented within server functions, where business logic determines which operations are allowed and which data is returned.
+
+This distinction matters most for direct-from-client patterns. Supabase enables safe direct database access from browsers when RLS is properly configured. Convex encourages direct client calls to server functions, with authentication and authorisation checks implemented in TypeScript.
+
+## Functions & Server-Side Logic
+
+Supabase and Convex both provide server-side compute, but they treat backend logic as different architectural primitives.
+
+In Convex, backend logic is defined entirely through functions. These functions form the only supported interface to the database and are organized into several types:
+
+- **Queries** read data. They are deterministic, automatically cached, and can be subscribed to for real-time updates.
+- **Mutations** write data and always execute as transactions, ensuring atomic updates.
+- **Actions** can have side effects, such as calling external APIs (Stripe, OpenAI, etc.). Unlike queries and mutations, actions are not restricted by deterministic execution rules.
+
+<Image src={ConvexFunctionTypes} alt="Convex function types comparison table showing Queries, Mutations, and Actions capabilities" width={1200} height={600} />
+
+Convex also supports internal functions, which can be called only from other Convex functions. This allows developers to separate reusable backend logic from public client-accessible functions.
+
+Convex includes built-in validation, allowing developers to define schemas for function arguments. This ensures type safety and prevents invalid data from reaching business logic.
+
+Functions run in Convex's default runtime with no cold starts. If needed, actions can opt into Node.js using the "use node" directive, enabling compatibility with Node-specific packages and APIs.
+
+Convex automatically handles bundling and dependency resolution, packaging only the code needed for each function. It also provides structured error handling, allowing you to throw errors intentionally and control how failures propagate to clients.
+
+Convex exposes backend logic primarily as typed functions callable through its client libraries. When a traditional HTTP interface is needed, **HTTP Actions** can expose Fetch-API handlers at: 
+
+```bash
+https://<deployment>.convex.site
+```
+
+These HTTP actions support webhooks and public endpoints, but have constraints such as a 20MB request/response limit and no automatic retry handling.
+
+Supabase separates backend logic between PostgreSQL and Edge Functions.
+
+At the database layer, logic can be implemented using Postgres functions, triggers, and stored procedures. These functions can be invoked via Supabase's auto-generated REST and RPC APIs, enabling transactional logic to run directly in the database.
+
+For application-level logic, Supabase provides **Edge Functions**, which are serverless TypeScript functions running on the Supabase Edge Runtime, a Deno-based isolate environment. Each function is deployed as a globally accessible HTTPS endpoint and can be invoked by clients, webhooks, or external services.
+
+A minimal edge function follows this pattern:
+
+```javascript
+Deno.serve(async (req) => {
+  const { name } = await req.json();
+  return new Response(JSON.stringify({ message: `Hello ${name}!` }), {
+    headers: { "Content-Type": "application/json" },
+  });
+});
+```
+
+Supabase provides tooling for local development, deployment, and configuration through its CLI and dashboard. Functions support environment variables, dependency bundling, and structured error handling. The runtime automatically isolates function execution and follows a standard [serverless](https://www.devtoolsacademy.com/blog/serverless-sql-databases/) execution model, including cold and warm execution behavior.
+
+Edge Functions are designed for logic that should not run inside the database, such as:
+
+- Calling third-party APIs
+- Handling webhooks
+- Performing server-side validation
+- Running integration logic
+
+Supabase also allows self-hosting Edge Functions(beta) as a Deno-based web server. Unlike Convex, Edge functions are not the primary interface to Supabase data. The database itself exposes REST, GraphQL, and RPC endpoints directly, and Edge Functions are used when additional application logic is required.
+
+## Scheduling & Background Jobs
+
+Both Supabase and Convex provide built-in scheduling capabilities, but they implement scheduling at different layers of their architecture.
+
+### Convex: Durable Scheduling at the Function Layer
+
+Convex provides two scheduling mechanisms: **Scheduled Functions** for one-off execution and **Cron Jobs** for recurring tasks.
+
+Scheduled functions allow you to run a function at a specific time in the future using APIs like **runAfter()** or **runAt()**. Functions can be scheduled minutes, days, or even months ahead, enabling durable workflows such as delayed notifications, retries, or deferred processing.
+
+<Image src={ConvexCronDashboard} alt="Convex documentation showing how to schedule a function to run in the future using runAfter and runAt APIs" width={1200} height={600} />
+
+Scheduled functions are stored in the system table scheduled_functions and treated as durable system state. When scheduling happens inside a mutation, it becomes atomic with the transaction, meaning the scheduled job is guaranteed to exist if the mutation succeeds. Convex also returns a scheduled function ID, which lets you track execution status or manage scheduled jobs programmatically.
+
+For recurring tasks, Convex provides **Cron Jobs**, defined in code (typically in convex/crons.ts). These support several scheduling formats, including fixed intervals, cron expressions, and structured helpers such as monthly schedules.
+
+A typical Convex cron configuration looks like:
+
+```typescript
+import { cronJobs } from "convex/server";
+import { internal } from "./_generated/api";
+
+const crons = cronJobs();
+
+crons.interval("cleanup", { minutes: 60 }, internal.maintenance.cleanup);
+
+crons.monthly(
+  "monthly-reminder",
+  { day: 1, hourUTC: 16, minuteUTC: 0 },
+  internal.billing.sendReminder
+);
+
+export default crons;
+```
+
+Convex ensures that at most one instance of a cron job runs at a time. If a previous execution is still running, subsequent runs may be skipped rather than executed concurrently. The platform also provides scheduling visibility in its dashboard, including execution history and job status.
+
+Because Convex scheduling operates directly on functions, scheduled jobs naturally integrate with its transactional model and typed backend architecture.
+
+### Supabase: Database-Level Scheduling with pg_cron
+
+Supabase approaches scheduling at the database layer with **Supabase Cron**, built on PostgreSQL's pg_cron extension.
+
+<Image src={SupabaseCron} alt="Supabase Cron integration page showing pg_cron extension for scheduling recurring jobs in Postgres" width={1200} height={600} />
+
+Supabase Cron allows you to schedule SQL statements, database functions, or HTTP requests to run automatically on a recurring schedule. When enabled, Supabase creates a cron schema that stores scheduled jobs in **cron.job** and execution history in **cron.job_run_details**, providing full visibility into scheduled job behavior.
+
+Jobs are typically scheduled using SQL:
+
+```sql
+select cron.schedule(
+  'saturday-cleanup',
+  '30 3 * * 6',
+  $$ delete from events where event_time < now() - interval '1 week' $$
+);
+```
+
+This allows direct execution of maintenance tasks, data cleanup, analytics aggregation, or other database operations.
+
+Supabase also supports invoking Edge Functions from scheduled jobs using HTTP requests. This requires enabling the **pg_net** extension and allows scheduled database jobs to trigger server-side logic outside PostgreSQL, such as sending emails, calling external APIs, or performing integration workflows.
+
+Supabase recommends limiting concurrent cron jobs and keeping execution time within reasonable bounds to maintain database performance. Because Supabase Cron runs inside PostgreSQL, scheduling integrates naturally with database logic, triggers, and functions.
+
+### Architectural Contrast
+
+Convex scheduling operates at the application function layer. Scheduled tasks directly invoke backend functions and integrate with Convex's transactional model and runtime.
+
+Supabase scheduling operates at the database layer. Scheduled jobs run SQL, database functions, or HTTP calls, with Edge Functions serving as an optional compute layer for external or application logic.
+
+This reflects the broader architectural difference: Convex treats functions as the primary backend abstraction, while Supabase treats the database as the primary execution environment and layers additional compute on top.
+
+## Storage and File Handling
+
+Both Supabase and Convex include built-in file storage, but they integrate storage into their architectures differently.
+
+### Convex: Storage Integrated with the Function Layer
+
+Convex provides a built-in file storage system designed for both client uploads and backend-generated files. Files can be uploaded from applications or stored as part of backend workflows, such as files generated by external APIs or processing pipelines.
+
+The typical upload flow follows three steps:
+
+1. A mutation generates an upload URL using **ctx.storage.generateUploadUrl()**
+2. The client uploads the file directly to Convex using that URL
+3. The backend stores the returned storage ID in the database for future reference
+
+Because storage IDs are integrated directly into Convex's data model, files can be referenced and managed alongside application records.
+
+Convex also supports serving files through secure URLs or HTTP actions, allowing access control logic to be implemented in backend functions. Upload methods have different limits. For example, HTTP action uploads are limited to 20MB requests, while upload URLs support larger, more scalable upload workflows.
+
+This model tightly integrates storage with Convex's function-based backend architecture.
+
+### Supabase: Storage Integrated with PostgreSQL and Row-Level Security
+
+Supabase provides a dedicated object storage system built around buckets, which act as containers for organizing files. Buckets can store any file type, including images, videos, documents, and application assets.
+
+Buckets can be configured as either:
+
+- **Public**, where files are accessible via public URLs
+- **Private**, where access is controlled through Postgres Row Level Security (RLS) policies
+
+Supabase storage is deeply integrated with PostgreSQL security. Files are tracked in the **storage.objects** table, and access control is enforced using standard Postgres RLS policies. The Supabase documentation explicitly states that uploads are blocked by default unless RLS policies allow them.
+
+This means file access permissions can be expressed using the same SQL policy system that governs database records.
+
+Supabase also provides mechanisms for controlled file access, including:
+
+- Public URLs for unrestricted access
+- Signed URLs for time-limited secure access
+- Authenticated access governed by RLS policies
+
+Files are organized into buckets and managed through Supabase's API, dashboard, or client libraries. Storage operations include uploading, downloading, listing, and deleting files, all integrated with Supabase's authentication and authorization model.
+
+Under the hood, Supabase storage is designed as an object storage system with metadata stored in PostgreSQL and file content stored separately, allowing scalable file management alongside relational data.
+
+### Architectural Contrast
+
+Convex integrates storage directly into its function-driven backend, where files are uploaded, referenced, and served through backend functions and storage APIs.
+
+Supabase integrates storage into its database security model, where files are organized into buckets and protected using PostgreSQL Row Level Security policies.
+
+Convex treats storage as an extension of backend functions, while Supabase treats storage as an extension of the database and its security model.
+
+## Developer Experience & Tooling
+
+Supabase's developer ergonomics revolve around Postgres literacy plus strong tooling: a dashboard SQL editor, auto-generated APIs, a CLI that runs Supabase locally, manages database migrations, and generates TypeScript types from database introspection.
+
+<Image src={SupabaseSQLEditor} alt="Supabase SQL Editor showing table creation with Row Level Security policies" width={1200} height={600} />
+
+Migrations are first-class and are represented as SQL statements that evolve schemas over time. Local development is explicitly migration-driven: you can run a local stack via the CLI and capture changes as migration files for version control.
+
+<Image src={SupabaseCLI} alt="Supabase CLI output showing local development setup and migration commands" width={1200} height={600} />
+
+Convex's developer experience centres on end-to-end type safety and a code-driven workflow. Your backend logic lives as TypeScript functions in the **convex/** directory, and running **npx convex dev** starts a development loop that continuously pushes your code, typechecks it, and updates generated TypeScript definitions in **convex/_generated**. These generated types ensure your frontend can safely call backend functions without needing manual API definitions.
+
+<div style={{display: 'flex', justifyContent: 'center'}}>
+  <Image src={ConvexProjectStructure} alt="Convex project structure showing the convex directory with auth config, schema, and function files" width={200} height={300} />
+</div>
+
+Convex also supports local development. Your backend can run directly on your machine, with project state stored locally (for example, in ~/.convex). As your backend code changes, Convex automatically discovers new functions, applies schema updates, and keeps your function API synchronized with your frontend.
+
+For debugging and observability, Convex provides real-time function logs through its dashboard. Logs generated using standard methods, such as console.log, appear automatically, allowing you to monitor backend execution and diagnose issues.
+
+<Image src={ConvexLogs} alt="Convex dashboard showing real-time function logs with success and failure statuses" width={1200} height={600} /> 
+
+Supabase provides a logging interface specific to each product. You can use simple regular expressions for keywords and patterns to search log event messages. For example:
+
+- API logs show all network requests and responses for the REST and GraphQL APIs.
+- Postgres logs show queries and activity for your database.
+- Auth logs show all server logs for your Auth usage.
+- Storage logs show all server logs for your Storage API.
+- Real-time logs show all server logs for your Realtime API usage.
+- For each Edge Function, logs are available under the invocation and logs tab.
+
+<Image src={SupabaseDashboard} alt="Supabase dashboard showing logging and monitoring interface" width={1200} height={600} />
+
+In general, Supabase's DX excels when your team is comfortable with SQL + migrations and wants ecosystem compatibility. Convex's DX excels when your team wants to treat the backend as a typed extension of a TypeScript codebase and prefers to avoid a separate SQL/migration workflow for most app logic.
+
+## AI & Intelligence Features
+
+Supabase's AI approach is built as a set of composable building blocks. It uses pgvector for embeddings and similarity search, supports vector indexing methods such as HNSW and IVFFlat, and integrates with major AI providers like Hugging Face and LangChain. It also supports storing and managing embeddings alongside relational data, enabling vector search to work alongside standard SQL queries and application data.
+
+A typical semantic search workflow involves enabling the vector extension, creating tables to store embeddings, and querying those embeddings for similarity. Vector indexes such as HNSW and IVFFlat improve performance and scalability, with HNSW generally preferred for performance and robustness.
+
+Supabase also supports multiple search patterns, including semantic, keyword, and hybrid searches, enabling applications to combine vector similarity with traditional text-based filtering.
+
+<Image src={SupabaseVectorSearch} alt="Supabase vector search diagram showing pgvector integration with PostgreSQL for semantic similarity search" width={1200} height={600} />
+
+Supabase also supports model execution through Edge Functions. Edge Functions include a built-in AI API for generating embeddings and running conversational workflows. They can invoke external models or run models locally using tools such as Ollama or Llamafile. Supabase can also generate embeddings directly in its backend, allowing embedding pipelines, inference logic, and application workflows to run alongside your database.
+
+<Image src={ConvexAI} alt="Convex AI agent workflow diagram showing how Convex manages threads, messages, and multi-step AI workflows" width={1200} height={600} />
+
+Convex's AI capabilities span three main areas: AI-assisted development, vector search, and [agent workflows](https://www.devtoolsacademy.com/blog/ai-coding-agents-practical-guide/).
+
+Convex provides built-in vector search through vector indexes defined in the schema. These indexes specify the embedding field, dimensions, and optional filter fields. Vector search queries run through the ctx.vectorSearch API. Vector search operations run inside backend actions, allowing AI retrieval logic to execute alongside application logic.
+
+Convex also supports reactive full-text search, allowing applications to perform indexed search that integrates with its database and function system. Because Convex queries are reactive and transactional, search results remain consistent with application state and automatically reflect database changes.
+
+<Image src={ConvexAgentWorkflow} alt="Convex agent-oriented workflow showing persistent AI conversations and multi-step workflow coordination" width={1200} height={600} />
+
+Convex also introduces agent-oriented workflows. Its agent model manages threads and messages as structured data, allowing applications to persist AI conversations and coordinate multi-step workflows. You can separate your long-running agentic workflows from your UI, without the user losing reactivity and interactivity.
+
+<Image src={ConvexFunctionArchitecture} alt="Convex function-based architecture showing AI workflows, application logic, and data storage running within the same runtime" width={1200} height={600} />
+
+Convex's function-based architecture and type-safe backend model enable AI workflows, application logic, and data storage to run within the same runtime, simplifying the development of persistent conversational systems and AI-driven application features.
+
+## Ecosystem & Extensibility
+
+PostgreSQL fundamentally shapes Supabase's extensibility. It supports over 50 built-in extensions that add capabilities such as vector search (pgvector), full-text search, GraphQL (pg_graphql), job scheduling (pg_cron), and external system integration (pg_net). These extensions extend the database itself, allowing features such as embeddings, search, background jobs, and networking to run directly within PostgreSQL.
+
+<Image src={SupabaseExtensions} alt="Supabase extensions overview showing pgvector, pg_graphql, pg_cron, and pg_net PostgreSQL extensions" width={1200} height={600} />
+
+Supabase also allows installing additional SQL extensions, enabling you to integrate specialised functionality without changing your application architecture.
+
+This model also provides portability. Because Supabase uses dedicated PostgreSQL databases, your schema, extensions, and data remain compatible with standard PostgreSQL environments. This allows systems built on Supabase to migrate, replicate, or integrate with other PostgreSQL-based infrastructure when needed.
+
+Convex's extensibility centres on reusable backend components. Components package functions, database tables, and persistent state into self-contained modules that can be added to your backend. Each component runs in its own isolated environment, with its own data and execution scope, and can be safely integrated without affecting the rest of your application unless explicitly connected.
+
+<Image src={ConvexComponents} alt="Convex components diagram showing reusable backend modules with isolated data and execution scope" width={1200} height={600} />
+
+Components enable higher-level backend features such as authentication integrations, AI workflows, durable background processes, and application logic modules. Instead of extending the database itself, Convex extends the backend through composable runtime modules that operate alongside your application code.
+
+This reflects the broader architectural difference. Supabase builds on an established database ecosystem, while Convex builds around composable backend primitives aligned with its function-centric runtime.
+
+## Performance & Scalability
+
+When running production apps at scale, factors such as throughput, latency, and scaling limits become critical. Both Supabase and Convex are designed to scale, but in different ways, and each has its limits to understand.
+
+### Supabase Scaling
+
+Since a Supabase project is fundamentally a single Postgres instance, scaling is largely about scaling Postgres vertically or with replicas. Supabase offers instance sizes up to very large vCPUs/RAM, allowing you to scale vertically as load grows.
+
+<Image src={SupabaseScaling} alt="Supabase scaling diagram showing vertical scaling and read replicas for PostgreSQL instances" width={1200} height={600} />
+
+Supabase also introduced read replicas, allowing read-only replicas in the same or different regions. This lets you distribute read traffic across replicas, reducing latency for global or read-heavy workloads. However, all writes still funnel to the primary DB, so write throughput is limited by a single Postgres node.
+
+<Image src={SupabaseReadReplicas} alt="Supabase read replicas architecture showing distributed read traffic across regional replicas with a single primary write node" width={1200} height={600} />
+
+Supabase's architecture includes Supavisor, a custom connection pooler that multiplexes client connections efficiently. This addresses a common Postgres scaling pain: too many open connections. With Supavisor, Supabase can handle thousands of concurrent client sessions by reusing a smaller pool of actual DB connections.
+
+Because you can run custom SQL, you can optimize performance using indexes, materialized views, and query tuning. Supabase doesn't automatically cache query results beyond Postgres's internal caching, so external caches like Redis may be used if needed. Supabase is essentially as performant as PostgreSQL itself. If data fits in RAM and queries are properly indexed, performance is very fast; large scans or unindexed joins will slow it down.
+
+For high concurrency, Postgres uses MVCC (multi-version concurrency control) with row-level locking on writes. It can handle many concurrent readers and moderate concurrent writes, but heavy contention on the same rows can cause conflicts. In Supabase, conflicting transactions abort and must be retried by the application.
+
+### Convex Scaling
+
+Convex's scaling model abstracts cluster management. Convex scales the underlying infrastructure automatically as usage grows. Function runners and sync workers scale horizontally to handle more concurrent connections and function executions.
+
+<Image src={ConvexScaling} alt="Convex scaling diagram showing horizontal scaling of function runners and sync workers with a single primary database" width={1200} height={600} />
+
+The Convex database uses a single primary for persistence, with optimistic concurrency that handles write conflicts via retries rather than locks. This maintains consistency while keeping throughput high when contention is low. If many clients update the same document, retries may increase, reducing throughput.
+
+One advantage of Convex's model is automatic caching of query results. If multiple clients run the same query function, Convex computes it once and fans out the result to all subscribers, recomputing only when the underlying data changes. In contrast, Supabase runs each SQL query independently unless caching is added.
+
+For global distribution, Convex deployments run in a selected region, similar to Supabase. Clients connect through WebSocket gateways, but all data syncs to the central database. Supabase read replicas can serve reads from closer regions, reducing latency.
+
+Convex emphasizes strict serializable transactions, ensuring consistent snapshots and preventing race conditions. PostgreSQL typically uses weaker isolation levels by default unless configured otherwise. Convex's optimistic concurrency maintains correctness by retrying conflicting transactions.
+
+### Scaling Limits and Optimization
+
+A single Supabase Postgres instance can handle hundreds to thousands of writes per second and many thousands of reads per second, depending on hardware and tuning. Scaling beyond this may require manual sharding across multiple databases.
+
+Convex does not publish raw throughput limits, but scaling is tied to function execution capacity and database throughput. Convex scales compute components horizontally, but database writes remain a fundamental limit.
+
+Both systems require indexing for performance. Supabase supports advanced indexing types such as B-tree, GIN, and partial indexes. Convex requires indexes defined through its schema for efficient query execution.
+
+For large files, Supabase uses its Storage service, while Convex provides a File Storage system. Neither stores large blobs directly in the database.
+
+Supabase requires active database tuning and capacity planning. Convex abstracts scaling decisions but provides less direct control over database behavior.
+
+Both platforms can handle large-scale production workloads, but Supabase relies on PostgreSQL's proven scaling model, while Convex emphasizes automatic scaling and reactive synchronization.
+
+## Security & Compliance
+
+Supabase's security model largely mirrors PostgreSQL's. The primary mechanism is Row Level Security (RLS) in Postgres, which Supabase strongly encourages enabling on your tables to enforce fine-grained access control.
+
+<Image src={SupabaseRLS} alt="Supabase Row Level Security configuration showing RLS policies enforcing fine-grained access control at the database layer" width={1200} height={600} />
+
+Supabase Auth uses JWTs and is designed to integrate with database authorization, facilitating end-to-end security from the authentication layer to RLS policies.
+
+Supabase Auth issues JSON Web Tokens (JWTs), which are signed using Supabase-managed JWT signing keys and contain identity and role information used for authorization. Supabase supports custom JWT claims and role-based access control, allowing fine-grained authorization through database policies. Supabase also supports Column-Level Security alongside Row-Level Security, enabling access control at both row and column granularity.
+
+Supabase also includes platform security protections, such as password security, rate limiting for authentication and API requests, and bot-detection mechanisms like CAPTCHA to prevent automated abuse.
+
+Supabase provides platform audit logs that track dashboard and API actions performed by organisation members, as well as authentication audit logs stored in Postgres and/or in external storage. These logs provide visibility into authentication events, administrative actions, and system activity.
+
+Convex's security model is anchored in authenticated function calls. It uses JWT-based authentication for WebSocket connections and RPCs, and supports integration with OIDC identity providers. It also supports integration with custom JWT providers for advanced authentication scenarios. Within backend functions, authentication information is available through the function context.
+
+Convex also supports row-level security (RLS), where authorisation is defined at the row level, and checks are automatically run whenever code tries to read or write a row.
+
+<Image src={ConvexSecurity} alt="Convex security model showing JWT-based authentication for WebSocket connections with row-level security checks in backend functions" width={1200} height={600} />
+
+Scheduling introduces an additional security consideration. Scheduled functions do not automatically propagate authentication context, so user identity or authorization data must be passed explicitly if access control checks are required during scheduled execution.
+
+## Pricing and Cost Considerations
+
+Cost is often a deciding factor in infrastructure choices. Both Supabase and Convex offer free tiers and use-based pricing on paid plans, but the structures differ. Choosing between Supabase and Convex often comes down to your team's structure and how your application consumes resources. Both offer generous free tiers, but their scaling logic differs significantly.
+
+### Supabase Pricing
+
+Supabase follows a traditional cloud infrastructure model where you pay for the "box" (the project instance) and the storage it consumes.
+
+- **Free Tier:** Includes 2 projects, 500MB database, and 50k Monthly Active Users (MAUs). Free projects "sleep" after 1 week of inactivity.
+- **Pro Plan ($25/month per project):** Removes auto-pausing and bumps limits to an 8GB database and 100k MAUs.
+- **Scaling:** Costs are driven by **Compute and Storage**. You pay for "Compute Add-ons" if you need more CPU/RAM, plus overage fees for storage and egress.
+
+### Convex Pricing
+
+Convex focuses on "functions" and "seats," making it feel more like a SaaS product than raw infrastructure.
+
+- **Free Tier:** Free for up to 6 developers. Includes 0.5GB database and 1 million function calls per month.
+- **Pro Plan ($25/month per developer):** If you have 3 devs, you pay $75/month. This unlocks much higher limits: 50GB database and 25 million function calls.
+- **Scaling:** Costs are driven by **Usage (Function Calls)**. There is no concept of "MAU" limits; you only pay for the work the system does (calls and runtime).
+
+| Feature | Supabase | Convex |
+|---|---|---|
+| Base Paid Price | $25 per project | $25 per developer |
+| Free Tier Perk | 50,000 Monthly Active Users | 1 Million Function Calls |
+| Idle Behavior | Free projects "sleep" | Always active |
+| Primary Cost Driver | Database size & Compute | Function calls & Runtime |
+| Collaboration | Unlimited devs on Pro | Pay per seat |
+| Self-Hosting | Fully Open Source | Self-hosted Convex runs the open-source backend |
+
+### Key Trade-offs to Consider
+
+- **Team Size vs. Project Volume:** An agency managing 10 small client sites will find Supabase's per-project fee adds up, whereas Convex's per-dev fee might be cheaper. Conversely, a 20-person engineering team building one app will save on Supabase.
+- **Operational Overhead:** Supabase may require manual tuning, indexing, and migration management as you grow (Engineering time cost). Convex is designed to be "zero-maintenance," potentially saving you some costs.
+- **Usage Patterns:** If your app has constant small pings (like IoT), Convex's per-call billing might get expensive. If your app has huge data storage needs, Supabase's per-GB storage costs might become the primary bottleneck.
+
+For a small-to-medium app, both will likely cost you between **$25 and $75 per month**. Supabase is more generous with user counts (MAUs), while Convex is more generous with storage volume on their Pro plan.
+
+## Open Source and Vendor Lock-In
+
+Both **Supabase** and **Convex** emphasize openness, but they differ in maturity and portability.
+
+Supabase is almost entirely open source. Its stack, built around PostgreSQL, PostgREST, GoTrue, Realtime, Storage, and Studio, can be fully self-hosted using Docker. Because the database is standard Postgres, migrating away is relatively straightforward: you can export your data with tools like pg_dump and move to another Postgres host such as AWS RDS. Supabase's reliance on open standards (SQL, S3 APIs, etc.) reduces vendor lock-in and has helped build a large ecosystem of tutorials, extensions, and integrations.
+
+Convex recently open-sourced its backend under an Apache-style license. You can now self-host Convex using either the binary or the source code. The bigger lock-in concern with Convex is not the platform itself but the programming model: applications built around Convex functions and its reactive database would require significant rewriting to migrate to another backend.
+
+Ecosystem differences also matter. Supabase benefits from the massive Postgres ecosystem and a larger developer community. Convex's community is smaller but growing, with strong documentation and active developer outreach.
+
+## Conclusion
+
+Both [Supabase](https://www.devtoolsacademy.com/blog/neon-vs-supabase/) and Convex are powerful backend platforms, each with significant capabilities and a vision to make developers more productive. There is no one-size-fits-all answer to which is "better"; a lot of it depends on context and priorities.
+
+Both Supabase and Convex are advancing the idea that developers should spend less time on boilerplate and more time building features. Whether you choose the path of SQL-powered backend with Supabase or the path of reactive TypeScript with Convex, you'll be standing on the shoulders of some impressive technology. Choose based on facts and trade-offs that matter to your team, and you won't fall for the "X is dead, Y is the future" noise.
+
+Happy building!
+
+<RelatedPosts currentSlug="supabase-vs-convex" currentCategory="Database" />
