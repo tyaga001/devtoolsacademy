@@ -17,6 +17,7 @@ import EloqdocVSMongoDBPart4 from "@/app/blog/eloqdoc-vs-ferretdb-vs-mongodb-ben
 import CursorVSClaudeCode from "@/app/blog/cursor-vs-claudecode/cover.png"
 import ServerlessDatabasesCompared from "@/app/blog/serverless-sql-databases/cover.png"
 import AICodingAgent from "@/app/blog/ai-coding-agents-practical-guide/cover.png"
+import SupabaseVsConvexImage from "@/app/blog/supabase-vs-convex/cover.png"
 
 export const allAuthors = [
   { name: "Ankur Tyagi", link: "https://theankurtyagi.com/" },
@@ -25,6 +26,20 @@ export const allAuthors = [
 ]
 
 export const allBlogs = [
+  {
+    author: "Ankur Tyagi",
+    slug: "supabase-vs-convex",
+    title: "Supabase vs Convex",
+    excerpt:
+      "A comprehensive comparison of Supabase and Convex backend platforms",
+    description:
+      "A comprehensive comparison of Supabase and Convex backend platforms covering architecture, data models, auth, functions, storage, pricing, and more",
+    publishedAt: "2026-03-27T00:00:00Z",
+    category: "Database",
+    image: SupabaseVsConvexImage.src,
+    isNew: true,
+    isFeatured: false,
+  },
   {
     author: "Ankur Tyagi",
     slug: "ai-coding-agents-practical-guide",

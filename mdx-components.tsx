@@ -149,12 +149,12 @@ const components: MDXComponents = {
   ),
   th: (props: any) => (
     <th
-      className="border border-neutral-500 bg-neutral-800 px-4 py-2"
+      className="border border-neutral-500 bg-neutral-800 px-4 py-2 text-center align-middle"
       {...props}
     />
   ),
   td: (props: any) => (
-    <td className="border border-neutral-500 px-4 py-2" {...props} />
+    <td className="border border-neutral-500 px-4 py-2 text-center align-middle" {...props} />
   ),
   hr: (props: any) => (
     <hr className="my-12 border-dashed opacity-50" {...props} />
