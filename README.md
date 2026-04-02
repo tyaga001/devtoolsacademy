@@ -1,4 +1,5 @@
 # DevTools Academy 🚀
+- [submission-site-discovery](https://github.com/SeeleAI/submission-site-discovery) - Automated discovery of product submission sites, launch directories, and distribution channels for indie hackers.
 
 <div align="center">
   <img src="public/icons/icon-256x256.png" alt="DevTools Academy Logo" width="120" height="120" />
