@@ -353,6 +353,8 @@ style: format code with prettier
 refactor: simplify component structure
 ```
 
+For PRs, keep the subject line **very short** (about one line, ~50 characters or less when practical).
+
 #### Branch Naming
 
 ```
