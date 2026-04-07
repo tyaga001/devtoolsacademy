@@ -1,0 +1,14 @@
+---
+description: Very short git commit messages when opening or preparing PRs
+alwaysApply: true
+---
+
+# Pull requests and commits
+
+When raising a PR or making the commit(s) that will go into a PR, use a **very short** commit message:
+
+- One line, imperative mood (e.g. `feat: add Oumi sponsor`).
+- Prefer **under ~50 characters** for the subject; avoid long bodies unless the project explicitly needs them.
+- Same idea for PR titles: short and scannable.
+
+Do not write multi-paragraph commit messages for routine feature PRs.
