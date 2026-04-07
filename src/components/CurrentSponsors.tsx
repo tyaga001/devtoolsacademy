@@ -80,9 +80,12 @@ const CurrentSponsors: React.FC<Props> = () => {
         </div>
 
         <div className="mb-16 rounded-2xl border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-transparent px-4 py-10 shadow-[0_0_0_1px_rgba(255,255,255,0.03)_inset] sm:px-8 md:py-12">
-          <ul className="mx-auto grid max-w-6xl list-none grid-cols-2 items-center justify-items-center gap-x-6 gap-y-10 sm:grid-cols-3 sm:gap-x-8 lg:gap-y-14">
+          <ul className="mx-auto grid max-w-6xl list-none grid-cols-2 place-items-center gap-x-6 gap-y-10 sm:grid-cols-3 sm:gap-x-8 lg:gap-y-14">
             {sponsors.map(({ id, href, logo, alt }) => (
-              <li key={id} className="flex w-full max-w-[240px] justify-center sm:max-w-[260px]">
+              <li
+                key={id}
+                className="flex w-full max-w-[240px] justify-center sm:max-w-[260px]"
+              >
                 <a
                   href={href}
                   target="_blank"
