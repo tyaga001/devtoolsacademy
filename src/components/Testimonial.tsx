@@ -6,6 +6,7 @@ import { Quote, Star } from "lucide-react"
 
 import Alberto from "@/assets/testimonials/alberto.png"
 import Andy from "@/assets/testimonials/andy.png"
+import Lintao from "@/assets/testimonials/lintao.png"
 import Ophir from "@/assets/testimonials/ophir.png"
 
 import { cn } from "@/lib/utils"
@@ -37,6 +38,13 @@ const testimonials: ITestimonial[] = [
     position: "Head of Marketing, Neon",
     avatar: Andy.src,
   },
+  {
+    quote:
+      "Ankur from DevToolsAcademy was instrumental in shaping EloqData in our early days. He did not just advise, he worked alongside us to refine our technical writing and build a strong developer marketing foundation. he didn’t just bring marketing expertise, he brought an engineering mindset to growth.",
+    name: "Lintao Zhang",
+    position: "Founder",
+    avatar: Lintao.src,
+  },
 ]
 
 function TestimonialCard({
@@ -50,8 +58,8 @@ function TestimonialCard({
     <div
       className={cn(
         "relative flex flex-col p-10 md:p-12",
-        "border-b md:border-b-0 border-dashed border-neutral-100/15",
-        index > 0 ? "md:border-l border-dashed border-neutral-100/15" : ""
+        "border-b border-dashed border-neutral-100/15 lg:border-b-0",
+        index > 0 ? "lg:border-l lg:border-dashed lg:border-neutral-100/15" : ""
       )}
     >
       <Quote
@@ -113,7 +121,7 @@ function Testimonial() {
       </div>
 
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={`${testimonial.name}-${index}`}
