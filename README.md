@@ -69,7 +69,7 @@ Everything is transparent, community-driven, and built in the open.
   <tr>
     <td align="center" width="250px">
       <a href="https://coderabbit.ai/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
-        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/coderabbit.svg" alt="CodeRabbit" height="45" />
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/coderabbit-light.svg" alt="CodeRabbit" height="45" />
       </a>
       <br /><br />
       <strong>CodeRabbit</strong>
@@ -90,19 +90,6 @@ Everything is transparent, community-driven, and built in the open.
       <a href="https://getstream.io/chat/react-chat/tutorial/?utm_source=opensource&utm_medium=referral&utm_content=&utm_campaign=devtoolsacademy">Start Building →</a>
     </td>
     <td align="center" width="250px">
-      <a href="https://www.eloqdata.com/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
-        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/eloqdata.png" alt="EloqData" height="50" />
-      </a>
-      <br /><br />
-      <strong>EloqData</strong>
-      <br />
-      <sub>Database for AI</sub>
-      <br /><br />
-      <a href="https://www.eloqdata.com/?ref=devtoolsacademy">Try Free →</a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="250px">
       <a href="https://cline.bot/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
         <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/cline.svg" alt="Cline" height="50" />
       </a>
@@ -113,6 +100,8 @@ Everything is transparent, community-driven, and built in the open.
       <br /><br />
       <a href="https://cline.bot/?ref=devtoolsacademy">Get Started →</a>
     </td>
+  </tr>
+  <tr>
     <td align="center" width="250px">
       <a href="https://www.orchids.app/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
         <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/orchids.png" alt="Orchids" height="50" />
@@ -125,12 +114,26 @@ Everything is transparent, community-driven, and built in the open.
       <a href="https://www.orchids.app/?ref=devtoolsacademy">Try Free →</a>
     </td>
     <td align="center" width="250px">
+      <a href="https://oumi.ai/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/oumi.svg" alt="Oumi" height="50" />
+      </a>
       <br /><br />
-      <strong>Your Logo Here</strong>
+      <strong>Oumi</strong>
       <br />
-      <sub>Support DevTools Academy</sub>
+      <sub>Custom AI models</sub>
       <br /><br />
-      <a href="https://www.devtoolsacademy.com/sponsor">Become a Sponsor →</a>
+      <a href="https://oumi.ai/?ref=devtoolsacademy">Get started →</a>
+    </td>
+    <td align="center" width="250px">
+      <a href="https://www.eloqdata.com/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/eloqdata.png" alt="EloqData" height="50" />
+      </a>
+      <br /><br />
+      <strong>EloqData</strong>
+      <br />
+      <sub>Database for AI</sub>
+      <br /><br />
+      <a href="https://www.eloqdata.com/?ref=devtoolsacademy">Try Free →</a>
     </td>
   </tr>
 </table>
