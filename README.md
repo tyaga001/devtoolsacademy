@@ -135,6 +135,17 @@ Everything is transparent, community-driven, and built in the open.
       <br /><br />
       <a href="https://www.eloqdata.com/?ref=devtoolsacademy">Try Free →</a>
     </td>
+    <td align="center" width="250px">
+      <a href="https://www.plurai.ai/?ref=devtoolsacademy" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/tyaga001/devtoolsacademy/main/src/assets/plurai.png" alt="Plurai" height="50" />
+      </a>
+      <br /><br />
+      <strong>Plurai</strong>
+      <br />
+      <sub>AI Agent Lifecycle Platform</sub>
+      <br /><br />
+      <a href="https://www.plurai.ai/?ref=devtoolsacademy">Get Started →</a>
+    </td>
   </tr>
 </table>
 

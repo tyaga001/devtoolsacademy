@@ -9,6 +9,7 @@ import EloqDataLogo from "@/assets/eloqdata.png"
 import ClineLogo from "@/assets/cline.svg"
 import OrchidsLogo from "@/assets/orchids.png"
 import OumiWordmark from "@/assets/oumi-wordmark.svg"
+import PluraiLogo from "@/assets/plurai.png"
 import { Heart } from "lucide-react"
 import { Link } from "next-view-transitions"
 
@@ -21,10 +22,6 @@ type Sponsor = {
   alt: string
 }
 
-/**
- * Row 1: Stream, CodeRabbit, Cline · Row 2: Orchids, Oumi (center), EloqData (last)
- * — 3 columns from `sm` up so Oumi sits in the middle of the second row.
- */
 const sponsors: Sponsor[] = [
   {
     id: "stream",
@@ -62,6 +59,12 @@ const sponsors: Sponsor[] = [
     logo: EloqDataLogo,
     alt: "EloqData",
   },
+  {
+    id: "plurai",
+    href: "https://www.plurai.ai/?ref=devtoolsacademy.com",
+    logo: PluraiLogo,
+    alt: "Plurai",
+  },
 ]
 
 const CurrentSponsors: React.FC<Props> = () => {
@@ -80,24 +83,25 @@ const CurrentSponsors: React.FC<Props> = () => {
         </div>
 
         <div className="mb-16 rounded-2xl border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-transparent px-4 py-10 shadow-[0_0_0_1px_rgba(255,255,255,0.03)_inset] sm:px-8 md:py-12">
-          <ul className="mx-auto grid max-w-6xl list-none grid-cols-2 place-items-center gap-x-6 gap-y-10 sm:grid-cols-3 sm:gap-x-8 lg:gap-y-14">
+          <ul className="mx-auto flex max-w-6xl list-none flex-wrap items-center justify-center gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:gap-x-10 lg:gap-y-12">
             {sponsors.map(({ id, href, logo, alt }) => (
               <li
                 key={id}
-                className="flex w-full max-w-[240px] justify-center sm:max-w-[260px]"
+                className="flex basis-[45%] justify-center sm:basis-[30%] lg:basis-[22%]"
               >
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex w-full flex-col items-center justify-center rounded-xl px-3 py-2 outline-none ring-white/0 transition duration-200 hover:ring-2 hover:ring-white/10 focus-visible:ring-2 focus-visible:ring-white/20"
+                  aria-label={alt}
+                  className="group flex h-16 w-full items-center justify-center rounded-xl px-4 py-3 outline-none transition duration-200 hover:bg-white/[0.03] focus-visible:ring-2 focus-visible:ring-white/20 sm:h-20"
                 >
                   <Image
                     src={logo}
                     alt={`${alt} logo`}
                     width={logo.width}
                     height={logo.height}
-                    className="h-10 w-auto max-w-full object-contain object-center sm:h-11 lg:h-12"
+                    className="h-9 w-auto max-w-full object-contain object-center opacity-80 transition duration-200 group-hover:opacity-100 sm:h-10 lg:h-11"
                   />
                 </a>
               </li>
