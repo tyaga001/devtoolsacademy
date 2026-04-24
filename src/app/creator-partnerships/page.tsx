@@ -441,6 +441,82 @@ export default function CreatorPartnershipsPage() {
             </blockquote>
           </div>
 
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/sonny.png"
+                  alt="Sonny Sangha - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Sonny Sangha
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Creator • PAPA React • 356K+ subscribers
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Ankur has been instrumental in our sponsorship growth. He played
+                a major role in helping us secure key sponsorship partnerships,
+                including getStream and CodeRabbit, and he&apos;s genuinely been
+                one of the main reasons behind those sponsorship campaigns. His
+                communication, consistency, and eagerness to make things happen
+                is amazing. He&apos;s proactive, fast to respond, and always
+                pushes to keep momentum going, ensuring relationships don&apos;t
+                just start… they continue and grow into ongoing deals!
+              </p>
+            </blockquote>
+          </div>
+
+          <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
+            <div className="mb-6 flex items-start">
+              <div className="mr-4 shrink-0">
+                <Image
+                  src="/images/testimonials/jaewoong.png"
+                  alt="Jaewoong - DevTools Academy testimonial"
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full border-2 border-neutral-600 object-cover ring-2 ring-neutral-800"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-lg font-semibold text-neutral-100">
+                  Jaewoong
+                </h4>
+                <p className="text-sm font-medium text-neutral-400">
+                  Creator • Developer & Technical Content
+                </p>
+              </div>
+            </div>
+            <blockquote className="relative leading-relaxed text-neutral-300">
+              <span className="absolute -left-2 -top-2 text-4xl text-neutral-600">
+                &ldquo;
+              </span>
+              <p className="relative z-10 pl-4">
+                Ankur has a unique instinct for finding developer products that
+                truly resonate with a technical audience. He lined up pivotal
+                brand collaborations that I had previously struggled to secure
+                on my own, turning them into long-term engagements with strong,
+                renewing results. I no longer worry about the
+                &apos;back-and-forth&apos; of negotiations or finding the right
+                fit. With Ankur handling the business side, I can stay 100%
+                focused on delivering value to my community. If you want to
+                scale your channel without the administrative burnout, Ankur is
+                the person to talk to.
+              </p>
+            </blockquote>
+          </div>
+
           {/* Additional Creator Voices */}
           <div className="group rounded-xl border border-dashed border-neutral-100/10 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-neutral-100/20 hover:from-neutral-900/90 hover:to-neutral-900/60">
             <div className="mb-6 flex items-start">
